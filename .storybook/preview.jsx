@@ -1,3 +1,4 @@
+import "../src/index.css";
 const preview = {
   parameters: {
     controls: {
