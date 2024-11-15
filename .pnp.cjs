@@ -46,6 +46,7 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/sdks", "npm:3.2.0"],\
           ["autoprefixer", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:10.4.20"],\
           ["axios", "npm:1.7.7"],\
+          ["chromatic", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1"],\
           ["eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:9.14.0"],\
           ["eslint-plugin-react-hooks", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.0.0"],\
           ["eslint-plugin-react-refresh", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:0.4.14"],\
@@ -378,7 +379,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@chromatic-com/storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:3.2.2"],\
           ["@types/storybook", null],\
-          ["chromatic", "virtual:ea69af83cfa00d47530d6fbebc9973313ec96b99e5c9a7e5e1b813dd4f177d17d1718ea6f52bdcdca43d4dd3f7377bd8689e7d6ae44570991fd8b65423f42a9a#npm:11.18.1"],\
+          ["chromatic", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1"],\
           ["filesize", "npm:10.1.6"],\
           ["jsonfile", "npm:6.1.0"],\
           ["react-confetti", "virtual:ea69af83cfa00d47530d6fbebc9973313ec96b99e5c9a7e5e1b813dd4f177d17d1718ea6f52bdcdca43d4dd3f7377bd8689e7d6ae44570991fd8b65423f42a9a#npm:6.1.0"],\
@@ -3414,10 +3415,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:ea69af83cfa00d47530d6fbebc9973313ec96b99e5c9a7e5e1b813dd4f177d17d1718ea6f52bdcdca43d4dd3f7377bd8689e7d6ae44570991fd8b65423f42a9a#npm:11.18.1", {\
-        "packageLocation": "./.yarn/__virtual__/chromatic-virtual-57cd6ce507/5/AppData/Local/Yarn/Berry/cache/chromatic-npm-11.18.1-582a700d2c-10c0.zip/node_modules/chromatic/",\
+      ["virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1", {\
+        "packageLocation": "./.yarn/__virtual__/chromatic-virtual-c19178bca9/5/AppData/Local/Yarn/Berry/cache/chromatic-npm-11.18.1-582a700d2c-10c0.zip/node_modules/chromatic/",\
         "packageDependencies": [\
-          ["chromatic", "virtual:ea69af83cfa00d47530d6fbebc9973313ec96b99e5c9a7e5e1b813dd4f177d17d1718ea6f52bdcdca43d4dd3f7377bd8689e7d6ae44570991fd8b65423f42a9a#npm:11.18.1"],\
+          ["chromatic", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1"],\
           ["@chromatic-com/cypress", null],\
           ["@chromatic-com/playwright", null],\
           ["@types/chromatic-com__cypress", null],\
@@ -7079,6 +7080,7 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/sdks", "npm:3.2.0"],\
           ["autoprefixer", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:10.4.20"],\
           ["axios", "npm:1.7.7"],\
+          ["chromatic", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1"],\
           ["eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:9.14.0"],\
           ["eslint-plugin-react-hooks", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.0.0"],\
           ["eslint-plugin-react-refresh", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:0.4.14"],\
