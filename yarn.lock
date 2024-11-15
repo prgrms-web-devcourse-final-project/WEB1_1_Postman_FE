@@ -1165,7 +1165,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/builder-vite@npm:8.4.4":
+"@storybook/builder-vite@npm:8.4.4, @storybook/builder-vite@npm:^8.4.4":
   version: 8.4.4
   resolution: "@storybook/builder-vite@npm:8.4.4"
   dependencies:
@@ -5083,6 +5083,7 @@ __metadata:
     "@storybook/addon-interactions": "npm:8.4.4"
     "@storybook/addon-onboarding": "npm:8.4.4"
     "@storybook/blocks": "npm:8.4.4"
+    "@storybook/builder-vite": "npm:^8.4.4"
     "@storybook/react": "npm:8.4.4"
     "@storybook/react-vite": "npm:8.4.4"
     "@storybook/test": "npm:8.4.4"

@@ -22,6 +22,7 @@
     "@storybook/addon-interactions": "8.4.4",
     "@storybook/addon-onboarding": "8.4.4",
     "@storybook/blocks": "8.4.4",
+    "@storybook/builder-vite": "^8.4.4",
     "@storybook/react": "8.4.4",
     "@storybook/react-vite": "8.4.4",
     "@storybook/test": "8.4.4",
