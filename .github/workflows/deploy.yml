@@ -21,7 +21,7 @@ jobs:
             - name: Install dependencies with Yarn
               uses: actions/cache@v3
               with:
-                  path: ./node_modules
+                  path: ./.yarn/cache
                   key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
                   restore-keys: |
                       ${{ runner.os }}-yarn-
