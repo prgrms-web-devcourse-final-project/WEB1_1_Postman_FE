@@ -3,11 +3,11 @@ name: 'Chromatic Deployment'
 
 on:
     pull_request:
-        branches: init-프로젝트-세팅
+        branches: main
         paths:
             - '**.stories.tsx'
     push:
-        branches: init-프로젝트-세팅
+        branches: main
         paths:
             - '**.stories.tsx'
 
