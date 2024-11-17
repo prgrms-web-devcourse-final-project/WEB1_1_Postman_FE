@@ -2,9 +2,10 @@ import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import tseslint from 'typescript-eslint';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 
-export default tseslint.config(
+export default [
     {
         ignores: [
             'dist',
@@ -12,26 +13,39 @@ export default tseslint.config(
             '**/webpack*.js',
             '**/webpack/**/*.js',
             'src/stories/**',
-            '.storybook'
+            '.storybook',
+            '.yarn',
+            'vite.config.ts'
         ]
     },
     {
-        extends: [js.configs.recommended, ...tseslint.configs.recommended],
         files: ['**/*.{ts,tsx}'],
         languageOptions: {
             ecmaVersion: 2020,
-            globals: globals.browser
+            globals: globals.browser,
+            parser: tsParser
         },
         plugins: {
             'react-hooks': reactHooks,
-            'react-refresh': reactRefresh
+            'react-refresh': reactRefresh,
+            '@typescript-eslint': tseslint
         },
         rules: {
+            ...js.configs.recommended.rules,
+            ...tseslint.configs.recommended.rules,
             ...reactHooks.configs.recommended.rules,
             'react-refresh/only-export-components': [
                 'warn',
                 { allowConstantExport: true }
+            ],
+            '@typescript-eslint/no-unused-expressions': [
+                'error',
+                {
+                    allowShortCircuit: true,
+                    allowTernary: true,
+                    allowTaggedTemplates: true
+                }
             ]
         }
     }
-);
+];
