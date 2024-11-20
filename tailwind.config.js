@@ -11,7 +11,7 @@ export default {
             }
         },
         animation: {
-            fadeIn: 'fadeIn 2s ease forwards'
+            fadeIn: 'fadeIn 2s ease forwards',
             colors: {
                 primary: '#D1D5DB'
             }
