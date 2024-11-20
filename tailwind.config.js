@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
     content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
     theme: {
         extend: {
@@ -11,7 +12,23 @@ module.exports = {
         },
         animation: {
             fadeIn: 'fadeIn 2s ease forwards'
+            colors: {
+                primary: '#D1D5DB'
+            }
         }
     },
-    plugins: []
+    plugins: [
+        ({ addComponents }) => {
+            addComponents({
+                '.btn-base': {
+                    '@apply bg-primary w-full rounded p-6 text-black hover:opacity-80':
+                        ''
+                },
+
+                '.text-btn': {
+                    '@apply text-black hover:underline': ''
+                }
+            });
+        }
+    ]
 };
