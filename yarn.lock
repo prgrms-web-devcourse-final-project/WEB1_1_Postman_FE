@@ -9147,6 +9147,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"swiper@npm:^11.1.15":
+  version: 11.1.15
+  resolution: "swiper@npm:11.1.15"
+  checksum: 10c0/3faabc5b33c0663513e8e41c4ef7920d4c9a1ca6b988848f2e51e1db0d01471a1bae22fce3177b9d3ab2c128fc6df23074415ae7957bd0f8542fd7387fa5263d
+  languageName: node
+  linkType: hard
+
 "synckit@npm:^0.9.1":
   version: 0.9.2
   resolution: "synckit@npm:0.9.2"
@@ -9873,6 +9880,7 @@ __metadata:
     react-dom: "npm:^18.3.1"
     sharp: "npm:^0.33.5"
     storybook: "npm:8.4.4"
+    swiper: "npm:^11.1.15"
     tailwindcss: "npm:^3.4.15"
     ts-pattern: "npm:^5.5.0"
     typescript: "npm:^5.6.3"
