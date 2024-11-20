@@ -4,7 +4,7 @@ import { Overlay } from './Overlay';
 
 const meta: Meta<typeof Overlay> = {
     component: Overlay,
-    title: 'Overlay',
+    title: 'atoms/Overlay',
     tags: ['autodocs'],
     argTypes: {}
 };
