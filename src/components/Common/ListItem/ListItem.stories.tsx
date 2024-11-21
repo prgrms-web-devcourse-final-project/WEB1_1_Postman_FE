@@ -4,7 +4,7 @@ import { ListItem } from './ListItem';
 
 const meta: Meta<typeof ListItem> = {
     component: ListItem,
-    title: 'atoms/ListItem',
+    title: 'molecule/ListItem',
     tags: ['autodocs'],
     argTypes: {
         image: {
