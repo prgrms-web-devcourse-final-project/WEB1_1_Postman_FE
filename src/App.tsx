@@ -1,3 +1,10 @@
+import ToastContainer from './components/common/ToastContainer/ToastContainer';
+
 export const App = () => {
-    return <>즐거운 최종 프로젝트!!!</>;
+    return (
+        <>
+            <ToastContainer />
+            즐거운 최종 프로젝트!!!
+        </>
+    );
 };
