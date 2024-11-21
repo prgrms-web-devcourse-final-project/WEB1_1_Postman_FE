@@ -4,7 +4,7 @@ import { NavigateContainer } from './NavigateContainer';
 
 const meta: Meta<typeof NavigateContainer> = {
     component: NavigateContainer,
-    title: 'NavigateContainer',
+    title: 'MOLECULE/NavigateContainer',
     tags: ['autodocs'],
     argTypes: {}
 };
