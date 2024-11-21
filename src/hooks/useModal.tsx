@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from '@/components/common/Modal/Modal';
+import { Modal } from '@/components/Common/Modal/Modal';
 import { useState } from 'react';
 
 /**
