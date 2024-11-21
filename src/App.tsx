@@ -1,4 +1,4 @@
-import ToastContainer from './components/common/ToastContainer/ToastContainer';
+import ToastContainer from './components/Common/ToastContainer/ToastContainer';
 
 export const App = () => {
     return (
