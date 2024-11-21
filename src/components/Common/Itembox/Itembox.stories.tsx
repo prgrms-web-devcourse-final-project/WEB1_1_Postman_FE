@@ -35,11 +35,3 @@ export const LabelBox: Story = {
 export const BottleLetterBox: Story = {
     args: { children: <BottleLetter Letter={Letter} /> }
 };
-
-// export const LetterBox: Story = {
-//     args: { children: <Bottle /> }
-// };
-
-// export const textBox: Story = {
-//     args: { children: <Bottle /> }
-// };
