@@ -1,5 +1,10 @@
-const App = () => {
-    return <>즐거운 최종 프로젝트!!!</>;
-};
+import ToastContainer from './components/common/ToastContainer/ToastContainer';
 
-export default App;
+export const App = () => {
+    return (
+        <>
+            <ToastContainer />
+            즐거운 최종 프로젝트!!!
+        </>
+    );
+};
