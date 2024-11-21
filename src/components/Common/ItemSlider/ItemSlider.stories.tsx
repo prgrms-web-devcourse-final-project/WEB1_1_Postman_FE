@@ -4,7 +4,7 @@ import { ItemSlider } from './ItemSlider';
 
 const meta: Meta<typeof ItemSlider> = {
     component: ItemSlider,
-    title: 'ItemSlider',
+    title: 'molecule/ItemSlider',
     tags: ['autodocs'],
     argTypes: {}
 };
@@ -49,6 +49,7 @@ export const ImageSlider: Story = {
     args: {
         itemType: 'image',
         itemIDList: imageItems,
+
         spaceBetween: 20
     }
 };
