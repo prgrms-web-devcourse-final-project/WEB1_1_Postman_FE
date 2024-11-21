@@ -73,7 +73,7 @@ const RAW_RUNTIME_STATE =
           ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.3.0"],\
           ["sharp", "npm:0.33.5"],\
           ["storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
-          ["swiper", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.1.15"],\
+          ["swiper", "npm:11.1.15"],\
           ["tailwindcss", "npm:3.4.15"],\
           ["ts-pattern", "npm:5.5.0"],\
           ["typescript", "patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=8c6c40"],\
@@ -4946,7 +4946,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@types-swiper-npm-6.0.0-f998517f2b-10c0.zip/node_modules/@types/swiper/",\
         "packageDependencies": [\
           ["@types/swiper", "npm:6.0.0"],\
-          ["swiper", "virtual:f998517f2b45e57137af2be7734a91849ef8f12b3900201caa9e4b270c827c8819171ab0b33c872111b6b7c3e7e60372dc99cf1a43763a7cbcaf4518a42e6d76#npm:11.1.15"]\
+          ["swiper", "npm:11.1.15"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7107,16 +7107,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/dom-accessibility-api-npm-0.6.3-0345e4dede-10c0.zip/node_modules/dom-accessibility-api/",\
         "packageDependencies": [\
           ["dom-accessibility-api", "npm:0.6.3"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["dom7", [\
-      ["npm:4.0.6", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/dom7-npm-4.0.6-3656a6d3f2-10c0.zip/node_modules/dom7/",\
-        "packageDependencies": [\
-          ["dom7", "npm:4.0.6"],\
-          ["ssr-window", "npm:4.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -11033,14 +11023,14 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["react-icons", [\
       ["npm:5.3.0", {\
-        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/react-icons-npm-5.3.0-3814684035-10c0.zip/node_modules/react-icons/",\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/react-icons-npm-5.3.0-3814684035-10c0.zip/node_modules/react-icons/",\
         "packageDependencies": [\
           ["react-icons", "npm:5.3.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
       ["virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.3.0", {\
-        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-e9cd50b133/5/AppData/Local/Yarn/Berry/cache/react-icons-npm-5.3.0-3814684035-10c0.zip/node_modules/react-icons/",\
+        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-e9cd50b133/3/AppData/Local/Yarn/Berry/cache/react-icons-npm-5.3.0-3814684035-10c0.zip/node_modules/react-icons/",\
         "packageDependencies": [\
           ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.3.0"],\
           ["@types/react", "npm:18.3.12"],\
@@ -11761,15 +11751,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["ssr-window", [\
-      ["npm:4.0.2", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/ssr-window-npm-4.0.2-01f9c0151e-10c0.zip/node_modules/ssr-window/",\
-        "packageDependencies": [\
-          ["ssr-window", "npm:4.0.2"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["ssri", [\
       ["npm:10.0.6", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/ssri-npm-10.0.6-6b8eaec5ce-10c0.zip/node_modules/ssri/",\
@@ -12088,44 +12069,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/swiper-npm-11.1.15-30ca9116f5-10c0.zip/node_modules/swiper/",\
         "packageDependencies": [\
           ["swiper", "npm:11.1.15"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.1.15", {\
-        "packageLocation": "./.yarn/__virtual__/swiper-virtual-817d27c268/3/AppData/Local/Yarn/Berry/cache/swiper-npm-11.1.15-30ca9116f5-10c0.zip/node_modules/swiper/",\
-        "packageDependencies": [\
-          ["swiper", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.1.15"],\
-          ["@types/react", "npm:18.3.12"],\
-          ["@types/react-dom", "npm:18.3.1"],\
-          ["dom7", "npm:4.0.6"],\
-          ["react", "npm:18.3.1"],\
-          ["react-dom", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:18.3.1"],\
-          ["ssr-window", "npm:4.0.2"]\
-        ],\
-        "packagePeers": [\
-          "@types/react-dom",\
-          "@types/react",\
-          "react-dom",\
-          "react"\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["virtual:f998517f2b45e57137af2be7734a91849ef8f12b3900201caa9e4b270c827c8819171ab0b33c872111b6b7c3e7e60372dc99cf1a43763a7cbcaf4518a42e6d76#npm:11.1.15", {\
-        "packageLocation": "./.yarn/__virtual__/swiper-virtual-43f71366bc/3/AppData/Local/Yarn/Berry/cache/swiper-npm-11.1.15-30ca9116f5-10c0.zip/node_modules/swiper/",\
-        "packageDependencies": [\
-          ["swiper", "virtual:f998517f2b45e57137af2be7734a91849ef8f12b3900201caa9e4b270c827c8819171ab0b33c872111b6b7c3e7e60372dc99cf1a43763a7cbcaf4518a42e6d76#npm:11.1.15"],\
-          ["@types/react", null],\
-          ["@types/react-dom", null],\
-          ["dom7", "npm:4.0.6"],\
-          ["react", null],\
-          ["react-dom", null],\
-          ["ssr-window", "npm:4.0.2"]\
-        ],\
-        "packagePeers": [\
-          "@types/react-dom",\
-          "@types/react",\
-          "react-dom",\
-          "react"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12991,7 +12934,7 @@ const RAW_RUNTIME_STATE =
           ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.3.0"],\
           ["sharp", "npm:0.33.5"],\
           ["storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
-          ["swiper", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.1.15"],\
+          ["swiper", "npm:11.1.15"],\
           ["tailwindcss", "npm:3.4.15"],\
           ["ts-pattern", "npm:5.5.0"],\
           ["typescript", "patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=8c6c40"],\
@@ -19816,16 +19759,16 @@ function arg(
 			break;
 		}
 
-        if (wholeArg.length > 1 && wholeArg[0] === '-') {
-            /* eslint-disable operator-linebreak */
-            const separatedArguments =
-                wholeArg[1] === '-' || wholeArg.length === 2
-                    ? [wholeArg]
-                    : wholeArg
-                          .slice(1)
-                          .split('')
-                          .map((a) => `-${a}`);
-            /* eslint-enable operator-linebreak */
+		if (wholeArg.length > 1 && wholeArg[0] === '-') {
+			/* eslint-disable operator-linebreak */
+			const separatedArguments =
+				wholeArg[1] === '-' || wholeArg.length === 2
+					? [wholeArg]
+					: wholeArg
+							.slice(1)
+							.split('')
+							.map((a) => `-${a}`);
+			/* eslint-enable operator-linebreak */
 
 			for (let j = 0; j < separatedArguments.length; j++) {
 				const arg = separatedArguments[j];
@@ -19858,30 +19801,27 @@ function arg(
 					);
 				}
 
-                if (isFlag) {
-                    result[argName] = type(true, argName, result[argName]);
-                } else if (argStr === undefined) {
-                    if (
-                        argv.length < i + 2 ||
-                        (argv[i + 1].length > 1 &&
-                            argv[i + 1][0] === '-' &&
-                            !(
-                                argv[i + 1].match(/^-?\d*(\.(?=\d))?\d*$/) &&
-                                (type === Number ||
-                                    // eslint-disable-next-line no-undef
-                                    (typeof BigInt !== 'undefined' &&
-                                        type === BigInt))
-                            ))
-                    ) {
-                        const extended =
-                            originalArgName === argName
-                                ? ''
-                                : ` (alias for ${argName})`;
-                        throw new ArgError(
-                            `option requires argument: ${originalArgName}${extended}`,
-                            'ARG_MISSING_REQUIRED_LONGARG'
-                        );
-                    }
+				if (isFlag) {
+					result[argName] = type(true, argName, result[argName]);
+				} else if (argStr === undefined) {
+					if (
+						argv.length < i + 2 ||
+						(argv[i + 1].length > 1 &&
+							argv[i + 1][0] === '-' &&
+							!(
+								argv[i + 1].match(/^-?\d*(\.(?=\d))?\d*$/) &&
+								(type === Number ||
+									// eslint-disable-next-line no-undef
+									(typeof BigInt !== 'undefined' && type === BigInt))
+							))
+					) {
+						const extended =
+							originalArgName === argName ? '' : ` (alias for ${argName})`;
+						throw new ArgError(
+							`option requires argument: ${originalArgName}${extended}`,
+							'ARG_MISSING_REQUIRED_LONGARG'
+						);
+					}
 
 					result[argName] = type(argv[i + 1], argName, result[argName]);
 					++i;
