@@ -4,7 +4,7 @@ import { SliderMenuContainer } from './SliderMenuContainer';
 
 const meta: Meta<typeof SliderMenuContainer> = {
     component: SliderMenuContainer,
-    title: 'SliderMenuContainer',
+    title: 'atoms/SliderMenuContainer',
     tags: ['autodocs'],
     argTypes: {
         open: {
