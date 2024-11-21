@@ -3,6 +3,9 @@ export default {
     content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
     theme: {
         extend: {
+            colors: {
+                primary: '#D1D5DB'
+            },
             keyframes: {
                 fadeIn: {
                     '0%': { opacity: '0', transform: 'translateY(-20px)' },
