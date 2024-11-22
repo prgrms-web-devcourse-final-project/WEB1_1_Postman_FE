@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface NotificationBadgeProps {
-    badgeType: 'notification' | 'dday';
+    badgeType: 'basic' | 'dday';
     count: number;
 }
 
@@ -9,13 +9,18 @@ export const NotificationBadge = ({
     badgeType,
     count
 }: NotificationBadgeProps) => {
-    const NotificationBadgeStyle =
-        'bg-red-600 px-2 py-1 rounded-full text-white font-semibold';
+    const MAX_COUNT = 99;
+    const BaseStyle =
+        'inline-flex items-center justify-center text-center align-text-middle';
+    const styleMap = {
+        basic: 'bg-red-600 px-2 py-1 rounded-full text-white font-semibold',
+        dday: 'bg-yellow-400 px-2 py-1 rounded-sm text-white font-semibold'
+    };
 
-    const NotificationBadgeContent = (type, count: number) => {
+    const renderContent = (type, count: number) => {
         switch (type) {
-            case 'notification':
-                if (count > 99) {
+            case 'basic':
+                if (count > MAX_COUNT) {
                     return (
                         <>
                             <span style={{ position: 'relative', top: '-1px' }}>
@@ -49,10 +54,8 @@ export const NotificationBadge = ({
     };
 
     return (
-        <div
-            className={`${NotificationBadgeStyle} inline-flex items-center justify-center text-center align-text-middle`}
-        >
-            {NotificationBadgeContent(badgeType, count)}
+        <div className={`${BaseStyle} ${styleMap[badgeType]}`}>
+            {renderContent(badgeType, count)}
         </div>
     );
 };

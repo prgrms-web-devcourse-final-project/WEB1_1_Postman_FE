@@ -13,11 +13,11 @@ export default meta;
 type Story = StoryObj<typeof NotificationBadge>;
 
 export const notificationMin: Story = {
-    args: { badgeType: 'notification', count: 1 }
+    args: { badgeType: 'basic', count: 1 }
 };
 
 export const notificationMax: Story = {
-    args: { badgeType: 'notification', count: 100 }
+    args: { badgeType: 'basic', count: 100 }
 };
 
 export const dday: Story = {
