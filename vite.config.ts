@@ -5,6 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vite.dev/config/
 export default defineConfig({
+    cacheDir: 'vite_cache',
     plugins: [
         react(),
         VitePWA({
