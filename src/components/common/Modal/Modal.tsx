@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Overlay } from '@/components/Common/Overlay/Overlay';
 
 interface ModalProps {
