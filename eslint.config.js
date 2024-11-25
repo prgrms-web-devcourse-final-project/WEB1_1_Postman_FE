@@ -19,7 +19,8 @@ export default [
             '.storybook',
             '.yarn',
             'vite.config.ts',
-            'vite_cache'
+            'vite_cache',
+            'src/stores/stories/**'
         ]
     },
     {
