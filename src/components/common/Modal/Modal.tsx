@@ -1,6 +1,10 @@
 import React from 'react';
+<<<<<<< HEAD
 
 import { Overlay } from '@/components/Common/Overlay/Overlay';
+=======
+import { Overlay } from '@/components/common/Overlay/Overlay';
+>>>>>>> main
 
 interface ModalProps {
     children: React.ReactNode;

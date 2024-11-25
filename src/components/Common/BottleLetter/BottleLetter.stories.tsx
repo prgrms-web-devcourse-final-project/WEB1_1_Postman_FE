@@ -6,6 +6,7 @@ const meta: Meta<typeof BottleLetter> = {
     component: BottleLetter,
     title: 'BottleLetter',
     tags: ['autodocs'],
+<<<<<<< HEAD
     decorators: [
         (Story) => (
             <div style={{ width: '200px', height: '200px' }}>
@@ -13,6 +14,8 @@ const meta: Meta<typeof BottleLetter> = {
             </div>
         )
     ],
+=======
+>>>>>>> main
     argTypes: {}
 };
 export default meta;

@@ -44,15 +44,25 @@ export const ItemSlider = ({
         switch (itemType) {
             case 'text':
                 return (
+<<<<<<< HEAD
                     <div className="flex items-center justify-center h-full p-2">
+=======
+                    <div className="p-2 h-full flex justify-center items-center">
+>>>>>>> main
                         {item.name}
                     </div>
                 );
             case 'image':
                 return (
+<<<<<<< HEAD
                     <div className="flex items-center justify-center h-full">
                         <img
                             className="object-cover w-full h-full rounded"
+=======
+                    <div className="h-full flex justify-center items-center">
+                        <img
+                            className="w-full h-full object-cover rounded"
+>>>>>>> main
                             src={getImagePath(item.id)}
                             alt={item.name}
                         />
@@ -76,7 +86,11 @@ export const ItemSlider = ({
                     <SwiperSlide
                         style={slideStyle}
                         key={item.id}
+<<<<<<< HEAD
                         className="flex justify-center align-middle rounded-md bg-slate-200"
+=======
+                        className="rounded-md bg-slate-200 flex justify-center align-middle"
+>>>>>>> main
                     >
                         {getSliderContent(item)}
                     </SwiperSlide>
