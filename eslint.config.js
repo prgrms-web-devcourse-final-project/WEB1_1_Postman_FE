@@ -48,6 +48,7 @@ export default [
             ...airbnbHooks.rules,
             ...react.configs.recommended.rules,
             'react/react-in-jsx-scope': 'off',
+            '@typescript-eslint/no-explicit-any': 'error',
             'react-refresh/only-export-components': [
                 'warn',
                 { allowConstantExport: true }
