@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import { Modal } from '@/components/Common/Modal/Modal';
-=======
-import { Modal } from '@/components/common/Modal/Modal';
->>>>>>> main
 import { useState } from 'react';
 
 /**

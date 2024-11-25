@@ -8350,31 +8350,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "react-spring-bottom-sheet@npm:^3.4.1":
   version: 3.4.1
   resolution: "react-spring-bottom-sheet@npm:3.4.1"
-=======
-"react-spring-bottom-sheet@npm:3.5.0-alpha.0":
-  version: 3.5.0-alpha.0
-  resolution: "react-spring-bottom-sheet@npm:3.5.0-alpha.0"
->>>>>>> main
   dependencies:
     "@juggle/resize-observer": "npm:^3.2.0"
     "@reach/portal": "npm:^0.13.0"
     "@xstate/react": "npm:^1.2.0"
     body-scroll-lock: "npm:^3.1.5"
     focus-trap: "npm:^6.2.2"
-<<<<<<< HEAD
     react-spring: "npm:^8.0.27"
-=======
-    react-spring: "npm:^9.4.5"
->>>>>>> main
     react-use-gesture: "npm:^8.0.1"
     xstate: "npm:^4.15.1"
   peerDependencies:
     react: ^16.14.0 || 17 || 18
-<<<<<<< HEAD
   checksum: 10c0/bb9d70a0dd25a5fd924e359c050bf4ec5f6ee609218bcc059151651f3fd338d2183bd81df1202e2f5cf35ad1f4a84b765f72b7643d853fe68e08269fcf10d29d
   languageName: node
   linkType: hard
@@ -8393,13 +8382,6 @@ __metadata:
   linkType: hard
 
 "react-spring@npm:^9.7.4":
-=======
-  checksum: 10c0/4db964125a8b27eda3ab2737eddbd199ac1309d889a3a79cf69612b1d7d94da2db360ce8f633cc33e63fff1902ed2d932a499357d9a0da0c2cc6f74b52d0a3ad
-  languageName: node
-  linkType: hard
-
-"react-spring@npm:^9.4.5, react-spring@npm:^9.7.4":
->>>>>>> main
   version: 9.7.4
   resolution: "react-spring@npm:9.7.4"
   dependencies:
@@ -10237,11 +10219,7 @@ __metadata:
     react-dom: "npm:^18.3.1"
     react-icons: "npm:^5.3.0"
     react-spring: "npm:^9.7.4"
-<<<<<<< HEAD
     react-spring-bottom-sheet: "npm:^3.4.1"
-=======
-    react-spring-bottom-sheet: "npm:3.5.0-alpha.0"
->>>>>>> main
     sharp: "npm:^0.33.5"
     storybook: "npm:8.4.4"
     swiper: "npm:^11.1.15"
