@@ -25,6 +25,7 @@
         "react-spring-bottom-sheet": "^3.4.1",
         "sharp": "^0.33.5",
         "swiper": "^11.1.15",
+        "swiper": "^11.1.15",
         "ts-pattern": "^5.5.0",
         "zustand": "^5.0.1"
     },
@@ -42,8 +43,10 @@
         "@types/axios": "^0.14.4",
         "@types/eslint-plugin-jsx-a11y": "^6",
         "@types/node": "^22.9.1",
+        "@types/node": "^22.9.1",
         "@types/react": "^18.3.12",
         "@types/react-dom": "^18.3.1",
+        "@types/swiper": "^6.0.0",
         "@types/swiper": "^6.0.0",
         "@typescript-eslint/eslint-plugin": "^8.15.0",
         "@typescript-eslint/parser": "^8.15.0",
