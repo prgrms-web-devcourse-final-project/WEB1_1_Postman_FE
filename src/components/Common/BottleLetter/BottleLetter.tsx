@@ -20,7 +20,7 @@ interface BottleLetterProps {
 // 유리병 관련 이벤트는 나중에 추가해야 될 것 같습니다
 export const BottleLetter = ({ Letter }: BottleLetterProps) => {
     return (
-        <div className="w-full h-full relative">
+        <div className="relative w-full h-full">
             <div className="absolute top-0 left-0 w-full h-full">
                 <Bottle />
                 <div className="w-[50%] h-[50%] absolute top-[25%] left-[30%] rotate-[-30deg] ">

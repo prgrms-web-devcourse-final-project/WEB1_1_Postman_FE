@@ -1,5 +1,5 @@
 import React from 'react';
-import { Overlay } from '@/components/common/Overlay/Overlay';
+import { Overlay } from '@/components/Common/Overlay/Overlay';
 
 interface ModalProps {
     children: React.ReactNode;

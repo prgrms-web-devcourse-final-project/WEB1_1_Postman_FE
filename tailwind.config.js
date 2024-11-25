@@ -17,13 +17,10 @@ export default {
                     '90%': { opacity: '1', transform: 'translateY(0)' },
                     '100%': { opacity: '0', transform: 'translateY(-20px)' }
                 }
-            }
-        },
-        animation: {
-            fadeIn: 'fadeIn 2s ease forwards',
-            'toast-slide-in': 'toast-slide-in 2s ease forwards',
-            colors: {
-                primary: '#D1D5DB'
+            },
+            animation: {
+                fadeIn: 'fadeIn 2s ease forwards',
+                'toast-slide-in': 'toast-slide-in 2s ease forwards'
             }
         }
     },

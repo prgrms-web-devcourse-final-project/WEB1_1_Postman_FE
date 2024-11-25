@@ -5,5 +5,5 @@ interface LabelProps {
 }
 
 export const Label = ({ imgSrc }: LabelProps) => {
-    return <img src={`/${imgSrc}`} className="w-full h-full object-contain" />;
+    return <img src={`/${imgSrc}`} className="object-contain w-full h-full" />;
 };

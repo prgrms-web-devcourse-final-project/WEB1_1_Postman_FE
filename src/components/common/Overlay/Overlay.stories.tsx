@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { Overlay } from './Overlay';
+import { Overlay } from '@/components/Common/Overlay/Overlay';
 
 const meta: Meta<typeof Overlay> = {
     component: Overlay,

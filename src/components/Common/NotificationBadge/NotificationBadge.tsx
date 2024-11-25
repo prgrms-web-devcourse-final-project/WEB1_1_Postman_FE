@@ -17,8 +17,8 @@ export const NotificationBadge = ({
         dday: 'bg-yellow-400 px-2 py-1 rounded-sm text-white font-semibold'
     };
 
-    const renderContent = ({ type, count }: NotificationBadgeProps) => {
-        switch (type) {
+    const renderContent = (badgeType: 'basic' | 'dday', count: number) => {
+        switch (badgeType) {
             case 'basic':
                 if (count > MAX_COUNT) {
                     return (
@@ -49,7 +49,7 @@ export const NotificationBadge = ({
                     </>
                 );
             default:
-                break;
+                return null;
         }
     };
 
