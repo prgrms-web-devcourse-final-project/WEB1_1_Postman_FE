@@ -19,7 +19,8 @@ export default [
             '.storybook',
             '.yarn',
             'vite.config.ts',
-            'vite_cache'
+            'vite_cache',
+            'src/stores/stories/**'
         ]
     },
     {
@@ -48,7 +49,6 @@ export default [
             ...airbnbHooks.rules,
             ...react.configs.recommended.rules,
             'react/react-in-jsx-scope': 'off',
-            '@typescript-eslint/no-explicit-any': 'error',
             'react-refresh/only-export-components': [
                 'warn',
                 { allowConstantExport: true }

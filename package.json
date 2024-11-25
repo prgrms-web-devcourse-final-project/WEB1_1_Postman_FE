@@ -76,7 +76,7 @@
         "vite-plugin-pwa": "^0.21.0",
         "vite-plugin-svgr": "^4.3.0"
     },
-    "packageManager": "yarn@4.5.1",
+    "packageManager": "yarn@4.5.2",
     "eslintConfig": {
         "extends": [
             "plugin:storybook/recommended"
