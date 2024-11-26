@@ -31,3 +31,21 @@ interface DuplicateCheckResponseBody extends AuthResponseBody {
         isDuplicated: string;
     } | null;
 }
+
+export const signUpHandler = [
+    // 회원 가입 성공
+    http.post<never, SignUpRequestBody, AuthResponseBody, '/auth/sign'>(
+        '/auth/sign',
+        async () => {
+            return HttpResponse.json(
+                {
+                    code: 201,
+                    status: 'CREATED',
+                    message: '회원가입 성공',
+                    data: 'success'
+                },
+                { status: 201 }
+            );
+        }
+    )
+];
