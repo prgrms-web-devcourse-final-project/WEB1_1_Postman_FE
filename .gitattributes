@@ -1,0 +1,5 @@
+# 특정 파일/디렉터리 언어 비율에서 제외
+.pnp.cjs linguist-vendored
+.pnp.loader.mjs linguist-vendored
+vite_cache/* linguist-vendored
+.yarn/* linguist-vendored
