@@ -91,5 +91,44 @@ export const signUpHandler = [
                 isDuplicated: 'false'
             }
         });
+    }),
+
+    // 이메일 인증 요청
+    http.post<
+        never,
+        EmailRequestBody,
+        AuthResponseBody,
+        '/auth/email/send-email'
+    >('/auth/email/send-email', async ({ request }) => {
+        const { email } = await request.json();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // 올바르지 않은 이메일 형식
+        if (!emailRegex.test(email)) {
+            return HttpResponse.json({
+                code: 400,
+                status: 'BAD_REQUEST',
+                message: '올바르지 않은 이메일입니다',
+                data: null
+            });
+        }
+
+        // 이메일 인증 요청 실패
+        if (email === 'sendemailerror@email.com') {
+            return HttpResponse.json({
+                code: 500,
+                status: 'INTERNAL_SERVER_ERROR',
+                message: '이메일 인증 요청 실패',
+                data: null
+            });
+        }
+
+        // 성공
+        return HttpResponse.json({
+            code: 200,
+            status: 'OK',
+            message: '이메일 인증 요청 성공',
+            data: 'success'
+        });
     })
 ];
