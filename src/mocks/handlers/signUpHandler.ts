@@ -130,5 +130,43 @@ export const signUpHandler = [
             message: '이메일 인증 요청 성공',
             data: 'success'
         });
+    }),
+
+    // 이메일 인증 검사
+    http.post<
+        never,
+        EmailVerifyRequestBody,
+        AuthResponseBody,
+        '/auth/email/verify'
+    >('/auth/email/verify', async ({ request }) => {
+        const { authNum } = await request.json();
+
+        // 이메일 인증 실패
+        if (authNum === 'servererror') {
+            return HttpResponse.json({
+                code: 500,
+                status: 'INTERNAL_SERVER_ERROR',
+                message: '이메일 인증 실패',
+                data: null
+            });
+        }
+
+        // 잘못된 인증코드
+        if (authNum === 'error') {
+            return HttpResponse.json({
+                code: 400,
+                status: 'BAD_REQUEST',
+                message: '이메일 인증 실패',
+                data: null
+            });
+        }
+
+        // 성공
+        return HttpResponse.json({
+            code: 200,
+            status: 'OK',
+            message: '이메일 인증에 성공하였습니다.',
+            data: 'success'
+        });
     })
 ];
