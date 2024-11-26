@@ -7,7 +7,7 @@ type SignUpRequestBody = {
 };
 
 interface AuthResponseBody<T = unknown> {
-    code: number;
+    code: number | string;
     status: number | string;
     message: string;
     data: T | null;
@@ -37,15 +37,12 @@ export const signUpHandler = [
     http.post<never, SignUpRequestBody, AuthResponseBody, '/auth/sign'>(
         '/auth/sign',
         async () => {
-            return HttpResponse.json(
-                {
-                    code: 201,
-                    status: 'CREATED',
-                    message: '회원가입 성공',
-                    data: 'success'
-                },
-                { status: 201 }
-            );
+            return HttpResponse.json({
+                code: 'AUTH201',
+                status: 'CREATED',
+                message: '회원가입 성공',
+                data: 'success'
+            });
         }
     ),
 
