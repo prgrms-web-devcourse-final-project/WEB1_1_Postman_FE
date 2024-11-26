@@ -168,5 +168,48 @@ export const signUpHandler = [
             message: '이메일 인증에 성공하였습니다.',
             data: 'success'
         });
+    }),
+
+    // 닉네임 중복 확인
+    http.post<
+        never,
+        nicknameDuplicateCheckRequestBody,
+        DuplicateCheckResponseBody,
+        '/auth/email/verify'
+    >('/auth/email/verify', async ({ request }) => {
+        const { nickname } = await request.json();
+        const nicknameRegex = /^[가-힣a-zA-Z0-9]{2,10}$/;
+
+        // 올바르지 않은 닉네임
+        if (!nicknameRegex.test(nickname)) {
+            return HttpResponse.json({
+                code: 400,
+                status: 'BAD_REQUEST',
+                message: '올바르지 않은 닉네임',
+                data: null
+            });
+        }
+
+        // 실패
+        if (nickname === 'error') {
+            return HttpResponse.json({
+                code: 400,
+                status: 'BAD_REQUEST',
+                message: '닉네임 중복',
+                data: {
+                    isDuplicated: 'true'
+                }
+            });
+        }
+
+        // 성공
+        return HttpResponse.json({
+            code: 200,
+            status: 'OK',
+            message: '닉네임 사용 가능',
+            data: {
+                isDuplicated: 'false'
+            }
+        });
     })
 ];
