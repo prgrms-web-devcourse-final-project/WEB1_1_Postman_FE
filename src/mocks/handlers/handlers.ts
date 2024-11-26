@@ -1,4 +1,3 @@
-// 구체적인 api 핸들링은 여기에 작성
 import { http, HttpResponse } from 'msw';
 
 export const handlers = [
