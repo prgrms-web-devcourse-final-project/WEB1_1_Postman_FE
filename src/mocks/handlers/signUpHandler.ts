@@ -47,5 +47,49 @@ export const signUpHandler = [
                 { status: 201 }
             );
         }
-    )
+    ),
+
+    // 이메일 중복 확인
+    http.post<
+        never,
+        EmailRequestBody,
+        DuplicateCheckResponseBody,
+        '/auth/check-email'
+    >('/auth/check-email', async ({ request }) => {
+        const { email } = await request.json();
+        const isDuplicate = email === 'existing@email.com';
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // 올바르지 않은 이메일 형식
+        if (!emailRegex.test(email)) {
+            return HttpResponse.json({
+                code: 400,
+                status: 'BAD_REQUEST',
+                message: '올바르지 않은 이메일입니다',
+                data: null
+            });
+        }
+
+        // 실패
+        if (isDuplicate) {
+            return HttpResponse.json({
+                code: 400,
+                status: 'BAD_REQUEST',
+                message: '이미 사용중인 이메일입니다',
+                data: {
+                    isDuplicated: 'true'
+                }
+            });
+        }
+
+        // 성공
+        return HttpResponse.json({
+            code: 200,
+            status: 'OK',
+            message: '이메일 사용 가능',
+            data: {
+                isDuplicated: 'false'
+            }
+        });
+    })
 ];
