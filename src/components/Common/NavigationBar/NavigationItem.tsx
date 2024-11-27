@@ -1,29 +1,24 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 type NavigationItemProps = {
     icon: React.ReactNode;
     label: string;
-    isActive: boolean;
-    onClick: () => void;
+    path: string;
 };
 
-export const NavigationItem = ({
-    icon,
-    label,
-    isActive,
-    onClick
-}: NavigationItemProps) => {
+export const NavigationItem = ({ icon, label, path }: NavigationItemProps) => {
     return (
-        <button
-            className={`flex flex-col items-center justify-center p-2 ${
-                isActive ? 'text-blue-500' : 'text-gray-400'
-            }`}
-            onClick={onClick}
+        <NavLink
+            to={path}
+            className={({ isActive }) =>
+                `flex flex-col items-center justify-center p-2 ${
+                    isActive ? 'text-blue-500' : 'text-gray-400'
+                }`
+            }
         >
-            <div className={`${isActive ? 'fill-blue-500' : 'fill-gray-400'}`}>
-                {icon}
-            </div>
+            <div>{icon}</div>
             <span className="text-sm">{label}</span>
-        </button>
+        </NavLink>
     );
 };
