@@ -6,6 +6,9 @@ export default {
             colors: {
                 primary: '#D1D5DB'
             },
+            maxWidth: {
+                DEFAULT: '768px'
+            },
             keyframes: {
                 fadeIn: {
                     '0%': { opacity: '0', transform: 'translateY(-20px)' },
@@ -25,6 +28,13 @@ export default {
         }
     },
     plugins: [
+        ({ addUtilities }) => {
+            addUtilities({
+                '.flex-center': {
+                    '@apply flex justify-center items-center': ''
+                }
+            });
+        },
         ({ addComponents }) => {
             addComponents({
                 '.btn-base': {
