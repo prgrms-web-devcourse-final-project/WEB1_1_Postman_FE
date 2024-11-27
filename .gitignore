@@ -33,3 +33,4 @@ dist-ssr
 !.yarn/sdks
 !.yarn/versions
 *storybook.log
+vite_cache
