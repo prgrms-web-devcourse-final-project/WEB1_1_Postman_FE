@@ -13,16 +13,16 @@ export const ProfileImage = ({
         src: '/프로필_샘플.png'
     };
 
-    const size = `w-[${width}] h-[${height}]`;
-
     return (
         <div
-            className={`border border-solid border-gray-100 rounded-full ${size}`}
+            className="border border-solid border-gray-100 rounded-full"
+            style={{ width, height }}
         >
             <img
                 src={imageItem.src}
                 alt={imageItem.name}
-                className={`rounded-full ${size}`}
+                className="rounded-full"
+                style={{ width, height }}
             />
         </div>
     );
