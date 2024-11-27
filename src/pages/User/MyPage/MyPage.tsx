@@ -19,9 +19,11 @@ export const MyPage = () => {
             <h1 className="font-semibold text-gray-600 text-[21px]">
                 마이페이지
             </h1>
-            <ProfileSection user={user} />
-            <RecordGridSection />
-            <KeywordListSection keywords={sampleKeywords} />
+            <div className="flex flex-col gap-10">
+                <ProfileSection user={user} />
+                <RecordGridSection />
+                <KeywordListSection keywords={sampleKeywords} />
+            </div>
         </div>
     );
 };
