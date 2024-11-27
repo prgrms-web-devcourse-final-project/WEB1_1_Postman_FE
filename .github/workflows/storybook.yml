@@ -30,7 +30,7 @@ jobs:
                   projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN  }}
                   buildScriptName: build-storybook
                   onlyChanged: true
-                  allowConsoleErrors: true
+                  ignoreLastBuildOnBranch: true
 
             - name: comment PR
               uses: thollander/actions-comment-pull-request@v1

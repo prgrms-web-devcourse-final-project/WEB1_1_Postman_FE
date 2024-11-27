@@ -45,7 +45,7 @@ export const Input = ({
     };
 
     if (errorMessage && !pattern)
-        throw new Error('에러를 판단할 패턴이 없습니다.');
+        console.error('에러를 판단할 패턴이 없습니다.');
     return (
         <div className="relative mb-6">
             {text && (
@@ -68,7 +68,7 @@ export const Input = ({
             {togglePassword && (
                 <button
                     type="button"
-                    className="absolute right-3 top-1/2 translate-y-1/3 transform text-gray md:translate-y-1/2"
+                    className="absolute transform right-3 top-1/2 translate-y-1/3 text-gray md:translate-y-1/2"
                     onClick={() => setShowPassword(!showPassword)}
                 >
                     {showPassword ? <FaEye /> : <FaEyeSlash />}
