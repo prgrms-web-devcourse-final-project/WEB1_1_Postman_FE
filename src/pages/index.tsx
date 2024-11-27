@@ -1,6 +1,6 @@
 import { ErrorPage } from '@/pages/ErrorPage';
 import { HomePage } from '@/pages/HomePage';
-import { CreateLetterPage } from '@/pages/CreateLetterPage';
+import { CreateLetterPage } from '@/pages/Letter/Create/CreateLetterPage';
 import { MapExplorerPage } from '@/pages/MapExplorerPage';
 import { MyPage } from '@/pages/MyPage';
 import { LoginPage } from '@/pages/LoginPage';
