@@ -41,11 +41,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/mypage',
-                element: <MyPage />
-            },
-            {
-                path: '/archived',
-                element: <ArchivedPage />
+                element: <MyPage />,
+                children: [
+                    {
+                        path: 'letters',
+                        children: [
+                            { path: 'keyword', element: <ArchivedPage /> },
+                            { path: 'map', element: <ArchivedPage /> }
+                        ]
+                    },
+                    { path: 'labels', element: <LabelCollectionsPage /> }
+                ]
             },
             {
                 path: '/labelcollections',
