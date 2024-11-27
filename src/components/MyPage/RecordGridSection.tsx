@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const RecordGridSection = () => {
-    const recordStyle = `w-full bg-gray-100 rounded-xl px-4 py-2 h-[110px]`;
-    const wideRecordStyle = `w-full bg-gray-100 rounded-xl px-4 py-2 h-[110px]`;
+    const recordStyle = `w-full bg-gray-100 rounded-xl px-4 py-2 h-[110px] hover:bg-gray-200`;
+    const wideRecordStyle = `w-full bg-gray-100 rounded-xl px-4 py-2 h-[110px] hover:bg-gray-200`;
 
     return (
         <div className="flex flex-col gap-2">
