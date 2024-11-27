@@ -1,11 +1,5 @@
 import { create } from 'zustand';
-
-// 임시 유저 타입
-type UserType = {
-    nickname: string;
-    email: string;
-    profileImageUrl: string;
-};
+import { UserType } from '@/types/user';
 
 interface UserStoreType {
     user: UserType;
@@ -14,7 +8,11 @@ interface UserStoreType {
 }
 
 export const useUserStore = create<UserStoreType>((set) => ({
-    user: null,
+    user: {
+        nickname: '꿈을 꾸는 가오리',
+        email: 'test@email.com',
+        profileImageUrl: 'testimg.jpg'
+    },
     setUser: (user) => set({ user }),
     deleteUser: () => set({ user: null })
 }));
