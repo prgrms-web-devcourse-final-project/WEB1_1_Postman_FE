@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { MapLetterDetail } from '@/components/LetterDetailPage/MapLetterDetail';
 import { KeywordLetterDetail } from '@/components/LetterDetailPage/KeywordLetterDetail';
 import { useParams } from 'react-router-dom';
+import { DeleteButton } from '@/components/LetterDetailPage/DeleteButton/DeleteButton';
 
 export const LetterDetailPage = () => {
     const { type, id } = useParams<{ type: 'map' | 'keyword'; id: string }>();
-    console.log(type, id);
+
     const imageItem = {
         id: '편지지_샘플_1',
         name: '이미지',
@@ -29,21 +30,31 @@ export const LetterDetailPage = () => {
     ];
     const navigate = useNavigate();
 
-    const handleBackClick = () => {
+    const onDeleteClick = (letterId: string) => {
+        console.log(`편지 ID ${letterId} 삭제`);
+        alert('편지를 삭제하시겠습니까?');
+        navigate(-1);
+    };
+    const onBackClick = () => {
         navigate(-1);
     };
 
     return (
         <>
-            <div className="mt-4 mx-auto max-w">
-                <div className="ml-6">
-                    <BackButton onClick={handleBackClick} />
+            <div className="mt-4 mx-auto max-w relative">
+                <div className="mx-auto w-[710px]">
+                    <BackButton onClick={onBackClick} />
                 </div>
-                <div className="mt-4 flex-center relative">
+                {id && (
+                    <div className="mt-10 absolute top-0 right-8">
+                        <DeleteButton id={id} onClick={onDeleteClick} />
+                    </div>
+                )}
+                <div className="mt-16 flex-center relative">
                     <img
                         src={imageItem.src}
                         alt={imageItem.name}
-                        className="w-[710.72px] h-[900px] relative"
+                        className="w-[710px] h-[900px] relative"
                     />
                     <img
                         src={labelItem.src}
@@ -67,15 +78,22 @@ export const LetterDetailPage = () => {
                     )}
                 </div>
             </div>
-
-            <div className="mt-4 flex-center mx-auto max-w gap-4">
-                <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
-                    보관하기
-                </button>
-                <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
-                    답장하기
-                </button>
-            </div>
+            {type === 'map' ? (
+                <div className="mt-4 flex-center mx-auto max-w gap-4">
+                    <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
+                        보관하기
+                    </button>
+                    <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
+                        편지에 답장하기
+                    </button>
+                </div>
+            ) : (
+                <div className="mt-4 flex-center mx-auto max-w gap-4">
+                    <button className="btn-base rounded-3xl w-[700px] h-[80px]">
+                        편지에 답장하기
+                    </button>
+                </div>
+            )}
         </>
     );
 };
