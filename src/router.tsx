@@ -58,10 +58,6 @@ export const router = createBrowserRouter([
                 element: <LabelCollectionsPage />
             },
             {
-                path: '/letter/:id',
-                element: <LetterDetailPage />
-            },
-            {
                 path: '/notification',
                 element: <NotificationPage />
             },
@@ -82,5 +78,9 @@ export const router = createBrowserRouter([
     {
         path: '/register',
         element: <RegisterPage />
+    },
+    {
+        path: '/letter/:type/:id',
+        element: <LetterDetailPage />
     }
 ]);
