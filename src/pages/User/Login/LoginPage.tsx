@@ -16,12 +16,12 @@ export const LoginPage = () => {
         event.preventDefault();
         const $loginForm = e.target as HTMLFormElement;
         const loginFormData = new FormData($loginForm);
-        const [userEmail, userPassword] = [
+        const [email, password] = [
             loginFormData.get('email'),
             loginFormData.get('password')
         ];
 
-        login({ userEmail, userPassword }).then((response) => {
+        login({ email, password }).then((response) => {
             setUser(response.data);
             console.log('로그인 완료 : ', response.data);
             navigate('/');
