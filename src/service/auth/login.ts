@@ -19,8 +19,6 @@ export async function login({
 }: LoginProps): Promise<LoginType> {
     const api = defaultApi();
 
-    console.log(email, password);
-
     try {
         const response = await api.post('/auth/signin', { email, password });
         return response.data;
