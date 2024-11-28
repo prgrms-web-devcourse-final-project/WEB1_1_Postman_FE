@@ -34,3 +34,10 @@ dist-ssr
 !.yarn/versions
 *storybook.log
 vite_cache
+
+
+# env files
+.env
+.env.local
+.env.development
+.env.production
