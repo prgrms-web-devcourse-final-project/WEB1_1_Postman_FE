@@ -52,6 +52,7 @@ export const Input = ({
                 <p className="mb-3 text-14 text-secondary md:text-16">{text}</p>
             )}
             <input
+                className="bg-slate-100"
                 autoComplete="off"
                 name={name}
                 value={value}
