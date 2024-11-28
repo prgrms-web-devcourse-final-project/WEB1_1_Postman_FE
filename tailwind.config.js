@@ -43,6 +43,9 @@ export default {
                 },
                 '.text-btn': {
                     '@apply text-black hover:underline': ''
+                },
+                '.keyword-tag': {
+                    '@apply bg-primary rounded-2xl p-2': ''
                 }
             });
         }
