@@ -1142,7 +1142,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.8.4":
   version: 7.26.0
   resolution: "@babel/runtime@npm:7.26.0"
   dependencies:
@@ -8346,7 +8346,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.8, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -8551,38 +8551,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-spring-bottom-sheet@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "react-spring-bottom-sheet@npm:3.4.1"
+"react-spring-bottom-sheet@npm:3.5.0-alpha.0":
+  version: 3.5.0-alpha.0
+  resolution: "react-spring-bottom-sheet@npm:3.5.0-alpha.0"
   dependencies:
     "@juggle/resize-observer": "npm:^3.2.0"
     "@reach/portal": "npm:^0.13.0"
     "@xstate/react": "npm:^1.2.0"
     body-scroll-lock: "npm:^3.1.5"
     focus-trap: "npm:^6.2.2"
-    react-spring: "npm:^8.0.27"
+    react-spring: "npm:^9.4.5"
     react-use-gesture: "npm:^8.0.1"
     xstate: "npm:^4.15.1"
   peerDependencies:
     react: ^16.14.0 || 17 || 18
-  checksum: 10c0/bb9d70a0dd25a5fd924e359c050bf4ec5f6ee609218bcc059151651f3fd338d2183bd81df1202e2f5cf35ad1f4a84b765f72b7643d853fe68e08269fcf10d29d
+  checksum: 10c0/4db964125a8b27eda3ab2737eddbd199ac1309d889a3a79cf69612b1d7d94da2db360ce8f633cc33e63fff1902ed2d932a499357d9a0da0c2cc6f74b52d0a3ad
   languageName: node
   linkType: hard
 
-"react-spring@npm:^8.0.27":
-  version: 8.0.27
-  resolution: "react-spring@npm:8.0.27"
-  dependencies:
-    "@babel/runtime": "npm:^7.3.1"
-    prop-types: "npm:^15.5.8"
-  peerDependencies:
-    react: ">= 16.8.0"
-    react-dom: ">= 16.8.0"
-  checksum: 10c0/fbd5f38dcaa066770b92ff60206e5e62dc6a9bda2fd811c7e542e601ad8f935b412139d2e29714f5c3424c94d59abbd82af8bbc6a1dca59cac7cce2d444967ab
-  languageName: node
-  linkType: hard
-
-"react-spring@npm:^9.7.4":
+"react-spring@npm:^9.4.5, react-spring@npm:^9.7.4":
   version: 9.7.4
   resolution: "react-spring@npm:9.7.4"
   dependencies:
@@ -10511,7 +10498,7 @@ __metadata:
     react-icons: "npm:^5.3.0"
     react-router-dom: "npm:^7.0.1"
     react-spring: "npm:^9.7.4"
-    react-spring-bottom-sheet: "npm:^3.4.1"
+    react-spring-bottom-sheet: "npm:3.5.0-alpha.0"
     sharp: "npm:^0.33.5"
     storybook: "npm:8.4.4"
     swiper: "npm:^11.1.15"
