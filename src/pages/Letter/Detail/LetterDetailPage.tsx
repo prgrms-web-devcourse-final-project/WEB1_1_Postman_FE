@@ -55,6 +55,8 @@ export const LetterDetailPage = () => {
                             title="편지제목"
                             content="편지내용"
                             date="24.11.18"
+                            place="서울시 종로구 평창동"
+                            hint="서대문역 앞 붕어빵 가게에서"
                         />
                     ) : (
                         <KeywordLetterDetail
