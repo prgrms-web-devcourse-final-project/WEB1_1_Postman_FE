@@ -76,7 +76,7 @@ export const PostLetterForm = () => {
                         isChecked={isFont}
                         onToggle={() => setIsFont(!isFont)}
                     />
-                    <Margin bottom={14} />
+                    <Margin bottom={80} />
                 </div>
             </div>
         </SliderMenuContainer>
