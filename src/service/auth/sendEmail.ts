@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios';
 import { defaultApi } from '@/service/api';
-import { ApiResponse } from '@/types/apiResponse';
+import { ApiResponseType } from '@/types/apiResponse';
 
 type SendEmailProps = {
     email: string;
 };
 
-type SendEmailResponse = ApiResponse<'success' | 'fail'>;
+type SendEmailResponse = ApiResponseType<'success' | 'fail'>;
 
 export async function sendEmail({
     email
