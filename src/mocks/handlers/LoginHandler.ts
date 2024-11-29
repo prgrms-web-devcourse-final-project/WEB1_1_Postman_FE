@@ -10,7 +10,7 @@ type LoginResponseBody = {
     code: number;
     status: string;
     message: string;
-    data: string | UserType;
+    data: UserType | null;
 };
 
 export const LoginHandler = [
@@ -33,9 +33,7 @@ export const LoginHandler = [
                         }
                     },
                     {
-                        status: 200
-                    },
-                    {
+                        status: 200,
                         headers: {
                             'Content-Type': 'application/json',
                             'Set-Cookie':
