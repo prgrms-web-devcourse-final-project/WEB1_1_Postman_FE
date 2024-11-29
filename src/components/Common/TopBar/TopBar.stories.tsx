@@ -4,7 +4,7 @@ import { TopBar } from './TopBar';
 
 const meta: Meta<typeof TopBar> = {
     component: TopBar,
-    title: 'TopBar',
+    title: 'molecule/TopBar',
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
@@ -21,8 +21,11 @@ type Story = StoryObj<typeof TopBar>;
 
 export const Default: Story = {
     args: {
-        onClick: () => {
-            alert('즐겁다');
+        handleBackClick: () => {
+            alert('back');
+        },
+        handelSuccesClick: () => {
+            alert('go');
         }
     }
 };

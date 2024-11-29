@@ -4,7 +4,7 @@ import { PostLetterForm } from './PostLetterForm';
 
 const meta: Meta<typeof PostLetterForm> = {
     component: PostLetterForm,
-    title: 'PostLetterForm',
+    title: 'molecule/PostLetterForm',
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
@@ -15,10 +15,10 @@ const meta: Meta<typeof PostLetterForm> = {
                     margin: '0 auto',
                     border: '1px solid #ddd',
                     padding: '16px',
-                    minHeight: '500px', // 최소 높이 추가
+                    minHeight: '500px',
                     display: 'flex',
-                    flexDirection: 'column', // Flexbox로 하위 요소 정렬
-                    justifyContent: 'center' // 하위 콘텐츠 중앙 정렬
+                    flexDirection: 'column',
+                    justifyContent: 'center'
                 }}
             >
                 <Story />
