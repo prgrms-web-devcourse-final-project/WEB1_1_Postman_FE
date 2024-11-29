@@ -25,6 +25,7 @@
         "react-router-dom": "^7.0.1",
         "react-spring": "^9.7.4",
         "react-spring-bottom-sheet": "3.5.0-alpha.0",
+        "react-textarea-autosize": "^8.5.5",
         "sharp": "^0.33.5",
         "swiper": "^11.1.15",
         "ts-pattern": "^5.5.0",
