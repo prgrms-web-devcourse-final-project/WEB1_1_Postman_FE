@@ -13,12 +13,12 @@ export const LoginPage = () => {
     const { setUser } = useUserStore();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+        e.preventDefault();
         const $loginForm = e.target as HTMLFormElement;
         const loginFormData = new FormData($loginForm);
         const [email, password] = [
-            loginFormData.get('email'),
-            loginFormData.get('password')
+            loginFormData.get('email') as string,
+            loginFormData.get('password') as string
         ];
 
         login({ email, password }).then((response) => {
