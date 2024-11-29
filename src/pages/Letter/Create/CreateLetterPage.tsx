@@ -13,7 +13,7 @@ export const CreateLetterPage = () => {
                     navigate('/');
                 }}
                 handelSuccesClick={() => {
-                    navigate('/select');
+                    navigate('/letter/select');
                 }}
             />
             <PostLetterForm />

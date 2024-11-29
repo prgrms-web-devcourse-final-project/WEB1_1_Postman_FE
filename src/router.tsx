@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
                 element: <SharePage />
             },
             {
-                path: '/selct',
+                path: 'letter/select',
                 element: <SelectItemPage />
             }
         ]
