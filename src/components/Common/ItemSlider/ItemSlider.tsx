@@ -51,8 +51,8 @@ export const ItemSlider = ({
                     <div
                         className="flex items-center justify-center h-full p-2 cursor-pointer"
                         onClick={() => {
-                            setValue(item.id);
-                            console.log(item.id);
+                            setValue(item.name);
+                            console.log(item.name);
                         }} // 아이템 클릭 시 setValue 호출
                     >
                         {item.name}

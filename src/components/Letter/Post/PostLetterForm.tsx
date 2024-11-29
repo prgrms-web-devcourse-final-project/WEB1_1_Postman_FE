@@ -9,21 +9,14 @@ export const PostLetterForm = () => {
     const [title, setTtile] = useState('');
     const [content, setContent] = useState('');
     const [isFont, setIsFont] = useState(true);
-    const [letter, setLetter] = useState('');
+    const [letter, setLetter] = useState('편지지_샘플_1');
     const [font, setFont] = useState('');
 
     const textItems = [
         { name: 'cursive', id: '1' },
         { name: 'fantasy', id: '2' },
         { name: 'initial', id: '3' },
-        { name: 'monospace', id: '4' },
-        { name: '테스트 글꼴', id: '5' },
-        { name: '테스트 글꼴', id: '6' },
-        { name: '테스트 글꼴', id: '7' },
-        { name: '테스트 글꼴', id: '9' },
-        { name: '테스트 글꼴', id: '10' },
-        { name: '테스트 글꼴', id: '11' },
-        { name: '테스트 글꼴', id: '12' }
+        { name: 'monospace', id: '4' }
     ];
 
     const imageItems = [
@@ -46,11 +39,15 @@ export const PostLetterForm = () => {
                         placeholder="제목을 입력해주세요"
                         className="absolute mt-[35%] w-9/12 bg-transparent  px-2 focus:border-none focus:outline-none border-none "
                     />
-                    <TextArea value={content} setValue={setContent} />
+                    <TextArea
+                        value={content}
+                        setValue={setContent}
+                        font={font}
+                    />
                 </div>
 
                 <img
-                    src={'/public/편지지_샘플_1.png'}
+                    src={`/public/${letter}.png`}
                     className="w-full h-full rounded-lg "
                     alt="샘플 편지지"
                 />
