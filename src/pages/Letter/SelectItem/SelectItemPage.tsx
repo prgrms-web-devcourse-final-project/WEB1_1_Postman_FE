@@ -11,7 +11,7 @@ export const SelectItemPage = () => {
         <div>
             <TopBar
                 handleBackClick={() => {
-                    navigate('/create');
+                    navigate(-1);
                 }}
             />
             <Bottle />

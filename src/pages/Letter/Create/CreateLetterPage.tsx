@@ -10,7 +10,7 @@ export const CreateLetterPage = () => {
         <div className=" w-[375px] max-w-[768px] h-[815px]">
             <TopBar
                 handleBackClick={() => {
-                    navigate('/');
+                    navigate(-1);
                 }}
                 handelSuccesClick={() => {
                     navigate('/letter/select');
