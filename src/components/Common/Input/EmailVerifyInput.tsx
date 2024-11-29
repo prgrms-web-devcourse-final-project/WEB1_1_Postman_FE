@@ -2,27 +2,26 @@ import React from 'react';
 import { AUTH_INPUT_VALIDATION } from '@/constants/authInputValidation';
 import { Input } from './Input';
 
-type NicknameInputProps = {
+type EmailVerifyInputProps = {
     defaultValue?: string;
     disabled?: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const NicknameInput = ({
+export const EmailVerifyInput = ({
     defaultValue,
     disabled
-}: NicknameInputProps) => {
+}: EmailVerifyInputProps) => {
     return (
         <Input
-            type="text"
-            autoComplete="nickname"
-            name="nickname"
-            text="닉네임"
-            errorMessage={AUTH_INPUT_VALIDATION.nickname.errorMessage}
-            pattern={AUTH_INPUT_VALIDATION.nickname.regexp}
-            maxLength={15}
-            autoFocus
+            autoComplete="off"
+            text="이메일 인증번호"
+            name="emailVerifyCode"
+            type="emailVerifyCode"
+            errorMessage={AUTH_INPUT_VALIDATION.emailVerifyCode.errorMessage}
+            pattern={AUTH_INPUT_VALIDATION.emailVerifyCode.regexp}
             required
+            togglePassword={false}
             defaultValue={defaultValue}
             disabled={disabled}
         />
