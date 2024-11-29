@@ -1,4 +1,4 @@
-import { signUpHandler } from './signUpHandler';
 import { LoginHandler } from './LoginHandler';
+import { RegisterHandler } from './RegisterHandler';
 
-export const handlers = [...signUpHandler, ...LoginHandler];
+export const handlers = [...LoginHandler, ...RegisterHandler];
