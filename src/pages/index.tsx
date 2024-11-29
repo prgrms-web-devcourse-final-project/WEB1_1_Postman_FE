@@ -11,6 +11,7 @@ import { LetterDetailPage } from '@/pages/Letter/Detail/LetterDetailPage';
 import { NotificationPage } from '@/pages/NotificationPage';
 import { SentPage } from '@/pages/SentPage';
 import { SharePage } from '@/pages/SharePage';
+import { SelectItemPage } from './Letter/SelectItem/SelectItemPage';
 
 export {
     ErrorPage,
@@ -25,5 +26,6 @@ export {
     LetterDetailPage,
     NotificationPage,
     SentPage,
-    SharePage
+    SharePage,
+    SelectItemPage
 };

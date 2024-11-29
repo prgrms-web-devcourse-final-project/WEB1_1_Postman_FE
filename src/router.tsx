@@ -13,8 +13,10 @@ import {
     LetterDetailPage,
     NotificationPage,
     SentPage,
-    SharePage
+    SharePage,
+    SelectItemPage
 } from './pages';
+import { Margin } from './components/Common/Margin/Margin';
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +24,7 @@ export const router = createBrowserRouter([
         element: (
             <>
                 <Outlet />
+                <Margin top={50} />
                 <NavigationBar />
             </>
         ),
@@ -68,6 +71,10 @@ export const router = createBrowserRouter([
             {
                 path: '/share',
                 element: <SharePage />
+            },
+            {
+                path: '/selct',
+                element: <SelectItemPage />
             }
         ]
     },
