@@ -1,6 +1,7 @@
 import { BannerContainer } from '@/components/Common/BannerContainer/BannerContainer';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
-import { Toggle } from '@/components/Common/Toggle/Toggle';
+// import { Toggle } from '@/components/Common/Toggle/Toggle';
+import { ToggleHome } from '@/components/Common/ToggleHome/ToggleHome';
 import { BottomSheetContent } from '@/components/HomePage/BottomSheetContent/BottomSheetContent';
 import { LetterContainer } from '@/components/HomePage/LetterContainer/LetterContainer';
 import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
@@ -21,7 +22,7 @@ export const HomePage = () => {
     return (
         <div className="p-5 flex flex-col gap-[30px]">
             <TopButtonContainer />
-            <Toggle
+            <ToggleHome
                 isChecked={toggle}
                 onToggle={() => {
                     setToggle(!toggle);
