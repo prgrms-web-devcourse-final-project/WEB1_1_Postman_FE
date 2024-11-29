@@ -1,4 +1,4 @@
-import { ApiResponse } from '@/types/apiResponse';
+import { ApiResponseType } from '@/types/apiResponse';
 import { http, HttpResponse } from 'msw';
 
 type SendEmailRequestBody = {
@@ -10,7 +10,7 @@ type VerifyEmailRequsetBody = {
     authNum: string;
 };
 
-type CommonResponse = ApiResponse<'success' | null>;
+type CommonResponse = ApiResponseType<'success' | null>;
 
 export const RegisterHandler = [
     // 이메일 인증번호 전송

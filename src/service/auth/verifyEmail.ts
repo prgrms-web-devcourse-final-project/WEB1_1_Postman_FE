@@ -1,13 +1,13 @@
 import { AxiosError } from 'axios';
 import { defaultApi } from '@/service/api';
-import { ApiResponse } from '@/types/apiResponse';
+import { ApiResponseType } from '@/types/apiResponse';
 
 type VerifyEmailProps = {
     email: string;
     authNum: string;
 };
 
-type VerifyEmailResponse = ApiResponse<'success' | 'fail'>;
+type VerifyEmailResponse = ApiResponseType<'success' | 'fail'>;
 
 export async function verifyEmail({
     email,
