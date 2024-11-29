@@ -13,7 +13,10 @@ export default meta;
 type Story = StoryObj<typeof LetterDetailPage>;
 
 export const MapLetter: Story = {
-    args: {},
+    args: {
+        isAuthor: false,
+        hasReplies: false
+    },
     decorators: [
         (Story) => {
             return (
@@ -28,7 +31,80 @@ export const MapLetter: Story = {
 };
 
 export const KeywordLetter: Story = {
-    args: {},
+    args: {
+        isAuthor: false,
+        hasReplies: false
+    },
+    decorators: [
+        (Story) => {
+            return (
+                <MemoryRouter initialEntries={['/letter/keyword/456']}>
+                    <Routes>
+                        <Route path="/letter/:type/:id" element={<Story />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        }
+    ]
+};
+
+export const MapLetterWithoutReplies: Story = {
+    args: {
+        isAuthor: true,
+        hasReplies: false
+    },
+    decorators: [
+        (Story) => {
+            return (
+                <MemoryRouter initialEntries={['/letter/map/123']}>
+                    <Routes>
+                        <Route path="/letter/:type/:id" element={<Story />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        }
+    ]
+};
+export const MapLetterWithReplies: Story = {
+    args: {
+        isAuthor: true,
+        hasReplies: true
+    },
+    decorators: [
+        (Story) => {
+            return (
+                <MemoryRouter initialEntries={['/letter/map/123']}>
+                    <Routes>
+                        <Route path="/letter/:type/:id" element={<Story />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        }
+    ]
+};
+
+export const KeywordLetterWithoutReplies: Story = {
+    args: {
+        isAuthor: true,
+        hasReplies: false
+    },
+    decorators: [
+        (Story) => {
+            return (
+                <MemoryRouter initialEntries={['/letter/keyword/456']}>
+                    <Routes>
+                        <Route path="/letter/:type/:id" element={<Story />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        }
+    ]
+};
+export const KeywordLetterWithReplies: Story = {
+    args: {
+        isAuthor: true,
+        hasReplies: true
+    },
     decorators: [
         (Story) => {
             return (

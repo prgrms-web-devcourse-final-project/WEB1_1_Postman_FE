@@ -5,6 +5,7 @@ import 'react-spring-bottom-sheet/dist/style.css';
 interface SliderMenuContainerProps {
     open?: boolean;
     snapPoints?: () => number[];
+    onDismiss?: () => void;
     blocking?: boolean;
     children: ReactNode;
 }
@@ -12,12 +13,14 @@ interface SliderMenuContainerProps {
 export const SliderMenuContainer = ({
     open = true,
     snapPoints = () => [window.innerHeight * 0.3, window.innerHeight * 0.6],
+    onDismiss,
     blocking = false,
     children
 }: SliderMenuContainerProps) => {
     return (
         <BottomSheet
             open={open} // false면 완전히 닫힘
+            onDismiss={onDismiss}
             snapPoints={snapPoints} // ex) [300, 450, 600]이면 300px, 450px, 600px에서 멈춤
             blocking={blocking} // true면 배경 클릭 불가
         >

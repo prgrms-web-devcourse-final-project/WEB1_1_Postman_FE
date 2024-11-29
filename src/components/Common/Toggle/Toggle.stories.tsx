@@ -6,7 +6,15 @@ const meta: Meta<typeof Toggle> = {
     title: 'atoms/Toggle',
     tags: ['autodocs'],
     argTypes: {
-        onToggle: { action: 'toggled' }
+        onToggle: { action: 'toggled' },
+        leftLabel: {
+            control: 'text',
+            defaultValue: '전체'
+        },
+        rightLabel: {
+            control: 'text',
+            defaultValue: '답장'
+        }
     }
 };
 
@@ -16,12 +24,16 @@ type Story = StoryObj<typeof Toggle>;
 
 export const Default: Story = {
     args: {
-        isChecked: false
+        isChecked: false,
+        leftLabel: '전체',
+        rightLabel: '답장'
     }
 };
 
 export const Checked: Story = {
     args: {
-        isChecked: true
+        isChecked: true,
+        leftLabel: '편지지',
+        rightLabel: '글씨체'
     }
 };
