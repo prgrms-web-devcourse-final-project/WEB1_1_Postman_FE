@@ -21,6 +21,8 @@ type ItemSliderProps = {
     width?: string;
     height?: string;
     spaceBetween?: number;
+    value: string;
+    setValue: (value: string) => void; // value를 변경할 수 있는 setValue 함수
 };
 
 export const ItemSlider = ({
@@ -28,11 +30,13 @@ export const ItemSlider = ({
     itemIDList,
     width,
     height,
-    spaceBetween = 10
+    spaceBetween = 10,
+    value,
+    setValue
 }: ItemSliderProps) => {
     const slideStyle: CSSProperties = {
-        width: width ? width : 'auto',
-        height: height ? height : 'auto'
+        width: 'auto',
+        height: 'auto'
     };
 
     const getImagePath = (id: string) => {
@@ -44,17 +48,30 @@ export const ItemSlider = ({
         switch (itemType) {
             case 'text':
                 return (
-                    <div className="flex items-center justify-center h-full p-2">
+                    <div
+                        className="flex items-center justify-center h-full p-2 cursor-pointer"
+                        onClick={() => {
+                            setValue(item.id);
+                            console.log(item.id);
+                        }} // 아이템 클릭 시 setValue 호출
+                    >
                         {item.name}
                     </div>
                 );
             case 'image':
                 return (
-                    <div className="flex items-center justify-center h-full">
+                    <div
+                        className="flex items-center justify-center h-full cursor-pointer"
+                        onClick={() => {
+                            setValue(item.id);
+                            console.log(item.id);
+                        }} // 아이템 클릭 시 setValue 호출
+                    >
                         <img
-                            className="object-cover w-full h-full rounded"
+                            className="object-cover rounded"
                             src={getImagePath(item.id)}
                             alt={item.name}
+                            style={{ width: width, height: height }}
                         />
                     </div>
                 );
@@ -76,7 +93,9 @@ export const ItemSlider = ({
                     <SwiperSlide
                         style={slideStyle}
                         key={item.id}
-                        className="flex justify-center align-middle rounded-md bg-slate-200"
+                        className={`flex justify-center align-middle rounded-md bg-slate-200 ${
+                            item.id === value ? 'bg-blue-200' : '' // 선택된 아이템 배경 색 변경
+                        }`}
                     >
                         {getSliderContent(item)}
                     </SwiperSlide>
