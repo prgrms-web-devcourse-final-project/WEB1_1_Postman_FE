@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavigationItem } from './NavigationItem';
-
 import { IoMdHome, IoIosSend } from 'react-icons/io';
 import { IoMap } from 'react-icons/io5';
 import { FaUserCircle } from 'react-icons/fa';
@@ -21,7 +20,7 @@ export const NavigationBar = () => {
     return (
         <nav className="flex justify-around bg-white border-t p-3 fixed bottom-0 w-full z-[999]">
             {navItems.map((item) => (
-                <div className="flex-1 flex justify-center" key={item.id}>
+                <div className="flex justify-center flex-1" key={item.id}>
                     <NavigationItem
                         icon={item.icon}
                         label={item.label}
