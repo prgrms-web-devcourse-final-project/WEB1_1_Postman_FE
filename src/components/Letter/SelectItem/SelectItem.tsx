@@ -4,9 +4,34 @@ import React, { useState } from 'react';
 import { LabelProps } from '@/types/lable';
 import { KeywordList } from '../KeywordList/KeywordList';
 import { LableList } from '../LableList/LableList';
+import { CreateButton } from '../CreateButton/CreateButton';
+import { KeywordProps } from '@/types/keyword';
 
 export const SelectItem = () => {
     const [isLabel, setIsLabel] = useState(true);
+    const [isActive, setIsActive] = useState(false);
+    const [selectedLabels, setSelectedLabels] = useState<LabelProps[]>([]);
+    const [selectedKeywords, setSelectedKeywords] = useState<KeywordProps[]>(
+        []
+    );
+
+    // 라벨 선택 핸들러
+    const handleLabelSelection = (label: LabelProps) => {
+        setSelectedLabels((prev) =>
+            prev.includes(label)
+                ? prev.filter((l) => l !== label)
+                : [...prev, label]
+        );
+    };
+
+    // 키워드 선택 핸들러
+    const handleKeywordSelection = (keyword: string) => {
+        setSelectedKeywords((prev) =>
+            prev.includes(keyword)
+                ? prev.filter((k) => k !== keyword)
+                : [...prev, keyword]
+        );
+    };
 
     const testLable: LabelProps[] = [
         {
@@ -77,7 +102,12 @@ export const SelectItem = () => {
                     </div>
                 </div>
             )}
-
+            <CreateButton
+                isActive={isActive}
+                handleClickHandler={() => {
+                    alert('클릭');
+                }}
+            />
             <Margin bottom={90} />
         </SliderMenuContainer>
     );
