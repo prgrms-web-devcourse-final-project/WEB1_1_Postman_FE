@@ -4,7 +4,7 @@ import { Bottle } from './Bottle';
 
 const meta: Meta<typeof Bottle> = {
     component: Bottle,
-    title: 'Bottle',
+    title: 'atoms/Bottle',
     tags: ['autodocs'],
     argTypes: {}
 };

@@ -1,6 +1,6 @@
-import { Bottle } from '@/components/Common/BottleLetter/Bottle/Bottle';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
+import { AnimationBottle } from '@/components/Letter/AnimationBottle/AnimationBottle';
 import { SelectItem } from '@/components/Letter/SelectItem/SelectItem';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ export const SelectItemPage = () => {
                 }}
             />
             <Margin top={100} />
-            <Bottle />
+            <AnimationBottle />
 
             <SelectItem />
         </div>
