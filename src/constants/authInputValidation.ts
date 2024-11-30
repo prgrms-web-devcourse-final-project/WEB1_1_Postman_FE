@@ -12,5 +12,9 @@ export const AUTH_INPUT_VALIDATION = {
     email: {
         regexp: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
         errorMessage: '올바른 이메일 형식을 입력해주세요.'
+    },
+    emailVerifyCode: {
+        regexp: /^[A-Za-z0-9]{6}$/,
+        errorMessage: '올바른 인증 코드를 입력해주세요.'
     }
 };

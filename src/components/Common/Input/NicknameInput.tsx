@@ -1,13 +1,17 @@
+import React from 'react';
 import { AUTH_INPUT_VALIDATION } from '@/constants/authInputValidation';
 import { Input } from './Input';
+
+type NicknameInputProps = {
+    defaultValue?: string;
+    disabled?: boolean;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 export const NicknameInput = ({
     defaultValue,
     disabled
-}: {
-    defaultValue?: string;
-    disabled?: boolean;
-}) => {
+}: NicknameInputProps) => {
     return (
         <Input
             type="text"
