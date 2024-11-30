@@ -22,7 +22,7 @@ export const WelcomeMessageContainer = ({
         : '떠다니는 편지를 열심히 찾는 중 이에요.';
 
     return (
-        <div className="absolute z-20">
+        <div className="absolute z-[3]">
             <p className="font-bold text-[24px]">{message}</p>
             <p className="font-bold text-[24px]">{messageBody}</p>
             <p className="text-base">{subMessage}</p>

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React, { useState } from 'react';
 
 import { TextArea } from './TextArea';
 
@@ -13,5 +14,5 @@ export default meta;
 type Story = StoryObj<typeof TextArea>;
 
 export const Default: Story = {
-    args: {}
+    args: { value: '즐겁다' }
 };

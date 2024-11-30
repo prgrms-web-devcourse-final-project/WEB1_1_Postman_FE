@@ -1,7 +1,7 @@
 import { ErrorPage } from '@/pages/ErrorPage';
 import { HomePage } from '@/pages/Home/HomePage';
 import { CreateLetterPage } from '@/pages/Letter/Create/CreateLetterPage';
-import { MapExplorerPage } from '@/pages/MapExplorerPage';
+import { MapExplorerPage } from '@/pages/Map/MapExplorerPage';
 import { MyPage } from '@/pages/User/MyPage/Mypage';
 import { LoginPage } from '@/pages/User/Login/LoginPage';
 import { RegisterPage } from '@/pages/User/Register/RegisterPage';

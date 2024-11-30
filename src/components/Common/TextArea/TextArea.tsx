@@ -3,9 +3,10 @@ import React, { useRef, useEffect } from 'react';
 type TextAreaProps = {
     value: string;
     setValue: (value: string) => void;
+    font?: string;
 };
 
-export const TextArea = ({ value, setValue }: TextAreaProps) => {
+export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -39,6 +40,7 @@ export const TextArea = ({ value, setValue }: TextAreaProps) => {
     return (
         <textarea
             className="absolute w-9/12 px-2 bg-transparent border-none resize-none mt-[42%] leading-[260%] overflow-hidden h-auto"
+            style={{ fontFamily: font || 'inherit' }}
             ref={textAreaRef}
             placeholder="편지를 작성하세요..."
             value={value}
