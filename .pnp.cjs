@@ -83,6 +83,7 @@ const RAW_RUNTIME_STATE =
           ["storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
           ["swiper", "npm:11.1.15"],\
           ["tailwindcss", "npm:3.4.15"],\
+          ["tailwindcss-animated", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:1.1.2"],\
           ["ts-pattern", "npm:5.5.0"],\
           ["typescript", "patch:typescript@npm%3A5.7.2#optional!builtin<compat/typescript>::version=5.7.2&hash=5786d5"],\
           ["typescript-eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.15.0"],\
@@ -13564,6 +13565,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["tailwindcss-animated", [\
+      ["npm:1.1.2", {\
+        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/tailwindcss-animated-npm-1.1.2-ef60463a0f-10c0.zip/node_modules/tailwindcss-animated/",\
+        "packageDependencies": [\
+          ["tailwindcss-animated", "npm:1.1.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:1.1.2", {\
+        "packageLocation": "./.yarn/__virtual__/tailwindcss-animated-virtual-b7db69bf29/5/AppData/Local/Yarn/Berry/cache/tailwindcss-animated-npm-1.1.2-ef60463a0f-10c0.zip/node_modules/tailwindcss-animated/",\
+        "packageDependencies": [\
+          ["tailwindcss-animated", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:1.1.2"],\
+          ["@types/tailwindcss", null],\
+          ["tailwindcss", "npm:3.4.15"]\
+        ],\
+        "packagePeers": [\
+          "@types/tailwindcss",\
+          "tailwindcss"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["tar", [\
       ["npm:6.2.1", {\
         "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/tar-npm-6.2.1-237800bb20-10c0.zip/node_modules/tar/",\
@@ -14627,6 +14650,7 @@ const RAW_RUNTIME_STATE =
           ["storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
           ["swiper", "npm:11.1.15"],\
           ["tailwindcss", "npm:3.4.15"],\
+          ["tailwindcss-animated", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:1.1.2"],\
           ["ts-pattern", "npm:5.5.0"],\
           ["typescript", "patch:typescript@npm%3A5.7.2#optional!builtin<compat/typescript>::version=5.7.2&hash=5786d5"],\
           ["typescript-eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.15.0"],\
