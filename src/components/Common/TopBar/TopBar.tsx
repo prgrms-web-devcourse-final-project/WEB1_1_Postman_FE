@@ -11,7 +11,7 @@ export const TopBar = ({
     handelSuccesClick
 }: TopBaerProps) => {
     return (
-        <div className="fixed z-10 flex items-center justify-between w-full px-4 mt-5 text-2xl">
+        <div className="z-10 flex items-center justify-between w-full px-4 mt-5 text-2xl ">
             {handleBackClick && <BackButton onClick={handleBackClick} />}
             {handelSuccesClick && <p onClick={handelSuccesClick}>완료</p>}
         </div>
