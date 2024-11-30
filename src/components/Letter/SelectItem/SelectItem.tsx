@@ -1,9 +1,9 @@
-import { Label } from '@/components/Common/BottleLetter/Label/Label';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
 import React, { useState } from 'react';
 import { LabelProps } from '@/types/lable';
 import { KeywordList } from '../KeywordList/KeywordList';
+import { LableList } from '../LableList/LableList';
 
 export const SelectItem = () => {
     const [isLabel, setIsLabel] = useState(true);
@@ -65,13 +65,7 @@ export const SelectItem = () => {
             </div>
 
             {isLabel ? (
-                <div className="grid grid-cols-4 gap-4 mt-5">
-                    {testLable.map((val, idx) => (
-                        <div key={idx} className="w-20 mx-auto mr-auto">
-                            <Label imgSrc={val.imgSrc} />
-                        </div>
-                    ))}
-                </div>
+                <LableList LableList={testLable} />
             ) : (
                 <div>
                     <div>
