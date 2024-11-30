@@ -75,6 +75,8 @@ export const PostLetterForm = () => {
                     <Toggle
                         isChecked={isFont}
                         onToggle={() => setIsFont(!isFont)}
+                        leftLabel="글씨체"
+                        rightLabel="편지지"
                     />
                     <Margin bottom={90} />
                 </div>
