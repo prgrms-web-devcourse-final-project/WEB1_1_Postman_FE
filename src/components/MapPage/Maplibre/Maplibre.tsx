@@ -4,6 +4,42 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import mapStyle from './map_style.json';
 import { StyleSpecification } from 'maplibre-gl';
+import * as turf from '@turf/turf';
+type Letter = {
+    id: number;
+    longitude: number;
+    latitude: number;
+    title: string;
+    keyword: string;
+    date: string;
+};
+
+const sampleLetters: Letter[] = [
+    {
+        id: 1,
+        longitude: 127.01,
+        latitude: 37.51,
+        title: '첫 번째 편지',
+        keyword: '가을 바람',
+        date: '21.11.15'
+    },
+    {
+        id: 2,
+        longitude: 127.02,
+        latitude: 37.52,
+        title: '두 번째 편지',
+        keyword: '단풍',
+        date: '21.11.20'
+    },
+    {
+        id: 3,
+        longitude: 126.99,
+        latitude: 37.49,
+        title: '세 번째 편지',
+        keyword: '바람',
+        date: '21.11.25'
+    }
+];
 
 export const Maplibre = () => {
     const [currentLocation, setCurrentLocation] = useState<{
@@ -16,6 +52,24 @@ export const Maplibre = () => {
         latitude: 37.5,
         zoom: 11
     });
+    const [filteredLetters, setFilteredLetters] = useState<Letter[]>([]);
+    useEffect(() => {
+        if (currentLocation) {
+            const nearbyLetters = sampleLetters.filter((letter) => {
+                const from = turf.point([
+                    currentLocation.longitude,
+                    currentLocation.latitude
+                ]);
+                const to = turf.point([letter.longitude, letter.latitude]);
+                const distance = turf.distance(from, to, { units: 'meters' });
+
+                console.log(`편지: ${letter.title}, 거리: ${distance}m`);
+
+                return distance <= 500;
+            });
+            setFilteredLetters(nearbyLetters);
+        }
+    }, [currentLocation]);
 
     useEffect(() => {
         if ('geolocation' in navigator) {
@@ -49,14 +103,7 @@ export const Maplibre = () => {
 
     return (
         <div>
-            <div
-                style={{
-                    height: '812px',
-                    width: '768PX',
-                    position: 'relative'
-                }}
-                className="mx-auto mt-4"
-            >
+            <div className="mx-auto mt-4 relative h-[812px] w-[768px]">
                 <Map
                     initialViewState={viewState}
                     style={{ width: '100%', height: '100%' }}
@@ -75,14 +122,29 @@ export const Maplibre = () => {
                             <img
                                 src="https://www.svgrepo.com/show/372536/map-marker.svg"
                                 alt="marker"
-                                style={{
-                                    width: '30px',
-                                    height: '30px',
-                                    transform: 'translate(-50%, -100%)'
-                                }}
+                                className="w-[30px] h-[30px] transform -translate-x-1/2 -translate-y-full"
                             />
                         </Marker>
                     )}
+                    {filteredLetters.map((letter) => (
+                        <Marker
+                            key={letter.id}
+                            longitude={letter.longitude}
+                            latitude={letter.latitude}
+                        >
+                            <div
+                                className="bg-gray-100 p-1 rounded-sm"
+                                onClick={() =>
+                                    alert(`${letter.title}\n${letter.keyword}`)
+                                }
+                            >
+                                <img
+                                    src="/bottle.png"
+                                    className="w-full h-5 rounded-lg "
+                                />
+                            </div>
+                        </Marker>
+                    ))}
                 </Map>
             </div>
         </div>
