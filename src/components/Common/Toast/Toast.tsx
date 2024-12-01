@@ -9,8 +9,8 @@ interface ToastProps {
     onClose: () => void;
 }
 
-const iconStyles = 'w-8 h-8 absolute left-8 top-5';
-const closeStyles = 'w-8 h-8 absolute right-8 top-5';
+const iconStyles = 'w-5 h-5 md:w-6 md:h-6';
+const closeStyles = 'w-5 h-5 md:w-6 md:h-6';
 
 const iconComponents = {
     success: <FaCheck className={iconStyles} />,
@@ -23,7 +23,16 @@ const Toast = ({ children, variant = 'success', onClose }: ToastProps) => {
 
     return (
         <div
-            className={`relative flex items-center justify-center w-[514px] h-[77px] mb-2 px-5 rounded-lg text-white font-sans font-normal text-[22px] leading-[26px] shadow-md 
+            className={`
+            relative flex items-center
+            w-[90%] md:w-[514px]
+            h-[60px] md:h-[77px]
+            mb-2 px-6 md:px-8
+            rounded-lg text-white
+            font-sans font-normal
+            text-sm md:text-[22px]
+            leading-[16px] md:leading-[26px]
+            shadow-md 
             ${
                 variant === 'success'
                     ? 'bg-green-500'
@@ -31,11 +40,15 @@ const Toast = ({ children, variant = 'success', onClose }: ToastProps) => {
                       ? 'bg-red-500'
                       : 'bg-yellow-400'
             }
-            animate-toast-slide-in`}
+            animate-toast-slide-in
+        `}
         >
-            {Icon}
-            <span className="truncate w-[350px] text-center">{children}</span>
-            <IoMdClose onClick={onClose} className={closeStyles} />
+            {/* 아이콘, 텍스트, 닫기 버튼을 Flex로 배치 */}
+            <div className="flex items-center gap-3 w-full">
+                {Icon}
+                <span className="flex-1 text-center truncate">{children}</span>
+                <IoMdClose onClick={onClose} className={closeStyles} />
+            </div>
         </div>
     );
 };
