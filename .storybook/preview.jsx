@@ -1,6 +1,5 @@
 import '../src/index.css';
-import { RouterProvider } from 'react-router-dom';
-import { router } from '@/router';
+import { MemoryRouter } from 'react-router-dom';
 
 const preview = {
     parameters: {
@@ -11,7 +10,13 @@ const preview = {
             }
         }
     },
-    decorators: [(Story) => <Story />]
+    decorators: [
+        (Story) => (
+            <MemoryRouter initialEntries={['/']}>
+                <Story />
+            </MemoryRouter>
+        )
+    ]
 };
 
 export default preview;
