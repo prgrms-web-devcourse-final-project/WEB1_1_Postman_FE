@@ -12,6 +12,7 @@ import { SentPage } from '@/pages/SentPage';
 import { SharePage } from '@/pages/SharePage';
 import { SelectItemPage } from './Letter/SelectItem/SelectItemPage';
 import { MyPage } from '@/pages/User/MyPage/MyPage';
+import { SuccessLetterPage } from './Letter/Success/SuccessLetterPage';
 
 export {
     ErrorPage,
@@ -27,5 +28,6 @@ export {
     NotificationPage,
     SentPage,
     SharePage,
-    SelectItemPage
+    SelectItemPage,
+    SuccessLetterPage
 };

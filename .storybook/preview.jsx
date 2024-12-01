@@ -1,6 +1,5 @@
 import '../src/index.css';
-import { RouterProvider } from 'react-router-dom';
-import { router } from '@/router';
+import { MemoryRouter } from 'react-router-dom';
 
 const preview = {
     parameters: {
@@ -11,13 +10,7 @@ const preview = {
             }
         }
     },
-    decorators: [
-        (Story) => (
-            <RouterProvider router={router}>
-                <Story />
-            </RouterProvider>
-        )
-    ]
+    decorators: [(Story) => <Story />]
 };
 
 export default preview;

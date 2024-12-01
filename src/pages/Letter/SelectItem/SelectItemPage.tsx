@@ -2,11 +2,16 @@ import { Margin } from '@/components/Common/Margin/Margin';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { AnimationBottle } from '@/components/Letter/AnimationBottle/AnimationBottle';
 import { SelectItem } from '@/components/Letter/SelectItem/SelectItem';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const SelectItemPage = () => {
     const navigate = useNavigate();
+    const [isActive, setIsActive] = useState(false);
+
+    const handleIsActive = useCallback((value: boolean) => {
+        setIsActive(value);
+    }, []);
 
     return (
         <div className="w-[375px] max-w-[475px] h-screen max-h-[812px]">
@@ -15,10 +20,19 @@ export const SelectItemPage = () => {
                     navigate(-1);
                 }}
             />
+
             <Margin top={100} />
+            <h2
+                className={`text-2xl text-center transition-opacity duration-1000 ${
+                    isActive ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ minHeight: '2.5rem' }}
+            >
+                이제 떠날 준비가 되셨나요
+            </h2>
             <AnimationBottle />
 
-            <SelectItem />
+            <SelectItem isActive={isActive} setIsActive={handleIsActive} />
         </div>
     );
 };

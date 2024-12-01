@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CreateLetterPage } from './CreateLetterPage';
 import { MemoryRouter } from 'react-router-dom';
+import { SelectItemPage } from './SelectItemPage';
 
-const meta: Meta<typeof CreateLetterPage> = {
-    component: CreateLetterPage,
-    title: 'Pages/CreateLetterPage',
+const meta: Meta<typeof SelectItemPage> = {
+    component: SelectItemPage,
+    title: 'SelectItemPage',
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
@@ -17,7 +17,7 @@ const meta: Meta<typeof CreateLetterPage> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof CreateLetterPage>;
+type Story = StoryObj<typeof SelectItemPage>;
 
 export const Default: Story = {
     args: {}
