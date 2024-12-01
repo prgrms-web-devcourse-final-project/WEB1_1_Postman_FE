@@ -30,6 +30,7 @@
         "react-textarea-autosize": "^8.5.5",
         "sharp": "^0.33.5",
         "swiper": "^11.1.15",
+        "tailwindcss-animated": "^1.1.2",
         "ts-pattern": "^5.5.0",
         "zustand": "^5.0.1"
     },

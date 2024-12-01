@@ -52,7 +52,6 @@ export const ItemSlider = ({
                         className="flex items-center justify-center h-full p-2 cursor-pointer"
                         onClick={() => {
                             setValue(item.name);
-                            console.log(item.name);
                         }} // 아이템 클릭 시 setValue 호출
                     >
                         {item.name}
@@ -64,7 +63,6 @@ export const ItemSlider = ({
                         className="flex items-center justify-center h-full cursor-pointer"
                         onClick={() => {
                             setValue(item.id);
-                            console.log(item.id);
                         }} // 아이템 클릭 시 setValue 호출
                     >
                         <img

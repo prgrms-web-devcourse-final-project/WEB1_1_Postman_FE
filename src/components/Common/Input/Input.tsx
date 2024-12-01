@@ -12,7 +12,6 @@ type InputProps = {
 
 export const Input = ({
     name,
-    text,
     errorMessage,
     pattern,
     togglePassword,

@@ -7,7 +7,6 @@ export const App = () => {
         <>
             <ToastContainer />
             <RouterProvider router={router} />
-            즐거운 최종 프로젝트!!!
         </>
     );
 };
