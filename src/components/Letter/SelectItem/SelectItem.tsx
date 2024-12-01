@@ -5,12 +5,19 @@ import { LabelProps } from '@/types/label';
 import { KeywordList } from '../KeywordList/KeywordList';
 import { LabelList } from '../LabelList/LabelList';
 import { CreateButton } from '../CreateButton/CreateButton';
+import { useNavigate } from 'react-router-dom';
 
-export const SelectItem = () => {
+type SelectItemProps = {
+    isActive: boolean;
+    setIsActive: (isActive: boolean) => void;
+};
+
+export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
-    const [isActive, setIsActive] = useState(false);
     const [selectedLabels, setSelectedLabels] = useState<number[]>([]);
     const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (selectedLabels.length > 0 && selectedKeywords.length > 0) {
@@ -111,13 +118,16 @@ export const SelectItem = () => {
                     />
                 </div>
             )}
+            <Margin bottom={30} />
             <CreateButton
                 isActive={isActive}
                 handleClickHandler={() => {
-                    alert('클릭');
+                    if (isActive) {
+                        navigate('/letter/success');
+                    }
                 }}
             />
-            <Margin bottom={90} />
+            <Margin bottom={30} />
         </SliderMenuContainer>
     );
 };

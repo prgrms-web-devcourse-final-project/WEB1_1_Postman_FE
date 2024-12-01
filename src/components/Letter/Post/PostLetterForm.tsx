@@ -78,7 +78,7 @@ export const PostLetterForm = () => {
                         leftLabel="글씨체"
                         rightLabel="편지지"
                     />
-                    <Margin bottom={90} />
+                    <Margin bottom={30} />
                 </div>
             </div>
         </SliderMenuContainer>
