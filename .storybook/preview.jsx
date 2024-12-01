@@ -11,13 +11,7 @@ const preview = {
             }
         }
     },
-    decorators: [
-        (Story) => (
-            <RouterProvider router={router}>
-                <Story />
-            </RouterProvider>
-        )
-    ]
+    decorators: [(Story) => <Story />]
 };
 
 export default preview;
