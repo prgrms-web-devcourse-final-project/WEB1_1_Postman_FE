@@ -9,7 +9,7 @@ const meta: Meta<typeof SuccessModal> = {
     argTypes: {},
     decorators: [
         (Story) => (
-            <MemoryRouter>
+            <MemoryRouter initialEntries={['/']}>
                 <Story />
             </MemoryRouter>
         )

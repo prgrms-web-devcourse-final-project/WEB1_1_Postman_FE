@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
-
 import { SelectItemPage } from './SelectItemPage';
 
 const meta: Meta<typeof SelectItemPage> = {
