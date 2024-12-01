@@ -29,6 +29,6 @@ export const Default: Story = {
 export const Default2: Story = {
     args: {
         title: '빨리 읽으세요',
-        contents: '편지가 500통 도착했습니다!'
+        contents: '편지가 500통 도착했습니다!!'
     }
 };
