@@ -78,7 +78,12 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
         ]
     };
     return (
-        <SliderMenuContainer>
+        <SliderMenuContainer
+            snapPoints={() => [
+                window.innerHeight * 0.05,
+                window.innerHeight * 0.6
+            ]}
+        >
             <Margin top={15} />
             <div className="relative flex w-full overflow-hidden text-xl align-middle h-[50px] ">
                 <div

@@ -28,7 +28,12 @@ export const PostLetterForm = () => {
     ];
 
     return (
-        <SliderMenuContainer>
+        <SliderMenuContainer
+            snapPoints={() => [
+                window.innerHeight * 0.05,
+                window.innerHeight * 0.6
+            ]}
+        >
             <Margin top={18} />
             <div>
                 <div className="relative flex justify-center">
