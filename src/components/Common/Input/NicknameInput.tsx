@@ -6,12 +6,14 @@ type NicknameInputProps = {
     defaultValue?: string;
     disabled?: boolean;
     onValueChange?: (value: string) => void;
+    onKeyDown?: (e: React.KeyboardEvent) => void;
 };
 
 export const NicknameInput = ({
     defaultValue,
     disabled,
-    onValueChange
+    onValueChange,
+    onKeyDown
 }: NicknameInputProps) => {
     return (
         <Input
@@ -27,6 +29,7 @@ export const NicknameInput = ({
             defaultValue={defaultValue}
             disabled={disabled}
             onValueChange={onValueChange}
+            onKeyDown={onKeyDown}
         />
     );
 };

@@ -30,10 +30,11 @@ export const Input = ({
     }, [defaultValue]);
 
     useEffect(() => {
+        console.log(value);
         if (onValueChange && value !== '') {
             onValueChange(value);
         }
-    }, [value, onValueChange]);
+    }, [value]);
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value;

@@ -1,11 +1,16 @@
+import React from 'react';
 import { AUTH_INPUT_VALIDATION } from '@/constants/authInputValidation';
 import { Input } from './Input';
 
 type PasswordInputProps = {
+    onValueChange?: (value: string) => void;
     required?: boolean;
 };
 
-export const PasswordInput = ({ required = true }: PasswordInputProps) => {
+export const PasswordInput = ({
+    required = true,
+    onValueChange
+}: PasswordInputProps) => {
     return (
         <Input
             autoComplete="off"
@@ -16,6 +21,7 @@ export const PasswordInput = ({ required = true }: PasswordInputProps) => {
             pattern={AUTH_INPUT_VALIDATION.password.regexp}
             required={required}
             togglePassword={true}
+            onValueChange={onValueChange}
         />
     );
 };
