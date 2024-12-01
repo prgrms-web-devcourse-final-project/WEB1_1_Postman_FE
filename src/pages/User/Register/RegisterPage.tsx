@@ -7,7 +7,7 @@ import { VerifyEmailInput } from '@/components/Common/Input/VerifyEmailInput';
 import { NicknameInput } from '@/components/Common/Input/NicknameInput';
 import { sendEmail } from '@/service/auth/sendEmail';
 import { verifyEmail } from '@/service/auth/verifyEmail';
-import { checkNickname } from '@/service/auth/checkNickname';
+//import { checkNickname } from '@/service/auth/checkNickname';
 
 export const RegisterPage = () => {
     const navigate = useNavigate();
@@ -78,8 +78,8 @@ export const RegisterPage = () => {
     // };
 
     return (
-        <div className="p-3 flex flex-col gap-3">
-            <h2 className="font-bold text-2xl ">회원가입</h2>
+        <div className="flex flex-col gap-3 p-3">
+            <h2 className="text-2xl font-bold ">회원가입</h2>
             <div className="flex flex-col gap-10">
                 <form>
                     <EmailInput onValueChange={setEmail} />

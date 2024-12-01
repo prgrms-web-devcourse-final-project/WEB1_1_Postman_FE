@@ -10189,6 +10189,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwindcss-animated@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "tailwindcss-animated@npm:1.1.2"
+  peerDependencies:
+    tailwindcss: ">=3.1.0"
+  checksum: 10c0/7946ec5ad1a7e6be66b1ffc96efc974a302f53dca7abf925bdb7b9027580ecb61b3c930a22e4d4fb4f520d1d26adff29378c61bcc09b1794ac20c1a52eac42d1
+  languageName: node
+  linkType: hard
+
 "tailwindcss@npm:^3.4.15":
   version: 3.4.15
   resolution: "tailwindcss@npm:3.4.15"
@@ -11080,6 +11089,7 @@ __metadata:
     storybook: "npm:8.4.4"
     swiper: "npm:^11.1.15"
     tailwindcss: "npm:^3.4.15"
+    tailwindcss-animated: "npm:^1.1.2"
     ts-pattern: "npm:^5.5.0"
     typescript: "npm:^5.7.2"
     typescript-eslint: "npm:^8.11.0"
