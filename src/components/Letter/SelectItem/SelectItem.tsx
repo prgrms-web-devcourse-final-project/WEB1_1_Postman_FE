@@ -1,22 +1,27 @@
 import { Margin } from '@/components/Common/Margin/Margin';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
-import React, { useState } from 'react';
-import { LabelProps } from '@/types/lable';
+import React, { useEffect, useState } from 'react';
+import { LabelProps } from '@/types/label';
 import { KeywordList } from '../KeywordList/KeywordList';
-import { LableList } from '../LableList/LableList';
+import { LabelList } from '../LabelList/LabelList';
 import { CreateButton } from '../CreateButton/CreateButton';
-import { KeywordProps } from '@/types/keyword';
 
 export const SelectItem = () => {
     const [isLabel, setIsLabel] = useState(true);
     const [isActive, setIsActive] = useState(false);
-    const [selectedLabels, setSelectedLabels] = useState<LabelProps[]>([]);
-    const [selectedKeywords, setSelectedKeywords] = useState<KeywordProps[]>(
-        []
-    );
+    const [selectedLabels, setSelectedLabels] = useState<number[]>([]);
+    const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
+
+    useEffect(() => {
+        if (selectedLabels.length > 0 && selectedKeywords.length > 0) {
+            setIsActive(true);
+        } else {
+            setIsActive(false);
+        }
+    }, [selectedLabels, selectedKeywords]);
 
     // 라벨 선택 핸들러
-    const handleLabelSelection = (label: LabelProps) => {
+    const handleLabelSelection = (label: number) => {
         setSelectedLabels((prev) =>
             prev.includes(label)
                 ? prev.filter((l) => l !== label)
@@ -25,7 +30,7 @@ export const SelectItem = () => {
     };
 
     // 키워드 선택 핸들러
-    const handleKeywordSelection = (keyword: string) => {
+    const handleKeywordSelection = (keyword: number) => {
         setSelectedKeywords((prev) =>
             prev.includes(keyword)
                 ? prev.filter((k) => k !== keyword)
@@ -90,16 +95,20 @@ export const SelectItem = () => {
             </div>
 
             {isLabel ? (
-                <LableList LableList={testLable} />
+                <LabelList
+                    labels={testLable}
+                    onLabelSelect={handleLabelSelection}
+                    selectedLabels={selectedLabels}
+                />
             ) : (
                 <div>
-                    <div>
-                        <KeywordList
-                            title={testKeywordListProps.title}
-                            subTitle={testKeywordListProps.subTitle}
-                            keywordGroup={testKeywordListProps.keywordGroup}
-                        />
-                    </div>
+                    <KeywordList
+                        title={testKeywordListProps.title}
+                        subTitle={testKeywordListProps.subTitle}
+                        keywordGroup={testKeywordListProps.keywordGroup}
+                        onKeywordSelect={handleKeywordSelection}
+                        selectedKeywords={selectedKeywords}
+                    />
                 </div>
             )}
             <CreateButton

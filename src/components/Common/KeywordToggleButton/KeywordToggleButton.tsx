@@ -1,7 +1,7 @@
 type KeywordToggleButtonProps = {
     keyword: string;
     isActive?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
 };
 
 export const KeywordToggleButton = ({

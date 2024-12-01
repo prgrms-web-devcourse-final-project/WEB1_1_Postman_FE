@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
-import { LabelProps } from '@/types/lable';
+import React from 'react';
+import { LabelProps } from '@/types/label';
 
-export const Label = ({ imgSrc }: LabelProps) => {
-    const [isActive, setIsActive] = useState(false);
-
-    const handleClick = () => {
-        setIsActive(!isActive);
-    };
-
+export const Label = ({ imgSrc, isActive }: LabelProps) => {
     return (
         <div
-            onClick={handleClick}
             className={`w-full h-full flex justify-center items-center  ${
                 isActive
                     ? 'bg-slate-500 rounded-lg'
