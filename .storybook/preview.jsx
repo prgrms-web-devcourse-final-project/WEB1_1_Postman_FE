@@ -10,13 +10,7 @@ const preview = {
             }
         }
     },
-    decorators: [
-        (Story) => (
-            <MemoryRouter initialEntries={['/']}>
-                <Story />
-            </MemoryRouter>
-        )
-    ]
+    decorators: [(Story) => <Story />]
 };
 
 export default preview;

@@ -1,12 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { SuccessModal } from './SuccessModal';
+import { MemoryRouter } from 'react-router-dom';
 
 const meta: Meta<typeof SuccessModal> = {
     component: SuccessModal,
     title: 'atoms/SuccessModal',
     tags: ['autodocs'],
-    argTypes: {}
+    argTypes: {},
+    decorators: [
+        (Story) => (
+            <MemoryRouter>
+                <Story />
+            </MemoryRouter>
+        )
+    ]
 };
 export default meta;
 
