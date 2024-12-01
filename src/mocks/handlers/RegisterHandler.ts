@@ -14,12 +14,25 @@ type DuplicateCheckRequestBody = {
     nickname: string;
 };
 
+type registerRequestBody = {
+    email: string;
+    password: string;
+    authNum: string;
+};
+
 type IsDuplicated = {
     isDuplicated: boolean;
 };
 
 type CommonResponseBody = ApiResponseType<'success' | null>;
 type DuplicateCheckResponseBody = ApiResponseType<IsDuplicated | null>;
+
+type registerResponseBody = {
+    isSuccess: boolean;
+    code: string;
+    message: string;
+    result: string;
+};
 
 export const RegisterHandler = [
     // 이메일 인증번호 전송
@@ -171,5 +184,29 @@ export const RegisterHandler = [
                 status: 500
             }
         );
+    }),
+
+    http.post<
+        never,
+        registerRequestBody,
+        registerResponseBody,
+        '*/auth/signup'
+    >('*/auth/signup', async ({ request }) => {
+        const { email } = await request.json();
+
+        // 인증번호 요청 성공
+        if (email === 'success@email.com') {
+            return HttpResponse.json(
+                {
+                    isSuccess: true,
+                    code: 'COMMON201',
+                    message: '생성에 성공했습니다.',
+                    result: '회원가입 성공'
+                },
+                {
+                    status: 200
+                }
+            );
+        }
     })
 ];
