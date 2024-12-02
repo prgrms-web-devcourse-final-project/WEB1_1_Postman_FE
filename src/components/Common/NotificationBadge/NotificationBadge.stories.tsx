@@ -1,12 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
+import { MemoryRouter } from 'react-router-dom';
 import { NotificationBadge } from './NotificationBadge';
 
 const meta: Meta<typeof NotificationBadge> = {
     component: NotificationBadge,
     title: 'atoms/NotificationBadge',
     tags: ['autodocs'],
-    argTypes: {}
+    argTypes: {},
+    decorators: [
+        (Story) => (
+            <MemoryRouter>
+                <Story />
+            </MemoryRouter>
+        )
+    ]
 };
 export default meta;
 
