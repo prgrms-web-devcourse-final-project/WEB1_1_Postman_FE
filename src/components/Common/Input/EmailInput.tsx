@@ -1,13 +1,18 @@
+import React from 'react';
 import { AUTH_INPUT_VALIDATION } from '@/constants/authInputValidation';
 import { Input } from './Input';
 
-export const EmailInput = ({
-    defaultValue,
-    disabled
-}: {
+type EmailInputProps = {
     defaultValue?: string;
     disabled?: boolean;
-}) => {
+    onValueChange?: (value: string) => void;
+};
+
+export const EmailInput = ({
+    defaultValue,
+    disabled,
+    onValueChange
+}: EmailInputProps) => {
     return (
         <Input
             type="email"
@@ -21,6 +26,7 @@ export const EmailInput = ({
             required
             defaultValue={defaultValue}
             disabled={disabled}
+            onValueChange={onValueChange}
         />
     );
 };

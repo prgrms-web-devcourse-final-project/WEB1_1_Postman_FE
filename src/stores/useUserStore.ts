@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { UserType } from '@/types/user';
 
 interface UserStoreType {
-    user: UserType;
+    user: UserType | null;
     setUser: (user: UserType) => void;
     deleteUser: () => void;
 }

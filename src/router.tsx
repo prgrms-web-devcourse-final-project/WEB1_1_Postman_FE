@@ -14,27 +14,35 @@ import {
     NotificationPage,
     SentPage,
     SharePage,
-    LabelLotteryPage
+    LabelLotteryPage,
+    SelectItemPage,
+    SuccessLetterPage
 } from './pages';
+import { Margin } from './components/Common/Margin/Margin';
+
+const CommonLayout = () => (
+    <>
+        <Outlet />
+        <Margin top={50} />
+        <NavigationBar />
+    </>
+);
+
+const SimpleLayout = () => (
+    <>
+        <Outlet />
+    </>
+);
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: (
-            <>
-                <Outlet />
-                <NavigationBar />
-            </>
-        ),
+        element: <CommonLayout />,
         errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
                 element: <HomePage />
-            },
-            {
-                path: '/letter/create',
-                element: <CreateLetterPage />
             },
             {
                 path: '/mapexplorer',
@@ -70,6 +78,18 @@ export const router = createBrowserRouter([
                 path: '/share',
                 element: <SharePage />
             }
+        ]
+    },
+    {
+        path: '/letter',
+        element: <SimpleLayout />,
+        children: [
+            {
+                path: 'create',
+                element: <CreateLetterPage />
+            },
+            { path: 'select', element: <SelectItemPage /> },
+            { path: 'success', element: <SuccessLetterPage /> }
         ]
     },
     {

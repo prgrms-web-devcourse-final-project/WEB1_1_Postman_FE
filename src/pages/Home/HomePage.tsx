@@ -1,4 +1,6 @@
 import { BannerContainer } from '@/components/Common/BannerContainer/BannerContainer';
+import { Margin } from '@/components/Common/Margin/Margin';
+import { NavigationBar } from '@/components/Common/NavigationBar/NavigationBar';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
 import { Toggle } from '@/components/Common/Toggle/Toggle';
 import { BottomSheetContent } from '@/components/HomePage/BottomSheetContent/BottomSheetContent';

@@ -2000,6 +2000,99 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mapbox/geojson-rewind@npm:^0.5.2":
+  version: 0.5.2
+  resolution: "@mapbox/geojson-rewind@npm:0.5.2"
+  dependencies:
+    get-stream: "npm:^6.0.1"
+    minimist: "npm:^1.2.6"
+  bin:
+    geojson-rewind: geojson-rewind
+  checksum: 10c0/631f89ba5b656cb1e02197c242b231f98da0afb96815fa26481497176d6bd5f2aac77af4950da91c954094694acbc26382bd3d38146705737e8ff06442d95a12
+  languageName: node
+  linkType: hard
+
+"@mapbox/jsonlint-lines-primitives@npm:^2.0.2, @mapbox/jsonlint-lines-primitives@npm:~2.0.2":
+  version: 2.0.2
+  resolution: "@mapbox/jsonlint-lines-primitives@npm:2.0.2"
+  checksum: 10c0/5814e42fc453700132f93ea742aabcef9a3c98d9bf17d4c1106f82d1dcd91bbc93052e66e29014323b9b2a41b020c743d897e4a96cc4ed2f734482d587d8c2b2
+  languageName: node
+  linkType: hard
+
+"@mapbox/point-geometry@npm:0.1.0, @mapbox/point-geometry@npm:^0.1.0, @mapbox/point-geometry@npm:~0.1.0":
+  version: 0.1.0
+  resolution: "@mapbox/point-geometry@npm:0.1.0"
+  checksum: 10c0/e4d861908574cb3165f5ad37b000416ebc90a2d6b3e0073191e6b6dc5074a6159d84ac5114d78557399bb429134f0d05bfb529e7902d1cb2b36d722b72ab662c
+  languageName: node
+  linkType: hard
+
+"@mapbox/tiny-sdf@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "@mapbox/tiny-sdf@npm:2.0.6"
+  checksum: 10c0/cb272578a30c88d6694937af9b084106aa251e92c71089e7d57b0df8152fd0ce0598d5816182a4cd478dc40b188ea680cb6d53f4385107719424beabe7ed4e13
+  languageName: node
+  linkType: hard
+
+"@mapbox/unitbezier@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@mapbox/unitbezier@npm:0.0.1"
+  checksum: 10c0/97f39d4fbdf9579d0a1a8be0d536eb113a805d36459e774014f488a7ca6cc9dcfc77ab7a2ebe5af395ad50da6efb4dbf2566de0db3f62b6b8675cddbace8f86a
+  languageName: node
+  linkType: hard
+
+"@mapbox/vector-tile@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@mapbox/vector-tile@npm:1.3.1"
+  dependencies:
+    "@mapbox/point-geometry": "npm:~0.1.0"
+  checksum: 10c0/ffb271b95c383923768295e72bdf95e428efb906434b864ea04d3853a8373cf0de19f039bd6615f7cf018fbfb4dbf4599f27ebaa86c2b7b09f7d69187f8d7da1
+  languageName: node
+  linkType: hard
+
+"@mapbox/whoots-js@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@mapbox/whoots-js@npm:3.1.0"
+  checksum: 10c0/fe9e959a9049bcbc2c05d9d1156e050191ad697a1bd95e41cdfa069051ff1d6f2930ced234a8d68d5a0bf78091feab30d76497418ec800d90f0aac8691fe4fd4
+  languageName: node
+  linkType: hard
+
+"@maplibre/maplibre-gl-style-spec@npm:^19.2.1":
+  version: 19.3.3
+  resolution: "@maplibre/maplibre-gl-style-spec@npm:19.3.3"
+  dependencies:
+    "@mapbox/jsonlint-lines-primitives": "npm:~2.0.2"
+    "@mapbox/unitbezier": "npm:^0.0.1"
+    json-stringify-pretty-compact: "npm:^3.0.0"
+    minimist: "npm:^1.2.8"
+    rw: "npm:^1.3.3"
+    sort-object: "npm:^3.0.3"
+  bin:
+    gl-style-format: dist/gl-style-format.mjs
+    gl-style-migrate: dist/gl-style-migrate.mjs
+    gl-style-validate: dist/gl-style-validate.mjs
+  checksum: 10c0/ef315bf9c4e5ebce0d76a7722e53c3e4192b92ea405c95392f61655f551a112bbc17fd00c7c62a16eeb57cdb79a2145e385c4eaf2ca7f50222d2540c9e7e0a7a
+  languageName: node
+  linkType: hard
+
+"@maplibre/maplibre-gl-style-spec@npm:^20.3.1":
+  version: 20.4.0
+  resolution: "@maplibre/maplibre-gl-style-spec@npm:20.4.0"
+  dependencies:
+    "@mapbox/jsonlint-lines-primitives": "npm:~2.0.2"
+    "@mapbox/unitbezier": "npm:^0.0.1"
+    json-stringify-pretty-compact: "npm:^4.0.0"
+    minimist: "npm:^1.2.8"
+    quickselect: "npm:^2.0.0"
+    rw: "npm:^1.3.3"
+    tinyqueue: "npm:^3.0.0"
+  bin:
+    gl-style-format: dist/gl-style-format.mjs
+    gl-style-migrate: dist/gl-style-migrate.mjs
+    gl-style-validate: dist/gl-style-validate.mjs
+  checksum: 10c0/3a0bfc72af3a787005a0bc7364eb7f3e9575e5d6b86c78403130873a6333a9a37199c5aca406ac9290e166c751d2b2471c8c8ba78ce31ebd0278e3fc721bad4b
+  languageName: node
+  linkType: hard
+
 "@mdx-js/react@npm:^3.0.0":
   version: 3.1.0
   resolution: "@mdx-js/react@npm:3.1.0"
@@ -3111,6 +3204,1676 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@turf/along@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/along@npm:7.1.0"
+  dependencies:
+    "@turf/bearing": "npm:^7.1.0"
+    "@turf/destination": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/c9dad54fe71359b77c7cb8f1717032df26178d99645cd76f762c4381bbf6b556970a96ef8b9d0ae7fd0b2d4a5f9afdff7bc54069f2096d827217eae4d8667b5b
+  languageName: node
+  linkType: hard
+
+"@turf/angle@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/angle@npm:7.1.0"
+  dependencies:
+    "@turf/bearing": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/rhumb-bearing": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/4a39bba58b008dda5ca36997a518b8142dd1d99f82fb9a910e9e27c1b98dd3dcb4b5623f24f3c2978e4716446bfab2ca79ba000f6a05488cc2667da5c887eb1b
+  languageName: node
+  linkType: hard
+
+"@turf/area@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/area@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/f7444e75e04be1de6045b22fc723fb254367748ed1a0aa4b2357baed2ef3098a63ef8976b394a9cc03c228ebdc7013982da71f5bd3be4a2a65ef5898c772a135
+  languageName: node
+  linkType: hard
+
+"@turf/bbox-clip@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/bbox-clip@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/6355ca92639d3aa903d8ff737fe35af04673d269ddf8daf58ca5763080adb1f6e19572113f9d296635d3638a70131fc7a98a292f2746c92beea66dfddf435b3e
+  languageName: node
+  linkType: hard
+
+"@turf/bbox-polygon@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/bbox-polygon@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/8615161b4e922e92d2e3b8d7aaba291bc376f8f648417b83df7021d123b3d27dfa3fcb7dbe572bf581a8a856715051e160dd11f786ccce734d1e74941def51ca
+  languageName: node
+  linkType: hard
+
+"@turf/bbox@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/bbox@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/901ed437ad1241b1c7cf76ee3f1dd998b32a59647074216d076a62080281693cc3f1d66d1dedd02fd5617ea57434ec059843bcc275d20f667019f3e1f378b05d
+  languageName: node
+  linkType: hard
+
+"@turf/bearing@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/bearing@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/2487615497fea6ba59260f98fb6631826f61cbbd6a0a6358204820fe3bbfde2832e38baad11077cd211e82319c074b86dd6d9e7ee08574fd9bc806f5acd26609
+  languageName: node
+  linkType: hard
+
+"@turf/bezier-spline@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/bezier-spline@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/4fc331f4177f25af43b6a254086ecf1d25a4aa3c49592e7a6d0d3b82d440960564743fff0e45a91119aaa6b04a14698d15e75340a27efb4f64f97afb5dce8b44
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-clockwise@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-clockwise@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/92c2dd7025d35553f6b0759a321367029d74049d5375a4623c9fe372cd56886d6d1e43ba42d2f82121ed90de747f0253edf811198ee572c5c2379a2f4896d243
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-concave@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-concave@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/5ae2e902d1ece40d698218d51cd8c21e8ef714646ba21c8ebe13d4c906605c4af5cda7c1ebecd855ddcd60cdf10c1b0a5ad96dba882d3d646e026c303ab19091
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-contains@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-contains@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/boolean-point-on-line": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/f61caba5f5d76e67f87026af218bce25402fc826ccae803e366501311b88e40882696e3da19f92b727e1207918e0a4ea1edc1b8b677d074d5ff2dedd8a1f326b
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-crosses@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-crosses@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/line-intersect": "npm:^7.1.0"
+    "@turf/polygon-to-line": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/b06b146bd51a9850b24f4a7719d0eae78202da3cc9ff6e6f7f4670e6530b3bbc40d95ff545e7e569f72812e31642a19f5a71fcb3db84e9e6214e636b36f56ef4
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-disjoint@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-disjoint@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/line-intersect": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/polygon-to-line": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/352a7c1ca2cfca572296be9aafe3ff56ee4cedb22a5698d8f94298906c664cf584e8897ed3a8c72859ceb554cbfc6dbc1678926bef9e7f99119df08c908f621d
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-equal@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-equal@npm:7.1.0"
+  dependencies:
+    "@turf/clean-coords": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    geojson-equality-ts: "npm:^1.0.2"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/f3417683a390f50e989f42e3334fdc768afdc8374cc2e893671ce6e752e78073fb728e1958b4f5b5c910713e4606afabcdbbc9a25c2a9d1f68a28eb252c8957a
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-intersects@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-intersects@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-disjoint": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/308149ff849e76d26b041960635260cf490ba9a403ac7e765f969cb3acfd9f722845922451c4eb872d721094b9ee1f4e06a9e19cee5d4d7f321b1b477837ab22
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-overlap@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-overlap@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/line-intersect": "npm:^7.1.0"
+    "@turf/line-overlap": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    geojson-equality-ts: "npm:^1.0.2"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/b12ba6316ff204935343d972ae8d49e042b907b6feafc3a9a7439b4e3a3a0caf984dfb30c2f9e6a42ddee83eb0569c9cf6980633798b15619113c034ee29022b
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-parallel@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-parallel@npm:7.1.0"
+  dependencies:
+    "@turf/clean-coords": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/line-segment": "npm:^7.1.0"
+    "@turf/rhumb-bearing": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/fecde5f30aa8ee99fb026adf22f3563509ab44f05d1dec6cbd68f6fc8e5da6508c2c6b365b753a6936d785c46ae5a276d4fa925e4ad213c0d4b252af448ae0b3
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-point-in-polygon@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-point-in-polygon@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    point-in-polygon-hao: "npm:^1.1.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/ad6f66bfe52e15b011ddd074731df4ed2bdbcc14d66a2624f64d8ac0981882e7c39cb10f8c975e4d8bd3e83acae3284ad0abf28db15500fb3865f28d6fe8a8bf
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-point-on-line@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-point-on-line@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/5d535114de98a1cc9b366c351bf8ec34da43c8fdd1a27e83148f5acdd25d2c89e1f9ca893052a81f0cecb8a210281049ff1447230a0ac1e16d8501f7b2b6e938
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-touches@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-touches@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/boolean-point-on-line": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/da2e47bbc2b6a1dafb7669b143ba5c63a45024dbef44c29da6e0061258a6d63f650d8473a2a92c4a7fe4f245268fe80746b7b27084d96fcdcd66334e79bca94a
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-valid@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-valid@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/boolean-crosses": "npm:^7.1.0"
+    "@turf/boolean-disjoint": "npm:^7.1.0"
+    "@turf/boolean-overlap": "npm:^7.1.0"
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/boolean-point-on-line": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/line-intersect": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    geojson-polygon-self-intersections: "npm:^1.2.1"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/75bdccaf381e558e9214058f02e945f8f14f6c33315e094e17b76cd2f6bec977d478a47d6fc27e44818c72b9348bc9c61a54075d63398f5a2f5ddc1fbdd92adf
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-within@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/boolean-within@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/boolean-point-on-line": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/18f1a8cf90eb666f49b7056a4bc43cd8c0b98e90d22212ebebafbd258b671093fdb3200987007e6cdfadbcf2318053970fdfd9935b2312a3b22e372b077274a5
+  languageName: node
+  linkType: hard
+
+"@turf/buffer@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/buffer@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/center": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/jsts": "npm:^2.7.1"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/projection": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    d3-geo: "npm:1.7.1"
+  checksum: 10c0/2b1a9f4501c1e2c29e56b20df22f63acc567ccd45230acd89a24989bd68178cd482ec06c1561f7f9ae6a749e8d2b3647dd6c97a499c1b406d0e06e1264608bf0
+  languageName: node
+  linkType: hard
+
+"@turf/center-mean@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/center-mean@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/8ab7c16b96a661ee089a8792b968ee03d7a73d19391b889b3dd6f6c03ce5635fc5fa097fb6882a6a8ba68edaaf55f47211d54667f80f6ead1ceeb1e77eb14d88
+  languageName: node
+  linkType: hard
+
+"@turf/center-median@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/center-median@npm:7.1.0"
+  dependencies:
+    "@turf/center-mean": "npm:^7.1.0"
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/a873e6319fb472fdf9c935b2d770f76e8c22dfcc2b51d00d8338257b815b480cab6ce499ab15d42e77245c3268abe72de9feb296702c829983ea313f9814abd8
+  languageName: node
+  linkType: hard
+
+"@turf/center-of-mass@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/center-of-mass@npm:7.1.0"
+  dependencies:
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/convex": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/73d9793bfcfe98114d3e3c2d776099380629a40b6a0bdf753d5aae206de3c8f6b99e89e0d453d3dd5b7d8c4328d7580c531c0278e0460060723b10c6767cad6c
+  languageName: node
+  linkType: hard
+
+"@turf/center@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/center@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/8b797f9a09fe8e21a6debf59f5d57b09494ac0d4d6c02bfa16425c84afbc8c222880ebe9d760d05e09b26733da2d9271214c165d71be4133331092d36bfc0bf0
+  languageName: node
+  linkType: hard
+
+"@turf/centroid@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/centroid@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/23b29a1d0d668220e975ab2fb8f0594ebd26c89a6399eef539d6d84b091611e8a09380f070957969a51a54f400b2303c23bf6a4a965909316a60f936d97fa0df
+  languageName: node
+  linkType: hard
+
+"@turf/circle@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/circle@npm:7.1.0"
+  dependencies:
+    "@turf/destination": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/7cb9e3cf0a6c717a4fbcc9ded4b0c693fd7fe96026c6bdde55c69c7cd4ccc46f8df1417772c3ef9915438d63528e1c93335aad072591f8b7ffdf8754672ce4e5
+  languageName: node
+  linkType: hard
+
+"@turf/clean-coords@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/clean-coords@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/7f6be3f91e6334fa03b8be759341d2b3d2d91f1acfa5c07432838a60f43c6d8936450e421641ce5a411d54ce4ec74bb4a952ac591996667c9fcb940497baf323
+  languageName: node
+  linkType: hard
+
+"@turf/clone@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/clone@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/18cc6fd7f285652e5ad38d432ebdf66fc7ed4b960ff732d35833a12662f1cda442a3ab27a9ac789e9fad8a82aafc917f89ef44a680d52385770af226c2ccdda3
+  languageName: node
+  linkType: hard
+
+"@turf/clusters-dbscan@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/clusters-dbscan@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    rbush: "npm:^3.0.1"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/15e792d47303d5e105ffb1a8b9a92050c62a4ad71f2d368c6ad840073029bdd20cf10eb385ff6395d6fb282080973aa2fb305a7e6e2f8a60f19e5a22e29d5554
+  languageName: node
+  linkType: hard
+
+"@turf/clusters-kmeans@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/clusters-kmeans@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    skmeans: "npm:0.9.7"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/dcd18fd42cace34890f32984e01ab7d1e2586a58f17dda11476e6234e60c824615b5028be9e039cb63286126643ad2d0eb0a13398e2c9c502bf6f6a2516a5783
+  languageName: node
+  linkType: hard
+
+"@turf/clusters@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/clusters@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/1f747a65ca67616e5fa5b8a2b920df2b4a0512bac6cc605efef705745d24c13ee5f2e77cf8cf0525e5f531d6805452669d2a11ab984f84c58edd811fee5357dc
+  languageName: node
+  linkType: hard
+
+"@turf/collect@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/collect@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    rbush: "npm:^3.0.1"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/fc5a248caccf298f065fa1f66950b45aa5d929f6574e84c920c7a122b00a1042732688746777148e3f9c85a1e1b3db902cc3db3b3d4b0326e831b62c12445ae9
+  languageName: node
+  linkType: hard
+
+"@turf/combine@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/combine@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/a57a6bb89f8fd5f5706a380d9aac917efdd50e705ef5b006323ad68bce079ab29f0204c19bf8afb8f6e8d16771bf666ba91e5d31d99a1535c99f3ebff881ed49
+  languageName: node
+  linkType: hard
+
+"@turf/concave@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/concave@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/tin": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    topojson-client: "npm:3.x"
+    topojson-server: "npm:3.x"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/be04c2b988790c537d9719705a300f10c9f15e6faa2cd2b036b93f3b4f4f987a812a544583d40e72717d47e6f157a67ad14f0f138ff8fdbb2f0fde3f77859b13
+  languageName: node
+  linkType: hard
+
+"@turf/convex@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/convex@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    concaveman: "npm:^1.2.1"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/8b41b0781c2ebc63f777761c42ec04377804548a673dc8e780de39e1308df3ab9e3353fa8a3ae35899c083e442c4cc44f2b61a63b3d037422bd455ddc48b1838
+  languageName: node
+  linkType: hard
+
+"@turf/destination@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/destination@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/88c11061bf5e12b5bb8fe3ea5bdf7d241ade0dfc8604d8715571ab7da89552940d4fd3a95852d2cce2942ed8a20e745be071330d8ad7c502b5632255a2a4a119
+  languageName: node
+  linkType: hard
+
+"@turf/difference@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/difference@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    polygon-clipping: "npm:^0.15.3"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/e4927996b2e45d111ad727b883993a10712590b792d51a01688de3b4e476bf0ec628886fbb2d0476a490f7b2464e6ef9c316158884dd4f99484440bc5028539a
+  languageName: node
+  linkType: hard
+
+"@turf/dissolve@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/dissolve@npm:7.1.0"
+  dependencies:
+    "@turf/flatten": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    polygon-clipping: "npm:^0.15.3"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/cbb54e0e1023c31f212a11e09719974063cd4cf3d74aaa149e41a37fafb5d4914e7725d5ec1a1b0f5e91c828c651b2ce096ab27851420885d43b995772c3c337
+  languageName: node
+  linkType: hard
+
+"@turf/distance-weight@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/distance-weight@npm:7.1.0"
+  dependencies:
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/45c48456f353b1671b323687d1c419cad306c7b4c11d80f350c0f217a79d887f637ec1bee27719a678dde8feade61c483bee5d06498e2b8131744b9ed00397ed
+  languageName: node
+  linkType: hard
+
+"@turf/distance@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/distance@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/3eb2ad0eb8a3a754e732fc6cb85aaef7df35d13edc063248bb9313ae267c7d53bc0eef3a5ce536cf7283bf76c49523289889ae1651824e1030ea532dd49310ca
+  languageName: node
+  linkType: hard
+
+"@turf/ellipse@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/ellipse@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/rhumb-destination": "npm:^7.1.0"
+    "@turf/transform-rotate": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/8230425aea1ed1b9f1b55bb12356498c8c58bf4fe294dcecb4a74658fefab5bcf3a7829864810d1b11d6e58599f174ac14bc5ca28ae43099f72c16994bf0dbc9
+  languageName: node
+  linkType: hard
+
+"@turf/envelope@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/envelope@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/bbox-polygon": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/394e528175f69bc636d8a953f29b923d81e0fa79dd7f714955f70825824de83b84e485c7cd264b741802a1ea2e60aee585e3a89a9142472182363852d30c7660
+  languageName: node
+  linkType: hard
+
+"@turf/explode@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/explode@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/ddaa4c87bea2f7e2f79ed7201864473cd287d5396be8d50932bafe919207375a95e23e3748aa05638fe3b39f3ac56f2bf5384b8ab3ab5853f63bc465102dc8be
+  languageName: node
+  linkType: hard
+
+"@turf/flatten@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/flatten@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/d95d001b03b415923972d8cd3248a2c4846dceb2bb544609dfd19796a4cb97e8828b1a6f07d3ef7b590751ca1f337d66529c294e37e3626e6413f01e9045283c
+  languageName: node
+  linkType: hard
+
+"@turf/flip@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/flip@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/f5d8f0b4fbf72b6b7066ee1559e275d41eb14f3343d1dea9cd215f59523934d6c51757e18dd46ead78f7d1ec2cb1a3e63e85c6c7807cee40d4345ab21c74e402
+  languageName: node
+  linkType: hard
+
+"@turf/geojson-rbush@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/geojson-rbush@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    rbush: "npm:^3.0.1"
+  checksum: 10c0/dda4c535ba799cdada7d01d1dbf0c5786b1d60464bfb35d1e5ee4c1ae2f068210ca32e1c71e7c1a6f1e4f98c1ca35bc5e4dbc2dbc526644f05b6c9779ddd66b7
+  languageName: node
+  linkType: hard
+
+"@turf/great-circle@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/great-circle@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+  checksum: 10c0/4f72b21395de81f73a575892b3e4f74824a3dead6a5b49d48c97d2463722b3f1d36302aeb42461de42985b28e51d64e2271062b2fa8c301d364cea29b3c33f67
+  languageName: node
+  linkType: hard
+
+"@turf/helpers@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/helpers@npm:7.1.0"
+  dependencies:
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/0b07c01584d8bee977edec8752109b4f79ab5b149e55a7dbe051e412e150c0a96f2464c9647676a092b7ab4429271eee4a31400ea45e9b55095ae53ad22f43d6
+  languageName: node
+  linkType: hard
+
+"@turf/hex-grid@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/hex-grid@npm:7.1.0"
+  dependencies:
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/intersect": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/b73afe9cedc7a3ddf1940ff324ef2e1bf6e1be16a4f1b3921162afe9856358eb5a3c8dc0537afa5959f77e2e581bb78dd2cb50464795161493badfacaccdb7f1
+  languageName: node
+  linkType: hard
+
+"@turf/interpolate@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/interpolate@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/hex-grid": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/point-grid": "npm:^7.1.0"
+    "@turf/square-grid": "npm:^7.1.0"
+    "@turf/triangle-grid": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+  checksum: 10c0/2f991a467d148c99ea4959bff83961d6eb1c13d0297d199816c280959d84d2c14148c6fbd466d907b73536d134f3c4d7d3f51ea50851841b1ef03cac2c1b2660
+  languageName: node
+  linkType: hard
+
+"@turf/intersect@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/intersect@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    polygon-clipping: "npm:^0.15.3"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/de283d539e1ecf285a6b656019d4779915f25104ba00fa5013092cf7f572dec9b431d28577baa5290d52c92904194291c17c653f7572e9dc0c2cdae0e837a670
+  languageName: node
+  linkType: hard
+
+"@turf/invariant@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/invariant@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/63a163ee7babf539af64bd204808979ce45e0d0bf772b3f28cda9fa99ab9c54150ea90d3203ae25cdda1a78eb206faf89db5847dc58ebc0eae8df0dab55822b8
+  languageName: node
+  linkType: hard
+
+"@turf/isobands@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/isobands@npm:7.1.0"
+  dependencies:
+    "@turf/area": "npm:^7.1.0"
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/explode": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    marchingsquares: "npm:^1.3.3"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/48e6ac8187b06a5c9c114a9fa891c1a3571db3ac7b63a529d2805214d932a93bf2a37a21ced7906b66b668a302d7080fe91f3a39197255e565d798dc87be48a5
+  languageName: node
+  linkType: hard
+
+"@turf/isolines@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/isolines@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    marchingsquares: "npm:^1.3.3"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/404fa732a9600a91397eb57e6a8171bf1d31dc21183c406757668623d019e5e84793d616622503dcae5377c105b00453eead624f024a345acea70629e3b6d164
+  languageName: node
+  linkType: hard
+
+"@turf/jsts@npm:^2.7.1":
+  version: 2.7.1
+  resolution: "@turf/jsts@npm:2.7.1"
+  dependencies:
+    jsts: "npm:2.7.1"
+  checksum: 10c0/d358d7336ea74779d1f4cab025ac0c8a7ed14d9575c0b430b1691570fec05eddef4051f157fe3bf57aebb9e87447dacf780f9a4bb09c10ef44cef457fc74aed0
+  languageName: node
+  linkType: hard
+
+"@turf/kinks@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/kinks@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/1f6ed9d929fc9c966d0b5d53f8079f51b8c8e2ba384d2e81c9b04430abeb4bd92865e8644e2d18460072020c9e8de594c5242b5bc8d577b46318e51e1dfff2d7
+  languageName: node
+  linkType: hard
+
+"@turf/length@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/length@npm:7.1.0"
+  dependencies:
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/62f7c20142a98e9904303b699ecb0334968b08a63aa4d3f91335807a630efad276263a34c4ba4c3be5ccc232e9b69cf3a4f980374cf92d19bddbbc6f61691403
+  languageName: node
+  linkType: hard
+
+"@turf/line-arc@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-arc@npm:7.1.0"
+  dependencies:
+    "@turf/circle": "npm:^7.1.0"
+    "@turf/destination": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/927a718983e194a9c59264cdf69ad75825324ae05b1b2a1157620c547dd71762a23ca90708a63375550ba526288f31f7a02ccd70cb0da49372bbe9f82fb84903
+  languageName: node
+  linkType: hard
+
+"@turf/line-chunk@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-chunk@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/length": "npm:^7.1.0"
+    "@turf/line-slice-along": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+  checksum: 10c0/bce8d4d1b2375eda7e3e7924b350c7a80b6b9f875af8604641904239ad31748dbd619dd858214d2ec36ec21543ef71cae86da87553f55fef183ecfe79b242ddb
+  languageName: node
+  linkType: hard
+
+"@turf/line-intersect@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-intersect@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    sweepline-intersections: "npm:^1.5.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/540871a2b4ba3ecf444d2150053d91f328f851d1eca12a46c51681136ee090020b18ba5f355e4d8cfc81b1b53bd14f2dbfa808203882331a9bfda9ce7504e7c0
+  languageName: node
+  linkType: hard
+
+"@turf/line-offset@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-offset@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+  checksum: 10c0/9c4c4d2b95da04d2474eafef49861c8b421e4a1cf259610255fe811921f42d2bf50a666417d16297188a09780cddfd51503ecb4668ba19c736094f0afc1cccf5
+  languageName: node
+  linkType: hard
+
+"@turf/line-overlap@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-overlap@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-point-on-line": "npm:^7.1.0"
+    "@turf/geojson-rbush": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/line-segment": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/nearest-point-on-line": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    fast-deep-equal: "npm:^3.1.3"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/d8b4bf45d01cd4a400cfe8765eda1ac037e88fdedfa857a485b8f9ac2a63970ca33ab1080e3a2c5fff23d1da90448c6672a03b3b9c09966709e3143d3c964c0a
+  languageName: node
+  linkType: hard
+
+"@turf/line-segment@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-segment@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/5f670adebb3c370ec9f3d7b594abb8b6348586b563c84c2dd12665ff9c36180b4e75eb45e7c6b9d3acaf27096ef0706b4e7d3d6e11299db6a0e96aac6851a905
+  languageName: node
+  linkType: hard
+
+"@turf/line-slice-along@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-slice-along@npm:7.1.0"
+  dependencies:
+    "@turf/bearing": "npm:^7.1.0"
+    "@turf/destination": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+  checksum: 10c0/944435521dcd928679fc98898f852c13c605017865a6f930ad439e597198ec3c9b9da06072946160f70c3b437f52040652e479b4a36cba4c7875eb72c66fe8fb
+  languageName: node
+  linkType: hard
+
+"@turf/line-slice@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-slice@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/nearest-point-on-line": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+  checksum: 10c0/df904edc776d66ce5df8c3047cb58fb380c0ebbedd286afe446af087a537f7feaaf290a680d5905f68750d93056edd978c326a9b212086673de3a50cc7378f57
+  languageName: node
+  linkType: hard
+
+"@turf/line-split@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-split@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/geojson-rbush": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/line-intersect": "npm:^7.1.0"
+    "@turf/line-segment": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/nearest-point-on-line": "npm:^7.1.0"
+    "@turf/square": "npm:^7.1.0"
+    "@turf/truncate": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+  checksum: 10c0/2fc435d3f029cecd2384e2e629e1375b84d85e5881d0a2b1caa9a652825aa643b9daee35bfccdc5c406e3a6b1a124948f91bc042ceab3bb46cb81a1df2f2b1d3
+  languageName: node
+  linkType: hard
+
+"@turf/line-to-polygon@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/line-to-polygon@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/601c9878937ed117f781b7a2e210c35f3d30d304722c044fa7fb2b684fcf384ac01fa4c9342054fef6c444ba2e05ed3c540e9f78f6a8252081100d30da4edc74
+  languageName: node
+  linkType: hard
+
+"@turf/mask@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/mask@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    polygon-clipping: "npm:^0.15.3"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/f6cbd696cc14ac9be8abb8e5667e2fd81beeb76e7481c193be58d7d1722413f08d28e1d9dfae2675b94aac2005668e4e8b54d6a9b0fcbdb7b6f47870886bacc3
+  languageName: node
+  linkType: hard
+
+"@turf/meta@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/meta@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+  checksum: 10c0/c7aa77ddb28ef5068b031c1b422d2d5dc1df51975f727be42e2d8d500a026a2e667242d6aa06453f757cbd5ead2db0ba6b9a5d2fcf5ab496574cd4c0ae4fe325
+  languageName: node
+  linkType: hard
+
+"@turf/midpoint@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/midpoint@npm:7.1.0"
+  dependencies:
+    "@turf/bearing": "npm:^7.1.0"
+    "@turf/destination": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/eef40fe9d95cdbb6e9e387296f49abb78d97ca44ee6b6e72c46ad79f76ffb613d6aeb8235f80fa828b31f1967033189b0d9fc066e9ffeef2e185b7f56069a4c4
+  languageName: node
+  linkType: hard
+
+"@turf/moran-index@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/moran-index@npm:7.1.0"
+  dependencies:
+    "@turf/distance-weight": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/7ce8123678547cad6adb1ee01986849de005b60d14066f39ef95e3014cf11727d135e8710d7b9bd39c1291620b9fa625154a486b65b8159b5a5ccccf14d8b6c7
+  languageName: node
+  linkType: hard
+
+"@turf/nearest-neighbor-analysis@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/nearest-neighbor-analysis@npm:7.1.0"
+  dependencies:
+    "@turf/area": "npm:^7.1.0"
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/bbox-polygon": "npm:^7.1.0"
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/nearest-point": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/461e0f62aeed85bcc713110eb3d38fe862b86a66b7edf5d18391c49d2673bd456b8b6c92841f1a7a929baf9aa1f8e43d280c805068c2dec4366874eb49392b9e
+  languageName: node
+  linkType: hard
+
+"@turf/nearest-point-on-line@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/nearest-point-on-line@npm:7.1.0"
+  dependencies:
+    "@turf/bearing": "npm:^7.1.0"
+    "@turf/destination": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/line-intersect": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/6a9bb7fde7cc4d770ad6555eb3235cb70283b33698fca97c0b5683f3f612c71e4fa355aeeb14283f9cb0c88a73640d90691e3d8c2af0619ce97f801b6eb7208b
+  languageName: node
+  linkType: hard
+
+"@turf/nearest-point-to-line@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/nearest-point-to-line@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/point-to-line-distance": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/e7f5fa69605ab536f63379d8a272655f6024feb8f1b837f4e9ab7e0942b8485471b6320ceeb9e5bed357306c89eb5fca395a1e9d9813ec5a10878ac470f391c5
+  languageName: node
+  linkType: hard
+
+"@turf/nearest-point@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/nearest-point@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/6d823ae662d73aa6ae0b4bb05cf320052ebdcc4bc754a7206e67612a40a08f282076b1f9754a7ac5e2b4d427b3ff6c6808a9dce3968fad70d618664c6552a275
+  languageName: node
+  linkType: hard
+
+"@turf/planepoint@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/planepoint@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/19fd9f1a34c2ed709d605f52850612e2c51cbeb39a142e445924b67cbdd0b0d9bd8e85e5cc723abd140791d79cd54bda93fc74222f2f60aef71083e0ef73344c
+  languageName: node
+  linkType: hard
+
+"@turf/point-grid@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/point-grid@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-within": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/817eb8428dfbb3ab0a337d62bfc9149548daa08441921a7b81f0f5c176c32be00afdcc84e065a5d3c75aef4c3e15a4ae59b3426c5c44d5d232a8280d433210a7
+  languageName: node
+  linkType: hard
+
+"@turf/point-on-feature@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/point-on-feature@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/center": "npm:^7.1.0"
+    "@turf/explode": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/nearest-point": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/f24cbce0e6e518643a164bc48bec18482e55f6b3dc2b1c76bd954e957dfb932ad6ef45f40443e52b4df8f0ffbf65cd3f6ec343176f2567c5135b45525789dd2c
+  languageName: node
+  linkType: hard
+
+"@turf/point-to-line-distance@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/point-to-line-distance@npm:7.1.0"
+  dependencies:
+    "@turf/bearing": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/projection": "npm:^7.1.0"
+    "@turf/rhumb-bearing": "npm:^7.1.0"
+    "@turf/rhumb-distance": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/074042dd11caedddb354db95e7fe98f1995c76b087d1930d5dd93e627f428dcc482db484834eda49eecdffe2bf9cb4ac7860d9d13fed2d9a887e589114f129c4
+  languageName: node
+  linkType: hard
+
+"@turf/points-within-polygon@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/points-within-polygon@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/e4db2e707c3bd2a69ff121b358d0720d14eb9ce757061e0102361e34effb4b89fa0f146ad0eba6cd8584b9eb684089230296776d0d4eb3250581a361a863f608
+  languageName: node
+  linkType: hard
+
+"@turf/polygon-smooth@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/polygon-smooth@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/07e4bcde1b3ff1edff9dacc8468e08ca8dc207b983cf356638e06909a0ac834ee0a1e1f78ac4add5ef2c7e4ae2475f449331173c7b32a9af9dc06d69b45a2e8d
+  languageName: node
+  linkType: hard
+
+"@turf/polygon-tangents@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/polygon-tangents@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/boolean-within": "npm:^7.1.0"
+    "@turf/explode": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/nearest-point": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/4210457dc4f79ddca0e3e6cbcbb6948a1948019193811bc9ec743b777c9aed9a8209f8d72f3821570546b6697511d0b5438946ab52525bd142b91a49992713d1
+  languageName: node
+  linkType: hard
+
+"@turf/polygon-to-line@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/polygon-to-line@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/84bc472c58722c98e887b52f2a5071c80405dded721e0be4ff43fed104e6c09d2d3f6e48296ae92b0c60ed433c34360e588f066ea4d16de866bdce50000228ef
+  languageName: node
+  linkType: hard
+
+"@turf/polygonize@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/polygonize@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/envelope": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/5e8ce2aa9c993e9566d6f30752b15f60304bbb5693f2cccfbff0f347650e24c7a0d0874405449d36ec64c4cab0e992658a8f7055c2e5a529265c26627d2a4427
+  languageName: node
+  linkType: hard
+
+"@turf/projection@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/projection@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/269f64e4b61cefe3f5f95911d02fd50956315b478d2f891c705e09b7e5af76104a092794114f41b9b9b2543b2dcdab366360950625854a2613dab2caa88e8673
+  languageName: node
+  linkType: hard
+
+"@turf/quadrat-analysis@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/quadrat-analysis@npm:7.1.0"
+  dependencies:
+    "@turf/area": "npm:^7.1.0"
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/bbox-polygon": "npm:^7.1.0"
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/point-grid": "npm:^7.1.0"
+    "@turf/random": "npm:^7.1.0"
+    "@turf/square-grid": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/d1be337015754082e99205e71dba9c60c4f293a1b3d8f3c8b22d2a40420b3548e9b4e00b1e40fd6b9a6533fa3f63fab11a44e290a019a61ea8c6a5064b390da0
+  languageName: node
+  linkType: hard
+
+"@turf/random@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/random@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/4b476d1308a434114f68f14a0331cb9ac75a33a5ed8dec01bbe408261e1acdc11a4e139b620d82a672f452b5ce47c0a33072f11f17d04b4315e9ce867b3c78dd
+  languageName: node
+  linkType: hard
+
+"@turf/rectangle-grid@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/rectangle-grid@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-intersects": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/2201690d71c3fd18376744667fa1d0b448ab2e9bffb61103c6e7b029a0c6dc50a051548b2a9e50755b72e5bddf6de7d8197da14047dd11de15fcd0b922aa952b
+  languageName: node
+  linkType: hard
+
+"@turf/rewind@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/rewind@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-clockwise": "npm:^7.1.0"
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/945063a52ea59b709fba4ad325dd0bd08c595ef4738afcd18238df12317f36c8ebcecf79c4f40dcb7bac10e844f44239fcba8d5111d653efaa81b49822fe34b8
+  languageName: node
+  linkType: hard
+
+"@turf/rhumb-bearing@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/rhumb-bearing@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/8dddfdbad6972e6381aafc2d2a991dcf0bf6745528b6cb10d9f3b0c5048b6406ff3542ab31b65e8e630bb272fb6d42f70b1b16ee031428f27ac2cd6d3b21b665
+  languageName: node
+  linkType: hard
+
+"@turf/rhumb-destination@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/rhumb-destination@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/acbdf4b0372ba4fc9987cb4dedb2ddda4f9beaca255da6e6338eba94e9b818dcc9a04e6964ee10ff8777235a9510e8f1a6f231873dcd93bb45c862638d4db789
+  languageName: node
+  linkType: hard
+
+"@turf/rhumb-distance@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/rhumb-distance@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/fb99cca3e96a04e069c17f314127a6dadbb0070082e046677027181f1238e335717d4273773c6def6a6d88627e21cd16c5b60ef67a4c8f395232cde91ddd2fe1
+  languageName: node
+  linkType: hard
+
+"@turf/sample@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/sample@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/ecb83f0a37b3473ef661225c441471d26085055d691cc6ece39c251eff8aada01746fb60f7a047e8fa0fb753f02a5a6a4c7eacab44f6f053f7c36d96a0a2752a
+  languageName: node
+  linkType: hard
+
+"@turf/sector@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/sector@npm:7.1.0"
+  dependencies:
+    "@turf/circle": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/line-arc": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/b6218abe9f7ca450422e0c82b058035bade1f393e0e67fcbe20adeb30a5bf0f242cfa205eabac218f1005466c7db7a63ca91897aaea1a60c267ab40d2b15e2da
+  languageName: node
+  linkType: hard
+
+"@turf/shortest-path@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/shortest-path@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/bbox-polygon": "npm:^7.1.0"
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/clean-coords": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/transform-scale": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/ce07f20d37903a0f871bbefac09852d413fff17a4b4a85ba2cef92e43028e4a47e1667ec61a453de1ea62de05f6538d50b129da0c4c58d9f273c7ec9510d2c17
+  languageName: node
+  linkType: hard
+
+"@turf/simplify@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/simplify@npm:7.1.0"
+  dependencies:
+    "@turf/clean-coords": "npm:^7.1.0"
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/b4462500e80622e10068de277b78a3fca927f786f5a229c3b736c87f611e52445750b71e737ae34e6a23651bfe61010a12f3a0bb630654710ec471ece1296df8
+  languageName: node
+  linkType: hard
+
+"@turf/square-grid@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/square-grid@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/rectangle-grid": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/9bd78d4fe4f0c7c262a4fd5ae70fc813a4565b3b3cb8bbbd8b951deb654034d1667ea5a54e251456c239164aa9ef625e70fe39d25b27b0e85de379863ffb336e
+  languageName: node
+  linkType: hard
+
+"@turf/square@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/square@npm:7.1.0"
+  dependencies:
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/e4e7573c5a5e4b09458c6e365e4ba8d561fec5b008a8913d3902f60976e00ce57fe9ba7a8ab0789e56438aea868828a64742cb1ceb8ef100841f7398bc92a358
+  languageName: node
+  linkType: hard
+
+"@turf/standard-deviational-ellipse@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/standard-deviational-ellipse@npm:7.1.0"
+  dependencies:
+    "@turf/center-mean": "npm:^7.1.0"
+    "@turf/ellipse": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/points-within-polygon": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/9c7bed59c5b94a0577e914992356c04efad6ad80eef8a35ba3fd73561025db17d3afa49d1b833d403093f589428327d2c1a01d94be98f4b06e8a3a3f0535e34b
+  languageName: node
+  linkType: hard
+
+"@turf/tag@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/tag@npm:7.1.0"
+  dependencies:
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/8ee077e9af4299bf52211650e9364c9c9822e64646505159a4b97bda42a140154494123ea296451f2241ca4d00c66dc9bb852aaad990a0cbc28fd7263eee1213
+  languageName: node
+  linkType: hard
+
+"@turf/tesselate@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/tesselate@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    earcut: "npm:^2.2.4"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/7045d0d359298d06928e3a107dfd3704d990d188b922b5f329dd4bbc31e0e2148f214f1776520eef64788dc424fd6ec84783f0d92d90c73f5b3ac696e9f10c2d
+  languageName: node
+  linkType: hard
+
+"@turf/tin@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/tin@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/15922112c2baed9eb8563cc548233bf16ef82e97b2b89ec54131d3f24fc5ebb59dcf59a94035ca2a8166366e4659da071e23f7d1d1740f81a222d03c287bd694
+  languageName: node
+  linkType: hard
+
+"@turf/transform-rotate@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/transform-rotate@npm:7.1.0"
+  dependencies:
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/rhumb-bearing": "npm:^7.1.0"
+    "@turf/rhumb-destination": "npm:^7.1.0"
+    "@turf/rhumb-distance": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/5aaada26a9a63284e60a20cbed5b1f19667104f6690d4ecb8e618c96186f743bb9954f0bb1447b355e07f869342bb5709cc4922b9f857ce32c85a33cf63fe572
+  languageName: node
+  linkType: hard
+
+"@turf/transform-scale@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/transform-scale@npm:7.1.0"
+  dependencies:
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/center": "npm:^7.1.0"
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/rhumb-bearing": "npm:^7.1.0"
+    "@turf/rhumb-destination": "npm:^7.1.0"
+    "@turf/rhumb-distance": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/d7b34e40f9e32f50e4b8fdabcc626837b763a1c374fe4dd709f8c8d3f689cf9b634c6bbdf0b31a00d88f902e4c2a814a2cbaef2e0e93e8747fa8c24b5f78fe34
+  languageName: node
+  linkType: hard
+
+"@turf/transform-translate@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/transform-translate@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/rhumb-destination": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/3776f9ddfcab819799c81a8ea3163c0f4d7a245df4cd0622b259ca8d270397c90d427b76b15087f25aa3a5af59aea8d0db7f1d99a1ab9052ac91d61b386cdf7c
+  languageName: node
+  linkType: hard
+
+"@turf/triangle-grid@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/triangle-grid@npm:7.1.0"
+  dependencies:
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/intersect": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/ad1221b84fdc0f40b5759b40f044de4acca23dec185ea451568f37a281ef532309ff9dd02694212aabd1fa1020fb8e6fd644bb6b8d0de3a8d7f620488020bc36
+  languageName: node
+  linkType: hard
+
+"@turf/truncate@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/truncate@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/c831fdd257ae4f7ba8eb0a332a4571cc5df400919fd18669fa2a6fd69a9acbebab4924e4ae01bb8d6edf41b2a4e5d74f3f754ee393a6d3b3408728bcb22497c7
+  languageName: node
+  linkType: hard
+
+"@turf/turf@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/turf@npm:7.1.0"
+  dependencies:
+    "@turf/along": "npm:^7.1.0"
+    "@turf/angle": "npm:^7.1.0"
+    "@turf/area": "npm:^7.1.0"
+    "@turf/bbox": "npm:^7.1.0"
+    "@turf/bbox-clip": "npm:^7.1.0"
+    "@turf/bbox-polygon": "npm:^7.1.0"
+    "@turf/bearing": "npm:^7.1.0"
+    "@turf/bezier-spline": "npm:^7.1.0"
+    "@turf/boolean-clockwise": "npm:^7.1.0"
+    "@turf/boolean-concave": "npm:^7.1.0"
+    "@turf/boolean-contains": "npm:^7.1.0"
+    "@turf/boolean-crosses": "npm:^7.1.0"
+    "@turf/boolean-disjoint": "npm:^7.1.0"
+    "@turf/boolean-equal": "npm:^7.1.0"
+    "@turf/boolean-intersects": "npm:^7.1.0"
+    "@turf/boolean-overlap": "npm:^7.1.0"
+    "@turf/boolean-parallel": "npm:^7.1.0"
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/boolean-point-on-line": "npm:^7.1.0"
+    "@turf/boolean-touches": "npm:^7.1.0"
+    "@turf/boolean-valid": "npm:^7.1.0"
+    "@turf/boolean-within": "npm:^7.1.0"
+    "@turf/buffer": "npm:^7.1.0"
+    "@turf/center": "npm:^7.1.0"
+    "@turf/center-mean": "npm:^7.1.0"
+    "@turf/center-median": "npm:^7.1.0"
+    "@turf/center-of-mass": "npm:^7.1.0"
+    "@turf/centroid": "npm:^7.1.0"
+    "@turf/circle": "npm:^7.1.0"
+    "@turf/clean-coords": "npm:^7.1.0"
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/clusters": "npm:^7.1.0"
+    "@turf/clusters-dbscan": "npm:^7.1.0"
+    "@turf/clusters-kmeans": "npm:^7.1.0"
+    "@turf/collect": "npm:^7.1.0"
+    "@turf/combine": "npm:^7.1.0"
+    "@turf/concave": "npm:^7.1.0"
+    "@turf/convex": "npm:^7.1.0"
+    "@turf/destination": "npm:^7.1.0"
+    "@turf/difference": "npm:^7.1.0"
+    "@turf/dissolve": "npm:^7.1.0"
+    "@turf/distance": "npm:^7.1.0"
+    "@turf/distance-weight": "npm:^7.1.0"
+    "@turf/ellipse": "npm:^7.1.0"
+    "@turf/envelope": "npm:^7.1.0"
+    "@turf/explode": "npm:^7.1.0"
+    "@turf/flatten": "npm:^7.1.0"
+    "@turf/flip": "npm:^7.1.0"
+    "@turf/geojson-rbush": "npm:^7.1.0"
+    "@turf/great-circle": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/hex-grid": "npm:^7.1.0"
+    "@turf/interpolate": "npm:^7.1.0"
+    "@turf/intersect": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@turf/isobands": "npm:^7.1.0"
+    "@turf/isolines": "npm:^7.1.0"
+    "@turf/kinks": "npm:^7.1.0"
+    "@turf/length": "npm:^7.1.0"
+    "@turf/line-arc": "npm:^7.1.0"
+    "@turf/line-chunk": "npm:^7.1.0"
+    "@turf/line-intersect": "npm:^7.1.0"
+    "@turf/line-offset": "npm:^7.1.0"
+    "@turf/line-overlap": "npm:^7.1.0"
+    "@turf/line-segment": "npm:^7.1.0"
+    "@turf/line-slice": "npm:^7.1.0"
+    "@turf/line-slice-along": "npm:^7.1.0"
+    "@turf/line-split": "npm:^7.1.0"
+    "@turf/line-to-polygon": "npm:^7.1.0"
+    "@turf/mask": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@turf/midpoint": "npm:^7.1.0"
+    "@turf/moran-index": "npm:^7.1.0"
+    "@turf/nearest-neighbor-analysis": "npm:^7.1.0"
+    "@turf/nearest-point": "npm:^7.1.0"
+    "@turf/nearest-point-on-line": "npm:^7.1.0"
+    "@turf/nearest-point-to-line": "npm:^7.1.0"
+    "@turf/planepoint": "npm:^7.1.0"
+    "@turf/point-grid": "npm:^7.1.0"
+    "@turf/point-on-feature": "npm:^7.1.0"
+    "@turf/point-to-line-distance": "npm:^7.1.0"
+    "@turf/points-within-polygon": "npm:^7.1.0"
+    "@turf/polygon-smooth": "npm:^7.1.0"
+    "@turf/polygon-tangents": "npm:^7.1.0"
+    "@turf/polygon-to-line": "npm:^7.1.0"
+    "@turf/polygonize": "npm:^7.1.0"
+    "@turf/projection": "npm:^7.1.0"
+    "@turf/quadrat-analysis": "npm:^7.1.0"
+    "@turf/random": "npm:^7.1.0"
+    "@turf/rectangle-grid": "npm:^7.1.0"
+    "@turf/rewind": "npm:^7.1.0"
+    "@turf/rhumb-bearing": "npm:^7.1.0"
+    "@turf/rhumb-destination": "npm:^7.1.0"
+    "@turf/rhumb-distance": "npm:^7.1.0"
+    "@turf/sample": "npm:^7.1.0"
+    "@turf/sector": "npm:^7.1.0"
+    "@turf/shortest-path": "npm:^7.1.0"
+    "@turf/simplify": "npm:^7.1.0"
+    "@turf/square": "npm:^7.1.0"
+    "@turf/square-grid": "npm:^7.1.0"
+    "@turf/standard-deviational-ellipse": "npm:^7.1.0"
+    "@turf/tag": "npm:^7.1.0"
+    "@turf/tesselate": "npm:^7.1.0"
+    "@turf/tin": "npm:^7.1.0"
+    "@turf/transform-rotate": "npm:^7.1.0"
+    "@turf/transform-scale": "npm:^7.1.0"
+    "@turf/transform-translate": "npm:^7.1.0"
+    "@turf/triangle-grid": "npm:^7.1.0"
+    "@turf/truncate": "npm:^7.1.0"
+    "@turf/union": "npm:^7.1.0"
+    "@turf/unkink-polygon": "npm:^7.1.0"
+    "@turf/voronoi": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/901151e22342e308caae93958a60c4cd441dfa37b98b462e0c763e78352f1ef0223b33d797739fa560563e46b337d4ee96868c93cf3aaad78e555c49b9a183bf
+  languageName: node
+  linkType: hard
+
+"@turf/union@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/union@npm:7.1.0"
+  dependencies:
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    polygon-clipping: "npm:^0.15.3"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/1c60c87a83ab0cb45b952b74e761eedd52f2f148bda4e96ccee7c5c63038ac6d99142d5a5a772e1a49fe66ce8a1344537f4e192991e1fd3214cb406cd7cdd398
+  languageName: node
+  linkType: hard
+
+"@turf/unkink-polygon@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/unkink-polygon@npm:7.1.0"
+  dependencies:
+    "@turf/area": "npm:^7.1.0"
+    "@turf/boolean-point-in-polygon": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/meta": "npm:^7.1.0"
+    "@types/geojson": "npm:^7946.0.10"
+    rbush: "npm:^3.0.1"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/136861e458b69008d331c5453950ee260e493bd894ddd4849959ebc4d8e8d15594fe2b9b212ee7a70caa0dece0b2dce2bece0d8dbabcbe465393a4ddfc2f799a
+  languageName: node
+  linkType: hard
+
+"@turf/voronoi@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@turf/voronoi@npm:7.1.0"
+  dependencies:
+    "@turf/clone": "npm:^7.1.0"
+    "@turf/helpers": "npm:^7.1.0"
+    "@turf/invariant": "npm:^7.1.0"
+    "@types/d3-voronoi": "npm:^1.1.12"
+    "@types/geojson": "npm:^7946.0.10"
+    d3-voronoi: "npm:1.1.2"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/db50d07ffc05296d61e9d8455c384b7584a78e780733bb5995ad692bd42e5d50600168f63e728c9acc14ae611847c11e66169070450e0d4c173ec06493eb12d4
+  languageName: node
+  linkType: hard
+
 "@types/aria-query@npm:^5.0.1":
   version: 5.0.4
   resolution: "@types/aria-query@npm:5.0.4"
@@ -3187,6 +4950,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/d3-voronoi@npm:^1.1.12":
+  version: 1.1.12
+  resolution: "@types/d3-voronoi@npm:1.1.12"
+  checksum: 10c0/9cb1d88400ba442edd27b93a0e80bf6c4e88ab1e6ced4a9761b232e26f565c42753f4aa25ca0f9f773f1d13dae1ed10b3282b48b3fe078f3a7a25706f3a482e1
+  languageName: node
+  linkType: hard
+
 "@types/doctrine@npm:^0.0.9":
   version: 0.0.9
   resolution: "@types/doctrine@npm:0.0.9"
@@ -3234,6 +5004,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/geojson-vt@npm:3.2.5":
+  version: 3.2.5
+  resolution: "@types/geojson-vt@npm:3.2.5"
+  dependencies:
+    "@types/geojson": "npm:*"
+  checksum: 10c0/bfd9157c7d0441dc4b420e0c6df65b4e4b29f3d33cc77667b3dc5acd68ba6326bfbfd867642645357382e3374ceebfb9c5d15f2b2c0ee3e3c492e0b5a2bb71be
+  languageName: node
+  linkType: hard
+
+"@types/geojson@npm:*, @types/geojson@npm:^7946.0.10, @types/geojson@npm:^7946.0.14":
+  version: 7946.0.14
+  resolution: "@types/geojson@npm:7946.0.14"
+  checksum: 10c0/54f3997708fa2970c03eeb31f7e4540a0eb6387b15e9f8a60513a1409c23cafec8d618525404573468b59c6fecbfd053724b3327f7fca416729c26271d799f55
+  languageName: node
+  linkType: hard
+
 "@types/glob@npm:^7.1.3":
   version: 7.2.0
   resolution: "@types/glob@npm:7.2.0"
@@ -3274,6 +5060,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mapbox-gl@npm:>=1.0.0":
+  version: 3.4.1
+  resolution: "@types/mapbox-gl@npm:3.4.1"
+  dependencies:
+    "@types/geojson": "npm:*"
+  checksum: 10c0/475f48063a39cc791a0efa099f4a62b84df56a52e1d111e32d11930fcee8e281f20b157f4069ff0ff4d5e13889ce9b452ca4a57e5c27c6d70a32fb3f5a184e72
+  languageName: node
+  linkType: hard
+
+"@types/mapbox__point-geometry@npm:*, @types/mapbox__point-geometry@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "@types/mapbox__point-geometry@npm:0.1.4"
+  checksum: 10c0/670191664ea0a6ccb4563500fe815a9aba029ba2f0528d42f9eb560ccb44f6542ba8674e2a3f6d41bd10ad8855b4df4782b5340c980ca182ef9fe6752f2737b8
+  languageName: node
+  linkType: hard
+
+"@types/mapbox__vector-tile@npm:^1.3.4":
+  version: 1.3.4
+  resolution: "@types/mapbox__vector-tile@npm:1.3.4"
+  dependencies:
+    "@types/geojson": "npm:*"
+    "@types/mapbox__point-geometry": "npm:*"
+    "@types/pbf": "npm:*"
+  checksum: 10c0/082907ed9cf96b82327dabf3b4c3a14746a825e4a81f0abf46b50e2557f25cbda652725d8af002e5edcc344a83c85e1a4b71a2d39ef4d829c243344a85ac13a6
+  languageName: node
+  linkType: hard
+
 "@types/mdx@npm:^2.0.0":
   version: 2.0.13
   resolution: "@types/mdx@npm:2.0.13"
@@ -3294,6 +5107,13 @@ __metadata:
   dependencies:
     undici-types: "npm:~6.19.8"
   checksum: 10c0/954ec72bf29436ea62425a9563914a9c1e93f97b18194acd51d74d13998a701977547ed2985ed3a0e97211b785436d28377116e5f613bfcf3182d9bd81d784dc
+  languageName: node
+  linkType: hard
+
+"@types/pbf@npm:*, @types/pbf@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "@types/pbf@npm:3.0.5"
+  checksum: 10c0/c32348c6c81e6c31fe4a1f59983e3a9904727b809fb1e5ddec4fad49abaf93070ec26ee0c04c6516536c181c945b3c7d9e226549eaac3b2e12cb7b57f549a49c
   languageName: node
   linkType: hard
 
@@ -3357,6 +5177,15 @@ __metadata:
   version: 2.0.5
   resolution: "@types/statuses@npm:2.0.5"
   checksum: 10c0/4dacec0b29483a44be902a022a11a22b339de7a6e7b2059daa4f7add10cb6dbcc28d02d2a416fe9687e48d335906bf983065391836d4e7c847e55ddef4de8fad
+  languageName: node
+  linkType: hard
+
+"@types/supercluster@npm:^7.1.3":
+  version: 7.1.3
+  resolution: "@types/supercluster@npm:7.1.3"
+  dependencies:
+    "@types/geojson": "npm:*"
+  checksum: 10c0/0d55dad98df0990fc38a7bb64dc23dda46014187c0d7638e6f2b6717ba8931b13e5b1d394789833a2ac822014c977ef64623dffd81a0bbf39e52c53c8183741f
   languageName: node
   linkType: hard
 
@@ -3918,6 +5747,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"arr-union@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "arr-union@npm:3.1.0"
+  checksum: 10c0/7d5aa05894e54aa93c77c5726c1dd5d8e8d3afe4f77983c0aa8a14a8a5cbe8b18f0cf4ecaa4ac8c908ef5f744d2cbbdaa83fd6e96724d15fea56cfa7f5efdd51
+  languageName: node
+  linkType: hard
+
 "array-buffer-byte-length@npm:^1.0.1":
   version: 1.0.1
   resolution: "array-buffer-byte-length@npm:1.0.1"
@@ -4027,6 +5863,13 @@ __metadata:
   version: 2.0.1
   resolution: "assertion-error@npm:2.0.1"
   checksum: 10c0/bbbcb117ac6480138f8c93cf7f535614282dea9dc828f540cdece85e3c665e8f78958b96afac52f29ff883c72638e6a87d469ecc9fe5bc902df03ed24a55dba8
+  languageName: node
+  linkType: hard
+
+"assign-symbols@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "assign-symbols@npm:1.0.0"
+  checksum: 10c0/29a654b8a6da6889a190d0d0efef4b1bfb5948fa06cbc245054aef05139f889f2f7c75b989917e3fde853fc4093b88048e4de8578a73a76f113d41bfd66e5775
   languageName: node
   linkType: hard
 
@@ -4316,6 +6159,25 @@ __metadata:
     base64-js: "npm:^1.3.1"
     ieee754: "npm:^1.1.13"
   checksum: 10c0/27cac81cff434ed2876058d72e7c4789d11ff1120ef32c9de48f59eab58179b66710c488987d295ae89a228f835fc66d088652dffeb8e3ba8659f80eb091d55e
+  languageName: node
+  linkType: hard
+
+"bytewise-core@npm:^1.2.2":
+  version: 1.2.3
+  resolution: "bytewise-core@npm:1.2.3"
+  dependencies:
+    typewise-core: "npm:^1.2"
+  checksum: 10c0/210239f3048de9463b4ab02968bd0ef7b3c9b330c0329f9df1851fee0819e19fbb0eca8cc235947112dcce942ed58541283ddaefe29515c93a2b7e0820be3f2d
+  languageName: node
+  linkType: hard
+
+"bytewise@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "bytewise@npm:1.1.0"
+  dependencies:
+    bytewise-core: "npm:^1.2.2"
+    typewise: "npm:^1.0.3"
+  checksum: 10c0/bcf994a8b635390dce43b22e97201cc0e3df0089ada4e77cc0bb48ce241efd0c27ca24a9400828cdd288a69a961da0b60c05bf7381b6cb529f048ab22092cc6d
   languageName: node
   linkType: hard
 
@@ -4645,7 +6507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^2.20.0":
+"commander@npm:2, commander@npm:^2.20.0":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: 10c0/74c781a5248c2402a0a3e966a0a2bba3c054aad144f5c023364be83265e796b20565aa9feff624132ff629aa64e16999fa40a743c10c12f7c61e96a794b99288
@@ -4689,6 +6551,18 @@ __metadata:
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
   checksum: 10c0/c996b1cfdf95b6c90fee4dae37e332c8b6eb7d106430c17d538034c0ad9a1630cb194d2ab37293b1bdd4d779494beee7786d586a50bd9376fd6f7bcc2bd4c98f
+  languageName: node
+  linkType: hard
+
+"concaveman@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "concaveman@npm:1.2.1"
+  dependencies:
+    point-in-polygon: "npm:^1.1.0"
+    rbush: "npm:^3.0.1"
+    robust-predicates: "npm:^2.0.4"
+    tinyqueue: "npm:^2.0.3"
+  checksum: 10c0/7c4cc79c9a77afadf99161fc586be4b05a82bc1fe7239a3893818fb390dfcce0d5cb0876e5f3dfe721e12a1f64d8bc1c768446e281f4b5b44d70e2ca94bf29e6
   languageName: node
   linkType: hard
 
@@ -4809,6 +6683,29 @@ __metadata:
   version: 3.1.3
   resolution: "csstype@npm:3.1.3"
   checksum: 10c0/80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
+  languageName: node
+  linkType: hard
+
+"d3-array@npm:1":
+  version: 1.2.4
+  resolution: "d3-array@npm:1.2.4"
+  checksum: 10c0/7ac0ae096838e75d06350381442d84b327e3215d470f26c297851675bd25c47a633d35b04bfaa0397c529f42428d19f3f80bead24e1e866832e064cc6af24f3a
+  languageName: node
+  linkType: hard
+
+"d3-geo@npm:1.7.1":
+  version: 1.7.1
+  resolution: "d3-geo@npm:1.7.1"
+  dependencies:
+    d3-array: "npm:1"
+  checksum: 10c0/004f858aafb6d23459efc53596dc8a796d21e294e76074da8abaaf95c8796ad2f6b4825b0e9d9afa79eea87e89f851dbb4ba88a6e8f8646c4d278abd28460419
+  languageName: node
+  linkType: hard
+
+"d3-voronoi@npm:1.1.2":
+  version: 1.1.2
+  resolution: "d3-voronoi@npm:1.1.2"
+  checksum: 10c0/c2dfd76d893cdb78e4aed0f8b64a34147bc7f58a7bbf01581538f8761aefb2a6ee77e818b17c4f85c84ea81447719462f14aa7535eb25ec608d526f486744326
   languageName: node
   linkType: hard
 
@@ -5062,6 +6959,20 @@ __metadata:
   version: 16.4.5
   resolution: "dotenv@npm:16.4.5"
   checksum: 10c0/48d92870076832af0418b13acd6e5a5a3e83bb00df690d9812e94b24aff62b88ade955ac99a05501305b8dc8f1b0ee7638b18493deb6fe93d680e5220936292f
+  languageName: node
+  linkType: hard
+
+"earcut@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "earcut@npm:2.2.4"
+  checksum: 10c0/01ca51830edd2787819f904ae580087d37351f6048b4565e7add4b3da8a86b7bc19262ab2aa7fdc64129ab03af2d9cec8cccee4d230c82275f97ef285c79aafb
+  languageName: node
+  linkType: hard
+
+"earcut@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "earcut@npm:3.0.0"
+  checksum: 10c0/20f3d8492f02452648466d2ce98276c9317c4d6980fc2596b1cb119fc3ef2d034724c5721de2af191331fb43610a27995b0f1b611d3386976b770ae9af7b3bbe
   languageName: node
   linkType: hard
 
@@ -5873,6 +7784,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"extend-shallow@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "extend-shallow@npm:2.0.1"
+  dependencies:
+    is-extendable: "npm:^0.1.0"
+  checksum: 10c0/ee1cb0a18c9faddb42d791b2d64867bd6cfd0f3affb711782eb6e894dd193e2934a7f529426aac7c8ddb31ac5d38000a00aa2caf08aa3dfc3e1c8ff6ba340bd9
+  languageName: node
+  linkType: hard
+
+"extend-shallow@npm:^3.0.0":
+  version: 3.0.2
+  resolution: "extend-shallow@npm:3.0.2"
+  dependencies:
+    assign-symbols: "npm:^1.0.0"
+    is-extendable: "npm:^1.0.1"
+  checksum: 10c0/f39581b8f98e3ad94995e33214fff725b0297cf09f2725b6f624551cfb71e0764accfd0af80becc0182af5014d2a57b31b85ec999f9eb8a6c45af81752feac9a
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -6162,6 +8092,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"geojson-equality-ts@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "geojson-equality-ts@npm:1.0.2"
+  dependencies:
+    "@types/geojson": "npm:^7946.0.14"
+  checksum: 10c0/f582c6a549673f238b1eb450511e7be222ded8af039924fd21d03ab201de003a5b1769c44b35ca59406533322165520d7aea77e7e1011722259a1485edb30e24
+  languageName: node
+  linkType: hard
+
+"geojson-polygon-self-intersections@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "geojson-polygon-self-intersections@npm:1.2.1"
+  dependencies:
+    rbush: "npm:^2.0.1"
+  checksum: 10c0/5aa2e4e72efd74668df47fa9719828d73a04bbf6e6d18b55401af6f6e0bb4bb9ea799070298209d7a4554f9baf98b26a2e9c6e0f2f6dcdeb6065d80b5e6a1c93
+  languageName: node
+  linkType: hard
+
+"geojson-vt@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "geojson-vt@npm:4.0.2"
+  checksum: 10c0/f2ca14d868e46f6262f5d3862f8e38a2418ecf9bd7cd6938a67bf87f1e2f8fbf65345d95996711b07cdf8f05ef512be0e2c20f0a8179c6393c2fd41badcb0532
+  languageName: node
+  linkType: hard
+
 "get-caller-file@npm:^2.0.5":
   version: 2.0.5
   resolution: "get-caller-file@npm:2.0.5"
@@ -6205,6 +8160,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"get-stream@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "get-stream@npm:6.0.1"
+  checksum: 10c0/49825d57d3fd6964228e6200a58169464b8e8970489b3acdc24906c782fb7f01f9f56f8e6653c4a50713771d6658f7cfe051e5eb8c12e334138c9c918b296341
+  languageName: node
+  linkType: hard
+
 "get-stream@npm:^8.0.1":
   version: 8.0.1
   resolution: "get-stream@npm:8.0.1"
@@ -6223,10 +8185,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"get-value@npm:^2.0.2, get-value@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "get-value@npm:2.0.6"
+  checksum: 10c0/f069c132791b357c8fc4adfe9e2929b0a2c6e95f98ca7bc6fcbc27f8a302e552f86b4ae61ec56d9e9ac2544b93b6a39743d479866a37b43fcc104088ba74f0d9
+  languageName: node
+  linkType: hard
+
 "github-from-package@npm:0.0.0":
   version: 0.0.0
   resolution: "github-from-package@npm:0.0.0"
   checksum: 10c0/737ee3f52d0a27e26332cde85b533c21fcdc0b09fb716c3f8e522cfaa9c600d4a631dec9fcde179ec9d47cca89017b7848ed4d6ae6b6b78f936c06825b1fcc12
+  languageName: node
+  linkType: hard
+
+"gl-matrix@npm:^3.4.3":
+  version: 3.4.3
+  resolution: "gl-matrix@npm:3.4.3"
+  checksum: 10c0/c8ee6e2ce2d089b4ba4ae13ec9d4cb99bf2abe5f68f0cb08d94bbd8bafbec13aacc7230b86539ce5ca01b79226ea8c3194f971f5ca0c81838bc5e4e619dc398e
   languageName: node
   linkType: hard
 
@@ -6286,6 +8262,17 @@ __metadata:
     once: "npm:^1.3.0"
     path-is-absolute: "npm:^1.0.0"
   checksum: 10c0/65676153e2b0c9095100fe7f25a778bf45608eeb32c6048cf307f579649bcc30353277b3b898a3792602c65764e5baa4f643714dfbdfd64ea271d210c7a425fe
+  languageName: node
+  linkType: hard
+
+"global-prefix@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "global-prefix@npm:4.0.0"
+  dependencies:
+    ini: "npm:^4.1.3"
+    kind-of: "npm:^6.0.3"
+    which: "npm:^4.0.0"
+  checksum: 10c0/a757bba494f0542a34e82716450506a076e769e05993a9739aea3bf27c3f710cd5635d0f4c1c242650c0dc133bf20a8e8fc9cfd3d1d1c371717218ef561f1ac4
   languageName: node
   linkType: hard
 
@@ -6521,7 +8508,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ieee754@npm:^1.1.13":
+"ieee754@npm:^1.1.12, ieee754@npm:^1.1.13":
   version: 1.2.1
   resolution: "ieee754@npm:1.2.1"
   checksum: 10c0/b0782ef5e0935b9f12883a2e2aa37baa75da6e66ce6515c168697b42160807d9330de9a32ec1ed73149aea02e0d822e572bca6f1e22bdcbd2149e13b050b17bb
@@ -6573,6 +8560,13 @@ __metadata:
   version: 2.0.4
   resolution: "inherits@npm:2.0.4"
   checksum: 10c0/4e531f648b29039fb7426fb94075e6545faa1eb9fe83c29f0b6d9e7263aceb4289d2d4557db0d428188eeb449cc7c5e77b0a0b2c4e248ff2a65933a0dee49ef2
+  languageName: node
+  linkType: hard
+
+"ini@npm:^4.1.3":
+  version: 4.1.3
+  resolution: "ini@npm:4.1.3"
+  checksum: 10c0/0d27eff094d5f3899dd7c00d0c04ea733ca03a8eb6f9406ce15daac1a81de022cb417d6eaff7e4342451ffa663389c565ffc68d6825eaf686bf003280b945764
   languageName: node
   linkType: hard
 
@@ -6718,6 +8712,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-extendable@npm:^0.1.0, is-extendable@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "is-extendable@npm:0.1.1"
+  checksum: 10c0/dd5ca3994a28e1740d1e25192e66eed128e0b2ff161a7ea348e87ae4f616554b486854de423877a2a2c171d5f7cd6e8093b91f54533bc88a59ee1c9838c43879
+  languageName: node
+  linkType: hard
+
+"is-extendable@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "is-extendable@npm:1.0.1"
+  dependencies:
+    is-plain-object: "npm:^2.0.4"
+  checksum: 10c0/1d6678a5be1563db6ecb121331c819c38059703f0179f52aa80c242c223ee9c6b66470286636c0e63d7163e4d905c0a7d82a096e0b5eaeabb51b9f8d0af0d73f
+  languageName: node
+  linkType: hard
+
 "is-extglob@npm:^2.1.1":
   version: 2.1.1
   resolution: "is-extglob@npm:2.1.1"
@@ -6830,6 +8840,15 @@ __metadata:
   version: 1.0.1
   resolution: "is-obj@npm:1.0.1"
   checksum: 10c0/5003acba0af7aa47dfe0760e545a89bbac89af37c12092c3efadc755372cdaec034f130e7a3653a59eb3c1843cfc72ca71eaf1a6c3bafe5a0bab3611a47f9945
+  languageName: node
+  linkType: hard
+
+"is-plain-object@npm:^2.0.3, is-plain-object@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "is-plain-object@npm:2.0.4"
+  dependencies:
+    isobject: "npm:^3.0.1"
+  checksum: 10c0/f050fdd5203d9c81e8c4df1b3ff461c4bc64e8b5ca383bcdde46131361d0a678e80bcf00b5257646f6c636197629644d53bd8e2375aea633de09a82d57e942f4
   languageName: node
   linkType: hard
 
@@ -6960,6 +8979,13 @@ __metadata:
   version: 3.1.1
   resolution: "isexe@npm:3.1.1"
   checksum: 10c0/9ec257654093443eb0a528a9c8cbba9c0ca7616ccb40abd6dde7202734d96bb86e4ac0d764f0f8cd965856aacbff2f4ce23e730dc19dfb41e3b0d865ca6fdcc7
+  languageName: node
+  linkType: hard
+
+"isobject@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "isobject@npm:3.0.1"
+  checksum: 10c0/03344f5064a82f099a0cd1a8a407f4c0d20b7b8485e8e816c39f249e9416b06c322e8dec5b842b6bb8a06de0af9cb48e7bc1b5352f0fadc2f0abac033db3d4db
   languageName: node
   linkType: hard
 
@@ -7107,6 +9133,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-stringify-pretty-compact@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "json-stringify-pretty-compact@npm:3.0.0"
+  checksum: 10c0/fc522c25047bd96d72ded77af4002e7f12e9ba9f4b7e7e12a9316aee166f1b8f9c7b0d0d989a8494e3fdd804a23819f411479f68f2ef10b2f7a144581b2c68f4
+  languageName: node
+  linkType: hard
+
+"json-stringify-pretty-compact@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "json-stringify-pretty-compact@npm:4.0.0"
+  checksum: 10c0/505781b4be7c72047ae8dfa667b520d20461ceac451b6516cb8ac5e12a758fbd7491d99d5e3f7e60423ce9d26ed4e4bcaccab3420bf651298901635c849017cf
+  languageName: node
+  linkType: hard
+
 "json5@npm:^1.0.2":
   version: 1.0.2
   resolution: "json5@npm:1.0.2"
@@ -7147,6 +9187,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsts@npm:2.7.1":
+  version: 2.7.1
+  resolution: "jsts@npm:2.7.1"
+  checksum: 10c0/57752f181eafef7af3f7e0b374ec0a820288bf0c9dc2d3a854643092331431d6f091a26c7a3947634a92cd64990004f4ddd750b0e95d7f8f6711e1d7bdc8237c
+  languageName: node
+  linkType: hard
+
 "jsx-ast-utils@npm:^2.4.1 || ^3.0.0, jsx-ast-utils@npm:^3.3.5":
   version: 3.3.5
   resolution: "jsx-ast-utils@npm:3.3.5"
@@ -7159,12 +9206,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kdbush@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "kdbush@npm:4.0.2"
+  checksum: 10c0/d50183b299c57e2573114e902ab47aed7494be3ca41b66d456779ecc3b2f153f491de341f9609965414784f728894f9a9001152eb9f3a40cd3755521c06a45a3
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.0.0, keyv@npm:^4.5.4":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
   dependencies:
     json-buffer: "npm:3.0.1"
   checksum: 10c0/aa52f3c5e18e16bb6324876bb8b59dd02acf782a4b789c7b2ae21107fab95fab3890ed448d4f8dba80ce05391eeac4bfabb4f02a20221342982f806fa2cf271e
+  languageName: node
+  linkType: hard
+
+"kind-of@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "kind-of@npm:6.0.3"
+  checksum: 10c0/61cdff9623dabf3568b6445e93e31376bee1cdb93f8ba7033d86022c2a9b1791a1d9510e026e6465ebd701a6dd2f7b0808483ad8838341ac52f003f512e0b4c4
   languageName: node
   linkType: hard
 
@@ -7419,6 +9480,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"maplibre-gl@npm:^4.7.1":
+  version: 4.7.1
+  resolution: "maplibre-gl@npm:4.7.1"
+  dependencies:
+    "@mapbox/geojson-rewind": "npm:^0.5.2"
+    "@mapbox/jsonlint-lines-primitives": "npm:^2.0.2"
+    "@mapbox/point-geometry": "npm:^0.1.0"
+    "@mapbox/tiny-sdf": "npm:^2.0.6"
+    "@mapbox/unitbezier": "npm:^0.0.1"
+    "@mapbox/vector-tile": "npm:^1.3.1"
+    "@mapbox/whoots-js": "npm:^3.1.0"
+    "@maplibre/maplibre-gl-style-spec": "npm:^20.3.1"
+    "@types/geojson": "npm:^7946.0.14"
+    "@types/geojson-vt": "npm:3.2.5"
+    "@types/mapbox__point-geometry": "npm:^0.1.4"
+    "@types/mapbox__vector-tile": "npm:^1.3.4"
+    "@types/pbf": "npm:^3.0.5"
+    "@types/supercluster": "npm:^7.1.3"
+    earcut: "npm:^3.0.0"
+    geojson-vt: "npm:^4.0.2"
+    gl-matrix: "npm:^3.4.3"
+    global-prefix: "npm:^4.0.0"
+    kdbush: "npm:^4.0.2"
+    murmurhash-js: "npm:^1.0.0"
+    pbf: "npm:^3.3.0"
+    potpack: "npm:^2.0.0"
+    quickselect: "npm:^3.0.0"
+    supercluster: "npm:^8.0.1"
+    tinyqueue: "npm:^3.0.0"
+    vt-pbf: "npm:^3.1.3"
+  checksum: 10c0/dad2da8474af68647f882d5c4ff6df1c9afbe49f6d06c4594e4a55df0a34674f64d347b10b7af2869ac62fe837af6a56caa7617d5602724185e4df674be67b51
+  languageName: node
+  linkType: hard
+
+"marchingsquares@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "marchingsquares@npm:1.3.3"
+  checksum: 10c0/9680e8419df0b36766309c3f0f8df4d108932cabbecd8241ffd759ed9927569ff4235af688f9e687eb728d9b463e977ce8326c7aada88493201cb4a2889a3d85
+  languageName: node
+  linkType: hard
+
 "memoizerific@npm:^1.11.3":
   version: 1.11.3
   resolution: "memoizerific@npm:1.11.3"
@@ -7530,7 +9632,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.2.0, minimist@npm:^1.2.3, minimist@npm:^1.2.6":
+"minimist@npm:^1.2.0, minimist@npm:^1.2.3, minimist@npm:^1.2.6, minimist@npm:^1.2.8":
   version: 1.2.8
   resolution: "minimist@npm:1.2.8"
   checksum: 10c0/19d3fcdca050087b84c2029841a093691a91259a47def2f18222f41e7645a0b7c44ef4b40e88a1e58a40c84d2ef0ee6047c55594d298146d0eb3f6b737c20ce6
@@ -7674,6 +9776,13 @@ __metadata:
   bin:
     msw: cli/index.js
   checksum: 10c0/d7f0e0ea6512cfddda5b7695a0c6c6a0ed43b36b62f25925beee8e12daec12a5ef369d00e0976f9dd76d3af779741fda11a3eae812da11a044b03992e697010c
+  languageName: node
+  linkType: hard
+
+"murmurhash-js@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "murmurhash-js@npm:1.0.0"
+  checksum: 10c0/f8569e16db0ba6f953bf88286e97cf737f1efe97b224e537c9308566ab963a067c7eca5b636fb473d6413c4cc3b79690b78ff7ab0f290e75db91c6fde0df92b4
   languageName: node
   linkType: hard
 
@@ -8109,6 +10218,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pbf@npm:^3.2.1, pbf@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "pbf@npm:3.3.0"
+  dependencies:
+    ieee754: "npm:^1.1.12"
+    resolve-protobuf-schema: "npm:^2.1.0"
+  bin:
+    pbf: bin/pbf
+  checksum: 10c0/79e5dc59a9391789de84b0a6d713fad0dd1e5ce6eb721536af8c9ec49feae04fdebab9f077b760bba858e615a95ac714a7d248ecb43736e904bb8396885e16d6
+  languageName: node
+  linkType: hard
+
 "picocolors@npm:^1.0.0, picocolors@npm:^1.0.1, picocolors@npm:^1.1.0, picocolors@npm:^1.1.1":
   version: 1.1.1
   resolution: "picocolors@npm:1.1.1"
@@ -8153,12 +10274,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"point-in-polygon-hao@npm:^1.1.0":
+  version: 1.2.0
+  resolution: "point-in-polygon-hao@npm:1.2.0"
+  dependencies:
+    robust-predicates: "npm:^3.0.2"
+  checksum: 10c0/35c262b9f47c8dd65ae45afd016e87711ece49e7780bfbb68c39d0fccde52671b1ddfbbd0477f860010d40cc7e593420037f3b7a8e49e11822f749547c8c2ff9
+  languageName: node
+  linkType: hard
+
+"point-in-polygon@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "point-in-polygon@npm:1.1.0"
+  checksum: 10c0/de00419585ee25555d97585b7a23eeb2464a87ef29404264bee55654ca2ecab5a5a99d33e689c07d045faf80091e838f44a1fd130bdd6134493df53114947343
+  languageName: node
+  linkType: hard
+
 "polished@npm:^4.2.2":
   version: 4.3.1
   resolution: "polished@npm:4.3.1"
   dependencies:
     "@babel/runtime": "npm:^7.17.8"
   checksum: 10c0/45480d4c7281a134281cef092f6ecc202a868475ff66a390fee6e9261386e16f3047b4de46a2f2e1cf7fb7aa8f52d30b4ed631a1e3bcd6f303ca31161d4f07fe
+  languageName: node
+  linkType: hard
+
+"polygon-clipping@npm:^0.15.3":
+  version: 0.15.7
+  resolution: "polygon-clipping@npm:0.15.7"
+  dependencies:
+    robust-predicates: "npm:^3.0.2"
+    splaytree: "npm:^3.1.0"
+  checksum: 10c0/9515283509f1793f22fd87e68662838a6ebbd33cca4fc4bccd9f1b4f366383a4590e9a1cd48287e6897ad018803aeb97ed9ebe38bada5cffa7b4551539a9ab10
   languageName: node
   linkType: hard
 
@@ -8247,6 +10394,13 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/f1b3f17aaf36d136f59ec373459f18129908235e65dbdc3aee5eef8eba0756106f52de5ec4682e29a2eab53eb25170e7e871b3e4b52a8f1de3d344a514306be3
+  languageName: node
+  linkType: hard
+
+"potpack@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "potpack@npm:2.0.0"
+  checksum: 10c0/8df693484486535b95586a624c5abf3fd7bebad161b1c10c10d86562c870fe1c90703b862a19020b1d1c2f3fbd6cea1e9d699c6eca6ded4b5792873a992c81e1
   languageName: node
   linkType: hard
 
@@ -8357,6 +10511,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"protocol-buffers-schema@npm:^3.3.1":
+  version: 3.6.0
+  resolution: "protocol-buffers-schema@npm:3.6.0"
+  checksum: 10c0/23a08612e5cc903f917ae3b680216ccaf2d889c61daa68d224237f455182fa96fff16872ac94b1954b5dd26fc7e8ce7e9360c54d54ea26218d107b2f059fca37
+  languageName: node
+  linkType: hard
+
 "proxy-from-env@npm:^1.1.0":
   version: 1.1.0
   resolution: "proxy-from-env@npm:1.1.0"
@@ -8418,12 +10579,51 @@ __metadata:
   languageName: node
   linkType: hard
 
+"quickselect@npm:^1.0.1":
+  version: 1.1.1
+  resolution: "quickselect@npm:1.1.1"
+  checksum: 10c0/8890dfe3c42d18e84fb5c18aee04da49b0f5b9d2a7196344c4451cb5660549a2bf770be866704a4a9e6c73d35475c599dd24cf78abcc19886ab54c019a952a37
+  languageName: node
+  linkType: hard
+
+"quickselect@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "quickselect@npm:2.0.0"
+  checksum: 10c0/6c8d591bc73beae4c1996b7b7138233a7dbbbdde29b7b6d822a02d08cd220fd27613f47d6e9635989b12e250d42ef9da3448de1ed12ad962974e207ab3c3562c
+  languageName: node
+  linkType: hard
+
+"quickselect@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "quickselect@npm:3.0.0"
+  checksum: 10c0/3a0d33b0ec06841d953accdfd735aa3d8b7922cddd12970544a2c4b0278871280d8f5ba496803600693c1e7b7b2fb57c31d2b14d99132f478888006a1be6e6b7
+  languageName: node
+  linkType: hard
+
 "randombytes@npm:^2.1.0":
   version: 2.1.0
   resolution: "randombytes@npm:2.1.0"
   dependencies:
     safe-buffer: "npm:^5.1.0"
   checksum: 10c0/50395efda7a8c94f5dffab564f9ff89736064d32addf0cc7e8bf5e4166f09f8ded7a0849ca6c2d2a59478f7d90f78f20d8048bca3cdf8be09d8e8a10790388f3
+  languageName: node
+  linkType: hard
+
+"rbush@npm:^2.0.1":
+  version: 2.0.2
+  resolution: "rbush@npm:2.0.2"
+  dependencies:
+    quickselect: "npm:^1.0.1"
+  checksum: 10c0/dfaef8171ff1fb15924e0a84150cc23e31508d67a7821ddb948cd0a5d003f5a20406836866bb1a2dc1f1e2dee06aeb2ce02a1f61a4a8f84ccb792696f43883a7
+  languageName: node
+  linkType: hard
+
+"rbush@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "rbush@npm:3.0.1"
+  dependencies:
+    quickselect: "npm:^2.0.0"
+  checksum: 10c0/55311586c30cdedaa2220de6f1da45fe1fa806263afbf7b6f4c0078983830c2abc7771187896d68bfc9078cb279079fb4c84971831da4b74384aab2c2c417758
   languageName: node
   linkType: hard
 
@@ -8511,6 +10711,26 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 10c0/2bdb6b93fbb1820b024b496042cce405c57e2f85e777c9aabd55f9b26d145408f9f74f5934676ffdc46f3dcff656d78413a6e43968e7b3f92eea35b3052e9053
+  languageName: node
+  linkType: hard
+
+"react-map-gl@npm:^7.1.7":
+  version: 7.1.7
+  resolution: "react-map-gl@npm:7.1.7"
+  dependencies:
+    "@maplibre/maplibre-gl-style-spec": "npm:^19.2.1"
+    "@types/mapbox-gl": "npm:>=1.0.0"
+  peerDependencies:
+    mapbox-gl: ">=1.13.0"
+    maplibre-gl: ">=1.13.0"
+    react: ">=16.3.0"
+    react-dom: ">=16.3.0"
+  peerDependenciesMeta:
+    mapbox-gl:
+      optional: true
+    maplibre-gl:
+      optional: true
+  checksum: 10c0/bd289f2f466a905d1ef23459c49deb9b71d51aa569f59e098e64fe984c5b8c04cce589ebf59642e09142a61077bd995ae4ad1641318a15640a63ffaf28c148b8
   languageName: node
   linkType: hard
 
@@ -8802,6 +11022,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"resolve-protobuf-schema@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "resolve-protobuf-schema@npm:2.1.0"
+  dependencies:
+    protocol-buffers-schema: "npm:^3.3.1"
+  checksum: 10c0/8e656b9072b1c001952f851251413bc79d8c771c3015f607b75e1ca3b8bd7c4396068dd19cdbb3019affa03f6457d2c0fd38d981ffd714215cd2e7c2b67221a7
+  languageName: node
+  linkType: hard
+
 "resolve@npm:^1.1.7, resolve@npm:^1.14.2, resolve@npm:^1.22.1, resolve@npm:^1.22.4, resolve@npm:^1.22.8":
   version: 1.22.8
   resolution: "resolve@npm:1.22.8"
@@ -8894,6 +11123,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"robust-predicates@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "robust-predicates@npm:2.0.4"
+  checksum: 10c0/3c801ff1ea5ce842c1818da62e2be0cc427ab507dc7a21f3ff2e6278f1d32b5c2f2fc740f8e9c188b4e7a2946228c0173607534432314940e89eae15ded79b5f
+  languageName: node
+  linkType: hard
+
+"robust-predicates@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "robust-predicates@npm:3.0.2"
+  checksum: 10c0/4ecd53649f1c2d49529c85518f2fa69ffb2f7a4453f7fd19c042421c7b4d76c3efb48bc1c740c8f7049346d7cb58cf08ee0c9adaae595cc23564d360adb1fde4
+  languageName: node
+  linkType: hard
+
 "rollup@npm:^2.43.1":
   version: 2.79.2
   resolution: "rollup@npm:2.79.2"
@@ -8983,6 +11226,13 @@ __metadata:
   dependencies:
     queue-microtask: "npm:^1.2.2"
   checksum: 10c0/200b5ab25b5b8b7113f9901bfe3afc347e19bb7475b267d55ad0eb86a62a46d77510cb0f232507c9e5d497ebda569a08a9867d0d14f57a82ad5564d991588b39
+  languageName: node
+  linkType: hard
+
+"rw@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "rw@npm:1.3.3"
+  checksum: 10c0/b1e1ef37d1e79d9dc7050787866e30b6ddcb2625149276045c262c6b4d53075ddc35f387a856a8e76f0d0df59f4cd58fe24707e40797ebee66e542b840ed6a53
   languageName: node
   linkType: hard
 
@@ -9089,6 +11339,18 @@ __metadata:
     functions-have-names: "npm:^1.2.3"
     has-property-descriptors: "npm:^1.0.2"
   checksum: 10c0/fce59f90696c450a8523e754abb305e2b8c73586452619c2bad5f7bf38c7b6b4651895c9db895679c5bef9554339cf3ef1c329b66ece3eda7255785fbe299316
+  languageName: node
+  linkType: hard
+
+"set-value@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "set-value@npm:2.0.1"
+  dependencies:
+    extend-shallow: "npm:^2.0.1"
+    is-extendable: "npm:^0.1.1"
+    is-plain-object: "npm:^2.0.3"
+    split-string: "npm:^3.0.1"
+  checksum: 10c0/4c40573c4f6540456e4b38b95f570272c4cfbe1d12890ad4057886da8535047cd772dfadf5b58e2e87aa244dfb4c57e3586f6716b976fc47c5144b6b09e1811b
   languageName: node
   linkType: hard
 
@@ -9251,6 +11513,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"skmeans@npm:0.9.7":
+  version: 0.9.7
+  resolution: "skmeans@npm:0.9.7"
+  checksum: 10c0/42ee6749bd34a5b5fd969d08a4cd704da119aa9fd3be5d468ba14020ae46372674593dca6f35e728c698ad591ad417cab3177f3ebef8bce16b72a06cb924f7d4
+  languageName: node
+  linkType: hard
+
 "slice-ansi@npm:^5.0.0":
   version: 5.0.0
   resolution: "slice-ansi@npm:5.0.0"
@@ -9316,6 +11585,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sort-asc@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "sort-asc@npm:0.2.0"
+  checksum: 10c0/637d08a3f42d9b20ad489fa50970cc46ff606764ecfc95f00e607151d38a4b9086b74366ef99177783ff2da75ad821dff5d76557caa7206e5b3082e1e743e7cf
+  languageName: node
+  linkType: hard
+
+"sort-desc@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "sort-desc@npm:0.2.0"
+  checksum: 10c0/d9b49e49c8aa1d443ace95a86845f7ad9c9aeb9bb231f43adf7af22109bbd05b11983497f7c449d88ee6c499f43cf0591cde59975f5321c7883c6a395dce8482
+  languageName: node
+  linkType: hard
+
+"sort-object@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "sort-object@npm:3.0.3"
+  dependencies:
+    bytewise: "npm:^1.1.0"
+    get-value: "npm:^2.0.2"
+    is-extendable: "npm:^0.1.1"
+    sort-asc: "npm:^0.2.0"
+    sort-desc: "npm:^0.2.0"
+    union-value: "npm:^1.0.1"
+  checksum: 10c0/b19518e3659875d0997bfb6e4a2bc681a71b3cc30a39b7ab673fcb5c32e65b2c9d4b66eba6c97c29c78b5fc437306ec0e0a85a381565d54eff8716388535db5d
+  languageName: node
+  linkType: hard
+
 "source-map-js@npm:^1.2.1":
   version: 1.2.1
   resolution: "source-map-js@npm:1.2.1"
@@ -9353,6 +11650,22 @@ __metadata:
   version: 1.4.8
   resolution: "sourcemap-codec@npm:1.4.8"
   checksum: 10c0/f099279fdaae070ff156df7414bbe39aad69cdd615454947ed3e19136bfdfcb4544952685ee73f56e17038f4578091e12b17b283ed8ac013882916594d95b9e6
+  languageName: node
+  linkType: hard
+
+"splaytree@npm:^3.1.0":
+  version: 3.1.2
+  resolution: "splaytree@npm:3.1.2"
+  checksum: 10c0/ba82da4e4185d692eb2b1c9e000a9dde6cd713ec447f5c90ec97264ce9de19ba1f5f90fbef8a9ffa37bbbe2e9f4b031c6ee45d4119acbf1cddb93112ec5ecf86
+  languageName: node
+  linkType: hard
+
+"split-string@npm:^3.0.1":
+  version: 3.1.0
+  resolution: "split-string@npm:3.1.0"
+  dependencies:
+    extend-shallow: "npm:^3.0.0"
+  checksum: 10c0/72d7cd625445c7af215130e1e2bc183013bb9dd48a074eda1d35741e2b0dcb355e6df5b5558a62543a24dcec37dd1d6eb7a6228ff510d3c9de0f3dc1d1da8a70
   languageName: node
   linkType: hard
 
@@ -9650,6 +11963,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"supercluster@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "supercluster@npm:8.0.1"
+  dependencies:
+    kdbush: "npm:^4.0.2"
+  checksum: 10c0/79121e6dbff67b3036ea6651f3baddb942478830ba3ecbc27455715ab5bd269de8381dc04618c0c15963346ea2ed0f81cd5f767c2978a63e2841807c73445d57
+  languageName: node
+  linkType: hard
+
 "supports-color@npm:^7.1.0":
   version: 7.2.0
   resolution: "supports-color@npm:7.2.0"
@@ -9670,6 +11992,15 @@ __metadata:
   version: 2.0.4
   resolution: "svg-parser@npm:2.0.4"
   checksum: 10c0/02f6cb155dd7b63ebc2f44f36365bc294543bebb81b614b7628f1af3c54ab64f7e1cec20f06e252bf95bdde78441ae295a412c68ad1678f16a6907d924512b7a
+  languageName: node
+  linkType: hard
+
+"sweepline-intersections@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "sweepline-intersections@npm:1.5.0"
+  dependencies:
+    tinyqueue: "npm:^2.0.0"
+  checksum: 10c0/587a597c75b787e61054ef88b98463af47f60855265b7829fa8acc5ebe68fb4bc3d148a80e9f72c69c16a0241bfed38d3fbbe93a735ea5a2276c00116adc5283
   languageName: node
   linkType: hard
 
@@ -9694,6 +12025,15 @@ __metadata:
   version: 5.3.3
   resolution: "tabbable@npm:5.3.3"
   checksum: 10c0/c6cb54be76ecff7d0132fed77ff11cedf76a2ce320f55e350f70d8f68998227e72bc3f8b1ee5e7b02dbe4b4c2ef7b6fa43c3aea7cfa82ef06e7d23746df97a35
+  languageName: node
+  linkType: hard
+
+"tailwindcss-animated@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "tailwindcss-animated@npm:1.1.2"
+  peerDependencies:
+    tailwindcss: ">=3.1.0"
+  checksum: 10c0/7946ec5ad1a7e6be66b1ffc96efc974a302f53dca7abf925bdb7b9027580ecb61b3c930a22e4d4fb4f520d1d26adff29378c61bcc09b1794ac20c1a52eac42d1
   languageName: node
   linkType: hard
 
@@ -9879,6 +12219,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tinyqueue@npm:^2.0.0, tinyqueue@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "tinyqueue@npm:2.0.3"
+  checksum: 10c0/d7b590088f015a94a17132fa209c2f2a80c45158259af5474901fdf5932e95ea13ff6f034bcc725a6d5f66d3e5b888b048c310229beb25ad5bebb4f0a635abf2
+  languageName: node
+  linkType: hard
+
+"tinyqueue@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "tinyqueue@npm:3.0.0"
+  checksum: 10c0/edd6f1a6146aa3aa7bc85b44b3aacf44cddfa805b0901019272d7e9235894b4f28b2f9d09c1bce500ae48883b03708b6b871aa33920e895d2943720f7a9ad3ba
+  languageName: node
+  linkType: hard
+
 "tinyrainbow@npm:^1.2.0":
   version: 1.2.0
   resolution: "tinyrainbow@npm:1.2.0"
@@ -9906,6 +12260,30 @@ __metadata:
   dependencies:
     is-number: "npm:^7.0.0"
   checksum: 10c0/487988b0a19c654ff3e1961b87f471702e708fa8a8dd02a298ef16da7206692e8552a0250e8b3e8759270f62e9d8314616f6da274734d3b558b1fc7b7724e892
+  languageName: node
+  linkType: hard
+
+"topojson-client@npm:3.x":
+  version: 3.1.0
+  resolution: "topojson-client@npm:3.1.0"
+  dependencies:
+    commander: "npm:2"
+  bin:
+    topo2geo: bin/topo2geo
+    topomerge: bin/topomerge
+    topoquantize: bin/topoquantize
+  checksum: 10c0/da2acba268cbf4d002483d5d81452e0d797b2fff6041fafb1d420e58973fa780a6f42041ce4c2677376ab977e5e1732b89c42a2db3c334a34f6c47f4d94b3eaa
+  languageName: node
+  linkType: hard
+
+"topojson-server@npm:3.x":
+  version: 3.0.1
+  resolution: "topojson-server@npm:3.0.1"
+  dependencies:
+    commander: "npm:2"
+  bin:
+    geo2topo: bin/geo2topo
+  checksum: 10c0/fb2ab1137b2082664149fa2346a33fbb1706687b9760ae38f1e8fb9f444226fb0b0e517baf0712f9130244b173ec29a4dcab78f9c0f259770a266481041136ec
   languageName: node
   linkType: hard
 
@@ -10160,6 +12538,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typewise-core@npm:^1.2, typewise-core@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "typewise-core@npm:1.2.0"
+  checksum: 10c0/0c574b036e430ef29a3c71dca1f88c041597734448db50e697ec4b7d03d71af4f8afeec556a2553f7db1cf98f9313b983071f0731d784108b2daf4f2e0c37d9e
+  languageName: node
+  linkType: hard
+
+"typewise@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "typewise@npm:1.0.3"
+  dependencies:
+    typewise-core: "npm:^1.2.0"
+  checksum: 10c0/0e300a963cd344f9f4216343eb1c9714e1aee12c5b928ae3ff4a19b4b1edcd82356b8bd763905bd72528718a3c863612f8259cb047934b59bdd849f305e12e80
+  languageName: node
+  linkType: hard
+
 "unbox-primitive@npm:^1.0.2":
   version: 1.0.2
   resolution: "unbox-primitive@npm:1.0.2"
@@ -10218,6 +12612,18 @@ __metadata:
   version: 2.1.0
   resolution: "unicode-property-aliases-ecmascript@npm:2.1.0"
   checksum: 10c0/50ded3f8c963c7785e48c510a3b7c6bc4e08a579551489aa0349680a35b1ceceec122e33b2b6c1b579d0be2250f34bb163ac35f5f8695fe10bbc67fb757f0af8
+  languageName: node
+  linkType: hard
+
+"union-value@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "union-value@npm:1.0.1"
+  dependencies:
+    arr-union: "npm:^3.1.0"
+    get-value: "npm:^2.0.6"
+    is-extendable: "npm:^0.1.1"
+    set-value: "npm:^2.0.1"
+  checksum: 10c0/8758d880cb9545f62ce9cfb9b791b2b7a206e0ff5cc4b9d7cd6581da2c6839837fbb45e639cf1fd8eef3cae08c0201b614b7c06dd9f5f70d9dbe7c5fe2fbf592
   languageName: node
   linkType: hard
 
@@ -10473,6 +12879,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vt-pbf@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "vt-pbf@npm:3.1.3"
+  dependencies:
+    "@mapbox/point-geometry": "npm:0.1.0"
+    "@mapbox/vector-tile": "npm:^1.3.1"
+    pbf: "npm:^3.2.1"
+  checksum: 10c0/a568801ae25f0ffe65ef697bf520c996c8a4067f73f355c0d5815238de90322c8ca207c61220206141cfe6f5b525de875b7eb26e22979a1b768b96d03b93dca7
+  languageName: node
+  linkType: hard
+
 "warning@npm:^4.0.3":
   version: 4.0.3
   resolution: "warning@npm:4.0.3"
@@ -10497,6 +12914,7 @@ __metadata:
     "@storybook/react-vite": "npm:8.4.4"
     "@storybook/test": "npm:8.4.4"
     "@tanstack/react-query": "npm:^5.60.2"
+    "@turf/turf": "npm:^7.1.0"
     "@types/axios": "npm:^0.14.4"
     "@types/eslint-plugin-jsx-a11y": "npm:^6"
     "@types/node": "npm:^22.9.1"
@@ -10526,12 +12944,14 @@ __metadata:
     globals: "npm:^15.11.0"
     husky: "npm:^9.1.6"
     lint-staged: "npm:^15.2.10"
+    maplibre-gl: "npm:^4.7.1"
     msw: "npm:^2.6.6"
     postcss: "npm:^8.4.49"
     prettier: "npm:^3.3.3"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-icons: "npm:^5.3.0"
+    react-map-gl: "npm:^7.1.7"
     react-router-dom: "npm:^7.0.1"
     react-spring: "npm:^9.7.4"
     react-spring-bottom-sheet: "npm:3.5.0-alpha.0"
@@ -10540,6 +12960,7 @@ __metadata:
     storybook: "npm:8.4.4"
     swiper: "npm:^11.1.15"
     tailwindcss: "npm:^3.4.15"
+    tailwindcss-animated: "npm:^1.1.2"
     ts-pattern: "npm:^5.5.0"
     typescript: "npm:^5.7.2"
     typescript-eslint: "npm:^8.11.0"

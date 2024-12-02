@@ -1,4 +1,6 @@
 import '../src/index.css';
+import { MemoryRouter } from 'react-router-dom';
+
 const preview = {
     parameters: {
         controls: {
@@ -7,7 +9,8 @@ const preview = {
                 date: /Date$/i
             }
         }
-    }
+    },
+    decorators: [(Story) => <Story />]
 };
 
 export default preview;

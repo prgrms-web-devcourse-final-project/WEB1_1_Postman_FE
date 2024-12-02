@@ -6,7 +6,7 @@ const ToastContainer = () => {
     const { toasts, removeToast } = useToastStore();
 
     return (
-        <div className="fixed z-[9999] top-5 right-5 space-y-3">
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[9999] flex flex-col items-center w-full">
             {toasts
                 .slice()
                 .reverse()

@@ -28,7 +28,12 @@ export const PostLetterForm = () => {
     ];
 
     return (
-        <SliderMenuContainer>
+        <SliderMenuContainer
+            snapPoints={() => [
+                window.innerHeight * 0.05,
+                window.innerHeight * 0.6
+            ]}
+        >
             <Margin top={18} />
             <div>
                 <div className="relative flex justify-center">
@@ -75,8 +80,10 @@ export const PostLetterForm = () => {
                     <Toggle
                         isChecked={isFont}
                         onToggle={() => setIsFont(!isFont)}
+                        leftLabel="글씨체"
+                        rightLabel="편지지"
                     />
-                    <Margin bottom={14} />
+                    <Margin bottom={30} />
                 </div>
             </div>
         </SliderMenuContainer>
