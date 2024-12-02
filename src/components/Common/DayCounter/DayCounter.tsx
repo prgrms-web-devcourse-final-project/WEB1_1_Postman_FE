@@ -1,20 +1,22 @@
 type DayCounterProps = {
     width?: string;
     height?: string;
+    daysLeft: number;
 };
 
 export const DayCounter = ({
     width = '66px',
-    height = '43px'
+    height = '30px',
+    daysLeft
 }: DayCounterProps) => {
-    const daysLeft = 21;
-
     return (
         <div
-            className="flex-center p-4 bg-gray-200 rounded-3xl"
+            className="flex-center p-1 bg-gray-100 rounded-xl"
             style={{ width, height }}
         >
-            <span className="font-bold text-m text-gray-500">D-{daysLeft}</span>
+            <span className="font-bold text-xs text-gray-500 text-nowrap">
+                D-{daysLeft}
+            </span>
         </div>
     );
 };

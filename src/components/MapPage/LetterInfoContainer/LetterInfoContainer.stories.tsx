@@ -14,11 +14,10 @@ type Story = StoryObj<typeof LetterInfoContainer>;
 
 export const Default: Story = {
     args: {
+        id: 123,
         title: '익명 편지',
-        keyword: '가을 바람',
+        distance: 400,
         date: '24.11.15',
-        clickEvent: () => {
-            alert('즐겁다');
-        }
+        daysLeft: 21
     }
 };
