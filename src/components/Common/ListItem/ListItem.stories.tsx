@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
+import { MemoryRouter } from 'react-router-dom';
 import { ListItem } from './ListItem';
 
 const meta: Meta<typeof ListItem> = {
@@ -17,7 +17,14 @@ const meta: Meta<typeof ListItem> = {
             description:
                 '클릭 시 이동하는 경로, 지금은 div로 console만 찍히도록 했습니다.'
         }
-    }
+    },
+    decorators: [
+        (Story) => (
+            <MemoryRouter>
+                <Story />
+            </MemoryRouter>
+        )
+    ]
 };
 export default meta;
 
