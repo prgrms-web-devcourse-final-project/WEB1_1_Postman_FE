@@ -1,17 +1,35 @@
+// src/components/Common/ProfileImage/ProfileImage.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileImage } from './ProfileImage';
 
-const meta: Meta<typeof ProfileImage> = {
+const meta = {
+    title: 'Atoms/ProfileImage',
     component: ProfileImage,
-    title: 'atoms/ProfileImage',
-    tags: ['autodocs'],
-    argTypes: {}
-};
+    parameters: {
+        layout: 'centered'
+    },
+    tags: ['autodocs']
+} satisfies Meta<typeof ProfileImage>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-type Story = StoryObj<typeof ProfileImage>;
+const sampleProfileImage = {
+    id: 'sample-1',
+    name: '샘플 이미지',
+    src: '/testimg.jpg'
+};
 
 export const Default: Story = {
-    args: {}
+    args: {
+        imageItem: sampleProfileImage
+    }
+};
+
+export const CustomSize: Story = {
+    args: {
+        width: '150px',
+        height: '150px',
+        imageItem: sampleProfileImage
+    }
 };
