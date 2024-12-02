@@ -1,11 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { LetterInfoContainer } from './LetterInfoContainer';
+import { MemoryRouter } from 'react-router-dom';
 
 const meta: Meta<typeof LetterInfoContainer> = {
     component: LetterInfoContainer,
     title: 'MOLECULE/LetterInfoContainer',
     tags: ['autodocs'],
+    decorators: [
+        (Story) => (
+            <MemoryRouter>
+                <Story />
+            </MemoryRouter>
+        )
+    ],
     argTypes: {}
 };
 export default meta;
