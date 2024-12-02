@@ -10,6 +10,7 @@ import { LetterDetailPage } from '@/pages/Letter/Detail/LetterDetailPage';
 import { NotificationPage } from '@/pages/NotificationPage';
 import { SentPage } from '@/pages/SentPage';
 import { SharePage } from '@/pages/SharePage';
+import { LabelLotteryPage } from './Label/Lottery/LabelLotteryPage';
 import { SelectItemPage } from './Letter/SelectItem/SelectItemPage';
 import { MyPage } from '@/pages/User/MyPage/MyPage';
 import { SuccessLetterPage } from './Letter/Success/SuccessLetterPage';
@@ -28,6 +29,7 @@ export {
     NotificationPage,
     SentPage,
     SharePage,
+    LabelLotteryPage,
     SelectItemPage,
     SuccessLetterPage
 };

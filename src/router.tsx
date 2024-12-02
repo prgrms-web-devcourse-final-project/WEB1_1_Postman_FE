@@ -14,6 +14,7 @@ import {
     NotificationPage,
     SentPage,
     SharePage,
+    LabelLotteryPage,
     SelectItemPage,
     SuccessLetterPage
 } from './pages';
@@ -102,5 +103,9 @@ export const router = createBrowserRouter([
     {
         path: '/letter/:type/:id',
         element: <LetterDetailPage />
+    },
+    {
+        path: '/lottery',
+        element: <LabelLotteryPage />
     }
 ]);

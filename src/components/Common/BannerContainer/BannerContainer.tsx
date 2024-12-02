@@ -6,6 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Banner } from '@/components/Common/Banner/Banner';
 import { ArchivedlBanner } from '@/components/Common/Banner/ArchivedlBanner';
 import { LabelCollectionsBanner } from '@/components/Common/Banner/LabelCollectionsBanner';
+import { LabelLotteryBanner } from '@/components/Common/Banner/LabelLotteryBanner';
 
 type bannersType = {
     banner: React.ComponentType;
@@ -13,6 +14,7 @@ type bannersType = {
 };
 export const BannerContainer = () => {
     const banners: bannersType[] = [
+        { banner: LabelLotteryBanner, color: 'bg-primary' },
         { banner: ArchivedlBanner, color: 'bg-primary' },
         { banner: LabelCollectionsBanner, color: 'bg-primary' }
     ];
@@ -38,7 +40,7 @@ export const BannerContainer = () => {
                 {banners.map(({ banner, color }, i) => (
                     <SwiperSlide
                         key={i}
-                        className="transition-transform md:hover:scale-105"
+                        className="transition-transform md:hover:scale-105 px-[20px]"
                     >
                         <Banner color={color}>
                             {React.createElement(banner)}
