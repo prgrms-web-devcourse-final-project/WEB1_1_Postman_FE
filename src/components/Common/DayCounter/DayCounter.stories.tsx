@@ -13,5 +13,7 @@ export default meta;
 type Story = StoryObj<typeof DayCounter>;
 
 export const Default: Story = {
-    args: {}
+    args: {
+        daysLeft: 21
+    }
 };
