@@ -7,7 +7,7 @@ import { RegisterPage } from '@/pages/User/Register/RegisterPage';
 import { ArchivedPage } from '@/pages/ArchivedPage';
 import { LabelCollectionsPage } from '@/pages/LabelCollectionsPage';
 import { LetterDetailPage } from '@/pages/Letter/Detail/LetterDetailPage';
-import { NotificationPage } from '@/pages/NotificationPage';
+import { NotificationPage } from '@/pages/Notification/NotificationPage';
 import { SentPage } from '@/pages/SentPage';
 import { SharePage } from '@/pages/SharePage';
 import { LabelLotteryPage } from './Label/Lottery/LabelLotteryPage';
