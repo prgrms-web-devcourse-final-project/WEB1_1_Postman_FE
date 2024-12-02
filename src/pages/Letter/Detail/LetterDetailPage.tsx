@@ -7,8 +7,8 @@ import { DeleteButton } from '@/components/LetterDetailPage/DeleteButton/DeleteB
 import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
 
 type LetterDetailPageProps = {
-    isAuthor: boolean;
-    hasReplies: boolean;
+    isAuthor?: boolean;
+    hasReplies?: boolean;
 };
 
 export const LetterDetailPage = ({
