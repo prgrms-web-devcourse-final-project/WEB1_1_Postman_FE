@@ -15,7 +15,8 @@ import {
     SentPage,
     SharePage,
     SelectItemPage,
-    SuccessLetterPage
+    SuccessLetterPage,
+    ProfilePage
 } from './pages';
 import { Margin } from './components/Common/Margin/Margin';
 
@@ -55,11 +56,16 @@ export const router = createBrowserRouter([
                         path: 'letters',
                         children: [
                             { path: 'keyword', element: <ArchivedPage /> },
-                            { path: 'map', element: <ArchivedPage /> }
+                            { path: 'map', element: <ArchivedPage /> },
+                            { path: 'bookmark', element: <ArchivedPage /> }
                         ]
                     },
                     { path: 'labels', element: <LabelCollectionsPage /> }
                 ]
+            },
+            {
+                path: 'profile',
+                element: <ProfilePage />
             },
             {
                 path: '/labelcollections',

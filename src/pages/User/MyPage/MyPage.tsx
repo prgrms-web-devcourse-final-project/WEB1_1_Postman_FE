@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import { useUserStore } from '@/stores/useUserStore';
 import { ProfileSection } from '@/components/MyPage/ProfileSection';
 import { MenuListSection } from '@/components/MyPage/MenuListSection';
@@ -15,9 +16,9 @@ export const MyPage = () => {
     ];
 
     const menuItems = [
-        { content: '키워드 편지함', url: '/mypage/letter/keyword' },
-        { content: '지도 편지함', url: '/mypage/letter/map' },
-        { content: '보관함', url: '/mypage/letter/bookmark' }
+        { content: '키워드 편지함', url: '/mypage/letters/keyword' },
+        { content: '지도 편지함', url: '/mypage/letters/map' },
+        { content: '보관함', url: '/mypage/letters/bookmark' }
     ];
 
     const labelMenuItems = [{ content: '라벨첩', url: '/mypage/label' }];

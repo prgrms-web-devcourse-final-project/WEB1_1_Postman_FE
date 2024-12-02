@@ -13,6 +13,7 @@ import { SharePage } from '@/pages/SharePage';
 import { SelectItemPage } from './Letter/SelectItem/SelectItemPage';
 import { MyPage } from '@/pages/User/MyPage/MyPage';
 import { SuccessLetterPage } from './Letter/Success/SuccessLetterPage';
+import { ProfilePage } from '@/pages/User/Profile/ProfilePage';
 
 export {
     ErrorPage,
@@ -29,5 +30,6 @@ export {
     SentPage,
     SharePage,
     SelectItemPage,
-    SuccessLetterPage
+    SuccessLetterPage,
+    ProfilePage
 };
