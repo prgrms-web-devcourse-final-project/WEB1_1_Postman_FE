@@ -11,6 +11,7 @@ import {
     ArchivedPage,
     LabelCollectionsPage,
     LetterDetailPage,
+    ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
     SharePage,
@@ -103,6 +104,10 @@ export const router = createBrowserRouter([
     {
         path: '/letter/:type/:id',
         element: <LetterDetailPage />
+    },
+    {
+        path: '/letter/reply/:id',
+        element: <ReplyLetterDetailPage />
     },
     {
         path: '/lottery',
