@@ -1,6 +1,4 @@
 import { BannerContainer } from '@/components/Common/BannerContainer/BannerContainer';
-import { Margin } from '@/components/Common/Margin/Margin';
-import { NavigationBar } from '@/components/Common/NavigationBar/NavigationBar';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
 import { Toggle } from '@/components/Common/Toggle/Toggle';
 import { BottomSheetContent } from '@/components/HomePage/BottomSheetContent/BottomSheetContent';
@@ -29,10 +27,12 @@ export const HomePage = () => {
                 onToggle={() => {
                     setToggle(!toggle);
                 }}
+                leftLabel="전체"
+                rightLabel="답장"
             />
 
             <div>
-                <WelcomeMessageContainer user={user} newLetter />
+                <WelcomeMessageContainer user={user!} newLetter />
                 <LetterContainer />
             </div>
 
@@ -56,7 +56,7 @@ export const HomePage = () => {
                 onDismiss={onDismiss}
                 snapPoints={() => [window.innerHeight * 0.95]}
             >
-                <BottomSheetContent user={user} />
+                <BottomSheetContent user={user!} />
             </SliderMenuContainer>
         </div>
     );
