@@ -2,11 +2,11 @@ import React from 'react';
 import { NicknameInput } from '../Common/Input/NicknameInput';
 
 interface NicknameSectionProps {
-    nickname: string;
-    onNicknameChange: (value: string) => void;
-    onRequestNicknameVerify: () => void;
-    isNicknameChecked: boolean;
-    isNicknameValid: boolean;
+    nickname?: string;
+    onNicknameChange?: (value: string) => void;
+    onRequestNicknameVerify?: () => void;
+    isNicknameChecked?: boolean;
+    isNicknameValid?: boolean;
 }
 
 export const NicknameSection = ({
@@ -17,7 +17,7 @@ export const NicknameSection = ({
     isNicknameValid
 }: NicknameSectionProps) => {
     const handleNicknameKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter') {
+        if (onRequestNicknameVerify && e.key === 'Enter') {
             e.preventDefault();
             onRequestNicknameVerify();
         }
@@ -26,7 +26,6 @@ export const NicknameSection = ({
     return (
         <div>
             <div className="flex flex-row gap-2">
-                <h3>닉네임</h3>
                 {nickname &&
                     isNicknameChecked &&
                     (isNicknameValid ? (
