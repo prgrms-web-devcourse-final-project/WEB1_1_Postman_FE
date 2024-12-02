@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 type TextAreaProps = {
     value: string;
@@ -7,6 +7,7 @@ type TextAreaProps = {
 };
 
 export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
+    const [lineHeight, setLineHeight] = useState<number>(2.5);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -37,10 +38,25 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
             textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
         }
     }, [value]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (textAreaRef.current) {
+                setLineHeight(
+                    2.5 + (textAreaRef.current.offsetWidth - 281) * 0.01
+                );
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <textarea
-            className="absolute w-9/12 px-2 bg-transparent border-none resize-none mt-[42%] leading-[260%] overflow-hidden h-auto"
-            style={{ fontFamily: font || 'inherit' }}
+            className="absolute w-9/12 px-2 bg-transparent border-none resize-none mt-[43%]  overflow-hidden h-auto"
+            style={{ fontFamily: font || 'inherit', lineHeight: lineHeight }}
             ref={textAreaRef}
             placeholder="편지를 작성하세요..."
             value={value}
