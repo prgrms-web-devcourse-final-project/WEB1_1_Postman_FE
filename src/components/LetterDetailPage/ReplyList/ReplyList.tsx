@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 type ReplyListProps = {
     replies: {
         id: number;
@@ -8,7 +9,10 @@ type ReplyListProps = {
 
 export const ReplyList = ({ replies }: ReplyListProps) => {
     return (
-        <div className="bg-gray-300 rounded-2xl w-auto">
+        <NavLink
+            to="/letter/reply/:id"
+            className="bg-gray-300 rounded-2xl w-auto"
+        >
             {replies.map((reply, index) => (
                 <div
                     key={reply.id}
@@ -31,6 +35,6 @@ export const ReplyList = ({ replies }: ReplyListProps) => {
                     </div>
                 </div>
             ))}
-        </div>
+        </NavLink>
     );
 };

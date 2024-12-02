@@ -8,6 +8,8 @@ import { ArchivedPage } from '@/pages/ArchivedPage';
 import { LabelCollectionsPage } from '@/pages/LabelCollectionsPage';
 import { LetterDetailPage } from '@/pages/Letter/Detail/LetterDetailPage';
 import { NotificationPage } from '@/pages/Notification/NotificationPage';
+import { ReplyLetterDetailPage } from '@/pages/Letter/Detail/ReplyLetterDetailPage';
+import { NotificationPage } from '@/pages/NotificationPage';
 import { SentPage } from '@/pages/SentPage';
 import { SharePage } from '@/pages/SharePage';
 import { LabelLotteryPage } from './Label/Lottery/LabelLotteryPage';
@@ -26,6 +28,7 @@ export {
     ArchivedPage,
     LabelCollectionsPage,
     LetterDetailPage,
+    ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
     SharePage,
