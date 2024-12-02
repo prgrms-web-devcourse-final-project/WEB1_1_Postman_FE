@@ -103,7 +103,7 @@ export const Maplibre = () => {
 
     return (
         <div>
-            <div className="mx-auto mt-4 relative h-[812px] w-[768px]">
+            <div className="mx-auto mt-4 relative h-[812px] w-full">
                 <Map
                     initialViewState={viewState}
                     style={{ width: '100%', height: '100%' }}
@@ -133,7 +133,7 @@ export const Maplibre = () => {
                             latitude={letter.latitude}
                         >
                             <div
-                                className="bg-gray-100 p-1 rounded-sm"
+                                className="p-1 bg-gray-100 rounded-sm"
                                 onClick={() =>
                                     alert(`${letter.title}\n${letter.keyword}`)
                                 }

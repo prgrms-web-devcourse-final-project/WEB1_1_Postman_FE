@@ -6,3 +6,19 @@
 .swiper-slide-shadow {
     @apply opacity-0 !important;
 }
+
+@layer base {
+    #root {
+        @apply mx-auto min-w-[375px] max-w-[475px]   bg-white border h-lvh;
+    }
+}
+
+:root {
+    --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6); /* 배경색 */
+    --rsbs-bg: #fff; /* 시트 배경색 */
+    --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14); /* 핸들 배경색 */
+    --rsbs-max-w: 450px; /* 최대 너비 */
+    --rsbs-ml: auto;
+    --rsbs-mr: auto;
+    --rsbs-overlay-rounded: 16px; /* 모서리 반경 */
+}

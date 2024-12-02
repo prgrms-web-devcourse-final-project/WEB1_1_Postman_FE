@@ -29,6 +29,7 @@ export default {
     },
     plugins: [
         require('tailwindcss-animated'),
+
         ({ addUtilities }) => {
             addUtilities({
                 '.flex-center': {
