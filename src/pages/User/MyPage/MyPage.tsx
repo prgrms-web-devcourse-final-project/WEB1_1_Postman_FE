@@ -1,4 +1,3 @@
-import { Outlet } from 'react-router-dom';
 import { useUserStore } from '@/stores/useUserStore';
 import { ProfileSection } from '@/components/MyPage/ProfileSection';
 import { MenuListSection } from '@/components/MyPage/MenuListSection';
