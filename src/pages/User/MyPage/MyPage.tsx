@@ -1,6 +1,6 @@
 import { useUserStore } from '@/stores/useUserStore';
 import { ProfileSection } from '@/components/MyPage/ProfileSection';
-import { RecordGridSection } from '@/components/MyPage/RecordGridSection';
+import { RecordListSection } from '@/components/MyPage/RecordListSection';
 import { KeywordListSection } from '@//components/MyPage/KeywordListSection';
 
 export const MyPage = () => {
@@ -21,7 +21,7 @@ export const MyPage = () => {
             </h1>
             <div className="flex flex-col gap-10">
                 <ProfileSection user={user} />
-                <RecordGridSection />
+                <RecordListSection />
                 <KeywordListSection keywords={sampleKeywords} />
             </div>
         </div>
