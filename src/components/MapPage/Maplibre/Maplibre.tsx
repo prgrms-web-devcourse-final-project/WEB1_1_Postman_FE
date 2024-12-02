@@ -5,6 +5,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import mapStyle from './map_style.json';
 import { StyleSpecification } from 'maplibre-gl';
 import * as turf from '@turf/turf';
+import { useSelectedLetterStore } from '@/stores/useSelectedLetterStore';
 type Letter = {
     id: number;
     longitude: number;
@@ -42,6 +43,8 @@ const sampleLetters: Letter[] = [
 ];
 
 export const Maplibre = () => {
+    const { toggleSelectedLetter, clearSelectedLetter } =
+        useSelectedLetterStore();
     const [currentLocation, setCurrentLocation] = useState<{
         longitude: number;
         latitude: number;
@@ -111,6 +114,7 @@ export const Maplibre = () => {
                     mapLib={maplibregl}
                     minZoom={6}
                     maxZoom={18}
+                    onClick={() => clearSelectedLetter()}
                 >
                     {currentLocation && (
                         <Marker
@@ -133,14 +137,15 @@ export const Maplibre = () => {
                             latitude={letter.latitude}
                         >
                             <div
-                                className="p-1 bg-gray-100 rounded-sm"
-                                onClick={() =>
-                                    alert(`${letter.title}\n${letter.keyword}`)
-                                }
+                                className="bg-gray-100 p-1 rounded-sm"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleSelectedLetter(letter);
+                                }}
                             >
                                 <img
                                     src="/bottle.png"
-                                    className="w-full h-5 rounded-lg "
+                                    className="w-full h-5 rounded-lg"
                                 />
                             </div>
                         </Marker>

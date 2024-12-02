@@ -19,7 +19,11 @@ export const MapLetterDetail = ({
     return (
         <>
             <div className="absolute bottom-4 translate-x-40">
-                <ProfileImage width="50px" height="50px" />
+                <ProfileImage
+                    imageItem={{ id: '123', name: '가오리', src: '/라밸_샘플' }}
+                    width="50px"
+                    height="50px"
+                />
             </div>
             <p className="absolute left-24 top-60 font-bold">{title}</p>
             <p className="absolute left-24 top-[19rem]">{content}</p>
@@ -35,7 +39,7 @@ export const MapLetterDetail = ({
             </div>
             <div className="absolute bottom-4 translate-x-60 flex-col">
                 <p className="ml-2">{date}</p>
-                <DayCounter width="70px" height="20px" />
+                <DayCounter daysLeft={21} width="70px" height="20px" />
             </div>
         </>
     );
