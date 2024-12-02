@@ -11,7 +11,7 @@ export const SuccessLetterPage = () => {
         navigate('/');
     };
     return (
-        <div className="w-[375px] max-w-[768px] max-h-[815px]">
+        <div className="">
             <Margin top={210} />
             <SuccessModal />
             <Margin top={230} />
