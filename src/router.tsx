@@ -67,10 +67,6 @@ export const router = createBrowserRouter([
                 element: <LabelCollectionsPage />
             },
             {
-                path: '/notification',
-                element: <NotificationPage />
-            },
-            {
                 path: '/sent',
                 element: <SentPage />
             },
@@ -107,5 +103,9 @@ export const router = createBrowserRouter([
     {
         path: '/lottery',
         element: <LabelLotteryPage />
+    },
+    {
+        path: '/notification',
+        element: <NotificationPage />
     }
 ]);
