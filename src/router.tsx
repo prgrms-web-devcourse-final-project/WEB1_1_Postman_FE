@@ -13,7 +13,8 @@ import {
     LetterDetailPage,
     NotificationPage,
     SentPage,
-    SharePage
+    SharePage,
+    LabelLotteryPage
 } from './pages';
 
 export const router = createBrowserRouter([
@@ -82,5 +83,9 @@ export const router = createBrowserRouter([
     {
         path: '/letter/:type/:id',
         element: <LetterDetailPage />
+    },
+    {
+        path: '/lottery',
+        element: <LabelLotteryPage />
     }
 ]);

@@ -21,16 +21,19 @@ export const HomePage = () => {
     return (
         <div className="p-5 flex flex-col gap-[30px]">
             <TopButtonContainer />
+
             <Toggle
                 isChecked={toggle}
                 onToggle={() => {
                     setToggle(!toggle);
                 }}
             />
+
             <div>
                 <WelcomeMessageContainer user={user} newLetter />
                 <LetterContainer />
             </div>
+
             <div className="flex justify-center">
                 <button
                     onClick={() => {
@@ -41,7 +44,11 @@ export const HomePage = () => {
                     키워드 설정
                 </button>
             </div>
-            <BannerContainer />
+
+            <div className="mx-[-20px]">
+                <BannerContainer />
+            </div>
+
             <SliderMenuContainer
                 open={open}
                 onDismiss={onDismiss}
