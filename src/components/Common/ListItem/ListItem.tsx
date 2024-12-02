@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type ListItemProps = {
     image?: string;
@@ -18,7 +19,7 @@ export const ListItem = ({
                     <img
                         src={image}
                         alt="icon"
-                        className="w-[60px] h-[60px] rounded-full object-cover"
+                        className="w-[60px] h-[35px] rounded-full object-cover"
                     />
                 )}
                 {contents}
@@ -35,20 +36,16 @@ export const ListItem = ({
     );
 
     return (
-        /**
-         * react-router-dom의 Link를 사용할 때
-         */
-        // <Link
-        //     to={link} // link로 연결
-        //     className="h-[60px] w-[100%] bg-gray-400 rounded-xl flex justify-center"
-        // >
-        //     {content}
-        // </Link>
         <div
             className="w-[100%] bg-gray-100 rounded-xl flex justify-center p-6"
             onClick={() => console.log(link)}
         >
-            {content}
+            <Link
+                to={link}
+                className="w-full h-full flex justify-between items-center"
+            >
+                {content}
+            </Link>
         </div>
     );
 };

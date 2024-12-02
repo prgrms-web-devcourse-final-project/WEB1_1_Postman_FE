@@ -13,7 +13,7 @@ export const ProfileSection = ({ user }: ProfileSectionProps) => {
             <ListItem
                 image={user.profileImageUrl}
                 contents={user.nickname}
-                link={'/mypage/profile'}
+                link={'/profile'}
             />
         </div>
     );
