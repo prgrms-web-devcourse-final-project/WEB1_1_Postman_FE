@@ -8,10 +8,10 @@ type MenuListItemProps = {
 
 export const MenuListItem = ({ navigationUrl, content }: MenuListItemProps) => {
     return (
-        <div className="w-full h-[50px] bg-gray-200">
+        <div className="w-full h-[50px]">
             <Link
                 to={navigationUrl}
-                className="w-full h-full flex items-center"
+                className="w-full h-full flex justify-between items-center"
             >
                 <div className="">{content}</div>
                 <svg className="w-5 h-5" viewBox="0 0 28 28" fill="none">

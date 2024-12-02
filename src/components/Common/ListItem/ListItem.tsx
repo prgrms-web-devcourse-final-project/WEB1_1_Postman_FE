@@ -18,7 +18,7 @@ export const ListItem = ({
                     <img
                         src={image}
                         alt="icon"
-                        className="w-[60px] h-[60px] rounded-full object-cover"
+                        className="w-[60px] h-[35px] rounded-full object-cover"
                     />
                 )}
                 {contents}
