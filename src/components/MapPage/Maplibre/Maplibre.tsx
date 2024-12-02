@@ -106,7 +106,7 @@ export const Maplibre = () => {
 
     return (
         <div>
-            <div className="mx-auto mt-4 relative h-[812px] w-[768px]">
+            <div className="mx-auto mt-4 relative h-[812px] w-full">
                 <Map
                     initialViewState={viewState}
                     style={{ width: '100%', height: '100%' }}

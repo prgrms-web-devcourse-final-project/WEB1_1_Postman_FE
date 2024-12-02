@@ -1,6 +1,6 @@
 import { useUserStore } from '@/stores/useUserStore';
 import { ProfileSection } from '@/components/MyPage/ProfileSection';
-import { RecordGridSection } from '@/components/MyPage/RecordGridSection';
+import { MenuListSection } from '@/components/MyPage/MenuListSection';
 import { KeywordListSection } from '@//components/MyPage/KeywordListSection';
 
 export const MyPage = () => {
@@ -14,6 +14,14 @@ export const MyPage = () => {
         '키워드'
     ];
 
+    const menuItems = [
+        { content: '키워드 편지함', url: '/mypage/letters/keyword' },
+        { content: '지도 편지함', url: '/mypage/letters/map' },
+        { content: '보관함', url: '/mypage/letters/bookmark' }
+    ];
+
+    const labelMenuItems = [{ content: '라벨첩', url: '/mypage/label' }];
+
     return (
         <div className="flex flex-col p-5 gap-8">
             <h1 className="font-semibold text-gray-600 text-[21px]">
@@ -21,7 +29,8 @@ export const MyPage = () => {
             </h1>
             <div className="flex flex-col gap-10">
                 <ProfileSection user={user} />
-                <RecordGridSection />
+                <MenuListSection menuItems={menuItems} />
+                <MenuListSection menuItems={labelMenuItems} />
                 <KeywordListSection keywords={sampleKeywords} />
             </div>
         </div>

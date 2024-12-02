@@ -14,7 +14,7 @@ export const SelectItemPage = () => {
     }, []);
 
     return (
-        <div className="w-[375px] max-w-[475px] h-screen max-h-[812px]">
+        <div className="">
             <TopBar
                 handleBackClick={() => {
                     navigate(-1);
@@ -30,6 +30,7 @@ export const SelectItemPage = () => {
             >
                 이제 떠날 준비가 되셨나요
             </h2>
+
             <AnimationBottle />
 
             <SelectItem isActive={isActive} setIsActive={handleIsActive} />

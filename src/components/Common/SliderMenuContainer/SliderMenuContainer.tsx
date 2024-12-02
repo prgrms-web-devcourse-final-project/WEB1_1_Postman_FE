@@ -7,6 +7,7 @@ interface SliderMenuContainerProps {
     snapPoints?: () => number[];
     onDismiss?: () => void;
     blocking?: boolean;
+    useDefaultSnap?: boolean;
     children: ReactNode;
 }
 
@@ -15,6 +16,7 @@ export const SliderMenuContainer = ({
     snapPoints = () => [window.innerHeight * 0.3, window.innerHeight * 0.6],
     onDismiss,
     blocking = false,
+    useDefaultSnap = false,
     children
 }: SliderMenuContainerProps) => {
     return (
@@ -22,7 +24,16 @@ export const SliderMenuContainer = ({
             open={open} // false면 완전히 닫힘
             onDismiss={onDismiss}
             snapPoints={snapPoints} // ex) [300, 450, 600]이면 300px, 450px, 600px에서 멈춤
+            defaultSnap={
+                useDefaultSnap ? ({ snapPoints }) => snapPoints[0] : undefined
+            }
             blocking={blocking} // true면 배경 클릭 불가
+            className="z-[1000]" // z-index 추가
+            style={
+                {
+                    '--rsbs-z-index': '1000'
+                } as React.CSSProperties
+            }
         >
             {children}
         </BottomSheet>

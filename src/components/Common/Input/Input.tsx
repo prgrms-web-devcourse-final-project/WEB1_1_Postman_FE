@@ -29,7 +29,6 @@ export const Input = ({
     }, [defaultValue]);
 
     useEffect(() => {
-        console.log(value);
         if (onValueChange && value !== '') {
             onValueChange(value);
         }

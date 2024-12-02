@@ -17,7 +17,8 @@ import {
     SharePage,
     LabelLotteryPage,
     SelectItemPage,
-    SuccessLetterPage
+    SuccessLetterPage,
+    ProfilePage
 } from './pages';
 import { Margin } from './components/Common/Margin/Margin';
 
@@ -57,19 +58,20 @@ export const router = createBrowserRouter([
                         path: 'letters',
                         children: [
                             { path: 'keyword', element: <ArchivedPage /> },
-                            { path: 'map', element: <ArchivedPage /> }
+                            { path: 'map', element: <ArchivedPage /> },
+                            { path: 'bookmark', element: <ArchivedPage /> }
                         ]
                     },
                     { path: 'labels', element: <LabelCollectionsPage /> }
                 ]
             },
             {
-                path: '/labelcollections',
-                element: <LabelCollectionsPage />
+                path: 'profile',
+                element: <ProfilePage />
             },
             {
-                path: '/notification',
-                element: <NotificationPage />
+                path: '/labelcollections',
+                element: <LabelCollectionsPage />
             },
             {
                 path: '/sent',
@@ -112,5 +114,9 @@ export const router = createBrowserRouter([
     {
         path: '/lottery',
         element: <LabelLotteryPage />
+    },
+    {
+        path: '/notification',
+        element: <NotificationPage />
     }
 ]);
