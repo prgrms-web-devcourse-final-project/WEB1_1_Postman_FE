@@ -1,8 +1,17 @@
+import { NavLink } from 'react-router-dom';
+import { Logo } from '../../Common/LogoContainer/Logo';
+import { IoIosNotifications } from 'react-icons/io';
+
 export const TopButtonContainer = () => {
     return (
         <div className="flex justify-between">
-            <button className="btn-base w-[44px] h-[44px]">1</button>
-            <button className="btn-base w-[44px] h-[44px]">2</button>
+            <NavLink to={'/'}>
+                <Logo h={34} />
+            </NavLink>
+
+            <NavLink to={'/notification'} className="size-[34px]">
+                <IoIosNotifications className="size-full text-[#22B8EF]" />
+            </NavLink>
         </div>
     );
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 interface NotificationBadgeProps {
     badgeType: 'basic' | 'dday';
@@ -10,8 +9,6 @@ export const NotificationBadge = ({
     badgeType,
     count
 }: NotificationBadgeProps) => {
-    const navigate = useNavigate();
-
     const MAX_COUNT = 99;
     const BaseStyle =
         'inline-flex items-center justify-center text-center align-text-middle';
@@ -57,10 +54,7 @@ export const NotificationBadge = ({
     };
 
     return (
-        <div
-            onClick={() => navigate('/notification')}
-            className={`${BaseStyle} ${styleMap[badgeType]}`}
-        >
+        <div className={`${BaseStyle} ${styleMap[badgeType]}`}>
             {renderContent(badgeType, count)}
         </div>
     );
