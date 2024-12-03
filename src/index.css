@@ -10,8 +10,12 @@
 }
 
 @layer base {
+    html,
+    body {
+        @apply h-full;
+    }
     #root {
-        @apply mx-auto min-w-[375px] max-w-[475px] bg-white border h-[1vh] text-sample-black;
+        @apply mx-auto min-w-[375px] max-w-[475px]  bg-white border h-auto min-h-screen text-sample-black;
     }
 }
 
