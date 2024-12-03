@@ -1,4 +1,3 @@
-import { Margin } from '@/components/Common/Margin/Margin';
 import { CreateButton } from '@/components/Letter/CreateButton/CreateButton';
 import { SuccessModal } from '@/components/Letter/SuccessModal/SuccessModal';
 import React from 'react';
@@ -16,7 +15,7 @@ export const SuccessLetterPage = () => {
                 <SuccessModal />
             </div>
 
-            <div className="absolute w-full bottom-5">
+            <div className="absolute w-full bottom-[34px]">
                 <CreateButton isActive={true} handleClickHandler={handleClick}>
                     {'확인'}
                 </CreateButton>
