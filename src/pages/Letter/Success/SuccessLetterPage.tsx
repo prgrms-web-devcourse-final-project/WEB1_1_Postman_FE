@@ -11,11 +11,16 @@ export const SuccessLetterPage = () => {
         navigate('/');
     };
     return (
-        <div className="">
-            <Margin top={210} />
-            <SuccessModal />
-            <Margin top={230} />
-            <CreateButton isActive={true} handleClickHandler={handleClick} />
+        <div className="relative flex flex-col justify-between h-screen">
+            <div className="absolute inset-0 flex items-center justify-center">
+                <SuccessModal />
+            </div>
+
+            <div className="absolute w-full bottom-5">
+                <CreateButton isActive={true} handleClickHandler={handleClick}>
+                    {'확인'}
+                </CreateButton>
+            </div>
         </div>
     );
 };
