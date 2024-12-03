@@ -18,9 +18,6 @@ export default meta;
 type Story = StoryObj<typeof MaplibreWithSearch>;
 
 export const WithSearch: Story = {
-    args: {
-        searchText: '서울'
-    },
     parameters: {
         docs: {
             description: {
