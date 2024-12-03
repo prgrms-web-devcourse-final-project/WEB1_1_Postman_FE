@@ -72,15 +72,24 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     return (
         <div className="relative">
             <SliderMenuContainer
-                snapPoints={() => [
-                    window.innerHeight * 0.08,
-                    window.innerHeight * 0.6
-                ]}
+                snapPoints={() => [80, window.innerHeight * 0.6]}
+                header={
+                    <CreateButton
+                        isActive={isActive}
+                        handleClickHandler={() => {
+                            if (isActive) {
+                                navigate('/letter/success');
+                            }
+                        }}
+                    >
+                        {'보내기'}
+                    </CreateButton>
+                }
             >
                 <Margin top={15} />
                 <div className="relative flex w-full overflow-hidden text-xl align-middle h-[50px] ">
                     <div
-                        className="absolute bottom-0 w-1/2 h-[2px] transition-transform duration-500 ease-in-out bg-gray-500"
+                        className="absolute bottom-0 w-1/2 h-[2px] transition-transform duration-500 ease-in-out bg-sample-blue"
                         style={{
                             transform: `translateX(${isLabel ? '0%' : '100%'})`
                         }}
@@ -118,18 +127,6 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                 )}
                 <Margin bottom={30} />
             </SliderMenuContainer>
-            <div className="inset-0 w-[90%] m-auto">
-                <CreateButton
-                    isActive={isActive}
-                    handleClickHandler={() => {
-                        if (isActive) {
-                            navigate('/letter/success');
-                        }
-                    }}
-                >
-                    {'보내기'}
-                </CreateButton>
-            </div>
         </div>
     );
 };

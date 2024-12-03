@@ -12,7 +12,7 @@ export const KeywordToggleButton = ({
     return (
         <button
             onClick={onClick}
-            className={`border border-gray-600 border-solid rounded-full px-3 py-1 ${isActive ? 'bg-slate-500' : 'bg-white'} ${isActive ? 'text-white' : 'text-black'}`}
+            className={`border-[1px] border-sample-blue border-solid rounded-full px-3 py-1 text-black ${isActive && 'bg-[rgba(34,171,239,0.13)]'}`}
         >
             {keyword}
         </button>

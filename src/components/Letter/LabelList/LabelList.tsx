@@ -14,7 +14,7 @@ export const LabelList = ({
     onLabelSelect
 }: LableListProps) => {
     return (
-        <div className="grid grid-cols-4 gap-4 mt-5">
+        <div className="grid grid-cols-4 gap-2 px-1 mt-5">
             {labels.map((label, idx) => (
                 <div
                     key={idx}

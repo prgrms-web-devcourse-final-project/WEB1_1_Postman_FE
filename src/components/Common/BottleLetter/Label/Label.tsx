@@ -4,13 +4,11 @@ import { LabelProps } from '@/types/label';
 export const Label = ({ imgSrc, isActive }: LabelProps) => {
     return (
         <div
-            className={`w-full h-full flex justify-center items-center  ${
-                isActive
-                    ? 'bg-slate-500 rounded-lg'
-                    : 'bg-transparent rounded-none'
+            className={`w-full h-full flex justify-center items-center border-[1px] rounded-2xl ${
+                isActive ? 'border-sample-blue' : 'border-transparent'
             }`}
         >
-            <img src={`/${imgSrc}`} className="object-contain w-full h-full" />
+            <img src={`/${imgSrc}`} className="object-contain h-[80px] p-1 " />
         </div>
     );
 };
