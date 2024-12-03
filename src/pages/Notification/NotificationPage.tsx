@@ -9,15 +9,15 @@ export const NotificationPage = () => {
             id: 'ba017e82-022e-4a82-94db-f0c5d22ef318',
             type: 'NEW_LETTER',
             receiver: 99,
-            createdAt: '2024-12-02T11:20:38.6242079',
+            createdAt: '2024-12-03T18:20:38.6242079',
             letterId: 1,
             isRead: false
         },
         {
             id: 'ba017e82-022e-4a82-94db-f0c5d22ef318',
-            type: 'NEW_LETTER',
+            type: 'TARGET_LETTER',
             receiver: 99,
-            createdAt: '2024-12-02T11:20:38.6242079',
+            createdAt: '2024-12-03T11:20:38.6242079',
             letterId: 1,
             isRead: false
         },
@@ -39,9 +39,9 @@ export const NotificationPage = () => {
         },
         {
             id: 'ba017e82-022e-4a82-94db-f0c5d22ef318',
-            type: 'NEW_LETTER',
+            type: 'REPLY_LETTER',
             receiver: 99,
-            createdAt: '2024-12-02T11:20:38.6242079',
+            createdAt: '2024-12-01T19:20:38.6242079',
             letterId: 1,
             isRead: true
         },
@@ -49,7 +49,7 @@ export const NotificationPage = () => {
             id: 'ba017e82-022e-4a82-94db-f0c5d22ef318',
             type: 'NEW_LETTER',
             receiver: 99,
-            createdAt: '2024-12-02T11:20:38.6242079',
+            createdAt: '2024-12-01T11:20:38.6242079',
             letterId: 1,
             isRead: true
         }
