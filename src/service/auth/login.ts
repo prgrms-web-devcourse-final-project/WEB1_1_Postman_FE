@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
 import { LoginType } from '@/types/login';
 import { defaultApi } from '@/service/api';
+import { tokenStorage } from './tokenStorage';
 
 type LoginProps = {
     email: string;
@@ -21,7 +22,10 @@ export async function login({
 
     try {
         const response = await api.post('/auth/signin', { email, password });
-        return response.data;
+        if (response.data.isSuccess) {
+            tokenStorage.setAccessToken(response.data.result.accessToken);
+            return response.data;
+        }
     } catch (error) {
         if (error instanceof AxiosError) {
             if (error.response?.status === 400) {
