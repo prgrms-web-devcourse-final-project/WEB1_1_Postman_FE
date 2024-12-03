@@ -5,8 +5,9 @@ import { SelectSlider } from '../SelectSlier/SelectSlider';
 import { useToastStore } from '@/hooks/useToastStore';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
-import { useNavigate } from 'react-router-dom';
+import { useActionData, useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import useAutoSave from '@/hooks/useAutoSave';
 
 export const PostLetterForm = () => {
     const [title, setTitle] = useState<string>('');
@@ -34,6 +35,15 @@ export const PostLetterForm = () => {
         }
     };
 
+    const saveLetterData = () => {
+        saveTitle(title);
+        saveLetterContent(letterContent);
+        saveFont(font);
+        saveLetter(letter);
+    };
+
+    useAutoSave(saveLetterData, 10000);
+
     return (
         <>
             <TopBar
@@ -41,10 +51,7 @@ export const PostLetterForm = () => {
                     navigate(-1);
                 }}
                 handelSuccesClick={() => {
-                    saveTitle(title);
-                    saveLetterContent(letterContent);
-                    saveFont(font);
-                    saveLetter(letter);
+                    saveLetterData();
                     navigate('/letter/select');
                 }}
             />
