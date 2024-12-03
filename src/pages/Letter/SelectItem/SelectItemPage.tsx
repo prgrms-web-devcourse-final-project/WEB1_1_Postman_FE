@@ -21,9 +21,8 @@ export const SelectItemPage = () => {
                 }}
             />
 
-            <Margin top={100} />
             <h2
-                className={`text-2xl text-center transition-opacity duration-1000 ${
+                className={`text-2xl text-center mt-[40%] transition-opacity duration-1000 ${
                     isActive ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{ minHeight: '2.5rem' }}
