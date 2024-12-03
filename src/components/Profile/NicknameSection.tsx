@@ -67,18 +67,20 @@ export const NicknameSection = () => {
             return (
                 <form
                     onSubmit={handleNicknameSubmit}
-                    className="flex flex-row items-center justify-center gap-1"
+                    className="flex flex-row items-center justify-center gap-3"
                 >
                     <NicknameInput defaultValue={user?.nickname} />
-                    <button type="submit">변경</button>
+                    {/* <button type="submit" className="border border-sample-blue rounded-sm">
+                        변경
+                    </button> */}
                 </form>
             );
         return (
-            <div className="flex flex-row items-center justify-center gap-1">
+            <div className="flex flex-row items-center justify-center gap-2 font-semibold">
                 {user?.nickname}
                 <img
                     onClick={handleEditNickname}
-                    className="w-[20px] h-[20px]"
+                    className="w-[15px] h-[15px] p-[2px] bg-sample-gray rounded-sm"
                     src="/ic_pen.svg"
                 />
             </div>
@@ -86,7 +88,7 @@ export const NicknameSection = () => {
     };
 
     return (
-        <div className="flex flex-row gap- items-center justify-center">
+        <div className="flex flex-row gap- items-center justify-center w-full h-[35px]">
             {renderNicknameBox()}
         </div>
     );

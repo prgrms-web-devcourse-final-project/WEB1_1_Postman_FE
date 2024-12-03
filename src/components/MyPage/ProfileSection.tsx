@@ -9,7 +9,7 @@ type ProfileSectionProps = {
 export const ProfileSection = ({ user }: ProfileSectionProps) => {
     return (
         <div className="flex flex-col gap-2">
-            <h2 className="font-bold text-gray-400">내 프로필 설정</h2>
+            <h2 className="font-bold">내 프로필 설정</h2>
             <ListItem
                 image={user.profileImageUrl}
                 contents={user.nickname}

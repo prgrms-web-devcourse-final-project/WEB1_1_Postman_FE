@@ -13,7 +13,7 @@ type MenuListSectionProps = {
 export const MenuListSection = ({ menuItems }: MenuListSectionProps) => {
     return (
         <div className="flex flex-col gap-2">
-            <h2 className="font-bold text-gray-400">내 편지함</h2>
+            <h2 className="font-bold text-sample-black">내 편지함</h2>
             <div className="w-full">
                 {menuItems.map((item, index) => {
                     return (

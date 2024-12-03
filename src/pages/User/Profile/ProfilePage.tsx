@@ -4,6 +4,7 @@ import { AccountInfoSection } from '@/components/Profile/AccountInfoSection';
 import { NicknameSection } from '@/components/Profile/NicknameSection';
 import { ProfileImageSection } from '@/components/Profile/ProfileImageSection';
 import { useState } from 'react';
+import { Container } from '@/components/Common/Container/Container';
 
 export const ProfilePage = () => {
     const navigate = useNavigate();
@@ -15,27 +16,29 @@ export const ProfilePage = () => {
     };
 
     return (
-        <div className="flex flex-col gap-10 m-10">
-            <div className="flex flex-col items-center justify-center gap-5 ">
-                <ProfileImageSection
-                    isEditing={isProfileImageEditing}
-                    onEditingChange={setisProfileImageEditing}
-                />
-                <NicknameSection />
-                <div className="flex flex-row gap-2">
-                    <IconMenuButton
-                        onClick={() => setisProfileImageEditing(true)}
-                        iconUrl="/ic_pen.svg"
-                        content="아바타 변경"
+        <Container>
+            <div className="flex flex-col gap-10">
+                <div className="flex flex-col items-center justify-center gap-5 ">
+                    <ProfileImageSection
+                        isEditing={isProfileImageEditing}
+                        onEditingChange={setisProfileImageEditing}
                     />
-                    <IconMenuButton
-                        onClick={handleNavigateShare}
-                        iconUrl="/ic_share.svg"
-                        content="프로필 공유"
-                    />
+                    <NicknameSection />
+                    <div className="flex flex-row gap-4">
+                        <IconMenuButton
+                            onClick={() => setisProfileImageEditing(true)}
+                            iconUrl="/ic_pen.svg"
+                            content="아바타 변경"
+                        />
+                        <IconMenuButton
+                            onClick={handleNavigateShare}
+                            iconUrl="/ic_share.svg"
+                            content="프로필 공유"
+                        />
+                    </div>
                 </div>
+                <AccountInfoSection />
             </div>
-            <AccountInfoSection />
-        </div>
+        </Container>
     );
 };
