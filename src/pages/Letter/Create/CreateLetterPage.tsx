@@ -7,7 +7,7 @@ export const CreateLetterPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="">
+        <div className="w-full h-full">
             <TopBar
                 handleBackClick={() => {
                     navigate(-1);
