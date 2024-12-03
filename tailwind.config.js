@@ -5,7 +5,13 @@ export default {
         extend: {
             colors: {
                 primary: '#D1D5DB',
-                sample: { blue: '#22B8EF', gray: '#F5F3F1', black: '#5C5C5C' }
+                sample: {
+                    blue: '#22B8EF',
+                    gray: '#F5F3F1',
+                    black: '#5C5C5C',
+                    hoverblue: '1882A8',
+                    textgray: 'C3C3C3'
+                }
             },
             maxWidth: {
                 DEFAULT: '768px'
