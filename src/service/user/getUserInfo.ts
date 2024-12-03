@@ -7,10 +7,8 @@ type getUserInfoResponseType = ApiResponseType<UserType | null>;
 
 export async function getUserInfo(): Promise<getUserInfoResponseType> {
     const api = defaultApi();
-    console.log('유저 정보 가져오기');
     try {
         const response = await api.get('/user');
-        console.log(response);
         return response.data.result;
     } catch (error) {
         if (error instanceof AxiosError && error.response) {
