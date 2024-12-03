@@ -12,6 +12,7 @@ type InputProps = {
 
 export const Input = ({
     name,
+    text,
     errorMessage,
     pattern,
     togglePassword,
@@ -54,39 +55,44 @@ export const Input = ({
         console.error('에러를 판단할 패턴이 없습니다.');
     return (
         <div className="relative">
-            <input
-                className="w-full h-8 px-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                autoComplete="off"
-                name={name}
-                value={value}
-                onChange={onChange}
-                {...rest}
-                type={
-                    togglePassword
-                        ? showPassword
-                            ? 'text'
-                            : 'password'
-                        : rest.type
-                }
-            />
-            {togglePassword && (
-                <button
-                    type="button"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-                    onClick={() => setShowPassword(!showPassword)}
-                >
-                    {showPassword ? (
-                        <FaEye size={16} />
-                    ) : (
-                        <FaEyeSlash size={16} />
-                    )}
-                </button>
-            )}
-            {error && (
-                <p className="absolute my-1 text-[14px] text-red-500 md:text-base">
-                    {error}
-                </p>
-            )}
+            <div className="flex flex-row gap-2">
+                {text}
+                {error && (
+                    <p className="text-[14px] my-[2px] text-small text-red-500 md:text-base">
+                        {error}
+                    </p>
+                )}
+            </div>
+            <div>
+                <input
+                    className="w-full h-8 px-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    autoComplete="off"
+                    name={name}
+                    value={value}
+                    onChange={onChange}
+                    {...rest}
+                    type={
+                        togglePassword
+                            ? showPassword
+                                ? 'text'
+                                : 'password'
+                            : rest.type
+                    }
+                />
+                {togglePassword && (
+                    <button
+                        type="button"
+                        className="absolute right-3 bottom-0 -translate-y-1/2 text-gray-400"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? (
+                            <FaEye size={16} />
+                        ) : (
+                            <FaEyeSlash size={16} />
+                        )}
+                    </button>
+                )}
+            </div>
         </div>
     );
 };
