@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { Margin } from '../Margin/Margin';
+import { useToastStore } from '@/hooks/useToastStore';
 
 type TextAreaProps = {
     value: string;
@@ -7,9 +9,11 @@ type TextAreaProps = {
 };
 
 export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
-    const [lineHeight, setLineHeight] = useState<number>(2.5);
+    const [lineHeight, setLineHeight] = useState<number>(2.2);
+    const [lineCount, setLineCount] = useState<number>(8);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
+    const { addToast } = useToastStore();
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         let inputValue = e.target.value;
 
@@ -19,31 +23,50 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
                 window.getComputedStyle(textAreaRef.current).lineHeight
             );
 
-            const linesCount = Math.floor(textAreaHeight / textAreaLineHeight);
-
-            if (linesCount > 8) {
-                inputValue = value;
+            const calculatedLinesCount = Math.floor(
+                textAreaHeight / textAreaLineHeight
+            );
+            if (calculatedLinesCount > 20) {
+                addToast('최대 20줄까지 작성 가능합니다.', 'error');
+                return;
             }
+
+            setLineCount(calculatedLinesCount);
         }
 
-        const lines = inputValue.split('\n');
-        if (lines.length <= 8) {
-            setValue(inputValue);
-        }
+        setValue(inputValue);
     };
 
     useEffect(() => {
         if (textAreaRef.current) {
             textAreaRef.current.style.height = 'auto';
             textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+            // 텍스트가 변경될 때 lineCount 계산
+            const textAreaLineHeight = parseInt(
+                window.getComputedStyle(textAreaRef.current).lineHeight
+            );
+            const textAreaHeight = textAreaRef.current.scrollHeight;
+            const calculatedLinesCount = Math.floor(
+                textAreaHeight / textAreaLineHeight
+            );
+            setLineCount(calculatedLinesCount); // 라인 수 업데이트
         }
     }, [value]);
+
+    const renderLineImages = () => {
+        return Array.from({ length: lineCount }).map((_, index) => (
+            <React.Fragment key={index}>
+                <img src={'/public/to_line.f4c129e6.svg'} className="w-full" />
+                <Margin top={28} />
+            </React.Fragment>
+        ));
+    };
 
     useEffect(() => {
         const handleResize = () => {
             if (textAreaRef.current) {
                 setLineHeight(
-                    2.5 + (textAreaRef.current.offsetWidth - 281) * 0.01
+                    2.2 + (textAreaRef.current.offsetWidth - 281) * 0.002
                 );
             }
         };
@@ -53,14 +76,25 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    useEffect(() => {});
+
     return (
-        <textarea
-            className="absolute w-9/12 px-2 bg-transparent border-none resize-none mt-[43%]  overflow-hidden h-auto"
-            style={{ fontFamily: font || 'inherit', lineHeight: lineHeight }}
-            ref={textAreaRef}
-            placeholder="편지를 작성하세요..."
-            value={value}
-            onChange={handleInputChange}
-        />
+        <div>
+            <textarea
+                className="w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px]"
+                style={{
+                    fontFamily: font || 'inherit',
+                    lineHeight: lineHeight
+                }}
+                ref={textAreaRef}
+                placeholder="편지를 작성하세요..."
+                value={value}
+                onChange={handleInputChange}
+            />
+
+            <div className="absolute top-0 w-full mt-[30px]">
+                {renderLineImages()}
+            </div>
+        </div>
     );
 };

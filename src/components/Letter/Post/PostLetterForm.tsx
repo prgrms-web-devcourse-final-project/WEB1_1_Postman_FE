@@ -1,91 +1,80 @@
-import { ItemSlider } from '@/components/Common/ItemSlider/ItemSlider';
+import React from 'react';
 import { Margin } from '@/components/Common/Margin/Margin';
-import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
-import { TextArea } from '@/components/Common/TextArea/TextArea';
-import { Toggle } from '@/components/Common/Toggle/Toggle';
 import { useState } from 'react';
+import { SelectSlider } from '../SelectSlier/SelectSlider';
+import { useToastStore } from '@/hooks/useToastStore';
+import { TextArea } from '@/components/Common/TextArea/TextArea';
+import { TopBar } from '@/components/Common/TopBar/TopBar';
+import { useNavigate } from 'react-router-dom';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 export const PostLetterForm = () => {
-    const [title, setTtile] = useState('');
-    const [content, setContent] = useState('');
-    const [isFont, setIsFont] = useState(true);
-    const [letter, setLetter] = useState('편지지_샘플_1');
-    const [font, setFont] = useState('');
+    const [title, setTitle] = useState<string>('');
+    const [letter, setLetter] = useState<string>('편지지_샘플_1');
+    const [letterContent, setLetterContent] = useState<string>('');
+    const [font, setFont] = useState<string>('initial');
 
-    const textItems = [
-        { name: 'cursive', id: '1' },
-        { name: 'fantasy', id: '2' },
-        { name: 'initial', id: '3' },
-        { name: 'monospace', id: '4' }
-    ];
+    const { addToast } = useToastStore();
+    const navigate = useNavigate();
 
-    const imageItems = [
-        { id: '편지지_샘플_1', name: '이미지' },
-        { id: '편지지_샘플_2', name: '이미지' },
-        { id: '편지지_샘플_3', name: '이미지' },
-        { id: '편지지_샘플_4', name: '이미지' },
-        { id: '편지지_샘플_5', name: '이미지' }
-    ];
+    const { setValue: saveTitle } = useLocalStorage('title', '');
+    const { setValue: saveLetterContent } = useLocalStorage(
+        'letterContent',
+        ''
+    );
+    const { setValue: saveFont } = useLocalStorage('font', '');
+    const { setValue: saveLetter } = useLocalStorage('letter', '');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        if (inputValue.length > 100) {
+            addToast('제목은 100자 이상 쓸 수 없습니다.', 'warning');
+        } else {
+            setTitle(inputValue);
+        }
+    };
 
     return (
-        <SliderMenuContainer
-            snapPoints={() => [
-                window.innerHeight * 0.05,
-                window.innerHeight * 0.6
-            ]}
-        >
-            <Margin top={18} />
-            <div>
-                <div className="relative flex justify-center">
+        <>
+            <TopBar
+                handleBackClick={() => {
+                    navigate(-1);
+                }}
+                handelSuccesClick={() => {
+                    saveTitle(title);
+                    saveLetterContent(letterContent);
+                    saveFont(font);
+                    saveLetter(letter);
+                    navigate('/letter/select');
+                }}
+            />
+            <div className="min-h-screen rounded-t-3xl bg-zinc-300">
+                <Margin top={20} />
+                <div className="relative flex flex-col justify-center w-9/12 m-auto py-14">
                     <input
-                        onChange={(e) => setTtile(e.target.value)}
+                        onChange={handleChange}
                         value={title}
                         type="text"
                         placeholder="제목을 입력해주세요"
-                        className="absolute mt-[35%] w-9/12 bg-transparent  px-2 focus:border-none focus:outline-none border-none "
+                        className="z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap"
                     />
-                    <TextArea
-                        value={content}
-                        setValue={setContent}
-                        font={font}
-                    />
-                </div>
+                    <img src={'/public/to_line.f4c129e6.svg'} />
 
-                <img
-                    src={`/public/${letter}.png`}
-                    className="w-full h-full rounded-lg "
-                    alt="샘플 편지지"
+                    <div className="relative z-10">
+                        <TextArea
+                            value={letterContent}
+                            setValue={setLetterContent}
+                            font={font}
+                        />
+                    </div>
+                </div>
+                <SelectSlider
+                    font={font}
+                    letter={letter}
+                    setFont={setFont}
+                    setLetter={setLetter}
                 />
-
-                <div className="flex flex-col items-center justify-center aling bottom-9 ">
-                    <Margin bottom={14} />
-                    {isFont ? (
-                        <ItemSlider
-                            itemType="text"
-                            itemIDList={textItems}
-                            value={font}
-                            setValue={setFont}
-                        />
-                    ) : (
-                        <ItemSlider
-                            itemType="image"
-                            itemIDList={imageItems}
-                            width="77px"
-                            height="99px"
-                            value={letter}
-                            setValue={setLetter}
-                        />
-                    )}
-                    <Margin bottom={14} />
-                    <Toggle
-                        isChecked={isFont}
-                        onToggle={() => setIsFont(!isFont)}
-                        leftLabel="글씨체"
-                        rightLabel="편지지"
-                    />
-                    <Margin bottom={30} />
-                </div>
             </div>
-        </SliderMenuContainer>
+        </>
     );
 };

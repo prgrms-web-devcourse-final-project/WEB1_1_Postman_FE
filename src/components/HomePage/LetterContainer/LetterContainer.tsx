@@ -37,7 +37,7 @@ export const LetterContainer = () => {
 
     return (
         <div className="relative">
-            <div className="absolute right-[20px] z-30">
+            <div className="absolute right-[20px] z-1">
                 <NotificationBadge badgeType="basic" count={letters.length} />
             </div>
             <div className="overflow-hidden mx-[-20px] mt-[50px]">
@@ -45,7 +45,7 @@ export const LetterContainer = () => {
                     effect={'cards'}
                     grabCursor={true}
                     modules={[EffectCards]}
-                    className="mySwiper object-cover"
+                    className="object-cover mySwiper"
                 >
                     {letters.map((letter, i) => {
                         return (

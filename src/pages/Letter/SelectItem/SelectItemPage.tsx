@@ -1,4 +1,3 @@
-import { Margin } from '@/components/Common/Margin/Margin';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { AnimationBottle } from '@/components/Letter/AnimationBottle/AnimationBottle';
 import { SelectItem } from '@/components/Letter/SelectItem/SelectItem';
@@ -21,9 +20,8 @@ export const SelectItemPage = () => {
                 }}
             />
 
-            <Margin top={100} />
             <h2
-                className={`text-2xl text-center transition-opacity duration-1000 ${
+                className={`text-2xl text-center mt-[40%] transition-opacity duration-1000 ${
                     isActive ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{ minHeight: '2.5rem' }}

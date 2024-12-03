@@ -49,7 +49,7 @@ export const ItemSlider = ({
             case 'text':
                 return (
                     <div
-                        className="flex items-center justify-center h-full p-2 cursor-pointer"
+                        className="flex items-center justify-center h-full p-2 cursor-pointer "
                         onClick={() => {
                             setValue(item.name);
                         }} // 아이템 클릭 시 setValue 호출

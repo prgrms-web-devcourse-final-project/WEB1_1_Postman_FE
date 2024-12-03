@@ -9,6 +9,7 @@ interface SliderMenuContainerProps {
     blocking?: boolean;
     useDefaultSnap?: boolean;
     children: ReactNode;
+    header?: ReactNode;
 }
 
 export const SliderMenuContainer = ({
@@ -17,7 +18,8 @@ export const SliderMenuContainer = ({
     onDismiss,
     blocking = false,
     useDefaultSnap = false,
-    children
+    children,
+    header
 }: SliderMenuContainerProps) => {
     return (
         <BottomSheet
@@ -28,12 +30,13 @@ export const SliderMenuContainer = ({
                 useDefaultSnap ? ({ snapPoints }) => snapPoints[0] : undefined
             }
             blocking={blocking} // true면 배경 클릭 불가
-            className="z-[1000]" // z-index 추가
+            className="z-[999]" // z-index 추가
             style={
                 {
-                    '--rsbs-z-index': '1000'
+                    '--rsbs-z-index': '999'
                 } as React.CSSProperties
             }
+            header={header}
         >
             {children}
         </BottomSheet>
