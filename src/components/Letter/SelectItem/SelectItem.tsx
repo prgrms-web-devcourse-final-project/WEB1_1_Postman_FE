@@ -14,35 +14,27 @@ type SelectItemProps = {
 
 export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
-    const [selectedLabels, setSelectedLabels] = useState<number[]>([]);
-    const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
+    const [selectedLabels, setSelectedLabels] = useState<number | null>(null);
+    const [selectedKeywords, setSelectedKeywords] = useState<number | null>(
+        null
+    );
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (selectedLabels.length > 0 && selectedKeywords.length > 0) {
+        if (selectedLabels && selectedKeywords) {
             setIsActive(true);
         } else {
             setIsActive(false);
         }
     }, [selectedLabels, selectedKeywords]);
 
-    // 라벨 선택 핸들러
     const handleLabelSelection = (label: number) => {
-        setSelectedLabels((prev) =>
-            prev.includes(label)
-                ? prev.filter((l) => l !== label)
-                : [...prev, label]
-        );
+        setSelectedLabels(label);
     };
 
-    // 키워드 선택 핸들러
     const handleKeywordSelection = (keyword: number) => {
-        setSelectedKeywords((prev) =>
-            prev.includes(keyword)
-                ? prev.filter((k) => k !== keyword)
-                : [...prev, keyword]
-        );
+        setSelectedKeywords(keyword);
     };
 
     const testLable: LabelProps[] = [
@@ -80,15 +72,24 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     return (
         <div className="relative">
             <SliderMenuContainer
-                snapPoints={() => [
-                    window.innerHeight * 0.08,
-                    window.innerHeight * 0.6
-                ]}
+                snapPoints={() => [80, window.innerHeight * 0.6]}
+                header={
+                    <CreateButton
+                        isActive={isActive}
+                        handleClickHandler={() => {
+                            if (isActive) {
+                                navigate('/letter/success');
+                            }
+                        }}
+                    >
+                        {'보내기'}
+                    </CreateButton>
+                }
             >
                 <Margin top={15} />
                 <div className="relative flex w-full overflow-hidden text-xl align-middle h-[50px] ">
                     <div
-                        className="absolute bottom-0 w-1/2 h-[2px] transition-transform duration-500 ease-in-out bg-gray-500"
+                        className="absolute bottom-0 w-1/2 h-[2px] transition-transform duration-500 ease-in-out bg-sample-blue"
                         style={{
                             transform: `translateX(${isLabel ? '0%' : '100%'})`
                         }}
@@ -126,16 +127,6 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                 )}
                 <Margin bottom={30} />
             </SliderMenuContainer>
-            <div className="inset-0 w-[90%] m-auto">
-                <CreateButton
-                    isActive={isActive}
-                    handleClickHandler={() => {
-                        if (isActive) {
-                            navigate('/letter/success');
-                        }
-                    }}
-                />
-            </div>
         </div>
     );
 };

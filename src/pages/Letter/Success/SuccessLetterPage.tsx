@@ -1,4 +1,3 @@
-import { Margin } from '@/components/Common/Margin/Margin';
 import { CreateButton } from '@/components/Letter/CreateButton/CreateButton';
 import { SuccessModal } from '@/components/Letter/SuccessModal/SuccessModal';
 import React from 'react';
@@ -11,11 +10,16 @@ export const SuccessLetterPage = () => {
         navigate('/');
     };
     return (
-        <div className="">
-            <Margin top={210} />
-            <SuccessModal />
-            <Margin top={230} />
-            <CreateButton isActive={true} handleClickHandler={handleClick} />
+        <div className="relative flex flex-col justify-between h-screen">
+            <div className="absolute inset-0 flex items-center justify-center">
+                <SuccessModal />
+            </div>
+
+            <div className="absolute w-full bottom-[34px]">
+                <CreateButton isActive={true} handleClickHandler={handleClick}>
+                    {'확인'}
+                </CreateButton>
+            </div>
         </div>
     );
 };
