@@ -1,21 +1,29 @@
+import React from 'react';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { useState } from 'react';
 import { SelectSlider } from '../SelectSlier/SelectSlider';
-import React from 'react';
 import { useToastStore } from '@/hooks/useToastStore';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { useNavigate } from 'react-router-dom';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 export const PostLetterForm = () => {
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState<string>('');
     const [letter, setLetter] = useState<string>('편지지_샘플_1');
     const [letterContent, setLetterContent] = useState<string>('');
-    const [font, setFont] = useState<string>('');
+    const [font, setFont] = useState<string>('initial');
 
     const { addToast } = useToastStore();
-
     const navigate = useNavigate();
+
+    const { setValue: saveTitle } = useLocalStorage('title', '');
+    const { setValue: saveLetterContent } = useLocalStorage(
+        'letterContent',
+        ''
+    );
+    const { setValue: saveFont } = useLocalStorage('font', '');
+    const { setValue: saveLetter } = useLocalStorage('letter', '');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
@@ -33,6 +41,10 @@ export const PostLetterForm = () => {
                     navigate(-1);
                 }}
                 handelSuccesClick={() => {
+                    saveTitle(title);
+                    saveLetterContent(letterContent);
+                    saveFont(font);
+                    saveLetter(letter);
                     navigate('/letter/select');
                 }}
             />

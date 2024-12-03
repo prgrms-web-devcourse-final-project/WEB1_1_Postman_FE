@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useToastStore } from './useToastStore';
 
-function useLocalStorage<T>(key: string, initialValue: T) {
+export function useLocalStorage<T>(key: string, initialValue: T) {
     const { addToast } = useToastStore();
     const [storedValue, setStoredValue] = useState<T>(() => {
         try {
@@ -28,5 +28,3 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 
     return { storedValue, setValue };
 }
-
-export default useLocalStorage;
