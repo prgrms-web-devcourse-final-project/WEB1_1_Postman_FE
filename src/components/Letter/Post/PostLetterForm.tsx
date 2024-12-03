@@ -12,6 +12,7 @@ export const PostLetterForm = () => {
     const [letter, setLetter] = useState<string>('편지지_샘플_1');
     const [letterContent, setLetterContent] = useState<string>('');
     const [font, setFont] = useState<string>('');
+
     const { addToast } = useToastStore();
 
     const navigate = useNavigate();
