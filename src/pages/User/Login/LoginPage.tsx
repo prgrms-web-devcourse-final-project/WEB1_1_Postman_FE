@@ -8,9 +8,6 @@ import { getUserInfo } from '@/service/user/getUserInfo';
 import { Container } from '@/components/Common/Container/Container';
 import { useToastStore } from '@/hooks/useToastStore';
 
-// 성공 시나리오 success@email.com
-// 존재하지 않는 유저 fail@email.com
-// 서버 오류 fail@email.com
 export const LoginPage = () => {
     const navigate = useNavigate();
     const { setUser } = useUserStore();
@@ -25,26 +22,42 @@ export const LoginPage = () => {
             loginFormData.get('password') as string
         ];
 
-        if (!(email && password)) return;
+        if (!(email && password)) {
+            addToast('모든 정보를 입력해주세요.', 'warning');
+            return;
+        }
 
         try {
             const loginResponse = await login({ email, password });
-            console.log('로그인 완료', loginResponse);
+            console.log('응답 : ', loginResponse.code);
 
-            const userInfoResponse = await getUserInfo();
-            console.log(userInfoResponse);
-            // 임시 (백엔드 데이터 수정 예정)
-            const userInfoWithEmail = {
-                ...userInfoResponse.result,
-                email: email
-            };
-
-            setUser(userInfoWithEmail);
-
-            navigate('/');
+            switch (loginResponse.code) {
+                case 'COMMON200': {
+                    addToast('로그인에 성공했습니다.', 'success');
+                    const userInfoResponse = await getUserInfo();
+                    const userInfoWithEmail = {
+                        ...userInfoResponse,
+                        email: email
+                    };
+                    setUser(userInfoWithEmail);
+                    navigate('/');
+                    break;
+                }
+                case 'USER4000': {
+                    addToast('유저를 찾을 수 없습니다.', 'warning');
+                    break;
+                }
+                case 'USER4001': {
+                    addToast('비밀번호가 일치하지 않습니다.', 'warning');
+                    break;
+                }
+                default:
+                    addToast('로그인 처리에 실패했습니다.', 'warning');
+                    break;
+            }
         } catch (error) {
-            console.error(error);
-            addToast('로그인 처리에 실패했습니다.', 'error');
+            console.error('에러: ', error);
+            addToast('서버 오류입니다. 다시 시도해주세요', 'error');
         }
     };
 
