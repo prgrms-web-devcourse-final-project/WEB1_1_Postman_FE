@@ -18,6 +18,19 @@
         @apply mx-auto min-w-[375px] max-w-[475px]  bg-white border h-auto min-h-screen text-sample-black;
     }
 }
+@layer components {
+    .btn-primary {
+        @apply border border-sample-blue rounded-md p-2 w-full text-sample-blue hover:bg-sample-blue hover:text-white transition-colors;
+    }
+
+    .btn-primary-filled {
+        @apply bg-sample-blue text-white rounded-md p-2 w-full hover:bg-sample-blue/90 transition-colors;
+    }
+
+    .btn-secondary {
+        @apply border border-gray-300 rounded-md p-2 w-full text-gray-700 hover:bg-gray-50 transition-colors;
+    }
+}
 
 :root {
     --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6); /* 배경색 */

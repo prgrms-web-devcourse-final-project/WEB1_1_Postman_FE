@@ -13,13 +13,11 @@ export const PasswordSection = ({
     return (
         <>
             <div>
-                <h3>비밀번호</h3>
-                <div className="flex flex-row align-middle gap-2 w-full">
+                <div className="w-full">
                     <PasswordInput onValueChange={onPasswordChange} />
                 </div>
             </div>
             <div>
-                <h3>비밀번호 확인</h3>
                 <ConfirmPasswordInput onValueChange={onConfirmPasswordChange} />
             </div>
         </>

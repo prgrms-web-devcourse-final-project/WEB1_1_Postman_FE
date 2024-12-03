@@ -21,21 +21,20 @@ export const EmailSection = ({
     isEmailVerified
 }: EmailSectionProps) => {
     return (
-        <>
+        <div className="flex flex-col gap-5">
             <div>
-                <div className="flex flex-row gap-2">
-                    <h3>이메일</h3>{' '}
-                    {email && isEmailSend && isEmailVerified && (
-                        <div className="flex items-center h-6 text-[12px] text-green-500 md:text-base">
-                            인증이 완료되었습니다.
-                        </div>
-                    )}
-                </div>
-                <div className="flex items-center gap-2 w-full">
-                    <EmailInput onValueChange={onEmailChange} />
+                <div className="flex w-full items-end gap-2">
+                    <div className="w-full">
+                        {email && isEmailSend && isEmailVerified && (
+                            <div className="flex items-center h-6 text-[12px] text-green-500 md:text-base">
+                                ✔ 인증이 완료되었습니다.
+                            </div>
+                        )}
+                        <EmailInput onValueChange={onEmailChange} />
+                    </div>
                     <button
                         type="button"
-                        className="border border-blue-500 h-8 px-3 rounded text-blue-500 hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap"
+                        className="border border-sample-blue h-8 px-3 rounded text-sample-blue hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap"
                         onClick={onRequestVerify}
                     >
                         인증번호 전송
@@ -45,21 +44,20 @@ export const EmailSection = ({
 
             <div>
                 {isEmailSend && (
-                    <>
-                        <h3>이메일 인증번호</h3>
-                        <div className="flex flex-row align-middle gap-2 w-full">
+                    <div className="flex w-full items-end gap-2">
+                        <div className="w-full">
                             <VerifyEmailInput onValueChange={onAuthNumChange} />
-                            <button
-                                type="button"
-                                className="border border-blue-500 h-8 px-3 rounded text-blue-500 hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap"
-                                onClick={onRequestAuthNumVerify}
-                            >
-                                확인
-                            </button>
                         </div>
-                    </>
+                        <button
+                            type="button"
+                            className="border border-sample-blue h-8 px-3 rounded text-sample-blue hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap items-end"
+                            onClick={onRequestAuthNumVerify}
+                        >
+                            확인
+                        </button>
+                    </div>
                 )}
             </div>
-        </>
+        </div>
     );
 };

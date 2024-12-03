@@ -39,7 +39,7 @@ export const NicknameSection = ({
                     ))}
             </div>
 
-            <div className="flex flex-row align-middle gap-2 w-full">
+            <div className="flex flex-row items-end align-middle gap-2 w-full">
                 <NicknameInput
                     onValueChange={onNicknameChange}
                     onKeyDown={handleNicknameKeyDown}
