@@ -1,5 +1,4 @@
 import { BackButton } from '@/components/Common/BackButton/BackButton';
-import { useNavigate } from 'react-router-dom';
 import { IoIosSearch } from 'react-icons/io';
 import { SearchHistoryList } from '../SearchHistoryList/SearchHistoryList';
 
@@ -9,14 +8,25 @@ const searchHistory = [
     { place: '서울시 송파구 올림픽로', date: '12.03.' }
 ];
 
-export const SearchFullScreen = () => {
-    const navigate = useNavigate();
+type SearchFullScreenProps = {
+    isOpen: boolean;
+    onClose: () => void;
+};
+
+export const SearchFullScreen = ({
+    isOpen,
+    onClose
+}: SearchFullScreenProps) => {
     const onBackClick = () => {
-        navigate(-1);
+        onClose();
     };
 
+    if (!isOpen) {
+        return null;
+    }
+
     return (
-        <div className="z-10 mx-auto min-w-[375px] max-w-[475px]  bg-white border h-lvh">
+        <div className="z-10 mx-auto min-w-[375px] max-w-[475px] bg-white border h-lvh">
             <div className="flex items-center pl-3 pr-4 justify-between w-full border-b h-12">
                 <BackButton onClick={onBackClick} />
                 <input

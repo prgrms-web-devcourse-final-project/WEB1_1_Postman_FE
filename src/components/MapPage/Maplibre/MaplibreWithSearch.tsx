@@ -6,7 +6,11 @@ import mapStyle from './map_style.json';
 import { StyleSpecification } from 'maplibre-gl';
 import { IoIosSearch } from 'react-icons/io';
 
-export const MaplibreWithSearch = () => {
+type MaplibreWithSearchProps = {
+    onFocus: () => void;
+};
+
+export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
     const [searchText, setSearchText] = useState('');
     const [currentLocation, setCurrentLocation] = useState<{
         longitude: number;
@@ -79,6 +83,7 @@ export const MaplibreWithSearch = () => {
                     onChange={(e) => setSearchText(e.target.value)}
                     placeholder="원하는 위치를 검색해보세요!"
                     className="w-56 p-2 rounded-md outline-none"
+                    onFocus={onFocus}
                 />
                 <button onClick={handleSearch} className="px-4 py-2">
                     <IoIosSearch />
