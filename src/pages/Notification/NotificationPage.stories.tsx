@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
-import { HomePage } from './HomePage';
+import { NotificationPage } from './NotificationPage';
 
-const meta: Meta<typeof HomePage> = {
-    component: HomePage,
-    title: 'pages/HomePage',
+const meta: Meta<typeof NotificationPage> = {
+    component: NotificationPage,
+    title: 'pages/NotificationPage',
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
@@ -15,10 +15,9 @@ const meta: Meta<typeof HomePage> = {
         )
     ]
 };
-
 export default meta;
 
-type Story = StoryObj<typeof HomePage>;
+type Story = StoryObj<typeof NotificationPage>;
 
 export const Default: Story = {
     args: {}
