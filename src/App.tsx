@@ -4,9 +4,9 @@ import { router } from '@/router';
 
 export const App = () => {
     return (
-        <>
+        <div>
             <ToastContainer />
             <RouterProvider router={router} />
-        </>
+        </div>
     );
 };
