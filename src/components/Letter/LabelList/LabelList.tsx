@@ -4,7 +4,7 @@ import { Label } from '@/components/Common/BottleLetter/Label/Label';
 
 type LableListProps = {
     labels: LabelProps[];
-    selectedLabels: number[];
+    selectedLabels: number | null;
     onLabelSelect: (index: number) => void;
 };
 
@@ -23,7 +23,7 @@ export const LabelList = ({
                 >
                     <Label
                         imgSrc={label.imgSrc}
-                        isActive={selectedLabels.includes(idx)}
+                        isActive={selectedLabels === idx}
                     />
                 </div>
             ))}

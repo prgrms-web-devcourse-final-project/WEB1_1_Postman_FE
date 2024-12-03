@@ -14,35 +14,27 @@ type SelectItemProps = {
 
 export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
-    const [selectedLabels, setSelectedLabels] = useState<number[]>([]);
-    const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
+    const [selectedLabels, setSelectedLabels] = useState<number | null>(null);
+    const [selectedKeywords, setSelectedKeywords] = useState<number | null>(
+        null
+    );
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (selectedLabels.length > 0 && selectedKeywords.length > 0) {
+        if (selectedLabels && selectedKeywords) {
             setIsActive(true);
         } else {
             setIsActive(false);
         }
     }, [selectedLabels, selectedKeywords]);
 
-    // 라벨 선택 핸들러
     const handleLabelSelection = (label: number) => {
-        setSelectedLabels((prev) =>
-            prev.includes(label)
-                ? prev.filter((l) => l !== label)
-                : [...prev, label]
-        );
+        setSelectedLabels(label);
     };
 
-    // 키워드 선택 핸들러
     const handleKeywordSelection = (keyword: number) => {
-        setSelectedKeywords((prev) =>
-            prev.includes(keyword)
-                ? prev.filter((k) => k !== keyword)
-                : [...prev, keyword]
-        );
+        setSelectedKeywords(keyword);
     };
 
     const testLable: LabelProps[] = [
@@ -134,7 +126,9 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                             navigate('/letter/success');
                         }
                     }}
-                />
+                >
+                    {'보내기'}
+                </CreateButton>
             </div>
         </div>
     );

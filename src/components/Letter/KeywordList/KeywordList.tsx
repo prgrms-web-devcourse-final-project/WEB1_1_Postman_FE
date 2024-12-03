@@ -6,7 +6,7 @@ export type KeywordListProps = {
     title: string;
     subTitle: string;
     keywordGroup: KeywordProps[];
-    selectedKeywords: number[];
+    selectedKeywords: number | null;
     onKeywordSelect: (index: number) => void;
 };
 
@@ -31,7 +31,7 @@ export const KeywordList = ({
                     >
                         <KeywordToggleButton
                             keyword={keyword.content}
-                            isActive={selectedKeywords.includes(idx)}
+                            isActive={selectedKeywords === idx}
                         />
                     </li>
                 ))}
