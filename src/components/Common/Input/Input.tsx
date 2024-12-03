@@ -53,7 +53,7 @@ export const Input = ({
     if (errorMessage && !pattern)
         console.error('에러를 판단할 패턴이 없습니다.');
     return (
-        <div className="relative w-full">
+        <div className="relative">
             <input
                 className="w-full h-8 px-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                 autoComplete="off"

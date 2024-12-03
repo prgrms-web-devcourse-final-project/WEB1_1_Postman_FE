@@ -4,7 +4,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: '#D1D5DB'
+                primary: '#D1D5DB',
+                sample: { blue: '#22B8EF', gray: '#F5F3F1', black: '#5C5C5C' }
             },
             maxWidth: {
                 DEFAULT: '768px'
@@ -24,6 +25,35 @@ export default {
             animation: {
                 fadeIn: 'fadeIn 2s ease forwards',
                 'toast-slide-in': 'toast-slide-in 2s ease forwards'
+            },
+            fontFamily: {
+                sans: [
+                    'Pretendard',
+                    '-apple-system',
+                    'BlinkMacSystemFont',
+                    'system-ui',
+                    'Roboto',
+                    'sans-serif'
+                ]
+            },
+            fontSize: {
+                display: ['28px', { lineHeight: '1.3' }], // 큰 제목용
+                title1: ['24px', { lineHeight: '1.4' }], // 주요 제목
+                title2: ['20px', { lineHeight: '1.45' }], // 중간 제목
+                title3: ['18px', { lineHeight: '1.5' }], // 작은 제목
+                body1: ['16px', { lineHeight: '1.6' }], // 본문 텍스트
+                body2: ['15px', { lineHeight: '1.6' }], // 보조 본문
+                caption: ['13px', { lineHeight: '1.4' }], // 캡션, 부가설명
+                small: ['12px', { lineHeight: '1.4' }] // 매우 작은 텍스트
+            },
+            fontWeight: {
+                thin: '100', // font-thin
+                light: '300', // font-light
+                normal: '400', // font-normal
+                medium: '500', // font-medium
+                semibold: '600', // font-semibold
+                bold: '700', // font-bold
+                extrabold: '800' // font-extrabold
             }
         }
     },

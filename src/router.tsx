@@ -24,8 +24,9 @@ import { Margin } from './components/Common/Margin/Margin';
 
 const CommonLayout = () => (
     <>
-        <Outlet />
-        <Margin top={50} />
+        <Margin top={50}>
+            <Outlet />
+        </Margin>
         <NavigationBar />
     </>
 );

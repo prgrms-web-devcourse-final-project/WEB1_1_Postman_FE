@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,7 +11,7 @@
 
 @layer base {
     #root {
-        @apply mx-auto min-w-[375px] max-w-[475px]   bg-white border h-lvh;
+        @apply mx-auto min-w-[375px] max-w-[475px] bg-white border h-[1vh] text-sample-black;
     }
 }
 

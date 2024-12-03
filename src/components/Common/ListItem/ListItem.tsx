@@ -13,13 +13,13 @@ export const ListItem = ({
     link = '#'
 }: ListItemProps) => {
     const content = (
-        <div className="flex w-[100%] items-center justify-between">
+        <div className="flex w-[100%] items-center justify-between font-semibold">
             <span className="flex gap-6 items-center">
                 {image && (
                     <img
                         src={image}
                         alt="icon"
-                        className="w-[60px] h-[35px] rounded-full object-cover"
+                        className="w-[50px] h-[50px] rounded-full object-cover"
                     />
                 )}
                 {contents}
@@ -37,7 +37,7 @@ export const ListItem = ({
 
     return (
         <div
-            className="w-[100%] bg-gray-100 rounded-xl flex justify-center p-6"
+            className="w-[100%] bg-sample-gray rounded-xl flex justify-center p-6"
             onClick={() => console.log(link)}
         >
             <Link
