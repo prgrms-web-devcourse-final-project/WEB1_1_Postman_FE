@@ -26,7 +26,7 @@ export const SearchFullScreen = ({
     }
 
     return (
-        <div className="z-10 mx-auto min-w-[375px] max-w-[475px] bg-white border h-lvh">
+        <div className="mx-auto border min-w-[375px] max-w-[475px] h-[1vh]">
             <div className="flex items-center pl-3 pr-4 justify-between w-full border-b h-12">
                 <BackButton onClick={onBackClick} />
                 <input
