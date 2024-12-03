@@ -9,8 +9,8 @@ export const TopButtonContainer = () => {
                 <Logo h={34} />
             </NavLink>
 
-            <NavLink to={'/notification'} className="size-[34px]">
-                <IoIosNotifications className="size-full text-[#22B8EF]" />
+            <NavLink to={'/notification'} className="size-[34px] relative">
+                <IoIosNotifications className="size-[34px] text-[#22B8EF]" />
             </NavLink>
         </div>
     );
