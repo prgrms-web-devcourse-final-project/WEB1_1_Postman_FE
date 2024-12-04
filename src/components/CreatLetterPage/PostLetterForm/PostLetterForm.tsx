@@ -1,13 +1,13 @@
 import React from 'react';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { useState } from 'react';
-import { SelectSlider } from '../SelectSlier/SelectSlider';
 import { useToastStore } from '@/hooks/useToastStore';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import useAutoSave from '@/hooks/useAutoSave';
+import { SelectSlider } from '@/components/SelectItemPage/SelectSlider/SelectSlider';
 
 export const PostLetterForm = () => {
     const [title, setTitle] = useState<string>('');

@@ -1,6 +1,6 @@
 import { TopBar } from '@/components/Common/TopBar/TopBar';
-import { AnimationBottle } from '@/components/Letter/AnimationBottle/AnimationBottle';
-import { SelectItem } from '@/components/Letter/SelectItem/SelectItem';
+import { AnimationBottle } from '@/components/SelectItemPage/AnimationBottle/AnimationBottle';
+import { SelectItem } from '@/components/SelectItemPage/SelectItem/SelectItem';
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
