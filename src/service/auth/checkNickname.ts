@@ -1,16 +1,6 @@
 import { AxiosError } from 'axios';
 import { defaultApi } from '@/service/api';
-import { ApiResponseType } from '@/types/apiResponse';
-
-type checkNicknameProps = {
-    nickname: string;
-};
-
-type checkNicknameResponseDataType = {
-    isDuplicated: boolean;
-};
-
-type checkNicknameResponse = ApiResponseType<checkNicknameResponseDataType>;
+import { checkNicknameProps, checkNicknameResponse } from '@/types/register';
 
 export async function checkNickname({
     nickname
