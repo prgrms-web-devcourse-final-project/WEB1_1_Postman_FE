@@ -1,29 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavigationItem } from './NavigationItem';
-
 import { IoMdHome, IoIosSend } from 'react-icons/io';
 import { IoMap } from 'react-icons/io5';
 import { FaUserCircle } from 'react-icons/fa';
 
 export const NavigationBar = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-
     const navItems = [
-        { id: 0, icon: <IoMdHome />, label: '홈' },
-        { id: 1, icon: <IoIosSend />, label: '편지쓰기' },
-        { id: 2, icon: <IoMap />, label: '지도' },
-        { id: 3, icon: <FaUserCircle />, label: '마이페이지' }
+        { id: 0, icon: <IoMdHome />, label: '홈', path: '/' },
+        {
+            id: 1,
+            icon: <IoIosSend />,
+            label: '편지쓰기',
+            path: '/letter/create'
+        },
+        { id: 2, icon: <IoMap />, label: '지도', path: '/mapexplorer' },
+        { id: 3, icon: <FaUserCircle />, label: '마이페이지', path: '/mypage' }
     ];
 
     return (
-        <nav className="flex justify-around bg-white border-t p-3 fixed bottom-0 w-full">
+        <nav className="flex justify-around bg-white border-y p-3 fixed bottom-0 w-full z-[999] max-w-[473px]">
             {navItems.map((item) => (
-                <div className="flex-1 flex justify-center" key={item.id}>
+                <div className="flex justify-center flex-1" key={item.id}>
                     <NavigationItem
                         icon={item.icon}
                         label={item.label}
-                        isActive={activeIndex === item.id}
-                        onClick={() => setActiveIndex(item.id)}
+                        path={item.path}
                     />
                 </div>
             ))}

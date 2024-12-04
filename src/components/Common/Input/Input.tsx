@@ -7,6 +7,7 @@ type InputProps = {
     errorMessage?: string;
     pattern?: RegExp;
     togglePassword?: boolean;
+    onValueChange?: (value: string) => void;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'pattern'>;
 
 export const Input = ({
@@ -16,17 +17,23 @@ export const Input = ({
     pattern,
     togglePassword,
     defaultValue,
+    onValueChange,
     ...rest
 }: InputProps) => {
     const [value, setValue] = useState('');
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-
     useEffect(() => {
         if (defaultValue !== undefined) {
             setValue(defaultValue as string);
         }
     }, [defaultValue]);
+
+    useEffect(() => {
+        if (onValueChange && value !== '') {
+            onValueChange(value);
+        }
+    }, [value]);
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value;
@@ -45,40 +52,47 @@ export const Input = ({
     };
 
     if (errorMessage && !pattern)
-        throw new Error('에러를 판단할 패턴이 없습니다.');
+        console.error('에러를 판단할 패턴이 없습니다.');
     return (
-        <div className="relative mb-6">
-            {text && (
-                <p className="mb-3 text-14 text-secondary md:text-16">{text}</p>
-            )}
-            <input
-                autoComplete="off"
-                name={name}
-                value={value}
-                onChange={onChange}
-                {...rest}
-                type={
-                    togglePassword
-                        ? showPassword
-                            ? 'text'
-                            : 'password'
-                        : rest.type
-                }
-            />
-            {togglePassword && (
-                <button
-                    type="button"
-                    className="absolute right-3 top-1/2 translate-y-1/3 transform text-gray md:translate-y-1/2"
-                    onClick={() => setShowPassword(!showPassword)}
-                >
-                    {showPassword ? <FaEye /> : <FaEyeSlash />}
-                </button>
-            )}
-            {error && (
-                <p className="absolute my-1 text-12 text-red md:text-16">
-                    {error}
-                </p>
-            )}
+        <div className="relative">
+            <div className="flex flex-row gap-2">
+                {text}
+                {error && (
+                    <div className="text-xs my-[2px] text-red-500 md:text-base">
+                        {error}
+                    </div>
+                )}
+            </div>
+            <div>
+                <input
+                    className="w-full h-8 px-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    autoComplete="off"
+                    name={name}
+                    value={value}
+                    onChange={onChange}
+                    {...rest}
+                    type={
+                        togglePassword
+                            ? showPassword
+                                ? 'text'
+                                : 'password'
+                            : rest.type
+                    }
+                />
+                {togglePassword && (
+                    <button
+                        type="button"
+                        className="absolute right-3 bottom-0 -translate-y-1/2 text-gray-400"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? (
+                            <FaEye size={16} />
+                        ) : (
+                            <FaEyeSlash size={16} />
+                        )}
+                    </button>
+                )}
+            </div>
         </div>
     );
 };

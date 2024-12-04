@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { NotificationBadge } from './NotificationBadge';
 
 const meta: Meta<typeof NotificationBadge> = {

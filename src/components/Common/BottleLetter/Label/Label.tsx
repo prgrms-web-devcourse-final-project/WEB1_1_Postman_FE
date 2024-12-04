@@ -1,9 +1,14 @@
 import React from 'react';
+import { LabelProps } from '@/types/label';
 
-interface LabelProps {
-    imgSrc: string;
-}
-
-export const Label = ({ imgSrc }: LabelProps) => {
-    return <img src={`/${imgSrc}`} className="object-contain w-full h-full" />;
+export const Label = ({ imgSrc, isActive }: LabelProps) => {
+    return (
+        <div
+            className={`w-full h-full flex justify-center items-center border-[1px] rounded-2xl ${
+                isActive ? 'border-sample-blue' : 'border-transparent'
+            }`}
+        >
+            <img src={`/${imgSrc}`} className="object-contain h-[80px] p-1 " />
+        </div>
+    );
 };

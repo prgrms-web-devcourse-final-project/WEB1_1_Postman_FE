@@ -1,3 +1,43 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 홈페이지 병편지 스와이퍼 그림자 스타일 커스텀 */
+.swiper-slide-shadow {
+    @apply opacity-0 !important;
+}
+
+@layer base {
+    html,
+    body {
+        @apply h-full;
+    }
+    #root {
+        @apply mx-auto min-w-[375px] max-w-[475px]  bg-white border h-auto min-h-screen text-sample-black;
+    }
+}
+@layer components {
+    .btn-primary {
+        @apply w-full p-2 transition-colors border rounded-md border-sample-blue text-sample-blue hover:bg-sample-blue hover:text-white;
+    }
+
+    .btn-primary-filled {
+        @apply w-full p-2 text-white transition-colors rounded-md bg-sample-blue hover:bg-sample-blue/90;
+    }
+
+    .btn-secondary {
+        @apply w-full p-2 text-gray-700 transition-colors border border-gray-300 rounded-md hover:bg-gray-50;
+    }
+}
+
+:root {
+    --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6); /* 배경색 */
+    --rsbs-bg: #fff; /* 시트 배경색 */
+    --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14); /* 핸들 배경색 */
+    --rsbs-max-w: 450px; /* 최대 너비 */
+    --rsbs-ml: auto;
+    --rsbs-mr: auto;
+    --rsbs-overlay-rounded: 16px; /* 모서리 반경 */
+}

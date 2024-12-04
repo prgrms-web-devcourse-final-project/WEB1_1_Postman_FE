@@ -1,13 +1,20 @@
+import React from 'react';
 import { AUTH_INPUT_VALIDATION } from '@/constants/authInputValidation';
 import { Input } from './Input';
 
-export const NicknameInput = ({
-    defaultValue,
-    disabled
-}: {
+type NicknameInputProps = {
     defaultValue?: string;
     disabled?: boolean;
-}) => {
+    onValueChange?: (value: string) => void;
+    onKeyDown?: (e: React.KeyboardEvent) => void;
+};
+
+export const NicknameInput = ({
+    defaultValue,
+    disabled,
+    onValueChange,
+    onKeyDown
+}: NicknameInputProps) => {
     return (
         <Input
             type="text"
@@ -21,6 +28,8 @@ export const NicknameInput = ({
             required
             defaultValue={defaultValue}
             disabled={disabled}
+            onValueChange={onValueChange}
+            onKeyDown={onKeyDown}
         />
     );
 };
