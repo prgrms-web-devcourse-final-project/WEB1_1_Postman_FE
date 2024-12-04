@@ -13,13 +13,12 @@ export type VerifyEmailProps = {
 
 export type VerifyEmailResponse = ApiResponseType<null>;
 
-export type checkNicknameProps = {
+export type CheckNicknameProps = {
     nickname: string;
 };
 
-export type checkNicknameResponseDataType = {
+export type CheckNicknameResponseDataType = {
     isDuplicated: boolean;
 };
 
-export type checkNicknameResponse =
-    ApiResponseType<checkNicknameResponseDataType>;
+export type CheckNicknameResponse = ApiResponseType<null>;
