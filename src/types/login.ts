@@ -1,10 +1,13 @@
-import { UserType } from './user';
+import { ApiResponseType } from './apiResponse';
 
-type LoginType = {
-    code: number;
-    status: string;
-    message: string;
-    data: UserType;
+export type LoginProps = {
+    email: string;
+    password: string;
 };
 
-export type { LoginType };
+export type TokenType = {
+    accessToken: string;
+    refreshToken: string;
+};
+
+export type LoginResponseType = ApiResponseType<TokenType | null>;

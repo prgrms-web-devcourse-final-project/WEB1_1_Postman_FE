@@ -1,9 +1,8 @@
 import { AxiosError } from 'axios';
 import { defaultApi } from '@/service/api';
 import { UserType } from '@/types/user';
-import { ApiResponseType } from '@/types/apiResponse';
 
-type getUserInfoResponseType = ApiResponseType<UserType | null>;
+type getUserInfoResponseType = UserType | null;
 
 export async function getUserInfo(): Promise<getUserInfoResponseType> {
     const api = defaultApi();
