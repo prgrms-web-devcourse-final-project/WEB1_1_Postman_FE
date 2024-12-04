@@ -1,12 +1,11 @@
-import { UserType } from '@/types/user';
 import { useHomeSheetStore, useSelectedKeywordStore } from '@/stores/index';
 import { KeywordToggleButton } from '@/components/Common/KeywordToggleButton/KeywordToggleButton';
 
 type BottomSheetContentProps = {
-    user: UserType;
+    nickname: string;
 };
 
-export const BottomSheetContent = ({ user }: BottomSheetContentProps) => {
+export const BottomSheetContent = ({ nickname }: BottomSheetContentProps) => {
     const { setOpen } = useHomeSheetStore();
     const { selectedKeywords, setSelectedKeywords } = useSelectedKeywordStore();
 
@@ -44,7 +43,7 @@ export const BottomSheetContent = ({ user }: BottomSheetContentProps) => {
     return (
         <div className="flex flex-col gap-5 p-5">
             <div>
-                <p className="">{user.nickname}님이 선택하신 키워드 입니다.</p>
+                <p className="">{nickname}님이 선택하신 키워드 입니다.</p>
                 <p className="">설정하신 키워드로 편지를 추천해드릴게요.</p>
                 <div className="mt-3 flex flex-wrap gap-1">
                     {selectedKeywords.map((keyword, i) => {
