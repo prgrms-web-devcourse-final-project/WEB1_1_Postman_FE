@@ -26,8 +26,9 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
             const calculatedLinesCount = Math.floor(
                 textAreaHeight / textAreaLineHeight
             );
-            if (inputValue.length > 500) {
-                addToast('최대 500자까지 작성 가능합니다.', 'error');
+            if (calculatedLinesCount > 25) {
+                addToast('최대 25줄까지 작성이 가능합니다.', 'error');
+
                 return;
             }
 
@@ -66,7 +67,7 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
         const handleResize = () => {
             if (textAreaRef.current) {
                 setLineHeight(
-                    2.2 + (textAreaRef.current.offsetWidth - 281) * 0.002
+                    2.2 + (textAreaRef.current.offsetWidth - 281) * 0.0018
                 );
             }
         };
@@ -75,8 +76,6 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
         handleResize();
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
-    useEffect(() => {});
 
     return (
         <div>

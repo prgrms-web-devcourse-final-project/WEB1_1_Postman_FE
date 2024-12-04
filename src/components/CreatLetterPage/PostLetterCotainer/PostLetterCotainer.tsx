@@ -1,15 +1,13 @@
 import React from 'react';
-import { Margin } from '@/components/Common/Margin/Margin';
 import { useState } from 'react';
-import { SelectSlider } from '../SelectSlier/SelectSlider';
 import { useToastStore } from '@/hooks/useToastStore';
-import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import useAutoSave from '@/hooks/useAutoSave';
+import { useAutoSave } from '@/hooks/useAutoSave';
+import { LettetInputForm } from '../LettetInputForm/LettetInputForm';
 
-export const PostLetterForm = () => {
+export const PostLetterCotainer = () => {
     const [title, setTitle] = useState<string>('');
     const [letter, setLetter] = useState<string>('편지지_샘플_1');
     const [letterContent, setLetterContent] = useState<string>('');
@@ -55,34 +53,16 @@ export const PostLetterForm = () => {
                     navigate('/letter/select');
                 }}
             />
-            <div className="min-h-screen rounded-t-3xl bg-zinc-300">
-                <Margin top={20} />
-                <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
-                    <input
-                        onChange={handleChange}
-                        value={title}
-                        type="text"
-                        placeholder="제목을 입력해주세요"
-                        className="z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap"
-                        style={{ fontFamily: font || 'inherit' }}
-                    />
-                    <img src={'/public/to_line.f4c129e6.svg'} />
-
-                    <div className="relative z-10">
-                        <TextArea
-                            value={letterContent}
-                            setValue={setLetterContent}
-                            font={font}
-                        />
-                    </div>
-                </div>
-                <SelectSlider
-                    font={font}
-                    letter={letter}
-                    setFont={setFont}
-                    setLetter={setLetter}
-                />
-            </div>
+            <LettetInputForm
+                title={title}
+                handleChange={handleChange}
+                letterContent={letterContent}
+                setLetterContent={setLetterContent}
+                font={font}
+                letter={letter}
+                setFont={setFont}
+                setLetter={setLetter}
+            />
         </>
     );
 };
