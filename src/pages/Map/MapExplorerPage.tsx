@@ -15,8 +15,7 @@ export const MapExplorerPage = () => {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState('');
-    const { error, data, isLoading, recentSearches, setRecentSearches } =
-        useNominatimSearch(query);
+    const { error, data, isLoading } = useNominatimSearch(query);
     const [searchedLocation, setSearchedLocation] = useState<{
         lat: string;
         lon: string;
@@ -64,8 +63,6 @@ export const MapExplorerPage = () => {
                             isOpen={isOpen}
                             onClose={onClose}
                             onChange={onChange}
-                            recentSearches={recentSearches}
-                            setRecentSearches={setRecentSearches}
                         />
                         {error && <p>검색 오류: {error.message}</p>}
                         {!isLoading && !error && data?.length === 0 && (
