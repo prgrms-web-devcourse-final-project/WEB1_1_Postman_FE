@@ -9,6 +9,7 @@ import * as turf from '@turf/turf';
 import { useSelectedLetterStore } from '@/stores/useSelectedLetterStore';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { LuMapPin } from 'react-icons/lu';
+import { useSearchStore } from '@/stores/useSearchStore';
 
 type Letter = {
     id: number;
@@ -20,7 +21,6 @@ type Letter = {
 };
 type MaplibreWithSearchProps = {
     onFocus: () => void;
-    searchedLocation: { lat: string; lon: string; name: string } | null;
 };
 const sampleLetters: Letter[] = [
     {
@@ -49,12 +49,10 @@ const sampleLetters: Letter[] = [
     }
 ];
 
-export const MaplibreWithSearch = ({
-    onFocus,
-    searchedLocation
-}: MaplibreWithSearchProps) => {
+export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
     const { toggleSelectedLetter, clearSelectedLetter } =
         useSelectedLetterStore();
+    const { searchedLocation, clearSearchedLocation } = useSearchStore();
     const [searchText, setSearchText] = useState('');
     const [currentLocation, setCurrentLocation] = useState<{
         longitude: number;
@@ -180,7 +178,10 @@ export const MaplibreWithSearch = ({
                 <div className="absolute top-20 w-[360px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-slate-200 rounded-2xl p-2 flex items-center justify-between">
                     <LuMapPin />
                     <span className="flex-1 ml-2">{searchedLocation.name}</span>
-                    <LiaTimesSolid />
+                    <LiaTimesSolid
+                        className="cursor-pointer"
+                        onClick={clearSearchedLocation}
+                    />
                 </div>
             )}
             <Map
