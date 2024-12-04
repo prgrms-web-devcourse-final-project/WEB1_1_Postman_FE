@@ -1,5 +1,6 @@
 import { CreateButton } from '@/components/Letter/CreateButton/CreateButton';
 import { SuccessModal } from '@/components/Letter/SuccessModal/SuccessModal';
+import confetti from 'canvas-confetti';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,6 +10,21 @@ export const SuccessLetterPage = () => {
     const handleClick = () => {
         navigate('/');
     };
+
+    confetti({
+        angle: 130,
+        particleCount: 50,
+        spread: 50,
+        origin: { x: 0.5, y: 0.7 }
+    });
+
+    confetti({
+        angle: 50,
+        particleCount: 50,
+        spread: 50,
+        origin: { x: 0.5, y: 0.7 }
+    });
+
     return (
         <div className="relative flex flex-col justify-between h-screen">
             <div className="absolute inset-0 flex items-center justify-center">
