@@ -6,7 +6,7 @@ async function setUpMocks() {
 }
 
 async function initMocks() {
-    if (import.meta.env.MODE === 'development') {
+    if (import.meta.env.DEV && import.meta.env.VITE_MOCK_API === 'true') {
         setUpMocks();
     }
     return Promise.resolve();

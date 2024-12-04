@@ -30,16 +30,16 @@ export const NicknameSection = ({
                     isNicknameChecked &&
                     (isNicknameValid ? (
                         <div className="flex items-center h-6 text-[12px] text-green-500 md:text-base">
-                            사용 가능한 닉네임입니다.
+                            ✔ 사용 가능한 닉네임입니다.
                         </div>
                     ) : (
                         <div className="flex items-center h-6 text-[12px] text-red-500 md:text-base">
-                            이미 사용 중인 닉네임입니다.
+                            ✖ 이미 사용 중인 닉네임입니다.
                         </div>
                     ))}
             </div>
 
-            <div className="flex flex-row align-middle gap-2 w-full">
+            <div className="flex flex-row items-end align-middle gap-2 w-full">
                 <NicknameInput
                     onValueChange={onNicknameChange}
                     onKeyDown={handleNicknameKeyDown}

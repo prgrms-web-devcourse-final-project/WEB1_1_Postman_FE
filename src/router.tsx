@@ -21,6 +21,7 @@ import {
     ProfilePage
 } from './pages';
 import { Margin } from './components/Common/Margin/Margin';
+import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
 
 const CommonLayout = () => (
     <>
