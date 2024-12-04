@@ -25,7 +25,7 @@ const Toast = ({ children, variant = 'success', onClose }: ToastProps) => {
         <div
             className={`
             relative flex items-center
-            w-[90%] md:w-[514px]
+            w-[90%] md:w-[450px]
             h-[60px] md:h-[77px]
             mb-2 px-6 md:px-8
             rounded-lg text-white
@@ -44,7 +44,7 @@ const Toast = ({ children, variant = 'success', onClose }: ToastProps) => {
         `}
         >
             {/* 아이콘, 텍스트, 닫기 버튼을 Flex로 배치 */}
-            <div className="flex items-center gap-3 w-full">
+            <div className="flex items-center w-full gap-3">
                 {Icon}
                 <span className="flex-1 text-center truncate">{children}</span>
                 <IoMdClose onClick={onClose} className={closeStyles} />
