@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { LetterInfoContainer } from '@/components/MapPage/LetterInfoContainer/LetterInfoContainer';
 import { NavigateContainer } from '@/components/MapPage/NavigateContainer/NavigateContainer';
 import { MaplibreWithSearch } from '@/components/MapPage/Maplibre/MaplibreWithSearch';
@@ -12,15 +12,11 @@ export const MapExplorerPage = () => {
     const selectedLetter = useSelectedLetterStore(
         (state) => state.selectedLetter
     );
+
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState('');
     const { error, data, isLoading } = useNominatimSearch(query);
-    const [searchedLocation, setSearchedLocation] = useState<{
-        lat: string;
-        lon: string;
-        name: string;
-    } | null>(null);
 
     const onFocus = () => {
         setIsSearchFocused(true);
@@ -36,27 +32,10 @@ export const MapExplorerPage = () => {
         setQuery(event.target.value);
     };
 
-    useEffect(() => {
-        if (data && data.length > 0) {
-            const location = {
-                lat: data[0].lat,
-                lon: data[0].lon,
-                name: data[0].name
-            };
-            setSearchedLocation(location);
-            console.log(location);
-        }
-    }, [data]);
-
     return (
         <div>
             <div className="relative">
-                {!isSearchFocused && (
-                    <MaplibreWithSearch
-                        onFocus={onFocus}
-                        searchedLocation={searchedLocation}
-                    />
-                )}
+                {!isSearchFocused && <MaplibreWithSearch onFocus={onFocus} />}
                 {isOpen && (
                     <div className="absolute top-0 w-full">
                         <SearchFullScreen

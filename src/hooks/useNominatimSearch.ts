@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useEffect } from 'react';
+import { useSearchStore } from '@/stores/useSearchStore';
 
 type SearchResult = {
     lat: string;
@@ -21,11 +23,16 @@ const fetchNominatimSearch = async (query: string): Promise<SearchResult[]> => {
 };
 
 export default function useNominatimSearch(query: string) {
+    const { setSearchedLocation } = useSearchStore();
     const { data, isLoading, error } = useQuery<SearchResult[]>({
         queryKey: ['nominatimSearch', query],
         queryFn: () => fetchNominatimSearch(query),
-        enabled: !!query && query.trim().length > 0
+        enabled: !!query
     });
-
+    useEffect(() => {
+        if (data && query) {
+            setSearchedLocation(data[0] || null);
+        }
+    }, [data, query, setSearchedLocation]);
     return { data, isLoading, error };
 }
