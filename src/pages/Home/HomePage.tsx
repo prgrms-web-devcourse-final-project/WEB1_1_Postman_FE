@@ -28,7 +28,7 @@ export const HomePage = () => {
                     onToggle={() => {
                         setToggle(!toggle);
                     }}
-                    leftLabel="전체"
+                    leftLabel="추천"
                     rightLabel="답장"
                 />
 
