@@ -7,6 +7,9 @@ import { StyleSpecification } from 'maplibre-gl';
 import { IoIosSearch } from 'react-icons/io';
 import * as turf from '@turf/turf';
 import { useSelectedLetterStore } from '@/stores/useSelectedLetterStore';
+import { LiaTimesSolid } from 'react-icons/lia';
+import { LuMapPin } from 'react-icons/lu';
+
 type Letter = {
     id: number;
     longitude: number;
@@ -165,17 +168,21 @@ export const MaplibreWithSearch = ({
                     type="text"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
-                    placeholder={
-                        searchedLocation?.name || '숨길 장소를 검색해보세요!'
-                    }
-                    className="w-56 p-2 rounded-md outline-none"
+                    placeholder={'숨길 장소를 검색해보세요!'}
+                    className="w-72 rounded-md outline-none"
                     onFocus={onFocus}
                 />
                 <button onClick={onSearch} className="px-4 py-2">
                     <IoIosSearch />
                 </button>
             </div>
-
+            {searchedLocation?.name && (
+                <div className="absolute top-20 w-[360px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-slate-200 rounded-2xl p-2 flex items-center justify-between">
+                    <LuMapPin />
+                    <span className="flex-1 ml-2">{searchedLocation.name}</span>
+                    <LiaTimesSolid />
+                </div>
+            )}
             <Map
                 {...viewState}
                 onMove={(evt) => setViewState(evt.viewState)}
