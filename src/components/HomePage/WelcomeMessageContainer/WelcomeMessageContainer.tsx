@@ -1,17 +1,17 @@
-import { UserType } from '@/types/user';
+// import { UserType } from '@/types/user';
 
 type WelcomeMessageContainerProps = {
-    user: UserType;
+    nickname: string;
     newLetter: boolean;
 };
 
 export const WelcomeMessageContainer = ({
-    user,
+    nickname,
     newLetter
 }: WelcomeMessageContainerProps) => {
     const message = newLetter
-        ? `${user.nickname}님에게`
-        : `안녕하세요! ${user.nickname}님`;
+        ? `${nickname}님에게`
+        : `안녕하세요! ${nickname}님`;
 
     const messageBody = newLetter
         ? '편지가 도착했어요.'

@@ -33,7 +33,7 @@ export const HomePage = () => {
                 />
 
                 <div>
-                    <WelcomeMessageContainer user={user!} newLetter />
+                    <WelcomeMessageContainer nickname={'Dummy'} newLetter />
                     <LetterContainer />
                 </div>
 
