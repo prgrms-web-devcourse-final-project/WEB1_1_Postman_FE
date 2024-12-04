@@ -8,7 +8,6 @@ import {
     MyPage,
     LoginPage,
     RegisterPage,
-    ArchivedPage,
     LabelCollectionsPage,
     LetterDetailPage,
     ReplyLetterDetailPage,
@@ -18,7 +17,8 @@ import {
     LabelLotteryPage,
     SelectItemPage,
     SuccessLetterPage,
-    ProfilePage
+    ProfilePage,
+    StoragePage
 } from './pages';
 import { Margin } from './components/Common/Margin/Margin';
 import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
@@ -54,19 +54,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/mypage',
-                element: <MyPage />,
+                element: <MyPage />
+            },
+            {
+                path: 'storage',
                 children: [
-                    {
-                        path: 'letters',
-                        children: [
-                            { path: 'keyword', element: <ArchivedPage /> },
-                            { path: 'map', element: <ArchivedPage /> },
-                            { path: 'bookmark', element: <ArchivedPage /> }
-                        ]
-                    },
-                    { path: 'labels', element: <LabelCollectionsPage /> }
+                    { path: 'keyword', element: <StoragePage /> },
+                    { path: 'map', element: <StoragePage /> },
+                    { path: 'bookmark', element: <StoragePage /> }
                 ]
             },
+            { path: 'labels', element: <LabelCollectionsPage /> },
             {
                 path: 'profile',
                 element: <ProfilePage />
