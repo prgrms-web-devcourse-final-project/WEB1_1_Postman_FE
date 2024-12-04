@@ -1,7 +1,7 @@
 import { BannerContainer } from '@/components/Common/BannerContainer/BannerContainer';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
 import { Toggle } from '@/components/Common/Toggle/Toggle';
-import { BottomSheetContent } from '@/components/HomePage/BottomSheetContent/BottomSheetContent';
+import { BottomSheetContent } from '@/components/HomePage/BottomSheet/BottomSheetContent';
 import { LetterContainer } from '@/components/HomePage/LetterContainer/LetterContainer';
 import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
 import { WelcomeMessageContainer } from '@/components/HomePage/WelcomeMessageContainer/WelcomeMessageContainer';
