@@ -9,7 +9,7 @@ export const tokenStorage = {
         localStorage.setItem(ACCESS_TOKEN_KEY, token);
     },
 
-    cleareTokens: (): void => {
+    clearTokens: (): void => {
         localStorage.removeItem(ACCESS_TOKEN_KEY);
     }
 };
