@@ -1,4 +1,4 @@
-import { PostLetterCotainer } from '@/components/CreatLetterPage/PostLetterForm/PostLetterCotainer';
+import { PostLetterCotainer } from '@/components/CreatLetterPage/PostLetterCotainer/PostLetterCotainer';
 import React from 'react';
 
 export const CreateLetterPage = () => {

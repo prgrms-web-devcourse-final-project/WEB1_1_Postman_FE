@@ -3,7 +3,7 @@ import { useToastStore } from './useToastStore';
 
 type AutoSaveCallback = () => void;
 
-const useAutoSave = (callback: AutoSaveCallback, interval: number) => {
+export const useAutoSave = (callback: AutoSaveCallback, interval: number) => {
     const { addToast } = useToastStore();
 
     useEffect(() => {
@@ -24,5 +24,3 @@ const useAutoSave = (callback: AutoSaveCallback, interval: number) => {
         };
     }, [callback, interval, addToast]);
 };
-
-export default useAutoSave;

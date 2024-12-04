@@ -4,8 +4,8 @@ import { useToastStore } from '@/hooks/useToastStore';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import useAutoSave from '@/hooks/useAutoSave';
-import { LettetInputForm } from '../Letter/LettetInputForm';
+import { useAutoSave } from '@/hooks/useAutoSave';
+import { LettetInputForm } from '../LettetInputForm/LettetInputForm';
 
 export const PostLetterCotainer = () => {
     const [title, setTitle] = useState<string>('');
