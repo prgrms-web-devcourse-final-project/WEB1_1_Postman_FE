@@ -40,6 +40,7 @@ const RAW_RUNTIME_STATE =
           ["@tanstack/react-query", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.61.3"],\
           ["@turf/turf", "npm:7.1.0"],\
           ["@types/axios", "npm:0.14.4"],\
+          ["@types/canvas-confetti", "npm:1.6.4"],\
           ["@types/eslint-plugin-jsx-a11y", "npm:6.10.0"],\
           ["@types/node", "npm:22.9.3"],\
           ["@types/react", "npm:18.3.12"],\
@@ -52,6 +53,7 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/sdks", "npm:3.2.0"],\
           ["autoprefixer", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:10.4.20"],\
           ["axios", "npm:1.7.7"],\
+          ["canvas-confetti", "npm:1.9.3"],\
           ["chromatic", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1"],\
           ["classnames", "npm:2.5.1"],\
           ["eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:9.15.0"],\
@@ -7171,6 +7173,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/canvas-confetti", [\
+      ["npm:1.6.4", {\
+        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/@types-canvas-confetti-npm-1.6.4-270404d6fb-10c0.zip/node_modules/@types/canvas-confetti/",\
+        "packageDependencies": [\
+          ["@types/canvas-confetti", "npm:1.6.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/cookie", [\
       ["npm:0.6.0", {\
         "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/@types-cookie-npm-0.6.0-1f4c3f48f0-10c0.zip/node_modules/@types/cookie/",\
@@ -8852,6 +8863,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/caniuse-lite-npm-1.0.30001684-9413687103-10c0.zip/node_modules/caniuse-lite/",\
         "packageDependencies": [\
           ["caniuse-lite", "npm:1.0.30001684"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["canvas-confetti", [\
+      ["npm:1.9.3", {\
+        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/canvas-confetti-npm-1.9.3-b7b2362f3e-10c0.zip/node_modules/canvas-confetti/",\
+        "packageDependencies": [\
+          ["canvas-confetti", "npm:1.9.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -16681,6 +16701,7 @@ const RAW_RUNTIME_STATE =
           ["@tanstack/react-query", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.61.3"],\
           ["@turf/turf", "npm:7.1.0"],\
           ["@types/axios", "npm:0.14.4"],\
+          ["@types/canvas-confetti", "npm:1.6.4"],\
           ["@types/eslint-plugin-jsx-a11y", "npm:6.10.0"],\
           ["@types/node", "npm:22.9.3"],\
           ["@types/react", "npm:18.3.12"],\
@@ -16693,6 +16714,7 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/sdks", "npm:3.2.0"],\
           ["autoprefixer", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:10.4.20"],\
           ["axios", "npm:1.7.7"],\
+          ["canvas-confetti", "npm:1.9.3"],\
           ["chromatic", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1"],\
           ["classnames", "npm:2.5.1"],\
           ["eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:9.15.0"],\
