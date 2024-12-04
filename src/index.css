@@ -20,15 +20,15 @@
 }
 @layer components {
     .btn-primary {
-        @apply border border-sample-blue rounded-md p-2 w-full text-sample-blue hover:bg-sample-blue hover:text-white transition-colors;
+        @apply w-full p-2 transition-colors border rounded-md border-sample-blue text-sample-blue hover:bg-sample-blue hover:text-white;
     }
 
     .btn-primary-filled {
-        @apply bg-sample-blue text-white rounded-md p-2 w-full hover:bg-sample-blue/90 transition-colors;
+        @apply w-full p-2 text-white transition-colors rounded-md bg-sample-blue hover:bg-sample-blue/90;
     }
 
     .btn-secondary {
-        @apply border border-gray-300 rounded-md p-2 w-full text-gray-700 hover:bg-gray-50 transition-colors;
+        @apply w-full p-2 text-gray-700 transition-colors border border-gray-300 rounded-md hover:bg-gray-50;
     }
 }
 
