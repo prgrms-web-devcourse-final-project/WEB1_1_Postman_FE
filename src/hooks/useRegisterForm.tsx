@@ -8,6 +8,8 @@ import {
     checkNickname,
     register
 } from '@/service/auth';
+import { CheckNicknameResponse, VerifyEmailResponse } from '@/types/register';
+import { AUTH_INPUT_VALIDATION } from '@/constants/authInputValidation';
 
 interface RegisterFormState {
     email: string;
@@ -28,6 +30,7 @@ export const useRegisterForm = () => {
     const navigate = useNavigate();
     const { addToast } = useToastStore();
 
+    // 회원가입 폼 상태
     const [formState, setFormState] = useState<RegisterFormState>({
         email: '',
         authNum: '',
@@ -36,6 +39,7 @@ export const useRegisterForm = () => {
         nickname: ''
     });
 
+    // 회원가입 폼 유효성 검사 상태
     const [validationState, setValidationState] = useState<ValidationState>({
         isEmailSend: false,
         isEmailVerified: false,
@@ -43,6 +47,7 @@ export const useRegisterForm = () => {
         isNicknameValid: false
     });
 
+    // 폼 필드 업데이트
     const updateField = (field: keyof RegisterFormState, value: string) => {
         console.log('updateField');
         setFormState((prev) => ({ ...prev, [field]: value }));
@@ -70,73 +75,130 @@ export const useRegisterForm = () => {
         }
     };
 
+    // 이메일 인증번호 전송 요청
     const handleRequestEmailVerifyCode = async () => {
         if (!formState.email) {
             addToast('이메일을 입력해주세요.', 'warning');
             return;
         }
-        try {
-            const response = await sendEmail({ email: formState.email });
-            if (response.data === 'success') {
-                setValidationState((prev) => ({ ...prev, isEmailSend: true }));
+        const response = await sendEmail({ email: formState.email });
+        console.log(response);
+        switch (response.code) {
+            case 'COMMON200':
                 addToast('인증번호가 전송되었습니다.', 'success');
-            }
-        } catch (error) {
-            addToast('인증번호 전송에 실패했습니다.', 'error');
-            console.error(error);
+                setValidationState((prev) => ({ ...prev, isEmailSend: true }));
+                return true;
+            case 'USER4000':
+                addToast('유효한 이메일 형식이 아닙니다.', 'warning');
+                return false;
+            default:
+                addToast('인증 요청에 실패했습니다.', 'error');
+                return false;
         }
     };
 
+    // 이메일 인증번호 검증 결과 처리
+    const handleVerifyEmailResponse = (
+        response: VerifyEmailResponse
+    ): boolean => {
+        switch (response.code) {
+            case 'COMMON200':
+                addToast('이메일이 인증되었습니다.', 'success');
+                return true;
+            case 'USER4007':
+                addToast('유효하지 않은 인증코드입니다.', 'warning');
+                return false;
+            default:
+                addToast('인증 요청에 실패했습니다.', 'error');
+                return false;
+        }
+    };
+
+    // 이메일 인증번호 검증
     const handleVerifyEmail = async () => {
         if (!formState.authNum) {
             addToast('인증번호를 입력해주세요.', 'warning');
-            return;
+            return false;
         }
         try {
             const response = await verifyEmail({
                 email: formState.email,
                 authNum: formState.authNum
             });
-
-            if (response.code === 200) {
+            const isVerifySuccess = await handleVerifyEmailResponse(response);
+            if (isVerifySuccess) {
                 setValidationState((prev) => ({
                     ...prev,
                     isEmailVerified: true
                 }));
-                addToast('이메일 인증이 완료되었습니다.', 'success');
             }
-        } catch (error: any) {
-            if (error.response?.status === 400) {
-                addToast('잘못된 인증코드입니다.', 'warning');
-            } else {
-                addToast('이메일 인증에 실패하였습니다.', 'error');
-            }
-            console.error('Email verification error:', error);
+        } catch (error) {
+            console.error('에러: ', error);
+            addToast('서버 오류입니다. 다시 시도해주세요.', 'error');
         }
     };
 
-    const handleCheckNickname = async () => {
-        if (!formState.nickname) return;
+    const handleCheckNicknameResponse = (
+        response: CheckNicknameResponse
+    ): boolean => {
+        switch (response.code) {
+            case 'COMMON200':
+                addToast('사용 가능한 닉네임입니다.', 'success');
+                return true;
+            case 'USER4002':
+                addToast('닉네임이 중복되었습니다.', 'warning');
+                return false;
+            default:
+                addToast('중복 검사에 실패했습니다.', 'error');
+                return false;
+        }
+    };
 
+    const handleValidateNickname = () => {
+        if (!formState.nickname) {
+            addToast('닉네임을 입력해주세요.', 'warning');
+            return false;
+        }
+
+        const pattern = AUTH_INPUT_VALIDATION.nickname.regexp;
+        if (!pattern.test(formState.nickname)) {
+            addToast('올바르지 않은 닉네임입니다.', 'warning');
+            return false;
+        }
+        return true;
+    };
+
+    // 닉네임 중복 검사
+    const handleCheckNickname = async () => {
+        const validation = handleValidateNickname();
+        if (!validation) return;
         try {
             const response = await checkNickname({
                 nickname: formState.nickname
             });
-            setValidationState((prev) => ({
-                ...prev,
-                isNicknameValid: !response.data.isDuplicated,
-                isNicknameChecked: true
-            }));
+
+            const isCheckNicknameSuccess =
+                handleCheckNicknameResponse(response);
+
+            if (isCheckNicknameSuccess) {
+                setValidationState((prev) => ({
+                    ...prev,
+                    isNicknameValid: true,
+                    isNicknameChecked: true
+                }));
+            }
         } catch (error) {
+            console.error('Nickname check error:', error);
             setValidationState((prev) => ({
                 ...prev,
                 isNicknameValid: false,
                 isNicknameChecked: true
             }));
-            console.error('Nickname check error:', error);
+            addToast('서버 오류가 발생했습니다.', 'error');
         }
     };
 
+    // 회원가입 폼 제출
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const isConfirmPasswordValid =
@@ -166,27 +228,26 @@ export const useRegisterForm = () => {
                 nickname: formState.nickname
             });
 
-            console.log(response.code);
-
             switch (response.code) {
                 case 'COMMON201':
                     addToast('회원가입이 완료되었습니다.', 'success');
                     navigate('/login');
-                    break;
+                    return;
                 case 'AUTH4000':
                     addToast('이미 가입이 완료된 이메일입니다.', 'warning');
-                    break;
+                    return;
                 case 'AUTH4001':
                     addToast('올바르지 않은 이메일 형식입니다.', 'warning');
-                    break;
+                    return;
                 case 'AUTH4002':
                     addToast('올바르지 않은 닉네임 형식입니다.', 'warning');
-                    break;
+                    return;
                 case 'AUTH4003':
                     addToast('중복된 닉네임입니다.', 'warning');
-                    break;
+                    return;
                 default:
                     addToast('알 수 없는 오류가 발생했습니다', 'error');
+                    return;
             }
         }
     };

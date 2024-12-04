@@ -22,7 +22,7 @@ export async function register({
     const api = defaultApi();
 
     try {
-        const response = await api.post('/auth/signup', {
+        const response = await api.post('/user/signup', {
             email,
             password,
             nickname

@@ -1,13 +1,6 @@
 import { AxiosError } from 'axios';
 import { defaultApi } from '@/service/api';
-import { ApiResponseType } from '@/types/apiResponse';
-
-type VerifyEmailProps = {
-    email: string;
-    authNum: string;
-};
-
-type VerifyEmailResponse = ApiResponseType<'success' | 'fail'>;
+import { VerifyEmailProps, VerifyEmailResponse } from '@/types/register';
 
 export async function verifyEmail({
     email,
@@ -15,7 +8,7 @@ export async function verifyEmail({
 }: VerifyEmailProps): Promise<VerifyEmailResponse> {
     const api = defaultApi();
     try {
-        const response = await api.post('/auth/email/verify', {
+        const response = await api.post('/user/email/verify', {
             email,
             authNum
         });

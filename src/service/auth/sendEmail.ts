@@ -1,12 +1,6 @@
 import { AxiosError } from 'axios';
 import { defaultApi } from '@/service/api';
-import { ApiResponseType } from '@/types/apiResponse';
-
-type SendEmailProps = {
-    email: string;
-};
-
-type SendEmailResponse = ApiResponseType<'success' | 'fail'>;
+import { SendEmailProps, SendEmailResponse } from '@/types/register';
 
 export async function sendEmail({
     email
@@ -14,16 +8,20 @@ export async function sendEmail({
     const api = defaultApi();
 
     try {
-        const response = await api.post('/auth/email/send-email', { email });
+        const response = await api.post('/user/email/send', { email });
         return response.data;
     } catch (error) {
-        if (error instanceof AxiosError && error.response?.data) {
-            throw error.response.data;
+        if (error instanceof AxiosError) {
+            throw {
+                message: '서버와의 통신에 실패했습니다',
+                statusCode: 500,
+                code: 'INTERNAL_SERVER_ERROR'
+            };
         }
         throw {
-            code: 500,
-            status: 'INTERNAL_SERVER_ERROR',
-            message: '서버와의 통신에 실패했습니다.'
+            message: '알 수 없는 오류가 발생했습니다.',
+            statusCode: 500,
+            code: 'UNKNOWN_ERROR'
         };
     }
 }

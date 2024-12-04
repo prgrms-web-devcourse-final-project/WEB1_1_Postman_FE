@@ -1,6 +1,6 @@
 export interface ApiResponseType<T> {
     code: string;
-    status: string;
+    isSuccess: string;
     message: string;
     result: T;
 }
