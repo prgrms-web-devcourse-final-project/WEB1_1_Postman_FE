@@ -15,7 +15,7 @@ export const SuccessLetterPage = () => {
                 <SuccessModal />
             </div>
 
-            <div className="absolute w-full bottom-[34px]">
+            <div className="absolute w-full bottom-[34px] px-4">
                 <CreateButton isActive={true} handleClickHandler={handleClick}>
                     {'확인'}
                 </CreateButton>
