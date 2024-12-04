@@ -173,6 +173,7 @@ type StorageListProps = {
 };
 
 export const StorageList = ({ type, filter }: StorageListProps) => {
+    // 리스트 타입 - 필터별 엔드포인트 추출
     const getApiEndpoint = (type: storageType, filter: FilterType) => {
         const endpoints = {
             keyword: {
@@ -193,8 +194,7 @@ export const StorageList = ({ type, filter }: StorageListProps) => {
         return endpoints[type]?.[filter];
     };
 
-    console.log(getApiEndpoint(type, filter));
-
+    // 보낸편지 - 받은편지 필터
     const getFilteredData = (filter: FilterType) => {
         return sampleData
             .map((dayGroup) => ({
@@ -206,10 +206,27 @@ export const StorageList = ({ type, filter }: StorageListProps) => {
             .filter((dayGroup) => dayGroup.letters.length > 0);
     };
 
+    // 데이터 패치
+    const handleSetData = async () => {
+        const apiEndpoint = getApiEndpoint(type, filter);
+        try {
+            // 테스트 함수
+            // 무한스크롤? 페이지네이션?
+            const response = await sampleFunction(apiEndpoint);
+            if (response.result) {
+                console.log(response.result);
+                // 편지 데이터 세팅
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const renderList = () => {
         const filteredData = getFilteredData(filter);
         return (
             <div className="flex flex-col gap-6">
+                {/* 삭제 섹션 */}
                 <div className="flex flex-row gap-1 text-sm">
                     <div>
                         <input type="checkbox" value="selectedAll" />
