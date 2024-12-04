@@ -1,12 +1,12 @@
-import { UserType } from '@/types/user';
 import { useHomeSheetStore, useSelectedKeywordStore } from '@/stores/index';
 import { KeywordToggleButton } from '@/components/Common/KeywordToggleButton/KeywordToggleButton';
+import { Margin } from '@/components/Common/Margin/Margin';
 
 type BottomSheetContentProps = {
-    user: UserType;
+    nickname: string;
 };
 
-export const BottomSheetContent = ({ user }: BottomSheetContentProps) => {
+export const BottomSheetContent = ({ nickname }: BottomSheetContentProps) => {
     const { setOpen } = useHomeSheetStore();
     const { selectedKeywords, setSelectedKeywords } = useSelectedKeywordStore();
 
@@ -44,8 +44,14 @@ export const BottomSheetContent = ({ user }: BottomSheetContentProps) => {
     return (
         <div className="flex flex-col gap-5 p-5">
             <div>
-                <p className="">{user.nickname}님이 선택하신 키워드 입니다.</p>
-                <p className="">설정하신 키워드로 편지를 추천해드릴게요.</p>
+                <p className="text-title3 text-sample-black">
+                    {nickname}님이 선택하신{' '}
+                    <span className="text-sample-blue">키워드</span>
+                    입니다.
+                </p>
+                <p className="text-body2 text-sample-textgray">
+                    설정하신 키워드로 편지를 추천해드릴게요.
+                </p>
                 <div className="mt-3 flex flex-wrap gap-1">
                     {selectedKeywords.map((keyword, i) => {
                         return (
@@ -61,9 +67,16 @@ export const BottomSheetContent = ({ user }: BottomSheetContentProps) => {
                     })}
                 </div>
             </div>
+
+            <Margin top={10} />
+
             <div>
-                <p className="">누구와 마음을 나누고 싶나요?</p>
-                <p className="">설정하신 키워드로 편지를 추천해드릴게요.</p>
+                <p className="text-title3 text-sample-black">
+                    누구와 마음을 나누고 싶나요?
+                </p>
+                <p className="text-body2 text-sample-textgray">
+                    설정하신 키워드로 편지를 추천해드릴게요.
+                </p>
                 <div className="mt-3 flex flex-wrap gap-1">
                     {allKeywords.map((keyword, i) => {
                         return (
@@ -83,7 +96,7 @@ export const BottomSheetContent = ({ user }: BottomSheetContentProps) => {
                 onClick={() => {
                     setOpen(false);
                 }}
-                className="btn-base flex-center w-full h-[60px]"
+                className="w-full h-[49px] text-white flex-center rounded-full bg-[#22B8EF]"
             >
                 완료
             </button>

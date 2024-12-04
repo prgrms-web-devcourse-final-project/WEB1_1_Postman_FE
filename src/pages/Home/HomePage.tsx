@@ -5,12 +5,12 @@ import { BottomSheetContent } from '@/components/HomePage/BottomSheetContent/Bot
 import { LetterContainer } from '@/components/HomePage/LetterContainer/LetterContainer';
 import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
 import { WelcomeMessageContainer } from '@/components/HomePage/WelcomeMessageContainer/WelcomeMessageContainer';
-import { useUserStore, useHomeSheetStore } from '@/stores/index';
+import { useHomeSheetStore } from '@/stores/index';
 import { Container } from '@/components/Common/Container/Container';
 import { useState } from 'react';
 
 export const HomePage = () => {
-    const { user } = useUserStore();
+    // const { user } = useUserStore();
     const { open, setOpen } = useHomeSheetStore();
 
     const [toggle, setToggle] = useState(true);
@@ -21,14 +21,14 @@ export const HomePage = () => {
 
     return (
         <Container>
-            <div className="flex flex-col gap-[30px]">
+            <div className="flex flex-col gap-5">
                 <TopButtonContainer />
                 <Toggle
                     isChecked={toggle}
                     onToggle={() => {
                         setToggle(!toggle);
                     }}
-                    leftLabel="전체"
+                    leftLabel="추천"
                     rightLabel="답장"
                 />
 
@@ -37,12 +37,12 @@ export const HomePage = () => {
                     <LetterContainer />
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex justify-center px-20">
                     <button
                         onClick={() => {
                             setOpen(true);
                         }}
-                        className="btn-base w-[180px] h-[60px] flex-center"
+                        className="w-full h-[49px] text-sample-blue flex-center rounded-full border border-sample-blue"
                     >
                         키워드 설정
                     </button>
@@ -57,7 +57,7 @@ export const HomePage = () => {
                     onDismiss={onDismiss}
                     snapPoints={() => [window.innerHeight * 0.95]}
                 >
-                    <BottomSheetContent user={user!} />
+                    <BottomSheetContent nickname={'Dummy'} />
                 </SliderMenuContainer>
             </div>
         </Container>
