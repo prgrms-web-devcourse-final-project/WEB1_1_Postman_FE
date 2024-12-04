@@ -30,7 +30,7 @@ export const MyPage = () => {
                     마이페이지
                 </h1>
                 <div className="flex flex-col gap-10">
-                    <ProfileSection user={user} />
+                    <ProfileSection user={user!} />
                     <MenuListSection menuItems={menuItems} />
                     <MenuListSection menuItems={labelMenuItems} />
                     <KeywordListSection keywords={sampleKeywords} />
