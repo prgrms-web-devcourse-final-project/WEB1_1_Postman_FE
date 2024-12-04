@@ -40,7 +40,6 @@ export const SelectSlider = ({
 
     return (
         <div className="">
-            <Margin bottom={14} />
             <div>
                 {isFont ? (
                     <ItemSlider

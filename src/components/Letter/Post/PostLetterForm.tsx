@@ -5,7 +5,7 @@ import { SelectSlider } from '../SelectSlier/SelectSlider';
 import { useToastStore } from '@/hooks/useToastStore';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
-import { useActionData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import useAutoSave from '@/hooks/useAutoSave';
 
@@ -57,13 +57,14 @@ export const PostLetterForm = () => {
             />
             <div className="min-h-screen rounded-t-3xl bg-zinc-300">
                 <Margin top={20} />
-                <div className="relative flex flex-col justify-center w-9/12 m-auto py-14">
+                <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
                     <input
                         onChange={handleChange}
                         value={title}
                         type="text"
                         placeholder="제목을 입력해주세요"
                         className="z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap"
+                        style={{ fontFamily: font || 'inherit' }}
                     />
                     <img src={'/public/to_line.f4c129e6.svg'} />
 
