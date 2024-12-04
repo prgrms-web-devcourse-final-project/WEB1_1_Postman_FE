@@ -1,11 +1,11 @@
+import React, { useEffect, useState } from 'react';
+import { SelectToggle } from '../SelectToggle/SelectToggle';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
-import React, { useEffect, useState } from 'react';
-import { LabelProps } from '@/types/label';
-import { KeywordList } from '../KeywordList/KeywordList';
-import { LabelList } from '../LabelList/LabelList';
 import { CreateButton } from '../CreateButton/CreateButton';
 import { useNavigate } from 'react-router-dom';
+import { LabelProps } from '@/types/label';
+import { ItemGroup } from '../ItemGroup/ItemGroup';
 
 type SelectItemProps = {
     isActive: boolean;
@@ -15,14 +15,12 @@ type SelectItemProps = {
 export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
     const [selectedLabels, setSelectedLabels] = useState<number | null>(null);
-    const [selectedKeywords, setSelectedKeywords] = useState<number | null>(
-        null
-    );
+    const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (selectedLabels && selectedKeywords) {
+        if (selectedLabels && selectedKeywords.length > 0) {
             setIsActive(true);
         } else {
             setIsActive(false);
@@ -34,7 +32,11 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     };
 
     const handleKeywordSelection = (keyword: number) => {
-        setSelectedKeywords(keyword);
+        setSelectedKeywords((prev) =>
+            prev.includes(keyword)
+                ? prev.filter((k) => k !== keyword)
+                : [...prev, keyword]
+        );
     };
 
     const testLable: LabelProps[] = [
@@ -69,6 +71,7 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
             { content: 'Next.js' }
         ]
     };
+
     return (
         <div className="relative">
             <SliderMenuContainer
@@ -87,44 +90,18 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                 }
             >
                 <Margin top={15} />
-                <div className="relative flex w-full overflow-hidden text-xl align-middle h-[50px] ">
-                    <div
-                        className="absolute bottom-0 w-1/2 h-[2px] transition-transform duration-500 ease-in-out bg-sample-blue"
-                        style={{
-                            transform: `translateX(${isLabel ? '0%' : '100%'})`
-                        }}
-                    ></div>
-                    <div
-                        className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => setIsLabel(true)}
-                    >
-                        <span>라벨</span>
-                    </div>
-                    <div
-                        className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => setIsLabel(false)}
-                    >
-                        <span>키워드</span>
-                    </div>
-                </div>
+                <SelectToggle isLabel={isLabel} setIsLabel={setIsLabel} />
 
-                {isLabel ? (
-                    <LabelList
-                        labels={testLable}
-                        onLabelSelect={handleLabelSelection}
-                        selectedLabels={selectedLabels}
-                    />
-                ) : (
-                    <div>
-                        <KeywordList
-                            title={testKeywordListProps.title}
-                            subTitle={testKeywordListProps.subTitle}
-                            keywordGroup={testKeywordListProps.keywordGroup}
-                            onKeywordSelect={handleKeywordSelection}
-                            selectedKeywords={selectedKeywords}
-                        />
-                    </div>
-                )}
+                <ItemGroup
+                    isLabel={isLabel}
+                    labels={testLable}
+                    onLabelSelect={handleLabelSelection}
+                    selectedLabels={selectedLabels}
+                    keywordProps={testKeywordListProps}
+                    onKeywordSelect={handleKeywordSelection}
+                    selectedKeywords={selectedKeywords}
+                />
+
                 <Margin bottom={30} />
             </SliderMenuContainer>
         </div>
