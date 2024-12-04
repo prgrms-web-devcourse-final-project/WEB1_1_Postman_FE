@@ -1,17 +1,12 @@
 import { AxiosError } from 'axios';
-import { LoginType } from '@/types/login';
 import { defaultApi } from '@/service/api';
 import { tokenStorage } from './tokenStorage';
-
-type LoginProps = {
-    email: string;
-    password: string;
-};
+import { LoginProps, LoginResponseType } from '@/types/login';
 
 export async function login({
     email,
     password
-}: LoginProps): Promise<LoginType> {
+}: LoginProps): Promise<LoginResponseType> {
     const api = defaultApi();
 
     try {
