@@ -13,7 +13,8 @@ const fetchNominatimSearch = async (query: string): Promise<SearchResult[]> => {
         params: {
             q: query,
             format: 'json',
-            addressdetails: 1
+            addressdetails: 1,
+            countrycodes: 'KR'
         }
     });
     return res.data;
