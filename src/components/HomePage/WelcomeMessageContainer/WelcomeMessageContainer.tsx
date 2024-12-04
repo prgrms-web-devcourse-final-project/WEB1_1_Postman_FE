@@ -10,11 +10,11 @@ export const WelcomeMessageContainer = ({
     newLetter
 }: WelcomeMessageContainerProps) => {
     const userMessage = (
-        <span className="text-[#22B8EF]">{`${nickname}님`}</span>
+        <span className="text-sample-blue">{`${nickname}님`}</span>
     );
 
     const message = (
-        <p className="font-semibold text-[24px]">
+        <p className="font-medium text-title1">
             {newLetter ? (
                 <>{userMessage}에게</>
             ) : (
@@ -24,7 +24,7 @@ export const WelcomeMessageContainer = ({
     );
 
     const messageBody = newLetter
-        ? '편지가 도착했어요.'
+        ? '편지가 도착했어요!'
         : '아직 도착한 편지가 없어요.';
 
     const subMessage = newLetter
@@ -34,8 +34,8 @@ export const WelcomeMessageContainer = ({
     return (
         <div className="absolute z-[3]">
             {message}
-            <p className="font-semibold text-[24px]">{messageBody}</p>
-            <p className="text-base text-[#9D9D9D]">{subMessage}</p>
+            <p className="font-medium text-title1">{messageBody}</p>
+            <p className="font-medium text-sample-textgray">{subMessage}</p>
         </div>
     );
 };
