@@ -1,7 +1,7 @@
 import { UserType } from './user';
 
 type LoginType = {
-    code: number;
+    code: string;
     status: string;
     message: string;
     data: UserType;
