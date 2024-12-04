@@ -48,7 +48,16 @@ export const SearchFullScreen = ({
             onBackClick();
         }
     };
-
+    const onHistoryClick = (searchTerm: string) => {
+        if (inputRef.current) {
+            inputRef.current.value = searchTerm;
+            saveSearchTerm(searchTerm);
+            onChange({
+                target: { value: searchTerm }
+            } as React.ChangeEvent<HTMLInputElement>);
+            onBackClick();
+        }
+    };
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus();
@@ -60,7 +69,7 @@ export const SearchFullScreen = ({
     }
 
     return (
-        <div className="mx-auto border min-w-[375px] max-w-[475px] h-[1vh]">
+        <div className="mx-auto min-w-[375px] max-w-[475px]">
             <div className="flex items-center pl-3 pr-4 justify-between w-full border-b h-12">
                 <BackButton onClick={onBackClick} />
                 <input
@@ -87,7 +96,7 @@ export const SearchFullScreen = ({
                     전체삭제
                 </button>
             </div>
-            <div className="py-2 px-4">
+            <div>
                 {recentSearches.length > 0 ? (
                     recentSearches.map((history, index) => (
                         <SearchHistoryList
@@ -96,6 +105,7 @@ export const SearchFullScreen = ({
                             date={history.date}
                             index={index}
                             onDelete={deleteSearchTerm}
+                            onClick={() => onHistoryClick(history.place)}
                         />
                     ))
                 ) : (
