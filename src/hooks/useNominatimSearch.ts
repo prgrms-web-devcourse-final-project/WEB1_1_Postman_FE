@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useSearchStore } from '@/stores/useSearchStore';
-
+import useDebounce from '@/hooks/useDebounde';
 type SearchResult = {
     lat: string;
     lon: string;
@@ -16,23 +16,36 @@ const fetchNominatimSearch = async (query: string): Promise<SearchResult[]> => {
             q: query,
             format: 'json',
             addressdetails: 1,
-            countrycodes: 'KR'
+            countrycodes: 'KR',
+            limit: 10,
+            type: 'geocode'
         }
     });
     return res.data;
 };
 
 export default function useNominatimSearch(query: string) {
-    const { setSearchedLocation } = useSearchStore();
+    const { setSearchedLocation, setRelatedSearchTerms } = useSearchStore();
+    const debouncedQuery = useDebounce(query, 500);
+
     const { data, isLoading, error } = useQuery<SearchResult[]>({
-        queryKey: ['nominatimSearch', query],
-        queryFn: () => fetchNominatimSearch(query),
-        enabled: !!query
+        queryKey: ['nominatimSearch', debouncedQuery],
+        queryFn: () => fetchNominatimSearch(debouncedQuery),
+        enabled: !!debouncedQuery
     });
     useEffect(() => {
         if (data && query) {
             setSearchedLocation(data[0] || null);
+
+            const relatedTerms = data.map((result) => result.display_name);
+            setRelatedSearchTerms(relatedTerms);
         }
-    }, [data, query, setSearchedLocation]);
+    }, [
+        data,
+        query,
+        debouncedQuery,
+        setSearchedLocation,
+        setRelatedSearchTerms
+    ]);
     return { data, isLoading, error };
 }
