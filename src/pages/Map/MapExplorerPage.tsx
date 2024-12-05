@@ -52,7 +52,7 @@ export const MapExplorerPage = () => {
                     </div>
                 )}
             </div>
-            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+            <div className="absolute transform -translate-x-1/2 bottom-20 left-1/2">
                 {!isSearchFocused && (
                     <>
                         {selectedLetter ? (
@@ -60,7 +60,7 @@ export const MapExplorerPage = () => {
                                 {searchedLocation ? (
                                     <NavLink
                                         to={'/letter/create'}
-                                        className="flex-center bottom-60 translate-y-7 absolute left-1/2 transform -translate-x-12 btn-base gap-2 w-52 p-2 rounded-2xl"
+                                        className="absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-60 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
                                     >
                                         <HiOutlinePencilAlt />
                                         지도 편지 작성하기
@@ -68,7 +68,7 @@ export const MapExplorerPage = () => {
                                 ) : (
                                     <NavLink
                                         to={'/letter/create'}
-                                        className="flex-center cursor-not-allowed bottom-60 translate-y-7 absolute left-1/2 transform -translate-x-12 btn-base gap-2 w-52 p-2 rounded-2xl"
+                                        className="absolute gap-2 p-2 transform -translate-x-12 cursor-not-allowed flex-center bottom-60 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
                                         onClick={(e) => e.preventDefault()}
                                     >
                                         <HiOutlinePencilAlt />
@@ -88,7 +88,7 @@ export const MapExplorerPage = () => {
                                 {searchedLocation ? (
                                     <NavLink
                                         to={'/letter/create'}
-                                        className="flex-center bottom-24 translate-y-7 absolute left-1/2 transform -translate-x-12 btn-base gap-2 w-52 p-2 rounded-2xl"
+                                        className="absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-24 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
                                     >
                                         <HiOutlinePencilAlt />
                                         지도 편지 작성하기
@@ -96,7 +96,7 @@ export const MapExplorerPage = () => {
                                 ) : (
                                     <NavLink
                                         to={'/letter/create'}
-                                        className="flex-center cursor-not-allowed bottom-24 translate-y-7 absolute left-1/2 transform -translate-x-12 btn-base gap-2 w-52 p-2 rounded-2xl"
+                                        className="absolute gap-2 p-2 transform -translate-x-12 cursor-not-allowed flex-center bottom-24 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
                                         onClick={(e) => e.preventDefault()}
                                     >
                                         <HiOutlinePencilAlt />

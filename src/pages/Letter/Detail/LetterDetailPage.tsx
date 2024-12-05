@@ -52,17 +52,17 @@ export const LetterDetailPage = ({
 
     return (
         <>
-            <div className="mt-4 mx-auto max-w relative">
+            <div className="relative mx-auto mt-4 max-w">
                 <div className="mx-auto w-[710px]">
                     <BackButton onClick={onBackClick} />
                 </div>
                 {id && (
-                    <div className="mt-10 flex absolute top-0 right-8">
+                    <div className="absolute top-0 flex mt-10 right-8">
                         <DeleteButton id={id} />
                         <ReportButton id={id} />
                     </div>
                 )}
-                <div className="mt-16 flex-center relative">
+                <div className="relative mt-16 flex-center">
                     <img
                         src={imageItem.src}
                         alt={imageItem.name}
@@ -98,7 +98,7 @@ export const LetterDetailPage = ({
                     </div>
                 ) : null
             ) : type === 'map' ? (
-                <div className="mt-4 flex-center mx-auto max-w gap-4">
+                <div className="gap-4 mx-auto mt-4 flex-center max-w">
                     <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
                         보관하기
                     </button>
@@ -107,7 +107,7 @@ export const LetterDetailPage = ({
                     </button>
                 </div>
             ) : (
-                <div className="mt-4 flex-center mx-auto max-w gap-4">
+                <div className="gap-4 mx-auto mt-4 flex-center max-w">
                     <button className="btn-base rounded-3xl w-[700px] h-[80px]">
                         편지에 답장하기
                     </button>

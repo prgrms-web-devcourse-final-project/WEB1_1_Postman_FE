@@ -25,7 +25,7 @@ export const LabelLotteryPage = () => {
                     <LotteryAnimationContainer />
                 </div>
 
-                <div className="flex-center flex-col">
+                <div className="flex-col flex-center">
                     <p className="mt-4 text-title2 text-sample-blue">
                         뽑기 이벤트
                     </p>
@@ -36,7 +36,7 @@ export const LabelLotteryPage = () => {
 
                 <Margin top={50} />
 
-                <div className="flex-center px-20">
+                <div className="px-20 flex-center">
                     <button
                         onClick={handleClickLottery}
                         className="mt-4 w-full h-[49px] text-white flex-center rounded-full bg-sample-blue"

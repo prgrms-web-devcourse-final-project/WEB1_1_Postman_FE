@@ -1,5 +1,6 @@
 import React from 'react';
 import { LabelProps } from '@/types/label';
+import { LabelProps } from '@/types/label';
 
 export const Label = ({ imgSrc, isActive }: LabelProps) => {
     return (

@@ -85,13 +85,13 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
 
     return (
         <div className="relative h-[812px] w-full">
-            <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-10 bg-white rounded-lg shadow-md p-2 flex items-center space-x-2">
+            <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-2 left-1/2">
                 <input
                     type="text"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                     placeholder={'숨길 장소를 검색해보세요!'}
-                    className="w-72 rounded-md outline-none"
+                    className="rounded-md outline-none w-72"
                     onFocus={onFocus}
                 />
                 <button className="px-4 py-2">
@@ -140,7 +140,7 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
                         latitude={letter.latitude}
                     >
                         <div
-                            className="bg-gray-100 p-1 rounded-sm"
+                            className="p-1 bg-gray-100 rounded-sm"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 toggleSelectedLetter(letter);
