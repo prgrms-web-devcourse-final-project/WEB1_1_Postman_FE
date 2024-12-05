@@ -3,6 +3,7 @@ import { BackButton } from '@/components/Common/BackButton/BackButton';
 import { IoIosSearch } from 'react-icons/io';
 import { SearchHistoryList } from '../SearchHistoryList/SearchHistoryList';
 import { useSearchStore } from '@/stores/useSearchStore';
+import { RelatedSearchTermsList } from '../RelatedSearchTermsList/RelatedSearchTermsList';
 
 type SearchFullScreenProps = {
     isOpen: boolean;
@@ -22,7 +23,9 @@ export const SearchFullScreen = ({
         saveSearchTerm,
         clearAllSearches,
         deleteSearchTerm,
-        loadRecentSearches
+        loadRecentSearches,
+        relatedSearchTerms,
+        clearSearchedLocation
     } = useSearchStore();
 
     useEffect(() => {
@@ -30,14 +33,14 @@ export const SearchFullScreen = ({
     }, [loadRecentSearches]);
 
     const onBackClick = () => {
+        clearSearchedLocation();
         onClose();
     };
-
     const onSearchClick = () => {
         const searchTerm = inputRef.current?.value.trim();
         if (searchTerm) {
             saveSearchTerm(searchTerm);
-            onBackClick();
+            onClose();
         }
     };
 
@@ -45,19 +48,21 @@ export const SearchFullScreen = ({
         const searchTerm = inputRef.current?.value?.trim() || '';
         if (e.key === 'Enter' && searchTerm !== '') {
             saveSearchTerm(searchTerm);
-            onBackClick();
+            onClose();
         }
     };
-    const onHistoryClick = (searchTerm: string) => {
+
+    const onTermsClick = (searchTerm: string) => {
         if (inputRef.current) {
             inputRef.current.value = searchTerm;
             saveSearchTerm(searchTerm);
             onChange({
                 target: { value: searchTerm }
             } as React.ChangeEvent<HTMLInputElement>);
-            onBackClick();
+            onClose();
         }
     };
+
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus();
@@ -67,6 +72,8 @@ export const SearchFullScreen = ({
     if (!isOpen) {
         return null;
     }
+
+    const isInputNotEmpty = inputRef.current?.value.trim() !== '';
 
     return (
         <div className="mx-auto min-w-[375px] max-w-[475px]">
@@ -87,31 +94,47 @@ export const SearchFullScreen = ({
                     onClick={onSearchClick}
                 />
             </div>
-            <div className="flex justify-between text-gray-400 py-2 px-4">
-                <span>최근 검색어</span>
-                <button
-                    className="text-sm text-gray-400"
-                    onClick={clearAllSearches}
-                >
-                    전체삭제
-                </button>
-            </div>
+
+            {!isInputNotEmpty && (
+                <div className="flex justify-between text-gray-400 py-2 px-4">
+                    <span>최근 검색어</span>
+                    <button
+                        className="text-sm text-gray-400"
+                        onClick={clearAllSearches}
+                    >
+                        전체삭제
+                    </button>
+                </div>
+            )}
+
             <div>
-                {recentSearches.length > 0 ? (
-                    recentSearches.map((history, index) => (
-                        <SearchHistoryList
+                {isInputNotEmpty ? (
+                    relatedSearchTerms.map((related, index) => (
+                        <RelatedSearchTermsList
                             key={index}
-                            place={history.place}
-                            date={history.date}
-                            index={index}
-                            onDelete={deleteSearchTerm}
-                            onClick={() => onHistoryClick(history.place)}
+                            place={related}
+                            onClick={() => onTermsClick(related)}
                         />
                     ))
                 ) : (
-                    <p className="text-gray-500 flex-center text-sm mt-16">
-                        최근 검색어 내역이 없습니다.
-                    </p>
+                    <>
+                        {recentSearches.length > 0 ? (
+                            recentSearches.map((history, index) => (
+                                <SearchHistoryList
+                                    key={index}
+                                    place={history.place}
+                                    date={history.date}
+                                    index={index}
+                                    onDelete={deleteSearchTerm}
+                                    onClick={() => onTermsClick(history.place)}
+                                />
+                            ))
+                        ) : (
+                            <p className="text-gray-500 flex-center text-sm mt-16">
+                                최근 검색어 내역이 없습니다.
+                            </p>
+                        )}
+                    </>
                 )}
             </div>
         </div>
