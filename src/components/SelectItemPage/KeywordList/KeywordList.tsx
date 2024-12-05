@@ -3,8 +3,8 @@ import { KeywordProps } from '@/types/keyword';
 import { KeywordToggleButton } from '@/components/Common/KeywordToggleButton/KeywordToggleButton';
 
 export type KeywordListProps = {
-    title: string;
-    subTitle: string;
+    title?: string;
+    subTitle?: string;
     keywordGroup: KeywordProps[];
     selectedKeywords: number[];
     onKeywordSelect: (index: number) => void;
