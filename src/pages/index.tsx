@@ -16,6 +16,7 @@ import { SelectItemPage } from './Letter/SelectItem/SelectItemPage';
 import { MyPage } from '@/pages/User/MyPage/MyPage';
 import { SuccessLetterPage } from './Letter/Success/SuccessLetterPage';
 import { ProfilePage } from '@/pages/User/Profile/ProfilePage';
+import { StoragePage } from '@/pages/Storage/StoragePage';
 
 export {
     ErrorPage,
@@ -35,5 +36,6 @@ export {
     LabelLotteryPage,
     SelectItemPage,
     SuccessLetterPage,
-    ProfilePage
+    ProfilePage,
+    StoragePage
 };

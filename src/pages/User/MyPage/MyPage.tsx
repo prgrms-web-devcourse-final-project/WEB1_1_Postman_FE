@@ -16,9 +16,9 @@ export const MyPage = () => {
     ];
 
     const menuItems = [
-        { content: '키워드 편지함', url: '/mypage/letters/keyword' },
-        { content: '지도 편지함', url: '/mypage/letters/map' },
-        { content: '보관함', url: '/mypage/letters/bookmark' }
+        { content: '키워드 편지함', url: '/storage/keyword' },
+        { content: '지도 편지함', url: '/storage/map' },
+        { content: '보관함', url: '/storage/bookmark' }
     ];
 
     const labelMenuItems = [{ content: '라벨첩', url: '/mypage/label' }];
