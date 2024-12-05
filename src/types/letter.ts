@@ -23,3 +23,16 @@ export type CreateLetterResponseType = {
         createdAt: string;
     };
 };
+
+export type GetKeywordLetterDetailResponseType = {
+    letterId: number;
+    title: string;
+    content: string;
+    keywords: string[];
+    font: string;
+    paper: string;
+    profile: string;
+    label: string;
+    isOwner: boolean;
+    createdAt: string;
+};
