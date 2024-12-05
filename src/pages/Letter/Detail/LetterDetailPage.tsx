@@ -5,6 +5,7 @@ import { KeywordLetterDetail } from '@/components/LetterDetailPage/KeywordLetter
 import { useParams } from 'react-router-dom';
 import { DeleteButton } from '@/components/LetterDetailPage/DeleteButton/DeleteButton';
 import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
+import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 
 type LetterDetailPageProps = {
     isAuthor?: boolean;
@@ -61,8 +62,9 @@ export const LetterDetailPage = ({
                     <BackButton onClick={onBackClick} />
                 </div>
                 {id && (
-                    <div className="mt-10 absolute top-0 right-8">
+                    <div className="mt-10 flex absolute top-0 right-8">
                         <DeleteButton id={id} onClick={onDeleteClick} />
+                        <ReportButton id={id} />
                     </div>
                 )}
                 <div className="mt-16 flex-center relative">
