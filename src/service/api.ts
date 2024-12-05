@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
+import axios, { AxiosRequestConfig, AxiosInstance, AxiosError } from 'axios';
 import { tokenStorage } from './auth/tokenStorage';
 import { refreshAccessToken } from '@/service/auth/refreshAccessToken';
 
@@ -50,5 +50,18 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
         }
     );
 
-    return instance;
+    //에러처리
+    instance.interceptors.response.use(
+        (response) => response,
+        (error) => {
+            if (error instanceof AxiosError && error.response?.data) {
+                throw error.response.data;
+            }
+            throw {
+                code: 500,
+                status: 'INTERNAL_SERVER_ERROR',
+                message: '서버와의 통신에 실패했습니다.'
+            };
+        }
+    );
 };
