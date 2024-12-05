@@ -1,12 +1,11 @@
-import { AiOutlineAlert } from 'react-icons/ai';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import { useState } from 'react';
-import { ReportModal } from './ReportModal';
-
-type ReportButtonProps = {
+import { DeleteModal } from './DeleteModal';
+type DeleteButtonProps = {
     id: string;
 };
 
-export const ReportButton = ({ id }: ReportButtonProps) => {
+export const DeleteButton = ({ id }: DeleteButtonProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -19,8 +18,8 @@ export const ReportButton = ({ id }: ReportButtonProps) => {
 
     return (
         <>
-            <button className="flex-center gap-1 p-2" onClick={openModal}>
-                <AiOutlineAlert />
+            <button className=" flex-center gap-1 p-2" onClick={openModal}>
+                <RiDeleteBin5Line />
             </button>
 
             {isModalOpen && (
@@ -32,7 +31,7 @@ export const ReportButton = ({ id }: ReportButtonProps) => {
                         onClick={(e) => e.stopPropagation()}
                         className="bg-white rounded-lg p-6"
                     >
-                        <ReportModal id={id} closeModal={closeModal} />
+                        <DeleteModal id={id} closeModal={closeModal} />
                     </div>
                 </div>
             )}
