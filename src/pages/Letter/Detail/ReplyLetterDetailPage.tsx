@@ -2,8 +2,8 @@ import { BackButton } from '@/components/Common/BackButton/BackButton';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
-import { ReplyLetterDetail } from '@/components/LetterDetailPage/ReplyLetterDetail';
 import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
+import { ReplyLetterDetail } from '@/components/LetterDetailPage/LetterDatail/ReplyLetterDetail';
 
 export const ReplyLetterDetailPage = () => {
     const { id } = useParams<{ id: string }>();
