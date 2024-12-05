@@ -1,188 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { BottleLetter } from '../Common/BottleLetter/BottleLetter';
+import { Itembox } from '../Common/Itembox/Itembox';
+import { getLetter } from '@/service/storage/getLetter';
 
-const sampleData: DayGroup[] = [
-    {
-        date: '2024-12-04',
-        letters: [
-            {
-                title: '오늘의 일상을 공유합니다',
-                content:
-                    '오늘 카페에서 맛있는 커피를 마셨어요. 날씨가 참 좋았죠.',
-                id: '1',
-                sender: '김민수',
-                receiver: '이지은',
-                timestamp: '14:30',
-                type: 'sent'
-            },
-            {
-                title: '프로젝트 진행상황 공유',
-                content: '현재 개발이 50% 정도 진행되었습니다.',
-                id: '2',
-                sender: '박지훈',
-                receiver: '김민수',
-                timestamp: '11:20',
-                type: 'sent'
-            },
-            {
-                title: '주말 모임 안내',
-                content: '이번 주말에 동창회 모임이 있습니다.',
-                id: '3',
-                sender: '김민수',
-                receiver: '홍길동',
-                timestamp: '09:15',
-                type: 'sent'
-            }
-        ]
-    },
-    {
-        date: '2024-12-03',
-        letters: [
-            {
-                title: '생일 축하해요!',
-                content: '생일 축하드립니다. 좋은 하루 보내세요!',
-                id: '4',
-                sender: '이지은',
-                receiver: '김민수',
-                timestamp: '18:45',
-                type: 'received'
-            },
-            {
-                title: '회의록 공유',
-                content: '오늘 진행된 회의 내용 공유드립니다.',
-                id: '5',
-                sender: '김민수',
-                receiver: '박지훈',
-                timestamp: '16:20',
-                type: 'sent'
-            }
-        ]
-    },
-    {
-        date: '2024-12-02',
-        letters: [
-            {
-                title: '여행 계획 논의',
-                content: '다음 달 제주도 여행 계획에 대해 의견 부탁드려요.',
-                id: '6',
-                sender: '홍길동',
-                receiver: '김민수',
-                timestamp: '20:10',
-                type: 'received'
-            }
-        ]
-    }
-];
+interface Letter {
+    letterId: number;
+    title: string;
+    label: string;
+    letterType: string;
+    boxType: string;
+    createdAt: string;
+}
 
-const mapSampleData: MapDayGroup[] = [
-    {
-        date: '2024-12-04',
-        letters: [
-            {
-                title: '우리가 처음 만난 곳',
-                content: '여기서 처음 마주쳤던 그 순간이 아직도 생생해.',
-                id: '1',
-                sender: '김민수',
-                receiver: '이지은',
-                isRead: true,
-                timestamp: '14:30',
-                type: '보낸 편지',
-                locationHint: {
-                    hint: '사람들의 발걸음이 분주한 이곳, 초록색 간판이 인상적인 카페가 있어요',
-                    latitude: 37.5665,
-                    longitude: 126.978,
-                    address: '서울시 중구 명동길 12'
-                },
-                isOpened: true
-            },
-            {
-                title: '비밀스러운 장소',
-                content: '우리만 아는 특별한 곳으로 초대할게요.',
-                id: '2',
-                sender: '박지훈',
-                receiver: '김민수',
-                isRead: false,
-                timestamp: '11:20',
-                type: '받은 편지',
-                locationHint: {
-                    hint: '푸른 나무들 사이로 보이는 하얀 건물, 벤치에 앉아 햇살을 즐길 수 있어요',
-                    latitude: 37.5511,
-                    longitude: 126.9882,
-                    address: '서울시 용산구 녹사평대로 185'
-                },
-                isOpened: false
-            }
-        ]
-    },
-    {
-        date: '2024-12-03',
-        letters: [
-            {
-                title: '우리의 첫 데이트',
-                content: '이곳에서 보낸 시간이 참 특별했죠.',
-                id: '3',
-                sender: '이지은',
-                receiver: '김민수',
-                isRead: true,
-                timestamp: '18:45',
-                type: '받은 편지',
-                locationHint: {
-                    hint: '물결치는 강가 근처, 밤에는 반짝이는 조명이 아름다운 곳이에요',
-                    latitude: 37.5113,
-                    longitude: 126.9975,
-                    address: '서울시 서초구 반포대로 42'
-                },
-                isOpened: true
-            }
-        ]
-    },
-    {
-        date: '2024-12-02',
-        letters: [
-            {
-                title: '특별한 추억의 장소',
-                content: '이곳에서 있었던 일을 기억하나요?',
-                id: '4',
-                sender: '김민수',
-                receiver: '홍길동',
-                isRead: true,
-                timestamp: '20:10',
-                type: '보낸 편지',
-                locationHint: {
-                    hint: '오래된 건물들 사이에 있는 작은 골목, 벽화가 그려진 계단이 특징이에요',
-                    latitude: 37.5834,
-                    longitude: 126.9849,
-                    address: '서울시 종로구 삼청로 12'
-                },
-                isOpened: false
-            }
-        ]
-    }
-];
+interface DayGroup {
+    date: string;
+    letters: Letter[];
+}
 
 type storageType = 'keyword' | 'map' | 'bookmark';
-type FilterType = 'sent' | 'received';
-
-const filterLabels = {
-    sent: '보낸 편지',
-    received: '받은 편지'
-} as const;
+type FilterType = 'LETTER' | 'REPLY_LETTER';
 
 type StorageListProps = {
     type: storageType;
-    filter: FilterType;
 };
 
-export const StorageList = ({ type, filter }: StorageListProps) => {
+export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
+    // const queryClient = useQueryClient();
+    // const { data, error, fetchNextPage, hasNextPage, isFetchNextPage } =
+    //     useInfiniteFetch();
+    const page = 1;
+    const size = 10;
+    const [selectedFilter, setSelectedFilter] = useState<FilterType>('LETTER');
+    const [checkedItems, setCheckedItems] = useState<number[]>([]);
+    const [groupedLetters, setGroupedLetters] = useState<DayGroup[]>([]);
+
     // 리스트 타입 - 필터별 엔드포인트 추출
     const getApiEndpoint = (type: storageType, filter: FilterType) => {
         const endpoints = {
             keyword: {
-                sent: '/letter/saved/sent',
-                received: '/letter/saved/received'
+                LETTER: '/letters/saved/sent',
+                REPLY_LETTER: '/letters/saved/received'
             },
             map: {
-                sent: '/map/sent',
-                received: '/map/received'
+                LETTER: '/map/sent',
+                REPLY_LETTER: '/map/received'
             },
             bookmark: '/map/archived'
         };
@@ -194,66 +55,177 @@ export const StorageList = ({ type, filter }: StorageListProps) => {
         return endpoints[type]?.[filter];
     };
 
-    // 보낸편지 - 받은편지 필터
-    const getFilteredData = (filter: FilterType) => {
-        return sampleData
-            .map((dayGroup) => ({
-                date: dayGroup.date,
-                letters: dayGroup.letters.filter((letter) => {
-                    return letter.type === filter;
-                })
-            }))
-            .filter((dayGroup) => dayGroup.letters.length > 0);
+    // 데이터 패치
+    // 따로 필터링 해줄 필요 없이 엔드포인트가 다르게 들어감
+    const getLetterList = async () => {
+        const apiEndpoint = getApiEndpoint(type, selectedFilter);
+        const response = await getLetter({ apiEndpoint, page, size });
+        console.log('응답:', response);
+        if (response.isSuccess) {
+            return response.result.content;
+        }
+        return [];
     };
 
-    // 데이터 패치
-    const handleSetData = async () => {
-        const apiEndpoint = getApiEndpoint(type, filter);
-        try {
-            // 테스트 함수
-            // 무한스크롤? 페이지네이션?
-            const response = await sampleFunction(apiEndpoint);
-            if (response.result) {
-                console.log(response.result);
-                // 편지 데이터 세팅
-            }
-        } catch (error) {
-            console.error(error);
+    // 편지 리스트를 날짜별로 그룹화, 날짜순으로 정렬
+    const groupLettersByDate = (letters: Letter[]): DayGroup[] => {
+        const grouped = letters.reduce(
+            (acc: { [key: string]: Letter[] }, letter) => {
+                const date = new Date(letter.createdAt)
+                    .toISOString()
+                    .split('T')[0];
+
+                if (!acc[date]) {
+                    acc[date] = [];
+                }
+                acc[date].push(letter);
+                return acc;
+            },
+            {}
+        );
+        return Object.entries(grouped)
+            .map(([date, letters]) => ({
+                date,
+                letters: letters.sort(
+                    (a, b) =>
+                        new Date(b.createdAt).getTime() -
+                        new Date(a.createdAt).getTime()
+                )
+            }))
+            .sort(
+                (a, b) =>
+                    new Date(b.date).getTime() - new Date(a.date).getTime()
+            );
+    };
+
+    const setData = async () => {
+        const letters = await getLetterList();
+        setGroupedLetters(groupLettersByDate(letters));
+    };
+
+    // 체크박스 단일 클릭
+    const handleSingleCheck = (checked: boolean, id: number) => {
+        if (checked) {
+            setCheckedItems((prev) => [...prev, id]);
+        } else {
+            setCheckedItems(checkedItems.filter((el) => el !== id));
         }
     };
 
+    // 체크박스 전체 클릭
+    const handleAllCheck = (checked: boolean) => {
+        if (checked) {
+            const idArray: number[] = [];
+            groupedLetters.forEach((item) => {
+                item.letters.forEach((letter) => {
+                    idArray.push(letter.letterId);
+                });
+            });
+            setCheckedItems(idArray);
+        } else {
+            setCheckedItems([]);
+        }
+    };
+
+    // 테스트 출력
+    useEffect(() => {
+        console.log(checkedItems);
+    }, [checkedItems]);
+
+    // 테스트 데이터 세팅
+    useEffect(() => {
+        setData();
+    }, [type, selectedFilter]);
+
     const renderList = () => {
-        const filteredData = getFilteredData(filter);
         return (
-            <div className="flex flex-col gap-6">
-                {/* 삭제 섹션 */}
-                <div className="flex flex-row gap-1 text-sm">
-                    <div>
-                        <input type="checkbox" value="selectedAll" />
-                        <label>전체 선택</label>
-                    </div>
-                    <button className="bg-sample-gray">삭제</button>
+            <div className="flex flex-col gap-2 mt-2">
+                <div className="flex flex-row gap-2">
+                    <button
+                        className={`border border-sample-blue rounded-xl text-sm px-2 py-1
+                                ${
+                                    selectedFilter === 'LETTER'
+                                        ? 'bg-sample-blue text-white'
+                                        : 'bg-white text-sample-blue'
+                                }`}
+                        onClick={() => setSelectedFilter('LETTER')}
+                    >
+                        보낸 편지
+                    </button>
+                    <button
+                        className={`border border-sample-blue rounded-xl text-sm px-2 py-1
+                                ${
+                                    selectedFilter === 'REPLY_LETTER'
+                                        ? 'bg-sample-blue text-white'
+                                        : 'bg-white text-sample-blue'
+                                }`}
+                        onClick={() => setSelectedFilter('REPLY_LETTER')}
+                    >
+                        받은 편지
+                    </button>
                 </div>
-                {filteredData.map((dayGroup) => (
-                    <div key={dayGroup.date} className="flex flex-col gap-4">
+                {/* 삭제 섹션 */}
+                <div className="flex flex-row gap-3 justify-between text-sm w-full">
+                    <div className="flex flex-row items-center gap-1">
+                        <input
+                            type="checkbox"
+                            name="select-all"
+                            onChange={(e) => handleAllCheck(e.target.checked)}
+                            checked={
+                                checkedItems.length ===
+                                groupedLetters.reduce(
+                                    (acc, day) => acc + day.letters.length,
+                                    0
+                                )
+                            }
+                        />
+                        <label>전체</label>
+                    </div>
+                    <button className="bg-sample-gray px-2 py-1">삭제</button>
+                </div>
+                {groupedLetters.map((dayGroup) => (
+                    <div key={dayGroup.date} className="flex flex-col gap-3">
                         {/* 날짜 섹션 */}
-                        <div className="text-lg font-medium">
+                        <div className="text-md font-medium">
                             {dayGroup.date}
                         </div>
                         {/* 해당 날짜의 편지들 */}
                         <div className="flex flex-col gap-2">
                             {dayGroup.letters.map((letter) => (
                                 <div
-                                    key={letter.id}
+                                    key={letter.letterId}
                                     className="flex flex-row gap-2"
                                 >
-                                    <input type="checkbox" />
-                                    <div className="w-full h-[100px] p-4 rounded-lg bg-sample-gray">
-                                        <h3 className="font-bold">
-                                            {letter.title}
-                                        </h3>
-                                        <div className="text-sm text-gray-500 mt-2">
-                                            {letter.timestamp}
+                                    <input
+                                        type="checkbox"
+                                        name={`select-${letter.letterId}`}
+                                        onChange={(e) =>
+                                            handleSingleCheck(
+                                                e.target.checked,
+                                                letter.letterId
+                                            )
+                                        }
+                                        checked={
+                                            checkedItems.includes(
+                                                letter.letterId
+                                            )
+                                                ? true
+                                                : false
+                                        }
+                                    />
+                                    <div className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray">
+                                        <Itembox>
+                                            <BottleLetter Letter={letter} />
+                                        </Itembox>
+                                        <div className="flex flex-col h-full">
+                                            <div className="text-[12px] text-gray-500 mt-2">
+                                                {letter.letterType === 'LETTER'
+                                                    ? '보낸 편지'
+                                                    : '받은 편지'}
+                                            </div>
+                                            <h3 className="font-bold text-sm">
+                                                {letter.title}
+                                            </h3>
                                         </div>
                                     </div>
                                 </div>
@@ -264,5 +236,6 @@ export const StorageList = ({ type, filter }: StorageListProps) => {
             </div>
         );
     };
+
     return <div className="">{renderList()}</div>;
 };
