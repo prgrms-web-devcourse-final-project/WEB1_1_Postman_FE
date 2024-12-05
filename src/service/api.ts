@@ -1,6 +1,7 @@
-import axios, { AxiosRequestConfig, AxiosInstance, AxiosError } from 'axios';
+import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
 import { tokenStorage } from './auth/tokenStorage';
 import { refreshAccessToken } from '@/service/auth/refreshAccessToken';
+import { formatApiError } from '@/util/formatApiError';
 
 const baseUrl = import.meta.env.VITE_API_URL as string;
 
@@ -52,16 +53,16 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
 
     //에러처리
     instance.interceptors.response.use(
-        (response) => response,
-        (error) => {
-            if (error instanceof AxiosError && error.response?.data) {
-                throw error.response.data;
+        (response) => {
+            if (response.data.isSuccess === false) {
+                throw formatApiError(response.data.code, response.data.message);
             }
-            throw {
-                status: 500,
-                error: 'INTERNAL_SERVER_ERROR',
-                message: '서버와의 통신에 실패했습니다.'
-            };
+            return response;
+        },
+        (error) => {
+            throw formatApiError('ERROR500', '네트워크 요청에 실패했습니다.');
         }
     );
+
+    return instance;
 };
