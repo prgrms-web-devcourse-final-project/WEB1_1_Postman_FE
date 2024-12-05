@@ -3,7 +3,6 @@ import { Container } from '@/components/Common/Container/Container';
 import { StorageList } from '@/components/StoragePage/StorageList';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
-type FilterType = 'sent' | 'received';
 
 const getTranslateX = (path: storageType) => {
     const pathIndex =
