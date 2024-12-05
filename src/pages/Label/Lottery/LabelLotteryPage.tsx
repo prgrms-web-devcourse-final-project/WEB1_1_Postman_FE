@@ -1,29 +1,61 @@
-import { Margin } from '@/components/Common/Margin/Margin';
 import { Container } from '@/components/Common/Container/Container';
+import { Margin } from '@/components/Common/Margin/Margin';
+import { Modal } from '@/components/Common/Modal/Modal';
+import { TitleClosedTopBar } from '@/components/Common/TitleClosedTopBar/TitleClosedTopBar';
+import { LotteryAnimationContainer } from '@/components/LabelLotteryPage/LotteryAnimationContainer';
+import { ResultModalContainer } from '@/components/LabelLotteryPage/ResultModalContainer';
+import { useState } from 'react';
 
 export const LabelLotteryPage = () => {
+    const [open, setOpen] = useState(false);
+
+    /** 뽑기 버튼 클릭 이벤트 */
+    const handleClickLottery = () => {
+        setOpen(true);
+    };
+
     return (
         <Container>
-            <div className="h-[100vh] flex-center flex-col gap-[10px]">
-                <div className="bg-slate-500 h-[200px] w-full px-[50px]"></div>
+            <Margin top={20} />
 
-                <Margin top={30} />
+            <TitleClosedTopBar />
 
-                <p>뽑기 이벤트</p>
-                <p>라벨 프로필사진 뽑아보세요</p>
+            <Margin top={80}>
+                <div className="h-[250px] w-full">
+                    <LotteryAnimationContainer />
+                </div>
+
+                <div className="flex-center flex-col">
+                    <p className="mt-4 text-title2 text-sample-blue">
+                        뽑기 이벤트
+                    </p>
+                    <p className="text-body1 text-sample-textgray">
+                        라벨 프로필사진 뽑아보세요
+                    </p>
+                </div>
 
                 <Margin top={50} />
 
-                <div>
-                    <button className="btn-base w-[240px] h-[60px]">
+                <div className="flex-center px-20">
+                    <button
+                        onClick={handleClickLottery}
+                        className="mt-4 w-full h-[49px] text-white flex-center rounded-full bg-sample-blue"
+                    >
                         뽑기
                     </button>
-                    <Margin top={10} />
-                    <button className="btn-base w-[240px] h-[60px]">
-                        친구공유
-                    </button>
                 </div>
-            </div>
+            </Margin>
+
+            {open ? (
+                <Modal height="h-fit" clickEvent={() => {}}>
+                    <ResultModalContainer
+                        result={false}
+                        clickEvent={() => {
+                            setOpen(false);
+                        }}
+                    />
+                </Modal>
+            ) : null}
         </Container>
     );
 };

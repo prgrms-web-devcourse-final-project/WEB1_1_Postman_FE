@@ -58,9 +58,9 @@ export const Input = ({
             <div className="flex flex-row gap-2">
                 {text}
                 {error && (
-                    <p className="text-[14px] my-[2px] text-small text-red-500 md:text-base">
+                    <div className="text-xs my-[2px] text-red-500 md:text-base">
                         {error}
-                    </p>
+                    </div>
                 )}
             </div>
             <div>

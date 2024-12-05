@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { MapLetterDetail } from '@/components/LetterDetailPage/MapLetterDetail';
 import { KeywordLetterDetail } from '@/components/LetterDetailPage/KeywordLetterDetail';
 import { useParams } from 'react-router-dom';
-import { DeleteButton } from '@/components/LetterDetailPage/DeleteButton/DeleteButton';
+import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
 import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
+import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 
 type LetterDetailPageProps = {
     isAuthor?: boolean;
@@ -45,11 +46,6 @@ export const LetterDetailPage = ({
     ];
     const navigate = useNavigate();
 
-    const onDeleteClick = (letterId: string) => {
-        console.log(`편지 ID ${letterId} 삭제`);
-        alert('편지를 삭제하시겠습니까?');
-        navigate(-1);
-    };
     const onBackClick = () => {
         navigate(-1);
     };
@@ -61,8 +57,9 @@ export const LetterDetailPage = ({
                     <BackButton onClick={onBackClick} />
                 </div>
                 {id && (
-                    <div className="mt-10 absolute top-0 right-8">
-                        <DeleteButton id={id} onClick={onDeleteClick} />
+                    <div className="mt-10 flex absolute top-0 right-8">
+                        <DeleteButton id={id} />
+                        <ReportButton id={id} />
                     </div>
                 )}
                 <div className="mt-16 flex-center relative">

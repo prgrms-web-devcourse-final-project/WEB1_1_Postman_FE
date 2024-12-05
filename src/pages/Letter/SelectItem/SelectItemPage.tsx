@@ -1,6 +1,6 @@
 import { TopBar } from '@/components/Common/TopBar/TopBar';
-import { AnimationBottle } from '@/components/Letter/AnimationBottle/AnimationBottle';
-import { SelectItem } from '@/components/Letter/SelectItem/SelectItem';
+import { AnimationBottle } from '@/components/SelectItemPage/AnimationBottle/AnimationBottle';
+import { SelectItem } from '@/components/SelectItemPage/SelectItem/SelectItem';
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ export const SelectItemPage = () => {
             />
 
             <h2
-                className={`text-2xl text-center mt-[40%] transition-opacity duration-1000 ${
+                className={`text-2xl text-center mt-[43%] transition-opacity duration-1000 ${
                     isActive ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{ minHeight: '2.5rem' }}

@@ -26,24 +26,28 @@ export const NicknameSection = ({
     return (
         <div>
             <div className="flex flex-row gap-2">
-                {nickname &&
-                    isNicknameChecked &&
-                    (isNicknameValid ? (
-                        <div className="flex items-center h-6 text-[12px] text-green-500 md:text-base">
-                            ✔ 사용 가능한 닉네임입니다.
-                        </div>
-                    ) : (
-                        <div className="flex items-center h-6 text-[12px] text-red-500 md:text-base">
-                            ✖ 이미 사용 중인 닉네임입니다.
-                        </div>
-                    ))}
+                <div className="w-full">
+                    {nickname &&
+                        isNicknameChecked &&
+                        (isNicknameValid ? (
+                            <div className="flex items-center h-6 text-[12px] text-green-500 md:text-base">
+                                ✔ 사용 가능한 닉네임입니다.
+                            </div>
+                        ) : (
+                            <div className="flex items-center h-6 text-[12px] text-red-500 md:text-base">
+                                ✖ 이미 사용 중인 닉네임입니다.
+                            </div>
+                        ))}
+                </div>
             </div>
 
             <div className="flex flex-row items-end align-middle gap-2 w-full">
-                <NicknameInput
-                    onValueChange={onNicknameChange}
-                    onKeyDown={handleNicknameKeyDown}
-                />
+                <div className="w-full">
+                    <NicknameInput
+                        onValueChange={onNicknameChange}
+                        onKeyDown={handleNicknameKeyDown}
+                    />
+                </div>
                 <button
                     type="button"
                     className="border border-blue-500 h-8 px-3 rounded text-blue-500 hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap"

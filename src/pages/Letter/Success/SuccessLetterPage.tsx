@@ -1,5 +1,5 @@
-import { CreateButton } from '@/components/Letter/CreateButton/CreateButton';
-import { SuccessModal } from '@/components/Letter/SuccessModal/SuccessModal';
+import { CreateButton } from '@/components/SelectItemPage/CreateButton/CreateButton';
+import { SuccessModal } from '@/components/SuccessLetterPage/SuccessModal/SuccessModal';
 import confetti from 'canvas-confetti';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
