@@ -23,3 +23,21 @@ export type CreateLetterResponseType = {
         createdAt: string;
     };
 };
+
+export type NearbyLettersResponseType = {
+    isSuccess: boolean;
+    code: string;
+    message: string;
+    result: {
+        letterId: number;
+        latitude: number;
+        longitude: number;
+        title: string;
+        createdAt: string;
+        distance: number;
+        target: number;
+        createUserNickname: string;
+        label: string;
+        description: string;
+    }[];
+};
