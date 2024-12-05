@@ -1,7 +1,7 @@
 import { BackButton } from '@/components/Common/BackButton/BackButton';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { DeleteButton } from '@/components/LetterDetailPage/DeleteButton/DeleteButton';
+import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
 import { ReplyLetterDetail } from '@/components/LetterDetailPage/ReplyLetterDetail';
 
 export const ReplyLetterDetailPage = () => {
