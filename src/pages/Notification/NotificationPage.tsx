@@ -1,5 +1,6 @@
+import { Container } from '@/components/Common/Container/Container';
 import { Margin } from '@/components/Common/Margin/Margin';
-import { NotificationAppBar } from '@/components/NotificationPage/NotificationAppBar';
+import { TitleClosedTopBar } from '@/components/Common/TitleClosedTopBar/TitleClosedTopBar';
 import { NotificationContainer } from '@/components/NotificationPage/NotificationContainer';
 import { NotificationType } from '@/types/notification';
 
@@ -76,8 +77,10 @@ export const NotificationPage = () => {
         }));
 
     return (
-        <div className="p-5">
-            <NotificationAppBar />
+        <Container>
+            <Margin top={20} />
+
+            <TitleClosedTopBar title="알림" />
 
             <Margin top={20} />
 
@@ -94,6 +97,6 @@ export const NotificationPage = () => {
                 <Margin top={8} />
                 <NotificationContainer notifications={readNotifications} />
             </div>
-        </div>
+        </Container>
     );
 };
