@@ -15,19 +15,10 @@ type SelectItemProps = {
 
 const testLable: LabelProps[] = [
     {
-        imgSrc: 'public/라벨_샘플.png'
+        imgSrc: '/라벨_샘플_01.png'
     },
     {
-        imgSrc: 'public/라벨_샘플.png'
-    },
-    {
-        imgSrc: 'public/라벨_샘플.png'
-    },
-    {
-        imgSrc: 'public/라벨_샘플.png'
-    },
-    {
-        imgSrc: 'public/라벨_샘플.png'
+        imgSrc: '/라벨_샘플_02.png'
     }
 ];
 
