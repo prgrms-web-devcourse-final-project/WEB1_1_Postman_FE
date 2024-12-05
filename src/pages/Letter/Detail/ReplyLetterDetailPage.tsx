@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
 import { ReplyLetterDetail } from '@/components/LetterDetailPage/ReplyLetterDetail';
+import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 
 export const ReplyLetterDetailPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -20,11 +21,6 @@ export const ReplyLetterDetailPage = () => {
 
     const navigate = useNavigate();
 
-    const onDeleteClick = (letterId: string) => {
-        console.log(`편지 ID ${letterId} 삭제`);
-        alert('편지를 삭제하시겠습니까?');
-        navigate(-1);
-    };
     const onBackClick = () => {
         navigate(-1);
     };
@@ -36,8 +32,9 @@ export const ReplyLetterDetailPage = () => {
                     <BackButton onClick={onBackClick} />
                 </div>
                 {id && (
-                    <div className="mt-10 absolute top-0 right-8">
-                        <DeleteButton id={id} onClick={onDeleteClick} />
+                    <div className="mt-10 flex absolute top-0 right-8">
+                        <DeleteButton id={id} />
+                        <ReportButton id={id} />
                     </div>
                 )}
                 <div className="mt-16 flex-center relative">
