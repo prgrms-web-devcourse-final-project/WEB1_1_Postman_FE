@@ -19,6 +19,15 @@ const testLable: LabelProps[] = [
     },
     {
         imgSrc: '/라벨_샘플_02.png'
+    },
+    {
+        imgSrc: '/라벨_샘플.png'
+    },
+    {
+        imgSrc: '/라벨_샘플.png'
+    },
+    {
+        imgSrc: '/라벨_샘플.png'
     }
 ];
 
@@ -75,7 +84,8 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     };
 
     useEffect(() => {
-        if (selectedLabel && selectedKeywords.length > 0) {
+        console.log(selectedLabel);
+        if (selectedLabel !== null && selectedKeywords.length > 0) {
             setIsActive(true);
         } else {
             setIsActive(false);
