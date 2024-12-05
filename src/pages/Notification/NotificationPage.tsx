@@ -1,5 +1,5 @@
 import { Margin } from '@/components/Common/Margin/Margin';
-import { NotificationAppBar } from '@/components/NotificationPage/NotificationAppBar';
+import { TitleClosedTopBar } from '@/components/Common/TitleClosedTopBar/TitleClosedTopBar';
 import { NotificationContainer } from '@/components/NotificationPage/NotificationContainer';
 import { NotificationType } from '@/types/notification';
 
@@ -77,7 +77,7 @@ export const NotificationPage = () => {
 
     return (
         <div className="p-5">
-            <NotificationAppBar />
+            <TitleClosedTopBar />
 
             <Margin top={20} />
 

@@ -14,15 +14,9 @@ export const LabelLotteryPage = () => {
 
                 <Margin top={50} />
 
-                <div>
-                    <button className="btn-base w-[240px] h-[60px]">
-                        뽑기
-                    </button>
-                    <Margin top={10} />
-                    <button className="btn-base w-[240px] h-[60px]">
-                        친구공유
-                    </button>
-                </div>
+                <button className="w-full h-[49px] text-white flex-center rounded-full bg-sample-blue">
+                    뽑기
+                </button>
             </div>
         </Container>
     );
