@@ -49,7 +49,7 @@ export const LabelLotteryPage = () => {
             {open ? (
                 <Modal height="h-fit" clickEvent={() => {}}>
                     <ResultModalContainer
-                        result={true}
+                        result={false}
                         clickEvent={() => {
                             setOpen(false);
                         }}

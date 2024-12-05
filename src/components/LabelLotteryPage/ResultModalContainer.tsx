@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { TitleClosedTopBar } from '../Common/TitleClosedTopBar/TitleClosedTopBar';
 import { Margin } from '../Common/Margin/Margin';
 
+import { useDownloadCanvas } from '@/hooks/index';
+
 type ResultModalContainerProps = {
     result: boolean;
     clickEvent: () => void;
@@ -12,21 +14,31 @@ export const ResultModalContainer = ({
     clickEvent
 }: ResultModalContainerProps) => {
     const navigate = useNavigate();
+    const { captureRef, downloadCanvasAsImage } = useDownloadCanvas();
 
-    /** 공유 이미지 추출 이벤트 */
-    const handleShareButton = () => {};
+    /** 공유 버튼 클릭 */
+    const handleShareButton = async () => {
+        await downloadCanvasAsImage();
+
+        // 공유 확인 완료 같은 모달
+    };
 
     /** 당첨 */
     const winning = (
         <>
             <div className="flex-center flex-col gap-2">
-                <span>물결</span>
+                <div
+                    ref={captureRef}
+                    className="flex-center flex-col gap-2 px-2"
+                >
+                    <span>물결</span>
 
-                <img
-                    className="h-[150px] object-cover mb-5"
-                    src="/라벨_샘플_01.png"
-                    alt=""
-                />
+                    <img
+                        className="h-[150px] object-cover mb-5"
+                        src="/라벨_샘플_01.png"
+                        alt=""
+                    />
+                </div>
 
                 <span>물결 라벨이 나왔어요!</span>
             </div>
