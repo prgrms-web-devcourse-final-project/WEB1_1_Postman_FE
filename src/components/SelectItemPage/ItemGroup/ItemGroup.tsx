@@ -7,7 +7,7 @@ type ItemGroupProps = {
     isLabel: boolean;
     labels: LabelProps[];
     onLabelSelect: (label: number) => void;
-    selectedLabels: number | null;
+    selectedLabel: number | null;
     keywordProps: {
         title: string;
         subTitle: string;
@@ -21,7 +21,7 @@ export const ItemGroup: React.FC<ItemGroupProps> = ({
     isLabel,
     labels,
     onLabelSelect,
-    selectedLabels,
+    selectedLabel,
     keywordProps,
     onKeywordSelect,
     selectedKeywords
@@ -30,7 +30,7 @@ export const ItemGroup: React.FC<ItemGroupProps> = ({
         <LabelList
             labels={labels}
             onLabelSelect={onLabelSelect}
-            selectedLabels={selectedLabels}
+            selectedLabel={selectedLabel}
         />
     ) : (
         <KeywordList

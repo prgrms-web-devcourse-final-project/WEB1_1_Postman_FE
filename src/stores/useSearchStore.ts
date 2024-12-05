@@ -15,17 +15,20 @@ type SearchResult = {
 type SearchStore = {
     recentSearches: SearchHistory[];
     searchedLocation: SearchResult | null;
+    relatedSearchTerms: string[];
     loadRecentSearches: () => void;
     saveSearchTerm: (searchTerm: string) => void;
     clearAllSearches: () => void;
     deleteSearchTerm: (index: number) => void;
     setSearchedLocation: (result: SearchResult | null) => void;
     clearSearchedLocation: () => void;
+    setRelatedSearchTerms: (terms: string[]) => void;
 };
 
 export const useSearchStore = create<SearchStore>((set) => ({
     recentSearches: [],
     searchedLocation: null,
+    relatedSearchTerms: [],
 
     loadRecentSearches: () => {
         const storedSearches = localStorage.getItem('recentSearches');
@@ -77,5 +80,9 @@ export const useSearchStore = create<SearchStore>((set) => ({
     },
     clearSearchedLocation: () => {
         set({ searchedLocation: null });
+    },
+
+    setRelatedSearchTerms: (terms: string[]) => {
+        set({ relatedSearchTerms: terms });
     }
 }));

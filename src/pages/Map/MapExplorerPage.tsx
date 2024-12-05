@@ -7,8 +7,10 @@ import { useSelectedLetterStore } from '@/stores/useSelectedLetterStore';
 import { NavLink } from 'react-router-dom';
 import { SearchFullScreen } from '@/components/MapPage/SearchFullScreen/SearchFullScreen';
 import useNominatimSearch from '@/hooks/useNominatimSearch';
+import { useSearchStore } from '@/stores/useSearchStore';
 
 export const MapExplorerPage = () => {
+    const { searchedLocation } = useSearchStore();
     const selectedLetter = useSelectedLetterStore(
         (state) => state.selectedLetter
     );
@@ -50,18 +52,29 @@ export const MapExplorerPage = () => {
                     </div>
                 )}
             </div>
-            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+            <div className="absolute transform -translate-x-1/2 bottom-20 left-1/2">
                 {!isSearchFocused && (
                     <>
                         {selectedLetter ? (
                             <>
-                                <NavLink
-                                    to={'/letter/create'}
-                                    className="flex-center bottom-60 translate-y-7 absolute left-1/2 transform -translate-x-12 btn-base gap-2 w-52 p-2 rounded-2xl"
-                                >
-                                    <HiOutlinePencilAlt />
-                                    지도 편지 작성하기
-                                </NavLink>
+                                {searchedLocation ? (
+                                    <NavLink
+                                        to={'/letter/create'}
+                                        className="absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-60 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
+                                    >
+                                        <HiOutlinePencilAlt />
+                                        지도 편지 작성하기
+                                    </NavLink>
+                                ) : (
+                                    <NavLink
+                                        to={'/letter/create'}
+                                        className="absolute gap-2 p-2 transform -translate-x-12 cursor-not-allowed flex-center bottom-60 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
+                                        onClick={(e) => e.preventDefault()}
+                                    >
+                                        <HiOutlinePencilAlt />
+                                        지도 편지 작성하기
+                                    </NavLink>
+                                )}
                                 <LetterInfoContainer
                                     id={123}
                                     title="익명 편지"
@@ -72,13 +85,24 @@ export const MapExplorerPage = () => {
                             </>
                         ) : (
                             <>
-                                <NavLink
-                                    to={'/letter/create'}
-                                    className="flex-center bottom-24 translate-y-7 absolute left-1/2 transform -translate-x-12 btn-base gap-2 w-52 p-2 rounded-2xl"
-                                >
-                                    <HiOutlinePencilAlt />
-                                    지도 편지 작성하기
-                                </NavLink>
+                                {searchedLocation ? (
+                                    <NavLink
+                                        to={'/letter/create'}
+                                        className="absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-24 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
+                                    >
+                                        <HiOutlinePencilAlt />
+                                        지도 편지 작성하기
+                                    </NavLink>
+                                ) : (
+                                    <NavLink
+                                        to={'/letter/create'}
+                                        className="absolute gap-2 p-2 transform -translate-x-12 cursor-not-allowed flex-center bottom-24 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
+                                        onClick={(e) => e.preventDefault()}
+                                    >
+                                        <HiOutlinePencilAlt />
+                                        지도 편지 작성하기
+                                    </NavLink>
+                                )}
                                 <NavigateContainer count={5} />
                             </>
                         )}

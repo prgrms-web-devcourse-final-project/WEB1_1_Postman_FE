@@ -18,9 +18,7 @@ export const NicknameSection = () => {
     // 닉네임 유효성 검사 - 중복체크
     const validateNickname = async (nickname: string) => {
         const response = await checkNickname({ nickname });
-        if (response.status !== 'OK') {
-            throw new Error('닉네임 중복 체크 실패');
-        }
+        return response;
     };
 
     // 닉네임 업데이트
@@ -70,7 +68,7 @@ export const NicknameSection = () => {
                     className="flex flex-row items-center justify-center gap-3"
                 >
                     <NicknameInput defaultValue={user?.nickname} />
-                    {/* <button type="submit" className="border border-sample-blue rounded-sm">
+                    {/* <button type="submit" className="border rounded-sm border-sample-blue">
                         변경
                     </button> */}
                 </form>

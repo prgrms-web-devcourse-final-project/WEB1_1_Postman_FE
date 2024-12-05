@@ -16,23 +16,30 @@
         "gen-pwa": "vite build && vite preview"
     },
     "dependencies": {
-        "@tanstack/react-query": "^5.60.2",
+        "@tanstack/react-query": "^5.62.2",
+        "@tanstack/react-query-devtools": "^5.62.2",
         "@turf/turf": "^7.1.0",
         "axios": "^1.7.7",
         "canvas-confetti": "^1.9.3",
         "classnames": "^2.5.1",
+        "file-saver": "^2.0.5",
+        "html2canvas": "^1.4.1",
         "maplibre-gl": "^4.7.1",
         "postcss-custom-properties-fallback": "^1.0.2",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-icons": "^5.3.0",
         "react-map-gl": "^7.1.7",
+        "react-query": "^3.39.3",
         "react-router-dom": "^7.0.1",
         "react-spring": "^9.7.4",
         "react-spring-bottom-sheet": "3.5.0-alpha.0",
         "react-textarea-autosize": "^8.5.5",
+        "react-spring-bottom-sheet": "3.5.0-alpha.0",
+        "react-textarea-autosize": "^8.5.5",
         "sharp": "^0.33.5",
         "swiper": "^11.1.15",
+        "tailwindcss-animated": "^1.1.2",
         "tailwindcss-animated": "^1.1.2",
         "ts-pattern": "^5.5.0",
         "zustand": "^5.0.1"
@@ -50,7 +57,9 @@
         "@storybook/test": "8.4.4",
         "@types/axios": "^0.14.4",
         "@types/canvas-confetti": "^1",
+        "@types/canvas-confetti": "^1",
         "@types/eslint-plugin-jsx-a11y": "^6",
+        "@types/file-saver": "^2",
         "@types/node": "^22.9.1",
         "@types/react": "^18.3.12",
         "@types/react-dom": "^18.3.1",
@@ -77,6 +86,7 @@
         "husky": "^9.1.6",
         "lint-staged": "^15.2.10",
         "msw": "^2.6.6",
+        "msw": "^2.6.6",
         "postcss": "^8.4.49",
         "prettier": "^3.3.3",
         "storybook": "8.4.4",
@@ -87,10 +97,15 @@
         "vite-plugin-pwa": "^0.21.0",
         "vite-plugin-svgr": "^4.3.0"
     },
-    "packageManager": "yarn@4.5.2",
+    "packageManager": "yarn@4.5.3",
     "eslintConfig": {
         "extends": [
             "plugin:storybook/recommended"
+        ]
+    },
+    "msw": {
+        "workerDirectory": [
+            "public"
         ]
     },
     "msw": {

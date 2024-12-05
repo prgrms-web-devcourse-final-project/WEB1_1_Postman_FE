@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useToastStore } from './useToastStore';
 
-export function useLocalStorage<T>(key: string, initialValue: T) {
+export function useLocalStorage<T>(key: string, initialValue?: T) {
     const { addToast } = useToastStore();
     const [storedValue, setStoredValue] = useState<T>(() => {
         try {
             const item = localStorage.getItem(key);
             return item ? JSON.parse(item) : initialValue;
         } catch (error) {
-            addToast('정보를 불러오는데 실패했습니다.', 'success');
+            addToast('정보를 불러오는데 실패했습니다.', 'error');
             console.error(error);
             return initialValue;
         }

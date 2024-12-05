@@ -1,12 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { WelcomeMessageContainer } from './WelcomeMessageContainer';
-import { UserType } from '@/types/user';
-
-const sampleUser: UserType = {
-    nickname: '홍길동',
-    email: '',
-    profileImageUrl: ''
-};
 
 const meta: Meta<typeof WelcomeMessageContainer> = {
     component: WelcomeMessageContainer,
@@ -27,7 +20,7 @@ type Story = StoryObj<typeof WelcomeMessageContainer>;
 
 export const Default: Story = {
     args: {
-        user: sampleUser,
+        nickname: '홍길동',
         newLetter: true
     },
     parameters: {
@@ -41,7 +34,7 @@ export const Default: Story = {
 
 export const NoLetter: Story = {
     args: {
-        user: sampleUser,
+        nickname: '홍길동',
         newLetter: false
     },
     parameters: {

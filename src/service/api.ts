@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
 import { tokenStorage } from './auth/tokenStorage';
 import { refreshAccessToken } from '@/service/auth/refreshAccessToken';
+import { formatApiError } from '@/util/formatApiError';
 
 const baseUrl = import.meta.env.VITE_API_URL as string;
 
@@ -46,6 +47,19 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
                 }
             }
 
+            return Promise.reject(error);
+        }
+    );
+
+    //에러처리
+    instance.interceptors.response.use(
+        (response) => {
+            if (response.data.isSuccess === false) {
+                throw formatApiError(response.data.code, response.data.message);
+            }
+            return response;
+        },
+        (error) => {
             return Promise.reject(error);
         }
     );
