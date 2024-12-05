@@ -101,18 +101,24 @@ export const LetterDetailContainer = ({
                 ) : null
             ) : type === 'map' ? (
                 <div className="gap-4 mx-auto mt-4 flex-center max-w">
-                    <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
-                        보관하기
-                    </button>
-                    <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
-                        편지에 답장하기
-                    </button>
+                    {!data?.isOwner && (
+                        <>
+                            <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
+                                보관하기
+                            </button>
+                            <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
+                                편지에 답장하기
+                            </button>
+                        </>
+                    )}
                 </div>
             ) : (
                 <div className="gap-4 mx-auto mt-4 flex-center max-w">
-                    <button className="btn-base rounded-3xl w-[700px] h-[80px]">
-                        편지에 답장하기
-                    </button>
+                    {!data?.isOwner && (
+                        <button className="btn-base rounded-3xl w-[700px] h-[80px]">
+                            편지에 답장하기
+                        </button>
+                    )}
                 </div>
             )}
         </>
