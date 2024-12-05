@@ -1,10 +1,11 @@
 import { useAutoSave } from './useAutoSave';
-import { useDebounce } from './useDebounde';
+import useDebounce from './useDebounde';
 import { useLocalStorage } from './useLocalStorage';
 import { useModal } from './useModal';
 import useNominatimSearch from './useNominatimSearch';
 import { useRegisterForm } from './useRegisterForm';
 import { useToastStore } from './useToastStore';
+import { useDownloadCanvas } from './useDownloadCanvas';
 
 export {
     useAutoSave,
@@ -13,5 +14,6 @@ export {
     useModal,
     useNominatimSearch,
     useRegisterForm,
-    useToastStore
+    useToastStore,
+    useDownloadCanvas
 };
