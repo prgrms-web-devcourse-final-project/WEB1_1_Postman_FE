@@ -18,7 +18,7 @@ export const Itembox = ({
 
     return (
         <div
-            className={`${itemboxScaleStyle} bg-slate-300 p-1 rounded-md flex items-center justify-center`}
+            className={`${itemboxScaleStyle} bg-white p-1 rounded-md flex items-center justify-center`}
         >
             <div className="w-full h-full">{children}</div>
         </div>
