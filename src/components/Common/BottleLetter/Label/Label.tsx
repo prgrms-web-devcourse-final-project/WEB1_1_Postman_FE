@@ -8,7 +8,7 @@ export const Label = ({ imgSrc, isActive }: LabelProps) => {
                 isActive ? 'border-sample-blue' : 'border-transparent'
             }`}
         >
-            <img src={`/${imgSrc}`} className="object-contain h-[80px] p-1 " />
+            <img src={`/${imgSrc}`} className="object-contain p-1 " />
         </div>
     );
 };
