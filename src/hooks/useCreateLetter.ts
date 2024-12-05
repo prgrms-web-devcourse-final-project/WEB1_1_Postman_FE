@@ -1,20 +1,23 @@
-import { ApiErrorType } from './../types/apiError';
-import { useToastStore } from '@/hooks/useToastStore';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { createLetter } from '@/service/letter/create/createLetter';
-import { LetterType, CreateLetterResponseType } from '@/types/letter';
+import { useToastStore } from '@/hooks/useToastStore';
+import { LetterType } from '@/types/letter';
+import { ApiErrorType } from './../types/apiError';
+import { useNavigate } from 'react-router-dom';
 
 export const useCreateLetter = () => {
     const { addToast } = useToastStore();
-    return useMutation<CreateLetterResponseType, ApiErrorType, LetterType>(
-        (letterData) => createLetter(letterData),
-        {
-            onSuccess: (data) => {
-                addToast(data.message, 'success');
-            },
-            onError: (error) => {
-                console.error('편지 생성 실패:', error.message);
-            }
+    const navigate = useNavigate();
+
+    return useMutation({
+        mutationKey: ['createLetter'],
+        mutationFn: (letterData: LetterType) => createLetter(letterData),
+
+        onSuccess: () => {
+            navigate('/letter/success');
+        },
+        onError: (error: ApiErrorType) => {
+            addToast(`${error.message}`, 'warning');
         }
-    );
+    });
 };

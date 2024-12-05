@@ -26,8 +26,8 @@ export const PostLetterCotainer = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
-        if (inputValue.length > 100) {
-            addToast('제목은 100자 이상 쓸 수 없습니다.', 'warning');
+        if (inputValue.length > 20) {
+            addToast('제목은 20자 이상 쓸 수 없습니다.', 'warning');
         } else {
             setTitle(inputValue);
         }

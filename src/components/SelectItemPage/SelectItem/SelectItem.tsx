@@ -3,23 +3,53 @@ import { SelectToggle } from '../SelectToggle/SelectToggle';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
 import { CreateButton } from '../CreateButton/CreateButton';
-import { useNavigate } from 'react-router-dom';
 import { LabelProps } from '@/types/label';
 import { ItemGroup } from '../ItemGroup/ItemGroup';
 import { useCreateLetter } from '@/hooks/useCreateLetter';
-import { useLocalStorage } from '@/hooks';
+import { useLocalStorage, useToastStore } from '@/hooks';
 
 type SelectItemProps = {
     isActive: boolean;
     setIsActive: (isActive: boolean) => void;
 };
 
+const testLable: LabelProps[] = [
+    {
+        imgSrc: 'public/라벨_샘플.png'
+    },
+    {
+        imgSrc: 'public/라벨_샘플.png'
+    },
+    {
+        imgSrc: 'public/라벨_샘플.png'
+    },
+    {
+        imgSrc: 'public/라벨_샘플.png'
+    },
+    {
+        imgSrc: 'public/라벨_샘플.png'
+    }
+];
+
+const testKeywordListProps = {
+    title: 'Frontend Technologies',
+    subTitle: 'Trending Tools',
+    keywordGroup: [
+        { content: 'React' },
+        { content: 'TypeScript' },
+        { content: 'Tailwind CSS' },
+        { content: 'Next.js' },
+        { content: 'jquey' },
+        { content: 'docker' },
+        { content: 'xocde' },
+        { content: 'Next.js' }
+    ]
+};
+
 export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
     const [selectedLabel, setSelectedLabel] = useState<number | null>(null);
     const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
-
-    const navigate = useNavigate();
 
     const { mutate } = useCreateLetter();
 
@@ -35,17 +65,22 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
         .map((x) => testKeywordListProps.keywordGroup[x]?.content)
         .filter((content): content is string => content !== undefined);
 
+    const { addToast } = useToastStore();
+
     const handdleClick = () => {
-        if (selectedLabel && selectedKeywords) {
-            mutate({
-                title: title,
-                content: letterContent,
-                font: font,
-                paper: letter,
-                keywords: keywords,
-                label: testLable[selectedLabel].imgSrc
-            });
+        if (!selectedLabel || selectedKeywords.length === 0) {
+            addToast('라벨과 키워드를 선택해주세요.', 'error');
+            return;
         }
+
+        mutate({
+            title: title,
+            content: letterContent,
+            font: font,
+            paper: letter,
+            keywords: keywords,
+            label: testLable[selectedLabel].imgSrc
+        });
     };
 
     useEffect(() => {
@@ -68,39 +103,6 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
         );
     };
 
-    const testLable: LabelProps[] = [
-        {
-            imgSrc: 'public/라벨_샘플.png'
-        },
-        {
-            imgSrc: 'public/라벨_샘플.png'
-        },
-        {
-            imgSrc: 'public/라벨_샘플.png'
-        },
-        {
-            imgSrc: 'public/라벨_샘플.png'
-        },
-        {
-            imgSrc: 'public/라벨_샘플.png'
-        }
-    ];
-
-    const testKeywordListProps = {
-        title: 'Frontend Technologies',
-        subTitle: 'Trending Tools',
-        keywordGroup: [
-            { content: 'React' },
-            { content: 'TypeScript' },
-            { content: 'Tailwind CSS' },
-            { content: 'Next.js' },
-            { content: 'jquey' },
-            { content: 'docker' },
-            { content: 'xocde' },
-            { content: 'Next.js' }
-        ]
-    };
-
     return (
         <div className="relative">
             <SliderMenuContainer
@@ -111,7 +113,6 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                         handleClickHandler={() => {
                             if (isActive) {
                                 handdleClick();
-                                navigate('/letter/success');
                             }
                         }}
                     >
