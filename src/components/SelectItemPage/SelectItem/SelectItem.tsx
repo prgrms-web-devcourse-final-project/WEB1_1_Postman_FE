@@ -6,6 +6,8 @@ import { CreateButton } from '../CreateButton/CreateButton';
 import { useNavigate } from 'react-router-dom';
 import { LabelProps } from '@/types/label';
 import { ItemGroup } from '../ItemGroup/ItemGroup';
+import { useCreateLetter } from '@/hooks/useCreateLetter';
+import { useLocalStorage } from '@/hooks';
 
 type SelectItemProps = {
     isActive: boolean;
@@ -14,21 +16,48 @@ type SelectItemProps = {
 
 export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
-    const [selectedLabels, setSelectedLabels] = useState<number | null>(null);
+    const [selectedLabel, setSelectedLabel] = useState<number | null>(null);
     const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
 
     const navigate = useNavigate();
 
+    const { mutate } = useCreateLetter();
+
+    const { storedValue: title } = useLocalStorage<string>('title', '');
+    const { storedValue: letter } = useLocalStorage<string>('letter', '');
+    const { storedValue: letterContent } = useLocalStorage<string>(
+        'letterContent',
+        ''
+    );
+    const { storedValue: font } = useLocalStorage<string>('font', '');
+
+    const keywords = selectedKeywords
+        .map((x) => testKeywordListProps.keywordGroup[x]?.content)
+        .filter((content): content is string => content !== undefined);
+
+    const handdleClick = () => {
+        if (selectedLabel && selectedKeywords) {
+            mutate({
+                title: title,
+                content: letterContent,
+                font: font,
+                paper: letter,
+                keywords: keywords,
+                label: testLable[selectedLabel].imgSrc
+            });
+        }
+    };
+
     useEffect(() => {
-        if (selectedLabels && selectedKeywords.length > 0) {
+        if (selectedLabel && selectedKeywords.length > 0) {
             setIsActive(true);
         } else {
             setIsActive(false);
         }
-    }, [selectedLabels, selectedKeywords]);
+    }, [selectedLabel, selectedKeywords]);
 
     const handleLabelSelection = (label: number) => {
-        setSelectedLabels(label);
+        setSelectedLabel(label);
     };
 
     const handleKeywordSelection = (keyword: number) => {
@@ -65,9 +94,9 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
             { content: 'TypeScript' },
             { content: 'Tailwind CSS' },
             { content: 'Next.js' },
-            { content: 'React' },
-            { content: 'TypeScript' },
-            { content: 'Tailwind CSS' },
+            { content: 'jquey' },
+            { content: 'docker' },
+            { content: 'xocde' },
             { content: 'Next.js' }
         ]
     };
@@ -81,6 +110,7 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                         isActive={isActive}
                         handleClickHandler={() => {
                             if (isActive) {
+                                handdleClick();
                                 navigate('/letter/success');
                             }
                         }}
@@ -96,7 +126,7 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                     isLabel={isLabel}
                     labels={testLable}
                     onLabelSelect={handleLabelSelection}
-                    selectedLabels={selectedLabels}
+                    selectedLabel={selectedLabel}
                     keywordProps={testKeywordListProps}
                     onKeywordSelect={handleKeywordSelection}
                     selectedKeywords={selectedKeywords}
