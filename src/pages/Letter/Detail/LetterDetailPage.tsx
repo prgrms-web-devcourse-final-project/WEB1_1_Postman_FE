@@ -28,16 +28,6 @@ export const LetterDetailPage = ({
         name: '이미지',
         src: '/라벨_샘플.png'
     };
-    const sampleKeywords = [
-        '키워드',
-        '베리 롱 롱 키워드',
-        '베리 롱 키워드',
-        '키워드',
-        '키워드',
-        '베리 롱 키워드',
-        '키워드',
-        '키워드'
-    ];
 
     const sampleReplies = [
         { id: 1, title: '답장 제목 1', date: '24.11.28' },
@@ -52,17 +42,17 @@ export const LetterDetailPage = ({
 
     return (
         <>
-            <div className="mt-4 mx-auto max-w relative">
+            <div className="relative mx-auto mt-4 max-w">
                 <div className="mx-auto w-[710px]">
                     <BackButton onClick={onBackClick} />
                 </div>
                 {id && (
-                    <div className="mt-10 flex absolute top-0 right-8">
+                    <div className="absolute top-0 flex mt-10 right-8">
                         <DeleteButton id={id} />
                         <ReportButton id={id} />
                     </div>
                 )}
-                <div className="mt-16 flex-center relative">
+                <div className="relative mt-16 flex-center">
                     <img
                         src={imageItem.src}
                         alt={imageItem.name}
@@ -82,11 +72,7 @@ export const LetterDetailPage = ({
                             hint="서대문역 앞 붕어빵 가게에서"
                         />
                     ) : (
-                        <KeywordLetterDetail
-                            content="편지내용"
-                            keywords={sampleKeywords}
-                            date="24.11.18"
-                        />
+                        <KeywordLetterDetail />
                     )}
                 </div>
             </div>
@@ -98,7 +84,7 @@ export const LetterDetailPage = ({
                     </div>
                 ) : null
             ) : type === 'map' ? (
-                <div className="mt-4 flex-center mx-auto max-w gap-4">
+                <div className="gap-4 mx-auto mt-4 flex-center max-w">
                     <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
                         보관하기
                     </button>
@@ -107,7 +93,7 @@ export const LetterDetailPage = ({
                     </button>
                 </div>
             ) : (
-                <div className="mt-4 flex-center mx-auto max-w gap-4">
+                <div className="gap-4 mx-auto mt-4 flex-center max-w">
                     <button className="btn-base rounded-3xl w-[700px] h-[80px]">
                         편지에 답장하기
                     </button>

@@ -27,17 +27,17 @@ export const ReplyLetterDetailPage = () => {
 
     return (
         <>
-            <div className="mt-4 mx-auto max-w relative">
+            <div className="relative mx-auto mt-4 max-w">
                 <div className="mx-auto w-[710px]">
                     <BackButton onClick={onBackClick} />
                 </div>
                 {id && (
-                    <div className="mt-10 flex absolute top-0 right-8">
+                    <div className="absolute top-0 flex mt-10 right-8">
                         <DeleteButton id={id} />
                         <ReportButton id={id} />
                     </div>
                 )}
-                <div className="mt-16 flex-center relative">
+                <div className="relative mt-16 flex-center">
                     <img
                         src={imageItem.src}
                         alt={imageItem.name}

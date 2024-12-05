@@ -36,7 +36,7 @@ export const LettetInputForm = ({
                     className="z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap"
                     style={{ fontFamily: font || 'inherit' }}
                 />
-                <img src={'/public/to_line.f4c129e6.svg'} />
+                <img src={'/to_line.f4c129e6.svg'} />
 
                 <div className="relative z-10">
                     <TextArea

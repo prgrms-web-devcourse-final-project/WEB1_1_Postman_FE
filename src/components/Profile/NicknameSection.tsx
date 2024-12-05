@@ -68,7 +68,7 @@ export const NicknameSection = () => {
                     className="flex flex-row items-center justify-center gap-3"
                 >
                     <NicknameInput defaultValue={user?.nickname} />
-                    {/* <button type="submit" className="border border-sample-blue rounded-sm">
+                    {/* <button type="submit" className="border rounded-sm border-sample-blue">
                         변경
                     </button> */}
                 </form>
