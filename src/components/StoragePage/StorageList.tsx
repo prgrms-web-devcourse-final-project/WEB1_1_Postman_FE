@@ -132,7 +132,7 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
         console.log(checkedItems);
     }, [checkedItems]);
 
-    // 테스트 데이터 세팅
+    // 테스트 데이터 세팅?
     useEffect(() => {
         setData();
     }, [type, selectedFilter]);
