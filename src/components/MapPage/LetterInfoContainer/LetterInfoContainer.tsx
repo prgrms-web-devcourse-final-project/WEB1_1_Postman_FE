@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 interface LetterInfoContainerProps {
     id: number;
     title: string;
-    distance: number;
+    distance: string;
     date: string;
     daysLeft: number;
 }
