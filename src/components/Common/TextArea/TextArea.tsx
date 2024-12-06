@@ -26,8 +26,8 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
             const calculatedLinesCount = Math.floor(
                 textAreaHeight / textAreaLineHeight
             );
-            if (calculatedLinesCount > 25) {
-                addToast('최대 25줄까지 작성이 가능합니다.', 'error');
+            if (calculatedLinesCount > 40) {
+                addToast('최대 40줄까지 작성이 가능합니다.', 'error');
 
                 return;
             }
