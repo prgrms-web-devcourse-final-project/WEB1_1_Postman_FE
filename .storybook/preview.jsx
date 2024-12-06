@@ -1,5 +1,6 @@
 import '../src/index.css';
 import { MemoryRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const preview = {
     parameters: {
@@ -10,7 +11,13 @@ const preview = {
             }
         }
     },
-    decorators: [(Story) => <Story />]
+    decorators: [
+        (Story) => (
+            <QueryClientProvider client={queryClient}>
+                <Story />
+            </QueryClientProvider>
+        )
+    ]
 };
 
 export default preview;
