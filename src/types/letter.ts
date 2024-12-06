@@ -36,3 +36,14 @@ export type GetKeywordLetterDetailResponseType = {
     isOwner: boolean;
     createdAt: string;
 };
+
+export type GetRecentRelyResponseType = {
+    isSuccess: boolean;
+    code: string;
+    message: string;
+    result: {
+        type: 'MAP' | 'KEYWORD';
+        labelUrl: string;
+        letterId: number;
+    }[];
+};
