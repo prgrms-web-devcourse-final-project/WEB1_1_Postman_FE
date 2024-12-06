@@ -1,12 +1,16 @@
 import { create } from 'zustand';
 
 type Letter = {
-    id: number;
-    longitude: number;
+    letterId: number;
     latitude: number;
+    longitude: number;
     title: string;
-    keyword: string;
-    date: string;
+    createdAt: string;
+    distance: number;
+    target: number;
+    createUserNickname: string;
+    label: string;
+    description: string;
 };
 
 type SelectedLetter = {
@@ -21,7 +25,7 @@ export const useSelectedLetterStore = create<SelectedLetter>((set) => ({
     setSelectedLetter: (letter) => set({ selectedLetter: letter }),
     toggleSelectedLetter: (letter) =>
         set((state) =>
-            state.selectedLetter?.id === letter.id
+            state.selectedLetter?.letterId === letter.letterId
                 ? { selectedLetter: null }
                 : { selectedLetter: letter }
         ),

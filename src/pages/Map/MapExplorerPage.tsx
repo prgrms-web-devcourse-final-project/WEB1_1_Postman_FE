@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LetterInfoContainer } from '@/components/MapPage/LetterInfoContainer/LetterInfoContainer';
 import { NavigateContainer } from '@/components/MapPage/NavigateContainer/NavigateContainer';
 import { MaplibreWithSearch } from '@/components/MapPage/Maplibre/MaplibreWithSearch';
@@ -8,6 +8,9 @@ import { NavLink } from 'react-router-dom';
 import { SearchFullScreen } from '@/components/MapPage/SearchFullScreen/SearchFullScreen';
 import useNominatimSearch from '@/hooks/useNominatimSearch';
 import { useSearchStore } from '@/stores/useSearchStore';
+import { formatDate } from '@/util/formatDate';
+import { calculateDaysLeft } from '@/util/calculateDaysLeft';
+import { formatDistance } from '@/util/formatDistance';
 
 export const MapExplorerPage = () => {
     const { searchedLocation } = useSearchStore();
@@ -19,6 +22,19 @@ export const MapExplorerPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState('');
     const { error, data, isLoading } = useNominatimSearch(query);
+
+    const [daysLeft, setDaysLeft] = useState(0);
+
+    useEffect(() => {
+        if (selectedLetter) {
+            const days = calculateDaysLeft(selectedLetter.createdAt);
+            setDaysLeft(days);
+        }
+    }, [selectedLetter]);
+
+    const formattedDistance = selectedLetter
+        ? formatDistance(selectedLetter.distance)
+        : '0.0';
 
     const onFocus = () => {
         setIsSearchFocused(true);
@@ -76,11 +92,11 @@ export const MapExplorerPage = () => {
                                     </NavLink>
                                 )}
                                 <LetterInfoContainer
-                                    id={123}
-                                    title="익명 편지"
-                                    distance={400}
-                                    date="21.11.15"
-                                    daysLeft={21}
+                                    id={selectedLetter.letterId}
+                                    title={selectedLetter.title}
+                                    distance={`${formattedDistance}`}
+                                    date={formatDate(selectedLetter.createdAt)}
+                                    daysLeft={daysLeft}
                                 />
                             </>
                         ) : (
