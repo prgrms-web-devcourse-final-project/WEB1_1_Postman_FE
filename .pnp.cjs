@@ -57,7 +57,6 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:1.7.7"],\
           ["canvas-confetti", "npm:1.9.3"],\
           ["chromatic", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1"],\
-          ["class-variance-authority", "npm:0.7.1"],\
           ["classnames", "npm:2.5.1"],\
           ["clsx", "npm:2.1.1"],\
           ["eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:9.15.0"],\
@@ -93,7 +92,6 @@ const RAW_RUNTIME_STATE =
           ["sharp", "npm:0.33.5"],\
           ["storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
           ["swiper", "npm:11.1.15"],\
-          ["tailwind-merge", "npm:2.5.5"],\
           ["tailwindcss", "npm:3.4.15"],\
           ["tailwindcss-animated", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:1.1.2"],\
           ["ts-pattern", "npm:5.5.0"],\
@@ -9082,16 +9080,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["class-variance-authority", [\
-      ["npm:0.7.1", {\
-        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/class-variance-authority-npm-0.7.1-74a7beaf7c-10c0.zip/node_modules/class-variance-authority/",\
-        "packageDependencies": [\
-          ["class-variance-authority", "npm:0.7.1"],\
-          ["clsx", "npm:2.1.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["classnames", [\
       ["npm:2.5.1", {\
         "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/classnames-npm-2.5.1-c7273f3423-10c0.zip/node_modules/classnames/",\
@@ -15847,15 +15835,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["tailwind-merge", [\
-      ["npm:2.5.5", {\
-        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/tailwind-merge-npm-2.5.5-b81987675f-10c0.zip/node_modules/tailwind-merge/",\
-        "packageDependencies": [\
-          ["tailwind-merge", "npm:2.5.5"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["tailwindcss", [\
       ["npm:3.4.15", {\
         "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/tailwindcss-npm-3.4.15-ea0b9b13fd-10c0.zip/node_modules/tailwindcss/",\
@@ -17004,7 +16983,6 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:1.7.7"],\
           ["canvas-confetti", "npm:1.9.3"],\
           ["chromatic", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:11.18.1"],\
-          ["class-variance-authority", "npm:0.7.1"],\
           ["classnames", "npm:2.5.1"],\
           ["clsx", "npm:2.1.1"],\
           ["eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:9.15.0"],\
@@ -17040,7 +17018,6 @@ const RAW_RUNTIME_STATE =
           ["sharp", "npm:0.33.5"],\
           ["storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
           ["swiper", "npm:11.1.15"],\
-          ["tailwind-merge", "npm:2.5.5"],\
           ["tailwindcss", "npm:3.4.15"],\
           ["tailwindcss-animated", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:1.1.2"],\
           ["ts-pattern", "npm:5.5.0"],\
