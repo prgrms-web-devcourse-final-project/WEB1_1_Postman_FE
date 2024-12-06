@@ -5,7 +5,7 @@ export const HeartLetter = ({ children }: ThemeProps) => {
     return (
         <div className="min-h-screen pt-[50px] rounded-t-3xl bg-theme-heart relative">
             {children}
-            <div className="flex overflow-hidden pointer-events-none inset bg-theme-heart">
+            <div className="absolute flex overflow-hidden pointer-events-none bg-theme-heart bottom-[1px]">
                 <img
                     src={'/letter2/letter_bg2_left.2c25d20b.svg'}
                     alt="heart"
