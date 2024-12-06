@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { NavigationBar } from '@/components/Common/NavigationBar/NavigationBar';
 import {
@@ -21,6 +22,26 @@ import {
     StoragePage
 } from './pages';
 import { Margin } from './components/Common/Margin/Margin';
+import { tokenStorage } from './service/auth/tokenStorage';
+import { AuthProvider } from './AuthProvider';
+
+type RouteProps = {
+    children: ReactNode;
+};
+
+// 보호 라우트 (로그인 필요)
+export const ProtectedRoute = ({ children }: RouteProps) => {
+    const Token = tokenStorage.getAccessToken();
+    if (Token === null) {
+        return <LoginPage />;
+    }
+    return <AuthProvider>{children}</AuthProvider>;
+};
+
+// 비보호 라우트 (비로그인 접근 가능)
+export const PublicRoute = ({ children }: RouteProps) => {
+    return { children };
+};
 
 const CommonLayout = () => (
     <>
@@ -40,7 +61,11 @@ const SimpleLayout = () => (
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <CommonLayout />,
+        element: (
+            <ProtectedRoute>
+                <CommonLayout />
+            </ProtectedRoute>
+        ),
         errorElement: <ErrorPage />,
         children: [
             {
@@ -63,14 +88,13 @@ export const router = createBrowserRouter([
                     { path: 'bookmark', element: <StoragePage /> }
                 ]
             },
-            { path: 'labels', element: <LabelCollectionsPage /> },
+            {
+                path: 'labels',
+                element: <LabelCollectionsPage />
+            },
             {
                 path: 'profile',
                 element: <ProfilePage />
-            },
-            {
-                path: '/labelcollections',
-                element: <LabelCollectionsPage />
             },
             {
                 path: '/sent',
@@ -79,43 +103,52 @@ export const router = createBrowserRouter([
             {
                 path: '/share',
                 element: <SharePage />
+            },
+            {
+                path: '/letter/:type/:letterId',
+                element: <LetterDetailPage />
+            },
+            {
+                path: '/letter/reply/:id',
+                element: <ReplyLetterDetailPage />
+            },
+            {
+                path: '/lottery',
+                element: <LabelLotteryPage />
+            },
+            {
+                path: '/notification',
+                element: <NotificationPage />
             }
         ]
     },
     {
         path: '/letter',
-        element: <SimpleLayout />,
+        element: (
+            <ProtectedRoute>
+                <SimpleLayout />
+            </ProtectedRoute>
+        ),
         children: [
-            {
-                path: 'create',
-                element: <CreateLetterPage />
-            },
+            { path: 'create', element: <CreateLetterPage /> },
             { path: 'select', element: <SelectItemPage /> },
             { path: 'success', element: <SuccessLetterPage /> }
         ]
     },
     {
         path: '/login',
-        element: <LoginPage />
+        element: (
+            <PublicRoute>
+                <LoginPage />
+            </PublicRoute>
+        )
     },
     {
         path: '/register',
-        element: <RegisterPage />
-    },
-    {
-        path: '/letter/:type/:letterId',
-        element: <LetterDetailPage />
-    },
-    {
-        path: '/letter/reply/:id',
-        element: <ReplyLetterDetailPage />
-    },
-    {
-        path: '/lottery',
-        element: <LabelLotteryPage />
-    },
-    {
-        path: '/notification',
-        element: <NotificationPage />
+        element: (
+            <PublicRoute>
+                <RegisterPage />
+            </PublicRoute>
+        )
     }
 ]);
