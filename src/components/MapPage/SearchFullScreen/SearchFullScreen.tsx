@@ -77,7 +77,7 @@ export const SearchFullScreen = ({
 
     return (
         <div className="mx-auto min-w-[375px] max-w-[475px]">
-            <div className="flex items-center pl-3 pr-4 justify-between w-full border-b h-12">
+            <div className="flex items-center justify-between w-full h-12 pl-3 pr-4 border-b">
                 <BackButton onClick={onBackClick} />
                 <input
                     ref={inputRef}
@@ -96,7 +96,7 @@ export const SearchFullScreen = ({
             </div>
 
             {!isInputNotEmpty && (
-                <div className="flex justify-between text-gray-400 py-2 px-4">
+                <div className="flex justify-between px-4 py-2 text-gray-400">
                     <span>최근 검색어</span>
                     <button
                         className="text-sm text-gray-400"
@@ -130,7 +130,7 @@ export const SearchFullScreen = ({
                                 />
                             ))
                         ) : (
-                            <p className="text-gray-500 flex-center text-sm mt-16">
+                            <p className="mt-16 text-sm text-gray-500 flex-center">
                                 최근 검색어 내역이 없습니다.
                             </p>
                         )}

@@ -1,9 +1,19 @@
 import { Container } from '@/components/Common/Container/Container';
 import { Margin } from '@/components/Common/Margin/Margin';
+import { Modal } from '@/components/Common/Modal/Modal';
 import { TitleClosedTopBar } from '@/components/Common/TitleClosedTopBar/TitleClosedTopBar';
 import { LotteryAnimationContainer } from '@/components/LabelLotteryPage/LotteryAnimationContainer';
+import { ResultModalContainer } from '@/components/LabelLotteryPage/ResultModalContainer';
+import { useState } from 'react';
 
 export const LabelLotteryPage = () => {
+    const [open, setOpen] = useState(false);
+
+    /** 뽑기 버튼 클릭 이벤트 */
+    const handleClickLottery = () => {
+        setOpen(true);
+    };
+
     return (
         <Container>
             <Margin top={20} />
@@ -15,7 +25,7 @@ export const LabelLotteryPage = () => {
                     <LotteryAnimationContainer />
                 </div>
 
-                <div className="flex-center flex-col">
+                <div className="flex-col flex-center">
                     <p className="mt-4 text-title2 text-sample-blue">
                         뽑기 이벤트
                     </p>
@@ -26,12 +36,26 @@ export const LabelLotteryPage = () => {
 
                 <Margin top={50} />
 
-                <div className="flex-center px-20">
-                    <button className="mt-4 w-full h-[49px] text-white flex-center rounded-full bg-sample-blue">
+                <div className="px-20 flex-center">
+                    <button
+                        onClick={handleClickLottery}
+                        className="mt-4 w-full h-[49px] text-white flex-center rounded-full bg-sample-blue"
+                    >
                         뽑기
                     </button>
                 </div>
             </Margin>
+
+            {open ? (
+                <Modal height="h-fit" clickEvent={() => {}}>
+                    <ResultModalContainer
+                        result={false}
+                        clickEvent={() => {
+                            setOpen(false);
+                        }}
+                    />
+                </Modal>
+            ) : null}
         </Container>
     );
 };

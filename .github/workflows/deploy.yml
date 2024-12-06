@@ -3,7 +3,7 @@ name: postamn
 on:
     push:
         branches:
-            - main
+            - develope
 
 jobs:
     deploy:
@@ -31,6 +31,7 @@ jobs:
 
             - name: Build project
               run: |
+                  VITE_API_URL=${{ secrets.VITE_API_URL }} \
                   yarn build
 
             - name: Deploy to S3

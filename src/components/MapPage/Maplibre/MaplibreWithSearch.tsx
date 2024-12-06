@@ -11,44 +11,11 @@ import { LuMapPin } from 'react-icons/lu';
 import { useSearchStore } from '@/stores/useSearchStore';
 import { useCurrentLocation } from '@/hooks/useCurrentLocation';
 import { useNearbyLetters } from '@/hooks/useNearbyLetters';
+import { NearbyLettersResponseType } from '@/types/letter';
 
-type Letter = {
-    id: number;
-    longitude: number;
-    latitude: number;
-    title: string;
-    keyword: string;
-    date: string;
-};
 type MaplibreWithSearchProps = {
     onFocus: () => void;
 };
-const sampleLetters: Letter[] = [
-    {
-        id: 1,
-        longitude: 127.01,
-        latitude: 37.51,
-        title: '첫 번째 편지',
-        keyword: '가을 바람',
-        date: '21.11.15'
-    },
-    {
-        id: 2,
-        longitude: 127.02,
-        latitude: 37.52,
-        title: '두 번째 편지',
-        keyword: '단풍',
-        date: '21.11.20'
-    },
-    {
-        id: 3,
-        longitude: 126.99,
-        latitude: 37.49,
-        title: '세 번째 편지',
-        keyword: '바람',
-        date: '21.11.25'
-    }
-];
 
 export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
     const { toggleSelectedLetter, clearSelectedLetter } =
@@ -62,8 +29,8 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
         latitude: 37.5,
         zoom: 11
     });
+    const { nearbyLetters } = useNearbyLetters(currentLocation);
 
-    const nearbyLetters = useNearbyLetters(currentLocation, sampleLetters);
     useEffect(() => {
         if (searchedLocation) {
             setViewState({
@@ -85,13 +52,13 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
 
     return (
         <div className="relative h-[812px] w-full">
-            <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-10 bg-white rounded-lg shadow-md p-2 flex items-center space-x-2">
+            <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-2 left-1/2">
                 <input
                     type="text"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                     placeholder={'숨길 장소를 검색해보세요!'}
-                    className="w-72 rounded-md outline-none"
+                    className="rounded-md outline-none w-72"
                     onFocus={onFocus}
                 />
                 <button className="px-4 py-2">
@@ -133,26 +100,28 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
                         />
                     </Marker>
                 )}
-                {nearbyLetters.map((letter) => (
-                    <Marker
-                        key={letter.id}
-                        longitude={letter.longitude}
-                        latitude={letter.latitude}
-                    >
-                        <div
-                            className="bg-gray-100 p-1 rounded-sm"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                toggleSelectedLetter(letter);
-                            }}
+                {nearbyLetters.map(
+                    (letter: NearbyLettersResponseType['result'][0]) => (
+                        <Marker
+                            key={letter.letterId}
+                            longitude={letter.longitude}
+                            latitude={letter.latitude}
                         >
-                            <img
-                                src="/bottle.png"
-                                className="w-full h-5 rounded-lg"
-                            />
-                        </div>
-                    </Marker>
-                ))}
+                            <div
+                                className="bg-gray-100 p-1 rounded-sm"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleSelectedLetter(letter);
+                                }}
+                            >
+                                <img
+                                    src="/bottle.png"
+                                    className="w-full h-5 rounded-lg"
+                                />
+                            </div>
+                        </Marker>
+                    )
+                )}
                 {searchedLocation && (
                     <Marker
                         longitude={parseFloat(searchedLocation.lon)}

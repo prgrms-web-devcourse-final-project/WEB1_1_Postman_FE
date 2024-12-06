@@ -4,12 +4,12 @@ import { Label } from './Label/Label';
 
 // 테스트 편지 데이터 타입
 interface LetterType {
-    letterId: number;
-    createdDate: string;
-    font: string;
-    keywords: string[];
-    content: string;
-    paper: string;
+    letterId?: number;
+    createdDate?: string;
+    font?: string;
+    keywords?: string[];
+    content?: string;
+    paper?: string;
     label: string;
 }
 // 테스트 Props

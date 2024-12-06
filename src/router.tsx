@@ -103,7 +103,7 @@ export const router = createBrowserRouter([
         element: <RegisterPage />
     },
     {
-        path: '/letter/:type/:id',
+        path: '/letter/:type/:letterId',
         element: <LetterDetailPage />
     },
     {

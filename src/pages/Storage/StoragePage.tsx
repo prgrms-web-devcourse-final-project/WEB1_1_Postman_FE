@@ -3,7 +3,6 @@ import { Container } from '@/components/Common/Container/Container';
 import { StorageList } from '@/components/StoragePage/StorageList';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
-type FilterType = 'sent' | 'received';
 
 const getTranslateX = (path: storageType) => {
     const pathIndex =
@@ -18,11 +17,6 @@ const getTranslateX = (path: storageType) => {
 
 export const StoragePage = () => {
     const [storageType, setStorageType] = useState<storageType>('keyword');
-    const [selectedFilter, setSelectedFilter] = useState<FilterType>('sent');
-
-    const handleFilterSelect = (newFilter: FilterType) => {
-        setSelectedFilter(newFilter);
-    };
 
     return (
         <div className="">
@@ -53,27 +47,8 @@ export const StoragePage = () => {
                 </div>
             </div>
             <Container>
-                <div className="flex flex-col gap-2">
-                    <div>
-                        <button
-                            className="keyword-tag"
-                            onClick={() => setSelectedFilter('sent')}
-                        >
-                            보낸 편지
-                        </button>
-                        <button
-                            className="keyword-tag"
-                            onClick={() => setSelectedFilter('received')}
-                        >
-                            받은 편지
-                        </button>
-                    </div>
-                    <div>
-                        <StorageList
-                            type={storageType}
-                            filter={selectedFilter}
-                        />
-                    </div>
+                <div className="flex flex-col gap-2 mt-[15px]">
+                    <StorageList type={storageType} />
                 </div>
             </Container>
         </div>
