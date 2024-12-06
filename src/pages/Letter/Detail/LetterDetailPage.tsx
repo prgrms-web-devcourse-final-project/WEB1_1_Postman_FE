@@ -28,16 +28,6 @@ export const LetterDetailPage = ({
         name: '이미지',
         src: '/라벨_샘플.png'
     };
-    const sampleKeywords = [
-        '키워드',
-        '베리 롱 롱 키워드',
-        '베리 롱 키워드',
-        '키워드',
-        '키워드',
-        '베리 롱 키워드',
-        '키워드',
-        '키워드'
-    ];
 
     const sampleReplies = [
         { id: 1, title: '답장 제목 1', date: '24.11.28' },
@@ -82,11 +72,7 @@ export const LetterDetailPage = ({
                             hint="서대문역 앞 붕어빵 가게에서"
                         />
                     ) : (
-                        <KeywordLetterDetail
-                            content="편지내용"
-                            keywords={sampleKeywords}
-                            date="24.11.18"
-                        />
+                        <KeywordLetterDetail />
                     )}
                 </div>
             </div>
