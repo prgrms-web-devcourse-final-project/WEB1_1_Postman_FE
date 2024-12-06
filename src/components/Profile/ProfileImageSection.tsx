@@ -11,22 +11,22 @@ import { useUserInfo } from './../../hooks/useUserInfo';
 export const PROFILE_IMAGES = [
     {
         id: 1,
-        url: 'https://img.bottler.store/profile1.svg',
+        url: 'http://img.bottler.store/profile1.svg',
         alt: 'Profile 1'
     },
     {
         id: 2,
-        url: 'https://img.bottler.store/profile2.svg',
+        url: 'http://img.bottler.store/profile2.svg',
         alt: 'Profile 2'
     },
     {
         id: 3,
-        url: 'https://img.bottler.store/profile3.svg',
+        url: 'http://img.bottler.store/profile3.svg',
         alt: 'Profile 3'
     },
     {
         id: 4,
-        url: 'https://img.bottler.store/profile4.svg',
+        url: 'http://img.bottler.store/profile4.svg',
         alt: 'Profile 4'
     }
     // ...
