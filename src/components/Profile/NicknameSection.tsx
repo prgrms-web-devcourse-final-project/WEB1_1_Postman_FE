@@ -12,12 +12,10 @@ export const NicknameSection = () => {
     const { handleGetUserInfo } = useUserInfo();
     const [isNicknameEditing, setIsNicknameEditing] = useState<boolean>(false);
 
-    // 닉네임 수정 모드 진입
     const handleEditNickname = () => {
         if (!isNicknameEditing) setIsNicknameEditing(true);
     };
 
-    // 닉네임 변경 버튼 클릭
     const handleNicknameChange = async (nickname: string) => {
         try {
             const response = await changeNickname(nickname);
@@ -31,7 +29,6 @@ export const NicknameSection = () => {
         }
     };
 
-    // 닉네임 폼 제출
     const handleNicknameSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const $nicknameForm = e.target as HTMLFormElement;
