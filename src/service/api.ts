@@ -2,14 +2,24 @@ import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
 import { tokenStorage } from './auth/tokenStorage';
 import { refreshAccessToken } from '@/service/auth/refreshAccessToken';
 import { formatApiError } from '@/util/formatApiError';
+import { logout } from './auth/logout';
 
 const baseUrl = import.meta.env.VITE_API_URL as string;
-import { logout } from './auth/logout';
+
+// let isRefreshing = false;
+// let failedQueue: Array<{
+//     resolve: (value?: unknown) => void;
+//     reject: (reason?: any) => void;
+// }> = [];
+
+//TODO - 대기중인 요청 처리 함수 구현
+// . . .
 
 export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
     const instance = axios.create({
         baseURL: baseUrl,
         withCredentials: true,
+        retry: false,
         ...option
     });
 
@@ -26,41 +36,55 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
         }
     );
 
-    // 액세스 토큰이 만료된
+    // 액세스 토큰 만료됨
     instance.interceptors.response.use(
         function (response) {
             return response;
         },
         async function (error) {
             const originalRequest = error.config;
-            if (error.response?.status === 401 && !originalRequest._retry) {
-                originalRequest._retry = true;
-                try {
-                    // 액세스 토큰 갱신
-                    const newAccessToken = await refreshAccessToken();
+
+            if (!originalRequest) {
+                return Promise.reject(error);
+            }
+
+            // 액세스토큰 에러가 아니거나, 이미 재시도된 요청일 경우
+            if (error.response?.status !== 401 || originalRequest._retry) {
+                return Promise.reject(error);
+            }
+
+            originalRequest.retry = true;
+
+            try {
+                const refreshAccessTokenResponse = await refreshAccessToken();
+
+                if (refreshAccessTokenResponse.isSuccess) {
+                    console.log('액세스 토큰 재발급됨');
+                    const newAccessToken =
+                        refreshAccessTokenResponse.result.newAccessToken;
+                    tokenStorage.setAccessToken(newAccessToken);
+                    // 실패했던 요청을 재요청
                     originalRequest.headers['Authorization'] =
                         `Bearer ${newAccessToken}`;
                     return instance(originalRequest);
-                } catch (error) {
-                    logout();
-                    window.location.href = '/login';
-                    return Promise.reject(error);
                 }
+                console.log('로그아웃');
+                logout();
+                // window.location.href = '/login';
+            } catch (error) {
+                logout();
+                window.location.href = '/login';
+                return Promise.reject(error);
             }
-
             return Promise.reject(error);
         }
     );
 
-    //에러처리
+    // 에러처리
     instance.interceptors.response.use(
-        (response) => {
-            if (response.data.isSuccess === false) {
-                throw formatApiError(response.data.code, response.data.message);
-            }
-            return response;
-        },
+        (response) => response,
         (error) => {
+            console.error('API Error:', error);
             return Promise.reject(error);
         }
     );
