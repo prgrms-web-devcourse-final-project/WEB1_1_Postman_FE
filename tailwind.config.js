@@ -12,6 +12,11 @@ export default {
                     hoverblue: '#1882A8',
                     textgray: '#C3C3C3',
                     select: '#22ABEF'
+                },
+                theme: {
+                    skyblue: '#98c7fd',
+                    heart: '#fef0ed',
+                    flower: '#f6f4e2'
                 }
             },
             maxWidth: {
