@@ -14,20 +14,8 @@ export async function nearbyLetters({
     longitude
 }: NearbyLettersRequestProps): Promise<NearbyLettersResponse> {
     const api = defaultApi();
-    try {
-        const response = await api.get<NearbyLettersResponse>(`/map`, {
-            params: { latitude, longitude }
-        });
-        console.log('Response data:', response.data);
-        if (!response.data.isSuccess) {
-            throw new Error(
-                response.data.message || 'Failed to fetch nearby letters'
-            );
-        }
-
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching nearby letters:', error);
-        throw error;
-    }
+    const response = await api.get<NearbyLettersResponse>(`/map`, {
+        params: { latitude, longitude }
+    });
+    return response.data;
 }
