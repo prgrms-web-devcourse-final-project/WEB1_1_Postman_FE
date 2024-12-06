@@ -80,9 +80,8 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
     return (
         <div>
             <textarea
-                className="w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px]"
+                className={`w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px] ${font ? font : 'font-sans'}`}
                 style={{
-                    fontFamily: font || 'inherit',
                     lineHeight: lineHeight
                 }}
                 ref={textAreaRef}

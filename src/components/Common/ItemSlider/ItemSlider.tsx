@@ -12,6 +12,7 @@ type Item = {
     name: string;
     id: string;
     src?: string;
+    fontName?: string;
 };
 
 type ItemSliderProps = {
@@ -21,7 +22,7 @@ type ItemSliderProps = {
     height?: string;
     spaceBetween?: number;
     value: string;
-    setValue: (value: string) => void; // value를 변경할 수 있는 setValue 함수
+    setValue: (value: string) => void;
     setTheme: (themeId: number) => void;
 };
 
@@ -51,19 +52,19 @@ export const ItemSlider = ({
             case 'text':
                 return (
                     <div
-                        className="flex items-center justify-center h-full p-2 cursor-pointer"
+                        className={`flex items-center justify-center h-full p-2 cursor-pointer ${item.name} bg-white rounded-lg`}
                         onClick={() => {
                             setClickedItemId(item.id);
                             setValue(item.name);
                         }}
                     >
-                        {item.name}
+                        {item.fontName}
                     </div>
                 );
             case 'image':
                 return (
                     <div
-                        className={`flex items-center justify-center h-full cursor-pointer `}
+                        className="flex items-center justify-center h-full cursor-pointer"
                         onClick={() => {
                             setClickedItemId(item.id);
                             setValue(item.id);
@@ -96,9 +97,7 @@ export const ItemSlider = ({
                     <SwiperSlide
                         style={slideStyle}
                         key={item.id}
-                        className={`flex justify-center items-center rounded-md bg-slate-200 ${
-                            item.id === value ? 'bg-blue-200' : ''
-                        }`}
+                        className={`flex justify-center items-center rounded-md bg-slate-200 border-2 ${item.id === value ? ' border-[rgb(34,184,239)]' : 'border-transparent'}`}
                     >
                         {getSliderContent(item)}
                     </SwiperSlide>
