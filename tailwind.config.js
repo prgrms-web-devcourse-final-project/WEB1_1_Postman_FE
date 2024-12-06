@@ -46,7 +46,12 @@ export default {
                     'system-ui',
                     'Roboto',
                     'sans-serif'
-                ]
+                ],
+                bagelfatone: ['BagelFatOne', 'sans-serif'],
+                cookierun: ['CookieRunRegular', 'sans-serif'],
+                inter: ['InterVariableFont', 'sans-serif'],
+                pyeongchangpeace: ['PyeongChangPeaceLight', 'sans-serif'],
+                sagak: ['Sagak-sagak', 'sans-serif']
             },
             fontSize: {
                 display: ['28px', { lineHeight: '1.3' }], // 큰 제목용

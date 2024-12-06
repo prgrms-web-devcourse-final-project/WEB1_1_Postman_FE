@@ -36,8 +36,43 @@
     --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6); /* 배경색 */
     --rsbs-bg: #fff; /* 시트 배경색 */
     --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14); /* 핸들 배경색 */
-    --rsbs-max-w: 450px; /* 최대 너비 */
+    --rsbs-max-w: 473px; /* 최대 너비 */
     --rsbs-ml: auto;
     --rsbs-mr: auto;
     --rsbs-overlay-rounded: 16px; /* 모서리 반경 */
+}
+
+@font-face {
+    font-family: 'BagelFatOne';
+    src: url('/fonts/BagelFatOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CookieRunRegular';
+    src: url('/fonts/CookieRun Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'InterVariableFont';
+    src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PyeongChangPeaceLight';
+    src: url('/fonts/PyeongChangPeace-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sagak-sagak';
+    src: url('/fonts/Sagak-sagak.ttf');
+    font-weight: normal;
+    font-style: normal;
 }
