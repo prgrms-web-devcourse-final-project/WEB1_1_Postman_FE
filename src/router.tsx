@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import { createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
 import { NavigationBar } from '@/components/Common/NavigationBar/NavigationBar';
 import {
     ErrorPage,
@@ -33,14 +33,14 @@ type RouteProps = {
 export const ProtectedRoute = ({ children }: RouteProps) => {
     const Token = tokenStorage.getAccessToken();
     if (Token === null) {
-        return <LoginPage />;
+        return <Navigate to="/login" replace />;
     }
     return <AuthProvider>{children}</AuthProvider>;
 };
 
 // 비보호 라우트 (비로그인 접근 가능)
 export const PublicRoute = ({ children }: RouteProps) => {
-    return { children };
+    return children;
 };
 
 const CommonLayout = () => (
