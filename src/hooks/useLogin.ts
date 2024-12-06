@@ -31,14 +31,10 @@ export const useLogin = () => {
         mutationFn: ({ email, password }: LoginProps) =>
             login({ email, password }),
         onSuccess: (response: LoginResponseType, { email }) => {
-            if (response.isSuccess) {
-                addToast('로그인 되었습니다.', 'success');
-                tokenStorage.setAccessToken(response.result.accessToken);
-                handleGetUserInfo(email);
-                navigate('/');
-            } else {
-                addToast(response.data.message, 'success');
-            }
+            addToast('로그인 되었습니다.', 'success');
+            tokenStorage.setAccessToken(response.result.accessToken);
+            handleGetUserInfo(email);
+            navigate('/');
         },
         onError: (error) => {
             addToast(error.message, 'warning');
