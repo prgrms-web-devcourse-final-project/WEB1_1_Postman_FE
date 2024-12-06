@@ -13,12 +13,14 @@ export const AuthProvider = ({ children }: AuthLayoutProps) => {
     useEffect(() => {
         const initializeAuth = async () => {
             const accessToken = tokenStorage.getAccessToken();
-            if (accessToken) {
-                const success = await handleGetUserInfo();
-                if (success) setIsLoading(false);
+            if (accessToken === null) {
+                return;
+            }
+            const success = await handleGetUserInfo();
+            if (success) {
+                setIsLoading(false);
             }
         };
-
         initializeAuth();
     }, []);
 
