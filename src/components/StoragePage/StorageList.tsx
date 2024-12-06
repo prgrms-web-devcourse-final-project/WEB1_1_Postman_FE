@@ -217,7 +217,7 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                         }
                                     />
                                     <div
-                                        className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray"
+                                        className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray cursor-pointer"
                                         onClick={() => {
                                             if (
                                                 type === 'keyword' ||
