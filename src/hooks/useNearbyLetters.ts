@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { nearbyLetters } from '@/service/MapLetter/nearbyLetters';
+import { getNearbyLetters } from '@/service/MapLetter/getNearbyLetters';
 import { NearbyLettersResponseType } from '@/types/letter';
 
 export const useNearbyLetters = (
@@ -16,7 +16,7 @@ export const useNearbyLetters = (
                 return [];
             }
 
-            const response = await nearbyLetters({
+            const response = await getNearbyLetters({
                 latitude: currentLocation.latitude.toString(),
                 longitude: currentLocation.longitude.toString()
             });

@@ -9,7 +9,7 @@ type NearbyLettersRequestProps = {
 
 type NearbyLettersResponse = ApiResponseType<NearbyLettersResponseType>;
 
-export async function nearbyLetters({
+export async function getNearbyLetters({
     latitude,
     longitude
 }: NearbyLettersRequestProps): Promise<NearbyLettersResponse> {
