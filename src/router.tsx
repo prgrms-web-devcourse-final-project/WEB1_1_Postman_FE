@@ -65,6 +65,15 @@ const SimpleLayout = () => (
     </div>
 );
 
+const AuthLayout = () => (
+    <div className="flex flex-col h-full">
+        <Container px={6} pb={6}>
+            <Margin top={20} />
+            <Outlet />
+        </Container>
+    </div>
+);
+
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -155,19 +164,22 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: '/login',
+        path: '/',
         element: (
             <PublicRoute>
-                <LoginPage />
+                <AuthLayout />
             </PublicRoute>
-        )
-    },
-    {
-        path: '/register',
-        element: (
-            <PublicRoute>
-                <RegisterPage />
-            </PublicRoute>
-        )
+        ),
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/login',
+                element: <LoginPage />
+            },
+            {
+                path: '/register',
+                element: <RegisterPage />
+            }
+        ]
     }
 ]);
