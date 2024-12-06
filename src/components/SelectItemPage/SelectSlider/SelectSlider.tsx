@@ -21,14 +21,12 @@ export const SelectSlider = ({
     const [isFont, setIsFont] = useState(false);
 
     const textItems = [
-        { name: 'cursive', id: '1' },
-        { name: 'fantasy', id: '2' },
-        { name: 'initial', id: '3' },
-        { name: 'monospace', id: '4' },
-        { name: 'cursive', id: '5' },
-        { name: 'fantasy', id: '6' },
-        { name: 'initial', id: '7' },
-        { name: 'monospace', id: '8' }
+        { name: 'font-sans', id: '1', fontName: '기본 폰트' },
+        { name: 'font-bagelfatone', id: '2', fontName: '베이글 폰트' },
+        { name: 'font-cookierun', id: '3', fontName: '쿠키런 폰트' },
+        { name: 'font-pyeongchangpeace', id: '4', fontName: '평창 폰트' },
+        { name: 'font-sagak', id: '5', fontName: '필기체 폰트' },
+        { name: 'font-serif', id: '6', fontName: '세리프 폰트' }
     ];
 
     const imageItems = [
