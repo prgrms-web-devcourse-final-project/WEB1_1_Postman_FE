@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
  * @param delay 딜레이 시간을 설정합니다.
  * @returns
  */
-function useDebounce(value: string, delay: number) {
+export function useDebounce(value: string, delay: number) {
     const [debouncedValue, setDebouncedValue] = useState(value);
 
     useEffect(() => {
@@ -21,5 +21,3 @@ function useDebounce(value: string, delay: number) {
 
     return debouncedValue;
 }
-
-export default useDebounce;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { CSSProperties } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper/modules';
@@ -6,13 +6,13 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
-// 테스트용 타입입니다.
 type ItemType = 'text' | 'image';
 
-// 테스트용 타입입니다.
 type Item = {
     name: string;
     id: string;
+    src?: string;
+    fontName?: string;
 };
 
 type ItemSliderProps = {
@@ -22,7 +22,8 @@ type ItemSliderProps = {
     height?: string;
     spaceBetween?: number;
     value: string;
-    setValue: (value: string) => void; // value를 변경할 수 있는 setValue 함수
+    setValue: (value: string) => void;
+    setTheme: (themeId: number) => void;
 };
 
 export const ItemSlider = ({
@@ -32,16 +33,18 @@ export const ItemSlider = ({
     height,
     spaceBetween = 10,
     value,
-    setValue
+    setValue,
+    setTheme
 }: ItemSliderProps) => {
+    const [clickedItemId, setClickedItemId] = useState<string | null>(null);
+
     const slideStyle: CSSProperties = {
         width: 'auto',
         height: 'auto'
     };
 
     const getImagePath = (id: string) => {
-        // 테스트 이미지 경로입니다.
-        return `/${id}.png`;
+        return `/${id}.svg`;
     };
 
     const getSliderContent = (item: Item) => {
@@ -49,12 +52,13 @@ export const ItemSlider = ({
             case 'text':
                 return (
                     <div
-                        className="flex items-center justify-center h-full p-2 cursor-pointer "
+                        className={`flex items-center justify-center h-full p-2 cursor-pointer ${item.name} bg-white rounded-lg`}
                         onClick={() => {
+                            setClickedItemId(item.id);
                             setValue(item.name);
-                        }} // 아이템 클릭 시 setValue 호출
+                        }}
                     >
-                        {item.name}
+                        {item.fontName}
                     </div>
                 );
             case 'image':
@@ -62,12 +66,14 @@ export const ItemSlider = ({
                     <div
                         className="flex items-center justify-center h-full cursor-pointer"
                         onClick={() => {
+                            setClickedItemId(item.id);
                             setValue(item.id);
-                        }} // 아이템 클릭 시 setValue 호출
+                            setTheme(Number(item.id));
+                        }}
                     >
                         <img
-                            className="object-cover rounded"
-                            src={getImagePath(item.id)}
+                            className="object-cover min-w-full rounded min-h-[120px]"
+                            src={item.src && getImagePath(item.src)}
                             alt={item.name}
                             style={{ width: width, height: height }}
                         />
@@ -91,9 +97,7 @@ export const ItemSlider = ({
                     <SwiperSlide
                         style={slideStyle}
                         key={item.id}
-                        className={`flex justify-center align-middle rounded-md bg-slate-200 ${
-                            item.id === value ? 'bg-blue-200' : '' // 선택된 아이템 배경 색 변경
-                        }`}
+                        className={`flex justify-center items-center rounded-md bg-slate-200 border-2 ${item.id === value ? ' border-[rgb(34,184,239)]' : 'border-transparent'}`}
                     >
                         {getSliderContent(item)}
                     </SwiperSlide>

@@ -12,6 +12,11 @@ export default {
                     hoverblue: '#1882A8',
                     textgray: '#C3C3C3',
                     select: '#22ABEF'
+                },
+                theme: {
+                    skyblue: '#98c7fd',
+                    heart: '#fef0ed',
+                    flower: '#f6f4e2'
                 }
             },
             maxWidth: {
@@ -41,7 +46,12 @@ export default {
                     'system-ui',
                     'Roboto',
                     'sans-serif'
-                ]
+                ],
+                bagelfatone: ['BagelFatOne', 'sans-serif'],
+                cookierun: ['CookieRunRegular', 'sans-serif'],
+                inter: ['InterVariableFont', 'sans-serif'],
+                pyeongchangpeace: ['PyeongChangPeaceLight', 'sans-serif'],
+                sagak: ['Sagak-sagak', 'sans-serif']
             },
             fontSize: {
                 display: ['28px', { lineHeight: '1.3' }], // 큰 제목용

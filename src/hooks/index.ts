@@ -1,5 +1,5 @@
 import { useAutoSave } from './useAutoSave';
-import useDebounce from './useDebounde';
+import { useDebounce } from './useDebounde';
 import { useLocalStorage } from './useLocalStorage';
 import { useModal } from './useModal';
 import useNominatimSearch from './useNominatimSearch';

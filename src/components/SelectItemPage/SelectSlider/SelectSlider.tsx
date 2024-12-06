@@ -8,58 +8,48 @@ type SelectSliderProps = {
     setFont: (font: string) => void;
     letter: string;
     setLetter: (letter: string) => void;
+    setTheme: (themeId: number) => void;
 };
 
 export const SelectSlider = ({
     font,
     setFont,
     letter,
-    setLetter
+    setLetter,
+    setTheme
 }: SelectSliderProps) => {
-    const [isFont, setIsFont] = useState(true);
+    const [isFont, setIsFont] = useState(false);
 
     const textItems = [
-        { name: 'cursive', id: '1' },
-        { name: 'fantasy', id: '2' },
-        { name: 'initial', id: '3' },
-        { name: 'monospace', id: '4' },
-        { name: 'cursive', id: '5' },
-        { name: 'fantasy', id: '6' },
-        { name: 'initial', id: '7' },
-        { name: 'monospace', id: '8' }
+        { name: 'font-sans', id: '1', fontName: '기본 폰트' },
+        { name: 'font-bagelfatone', id: '2', fontName: '베이글 폰트' },
+        { name: 'font-cookierun', id: '3', fontName: '쿠키런 폰트' },
+        { name: 'font-pyeongchangpeace', id: '4', fontName: '평창 폰트' },
+        { name: 'font-sagak', id: '5', fontName: '필기체 폰트' },
+        { name: 'font-serif', id: '6', fontName: '세리프 폰트' }
     ];
 
     const imageItems = [
-        { id: '편지지_샘플_1', name: '이미지' },
-        { id: '편지지_샘플_2', name: '이미지' },
-        { id: '편지지_샘플_3', name: '이미지' },
-        { id: '편지지_샘플_4', name: '이미지' },
-        { id: '편지지_샘플_5', name: '이미지' },
-        { id: '편지지_샘플_6', name: '이미지' }
+        { id: '1', src: 'letter1/letter1', name: '이미지' },
+        { id: '2', src: 'letter2/letter2', name: '이미지' },
+        { id: '3', src: 'letter3/letter3', name: '이미지' }
     ];
 
     return (
-        <div className="">
-            <div>
-                {isFont ? (
-                    <ItemSlider
-                        itemType="text"
-                        itemIDList={textItems}
-                        value={font}
-                        setValue={setFont}
-                    />
-                ) : (
-                    <ItemSlider
-                        itemType="image"
-                        itemIDList={imageItems}
-                        width="77px"
-                        height="99px"
-                        value={letter}
-                        setValue={setLetter}
-                    />
-                )}
+        <div className="z-10">
+            <div className="flex items-center h-[120px]">
+                <ItemSlider
+                    itemType={isFont ? 'text' : 'image'}
+                    itemIDList={isFont ? textItems : imageItems}
+                    width="90px"
+                    height="130px"
+                    value={isFont ? font : letter}
+                    setValue={isFont ? setFont : setLetter}
+                    spaceBetween={isFont ? 10 : 20}
+                    setTheme={setTheme}
+                />
             </div>
-            <Margin bottom={14} />
+            <Margin bottom={20} />
             <div className="flex flex-col items-center justify-center w-full ">
                 <Toggle
                     isChecked={isFont}

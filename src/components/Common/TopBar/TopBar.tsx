@@ -3,17 +3,17 @@ import { BackButton } from '../BackButton/BackButton';
 
 type TopBaerProps = {
     handleBackClick?: () => void;
-    handelSuccesClick?: () => void;
+    handleSuccesClick?: () => void;
 };
 
 export const TopBar = ({
     handleBackClick,
-    handelSuccesClick
+    handleSuccesClick
 }: TopBaerProps) => {
     return (
         <div className="z-10 flex items-center justify-between w-full px-4 mt-5 text-2xl ">
             {handleBackClick && <BackButton onClick={handleBackClick} />}
-            {handelSuccesClick && <p onClick={handelSuccesClick}>완료</p>}
+            {handleSuccesClick && <p onClick={handleSuccesClick}>완료</p>}
         </div>
     );
 };

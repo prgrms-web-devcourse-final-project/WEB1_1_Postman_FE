@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Margin } from '../Margin/Margin';
 import { useToastStore } from '@/hooks/useToastStore';
+import { clsx } from 'clsx';
 
 type TextAreaProps = {
     value: string;
@@ -26,8 +27,8 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
             const calculatedLinesCount = Math.floor(
                 textAreaHeight / textAreaLineHeight
             );
-            if (calculatedLinesCount > 25) {
-                addToast('최대 25줄까지 작성이 가능합니다.', 'error');
+            if (calculatedLinesCount > 40) {
+                addToast('최대 40줄까지 작성이 가능합니다.', 'error');
 
                 return;
             }
@@ -57,7 +58,7 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
     const renderLineImages = () => {
         return Array.from({ length: lineCount }).map((_, index) => (
             <React.Fragment key={index}>
-                <img src={'/public/to_line.f4c129e6.svg'} className="w-full" />
+                <img src={'/to_line.f4c129e6.svg'} className="w-full" />
                 <Margin top={28} />
             </React.Fragment>
         ));
@@ -80,9 +81,11 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
     return (
         <div>
             <textarea
-                className="w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px]"
+                className={clsx(
+                    `w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px]`,
+                    font ? font : 'font-sans'
+                )}
                 style={{
-                    fontFamily: font || 'inherit',
                     lineHeight: lineHeight
                 }}
                 ref={textAreaRef}
