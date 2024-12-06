@@ -1,16 +1,9 @@
-import { BackButton } from '@/components/Common/BackButton/BackButton';
-import { useNavigate } from 'react-router-dom';
-
 import { useParams } from 'react-router-dom';
-import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
-
-import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 import { useKeywordLetterDetail } from '@/hooks/useGetKeywordLetterDetail';
-import { MapLetterDetail } from '../LetterDatail/MapLetterDetail';
-import { KeywordLetterDetail } from '../LetterDatail/KeywordLetterDetail';
-import { ReplyList } from '../ReplyList/ReplyList';
 import { ThemeWrapper } from '@/components/CreatLetterPage/ThemeWrapper/ThemeWrapper';
-import { TopBar } from '@/components/Common/TopBar/TopBar';
+import { useToastStore } from '@/hooks';
+import { useEffect } from 'react';
+import { KeywordLetterDetail } from '../LetterDatail/KeywordLetterDetail';
 
 type LetterDetailContainerProps = {
     hasReplies?: boolean;
@@ -23,41 +16,40 @@ export const LetterDetailContainer = ({
         type: 'map' | 'keyword';
         letterId: string;
     }>();
-    const { data, isLoading, error } = useKeywordLetterDetail({
+
+    const { addToast } = useToastStore();
+
+    const { data, error, isLoading } = useKeywordLetterDetail({
         letterId: letterId || ''
     });
 
-    const navigate = useNavigate();
-
-    const onBackClick = () => {
-        navigate(-1);
-    };
+    useEffect(() => {
+        if (error) {
+            addToast(error.message, 'error');
+        }
+    }, [error, addToast]);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div>로딩 중...</div>;
     }
 
-    if (error instanceof Error) {
-        console.error('error:', error.message);
-        return <div>Error: {error.message}</div>;
+    if (!data) {
+        return (
+            <ThemeWrapper themeId={1}>
+                <div>데이터가 없습니다.</div>;
+            </ThemeWrapper>
+        );
     }
 
-    const labelItem = {
-        id: '라벨_샘플',
-        name: '이미지',
-        src: '/라벨_샘플.png'
-    };
-
-    const sampleReplies = [
-        { id: 1, title: '답장 제목 1', date: '24.11.28' },
-        { id: 2, title: '답장 제목 2', date: '24.11.29' },
-        { id: 3, title: '답장 제목 3', date: '24.11.30' }
-    ];
     return (
-        <>
-            <TopBar />
-            <ThemeWrapper themeId={Number(data!.paper)}>
-                <div className="relative mx-auto mt-4 max-w">
+        <ThemeWrapper themeId={Number(data.paper)}>
+            <KeywordLetterDetail letterData={data} />
+        </ThemeWrapper>
+    );
+};
+
+/*
+   <div className="relative mx-auto mt-4 max-w">
                     {letterId && (
                         <div className="absolute top-0 flex mt-10 right-8">
                             <DeleteButton id={letterId} />
@@ -112,7 +104,4 @@ export const LetterDetailContainer = ({
                         )}
                     </div>
                 )}
-            </ThemeWrapper>
-        </>
-    );
-};
+*/
