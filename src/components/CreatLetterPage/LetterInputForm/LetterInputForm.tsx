@@ -4,17 +4,18 @@ import { SelectSlider } from '@/components/SelectItemPage/SelectSlider/SelectSli
 import React from 'react';
 
 type LettetProps = {
-    title: string; // 제목
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // 제목 변경 핸들러
-    letterContent: string; // 편지 내용
-    setLetterContent: React.Dispatch<React.SetStateAction<string>>; // 편지 내용 상태 변경 함수
-    font: string; // 글꼴
-    letter: string; // 선택된 편지지
-    setFont: React.Dispatch<React.SetStateAction<string>>; // 글꼴 상태 변경 함수
-    setLetter: React.Dispatch<React.SetStateAction<string>>; // 편지지 상태 변경 함수
+    title: string;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    letterContent: string;
+    setLetterContent: React.Dispatch<React.SetStateAction<string>>;
+    font: string;
+    letter: string;
+    setFont: React.Dispatch<React.SetStateAction<string>>;
+    setLetter: React.Dispatch<React.SetStateAction<string>>;
+    setTheme: (theme: number) => void;
 };
 
-export const LettetInputForm = ({
+export const LetterInputForm = ({
     title,
     handleChange,
     letterContent,
@@ -22,10 +23,11 @@ export const LettetInputForm = ({
     font,
     letter,
     setFont,
-    setLetter
+    setLetter,
+    setTheme
 }: LettetProps) => {
     return (
-        <div className="min-h-screen rounded-t-3xl bg-zinc-300">
+        <>
             <Margin top={20} />
             <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
                 <input
@@ -35,6 +37,7 @@ export const LettetInputForm = ({
                     placeholder="제목을 입력해주세요"
                     className="z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap"
                     style={{ fontFamily: font || 'inherit' }}
+                    maxLength={20}
                 />
                 <img src={'/public/to_line.f4c129e6.svg'} />
 
@@ -51,7 +54,8 @@ export const LettetInputForm = ({
                 letter={letter}
                 setFont={setFont}
                 setLetter={setLetter}
+                setTheme={setTheme}
             />
-        </div>
+        </>
     );
 };
