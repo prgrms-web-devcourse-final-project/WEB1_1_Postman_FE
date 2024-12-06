@@ -1,5 +1,7 @@
 import { KeywordToggleButton } from '@/components/Common/KeywordToggleButton/KeywordToggleButton';
+import { useCreateUserKeywords } from '@/hooks/useCreateUserKeywords';
 import { useSelectedKeywordStore } from '@/stores/index';
+// import { useEffect } from 'react';
 
 type KeywordContainerProps = {
     keywords: Array<string>;
@@ -7,18 +9,21 @@ type KeywordContainerProps = {
 
 export const KeywordContainer = ({ keywords }: KeywordContainerProps) => {
     const { selectedKeywords, setSelectedKeywords } = useSelectedKeywordStore();
+    const { mutate: createUserKeywords } = useCreateUserKeywords();
 
     const toggleKeywordButton = (keyword: string) => {
         if (selectedKeywords.includes(keyword)) {
-            const keywords = [...selectedKeywords].filter(
+            const updatedKeywords = [...selectedKeywords].filter(
                 (item) => item !== keyword
             );
 
-            setSelectedKeywords(keywords);
+            setSelectedKeywords(updatedKeywords);
+            createUserKeywords(updatedKeywords);
         } else {
-            const keywords = [...selectedKeywords, keyword];
+            const updatedKeywords = [...selectedKeywords, keyword];
 
-            setSelectedKeywords(keywords);
+            setSelectedKeywords(updatedKeywords);
+            createUserKeywords(updatedKeywords);
         }
     };
 
