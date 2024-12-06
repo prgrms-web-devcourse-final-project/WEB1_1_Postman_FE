@@ -68,7 +68,7 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const { addToast } = useToastStore();
 
     const handdleClick = () => {
-        if (!selectedLabel || selectedKeywords.length === 0) {
+        if (selectedLabel === null || selectedKeywords.length === 0) {
             addToast('라벨과 키워드를 선택해주세요.', 'error');
             return;
         }
@@ -84,7 +84,6 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     };
 
     useEffect(() => {
-        console.log(selectedLabel);
         if (selectedLabel !== null && selectedKeywords.length > 0) {
             setIsActive(true);
         } else {
@@ -102,39 +101,6 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                 ? prev.filter((k) => k !== keyword)
                 : [...prev, keyword]
         );
-    };
-
-    const testLable: LabelProps[] = [
-        {
-            imgSrc: '라벨_샘플_01.png'
-        },
-        {
-            imgSrc: '라벨_샘플_02.png'
-        },
-        {
-            imgSrc: '라벨_샘플.png'
-        },
-        {
-            imgSrc: '라벨_샘플.png'
-        },
-        {
-            imgSrc: '라벨_샘플.png'
-        }
-    ];
-
-    const testKeywordListProps = {
-        title: 'Frontend Technologies',
-        subTitle: 'Trending Tools',
-        keywordGroup: [
-            { content: 'React' },
-            { content: 'TypeScript' },
-            { content: 'Tailwind CSS' },
-            { content: 'Next.js' },
-            { content: 'React' },
-            { content: 'TypeScript' },
-            { content: 'Tailwind CSS' },
-            { content: 'Next.js' }
-        ]
     };
 
     return (
