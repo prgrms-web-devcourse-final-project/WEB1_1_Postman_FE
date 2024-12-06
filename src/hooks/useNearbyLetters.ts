@@ -25,18 +25,31 @@ export const useNearbyLetters = (
                 return [];
             }
 
-            return response.result.map((letter) => ({
-                letterId: letter.letterId,
-                latitude: letter.latitude,
-                longitude: letter.longitude,
-                title: letter.title,
-                createdAt: letter.createdAt,
-                distance: letter.distance,
-                target: letter.target,
-                createUserNickname: letter.createUserNickname,
-                label: letter.label,
-                description: letter.description
-            }));
+            return response.result.map(
+                ({
+                    letterId,
+                    latitude,
+                    longitude,
+                    title,
+                    createdAt,
+                    distance,
+                    target,
+                    createUserNickname,
+                    label,
+                    description
+                }) => ({
+                    letterId,
+                    latitude,
+                    longitude,
+                    title,
+                    createdAt,
+                    distance,
+                    target,
+                    createUserNickname,
+                    label,
+                    description
+                })
+            );
         },
         enabled: !!currentLocation,
 
