@@ -52,3 +52,15 @@ export type GetRecentRelyResponseType = {
         letterId: number;
     }[];
 };
+export type GetKeywordLetterDetailResponseType = {
+    letterId: number;
+    title: string;
+    content: string;
+    keywords: string[];
+    font: string;
+    paper: string;
+    profile: string;
+    label: string;
+    isOwner: boolean;
+    createdAt: string;
+};
