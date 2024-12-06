@@ -4,6 +4,7 @@ import { refreshAccessToken } from '@/service/auth/refreshAccessToken';
 import { formatApiError } from '@/util/formatApiError';
 
 const baseUrl = import.meta.env.VITE_API_URL as string;
+import { logout } from './auth/logout';
 
 export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
     const instance = axios.create({
@@ -41,7 +42,7 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
                         `Bearer ${newAccessToken}`;
                     return instance(originalRequest);
                 } catch (error) {
-                    tokenStorage.clearTokens();
+                    logout();
                     window.location.href = '/login';
                     return Promise.reject(error);
                 }
