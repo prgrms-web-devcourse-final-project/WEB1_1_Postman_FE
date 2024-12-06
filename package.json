@@ -21,7 +21,9 @@
         "@turf/turf": "^7.1.0",
         "axios": "^1.7.7",
         "canvas-confetti": "^1.9.3",
+        "class-variance-authority": "^0.7.1",
         "classnames": "^2.5.1",
+        "clsx": "^2.1.1",
         "file-saver": "^2.0.5",
         "html2canvas": "^1.4.1",
         "maplibre-gl": "^4.7.1",
@@ -37,6 +39,7 @@
         "react-textarea-autosize": "^8.5.5",
         "sharp": "^0.33.5",
         "swiper": "^11.1.15",
+        "tailwind-merge": "^2.5.5",
         "tailwindcss-animated": "^1.1.2",
         "ts-pattern": "^5.5.0",
         "zustand": "^5.0.1"
