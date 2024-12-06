@@ -24,6 +24,8 @@ import {
 import { Margin } from './components/Common/Margin/Margin';
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
+import { Container } from '@/components/Common/Container/Container';
+import { TopButtonContainer } from './components/HomePage/TopButtonContainer/TopButtonContainer';
 
 type RouteProps = {
     children: ReactNode;
@@ -44,18 +46,23 @@ export const PublicRoute = ({ children }: RouteProps) => {
 };
 
 const CommonLayout = () => (
-    <>
-        <Margin top={50}>
+    <div className="flex flex-col h-full">
+        <TopButtonContainer />
+        <Container px={6} pb={6}>
+            <Margin top={20} />
             <Outlet />
-        </Margin>
+        </Container>
         <NavigationBar />
-    </>
+    </div>
 );
 
 const SimpleLayout = () => (
-    <>
-        <Outlet />
-    </>
+    <div className="flex flex-col h-full">
+        <Container>
+            <Outlet />
+        </Container>
+        <NavigationBar />
+    </div>
 );
 
 export const router = createBrowserRouter([
@@ -72,10 +79,7 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: <HomePage />
             },
-            {
-                path: '/mapexplorer',
-                element: <MapExplorerPage />
-            },
+
             {
                 path: '/mypage',
                 element: <MyPage />
@@ -119,6 +123,21 @@ export const router = createBrowserRouter([
             {
                 path: '/notification',
                 element: <NotificationPage />
+            }
+        ]
+    },
+    {
+        path: '/',
+        element: (
+            <ProtectedRoute>
+                <SimpleLayout />
+            </ProtectedRoute>
+        ),
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/mapexplorer',
+                element: <MapExplorerPage />
             }
         ]
     },

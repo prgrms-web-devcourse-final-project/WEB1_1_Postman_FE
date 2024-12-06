@@ -34,7 +34,7 @@ export const WelcomeMessageContainer = ({
         : '떠다니는 편지를 열심히 찾는 중 이에요.';
 
     return (
-        <div className="absolute z-[3]">
+        <div className="z-[3]">
             {message}
             <p className="font-medium text-title1">{messageBody}</p>
             <p className="font-medium text-sample-textgray">{subMessage}</p>
