@@ -57,7 +57,7 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
     const renderLineImages = () => {
         return Array.from({ length: lineCount }).map((_, index) => (
             <React.Fragment key={index}>
-                <img src={'/public/to_line.f4c129e6.svg'} className="w-full" />
+                <img src={'/to_line.f4c129e6.svg'} className="w-full" />
                 <Margin top={28} />
             </React.Fragment>
         ));
