@@ -1,19 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
-import { useToastStore } from '@/hooks/useToastStore';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useAutoSave } from '@/hooks/useAutoSave';
-import { LettetInputForm } from '../LettetInputForm/LettetInputForm';
+import { ThemeWrapper } from '../ThemeWrapper/ThemeWrapper';
+import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
 
 export const PostLetterCotainer = () => {
     const [title, setTitle] = useState<string>('');
     const [letter, setLetter] = useState<string>('편지지_샘플_1');
     const [letterContent, setLetterContent] = useState<string>('');
     const [font, setFont] = useState<string>('initial');
+    const [theme, setTheme] = useState<number>(1);
 
-    const { addToast } = useToastStore();
     const navigate = useNavigate();
 
     const { setValue: saveTitle } = useLocalStorage('title', '');
@@ -26,11 +26,7 @@ export const PostLetterCotainer = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
-        if (inputValue.length > 100) {
-            addToast('제목은 100자 이상 쓸 수 없습니다.', 'warning');
-        } else {
-            setTitle(inputValue);
-        }
+        setTitle(inputValue);
     };
 
     const saveLetterData = () => {
@@ -40,7 +36,7 @@ export const PostLetterCotainer = () => {
         saveLetter(letter);
     };
 
-    useAutoSave(saveLetterData, 10000);
+    useAutoSave(saveLetterData, 20000);
 
     return (
         <>
@@ -48,21 +44,24 @@ export const PostLetterCotainer = () => {
                 handleBackClick={() => {
                     navigate(-1);
                 }}
-                handelSuccesClick={() => {
+                handleSuccesClick={() => {
                     saveLetterData();
                     navigate('/letter/select');
                 }}
             />
-            <LettetInputForm
-                title={title}
-                handleChange={handleChange}
-                letterContent={letterContent}
-                setLetterContent={setLetterContent}
-                font={font}
-                letter={letter}
-                setFont={setFont}
-                setLetter={setLetter}
-            />
+            <ThemeWrapper themeId={theme}>
+                <LetterInputForm
+                    title={title}
+                    handleChange={handleChange}
+                    letterContent={letterContent}
+                    setLetterContent={setLetterContent}
+                    font={font}
+                    letter={letter}
+                    setFont={setFont}
+                    setLetter={setLetter}
+                    setTheme={setTheme}
+                />
+            </ThemeWrapper>
         </>
     );
 };
