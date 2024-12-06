@@ -98,11 +98,13 @@ export const MapExplorerPage = () => {
                                     </NavLink>
                                 )}
                                 <LetterInfoContainer
-                                    id={selectedLetter.letterId}
+                                    letterId={selectedLetter.letterId}
                                     title={selectedLetter.title}
                                     distance={`${formattedDistance}`}
                                     date={formatDate(selectedLetter.createdAt)}
                                     daysLeft={daysLeft}
+                                    lat={selectedLetter.latitude}
+                                    lot={selectedLetter.longitude}
                                 />
                             </>
                         ) : (
