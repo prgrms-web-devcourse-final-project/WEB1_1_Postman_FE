@@ -4,10 +4,12 @@ import { checkNickname } from '@/service/auth';
 import { changeNickname } from '@/service/user';
 import { NicknameInput } from '@/components/Common/Input/NicknameInput';
 import { useUserStore } from '@/stores';
+import { useUserInfo } from './../../hooks/useUserInfo';
 
 export const NicknameSection = () => {
     const { addToast } = useToastStore();
     const { user } = useUserStore();
+    const { handleGetUserInfo } = useUserInfo();
     const [isNicknameEditing, setIsNicknameEditing] = useState<boolean>(false);
 
     // 닉네임 수정 모드 진입
@@ -15,39 +17,17 @@ export const NicknameSection = () => {
         if (!isNicknameEditing) setIsNicknameEditing(true);
     };
 
-    // 닉네임 유효성 검사 - 중복체크
-    const validateNickname = async (nickname: string) => {
-        const response = await checkNickname({ nickname });
-        return response;
-    };
-
-    // 닉네임 업데이트
-    const updateNickname = async (nickname: string) => {
-        await changeNickname({ nickname });
-    };
-
-    // 성공 처리
-    const handleNicknameSuccess = () => {
-        addToast('닉네임이 변경되었습니다.', 'success');
-        setIsNicknameEditing(false);
-    };
-
-    // 에러 처리
-    const handleNicknameError = (error: any) => {
-        if (error.message === '닉네임 중복') {
-            addToast('중복된 닉네임입니다.', 'warning');
-        }
-        console.error('Nickname change error:', error);
-    };
-
     // 닉네임 변경 버튼 클릭
     const handleNicknameChange = async (nickname: string) => {
         try {
-            await validateNickname(nickname);
-            await updateNickname(nickname);
-            handleNicknameSuccess();
+            const response = await changeNickname(nickname);
+            if (response.isSuccess) {
+                addToast(response.message, 'success');
+                handleGetUserInfo();
+            }
         } catch (error) {
-            handleNicknameError(error);
+            addToast(error, 'warning');
+            console.error(error);
         }
     };
 
@@ -68,9 +48,6 @@ export const NicknameSection = () => {
                     className="flex flex-row items-center justify-center gap-3"
                 >
                     <NicknameInput defaultValue={user?.nickname} />
-                    {/* <button type="submit" className="border rounded-sm border-sample-blue">
-                        변경
-                    </button> */}
                 </form>
             );
         return (
