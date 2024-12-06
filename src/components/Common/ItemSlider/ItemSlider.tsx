@@ -73,7 +73,7 @@ export const ItemSlider = ({
                     >
                         <img
                             className="object-cover min-w-full rounded min-h-[120px]"
-                            src={getImagePath(item.src!)}
+                            src={item.src && getImagePath(item.src)}
                             alt={item.name}
                             style={{ width: width, height: height }}
                         />
