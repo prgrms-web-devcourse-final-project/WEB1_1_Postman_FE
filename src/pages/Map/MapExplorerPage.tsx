@@ -18,6 +18,7 @@ export const MapExplorerPage = () => {
         (state) => state.selectedLetter
     );
 
+    const [nearbyLettersLength, setNearbyLettersLength] = useState(0);
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState('');
@@ -53,7 +54,12 @@ export const MapExplorerPage = () => {
     return (
         <div>
             <div className="relative">
-                {!isSearchFocused && <MaplibreWithSearch onFocus={onFocus} />}
+                {!isSearchFocused && (
+                    <MaplibreWithSearch
+                        onFocus={onFocus}
+                        setNearbyLettersLength={setNearbyLettersLength}
+                    />
+                )}
                 {isOpen && (
                     <div className="absolute top-0 w-full">
                         <SearchFullScreen
@@ -119,7 +125,9 @@ export const MapExplorerPage = () => {
                                         지도 편지 작성하기
                                     </NavLink>
                                 )}
-                                <NavigateContainer count={5} />
+                                <NavigateContainer
+                                    count={nearbyLettersLength}
+                                />
                             </>
                         )}
                     </>
