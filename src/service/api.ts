@@ -82,8 +82,11 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
 
     // 에러처리
     instance.interceptors.response.use(
-        (response) => response,
-        (error) => {
+        function (response) {
+            console.log(response);
+            return response;
+        },
+        function (error) {
             console.error('API Error:', error);
             return Promise.reject(error);
         }
