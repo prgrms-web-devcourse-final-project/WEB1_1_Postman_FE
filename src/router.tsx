@@ -49,7 +49,6 @@ const CommonLayout = () => (
     <div className="flex flex-col h-full">
         <TopButtonContainer />
         <Container px={6} pb={6}>
-            <Margin top={20} />
             <Outlet />
         </Container>
         <NavigationBar />
@@ -68,7 +67,6 @@ const SimpleLayout = () => (
 const AuthLayout = () => (
     <div className="flex flex-col h-full">
         <Container px={6} pb={6}>
-            <Margin top={20} />
             <Outlet />
         </Container>
     </div>

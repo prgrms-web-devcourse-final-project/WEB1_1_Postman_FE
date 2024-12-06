@@ -8,12 +8,12 @@ interface ContainerProps {
 
 export const Container: React.FC<ContainerProps> = ({
     px = 0,
-    pb = 0,
+    pb = 6,
     children
 }) => {
     return (
         <div
-            className={`px-${px} pb-${pb} w-full h-full overflow-auto scrollbar-hide`}
+            className={`border-box px-${px} py-6 w-full h-full overflow-auto scrollbar-hide`}
         >
             {children}
         </div>

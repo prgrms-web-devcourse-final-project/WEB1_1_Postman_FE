@@ -3,7 +3,7 @@ export type LabelProps = {
     isActive?: boolean;
 };
 
-export type Label = {
+export type LabelType = {
     labelId: number;
     imageUrl: string;
 };

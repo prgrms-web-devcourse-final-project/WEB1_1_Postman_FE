@@ -8,7 +8,6 @@ export const useUserInfo = () => {
     const { addToast } = useToastStore();
 
     const handleGetUserInfo = async () => {
-        console.log('유저 정보 불러오기:');
         const userInfoResponse = await getUserInfo();
 
         if (!userInfoResponse) {
@@ -16,12 +15,12 @@ export const useUserInfo = () => {
             logout();
             return false;
         }
-        const userInfoWithEmail = {
+        const userInfo = {
             nickname: userInfoResponse.nickname || '알 수 없음',
             profileImageUrl: userInfoResponse.profileImageUrl || 'testimg.jpg',
             email: userInfoResponse.email || '알 수 없음'
         };
-        setUser(userInfoWithEmail);
+        setUser(userInfo);
         return true;
     };
 
