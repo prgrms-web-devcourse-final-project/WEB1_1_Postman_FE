@@ -31,9 +31,9 @@ export const useLogin = () => {
         mutationFn: ({ email, password }: LoginProps) =>
             login({ email, password }),
         onSuccess: (response: LoginResponseType, { email }) => {
-            if (response.data.isSuccess) {
+            if (response.isSuccess) {
                 addToast('로그인 되었습니다.', 'success');
-                tokenStorage.setAccessToken(response.data.result.accessToken);
+                tokenStorage.setAccessToken(response.result.accessToken);
                 handleGetUserInfo(email);
                 navigate('/');
             } else {
@@ -42,6 +42,7 @@ export const useLogin = () => {
         },
         onError: (error) => {
             addToast(error.message, 'warning');
+            console.error(error);
             throw error;
         }
     });
