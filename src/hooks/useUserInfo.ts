@@ -8,8 +8,9 @@ export const useUserInfo = () => {
     const { addToast } = useToastStore();
 
     const handleGetUserInfo = async () => {
+        console.log('유저 정보 불러오기:');
         const userInfoResponse = await getUserInfo();
-        console.log(userInfoResponse);
+
         if (!userInfoResponse) {
             addToast('유저 정보를 불러오지 못했습니다.', 'warning');
             logout();

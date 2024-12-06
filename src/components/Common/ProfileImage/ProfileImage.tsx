@@ -20,8 +20,8 @@ export const ProfileImage = ({
             onClick={() => onClick?.(imageItem)}
         >
             <img
-                src={imageItem.src}
-                alt={imageItem.name}
+                src={imageItem.url}
+                alt={imageItem.alt}
                 className="rounded-full"
                 style={{ width, height }}
             />
