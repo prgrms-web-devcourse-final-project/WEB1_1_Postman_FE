@@ -1,61 +1,29 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import { BottleLetter } from '../../Common/BottleLetter/BottleLetter';
 import { NotificationBadge } from '../../Common/NotificationBadge/NotificationBadge';
-// import { getRecentRely } from '@/service/storage/getRecentRely';
-// import { GetRecentRelyResponseType } from '@/types/letter';
-// import { useQuery } from '@tanstack/react-query';
+import { HomeBottleLetter } from '../HomeBottleLetter';
 
-export const LetterContainer = () => {
-    // const { data, error, isLoading, isError } =
-    //     useQuery<GetRecentRelyResponseType>({
-    //         queryKey: ['recentRely'],
-    //         queryFn: getRecentRely
-    //     });
+type RecommendLetter = {
+    letterId: number;
+    title: string;
+    label: string;
+};
 
-    // if (isLoading) {
-    //     return <div>Loading...</div>;
-    // }
+type ReplyLetter = {
+    type: 'MAP' | 'KEYWORD';
+    labelUrl: string;
+    letterId: number;
+};
 
-    // if (isError) {
-    //     console.error('error:', error.message);
-    //     return <div>Error: {error.message}</div>;
-    // }
+type Letter = RecommendLetter | ReplyLetter;
 
-    // console.log(data);
+type LetterContainerProps = {
+    letters: Letter[];
+};
 
-    const letters = [
-        {
-            letterId: 1,
-            createdDate: '날짜',
-            font: '글씨체',
-            keywords: ['공감', '행복', '후련함'],
-            content: '편지 내용',
-            paper: '이미지 url',
-            label: '라벨_샘플.png'
-        },
-        {
-            letterId: 1,
-            createdDate: '날짜',
-            font: '글씨체',
-            keywords: ['공감', '행복', '후련함'],
-            content: '편지 내용',
-            paper: '이미지 url',
-            label: '라벨_샘플.png'
-        },
-        {
-            letterId: 1,
-            createdDate: '날짜',
-            font: '글씨체',
-            keywords: ['공감', '행복', '후련함'],
-            content: '편지 내용',
-            paper: '이미지 url',
-            label: '라벨_샘플.png'
-        }
-    ];
-
-    return (
+export const LetterContainer = ({ letters }: LetterContainerProps) => {
+    const hasLetters = (
         <div className="relative">
             <div className="absolute right-[20px] z-1">
                 <NotificationBadge badgeType="basic" count={letters.length} />
@@ -68,10 +36,18 @@ export const LetterContainer = () => {
                     className="object-cover mySwiper"
                 >
                     {letters.map((letter, i) => {
+                        const labelUrl =
+                            'labelUrl' in letter
+                                ? letter.labelUrl
+                                : letter.label;
+
                         return (
                             <SwiperSlide key={i}>
                                 <div className="h-[350px] ">
-                                    <BottleLetter Letter={letter} />
+                                    <HomeBottleLetter
+                                        letterId={letter.letterId}
+                                        labelUrl={labelUrl}
+                                    />
                                 </div>
                             </SwiperSlide>
                         );
@@ -80,4 +56,12 @@ export const LetterContainer = () => {
             </div>
         </div>
     );
+
+    const noLetters = (
+        <div className="relative">
+            <div className="overflow-hidden mx-[-20px] mt-[50px] h-[350px]"></div>
+        </div>
+    );
+
+    return letters.length > 0 ? hasLetters : noLetters;
 };
