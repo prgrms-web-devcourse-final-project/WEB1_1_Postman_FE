@@ -1,14 +1,19 @@
-import { useHomeSheetStore, useSelectedKeywordStore } from '@/stores/index';
+import { useSelectedKeywordStore } from '@/stores/index';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { KeywordContainer } from './KeywordContainer';
 
 type BottomSheetContentProps = {
-    nickname: string;
+    nickname: string | undefined;
+    onClick: () => void;
 };
 
-export const BottomSheetContent = ({ nickname }: BottomSheetContentProps) => {
-    const { setOpen } = useHomeSheetStore();
+export const BottomSheetContent = ({
+    nickname,
+    onClick
+}: BottomSheetContentProps) => {
     const { selectedKeywords } = useSelectedKeywordStore();
+
+    if (nickname === undefined) nickname = '';
 
     const categories = [
         {
@@ -102,9 +107,7 @@ export const BottomSheetContent = ({ nickname }: BottomSheetContentProps) => {
             </div>
 
             <button
-                onClick={() => {
-                    setOpen(false);
-                }}
+                onClick={onClick}
                 className="fixed left-[20px] right-[20px] bottom-[90px] h-[49px] text-white flex-center rounded-full bg-sample-blue"
             >
                 완료
