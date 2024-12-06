@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Margin } from '../Margin/Margin';
 import { useToastStore } from '@/hooks/useToastStore';
+import { clsx } from 'clsx';
 
 type TextAreaProps = {
     value: string;
@@ -80,7 +81,10 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
     return (
         <div>
             <textarea
-                className={`w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px] ${font ? font : 'font-sans'}`}
+                className={clsx(
+                    `w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px]`,
+                    font ? font : 'font-sans'
+                )}
                 style={{
                     lineHeight: lineHeight
                 }}
