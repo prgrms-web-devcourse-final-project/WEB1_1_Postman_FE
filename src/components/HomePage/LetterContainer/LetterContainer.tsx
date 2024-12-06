@@ -36,15 +36,21 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
                     className="object-cover mySwiper"
                 >
                     {letters.map((letter, i) => {
+                        // 추천편지의 경우 label, 답장편지의 경우 labelUrl
                         const labelUrl =
                             'labelUrl' in letter
                                 ? letter.labelUrl
                                 : letter.label;
 
+                        // 추천편지의 경우 keyword, 답장편지의 경우 reply
+                        const LetterType =
+                            'labelUrl' in letter ? 'reply' : 'keyword';
+
                         return (
                             <SwiperSlide key={i}>
                                 <div className="h-[350px] ">
                                     <HomeBottleLetter
+                                        letterType={LetterType}
                                         letterId={letter.letterId}
                                         labelUrl={labelUrl}
                                     />
@@ -59,7 +65,9 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
 
     const noLetters = (
         <div className="relative">
-            <div className="overflow-hidden mx-[-20px] mt-[50px] h-[350px]"></div>
+            <div className="overflow-hidden mx-[-20px] mt-[50px] h-[350px] flex justify-center items-end">
+                <img src="/편지없음.svg" alt="" />
+            </div>
         </div>
     );
 

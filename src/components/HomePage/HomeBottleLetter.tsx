@@ -1,25 +1,33 @@
 import React from 'react';
 import { Bottle } from '../Common/BottleLetter/Bottle/Bottle';
 import { Label } from '../Common/BottleLetter/Label/Label';
+import { useNavigate } from 'react-router-dom';
 
-// 테스트 Props
 interface HomeBottleLetterProps {
+    letterType: 'keyword' | 'reply';
     labelUrl: string;
     letterId: number;
 }
 
-// 유리병 관련 이벤트는 나중에 추가해야 될 것 같습니다
 export const HomeBottleLetter = ({
+    letterType,
     labelUrl,
     letterId
 }: HomeBottleLetterProps) => {
     console.log(letterId);
+    const navigate = useNavigate();
+
+    const handleClickBottle = () => {
+        navigate(`/letter/${letterType}/${letterId}`);
+    };
 
     return (
         <div className="relative w-full h-full">
-            <div className="absolute top-0 left-0 w-full h-full">
-                <Bottle />
-                <div className="w-[50%] h-[50%] absolute top-[25%] left-[30%] rotate-[-30deg] ">
+            <div className="flex-center w-full h-full">
+                <div className="h-full w-fit" onClick={handleClickBottle}>
+                    <Bottle />
+                </div>
+                <div className="w-[60%] h-[60%] absolute top-[15%] left-[55%] rotate-[-20deg] ">
                     <Label imgSrc={labelUrl} />
                 </div>
             </div>
