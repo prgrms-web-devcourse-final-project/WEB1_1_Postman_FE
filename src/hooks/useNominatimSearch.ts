@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useSearchStore } from '@/stores/useSearchStore';
-import useDebounce from '@/hooks/useDebounde';
+import { useDebounce } from '@/hooks/useDebounde';
 type SearchResult = {
     lat: string;
     lon: string;
