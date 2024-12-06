@@ -105,7 +105,7 @@ export const router = createBrowserRouter([
                 element: <SharePage />
             },
             {
-                path: '/letter/:type/:letterId',
+                path: '/letter/:type/:lat?/:lot?/:letterId',
                 element: <LetterDetailPage />
             },
             {
