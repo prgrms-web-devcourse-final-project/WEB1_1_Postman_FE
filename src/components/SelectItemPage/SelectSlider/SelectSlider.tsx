@@ -8,15 +8,17 @@ type SelectSliderProps = {
     setFont: (font: string) => void;
     letter: string;
     setLetter: (letter: string) => void;
+    setTheme: (themeId: number) => void;
 };
 
 export const SelectSlider = ({
     font,
     setFont,
     letter,
-    setLetter
+    setLetter,
+    setTheme
 }: SelectSliderProps) => {
-    const [isFont, setIsFont] = useState(true);
+    const [isFont, setIsFont] = useState(false);
 
     const textItems = [
         { name: 'cursive', id: '1' },
@@ -30,36 +32,26 @@ export const SelectSlider = ({
     ];
 
     const imageItems = [
-        { id: '편지지_샘플_1', name: '이미지' },
-        { id: '편지지_샘플_2', name: '이미지' },
-        { id: '편지지_샘플_3', name: '이미지' },
-        { id: '편지지_샘플_4', name: '이미지' },
-        { id: '편지지_샘플_5', name: '이미지' },
-        { id: '편지지_샘플_6', name: '이미지' }
+        { id: '1', src: 'letter1/letter1', name: '이미지' },
+        { id: '2', src: 'letter2/letter2', name: '이미지' },
+        { id: '3', src: 'letter3/letter3', name: '이미지' }
     ];
 
     return (
-        <div className="">
-            <div>
-                {isFont ? (
-                    <ItemSlider
-                        itemType="text"
-                        itemIDList={textItems}
-                        value={font}
-                        setValue={setFont}
-                    />
-                ) : (
-                    <ItemSlider
-                        itemType="image"
-                        itemIDList={imageItems}
-                        width="77px"
-                        height="99px"
-                        value={letter}
-                        setValue={setLetter}
-                    />
-                )}
+        <div className="z-10">
+            <div className="flex items-center h-[120px]">
+                <ItemSlider
+                    itemType={isFont ? 'text' : 'image'}
+                    itemIDList={isFont ? textItems : imageItems}
+                    width="90px"
+                    height="130px"
+                    value={isFont ? font : letter}
+                    setValue={isFont ? setFont : setLetter}
+                    spaceBetween={isFont ? 10 : 20}
+                    setTheme={setTheme}
+                />
             </div>
-            <Margin bottom={14} />
+            <Margin bottom={20} />
             <div className="flex flex-col items-center justify-center w-full ">
                 <Toggle
                     isChecked={isFont}
