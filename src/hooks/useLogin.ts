@@ -19,6 +19,7 @@ export const useLogin = () => {
             tokenStorage.setAccessToken(response.result.accessToken);
             handleGetUserInfo();
             navigate('/');
+
         },
         onError: (error) => {
             addToast(error.message, 'warning');

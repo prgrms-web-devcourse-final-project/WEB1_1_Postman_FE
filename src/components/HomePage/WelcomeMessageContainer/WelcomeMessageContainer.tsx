@@ -1,7 +1,7 @@
 // import { UserType } from '@/types/user';
 
 type WelcomeMessageContainerProps = {
-    nickname: string;
+    nickname: string | undefined;
     newLetter: boolean;
 };
 
@@ -9,6 +9,8 @@ export const WelcomeMessageContainer = ({
     nickname,
     newLetter
 }: WelcomeMessageContainerProps) => {
+    if (nickname === undefined) nickname = '';
+
     const userMessage = (
         <span className="text-sample-blue">{`${nickname}님`}</span>
     );

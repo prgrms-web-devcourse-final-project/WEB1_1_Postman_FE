@@ -3,8 +3,28 @@ import { EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import { BottleLetter } from '../../Common/BottleLetter/BottleLetter';
 import { NotificationBadge } from '../../Common/NotificationBadge/NotificationBadge';
+// import { getRecentRely } from '@/service/storage/getRecentRely';
+// import { GetRecentRelyResponseType } from '@/types/letter';
+// import { useQuery } from '@tanstack/react-query';
 
 export const LetterContainer = () => {
+    // const { data, error, isLoading, isError } =
+    //     useQuery<GetRecentRelyResponseType>({
+    //         queryKey: ['recentRely'],
+    //         queryFn: getRecentRely
+    //     });
+
+    // if (isLoading) {
+    //     return <div>Loading...</div>;
+    // }
+
+    // if (isError) {
+    //     console.error('error:', error.message);
+    //     return <div>Error: {error.message}</div>;
+    // }
+
+    // console.log(data);
+
     const letters = [
         {
             letterId: 1,

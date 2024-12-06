@@ -5,14 +5,14 @@ import { BottomSheetContent } from '@/components/HomePage/BottomSheet/BottomShee
 import { LetterContainer } from '@/components/HomePage/LetterContainer/LetterContainer';
 import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
 import { WelcomeMessageContainer } from '@/components/HomePage/WelcomeMessageContainer/WelcomeMessageContainer';
-import { useHomeSheetStore } from '@/stores/index';
+import { useUserStore } from '@/stores/useUserStore';
 import { Container } from '@/components/Common/Container/Container';
 import { useState } from 'react';
 
 export const HomePage = () => {
-    // const { user } = useUserStore();
-    const { open, setOpen } = useHomeSheetStore();
+    const { user } = useUserStore();
 
+    const [open, setOpen] = useState(false);
     const [toggle, setToggle] = useState(true);
 
     function onDismiss() {
@@ -24,7 +24,7 @@ export const HomePage = () => {
             <div className="flex flex-col gap-5">
                 <TopButtonContainer />
                 <Toggle
-                    isChecked={toggle}
+                    isChecked={!toggle}
                     onToggle={() => {
                         setToggle(!toggle);
                     }}
@@ -33,7 +33,10 @@ export const HomePage = () => {
                 />
 
                 <div>
-                    <WelcomeMessageContainer nickname={'Dummy'} newLetter />
+                    <WelcomeMessageContainer
+                        nickname={user?.nickname}
+                        newLetter
+                    />
                     <LetterContainer />
                 </div>
 
@@ -57,7 +60,12 @@ export const HomePage = () => {
                     onDismiss={onDismiss}
                     snapPoints={() => [window.innerHeight * 0.95]}
                 >
-                    <BottomSheetContent nickname={'Dummy'} />
+                    <BottomSheetContent
+                        onClick={() => {
+                            setOpen(false);
+                        }}
+                        nickname={user?.nickname}
+                    />
                 </SliderMenuContainer>
             </div>
         </Container>
