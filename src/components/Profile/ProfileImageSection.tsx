@@ -11,22 +11,22 @@ import { useUserInfo } from './../../hooks/useUserInfo';
 export const PROFILE_IMAGES = [
     {
         id: 1,
-        url: 'http://img.bottler.store/profile1.svg',
+        url: 'https://img.bottler.store/profile1.svg',
         alt: 'Profile 1'
     },
     {
         id: 2,
-        url: 'http://img.bottler.store/profile2.svg',
+        url: 'https://img.bottler.store/profile2.svg',
         alt: 'Profile 2'
     },
     {
         id: 3,
-        url: 'http://img.bottler.store/profile3.svg',
+        url: 'https://img.bottler.store/profile3.svg',
         alt: 'Profile 3'
     },
     {
         id: 4,
-        url: 'http://img.bottler.store/profile4.svg',
+        url: 'https://img.bottler.store/profile4.svg',
         alt: 'Profile 4'
     }
     // ...
@@ -56,6 +56,7 @@ export const ProfileImageSection = ({
             const response = await changeProfileImage(imageItem.url);
             if (response) {
                 addToast('프로필 이미지가 변경되었습니다.', 'success');
+                console.log('이미지:', user.profileImageUrl);
                 handleGetUserInfo();
                 handleDismiss();
             }
