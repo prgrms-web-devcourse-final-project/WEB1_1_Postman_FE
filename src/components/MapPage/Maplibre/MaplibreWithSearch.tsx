@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Map, { Marker } from 'react-map-gl/maplibre';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -12,6 +12,7 @@ import { useSearchStore } from '@/stores/useSearchStore';
 import { useCurrentLocation } from '@/hooks/useCurrentLocation';
 import { useNearbyLetters } from '@/hooks/useNearbyLetters';
 import { NearbyLettersResponseType } from '@/types/letter';
+import { useLocationState } from '@/hooks/useLocationState';
 
 type MaplibreWithSearchProps = {
     onFocus: () => void;
@@ -28,35 +29,10 @@ export const MaplibreWithSearch = ({
     const { currentLocation, direction } = useCurrentLocation();
     const [searchText, setSearchText] = useState('');
 
-    const [viewState, setViewState] = useState({
-        longitude: 127.0,
-        latitude: 37.5,
-        zoom: 11
-    });
+    const { viewState, setViewState } = useLocationState(
+        setNearbyLettersLength
+    );
     const { nearbyLetters } = useNearbyLetters(currentLocation);
-
-    useEffect(() => {
-        setNearbyLettersLength(nearbyLetters.length);
-    }, [nearbyLetters, setNearbyLettersLength]);
-
-    useEffect(() => {
-        if (searchedLocation) {
-            setViewState({
-                longitude: parseFloat(searchedLocation.lon),
-                latitude: parseFloat(searchedLocation.lat),
-                zoom: 16
-            });
-        } else {
-            if (currentLocation) {
-                setViewState((prev) => ({
-                    ...prev,
-                    longitude: currentLocation.longitude,
-                    latitude: currentLocation.latitude,
-                    zoom: 15
-                }));
-            }
-        }
-    }, [searchedLocation, currentLocation]);
 
     return (
         <div className="relative h-[812px] w-full">
