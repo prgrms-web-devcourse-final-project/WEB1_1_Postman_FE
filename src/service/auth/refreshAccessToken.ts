@@ -7,8 +7,7 @@ type refreshAccessTokenResultType = {
     newAccessToken: string;
 };
 
-type refreshAccessTokenResponse =
-    ApiResponseType<refreshAccessTokenResultType | null>;
+type refreshAccessTokenResponse = ApiResponseType<refreshAccessTokenResultType>;
 
 /**
  * accessToken이 만료된 경우 실행

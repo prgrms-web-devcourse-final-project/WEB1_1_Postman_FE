@@ -6,13 +6,10 @@ import { formatApiError } from '@/util/formatApiError';
 
 const baseUrl = import.meta.env.VITE_API_URL as string;
 
-// let isRefreshing = false;
-// let failedQueue: Array<{
-//     resolve: (value?: unknown) => void;
-//     reject: (reason?: any) => void;
-// }> = [];
+let isRefreshing = false;
+let refreshSubscribers: ((token: string) => void)[] = [];
 
-//TODO - 대기중인 요청 처리 함수 구현
+// TODO - 대기중인 요청 처리 함수 구현
 // . . .
 
 export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
@@ -43,59 +40,76 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
         async function (error) {
             const originalRequest = error.config;
 
-            if (!originalRequest) {
-                return Promise.reject(error);
-            }
+            if (error.response?.status === 401 && !originalRequest._retry) {
+                if (!isRefreshing) {
+                    isRefreshing = true;
+                    originalRequest._retry = true;
 
-            // 액세스토큰 에러가 아니거나, 이미 재시도된 요청일 경우
-            if (error.response?.status !== 401 || originalRequest._retry) {
-                return Promise.reject(error);
-            }
+                    try {
+                        // 액세스토큰 재발급 완료
+                        const refreshAccessTokenResponse =
+                            await refreshAccessToken();
 
-            originalRequest.retry = true;
+                        if (refreshAccessTokenResponse.isSuccess) {
+                            console.log('액세스 토큰 재발급됨');
+                            const newAccessToken =
+                                refreshAccessTokenResponse.result
+                                    .newAccessToken;
+                            console.log(newAccessToken);
+                            tokenStorage.setAccessToken(newAccessToken);
 
-            try {
-                const refreshAccessTokenResponse = await refreshAccessToken();
+                            originalRequest.headers['Authorization'] =
+                                `Bearer ${newAccessToken}`;
 
-                if (refreshAccessTokenResponse.isSuccess) {
-                    console.log('액세스 토큰 재발급됨');
-                    const newAccessToken =
-                        refreshAccessTokenResponse.result!.newAccessToken;
-                    tokenStorage.setAccessToken(newAccessToken);
-                    // 실패했던 요청을 재요청
-                    originalRequest.headers['Authorization'] =
-                        `Bearer ${newAccessToken}`;
-                    return instance(originalRequest);
+                            // 대기 요청에 토큰 전달
+                            refreshSubscribers.forEach((callback) =>
+                                callback(newAccessToken)
+                            );
+
+                            refreshSubscribers = [];
+                            return instance(originalRequest);
+                        }
+                        // 리프레시 토큰 만료
+                        logout();
+                        window.location.href = '/login';
+                        return Promise.reject(error);
+                    } catch (error) {
+                        // 네트워크 에러?
+                        return Promise.reject(error);
+                    } finally {
+                        isRefreshing = false;
+                    }
                 }
-                console.log('로그아웃');
-                logout();
-                // window.location.href = '/login';
-            } catch (error) {
-                logout();
-                window.location.href = '/login';
-                return Promise.reject(error);
+
+                // 대기 요청
+                return new Promise((resolve) => {
+                    refreshSubscribers.push((token: string) => {
+                        originalRequest.headers['Authorization'] =
+                            `Bearer ${token}`;
+                        resolve(instance(originalRequest));
+                    });
+                });
             }
             return Promise.reject(error);
         }
     );
 
-    // instance.interceptors.response.use(
-    //     (response) => {
-    //         if (response.data.isSuccess === false) {
-    //             throw formatApiError(response.data.code, response.data.message);
-    //         }
-    //         return response;
-    //     },
-    //     (error) => {
-    //         console.error('에러:', error);
-    //         // 빌드 오류떠서 이렇게 뒀습니다...
-    //         if (error)
-    //             throw formatApiError(
-    //                 'ERROR500',
-    //                 '네트워크 요청에 실패했습니다.'
-    //             );
-    //     }
-    // );
+    instance.interceptors.response.use(
+        (response) => {
+            if (response.data.isSuccess === false) {
+                throw formatApiError(response.data.code, response.data.message);
+            }
+            return response;
+        },
+        (error) => {
+            console.error('에러:', error);
+            if (error)
+                throw formatApiError(
+                    'ERROR500',
+                    '네트워크 요청에 실패했습니다.'
+                );
+        }
+    );
 
     return instance;
 };
