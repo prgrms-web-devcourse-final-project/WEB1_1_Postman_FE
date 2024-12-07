@@ -83,3 +83,22 @@ export type GetMapReplyLetterDetailResponseType = {
     createdAt: string;
     isOwner: boolean;
 };
+
+export type getArchivedMapLetterResultType = {
+    title: string;
+    content: string;
+    description: string;
+    profileImg: string;
+    font: string;
+    paper: string;
+    label: string;
+    createdAt: string;
+    isOwner: boolean;
+};
+
+export type GetArchivedMapLetterResponseType = {
+    isSuccess: boolean;
+    code: string;
+    message: string;
+    result: getArchivedMapLetterResultType;
+};

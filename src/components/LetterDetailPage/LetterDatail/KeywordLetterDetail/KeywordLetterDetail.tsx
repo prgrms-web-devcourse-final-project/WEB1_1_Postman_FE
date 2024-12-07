@@ -1,84 +1,48 @@
-import { useParams } from 'react-router-dom';
-import { useKeywordLetterDetail } from '@/hooks/useGetKeywordLetterDetail';
-import { ThemeWrapper } from '@/components/CreatLetterPage/ThemeWrapper/ThemeWrapper';
-import { useToastStore } from '@/hooks';
-import { useEffect } from 'react';
-import { KeywordLetterDetail } from '../LetterDatail/KeywordLetterDetail';
-import { MapLetterDetail } from '../LetterDatail/MapLetterDetail';
-import { useNearbyLettersDetail } from '@/hooks/useGetNearbyLettersDetail';
+import { formatDate } from '@/util/formatDate';
+import { TextArea } from '@/components/Common/TextArea/TextArea';
+import { Margin } from '@/components/Common/Margin/Margin';
+import { KeywordList } from '../../Keyword/KeywordList';
+import { DeleteButton } from '../../Delete/DeleteButton';
+import clsx from 'clsx';
 
-export const LetterDetailContainer = () => {
-    const { type, letterId, lat, lot } = useParams<{
-        type: 'map' | 'keyword';
-        letterId: string;
-        lat: string;
-        lot: string;
-    }>();
+type KeywordLetterDetailProps = {
+    letterData: {
+        letterId: number;
+        title: string;
+        content: string;
+        keywords: string[];
+        createdAt: string;
+        font: string;
+    };
+};
 
-    const { addToast } = useToastStore();
-    const isMapType = type === 'map';
-
-    const {
-        data: keywordData,
-        isLoading: isKeywordLoading,
-        error: keywordError
-    } = useKeywordLetterDetail({
-        letterId: !isMapType ? letterId || '' : ''
-    });
-
-    const {
-        data: mapData,
-        isLoading: isMapLoading,
-        error: mapError
-    } = useNearbyLettersDetail({
-        letterId: isMapType ? Number(letterId) || 0 : 0,
-        longitude: lot || '',
-        latitude: lat || ''
-    });
-
-    useEffect(() => {
-        if (keywordError) {
-            addToast(keywordError.message, 'error');
-        }
-        if (mapError) {
-            addToast(mapError.message, 'error');
-        }
-    }, [keywordError, mapError, addToast]);
-
-    if (isKeywordLoading || isMapLoading) {
-        return <div>로딩 중...</div>;
-    }
-
-    if (!isMapType && !keywordData) {
-        return (
-            <ThemeWrapper themeId={1}>
-                <div>키워드 편지가 존재하지 않습니다.</div>
-            </ThemeWrapper>
-        );
-    }
-
-    if (isMapType && !mapData) {
-        return (
-            <ThemeWrapper themeId={1}>
-                <div>지도 편지를 가져오는 중 문제가 발생했습니다.</div>
-            </ThemeWrapper>
-        );
-    }
-
-    // 정말 죄송합니다 나중에 쓸 변수들인데 지금 안 쓰면 빌드 오류라서 일단 콘솔로 작성했습니다.
-    console.log(type);
-    // console.log(hasReplies);
-
+export const KeywordLetterDetail = ({
+    letterData
+}: KeywordLetterDetailProps) => {
+    const { letterId, title, content, keywords, createdAt, font } = letterData;
     return (
-        <ThemeWrapper
-            themeId={Number(isMapType ? mapData?.paper : keywordData?.paper)}
-        >
-            {isMapType
-                ? mapData && <MapLetterDetail letterData={mapData} />
-                : keywordData && (
-                      <KeywordLetterDetail letterData={keywordData} />
-                  )}
-        </ThemeWrapper>
+        <div className={clsx(font ? font : 'font-sans')}>
+            <Margin top={20} />
+            <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
+                <div className="absolute top-0 right-0">
+                    <DeleteButton id={String(letterId)} />
+                </div>
+                <h1>{title}</h1>
+                <img src={'/to_line.f4c129e6.svg'} className="w-full" />
+
+                <div className="relative">
+                    <TextArea value={content} font={font} isReadonly={true} />
+                </div>
+
+                <Margin top={30} />
+                <div className="flex justify-between w-full ">
+                    <p className="font-bold ">편지의 키워드</p>
+                    <p className="">{formatDate(createdAt)}</p>
+                </div>
+                <KeywordList keywords={keywords} />
+                <Margin bottom={30} />
+            </div>
+        </div>
     );
 };
 

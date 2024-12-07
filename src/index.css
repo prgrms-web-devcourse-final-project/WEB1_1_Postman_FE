@@ -10,12 +10,6 @@
 }
 
 @layer base {
-    html {
-        @apply w-full h-full;
-    }
-    body {
-        @apply w-full h-full m-0 p-0 flex justify-center;
-    }
     #root {
         @apply min-w-[375px] 
           max-w-[477px]          
@@ -26,6 +20,7 @@
           text-sample-black
           flex                  
           flex-col;
+        margin: auto;
     }
 }
 

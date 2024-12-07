@@ -6,7 +6,7 @@ import { LoginPage } from '@/pages/User/Login/LoginPage';
 import { RegisterPage } from '@/pages/User/Register/RegisterPage';
 import { ArchivedPage } from '@/pages/ArchivedPage';
 import { LabelCollectionsPage } from '@/pages/Storage/LabelCollectionsPage';
-import { LetterDetailPage } from '@/pages/Letter/Detail/LetterDetailPage';
+import { KeywordLetterDetailPage } from '@/pages/Letter/Detail/KeywordLetterDetailPage/KeywordLetterDetailPage';
 import { NotificationPage } from '@/pages/Notification/NotificationPage';
 import { ReplyLetterDetailPage } from '@/pages/Letter/Detail/ReplyLetterDetailPage';
 import { SentPage } from '@/pages/SentPage';
@@ -17,6 +17,8 @@ import { MyPage } from '@/pages/User/MyPage/MyPage';
 import { SuccessLetterPage } from './Letter/Success/SuccessLetterPage';
 import { ProfilePage } from '@/pages/User/Profile/ProfilePage';
 import { StoragePage } from '@/pages/Storage/StoragePage';
+import { MapLetterDetailPage } from './Letter/Detail/MapLetterDetailPage/MapLetterDetailPage';
+import { MapLetterArchieveDetailContainerPage } from './Letter/Detail/MapLetterArchieveDetailContainerPage/MapLetterArchieveDetailContainerPage';
 
 export {
     ErrorPage,
@@ -28,7 +30,8 @@ export {
     RegisterPage,
     ArchivedPage,
     LabelCollectionsPage,
-    LetterDetailPage,
+    KeywordLetterDetailPage,
+    MapLetterDetailPage,
     ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
@@ -37,5 +40,6 @@ export {
     SelectItemPage,
     SuccessLetterPage,
     ProfilePage,
-    StoragePage
+    StoragePage,
+    MapLetterArchieveDetailContainerPage
 };
