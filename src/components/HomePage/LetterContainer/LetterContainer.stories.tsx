@@ -28,5 +28,7 @@ export default meta;
 type Story = StoryObj<typeof LetterContainer>;
 
 export const Default: Story = {
-    args: {}
+    args: {
+        letters: []
+    }
 };

@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
 import { tokenStorage } from './auth/tokenStorage';
 import { refreshAccessToken } from '@/service/auth/refreshAccessToken';
-import { formatApiError } from '@/util/formatApiError';
 import { logout } from './auth/logout';
+import { formatApiError } from '@/util/formatApiError';
 
 const baseUrl = import.meta.env.VITE_API_URL as string;
 
@@ -61,7 +61,7 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
                 if (refreshAccessTokenResponse.isSuccess) {
                     console.log('액세스 토큰 재발급됨');
                     const newAccessToken =
-                        refreshAccessTokenResponse.result.newAccessToken;
+                        refreshAccessTokenResponse.result!.newAccessToken;
                     tokenStorage.setAccessToken(newAccessToken);
                     // 실패했던 요청을 재요청
                     originalRequest.headers['Authorization'] =
@@ -80,15 +80,22 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
         }
     );
 
-    // 에러처리
     instance.interceptors.response.use(
-        function (response) {
-            console.log(response);
+
+        (response) => {
+            if (response.data.isSuccess === false) {
+                throw formatApiError(response.data.code, response.data.message);
+            }
             return response;
         },
-        function (error) {
-            console.error('API Error:', error);
-            return Promise.reject(error);
+        (error) => {
+            // 빌드 오류떠서 이렇게 뒀습니다...
+            if (error)
+                throw formatApiError(
+                    'ERROR500',
+                    '네트워크 요청에 실패했습니다.'
+                );
+
         }
     );
 

@@ -1,126 +1,141 @@
-import { BackButton } from '@/components/Common/BackButton/BackButton';
-import { useNavigate } from 'react-router-dom';
-
 import { useParams } from 'react-router-dom';
-import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
-
-import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 import { useKeywordLetterDetail } from '@/hooks/useGetKeywordLetterDetail';
-import { MapLetterDetail } from '../LetterDatail/MapLetterDetail';
+import { ThemeWrapper } from '@/components/CreatLetterPage/ThemeWrapper/ThemeWrapper';
+import { useToastStore } from '@/hooks';
+import { useEffect } from 'react';
 import { KeywordLetterDetail } from '../LetterDatail/KeywordLetterDetail';
-import { ReplyList } from '../ReplyList/ReplyList';
+import { MapLetterDetail } from '../LetterDatail/MapLetterDetail';
+import { useNearbyLettersDetail } from '@/hooks/useGetNearbyLettersDetail';
 
-type LetterDetailContainerProps = {
-    hasReplies?: boolean;
-};
-
-export const LetterDetailContainer = ({
-    hasReplies
-}: LetterDetailContainerProps) => {
-    const { type, letterId } = useParams<{
+export const LetterDetailContainer = () => {
+    const { type, letterId, lat, lot } = useParams<{
         type: 'map' | 'keyword';
         letterId: string;
+        lat: string;
+        lot: string;
     }>();
-    const { data, isLoading, error } = useKeywordLetterDetail({
-        letterId: letterId || ''
+
+    const { addToast } = useToastStore();
+    const isMapType = type === 'map';
+
+    const {
+        data: keywordData,
+        isLoading: isKeywordLoading,
+        error: keywordError
+    } = useKeywordLetterDetail({
+        letterId: !isMapType ? letterId || '' : ''
     });
 
-    const navigate = useNavigate();
+    const {
+        data: mapData,
+        isLoading: isMapLoading,
+        error: mapError
+    } = useNearbyLettersDetail({
+        letterId: isMapType ? Number(letterId) || 0 : 0,
+        longitude: lot || '',
+        latitude: lat || ''
+    });
 
-    const onBackClick = () => {
-        navigate(-1);
-    };
+    useEffect(() => {
+        if (keywordError) {
+            addToast(keywordError.message, 'error');
+        }
+        if (mapError) {
+            addToast(mapError.message, 'error');
+        }
+    }, [keywordError, mapError, addToast]);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
+    if (isKeywordLoading || isMapLoading) {
+        return <div>로딩 중...</div>;
     }
 
-    if (error instanceof Error) {
-        console.error('error:', error.message);
-        return <div>Error: {error.message}</div>;
+    if (!isMapType && !keywordData) {
+        return (
+            <ThemeWrapper themeId={1}>
+                <div>키워드 편지가 존재하지 않습니다.</div>
+            </ThemeWrapper>
+        );
     }
 
-    const imageItem = {
-        id: '편지지_샘플_1',
-        name: '이미지',
-        src: '/편지지_샘플_1.png'
-    };
-    const labelItem = {
-        id: '라벨_샘플',
-        name: '이미지',
-        src: '/라벨_샘플.png'
-    };
+    if (isMapType && !mapData) {
+        return (
+            <ThemeWrapper themeId={1}>
+                <div>지도 편지를 가져오는 중 문제가 발생했습니다.</div>
+            </ThemeWrapper>
+        );
+    }
 
-    const sampleReplies = [
-        { id: 1, title: '답장 제목 1', date: '24.11.28' },
-        { id: 2, title: '답장 제목 2', date: '24.11.29' },
-        { id: 3, title: '답장 제목 3', date: '24.11.30' }
-    ];
+    // 정말 죄송합니다 나중에 쓸 변수들인데 지금 안 쓰면 빌드 오류라서 일단 콘솔로 작성했습니다.
+    console.log(type);
+    console.log(hasReplies);
+
     return (
-        <>
-            <div className="relative mx-auto mt-4 max-w">
-                <div className="mx-auto w-[710px]">
-                    <BackButton onClick={onBackClick} />
-                </div>
-                {letterId && (
-                    <div className="absolute top-0 flex mt-10 right-8">
-                        <DeleteButton id={letterId} />
-                        {!data?.isOwner && <ReportButton id={letterId} />}
-                    </div>
-                )}
-                <div className="relative mt-16 flex-center">
-                    <img
-                        src={imageItem.src}
-                        alt={imageItem.name}
-                        className="w-[710px] h-[900px] relative"
-                    />
-                    <img
-                        src={labelItem.src}
-                        alt={labelItem.name}
-                        className="absolute top-4 translate-x-40 w-[125.32px] h-[201.1px]"
-                    />
-                    {type === 'map' ? (
-                        <MapLetterDetail
-                            title="편지제목"
-                            content="편지내용"
-                            date="24.11.18"
-                            place="서울시 종로구 평창동"
-                            hint="서대문역 앞 붕어빵 가게에서"
-                        />
-                    ) : (
-                        data && <KeywordLetterDetail letterData={data} />
-                    )}
-                </div>
-            </div>
-
-            {data?.isOwner ? (
-                hasReplies ? (
-                    <div className="mt-16 w-[710px]  mx-auto">
-                        <ReplyList replies={sampleReplies} />
-                    </div>
-                ) : null
-            ) : type === 'map' ? (
-                <div className="gap-4 mx-auto mt-4 flex-center max-w">
-                    {!data?.isOwner && (
-                        <>
-                            <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
-                                보관하기
-                            </button>
-                            <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
-                                편지에 답장하기
-                            </button>
-                        </>
-                    )}
-                </div>
-            ) : (
-                <div className="gap-4 mx-auto mt-4 flex-center max-w">
-                    {!data?.isOwner && (
-                        <button className="btn-base rounded-3xl w-[700px] h-[80px]">
-                            편지에 답장하기
-                        </button>
-                    )}
-                </div>
-            )}
-        </>
+        <ThemeWrapper
+            themeId={Number(isMapType ? mapData?.paper : keywordData?.paper)}
+        >
+            {isMapType
+                ? mapData && <MapLetterDetail letterData={mapData} />
+                : keywordData && (
+                      <KeywordLetterDetail letterData={keywordData} />
+                  )}
+        </ThemeWrapper>
     );
 };
+
+/*
+   <div className="relative mx-auto mt-4 max-w">
+                    {letterId && (
+                        <div className="absolute top-0 flex mt-10 right-8">
+                            <DeleteButton id={letterId} />
+                            {!data?.isOwner && <ReportButton id={letterId} />}
+                        </div>
+                    )}
+                    <div className="relative mt-16 flex-center">
+                        <img
+                            src={labelItem.src}
+                            alt={labelItem.name}
+                            className="absolute top-4 translate-x-40 w-[125.32px] h-[201.1px]"
+                        />
+                        {type === 'map' ? (
+                            <MapLetterDetail
+                                title="편지제목"
+                                content="편지내용"
+                                date="24.11.18"
+                                place="서울시 종로구 평창동"
+                                hint="서대문역 앞 붕어빵 가게에서"
+                            />
+                        ) : (
+                            data && <KeywordLetterDetail letterData={data} />
+                        )}
+                    </div>
+                </div>
+
+                {data?.isOwner ? (
+                    hasReplies ? (
+                        <div className="mt-16 w-[710px]  mx-auto">
+                            <ReplyList replies={sampleReplies} />
+                        </div>
+                    ) : null
+                ) : type === 'map' ? (
+                    <div className="gap-4 mx-auto mt-4 flex-center max-w">
+                        {!data?.isOwner && (
+                            <>
+                                <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
+                                    보관하기
+                                </button>
+                                <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
+                                    편지에 답장하기
+                                </button>
+                            </>
+                        )}
+                    </div>
+                ) : (
+                    <div className="gap-4 mx-auto mt-4 flex-center max-w">
+                        {!data?.isOwner && (
+                            <button className="btn-base rounded-3xl w-[700px] h-[80px]">
+                                편지에 답장하기
+                            </button>
+                        )}
+                    </div>
+                )}
+*/

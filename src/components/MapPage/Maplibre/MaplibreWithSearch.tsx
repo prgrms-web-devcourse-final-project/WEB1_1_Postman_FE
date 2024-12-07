@@ -15,9 +15,13 @@ import { NearbyLettersResponseType } from '@/types/letter';
 
 type MaplibreWithSearchProps = {
     onFocus: () => void;
+    setNearbyLettersLength: (length: number) => void;
 };
 
-export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
+export const MaplibreWithSearch = ({
+    onFocus,
+    setNearbyLettersLength
+}: MaplibreWithSearchProps) => {
     const { toggleSelectedLetter, clearSelectedLetter } =
         useSelectedLetterStore();
     const { searchedLocation, clearSearchedLocation } = useSearchStore();
@@ -30,6 +34,10 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
         zoom: 11
     });
     const { nearbyLetters } = useNearbyLetters(currentLocation);
+
+    useEffect(() => {
+        setNearbyLettersLength(nearbyLetters.length);
+    }, [nearbyLetters, setNearbyLettersLength]);
 
     useEffect(() => {
         if (searchedLocation) {

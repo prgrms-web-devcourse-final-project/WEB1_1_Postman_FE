@@ -5,11 +5,17 @@ import { clsx } from 'clsx';
 
 type TextAreaProps = {
     value: string;
-    setValue: (value: string) => void;
+    setValue?: (value: string) => void;
     font?: string;
+    isReadonly?: boolean;
 };
 
-export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
+export const TextArea = ({
+    value,
+    setValue,
+    font,
+    isReadonly
+}: TextAreaProps) => {
     const [lineHeight, setLineHeight] = useState<number>(2.2);
     const [lineCount, setLineCount] = useState<number>(8);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -35,8 +41,9 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
 
             setLineCount(calculatedLinesCount);
         }
-
-        setValue(inputValue);
+        if (setValue) {
+            setValue(inputValue);
+        }
     };
 
     useEffect(() => {
@@ -82,7 +89,7 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
         <div>
             <textarea
                 className={clsx(
-                    `w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px]`,
+                    `w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px] focus:outline-none`,
                     font ? font : 'font-sans'
                 )}
                 style={{
@@ -92,6 +99,7 @@ export const TextArea = ({ value, setValue, font }: TextAreaProps) => {
                 placeholder="편지를 작성하세요..."
                 value={value}
                 onChange={handleInputChange}
+                readOnly={isReadonly}
             />
 
             <div className="absolute top-0 w-full mt-[30px]">

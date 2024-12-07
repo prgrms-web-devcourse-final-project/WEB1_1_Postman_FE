@@ -21,9 +21,9 @@ type Story = StoryObj<typeof LetterInfoContainer>;
 
 export const Default: Story = {
     args: {
-        id: 123,
+        letterId: 123,
         title: '익명 편지',
-        distance: 400,
+        distance: '400',
         date: '24.11.15',
         daysLeft: 21
     }

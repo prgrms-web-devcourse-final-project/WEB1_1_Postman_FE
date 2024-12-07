@@ -1,22 +1,27 @@
 import { DayCounter } from '@/components/Common/DayCounter/DayCounter';
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-interface LetterInfoContainerProps {
-    id: number;
+type LetterInfoContainerProps = {
+    letterId: number;
     title: string;
     distance: string;
     date: string;
     daysLeft: number;
-}
+    lat: number;
+    lot: number;
+};
 
 export const LetterInfoContainer = ({
-    id,
+    letterId,
     title,
     distance,
     date,
-    daysLeft
+    daysLeft,
+    lat,
+    lot
 }: LetterInfoContainerProps) => {
+    const limitDistance = parseFloat(distance) <= 15;
+
     return (
         <div className="flex flex-col w-[330px] bg-gray-200 rounded-lg p-4 shadow-md">
             <div className="flex gap-4 mb-4">
@@ -37,8 +42,14 @@ export const LetterInfoContainer = ({
             </div>
 
             <NavLink
-                to={`/letter/map/:${id}`}
-                className="w-full py-2 text-center text-gray-700 bg-gray-300 rounded-lg hover:bg-gray-400"
+                to={`/letter/map/${lat}/${lot}/${letterId}`}
+                className={`w-full py-2 text-center text-gray-700 bg-gray-300 rounded-lg ${
+                    limitDistance
+                        ? 'hover:bg-gray-400'
+                        : 'cursor-not-allowed bg-gray-400'
+                }`}
+                aria-disabled={!limitDistance}
+                onClick={(e) => !limitDistance && e.preventDefault()}
             >
                 편지 보러가기
             </NavLink>
