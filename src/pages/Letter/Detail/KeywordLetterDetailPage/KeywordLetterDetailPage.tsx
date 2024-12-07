@@ -12,7 +12,7 @@ export const KeywordLetterDetailPage = () => {
     return (
         <div className="w-full min-h-screen">
             <TopBar handleBackClick={onBackClick} />
-            <KeywordLetterDetailContainer />;
+            <KeywordLetterDetailContainer />
             <NavigationBar />
         </div>
     );
