@@ -19,7 +19,9 @@ type KeywordLetterDetailProps = {
 export const KeywordLetterDetail = ({
     letterData
 }: KeywordLetterDetailProps) => {
+
     const { title, content, keywords, createdAt, font } = letterData;
+
     return (
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
