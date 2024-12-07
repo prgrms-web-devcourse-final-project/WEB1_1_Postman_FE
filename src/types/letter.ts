@@ -45,7 +45,7 @@ export type NearbyLettersDetailResponseType = {
     title: string;
     content: string;
     description: string;
-    profileImg?: string;
+    profileImg: string;
     font: string;
     paper: string;
     isOwner: boolean;
