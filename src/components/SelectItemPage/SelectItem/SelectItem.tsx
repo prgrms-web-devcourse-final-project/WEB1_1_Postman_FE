@@ -89,7 +89,7 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
             content: letterContent,
             font: font,
             paper: letter,
-            keywords: keywords,
+            keywords: selectedKeywords,
             label: testLable[selectedLabel].imgSrc
         });
     };
