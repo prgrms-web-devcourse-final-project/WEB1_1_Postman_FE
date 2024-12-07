@@ -4,46 +4,76 @@ import { ThemeWrapper } from '@/components/CreatLetterPage/ThemeWrapper/ThemeWra
 import { useToastStore } from '@/hooks';
 import { useEffect } from 'react';
 import { KeywordLetterDetail } from '../LetterDatail/KeywordLetterDetail';
+import { MapLetterDetail } from '../LetterDatail/MapLetterDetail';
+import { useNearbyLettersDetail } from '@/hooks/useGetNearbyLettersDetail';
 
-type LetterDetailContainerProps = {
-    hasReplies?: boolean;
-};
-
-export const LetterDetailContainer = ({
-    hasReplies
-}: LetterDetailContainerProps) => {
-    const { type, letterId } = useParams<{
+export const LetterDetailContainer = () => {
+    const { type, letterId, lat, lot } = useParams<{
         type: 'map' | 'keyword';
         letterId: string;
+        lat: string;
+        lot: string;
     }>();
 
     const { addToast } = useToastStore();
+    const isMapType = type === 'map';
 
-    const { data, error, isLoading } = useKeywordLetterDetail({
-        letterId: letterId || ''
+    const {
+        data: keywordData,
+        isLoading: isKeywordLoading,
+        error: keywordError
+    } = useKeywordLetterDetail({
+        letterId: !isMapType ? letterId || '' : ''
+    });
+
+    const {
+        data: mapData,
+        isLoading: isMapLoading,
+        error: mapError
+    } = useNearbyLettersDetail({
+        letterId: isMapType ? Number(letterId) || 0 : 0,
+        longitude: lot || '',
+        latitude: lat || ''
     });
 
     useEffect(() => {
-        if (error) {
-            addToast(error.message, 'error');
+        if (keywordError) {
+            addToast(keywordError.message, 'error');
         }
-    }, [error, addToast]);
+        if (mapError) {
+            addToast(mapError.message, 'error');
+        }
+    }, [keywordError, mapError, addToast]);
 
-    if (isLoading) {
+    if (isKeywordLoading || isMapLoading) {
         return <div>로딩 중...</div>;
     }
 
-    if (!data) {
+    if (!isMapType && !keywordData) {
         return (
             <ThemeWrapper themeId={1}>
-                <div>데이터가 없습니다.</div>;
+                <div>키워드 편지가 존재하지 않습니다.</div>
+            </ThemeWrapper>
+        );
+    }
+
+    if (isMapType && !mapData) {
+        return (
+            <ThemeWrapper themeId={1}>
+                <div>지도 편지를 가져오는 중 문제가 발생했습니다.</div>
             </ThemeWrapper>
         );
     }
 
     return (
-        <ThemeWrapper themeId={Number(data.paper)}>
-            <KeywordLetterDetail letterData={data} />
+        <ThemeWrapper
+            themeId={Number(isMapType ? mapData?.paper : keywordData?.paper)}
+        >
+            {isMapType
+                ? mapData && <MapLetterDetail letterData={mapData} />
+                : keywordData && (
+                      <KeywordLetterDetail letterData={keywordData} />
+                  )}
         </ThemeWrapper>
     );
 };
