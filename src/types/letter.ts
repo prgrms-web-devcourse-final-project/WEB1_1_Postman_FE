@@ -102,3 +102,21 @@ export type GetArchivedMapLetterResponseType = {
     message: string;
     result: getArchivedMapLetterResultType;
 };
+
+export type KeywordReply = {
+    replyLetterId: number;
+    title: string;
+    label: string;
+    createdAt: string;
+};
+
+export type KeywordReplyListResponseType = {
+    content: KeywordReply[];
+    page: number;
+    size: number;
+    totalElements: number;
+    totalPages: number;
+};
+export type KeywordReplyListProps = {
+    keywordReplyListData: KeywordReplyListResponseType[];
+};
