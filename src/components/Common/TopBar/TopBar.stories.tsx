@@ -24,7 +24,7 @@ export const Default: Story = {
         handleBackClick: () => {
             alert('back');
         },
-        handelSuccesClick: () => {
+        handleSuccesClick: () => {
             alert('go');
         }
     }

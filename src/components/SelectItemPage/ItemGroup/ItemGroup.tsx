@@ -2,19 +2,16 @@ import React from 'react';
 import { LabelList } from '../LabelList/LabelList';
 import { KeywordList } from '../KeywordList/KeywordList';
 import { LabelProps } from '@/types/label';
+import { KeywordCategoryType } from '@/types/keyword';
 
 type ItemGroupProps = {
     isLabel: boolean;
     labels: LabelProps[];
     onLabelSelect: (label: number) => void;
     selectedLabel: number | null;
-    keywordProps: {
-        title: string;
-        subTitle: string;
-        keywordGroup: { content: string }[];
-    };
-    onKeywordSelect: (keyword: number) => void;
-    selectedKeywords: number[];
+    keywords: KeywordCategoryType[];
+    onKeywordSelect: (keyword: string) => void;
+    selectedKeywords: string[];
 };
 
 export const ItemGroup: React.FC<ItemGroupProps> = ({
@@ -22,7 +19,7 @@ export const ItemGroup: React.FC<ItemGroupProps> = ({
     labels,
     onLabelSelect,
     selectedLabel,
-    keywordProps,
+    keywords,
     onKeywordSelect,
     selectedKeywords
 }) => {
@@ -34,9 +31,7 @@ export const ItemGroup: React.FC<ItemGroupProps> = ({
         />
     ) : (
         <KeywordList
-            title={keywordProps.title}
-            subTitle={keywordProps.subTitle}
-            keywordGroup={keywordProps.keywordGroup}
+            keywords={keywords}
             onKeywordSelect={onKeywordSelect}
             selectedKeywords={selectedKeywords}
         />

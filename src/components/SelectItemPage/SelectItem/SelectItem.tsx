@@ -7,6 +7,7 @@ import { LabelProps } from '@/types/label';
 import { ItemGroup } from '../ItemGroup/ItemGroup';
 import { useCreateLetter } from '@/hooks/useCreateLetter';
 import { useLocalStorage, useToastStore } from '@/hooks';
+import { useGetAllKeywords } from '@/hooks/useGetAllKeywords';
 
 type SelectItemProps = {
     isActive: boolean;
@@ -31,27 +32,14 @@ const testLable: LabelProps[] = [
     }
 ];
 
-const testKeywordListProps = {
-    title: 'Frontend Technologies',
-    subTitle: 'Trending Tools',
-    keywordGroup: [
-        { content: 'React' },
-        { content: 'TypeScript' },
-        { content: 'Tailwind CSS' },
-        { content: 'Next.js' },
-        { content: 'jquey' },
-        { content: 'docker' },
-        { content: 'xocde' },
-        { content: 'Next.js' }
-    ]
-};
-
 export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
     const [selectedLabel, setSelectedLabel] = useState<number | null>(null);
-    const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
+    const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
 
     const { mutate } = useCreateLetter();
+
+    const { data: keyweordData } = useGetAllKeywords();
 
     const { storedValue: title } = useLocalStorage<string>('title', '');
     const { storedValue: letter } = useLocalStorage<string>('letter', '');
@@ -61,27 +49,7 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     );
     const { storedValue: font } = useLocalStorage<string>('font', '');
 
-    const keywords = selectedKeywords
-        .map((x) => testKeywordListProps.keywordGroup[x]?.content)
-        .filter((content): content is string => content !== undefined);
-
     const { addToast } = useToastStore();
-
-    const handdleClick = () => {
-        if (selectedLabel === null || selectedKeywords.length === 0) {
-            addToast('라벨과 키워드를 선택해주세요.', 'error');
-            return;
-        }
-
-        mutate({
-            title: title,
-            content: letterContent,
-            font: font,
-            paper: letter,
-            keywords: keywords,
-            label: testLable[selectedLabel].imgSrc
-        });
-    };
 
     useEffect(() => {
         if (selectedLabel !== null && selectedKeywords.length > 0) {
@@ -95,12 +63,32 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
         setSelectedLabel(label);
     };
 
-    const handleKeywordSelection = (keyword: number) => {
+    if (!keyweordData) {
+        return <div>로딩 중 입니다.</div>;
+    }
+
+    const handleKeywordSelection = (content: string) => {
         setSelectedKeywords((prev) =>
-            prev.includes(keyword)
-                ? prev.filter((k) => k !== keyword)
-                : [...prev, keyword]
+            prev.includes(content)
+                ? prev.filter((k) => k !== content)
+                : [...prev, content]
         );
+    };
+
+    const handdleClick = () => {
+        if (selectedLabel === null || selectedKeywords.length === 0) {
+            addToast('라벨과 키워드를 선택해주세요.', 'error');
+            return;
+        }
+
+        mutate({
+            title: title,
+            content: letterContent,
+            font: font,
+            paper: letter,
+            keywords: selectedKeywords,
+            label: testLable[selectedLabel].imgSrc
+        });
     };
 
     return (
@@ -128,7 +116,7 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                     labels={testLable}
                     onLabelSelect={handleLabelSelection}
                     selectedLabel={selectedLabel}
-                    keywordProps={testKeywordListProps}
+                    keywords={keyweordData.result.categories}
                     onKeywordSelect={handleKeywordSelection}
                     selectedKeywords={selectedKeywords}
                 />
