@@ -54,16 +54,6 @@ export type NearbyLettersDetailResponseType = {
     createdAt: string;
 };
 
-export type GetRecentRelyResponseType = {
-    isSuccess: boolean;
-    code: string;
-    message: string;
-    result: {
-        type: 'MAP' | 'KEYWORD';
-        labelUrl: string;
-        letterId: number;
-    }[];
-};
 export type GetKeywordLetterDetailResponseType = {
     letterId: number;
     title: string;

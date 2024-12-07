@@ -104,10 +104,10 @@ export const router = createBrowserRouter([
                 path: '/share',
                 element: <SharePage />
             },
-            {
-                path: '/letter/:type/:lat?/:lot?/:letterId',
-                element: <LetterDetailPage />
-            },
+            // {
+            //     path: '/letter/:type/:lat?/:lot?/:letterId',
+            //     element: <LetterDetailPage />
+            // },
             {
                 path: '/letter/reply/:id',
                 element: <ReplyLetterDetailPage />
@@ -132,7 +132,11 @@ export const router = createBrowserRouter([
         children: [
             { path: 'create', element: <CreateLetterPage /> },
             { path: 'select', element: <SelectItemPage /> },
-            { path: 'success', element: <SuccessLetterPage /> }
+            { path: 'success', element: <SuccessLetterPage /> },
+            {
+                path: '/letter/:type/:lat?/:lot?/:letterId',
+                element: <LetterDetailPage />
+            }
         ]
     },
     {
