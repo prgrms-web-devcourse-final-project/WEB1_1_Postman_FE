@@ -9,6 +9,7 @@ export const ProfilePage = () => {
     const navigate = useNavigate();
     const [isProfileImageEditing, setisProfileImageEditing] =
         useState<boolean>(false);
+    const [isPasswordEditing, setIsPasswordEditing] = useState<boolean>(false);
 
     const handleNavigateShare = () => {
         navigate('/profileshare');
@@ -35,7 +36,10 @@ export const ProfilePage = () => {
                     />
                 </div>
             </div>
-            <AccountInfoSection />
+            <AccountInfoSection
+                isEditing={isPasswordEditing}
+                onEditingChange={setIsPasswordEditing}
+            />
         </div>
     );
 };
