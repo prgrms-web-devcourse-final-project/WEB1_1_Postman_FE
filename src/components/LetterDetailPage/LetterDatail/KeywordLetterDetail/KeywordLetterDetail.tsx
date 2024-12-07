@@ -42,6 +42,7 @@ export const KeywordLetterDetail = ({
         return <div>오류...: {keywordReplyListDataError.message}</div>;
     }
 
+
     return (
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
@@ -64,6 +65,7 @@ export const KeywordLetterDetail = ({
                 <KeywordList keywords={keywords} />
                 <Margin bottom={30} />
             </div>
+
             {keywordReplyListData?.content ? (
                 <div className="mt-16  mx-auto">
                     <ReplyList

@@ -103,6 +103,7 @@ export type GetArchivedMapLetterResponseType = {
     result: getArchivedMapLetterResultType;
 };
 
+
 export type KeywordReply = {
     replyLetterId: number;
     title: string;
@@ -120,3 +121,4 @@ export type KeywordReplyListResponseType = {
 export type KeywordReplyListProps = {
     keywordReplyListData: KeywordReplyListResponseType[];
 };
+
