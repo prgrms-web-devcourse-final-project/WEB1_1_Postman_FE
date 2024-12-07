@@ -14,14 +14,13 @@ import {
     ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
-    SharePage,
+    ProfileSharePage,
     LabelLotteryPage,
     SelectItemPage,
     SuccessLetterPage,
     ProfilePage,
     StoragePage
 } from './pages';
-import { Margin } from './components/Common/Margin/Margin';
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
@@ -112,8 +111,8 @@ export const router = createBrowserRouter([
                 element: <SentPage />
             },
             {
-                path: '/share',
-                element: <SharePage />
+                path: '/profileshare',
+                element: <ProfileSharePage />
             },
             {
                 path: '/letter/:type/reply/:replyLetterId',
