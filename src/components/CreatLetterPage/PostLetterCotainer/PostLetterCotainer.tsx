@@ -9,7 +9,7 @@ import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
 
 export const PostLetterCotainer = () => {
     const [title, setTitle] = useState<string>('');
-    const [letter, setLetter] = useState<string>('편지지_샘플_1');
+    const [letter, setLetter] = useState<string>('1');
     const [letterContent, setLetterContent] = useState<string>('');
     const [font, setFont] = useState<string>('initial');
     const [theme, setTheme] = useState<number>(1);
