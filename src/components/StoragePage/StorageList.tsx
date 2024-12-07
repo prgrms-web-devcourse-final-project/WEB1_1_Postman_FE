@@ -223,8 +223,12 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                                 type === 'keyword' ||
                                                 type === 'map'
                                             ) {
+                                                const dataType =
+                                                    selectedFilter === 'LETTER'
+                                                        ? 'sent'
+                                                        : 'received';
                                                 navigate(
-                                                    `/letter/${type}/${letter.letterId}`
+                                                    `/letter/${type}/${dataType}/${letter.letterId}`
                                                 );
                                             }
                                         }}

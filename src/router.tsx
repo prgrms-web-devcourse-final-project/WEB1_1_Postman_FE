@@ -158,11 +158,12 @@ export const router = createBrowserRouter([
                 element: <MapLetterDetailPage />
             },
             {
-                path: '/letter/map/:letterId',
+
+                path: '/letter/map/:dataType/:letterId',
                 element: <MapLetterArchieveDetailContainerPage />
             },
             {
-                path: '/letter/keyword/:letterId',
+                path: '/letter/keyword/:dataType/:letterId',
                 element: <KeywordLetterDetailPage />
             }
         ]
