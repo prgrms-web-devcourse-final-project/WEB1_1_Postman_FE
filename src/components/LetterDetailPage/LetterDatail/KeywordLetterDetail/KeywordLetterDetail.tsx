@@ -4,6 +4,8 @@ import { Margin } from '@/components/Common/Margin/Margin';
 import { KeywordList } from '../../Keyword/KeywordList';
 import { DeleteButton } from '../../Delete/DeleteButton';
 import clsx from 'clsx';
+import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
+import { ReplyList } from '../../ReplyList/ReplyList';
 
 type KeywordLetterDetailProps = {
     letterData: {
@@ -19,7 +21,27 @@ type KeywordLetterDetailProps = {
 export const KeywordLetterDetail = ({
     letterData
 }: KeywordLetterDetailProps) => {
-    const { title, content, keywords, createdAt, font } = letterData;
+    const { letterId, title, content, keywords, createdAt, font } = letterData;
+
+    const {
+        data: keywordReplyListData,
+        isLoading: isKeywordReplyListDataLoading,
+        error: keywordReplyListDataError
+    } = useGetKeywordReplyList({
+        letterId: letterId || 0,
+        page: 1,
+        size: 1,
+        sort: 'createdAt'
+    });
+
+    if (isKeywordReplyListDataLoading) {
+        return <div>로딩 중...</div>;
+    }
+
+    if (keywordReplyListDataError instanceof Error) {
+        return <div>오류...: {keywordReplyListDataError.message}</div>;
+    }
+
     return (
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
@@ -42,6 +64,13 @@ export const KeywordLetterDetail = ({
                 <KeywordList keywords={keywords} />
                 <Margin bottom={30} />
             </div>
+            {keywordReplyListData?.content ? (
+                <div className="mt-16  mx-auto">
+                    <ReplyList
+                        keywordReplyListData={keywordReplyListData.content}
+                    />
+                </div>
+            ) : null}
         </div>
     );
 };
