@@ -64,3 +64,22 @@ export type GetKeywordLetterDetailResponseType = {
     isOwner: boolean;
     createdAt: string;
 };
+
+export type GetKeywordReplyLetterDetailResponseType = {
+    replyLetterId: number;
+    content: string;
+    font: string;
+    paper: string;
+    label: string;
+    createdAt: string;
+};
+
+export type GetMapReplyLetterDetailResponseType = {
+    sourceLetterId: number;
+    content: string;
+    font: string;
+    paper: string;
+    label: string;
+    createdAt: string;
+    isOwner: boolean;
+};
