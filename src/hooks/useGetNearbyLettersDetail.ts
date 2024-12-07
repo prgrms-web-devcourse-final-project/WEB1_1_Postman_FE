@@ -5,7 +5,7 @@ import { NearbyLettersDetailResponseType } from '@/types/letter';
 type UseNearbyLettersDetailProps = {
     longitude: string;
     latitude: string;
-    letterId: number;
+    letterId: string;
 };
 
 export const useNearbyLettersDetail = ({

@@ -1,4 +1,3 @@
-import { Margin } from '@/components/Common/Margin/Margin';
 import React, { useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 type KeywordListProps = {

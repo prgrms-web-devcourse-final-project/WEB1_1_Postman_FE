@@ -6,6 +6,7 @@ import useNominatimSearch from './useNominatimSearch';
 import { useRegisterForm } from './useRegisterForm';
 import { useToastStore } from './useToastStore';
 import { useDownloadCanvas } from './useDownloadCanvas';
+import { useGetArchivedLetter } from './useGetArchivedLetter';
 
 export {
     useAutoSave,
@@ -15,5 +16,6 @@ export {
     useNominatimSearch,
     useRegisterForm,
     useToastStore,
-    useDownloadCanvas
+    useDownloadCanvas,
+    useGetArchivedLetter
 };

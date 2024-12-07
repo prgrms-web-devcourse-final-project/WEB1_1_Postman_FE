@@ -1,18 +1,18 @@
 import { NavigationBar } from '@/components/Common/NavigationBar/NavigationBar';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
-import { LetterDetailContainer } from '@/components/LetterDetailPage/LetterDetailContainer/LetterDetailContainer';
+import { MapLetterDetailContainer } from '@/components/LetterDetailPage/LetterDetailContainer/MapLetterDetailContainer/MapLetterDetailContainer';
 import { useNavigate } from 'react-router-dom';
 
-export const LetterDetailPage = () => {
+export const MapLetterDetailPage = () => {
     const navigate = useNavigate();
 
     const onBackClick = () => {
         navigate(-1);
     };
     return (
-        <div className="w-full h-full">
+        <div className="w-full min-h-screen">
             <TopBar handleBackClick={onBackClick} />
-            <LetterDetailContainer />;
+            <MapLetterDetailContainer />;
             <NavigationBar />
         </div>
     );

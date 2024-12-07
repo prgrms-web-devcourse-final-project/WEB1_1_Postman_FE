@@ -10,7 +10,6 @@ import {
     LoginPage,
     RegisterPage,
     LabelCollectionsPage,
-    LetterDetailPage,
     ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
@@ -19,9 +18,11 @@ import {
     SelectItemPage,
     SuccessLetterPage,
     ProfilePage,
-    StoragePage
+    StoragePage,
+    KeywordLetterDetailPage,
+    MapLetterDetailPage,
+    MapLetterArchieveDetailContainerPage
 } from './pages';
-import { Margin } from './components/Common/Margin/Margin';
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
@@ -56,11 +57,8 @@ const CommonLayout = () => (
 );
 
 const SimpleLayout = () => (
-    <div className="flex flex-col h-full">
-        <Container>
-            <Outlet />
-        </Container>
-        <NavigationBar />
+    <div>
+        <Outlet />
     </div>
 );
 
@@ -156,8 +154,16 @@ export const router = createBrowserRouter([
             { path: 'select', element: <SelectItemPage /> },
             { path: 'success', element: <SuccessLetterPage /> },
             {
-                path: '/letter/:type/:lat?/:lot?/:letterId',
-                element: <LetterDetailPage />
+                path: '/letter/map/:lat/:lot/:letterId',
+                element: <MapLetterDetailPage />
+            },
+            {
+                path: '/letter/map/:letterId',
+                element: <MapLetterArchieveDetailContainerPage />
+            },
+            {
+                path: '/letter/keyword/:letterId',
+                element: <KeywordLetterDetailPage />
             }
         ]
     },
