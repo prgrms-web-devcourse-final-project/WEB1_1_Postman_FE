@@ -1,28 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DeleteModal } from './DeleteModal';
+import { MemoryRouter } from 'react-router-dom';
 
 const meta: Meta<typeof DeleteModal> = {
     component: DeleteModal,
     title: 'molecule/DeleteModal',
     tags: ['autodocs'],
-    argTypes: {
-        id: {
-            control: 'text',
-            description: '삭제할 편지 ID.',
-            defaultValue: '1234'
-        },
-        closeModal: {
-            action: 'closeModal',
-            description: '모달 닫기 이벤트 핸들러'
-        }
-    }
+    argTypes: {},
+    decorators: [
+        (Story) => (
+            <MemoryRouter>
+                <Story />
+            </MemoryRouter>
+        )
+    ]
 };
 export default meta;
 
 type Story = StoryObj<typeof DeleteModal>;
 
 export const Default: Story = {
-    args: {
-        id: '1234'
-    }
+    args: {}
 };
