@@ -1,8 +1,8 @@
 import { defaultApi } from '@/service/api';
 import { ApiResponseType } from '@/types/apiResponse';
-import { Label } from '@/types/Label';
+import { LabelType } from '@/types/label';
 
-type GetUserLabelResponseType = ApiResponseType<Label[]>;
+type GetUserLabelResponseType = ApiResponseType<LabelType[]>;
 
 export const getUserLabel = async (): Promise<GetUserLabelResponseType> => {
     const api = defaultApi();

@@ -30,7 +30,7 @@ export const NicknameSection = () => {
                 handleGetUserInfo();
             }
         } catch (error) {
-            addToast(error, 'warning');
+            addToast('닉네임 변경에 실패했어요.', 'warning');
             console.error(error);
         }
     };
@@ -40,7 +40,7 @@ export const NicknameSection = () => {
         const $nicknameForm = e.target as HTMLFormElement;
         const nicknameFormData = new FormData($nicknameForm);
         const [nickname] = [nicknameFormData.get('nickname') as string];
-        if (user.nickname === nickname) {
+        if (user?.nickname === nickname) {
             addToast('동일한 닉네임이에요.', 'warning');
             return;
         }

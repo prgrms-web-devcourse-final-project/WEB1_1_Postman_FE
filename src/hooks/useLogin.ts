@@ -16,10 +16,11 @@ export const useLogin = () => {
             login({ email, password }),
         onSuccess: (response: LoginResponseType) => {
             addToast('로그인 되었습니다.', 'success');
-            tokenStorage.setAccessToken(response.result.accessToken);
-            handleGetUserInfo();
-            navigate('/');
-
+            if (response.result?.accessToken) {
+                tokenStorage.setAccessToken(response.result?.accessToken);
+                handleGetUserInfo();
+                navigate('/');
+            }
         },
         onError: (error) => {
             addToast(error.message, 'warning');

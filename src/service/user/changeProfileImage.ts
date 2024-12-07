@@ -5,14 +5,14 @@ type ChangeProfileImageProps = {
     imageUrl: string;
 };
 
-type changeProfileImageResponse = ApiResponseType<'success' | 'fail'>;
+type changeProfileImageResponse = ApiResponseType<null>;
 
 export async function changeProfileImage(
     imageUrl: ChangeProfileImageProps
 ): Promise<changeProfileImageResponse> {
     const api = defaultApi();
-    const response = await api.patch('/user/profileImg', {
-        imageUrl: imageUrl
-    });
+    console.log(imageUrl);
+    const response = await api.patch('/user/profileImg', imageUrl);
+    console.log('에러:', response);
     return response.data;
 }

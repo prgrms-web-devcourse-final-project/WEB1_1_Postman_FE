@@ -1,6 +1,6 @@
 import { getUserLabel } from './../../service/label/get/getUserLabel';
 import { useQuery } from '@tanstack/react-query';
-import { LabelType } from '@/types/Label';
+import { LabelType } from '@/types/label';
 import { Itembox } from './../../components/Common/Itembox/Itembox';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
 
@@ -13,11 +13,11 @@ const testLable: LabelType[] = [
 ];
 
 export const LabelCollectionsPage = () => {
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ['userLabel'],
-        queryFn: getUserLabel,
-        retry: 1
-    });
+    // const { data, isLoading, isError } = useQuery({
+    //     queryKey: ['userLabel'],
+    //     queryFn: getUserLabel,
+    //     retry: 1
+    // });
 
     const renderList = () => {
         // if (isLoading) return <div>로딩중...</div>;

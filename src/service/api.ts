@@ -19,7 +19,6 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
     const instance = axios.create({
         baseURL: baseUrl,
         withCredentials: true,
-        retry: false,
         ...option
     });
 
@@ -80,24 +79,23 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
         }
     );
 
-    instance.interceptors.response.use(
-
-        (response) => {
-            if (response.data.isSuccess === false) {
-                throw formatApiError(response.data.code, response.data.message);
-            }
-            return response;
-        },
-        (error) => {
-            // 빌드 오류떠서 이렇게 뒀습니다...
-            if (error)
-                throw formatApiError(
-                    'ERROR500',
-                    '네트워크 요청에 실패했습니다.'
-                );
-
-        }
-    );
+    // instance.interceptors.response.use(
+    //     (response) => {
+    //         if (response.data.isSuccess === false) {
+    //             throw formatApiError(response.data.code, response.data.message);
+    //         }
+    //         return response;
+    //     },
+    //     (error) => {
+    //         console.error('에러:', error);
+    //         // 빌드 오류떠서 이렇게 뒀습니다...
+    //         if (error)
+    //             throw formatApiError(
+    //                 'ERROR500',
+    //                 '네트워크 요청에 실패했습니다.'
+    //             );
+    //     }
+    // );
 
     return instance;
 };
