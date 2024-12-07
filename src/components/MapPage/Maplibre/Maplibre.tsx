@@ -137,10 +137,10 @@ export const Maplibre = () => {
                             latitude={letter.latitude}
                         >
                             <div
-                                className="bg-gray-100 p-1 rounded-sm"
+                                className="p-1 bg-gray-100 rounded-sm"
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    toggleSelectedLetter(letter);
+                                    //toggleSelectedLetter(letter);
                                 }}
                             >
                                 <img

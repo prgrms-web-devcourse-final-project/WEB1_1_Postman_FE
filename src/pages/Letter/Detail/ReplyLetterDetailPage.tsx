@@ -74,7 +74,7 @@ export const ReplyLetterDetailPage = () => {
                 </div>
                 {replyLetterId && (
                     <div className="absolute top-0 flex mt-10 right-8">
-                        <DeleteButton id={replyLetterId} />
+                        <DeleteButton />
                         <ReportButton id={replyLetterId} />
                     </div>
                 )}
