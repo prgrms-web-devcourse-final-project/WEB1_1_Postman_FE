@@ -66,9 +66,6 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     if (!keyweordData) {
         return <div>로딩 중 입니다.</div>;
     }
-    const keywords = keyweordData.result.categories.flatMap(
-        (category) => category.keywords
-    );
 
     const handleKeywordSelection = (content: string) => {
         setSelectedKeywords((prev) =>
