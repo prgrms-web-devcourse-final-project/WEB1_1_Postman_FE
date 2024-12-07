@@ -104,10 +104,6 @@ export const router = createBrowserRouter([
                 path: '/share',
                 element: <SharePage />
             },
-            // {
-            //     path: '/letter/:type/:lat?/:lot?/:letterId',
-            //     element: <LetterDetailPage />
-            // },
             {
                 path: '/letter/reply/:id',
                 element: <ReplyLetterDetailPage />

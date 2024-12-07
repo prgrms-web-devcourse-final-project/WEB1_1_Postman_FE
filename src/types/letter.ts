@@ -41,7 +41,6 @@ export type NearbyLettersResponseType = {
         description: string;
     }[];
 };
-
 export type NearbyLettersDetailResponseType = {
     title: string;
     content: string;
@@ -53,7 +52,6 @@ export type NearbyLettersDetailResponseType = {
     label: string;
     createdAt: string;
 };
-
 export type GetKeywordLetterDetailResponseType = {
     letterId: number;
     title: string;

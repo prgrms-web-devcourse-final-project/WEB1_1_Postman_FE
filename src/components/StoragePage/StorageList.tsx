@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BottleLetter } from '../Common/BottleLetter/BottleLetter';
 import { Itembox } from '../Common/Itembox/Itembox';
 import { getLetter } from '@/service/storage/getLetter';
+import { useNavigate } from 'react-router-dom';
 
 interface Letter {
     letterId: number;
@@ -25,6 +26,8 @@ type StorageListProps = {
 };
 
 export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
+    const navigate = useNavigate();
+
     // const queryClient = useQueryClient();
     // const { data, error, fetchNextPage, hasNextPage, isFetchNextPage } =
     //     useInfiniteFetch();
@@ -165,7 +168,7 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                     </button>
                 </div>
                 {/* 삭제 섹션 */}
-                <div className="flex flex-row gap-3 justify-between text-sm w-full">
+                <div className="flex flex-row justify-between w-full gap-3 text-sm">
                     <div className="flex flex-row items-center gap-1">
                         <input
                             type="checkbox"
@@ -181,12 +184,12 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                         />
                         <label>전체</label>
                     </div>
-                    <button className="bg-sample-gray px-2 py-1">삭제</button>
+                    <button className="px-2 py-1 bg-sample-gray">삭제</button>
                 </div>
                 {groupedLetters.map((dayGroup) => (
                     <div key={dayGroup.date} className="flex flex-col gap-3">
                         {/* 날짜 섹션 */}
-                        <div className="text-md font-medium">
+                        <div className="font-medium text-md">
                             {dayGroup.date}
                         </div>
                         {/* 해당 날짜의 편지들 */}
@@ -213,7 +216,19 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                                 : false
                                         }
                                     />
-                                    <div className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray">
+                                    <div
+                                        className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray cursor-pointer"
+                                        onClick={() => {
+                                            if (
+                                                type === 'keyword' ||
+                                                type === 'map'
+                                            ) {
+                                                navigate(
+                                                    `/letter/${type}/${letter.letterId}`
+                                                );
+                                            }
+                                        }}
+                                    >
                                         <Itembox>
                                             <BottleLetter Letter={letter} />
                                         </Itembox>
@@ -223,7 +238,7 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                                     ? '보낸 편지'
                                                     : '받은 편지'}
                                             </div>
-                                            <h3 className="font-bold text-sm">
+                                            <h3 className="text-sm font-bold">
                                                 {letter.title}
                                             </h3>
                                         </div>
