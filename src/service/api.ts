@@ -19,7 +19,6 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
     const instance = axios.create({
         baseURL: baseUrl,
         withCredentials: true,
-        retry: false,
         ...option
     });
 
@@ -43,45 +42,34 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
         },
         async function (error) {
             const originalRequest = error.config;
-
-            if (!originalRequest) {
-                return Promise.reject(error);
-            }
-
-            // 액세스토큰 에러가 아니거나, 이미 재시도된 요청일 경우
-            if (error.response?.status !== 401 || originalRequest._retry) {
-                return Promise.reject(error);
-            }
-
-            originalRequest.retry = true;
-
-            try {
-                const refreshAccessTokenResponse = await refreshAccessToken();
-
-                if (refreshAccessTokenResponse.isSuccess) {
-                    console.log('액세스 토큰 재발급됨');
-                    const newAccessToken =
-                        refreshAccessTokenResponse.result!.newAccessToken;
-                    tokenStorage.setAccessToken(newAccessToken);
-                    // 실패했던 요청을 재요청
-                    originalRequest.headers['Authorization'] =
-                        `Bearer ${newAccessToken}`;
-                    return instance(originalRequest);
+            console.log(originalRequest);
+            if (error.response?.status === 401) {
+                try {
+                    originalRequest._retry = true;
+                    const refreshAccessTokenResponse =
+                        await refreshAccessToken();
+                    // 재발급 성공
+                    if (refreshAccessTokenResponse.isSuccess) {
+                        const newAccessToken =
+                            refreshAccessTokenResponse.result.newAccessToken;
+                        console.log('액세스 토큰 재발급됨');
+                        tokenStorage.setAccessToken(newAccessToken);
+                        // 리퀘스트 재요청
+                        return instance(originalRequest);
+                    }
+                    console.log('리프레시 토큰 만료');
+                    logout();
+                    window.location.href = '/login';
+                    return Promise.reject(error);
+                } catch (error) {
+                    return Promise.reject(error);
                 }
-                console.log('로그아웃');
-                logout();
-                // window.location.href = '/login';
-            } catch (error) {
-                logout();
-                window.location.href = '/login';
-                return Promise.reject(error);
             }
             return Promise.reject(error);
         }
     );
 
     instance.interceptors.response.use(
-
         (response) => {
             if (response.data.isSuccess === false) {
                 throw formatApiError(response.data.code, response.data.message);
@@ -89,13 +77,13 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
             return response;
         },
         (error) => {
+            console.error(error);
             // 빌드 오류떠서 이렇게 뒀습니다...
             if (error)
                 throw formatApiError(
                     'ERROR500',
                     '네트워크 요청에 실패했습니다.'
                 );
-
         }
     );
 

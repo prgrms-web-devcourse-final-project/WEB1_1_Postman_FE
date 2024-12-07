@@ -1,15 +1,11 @@
 import { defaultApi } from '@/service/api';
 import { UserType } from '@/types/user';
 
-type getUserInfoResponseType = UserType | null;
+type getUserInfoResponseType = UserType;
 
 export async function getUserInfo(): Promise<getUserInfoResponseType> {
     const api = defaultApi();
-    try {
-        const response = await api.get('/user');
-        console.log(response);
-        return response.data.result;
-    } catch (error) {
-        console.error(error);
-    }
+
+    const response = await api.get('/user');
+    return response.data.result;
 }
