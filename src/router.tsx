@@ -23,7 +23,6 @@ import {
     MapLetterDetailPage,
     MapLetterArchieveDetailContainerPage
 } from './pages';
-import { Margin } from './components/Common/Margin/Margin';
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';

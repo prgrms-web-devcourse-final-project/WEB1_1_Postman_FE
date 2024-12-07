@@ -12,7 +12,7 @@ export const MapLetterArchieveDetailContainerPage = () => {
     };
 
     return (
-        <div>
+        <div className="w-full min-h-screen">
             <TopBar handleBackClick={onBackClick} />
             <MapLetterArchieveDetailContainer />
             <NavigationBar />
