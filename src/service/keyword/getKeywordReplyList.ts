@@ -1,6 +1,6 @@
 import { defaultApi } from '@/service/api';
 import { ApiResponseType } from '@/types/apiResponse';
-import { KeywordReplyListResponseType } from '@/types/letter';
+import { ReplyListResponseType } from '@/types/letter';
 
 type KeywordReplyListRequestProps = {
     letterId: number;
@@ -9,7 +9,7 @@ type KeywordReplyListRequestProps = {
     sort: string;
 };
 
-type KeywordReplyListResponse = ApiResponseType<KeywordReplyListResponseType>;
+type KeywordReplyListResponse = ApiResponseType<ReplyListResponseType>;
 
 export async function getKeywordReplyList({
     letterId,

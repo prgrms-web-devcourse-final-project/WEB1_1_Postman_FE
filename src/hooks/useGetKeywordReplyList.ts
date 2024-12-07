@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getKeywordReplyList } from '@/service/keyword/getKeywordReplyList';
-import { KeywordReplyListResponseType } from '@/types/letter';
+import { ReplyListResponseType } from '@/types/letter';
 
 type KeywordReplyListRequestProps = {
     letterId: number;
@@ -15,7 +15,7 @@ export const useGetKeywordReplyList = ({
     size,
     sort
 }: KeywordReplyListRequestProps) => {
-    return useQuery<KeywordReplyListResponseType, Error>({
+    return useQuery<ReplyListResponseType, Error>({
         queryKey: ['getKeywordReplyLists', letterId, page, size, sort],
         queryFn: async () => {
             const response = await getKeywordReplyList({
