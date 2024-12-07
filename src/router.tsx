@@ -134,7 +134,7 @@ export const router = createBrowserRouter([
             { path: 'select', element: <SelectItemPage /> },
             { path: 'success', element: <SuccessLetterPage /> },
             {
-                path: '/letter/:type/:lat?/:lot?/:letterId',
+                path: '/letter/:type/:letterId',
                 element: <LetterDetailPage />
             }
         ]
