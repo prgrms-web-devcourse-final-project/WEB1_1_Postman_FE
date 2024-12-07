@@ -5,8 +5,6 @@ import { BottomSheetContent } from '@/components/HomePage/BottomSheet/BottomShee
 import { LetterContainer } from '@/components/HomePage/LetterContainer/LetterContainer';
 import { WelcomeMessageContainer } from '@/components/HomePage/WelcomeMessageContainer/WelcomeMessageContainer';
 import { useUserStore } from '@/stores/useUserStore';
-
-import { Container } from '@/components/Common/Container/Container';
 import { useEffect, useState } from 'react';
 import { useGetRecommendLetter } from '@/hooks/useGetRecommendLetter';
 import { useGetRecentRelyLetter } from '@/hooks/useGetRecentRelyLetter';
@@ -22,7 +20,6 @@ export type RecommendLetter = {
     title: string;
     label: string;
 };
-
 
 export const HomePage = () => {
     const { user } = useUserStore();
@@ -72,29 +69,23 @@ export const HomePage = () => {
     }
 
     return (
-            <div className="flex flex-col gap-5">
-                <TopButtonContainer />
-                <Toggle
-                    isChecked={!toggle}
-                    onToggle={() => {
-                        setToggle(!toggle);
-                    }}
-                    leftLabel="추천"
-                    rightLabel="답장"
-                />
+        <div className="flex flex-col gap-5">
+            <Toggle
+                isChecked={!toggle}
+                onToggle={() => {
+                    setToggle(!toggle);
+                }}
+                leftLabel="추천"
+                rightLabel="답장"
+            />
 
-                <div>
-                    <WelcomeMessageContainer
-                        nickname={user?.nickname}
-                        newLetter={letters.length > 0}
-                    />
-                    <LetterContainer letters={letters} />
-                </div>
             <div>
-                <WelcomeMessageContainer nickname={user?.nickname} newLetter />
-                <LetterContainer />
+                <WelcomeMessageContainer
+                    nickname={user?.nickname}
+                    newLetter={letters.length > 0}
+                />
+                <LetterContainer letters={letters} />
             </div>
-
             <div className="flex justify-center px-20">
                 <button
                     onClick={() => {
