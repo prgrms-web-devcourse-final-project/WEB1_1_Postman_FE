@@ -10,7 +10,7 @@ export const MapLetterDetailPage = () => {
         navigate(-1);
     };
     return (
-        <div className="w-full h-full">
+        <div className="w-full min-h-screen">
             <TopBar handleBackClick={onBackClick} />
             <MapLetterDetailContainer />;
             <NavigationBar />
