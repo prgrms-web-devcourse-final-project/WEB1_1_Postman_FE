@@ -6,6 +6,7 @@ import { changeProfileImage } from '@/service/user';
 import { ProfileImageItemType } from '@/types/profileImage';
 import { SliderMenuContainer } from '../Common/SliderMenuContainer/SliderMenuContainer';
 import { useUserInfo } from './../../hooks/useUserInfo';
+import { logout } from '@/service/auth/logout';
 
 // 샘플 데이터
 export const PROFILE_IMAGES = [
@@ -45,6 +46,8 @@ export const ProfileImageSection = ({
     const { addToast } = useToastStore();
     const { handleGetUserInfo } = useUserInfo();
 
+    if (user === null) logout();
+
     const handleDismiss = () => {
         onEditingChange(false);
     };
@@ -53,10 +56,12 @@ export const ProfileImageSection = ({
         imageItem: ProfileImageItemType
     ) => {
         try {
-            const response = await changeProfileImage(imageItem.url);
+            const response = await changeProfileImage({
+                imageUrl: imageItem.url
+            });
             if (response) {
                 addToast('프로필 이미지가 변경되었습니다.', 'success');
-                console.log('이미지:', user.profileImageUrl);
+                console.log('이미지:', user?.profileImageUrl);
                 handleGetUserInfo();
                 handleDismiss();
             }
@@ -106,7 +111,7 @@ export const ProfileImageSection = ({
                 width="100px"
                 height="100px"
                 imageItem={{
-                    url: user.profileImageUrl
+                    url: user?.profileImageUrl || '/sample.jpg'
                 }}
             />
             {renderSliderMenuContainer()}

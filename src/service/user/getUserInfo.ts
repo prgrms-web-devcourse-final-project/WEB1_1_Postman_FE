@@ -11,5 +11,6 @@ export async function getUserInfo(): Promise<getUserInfoResponseType> {
         return response.data.result;
     } catch (error) {
         console.error(error);
+        return null;
     }
 }
