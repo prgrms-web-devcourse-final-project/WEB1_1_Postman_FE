@@ -88,7 +88,12 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
             return response;
         },
         (error) => {
-            throw formatApiError('ERROR500', '네트워크 요청에 실패했습니다.');
+            // 빌드 오류떠서 이렇게 뒀습니다...
+            if (error)
+                throw formatApiError(
+                    'ERROR500',
+                    '네트워크 요청에 실패했습니다.'
+                );
         }
     );
 

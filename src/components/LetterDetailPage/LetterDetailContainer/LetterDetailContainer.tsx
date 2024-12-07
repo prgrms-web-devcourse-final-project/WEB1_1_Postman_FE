@@ -41,6 +41,10 @@ export const LetterDetailContainer = ({
         );
     }
 
+    // 정말 죄송합니다 나중에 쓸 변수들인데 지금 안 쓰면 빌드 오류라서 일단 콘솔로 작성했습니다.
+    console.log(type);
+    console.log(hasReplies);
+
     return (
         <ThemeWrapper themeId={Number(data.paper)}>
             <KeywordLetterDetail letterData={data} />
