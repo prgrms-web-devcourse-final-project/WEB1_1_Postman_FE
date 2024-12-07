@@ -41,7 +41,17 @@ export type NearbyLettersResponseType = {
         description: string;
     }[];
 };
-
+export type NearbyLettersDetailResponseType = {
+    title: string;
+    content: string;
+    description: string;
+    profileImg?: string;
+    font: string;
+    paper: string;
+    isOwner: boolean;
+    label: string;
+    createdAt: string;
+};
 export type GetKeywordLetterDetailResponseType = {
     letterId: number;
     title: string;
