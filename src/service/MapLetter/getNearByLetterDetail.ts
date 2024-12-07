@@ -5,7 +5,7 @@ import { NearbyLettersDetailResponseType } from '@/types/letter';
 type NearbyLettersRequestProps = {
     latitude: string;
     longitude: string;
-    letterId: number;
+    letterId: string;
 };
 
 type NearbyLettersResponse = ApiResponseType<NearbyLettersDetailResponseType>;
