@@ -29,9 +29,9 @@ export const LetterInfoContainer = ({
                     <img src="/bottle.png" alt="Bottle" className="w-20 h-20" />
                 </div>
                 <div className="flex flex-col h-20">
-                    <div className="flex-center gap-2">
+                    <div className="gap-2 flex-center">
                         <p className="text-sm text-gray-600">작성일: {date}</p>
-                        <DayCounter width="40px" daysLeft={daysLeft} />
+                        <DayCounter width="40px" createdAt={String(daysLeft)} />
                     </div>
 
                     <h3 className="text-lg font-semibold">{title}</h3>

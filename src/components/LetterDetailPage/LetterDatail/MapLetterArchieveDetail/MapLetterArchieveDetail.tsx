@@ -21,8 +21,7 @@ type MapLetterDetailProps = {
 };
 
 export const MapLetterArchieveDetail = ({
-    letterData,
-    letterId
+    letterData
 }: MapLetterDetailProps) => {
     const { title, content, createdAt, font, description, profileImg } =
         letterData;
@@ -31,7 +30,7 @@ export const MapLetterArchieveDetail = ({
             <Margin top={20} />
             <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
                 <div className="absolute top-0 right-0">
-                    <DeleteButton id={String(letterId)} />
+                    <DeleteButton />
                 </div>
                 <img
                     src={profileImg}
