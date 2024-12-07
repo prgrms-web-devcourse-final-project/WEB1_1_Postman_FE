@@ -94,7 +94,7 @@ export default {
                     '@apply text-black hover:underline': ''
                 },
                 '.keyword-tag': {
-                    '@apply bg-primary rounded-2xl p-2': ''
+                    '@apply bg-white rounded-lg rounded-2xl p-2': ''
                 }
             });
         }
