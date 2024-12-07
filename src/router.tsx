@@ -58,11 +58,8 @@ const CommonLayout = () => (
 );
 
 const SimpleLayout = () => (
-    <div className="flex flex-col h-full">
-        <Container>
-            <Outlet />
-        </Container>
-        <NavigationBar />
+    <div>
+        <Outlet />
     </div>
 );
 
