@@ -12,7 +12,7 @@ export const Toggle = ({
     rightLabel
 }: ToggleProps) => {
     return (
-        <div className="relative flex items-center w-fit h-[30px] bg-[#F7FBFE] rounded-full border border-[rgba(34,184,239,0.13)] z-20">
+        <div className="relative flex items-center w-fit h-[30px] bg-[#F7FBFE] rounded-full border border-[rgba(34,184,239,0.13)] z-[1]">
             <div
                 onClick={onToggle}
                 className={`absolute w-1/2 left-0 h-[30px] bg-[rgb(34,184,239)] rounded-full cursor-pointer transition-all duration-200 ease-in-out ${

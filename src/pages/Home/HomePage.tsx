@@ -7,16 +7,67 @@ import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/Top
 import { WelcomeMessageContainer } from '@/components/HomePage/WelcomeMessageContainer/WelcomeMessageContainer';
 import { useUserStore } from '@/stores/useUserStore';
 import { Container } from '@/components/Common/Container/Container';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useGetRecommendLetter } from '@/hooks/useGetRecommendLetter';
+import { useGetRecentRelyLetter } from '@/hooks/useGetRecentRelyLetter';
+
+export type ReplyLetter = {
+    type: 'MAP' | 'KEYWORD';
+    labelUrl: string;
+    letterId: number;
+};
+
+export type RecommendLetter = {
+    letterId: number;
+    title: string;
+    label: string;
+};
 
 export const HomePage = () => {
     const { user } = useUserStore();
 
     const [open, setOpen] = useState(false);
     const [toggle, setToggle] = useState(true);
+    const [letters, setLetters] = useState<ReplyLetter[] | RecommendLetter[]>(
+        []
+    );
 
     function onDismiss() {
         setOpen(false);
+    }
+
+    const {
+        // data: recommendedLetterData,
+        refetch: refetchRecommendedLetters,
+        isLoading: isRecommendedLetterLoading,
+        isError: isRecommendedLetterError
+    } = useGetRecommendLetter();
+
+    const {
+        // data: recentRelyLetterData,
+        refetch: refetchRecentRelyLetters,
+        isLoading: isRecentRelyLetterLoading,
+        isError: isRecentRelyLetterError
+    } = useGetRecentRelyLetter();
+
+    useEffect(() => {
+        if (toggle) {
+            refetchRecommendedLetters().then((response) => {
+                setLetters(response?.data?.result || []);
+            });
+        } else {
+            refetchRecentRelyLetters().then((response) => {
+                setLetters(response?.data?.result || []);
+            });
+        }
+    }, [toggle, refetchRecommendedLetters, refetchRecentRelyLetters]);
+
+    if (isRecommendedLetterLoading || isRecentRelyLetterLoading) {
+        return <p>로딩 중...</p>;
+    }
+
+    if (isRecommendedLetterError || isRecentRelyLetterError) {
+        return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
     }
 
     return (
@@ -35,9 +86,9 @@ export const HomePage = () => {
                 <div>
                     <WelcomeMessageContainer
                         nickname={user?.nickname}
-                        newLetter
+                        newLetter={letters.length > 0}
                     />
-                    <LetterContainer />
+                    <LetterContainer letters={letters} />
                 </div>
 
                 <div className="flex justify-center px-20">

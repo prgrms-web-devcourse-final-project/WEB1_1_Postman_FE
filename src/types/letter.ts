@@ -41,16 +41,16 @@ export type NearbyLettersResponseType = {
         description: string;
     }[];
 };
-
-export type GetRecentRelyResponseType = {
-    isSuccess: boolean;
-    code: string;
-    message: string;
-    result: {
-        type: 'MAP' | 'KEYWORD';
-        labelUrl: string;
-        letterId: number;
-    }[];
+export type NearbyLettersDetailResponseType = {
+    title: string;
+    content: string;
+    description: string;
+    profileImg?: string;
+    font: string;
+    paper: string;
+    isOwner: boolean;
+    label: string;
+    createdAt: string;
 };
 export type GetKeywordLetterDetailResponseType = {
     letterId: number;
