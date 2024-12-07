@@ -10,14 +10,35 @@
 }
 
 @layer base {
-    html,
+    html {
+        @apply w-full h-full;
+    }
     body {
-        @apply h-full;
+        @apply w-full h-full m-0 p-0 flex justify-center;
     }
     #root {
-        @apply mx-auto min-w-[375px] max-w-[477px]  bg-white border h-auto min-h-screen text-sample-black;
+        @apply min-w-[375px] 
+          max-w-[477px]          
+          w-full             
+          bg-white               
+          border                
+          min-h-screen            
+          text-sample-black
+          flex                  
+          flex-col;
     }
 }
+
+@layer utilities {
+    .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+}
+
 @layer components {
     .btn-primary {
         @apply w-full p-2 transition-colors border rounded-md border-sample-blue text-sample-blue hover:bg-sample-blue hover:text-white;

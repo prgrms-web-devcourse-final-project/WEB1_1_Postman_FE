@@ -1,9 +1,21 @@
 import React from 'react';
 
 interface ContainerProps {
+    px?: number;
+    pb?: number;
     children?: React.ReactNode;
 }
 
-export const Container: React.FC<ContainerProps> = ({ children }) => {
-    return <div className="px-6 pb-[100px] w-full h-full">{children}</div>;
+export const Container: React.FC<ContainerProps> = ({
+    px = 0,
+    pb = 6,
+    children
+}) => {
+    return (
+        <div
+            className={`border-box px-${px} py-6 w-full h-full overflow-auto scrollbar-hide`}
+        >
+            {children}
+        </div>
+    );
 };

@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EmailInput } from '@/components/Common/Input/EmailInput';
 import { PasswordInput } from '@/components/Common/Input/PasswordInput';
-import { Container } from '@/components/Common/Container/Container';
 import { useToastStore } from '@/hooks/useToastStore';
 import { useLogin } from './../../../hooks/useLogin';
 
@@ -33,40 +32,35 @@ export const LoginPage = () => {
     };
 
     return (
-        <Container>
-            <div className="flex flex-col gap-3 h-full my-[50px]">
-                <form
-                    className=" flex flex-col gap-5"
-                    onSubmit={handleSubmit}
-                    noValidate
-                >
-                    <h2 className="font-bold text-2xl ">로그인</h2>
-                    <div className="flex flex-col gap-5">
-                        <div className="flex flex-col gap-2">
-                            <EmailInput></EmailInput>
-                            <PasswordInput></PasswordInput>
-                        </div>
-                        <div className="flex flex-row gap-1 w-full">
-                            <button
-                                className="btn-primary-filled"
-                                type="submit"
-                            >
-                                로그인
-                            </button>
-                            <button
-                                className="btn-primary"
-                                type="button"
-                                onClick={handleNavigateRegister}
-                            >
-                                회원가입
-                            </button>
-                        </div>
+        <div className="flex flex-col gap-3 h-full my-[50px]">
+            <form
+                className=" flex flex-col gap-5"
+                onSubmit={handleSubmit}
+                noValidate
+            >
+                <h2 className="font-bold text-2xl ">로그인</h2>
+                <div className="flex flex-col gap-5">
+                    <div className="flex flex-col gap-2">
+                        <EmailInput></EmailInput>
+                        <PasswordInput></PasswordInput>
                     </div>
-                </form>
-                <div className="flex flex- gap-3">
-                    <div className="text-caption">회원 정보 찾기</div>
+                    <div className="flex flex-row gap-1 w-full">
+                        <button className="btn-primary-filled" type="submit">
+                            로그인
+                        </button>
+                        <button
+                            className="btn-primary"
+                            type="button"
+                            onClick={handleNavigateRegister}
+                        >
+                            회원가입
+                        </button>
+                    </div>
                 </div>
+            </form>
+            <div className="flex flex- gap-3">
+                <div className="text-caption">회원 정보 찾기</div>
             </div>
-        </Container>
+        </div>
     );
 };

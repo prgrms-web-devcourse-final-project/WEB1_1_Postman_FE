@@ -1,4 +1,3 @@
-import { Container } from '@/components/Common/Container/Container';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { TitleClosedTopBar } from '@/components/Common/TitleClosedTopBar/TitleClosedTopBar';
 import { NotificationContainer } from '@/components/NotificationPage/NotificationContainer';
@@ -77,26 +76,21 @@ export const NotificationPage = () => {
         }));
 
     return (
-        <Container>
+        <>
             <Margin top={20} />
-
             <TitleClosedTopBar title="알림" />
-
             <Margin top={20} />
-
             <div>
                 <h3 className="text-[14px] text-[#22B8EF]">새로운 소식</h3>
                 <Margin top={8} />
                 <NotificationContainer notifications={unReadNotifications} />
             </div>
-
             <Margin top={20} />
-
             <div>
                 <h3 className="text-[14px] text-[#22B8EF]">이전 알림</h3>
                 <Margin top={8} />
                 <NotificationContainer notifications={readNotifications} />
             </div>
-        </Container>
+        </>
     );
 };

@@ -3,9 +3,9 @@ import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/Sli
 import { Toggle } from '@/components/Common/Toggle/Toggle';
 import { BottomSheetContent } from '@/components/HomePage/BottomSheet/BottomSheetContent';
 import { LetterContainer } from '@/components/HomePage/LetterContainer/LetterContainer';
-import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
 import { WelcomeMessageContainer } from '@/components/HomePage/WelcomeMessageContainer/WelcomeMessageContainer';
 import { useUserStore } from '@/stores/useUserStore';
+
 import { Container } from '@/components/Common/Container/Container';
 import { useEffect, useState } from 'react';
 import { useGetRecommendLetter } from '@/hooks/useGetRecommendLetter';
@@ -22,6 +22,7 @@ export type RecommendLetter = {
     title: string;
     label: string;
 };
+
 
 export const HomePage = () => {
     const { user } = useUserStore();
@@ -71,7 +72,6 @@ export const HomePage = () => {
     }
 
     return (
-        <Container>
             <div className="flex flex-col gap-5">
                 <TopButtonContainer />
                 <Toggle
@@ -90,35 +90,38 @@ export const HomePage = () => {
                     />
                     <LetterContainer letters={letters} />
                 </div>
-
-                <div className="flex justify-center px-20">
-                    <button
-                        onClick={() => {
-                            setOpen(true);
-                        }}
-                        className="w-full h-[49px] text-sample-blue flex-center rounded-full border border-sample-blue"
-                    >
-                        키워드 설정
-                    </button>
-                </div>
-
-                <div className="mx-[-20px]">
-                    <BannerContainer />
-                </div>
-
-                <SliderMenuContainer
-                    open={open}
-                    onDismiss={onDismiss}
-                    snapPoints={() => [window.innerHeight * 0.95]}
-                >
-                    <BottomSheetContent
-                        onClick={() => {
-                            setOpen(false);
-                        }}
-                        nickname={user?.nickname}
-                    />
-                </SliderMenuContainer>
+            <div>
+                <WelcomeMessageContainer nickname={user?.nickname} newLetter />
+                <LetterContainer />
             </div>
-        </Container>
+
+            <div className="flex justify-center px-20">
+                <button
+                    onClick={() => {
+                        setOpen(true);
+                    }}
+                    className="w-full h-[49px] text-sample-blue flex-center rounded-full border border-sample-blue"
+                >
+                    키워드 설정
+                </button>
+            </div>
+
+            <div className="mx-[-20px]">
+                <BannerContainer />
+            </div>
+
+            <SliderMenuContainer
+                open={open}
+                onDismiss={onDismiss}
+                snapPoints={() => [window.innerHeight * 0.95]}
+            >
+                <BottomSheetContent
+                    onClick={() => {
+                        setOpen(false);
+                    }}
+                    nickname={user?.nickname}
+                />
+            </SliderMenuContainer>
+        </div>
     );
 };

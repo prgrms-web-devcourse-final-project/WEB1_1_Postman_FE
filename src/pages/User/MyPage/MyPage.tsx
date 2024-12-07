@@ -2,7 +2,6 @@ import { useUserStore } from '@/stores/useUserStore';
 import { ProfileSection } from '@/components/MyPage/ProfileSection';
 import { MenuListSection } from '@/components/MyPage/MenuListSection';
 import { KeywordListSection } from '@/components/MyPage/KeywordListSection';
-import { Container } from '@/components/Common/Container/Container';
 
 export const MyPage = () => {
     const { user } = useUserStore();
@@ -21,21 +20,19 @@ export const MyPage = () => {
         { content: '보관함', url: '/storage/bookmark' }
     ];
 
-    const labelMenuItems = [{ content: '라벨첩', url: '/mypage/label' }];
+    const labelMenuItems = [{ content: '라벨첩', url: '/labels' }];
 
     return (
-        <Container>
-            <div className="flex flex-col gap-8">
-                <h1 className="font-semibold text-gray-600 text-[21px]">
-                    마이페이지
-                </h1>
-                <div className="flex flex-col gap-10">
-                    <ProfileSection user={user!} />
-                    <MenuListSection menuItems={menuItems} />
-                    <MenuListSection menuItems={labelMenuItems} />
-                    <KeywordListSection keywords={sampleKeywords} />
-                </div>
+        <div className="flex flex-col gap-8">
+            <h1 className="font-semibold text-gray-600 text-[21px]">
+                마이페이지
+            </h1>
+            <div className="flex flex-col gap-10">
+                <ProfileSection user={user!} />
+                <MenuListSection menuItems={menuItems} />
+                <MenuListSection menuItems={labelMenuItems} />
+                <KeywordListSection keywords={sampleKeywords} />
             </div>
-        </Container>
+        </div>
     );
 };

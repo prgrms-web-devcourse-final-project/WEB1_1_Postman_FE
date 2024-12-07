@@ -24,6 +24,8 @@ import {
 import { Margin } from './components/Common/Margin/Margin';
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
+import { Container } from '@/components/Common/Container/Container';
+import { TopButtonContainer } from './components/HomePage/TopButtonContainer/TopButtonContainer';
 
 type RouteProps = {
     children: ReactNode;
@@ -44,18 +46,30 @@ export const PublicRoute = ({ children }: RouteProps) => {
 };
 
 const CommonLayout = () => (
-    <>
-        <Margin top={50}>
+    <div className="flex flex-col h-full">
+        <TopButtonContainer />
+        <Container px={6} pb={6}>
             <Outlet />
-        </Margin>
+        </Container>
         <NavigationBar />
-    </>
+    </div>
 );
 
 const SimpleLayout = () => (
-    <>
-        <Outlet />
-    </>
+    <div className="flex flex-col h-full">
+        <Container>
+            <Outlet />
+        </Container>
+        <NavigationBar />
+    </div>
+);
+
+const AuthLayout = () => (
+    <div className="flex flex-col h-full">
+        <Container px={6} pb={6}>
+            <Outlet />
+        </Container>
+    </div>
 );
 
 export const router = createBrowserRouter([
@@ -72,10 +86,7 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: <HomePage />
             },
-            {
-                path: '/mapexplorer',
-                element: <MapExplorerPage />
-            },
+
             {
                 path: '/mypage',
                 element: <MyPage />
@@ -119,6 +130,21 @@ export const router = createBrowserRouter([
         ]
     },
     {
+        path: '/',
+        element: (
+            <ProtectedRoute>
+                <SimpleLayout />
+            </ProtectedRoute>
+        ),
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/mapexplorer',
+                element: <MapExplorerPage />
+            }
+        ]
+    },
+    {
         path: '/letter',
         element: (
             <ProtectedRoute>
@@ -136,19 +162,22 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: '/login',
+        path: '/',
         element: (
             <PublicRoute>
-                <LoginPage />
+                <AuthLayout />
             </PublicRoute>
-        )
-    },
-    {
-        path: '/register',
-        element: (
-            <PublicRoute>
-                <RegisterPage />
-            </PublicRoute>
-        )
+        ),
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/login',
+                element: <LoginPage />
+            },
+            {
+                path: '/register',
+                element: <RegisterPage />
+            }
+        ]
     }
 ]);

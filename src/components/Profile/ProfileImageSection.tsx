@@ -56,6 +56,7 @@ export const ProfileImageSection = ({
             const response = await changeProfileImage(imageItem.url);
             if (response) {
                 addToast('프로필 이미지가 변경되었습니다.', 'success');
+                console.log('이미지:', user.profileImageUrl);
                 handleGetUserInfo();
                 handleDismiss();
             }

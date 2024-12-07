@@ -18,7 +18,7 @@ export const NavigationBar = () => {
     ];
 
     return (
-        <nav className="flex justify-around bg-white border-y p-3 fixed bottom-0 w-full z-[999] max-w-[473px]">
+        <nav className="flex justify-around bg-white border-y p-3 max-w-[473px]">
             {navItems.map((item) => (
                 <div className="flex justify-center flex-1" key={item.id}>
                     <NavigationItem

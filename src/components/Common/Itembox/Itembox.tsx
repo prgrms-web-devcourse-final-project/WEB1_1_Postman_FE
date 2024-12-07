@@ -14,13 +14,13 @@ export const Itembox = ({
     padding = '0',
     children
 }: ItemboxProps) => {
-    const itemboxScaleStyle = `w-[${width}] h-[${height}] p-${padding}`;
+    const itemboxScaleStyle = `w-[${width}] p-${padding}`;
 
     return (
         <div
-            className={`${itemboxScaleStyle} bg-white p-1 rounded-md flex items-center justify-center`}
+            className={`aspect-square bg-white p-1 rounded-md flex items-center justify-center border border-sample-gray aspect-square`}
         >
-            <div className="w-full h-full">{children}</div>
+            {children}
         </div>
     );
 };

@@ -81,6 +81,7 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
     );
 
     instance.interceptors.response.use(
+
         (response) => {
             if (response.data.isSuccess === false) {
                 throw formatApiError(response.data.code, response.data.message);
@@ -94,6 +95,7 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
                     'ERROR500',
                     '네트워크 요청에 실패했습니다.'
                 );
+
         }
     );
 

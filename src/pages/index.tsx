@@ -5,7 +5,7 @@ import { MapExplorerPage } from '@/pages/Map/MapExplorerPage';
 import { LoginPage } from '@/pages/User/Login/LoginPage';
 import { RegisterPage } from '@/pages/User/Register/RegisterPage';
 import { ArchivedPage } from '@/pages/ArchivedPage';
-import { LabelCollectionsPage } from '@/pages/LabelCollectionsPage';
+import { LabelCollectionsPage } from '@/pages/Storage/LabelCollectionsPage';
 import { LetterDetailPage } from '@/pages/Letter/Detail/LetterDetailPage';
 import { NotificationPage } from '@/pages/Notification/NotificationPage';
 import { ReplyLetterDetailPage } from '@/pages/Letter/Detail/ReplyLetterDetailPage';
