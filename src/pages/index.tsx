@@ -10,7 +10,7 @@ import { KeywordLetterDetailPage } from '@/pages/Letter/Detail/KeywordLetterDeta
 import { NotificationPage } from '@/pages/Notification/NotificationPage';
 import { ReplyLetterDetailPage } from '@/pages/Letter/Detail/ReplyLetterDetailPage';
 import { SentPage } from '@/pages/SentPage';
-import { SharePage } from '@/pages/SharePage';
+import { ProfileSharePage } from '@/pages/User/Profile/ProfileSharePage';
 import { LabelLotteryPage } from './Label/Lottery/LabelLotteryPage';
 import { SelectItemPage } from './Letter/SelectItem/SelectItemPage';
 import { MyPage } from '@/pages/User/MyPage/MyPage';
@@ -35,7 +35,7 @@ export {
     ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
-    SharePage,
+    ProfileSharePage,
     LabelLotteryPage,
     SelectItemPage,
     SuccessLetterPage,

@@ -13,7 +13,7 @@ import {
     ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
-    SharePage,
+    ProfileSharePage,
     LabelLotteryPage,
     SelectItemPage,
     SuccessLetterPage,
@@ -110,8 +110,8 @@ export const router = createBrowserRouter([
                 element: <SentPage />
             },
             {
-                path: '/share',
-                element: <SharePage />
+                path: '/profileshare',
+                element: <ProfileSharePage />
             },
             {
                 path: '/letter/:type/reply/:replyLetterId',
