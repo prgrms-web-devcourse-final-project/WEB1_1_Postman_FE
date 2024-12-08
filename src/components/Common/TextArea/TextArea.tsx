@@ -27,7 +27,7 @@ export const TextArea = ({
         let inputValue = e.target.value;
 
         if (textAreaRef.current) {
-            const textAreaHeight = textAreaRef.current.offsetHeight;
+            const textAreaHeight = textAreaRef.current.scrollHeight;
             const textAreaLineHeight = parseInt(
                 window.getComputedStyle(textAreaRef.current).lineHeight
             );
