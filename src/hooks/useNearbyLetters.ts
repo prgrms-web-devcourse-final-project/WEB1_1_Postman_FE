@@ -52,8 +52,8 @@ export const useNearbyLetters = (
             );
         },
         enabled: !!currentLocation,
-
-        select: (data: NearbyLettersResponseType['result']) => data
+        select: (data: NearbyLettersResponseType['result']) => data,
+        refetchInterval: 45000
     });
 
     return {
