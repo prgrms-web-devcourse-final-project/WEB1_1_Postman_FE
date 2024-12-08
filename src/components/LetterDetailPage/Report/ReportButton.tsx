@@ -2,11 +2,7 @@ import { AiOutlineAlert } from 'react-icons/ai';
 import { useState } from 'react';
 import { ReportModal } from './ReportModal';
 
-type ReportButtonProps = {
-    id: string;
-};
-
-export const ReportButton = ({ id }: ReportButtonProps) => {
+export const ReportButton = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -32,7 +28,7 @@ export const ReportButton = ({ id }: ReportButtonProps) => {
                         onClick={(e) => e.stopPropagation()}
                         className="bg-white rounded-lg p-6"
                     >
-                        <ReportModal id={id} closeModal={closeModal} />
+                        <ReportModal closeModal={closeModal} />
                     </div>
                 </div>
             )}
