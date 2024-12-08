@@ -14,6 +14,8 @@ import { useNearbyLetters } from '@/hooks/useNearbyLetters';
 import { NearbyLettersResponseType } from '@/types/letter';
 import { useLocationState } from '@/hooks/useLocationState';
 import { BottleLetter } from '@/components/Common/BottleLetter/BottleLetter';
+import { useNavigate } from 'react-router-dom';
+import { TopBar } from '@/components/Common/TopBar/TopBar';
 
 type MaplibreWithSearchProps = {
     onFocus: () => void;
@@ -34,26 +36,30 @@ export const MaplibreWithSearch = ({
         setNearbyLettersLength
     );
     const { nearbyLetters } = useNearbyLetters(currentLocation);
+    const navigate = useNavigate();
+
+    const onBackClick = () => {
+        navigate(-1);
+    };
 
     return (
-        <div className="relative h-[812px] w-full">
-            <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-2 left-1/2">
+        <div className="relative h-screen">
+            <TopBar handleBackClick={onBackClick} />
+            <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-10 left-1/2">
                 <input
                     type="text"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
-                    placeholder={'숨길 장소를 검색해보세요!'}
+                    placeholder={'원하는 위치를 검색해보세요!'}
                     className="rounded-md outline-none w-72"
                     onFocus={onFocus}
                 />
-                <button className="px-4 py-2">
-                    <IoIosSearch />
-                </button>
+                <IoIosSearch className="w-6 h-8 cursor-pointer" />
             </div>
             {searchedLocation?.name && (
-                <div className="absolute top-20 w-[360px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-slate-200 rounded-2xl p-2 flex items-center justify-between">
-                    <LuMapPin />
-                    <span className="flex-1 ml-2">{searchedLocation.name}</span>
+                <div className="absolute top-28 w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-slate-200 rounded-2xl p-2 flex items-center justify-between">
+                    <LuMapPin className="ml-2" />
+                    <span className="flex-1 ml-4">{searchedLocation.name}</span>
                     <LiaTimesSolid
                         className="cursor-pointer"
                         onClick={clearSearchedLocation}
