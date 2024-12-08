@@ -10,6 +10,7 @@ import { useGetRecommendLetter } from '@/hooks/useGetRecommendLetter';
 import { useGetRecentRelyLetter } from '@/hooks/useGetRecentRelyLetter';
 import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
 import { usePushNotification } from '@/hooks/usePushNotification ';
+import { usePushNotification } from '@/hooks/usePushNotification ';
 
 export type ReplyLetter = {
     type: 'MAP' | 'KEYWORD';
@@ -36,7 +37,6 @@ export const HomePage = () => {
         setOpen(false);
     }
 
-    // fcm 알람 설정
     usePushNotification();
 
     const {

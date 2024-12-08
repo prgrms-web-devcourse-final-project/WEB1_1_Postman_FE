@@ -3,7 +3,7 @@ name: postamn
 on:
     push:
         branches:
-            - develope
+            - chore-firebase-빌드-에러-수정-
 
 jobs:
     deploy:
