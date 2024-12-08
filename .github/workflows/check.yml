@@ -1,0 +1,28 @@
+name: PR Build Check
+
+on:
+    pull_request:
+        branches:
+            - develope
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Run Build
+              run: yarn build
+
+            - name: Comment on PR
+              uses: thollander/actions-comment-pull-request@v1
+              if: success() && github.event_name == 'pull_request'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  message: '✅ Build 성공!'

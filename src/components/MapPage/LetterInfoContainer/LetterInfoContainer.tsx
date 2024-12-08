@@ -28,7 +28,7 @@ export const LetterInfoContainer = ({
                     <img src="/bottle.png" alt="Bottle" className="w-20 h-20" />
                 </div>
                 <div className="flex flex-col h-20">
-                    <div className="flex-center gap-2">
+                    <div className="gap-2 flex-center">
                         <p className="text-sm text-gray-600">작성일: {date}</p>
                         <div className="p-1 bg-gray-100 flex-center rounded-xl">
                             <p className="text-sm  font-bold text-gray-500 text-nowrap">
