@@ -8,7 +8,7 @@ export type SendEmailResponse = ApiResponseType<string>;
 
 export type VerifyEmailProps = {
     email: string;
-    authNum: string;
+    code: string;
 };
 
 export type VerifyEmailResponse = ApiResponseType<null>;
