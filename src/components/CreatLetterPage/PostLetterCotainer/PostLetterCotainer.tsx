@@ -3,26 +3,36 @@ import { useState } from 'react';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { useAutoSave } from '@/hooks/useAutoSave';
 import { ThemeWrapper } from '../ThemeWrapper/ThemeWrapper';
 import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
+import { useAutoSave, useToastStore } from '@/hooks';
 
 export const PostLetterCotainer = () => {
-    const [title, setTitle] = useState<string>('');
-    const [letter, setLetter] = useState<string>('1');
-    const [letterContent, setLetterContent] = useState<string>('');
-    const [font, setFont] = useState<string>('initial');
-    const [theme, setTheme] = useState<number>(1);
-
-    const navigate = useNavigate();
-
-    const { setValue: saveTitle } = useLocalStorage('title', '');
-    const { setValue: saveLetterContent } = useLocalStorage(
-        'letterContent',
+    const { setValue: saveTitle, storedValue: storedTitle } = useLocalStorage(
+        'title',
         ''
     );
-    const { setValue: saveFont } = useLocalStorage('font', '');
-    const { setValue: saveLetter } = useLocalStorage('letter', '');
+    const { setValue: saveLetterContent, storedValue: storedContent } =
+        useLocalStorage('letterContent', '');
+    const { setValue: saveFont, storedValue: storedFont } = useLocalStorage(
+        'font',
+        ''
+    );
+    const { setValue: saveLetter, storedValue: storedLetter } = useLocalStorage(
+        'letter',
+        ''
+    );
+
+    const { addToast } = useToastStore();
+
+    const [title, setTitle] = useState<string>(storedTitle || ' ');
+    const [letter, setLetter] = useState<string>(storedLetter || '1');
+    const [letterContent, setLetterContent] = useState<string>(
+        storedContent || ' '
+    );
+    const [font, setFont] = useState<string>(storedFont || 'initial');
+
+    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
@@ -36,7 +46,7 @@ export const PostLetterCotainer = () => {
         saveLetter(letter);
     };
 
-    useAutoSave(saveLetterData, 20000);
+    useAutoSave(saveLetterData, 10000);
 
     return (
         <>
@@ -45,11 +55,18 @@ export const PostLetterCotainer = () => {
                     navigate(-1);
                 }}
                 handleSuccesClick={() => {
+                    if (!title.trim() && !letterContent.trim()) {
+                        addToast(
+                            '공백을 제외한 제목과 내용을 입력해주세요',
+                            'warning'
+                        );
+                        return;
+                    }
                     saveLetterData();
                     navigate('/letter/select');
                 }}
             />
-            <ThemeWrapper themeId={theme}>
+            <ThemeWrapper themeId={Number(letter)}>
                 <LetterInputForm
                     title={title}
                     handleChange={handleChange}
@@ -59,7 +76,6 @@ export const PostLetterCotainer = () => {
                     letter={letter}
                     setFont={setFont}
                     setLetter={setLetter}
-                    setTheme={setTheme}
                 />
             </ThemeWrapper>
         </>

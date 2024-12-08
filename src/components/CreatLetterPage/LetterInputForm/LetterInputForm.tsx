@@ -12,7 +12,6 @@ type LettetProps = {
     letter: string;
     setFont: React.Dispatch<React.SetStateAction<string>>;
     setLetter: React.Dispatch<React.SetStateAction<string>>;
-    setTheme: (theme: number) => void;
 };
 
 export const LetterInputForm = ({
@@ -23,8 +22,7 @@ export const LetterInputForm = ({
     font,
     letter,
     setFont,
-    setLetter,
-    setTheme
+    setLetter
 }: LettetProps) => {
     return (
         <>
@@ -53,7 +51,6 @@ export const LetterInputForm = ({
                 letter={letter}
                 setFont={setFont}
                 setLetter={setLetter}
-                setTheme={setTheme}
             />
         </>
     );
