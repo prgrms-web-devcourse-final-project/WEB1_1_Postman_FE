@@ -1,8 +1,8 @@
-import { NotificationProps } from '@/types/notification';
+import { NotificationItemItemProps } from '@/types/notification';
 import { NotificationItem } from './NotificationItem';
 
 type NotificationContainerProps = {
-    notifications: Array<NotificationProps>;
+    notifications: Array<NotificationItemItemProps>;
 };
 
 export const NotificationContainer = ({
@@ -11,7 +11,8 @@ export const NotificationContainer = ({
     return (
         <div>
             {notifications.map((notification, index) => {
-                const { type, createdAt, letterId, isRead } = notification;
+                const { type, createdAt, letterId, isRead, label } =
+                    notification;
 
                 return (
                     <div key={index} className="mb-4">
@@ -20,6 +21,7 @@ export const NotificationContainer = ({
                             createdAt={createdAt}
                             letterId={letterId}
                             isRead={isRead}
+                            label={label}
                         />
                     </div>
                 );
