@@ -25,4 +25,4 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  message: '✅ Build 성공!'
+                  message: '**✅ Build 성공!**'
