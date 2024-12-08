@@ -80,11 +80,6 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
             keywords: selectedKeywords,
             label: testLable[selectedLabel].imgSrc
         });
-
-        localStorage.removeItem('title');
-        localStorage.removeItem('letterContent');
-        localStorage.removeItem('letter');
-        localStorage.removeItem('font');
     };
 
     return (
