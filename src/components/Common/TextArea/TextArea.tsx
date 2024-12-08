@@ -18,14 +18,16 @@ export const TextArea = ({
 }: TextAreaProps) => {
     const [lineHeight, setLineHeight] = useState<number>(2.2);
     const [lineCount, setLineCount] = useState<number>(8);
+    const [textAreaHeight, setTextAreaHeight] = useState<number>(0);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     const { addToast } = useToastStore();
+
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         let inputValue = e.target.value;
 
         if (textAreaRef.current) {
-            const textAreaHeight = textAreaRef.current.scrollHeight;
+            const textAreaHeight = textAreaRef.current.offsetHeight;
             const textAreaLineHeight = parseInt(
                 window.getComputedStyle(textAreaRef.current).lineHeight
             );
@@ -33,14 +35,15 @@ export const TextArea = ({
             const calculatedLinesCount = Math.floor(
                 textAreaHeight / textAreaLineHeight
             );
-            if (calculatedLinesCount > 40) {
-                addToast('최대 40줄까지 작성이 가능합니다.', 'error');
-
+            if (calculatedLinesCount > 30) {
+                addToast('최대 30줄까지 작성이 가능합니다.', 'error');
                 return;
             }
 
             setLineCount(calculatedLinesCount);
+            setTextAreaHeight(textAreaHeight);
         }
+
         if (setValue) {
             setValue(inputValue);
         }
@@ -59,16 +62,25 @@ export const TextArea = ({
                 textAreaHeight / textAreaLineHeight
             );
             setLineCount(calculatedLinesCount);
+            setTextAreaHeight(textAreaHeight);
         }
     }, [value]);
 
     const renderLineImages = () => {
-        return Array.from({ length: lineCount }).map((_, index) => (
+        const lineImages = Array.from({ length: lineCount }).map((_, index) => (
             <React.Fragment key={index}>
-                <img src={'/to_line.f4c129e6.svg'} className="w-full" />
+                <img
+                    src={'/to_line.f4c129e6.svg'}
+                    className="w-full"
+                    style={{
+                        objectFit: 'contain'
+                    }}
+                />
                 <Margin top={28} />
             </React.Fragment>
         ));
+
+        return <>{lineImages}</>;
     };
 
     useEffect(() => {
@@ -77,6 +89,8 @@ export const TextArea = ({
                 setLineHeight(
                     2.2 + (textAreaRef.current.offsetWidth - 281) * 0.0018
                 );
+                setTextAreaHeight(textAreaRef.current.scrollHeight);
+                console.log(textAreaRef.current.scrollHeight);
             }
         };
 
@@ -86,7 +100,7 @@ export const TextArea = ({
     }, []);
 
     return (
-        <div>
+        <div className="relative">
             <textarea
                 className={clsx(
                     `w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px] focus:outline-none`,
@@ -102,7 +116,10 @@ export const TextArea = ({
                 readOnly={isReadonly}
             />
 
-            <div className="absolute top-0 w-full mt-[30px]">
+            <div
+                className="absolute top-0 w-full mt-[30px] overflow-hidden"
+                style={{ maxHeight: textAreaHeight }}
+            >
                 {renderLineImages()}
             </div>
         </div>
