@@ -1,6 +1,6 @@
 import { Margin } from '@/components/Common/Margin/Margin';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useDeleteKeywordLetterReplyKeywordLetter } from '@/hooks/useDeleteKeywordLetter';
+import { useDeleteKeywordLetter } from '@/hooks/useDeleteKeywordLetter';
 import { useToastStore } from '@/hooks';
 
 type DeleteModalProps = {
@@ -15,7 +15,7 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
     }>();
     const transformedLetterType = dataType === 'sent' ? 'SEND' : 'RECEIVE';
 
-    const mutation = useDeleteKeywordLetterReplyKeywordLetter({
+    const mutation = useDeleteKeywordLetter({
         letterId: Number(letterId),
         boxType: transformedLetterType
     });
