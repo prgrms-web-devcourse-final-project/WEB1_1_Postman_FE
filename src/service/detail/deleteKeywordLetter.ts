@@ -8,7 +8,7 @@ type deleteKeywordLettersRequestProps = {
 
 type deleteKeywordLettersResponse = ApiResponseType<string>;
 
-export async function deleteKeywordLetterReplyKeywordLetter({
+export async function deleteKeywordLetter({
     letterId,
     boxType
 }: deleteKeywordLettersRequestProps): Promise<deleteKeywordLettersResponse> {

@@ -1,18 +1,18 @@
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
-import { deleteKeywordLetterReplyKeywordLetter } from '@/service/detail/deleteKeywordLetter';
+import { deleteKeywordLetter } from '@/service/detail/deleteKeywordLetter';
 
-type UseDeleteKeywordLetterReplyKeywordLetterProps = {
+type UseDeleteKeywordLetterProps = {
     letterId: number;
     boxType: string;
 };
 
-export const useDeleteKeywordLetterReplyKeywordLetter = (
-    { letterId, boxType }: UseDeleteKeywordLetterReplyKeywordLetterProps,
+export const useDeleteKeywordLetter = (
+    { letterId, boxType }: UseDeleteKeywordLetterProps,
     options?: UseMutationOptions<string, Error, void>
 ) => {
     return useMutation<string, Error, void>({
         mutationFn: async () => {
-            const response = await deleteKeywordLetterReplyKeywordLetter({
+            const response = await deleteKeywordLetter({
                 letterId,
                 boxType
             });
