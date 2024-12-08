@@ -123,7 +123,7 @@ export const useRegisterForm = () => {
         try {
             const response = await verifyEmail({
                 email: formState.email,
-                authNum: formState.authNum
+                code: formState.authNum
             });
             const isVerifySuccess = await handleVerifyEmailResponse(response);
             if (isVerifySuccess) {

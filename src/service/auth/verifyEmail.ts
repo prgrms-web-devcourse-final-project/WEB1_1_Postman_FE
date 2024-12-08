@@ -4,16 +4,17 @@ import { VerifyEmailProps, VerifyEmailResponse } from '@/types/register';
 
 export async function verifyEmail({
     email,
-    authNum
+    code
 }: VerifyEmailProps): Promise<VerifyEmailResponse> {
     const api = defaultApi();
     try {
         const response = await api.post('/user/email/verify', {
             email,
-            authNum
+            code
         });
         return response.data;
     } catch (error) {
+        console.error('이메일 인증 확인 에러:', error);
         if (error instanceof AxiosError && error.response?.data) {
             throw error.response.data;
         }
