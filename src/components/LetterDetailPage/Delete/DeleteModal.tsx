@@ -3,7 +3,9 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useDeleteKeywordLetter } from '@/hooks/useDeleteKeywordLetter';
 import { useDeleteMapSentLetter } from '@/hooks/useDeleteMapSentLetter';
 import { useDeleteKeywordReplyLetter } from '@/hooks/useDeleteKeywordReplyLetter';
+
 import { useToastStore } from '@/hooks';
+import { useDeleteMapReceivedLetter } from '@/hooks/useDeleteMapReceivedtLetter';
 
 type DeleteModalProps = {
     closeModal: () => void;
@@ -33,12 +35,18 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
         boxType: transformedLetterType
     });
 
+    const mapReceivedMutation = useDeleteMapReceivedLetter({
+        letterIds: [Number(letterId)]
+    });
+
     const mutation =
         letterType === 'keyword'
             ? dataType === 'received'
                 ? keywordReplyMutation
                 : keywordMutation
-            : mapMutation;
+            : letterType === 'map' && dataType === 'received'
+              ? mapReceivedMutation
+              : mapMutation;
 
     const { addToast } = useToastStore();
 
