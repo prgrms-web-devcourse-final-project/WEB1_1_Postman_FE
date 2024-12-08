@@ -7,12 +7,20 @@ export const usePushNotification = () => {
     const { addToast } = useToastStore();
 
     useEffect(() => {
+        const isNotificationSet = localStorage.getItem('isNofication');
+
+        if (isNotificationSet === 'true') {
+            return;
+        }
+
+        // 알림 권한 요청
         Notification.requestPermission().then((permission) => {
             if (permission === 'granted') {
                 getToken(firebaseMessaging, {
                     vapidKey: import.meta.env.VITE_FCM_VAPID_KEY
                 })
                     .then((token) => {
+                        localStorage.setItem('isNofication', 'true');
                         postToken({ token });
                     })
                     .catch((error) => {
@@ -24,6 +32,7 @@ export const usePushNotification = () => {
             }
         });
 
+        // 알림 메시지를 받을 때마다 처리
         onMessage(firebaseMessaging, (payload) => {
             if (payload.notification) {
                 addToast(`${payload.notification.body}`, 'success');
