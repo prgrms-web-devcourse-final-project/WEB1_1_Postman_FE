@@ -162,7 +162,7 @@ export const router = createBrowserRouter([
                 element: <MapLetterArchieveDetailContainerPage />
             },
             {
-                path: '/letter/keyword/:dataType/:letterId',
+                path: '/letter/keyword/:letterType/:dataType/:letterId',
                 element: <KeywordLetterDetailPage />
             }
         ]
