@@ -36,8 +36,6 @@ export const HomePage = () => {
         setOpen(false);
     }
 
-    usePushNotification();
-
     const {
         // data: recommendedLetterData,
         refetch: refetchRecommendedLetters,
