@@ -23,7 +23,8 @@ type MapLetterDetailProps = {
 };
 
 export const MapLetterArchieveDetail = ({
-    letterData
+    letterData,
+    letterId
 }: MapLetterDetailProps) => {
     const { title, content, createdAt, font, description, profileImg } =
         letterData;
