@@ -8,6 +8,7 @@ import { getLetter } from '@/service/storage/getLetter';
 import clsx from 'clsx';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { ReportButton } from '../../Report/ReportButton';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -89,50 +90,59 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
     };
 
     return (
-        <div className={clsx(font ? font : 'font-sans')}>
-            <Margin top={20} />
-            <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
-                <img
-                    src={profileImg}
-                    className="w-[15%] h-[15%] absolute top-[-7%] "
-                />
-                <h1>{title}</h1>
-                <img src={'/to_line.f4c129e6.svg'} className="w-full" />
-
-                <div className="relative">
-                    <TextArea value={content} font={font} isReadonly={true} />
-                </div>
-
-                <Margin top={30} />
-                <div className="flex justify-between w-full ">
-                    <p className="font-bold ">장소 힌트</p>
-                    <div>
-                        <p className="">{formatDate(createdAt)}</p>
-                    </div>
-                </div>
-                <div className="flex justify-between">
-                    <span className="block w-9/12 break-words whitespace-normal">
-                        {description}
-                    </span>
-                    <span>{DayCounter({ createdAt })}</span>
-                </div>
-                <Margin bottom={30} />
+        <>
+            <div className="absolute top-8 right-16 cursor-pointer">
+                <ReportButton />
             </div>
-            {!isOwner && (
-                <>
-                    <div className="flex">
-                        <button
-                            className="btn-base flex-center rounded-3xl h-[40px]"
-                            onClick={onStorageClick}
-                        >
-                            {isStored ? '보관됨' : '보관하기'}
-                        </button>
-                        <button className="btn-base flex-center rounded-3xl h-[40px]">
-                            편지에 답장하기
-                        </button>
+            <div className={clsx(font ? font : 'font-sans')}>
+                <Margin top={20} />
+                <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
+                    <img
+                        src={profileImg}
+                        className="w-[15%] h-[15%] absolute top-[-7%] "
+                    />
+                    <h1>{title}</h1>
+                    <img src={'/to_line.f4c129e6.svg'} className="w-full" />
+
+                    <div className="relative">
+                        <TextArea
+                            value={content}
+                            font={font}
+                            isReadonly={true}
+                        />
                     </div>
-                </>
-            )}
-        </div>
+
+                    <Margin top={30} />
+                    <div className="flex justify-between w-full ">
+                        <p className="font-bold ">장소 힌트</p>
+                        <div>
+                            <p className="">{formatDate(createdAt)}</p>
+                        </div>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="block w-9/12 break-words whitespace-normal">
+                            {description}
+                        </span>
+                        <span>{DayCounter({ createdAt })}</span>
+                    </div>
+                    <Margin bottom={30} />
+                </div>
+                {!isOwner && (
+                    <>
+                        <div className="flex">
+                            <button
+                                className="btn-base flex-center rounded-3xl h-[40px]"
+                                onClick={onStorageClick}
+                            >
+                                {isStored ? '보관됨' : '보관하기'}
+                            </button>
+                            <button className="btn-base flex-center rounded-3xl h-[40px]">
+                                편지에 답장하기
+                            </button>
+                        </div>
+                    </>
+                )}
+            </div>
+        </>
     );
 };
