@@ -8,6 +8,7 @@ import { useToastStore } from '@/hooks';
 import { postReportKeywordLetter } from '@/service/Report/postReportKeywordLetter';
 import { postReportKeywordReplyLetter } from '@/service/Report/postReportKeywordReplyLetter';
 import { postReportMapLetter } from '@/service/Report/postReportMapLetter';
+import { usePostReportMapReplyLetter } from '@/hooks/usePostReportMapReplyLetter';
 
 type ReportModalProps = {
     closeModal: () => void;
@@ -17,6 +18,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
     const [selectedReason, setSelectedReason] = useState<string>('');
     const [customReason, setCustomReason] = useState<string>('');
     const { pathname } = useLocation();
+    const mapType = pathname.split('/')[2];
     const letterType = pathname.split('/')[3];
     const { letterId, lat } = useParams<{ letterId: string; lat: string }>();
     const navigate = useNavigate();
@@ -67,8 +69,27 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
         }
     });
 
+    const reportMapReplyLetterMutation = usePostReportMapReplyLetter(
+        Number(letterId),
+        selectedReason === '기타' ? customReason : selectedReason
+    );
+
     const onReport = () => {
-        if (lat) {
+        if (mapType === 'map' && letterType === 'received') {
+            reportMapReplyLetterMutation.mutate(undefined, {
+                onSuccess: () => {
+                    closeModal();
+                    addToast(
+                        '지도 답장이 성공적으로 신고되었습니다.',
+                        'success'
+                    );
+                    navigate('/storage/map');
+                },
+                onError: () => {
+                    addToast('이미 신고가 접수되었습니다.', 'error');
+                }
+            });
+        } else if (lat) {
             reportMapLetterMutation.mutate(undefined, {
                 onSuccess: () => {
                     closeModal();

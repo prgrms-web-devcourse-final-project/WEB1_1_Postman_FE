@@ -6,6 +6,8 @@ import { DeleteButton } from '../../Delete/DeleteButton';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
 import { ReplyList } from '../../ReplyList/ReplyList';
+import { ReportButton } from '../../Report/ReportButton';
+import { useLocation } from 'react-router-dom';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -28,7 +30,9 @@ export const MapLetterArchieveDetail = ({
 }: MapLetterDetailProps) => {
     const { title, content, createdAt, font, description, profileImg } =
         letterData;
-
+    const { pathname } = useLocation();
+    const letterType = pathname.split('/')[2];
+    const receivedType = pathname.split('/')[3];
     const {
         data: mapReplyListData,
         isLoading: isMapReplyListDataLoading,
@@ -52,8 +56,11 @@ export const MapLetterArchieveDetail = ({
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
             <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
-                <div className="absolute top-0 right-0">
+                <div className="absolute top-0 right-0 flex">
                     <DeleteButton />
+                    {letterType === 'map' && receivedType == 'received' && (
+                        <ReportButton />
+                    )}
                 </div>
                 <img
                     src={profileImg}
