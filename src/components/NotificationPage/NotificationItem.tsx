@@ -1,18 +1,20 @@
-import { NotificationProps } from '@/types/notification';
 import { match } from 'ts-pattern';
 import { Margin } from '../Common/Margin/Margin';
+import { NotificationItemItemProps } from '@/types/notification';
 
 export const NotificationItem = ({
     type,
     createdAt,
     letterId,
-    isRead
-}: NotificationProps) => {
+    isRead,
+    label
+}: NotificationItemItemProps) => {
     // 메인 메시지
     const notificatioMessage = match(type)
-        .with('NEW_LETTER', () => '새로운 편지가 도착했어요')
-        .with('TARGET_LETTER', () => '지도 편지가 도착했어요')
-        .with('REPLY_LETTER', () => '답장이 도착했어요')
+        .with('NEW_LETTER', () => '새로운 익명의 편지가 도착했어요')
+        .with('TARGET_LETTER', () => '나에게 편지가 도착했어요')
+        .with('KEYWORD_REPLY', () => '내가 쓴 편지에 답장이 도착했어요')
+        .with('MAP_REPLY', () => '내가 쓴 편지에 답장이 도착했어요')
         .with('WARNING', () => '규정에 맞는 편지를 작성해주세요')
         .with('BAN', () => '정지된 계정입니다')
         .run();
@@ -41,8 +43,9 @@ export const NotificationItem = ({
         }
     };
 
-    // todo : 라벨 이미지 및 상세보기 라우팅 경로 지정
+    // 아직 사용하지 않아서 콘솔처리, 추후에 수정하겠습니다.
     const letterLink = `/detail/${letterId}`;
+    console.log(letterLink);
 
     // 읽음 여부에 따라 스타일 : 투명도 조절
     const isReadStyle = `flex gap-3 items-center ${
@@ -51,11 +54,14 @@ export const NotificationItem = ({
 
     return (
         <div className={isReadStyle}>
-            <img
-                className="size-[44px] bg-slate-400 rounded-full"
-                src=""
-                alt=""
-            />
+            {type !== 'WARNING' && type !== 'BAN' ? (
+                <img
+                    className="size-[44px] bg-slate-400 rounded-full"
+                    src={label}
+                    alt=""
+                />
+            ) : null}
+
             <div className="w-full">
                 <div className="flex items-center justify-between">
                     <p className="text-[16px] overflow-hidden">
