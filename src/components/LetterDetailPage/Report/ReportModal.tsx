@@ -7,6 +7,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useToastStore } from '@/hooks';
 import { postReportKeywordLetter } from '@/service/Report/postReportKeywordLetter';
 import { postReportKeywordReplyLetter } from '@/service/Report/postReportKeywordReplyLetter';
+import { postReportMapLetter } from '@/service/Report/postReportMapLetter';
 
 type ReportModalProps = {
     closeModal: () => void;
@@ -17,7 +18,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
     const [customReason, setCustomReason] = useState<string>('');
     const { pathname } = useLocation();
     const letterType = pathname.split('/')[3];
-    const { letterId } = useParams<{ letterId: string }>();
+    const { letterId, lat } = useParams<{ letterId: string; lat: string }>();
     const navigate = useNavigate();
     const { addToast } = useToastStore();
 
@@ -51,12 +52,44 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
         }
     });
 
+    const reportMapLetterMutation = useMutation<
+        ApiResponseType<PostReportKeywordLetterResponseType>,
+        Error,
+        void
+    >({
+        mutationFn: async () => {
+            const description =
+                selectedReason === '기타' ? customReason : selectedReason;
+            return await postReportMapLetter({
+                letterId: Number(letterId),
+                description
+            });
+        }
+    });
+
     const onReport = () => {
-        if (letterType === 'LETTER') {
+        if (lat) {
+            reportMapLetterMutation.mutate(undefined, {
+                onSuccess: () => {
+                    closeModal();
+                    addToast(
+                        '지도 편지가 성공적으로 신고되었습니다.',
+                        'success'
+                    );
+                    navigate('/mapexplorer');
+                },
+                onError: () => {
+                    addToast('이미 신고가 접수되었습니다.', 'error');
+                }
+            });
+        } else if (letterType === 'LETTER') {
             reportKeywordLetterMutation.mutate(undefined, {
                 onSuccess: () => {
                     closeModal();
-                    addToast('신고가 성공적으로 접수되었습니다.', 'success');
+                    addToast(
+                        '키워드 편지가 성공적으로 신고되었습니다.',
+                        'success'
+                    );
                     navigate('/storage/keyword');
                 },
                 onError: () => {
@@ -67,7 +100,10 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
             reportKeywordReplyLetterMutation.mutate(undefined, {
                 onSuccess: () => {
                     closeModal();
-                    addToast('신고가 성공적으로 접수되었습니다.', 'success');
+                    addToast(
+                        '키워드 답장이 성공적으로 신고되었습니다.',
+                        'success'
+                    );
                     navigate('/storage/keyword');
                 },
                 onError: () => {
