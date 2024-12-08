@@ -105,6 +105,7 @@ export const MapExplorerPage = () => {
                                     daysLeft={daysLeft}
                                     lat={selectedLetter.latitude}
                                     lot={selectedLetter.longitude}
+                                    label={selectedLetter.label}
                                 />
                             </>
                         ) : (
