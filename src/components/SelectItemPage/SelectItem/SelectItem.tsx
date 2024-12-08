@@ -20,15 +20,6 @@ const testLable: LabelProps[] = [
     },
     {
         imgSrc: '/라벨_샘플_02.png'
-    },
-    {
-        imgSrc: '/라벨_샘플.png'
-    },
-    {
-        imgSrc: '/라벨_샘플.png'
-    },
-    {
-        imgSrc: '/라벨_샘플.png'
     }
 ];
 

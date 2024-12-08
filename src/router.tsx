@@ -26,7 +26,7 @@ import {
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
-import { TopButtonContainer } from './components/HomePage/TopButtonContainer/TopButtonContainer';
+import { Margin } from './components/Common/Margin/Margin';
 
 type RouteProps = {
     children: ReactNode;
@@ -48,10 +48,10 @@ export const PublicRoute = ({ children }: RouteProps) => {
 
 const CommonLayout = () => (
     <div className="flex flex-col h-full">
-        <TopButtonContainer />
         <Container px={6} pb={6}>
             <Outlet />
         </Container>
+        <Margin bottom={78} />
         <NavigationBar />
     </div>
 );

@@ -8,15 +8,13 @@ type SelectSliderProps = {
     setFont: (font: string) => void;
     letter: string;
     setLetter: (letter: string) => void;
-    setTheme: (themeId: number) => void;
 };
 
 export const SelectSlider = ({
     font,
     setFont,
     letter,
-    setLetter,
-    setTheme
+    setLetter
 }: SelectSliderProps) => {
     const [isFont, setIsFont] = useState(false);
 
@@ -46,7 +44,6 @@ export const SelectSlider = ({
                     value={isFont ? font : letter}
                     setValue={isFont ? setFont : setLetter}
                     spaceBetween={isFont ? 10 : 20}
-                    setTheme={setTheme}
                 />
             </div>
             <Margin bottom={20} />

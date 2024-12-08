@@ -23,7 +23,6 @@ type ItemSliderProps = {
     spaceBetween?: number;
     value: string;
     setValue: (value: string) => void;
-    setTheme: (themeId: number) => void;
 };
 
 export const ItemSlider = ({
@@ -33,8 +32,7 @@ export const ItemSlider = ({
     height,
     spaceBetween = 10,
     value,
-    setValue,
-    setTheme
+    setValue
 }: ItemSliderProps) => {
     const [clickedItemId, setClickedItemId] = useState<string | null>(null);
 
@@ -68,7 +66,6 @@ export const ItemSlider = ({
                         onClick={() => {
                             setClickedItemId(item.id);
                             setValue(item.id);
-                            setTheme(Number(item.id));
                         }}
                     >
                         <img
