@@ -1,10 +1,10 @@
-import { postReportKeywordLetter } from '@/service/Report/postReportKeywordLetter';
+import { postReportKeywordReplyLetter } from '@/service/Report/postReportKeywordReplyLetter';
 import { ApiResponseType } from '@/types/apiResponse';
 import { PostReportKeywordLetterResponseType } from '@/types/report';
 import { useMutation } from '@tanstack/react-query';
 
-export const usePostReportKeywordLetter = (
-    letterId: number,
+export const usePostReportKeywordReplyLetter = (
+    replyLetterId: number,
     description: string
 ) => {
     return useMutation<
@@ -13,7 +13,10 @@ export const usePostReportKeywordLetter = (
         void
     >({
         mutationFn: async () => {
-            return await postReportKeywordLetter({ letterId, description });
+            return await postReportKeywordReplyLetter({
+                replyLetterId,
+                description
+            });
         }
     });
 };

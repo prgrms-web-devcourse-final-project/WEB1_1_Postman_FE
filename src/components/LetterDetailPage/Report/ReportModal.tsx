@@ -3,9 +3,10 @@ import { useMutation } from '@tanstack/react-query';
 import { ApiResponseType } from '@/types/apiResponse';
 import { PostReportKeywordLetterResponseType } from '@/types/report';
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useToastStore } from '@/hooks';
 import { postReportKeywordLetter } from '@/service/Report/postReportKeywordLetter';
+import { postReportKeywordReplyLetter } from '@/service/Report/postReportKeywordReplyLetter';
 
 type ReportModalProps = {
     closeModal: () => void;
@@ -14,13 +15,13 @@ type ReportModalProps = {
 export const ReportModal = ({ closeModal }: ReportModalProps) => {
     const [selectedReason, setSelectedReason] = useState<string>('');
     const [customReason, setCustomReason] = useState<string>('');
-    // const { pathname } = useLocation();
-    // const letterType = pathname.split('/')[3];
+    const { pathname } = useLocation();
+    const letterType = pathname.split('/')[3];
     const { letterId } = useParams<{ letterId: string }>();
     const navigate = useNavigate();
     const { addToast } = useToastStore();
 
-    const mutation = useMutation<
+    const reportKeywordLetterMutation = useMutation<
         ApiResponseType<PostReportKeywordLetterResponseType>,
         Error,
         void
@@ -35,17 +36,45 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
         }
     });
 
+    const reportKeywordReplyLetterMutation = useMutation<
+        ApiResponseType<PostReportKeywordLetterResponseType>,
+        Error,
+        void
+    >({
+        mutationFn: async () => {
+            const description =
+                selectedReason === '기타' ? customReason : selectedReason;
+            return await postReportKeywordReplyLetter({
+                replyLetterId: Number(letterId),
+                description
+            });
+        }
+    });
+
     const onReport = () => {
-        mutation.mutate(undefined, {
-            onSuccess: () => {
-                closeModal();
-                addToast('신고가 성공적으로 접수되었습니다.', 'success');
-                navigate('/storage/keyword');
-            },
-            onError: () => {
-                addToast('이미 신고가 접수되었습니다.', 'error');
-            }
-        });
+        if (letterType === 'LETTER') {
+            reportKeywordLetterMutation.mutate(undefined, {
+                onSuccess: () => {
+                    closeModal();
+                    addToast('신고가 성공적으로 접수되었습니다.', 'success');
+                    navigate('/storage/keyword');
+                },
+                onError: () => {
+                    addToast('이미 신고가 접수되었습니다.', 'error');
+                }
+            });
+        } else if (letterType === 'REPLY_LETTER') {
+            reportKeywordReplyLetterMutation.mutate(undefined, {
+                onSuccess: () => {
+                    closeModal();
+                    addToast('신고가 성공적으로 접수되었습니다.', 'success');
+                    navigate('/storage/keyword');
+                },
+                onError: () => {
+                    addToast('이미 신고가 접수되었습니다.', 'error');
+                }
+            });
+        }
     };
 
     const reportReasons = [
@@ -58,14 +87,14 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
         '기타'
     ];
 
-    const handleReasonChange = (reason: string) => {
+    const onReasonChange = (reason: string) => {
         setSelectedReason(reason);
         if (reason !== '기타') {
             setCustomReason('');
         }
     };
 
-    const handleCustomReasonChange = (
+    const onCustomReasonChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         setCustomReason(event.target.value);
@@ -91,7 +120,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
                                 name="reportReason"
                                 value={reason}
                                 checked={selectedReason === reason}
-                                onChange={() => handleReasonChange(reason)}
+                                onChange={() => onReasonChange(reason)}
                                 className="mr-2"
                             />
                             {reason}
@@ -102,7 +131,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
                             type="text"
                             placeholder="신고 사유를 입력해주세요."
                             value={customReason}
-                            onChange={handleCustomReasonChange}
+                            onChange={onCustomReasonChange}
                             className="border rounded-lg p-2 w-full mt-2"
                         />
                     )}
