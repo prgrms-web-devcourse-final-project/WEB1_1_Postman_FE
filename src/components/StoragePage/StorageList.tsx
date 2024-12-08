@@ -1,52 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { BottleLetter } from '../Common/BottleLetter/BottleLetter';
 import { Itembox } from '../Common/Itembox/Itembox';
-import { getLetter } from '@/service/storage/getLetter';
 import { useNavigate } from 'react-router-dom';
-
-interface Letter {
-    letterId: number;
-    title: string;
-    label: string;
-    letterType: string;
-    boxType: string;
-    createdAt: string;
-}
-
-interface DayGroup {
-    date: string;
-    letters: Letter[];
-}
+import { useInfiniteStorageFetch } from '@/hooks/useInfiniteStorageFetch';
+import { useInView } from 'react-intersection-observer';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
-type FilterType = 'LETTER' | 'REPLY_LETTER';
+type FilterType = 'SEND' | 'RECEIVE';
 
 type StorageListProps = {
     type: storageType;
 };
 
+const ROWS_PER_PAGE = 5;
+
 export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
     const navigate = useNavigate();
 
-    // const queryClient = useQueryClient();
-    // const { data, error, fetchNextPage, hasNextPage, isFetchNextPage } =
-    //     useInfiniteFetch();
-    const page = 1;
-    const size = 10;
-    const [selectedFilter, setSelectedFilter] = useState<FilterType>('LETTER');
+    const [selectedFilter, setSelectedFilter] = useState<FilterType>('SEND');
     const [checkedItems, setCheckedItems] = useState<number[]>([]);
-    const [groupedLetters, setGroupedLetters] = useState<DayGroup[]>([]);
 
-    // 리스트 타입 - 필터별 엔드포인트 추출
-    const getApiEndpoint = (type: storageType, filter: FilterType) => {
+    const { ref, inView } = useInView();
+
+    const getApiEndpoint = () => {
         const endpoints = {
             keyword: {
-                LETTER: '/letters/saved/sent',
-                REPLY_LETTER: '/letters/saved/received'
+                SEND: '/letters/saved/sent',
+                RECEIVE: '/letters/saved/received'
             },
             map: {
-                LETTER: '/map/sent',
-                REPLY_LETTER: '/map/received'
+                SEND: '/map/sent',
+                RECEIVE: '/map/received'
             },
             bookmark: '/map/archived'
         };
@@ -55,56 +39,32 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
             return endpoints[type];
         }
 
-        return endpoints[type]?.[filter];
+        return endpoints[type]?.[selectedFilter];
     };
 
-    // 데이터 패치
-    // 따로 필터링 해줄 필요 없이 엔드포인트가 다르게 들어감
-    const getLetterList = async () => {
-        const apiEndpoint = getApiEndpoint(type, selectedFilter);
-        const response = await getLetter({ apiEndpoint, page, size });
-        console.log('응답:', response);
-        if (response.isSuccess) {
-            return response.result.content;
+    const renderCategory = (boxType: string, letterType: string) => {
+        const condition = `${boxType}-${letterType}`;
+        switch (condition) {
+            case 'SEND-LETTER':
+                return '보낸 편지';
+            case 'SEND-REPLY_LETTER':
+                return '보낸 답장';
+            case 'RECEIVE-LETTER':
+                return '받은 편지';
+            case 'RECEIVE-REPLY_LETTER':
+                return '받은 답장';
+            default:
         }
-        return [];
     };
 
-    // 편지 리스트를 날짜별로 그룹화, 날짜순으로 정렬
-    const groupLettersByDate = (letters: Letter[]): DayGroup[] => {
-        const grouped = letters.reduce(
-            (acc: { [key: string]: Letter[] }, letter) => {
-                const date = new Date(letter.createdAt)
-                    .toISOString()
-                    .split('T')[0];
-
-                if (!acc[date]) {
-                    acc[date] = [];
-                }
-                acc[date].push(letter);
-                return acc;
-            },
-            {}
-        );
-        return Object.entries(grouped)
-            .map(([date, letters]) => ({
-                date,
-                letters: letters.sort(
-                    (a, b) =>
-                        new Date(b.createdAt).getTime() -
-                        new Date(a.createdAt).getTime()
-                )
-            }))
-            .sort(
-                (a, b) =>
-                    new Date(b.date).getTime() - new Date(a.date).getTime()
-            );
-    };
-
-    const setData = async () => {
-        const letters = await getLetterList();
-        setGroupedLetters(groupLettersByDate(letters));
-    };
+    const {
+        groupedLetters,
+        isLoading,
+        isError,
+        fetchNextPage,
+        // isFetching,
+        isFetchingNextPage
+    } = useInfiniteStorageFetch(getApiEndpoint(), ROWS_PER_PAGE);
 
     // 체크박스 단일 클릭
     const handleSingleCheck = (checked: boolean, id: number) => {
@@ -130,39 +90,43 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
         }
     };
 
-    // 테스트 출력
     useEffect(() => {
-        console.log(checkedItems);
-    }, [checkedItems]);
+        if (inView) {
+            fetchNextPage();
+        }
+    }, [inView]);
 
-    // 테스트 데이터 세팅?
-    useEffect(() => {
-        setData();
-    }, [type, selectedFilter]);
+    if (isLoading) {
+        return <div>로딩중</div>;
+    }
+
+    if (isError) {
+        return <></>;
+    }
 
     const renderList = () => {
         return (
-            <div className="flex flex-col gap-2 mt-2">
+            <div className="flex flex-col gap-2">
                 <div className="flex flex-row gap-2">
                     <button
                         className={`border border-sample-blue rounded-xl text-sm px-2 py-1
                                 ${
-                                    selectedFilter === 'LETTER'
+                                    selectedFilter === 'SEND'
                                         ? 'bg-sample-blue text-white'
                                         : 'bg-white text-sample-blue'
                                 }`}
-                        onClick={() => setSelectedFilter('LETTER')}
+                        onClick={() => setSelectedFilter('SEND')}
                     >
                         보낸 편지
                     </button>
                     <button
                         className={`border border-sample-blue rounded-xl text-sm px-2 py-1
                                 ${
-                                    selectedFilter === 'REPLY_LETTER'
+                                    selectedFilter === 'RECEIVE'
                                         ? 'bg-sample-blue text-white'
                                         : 'bg-white text-sample-blue'
                                 }`}
-                        onClick={() => setSelectedFilter('REPLY_LETTER')}
+                        onClick={() => setSelectedFilter('RECEIVE')}
                     >
                         받은 편지
                     </button>
@@ -224,7 +188,7 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                                 type === 'map'
                                             ) {
                                                 const dataType =
-                                                    selectedFilter === 'LETTER'
+                                                    selectedFilter === 'SEND'
                                                         ? 'sent'
                                                         : 'received';
                                                 navigate(
@@ -238,9 +202,10 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                         </Itembox>
                                         <div className="flex flex-col h-full">
                                             <div className="text-[12px] text-gray-500 mt-2">
-                                                {letter.letterType === 'LETTER'
-                                                    ? '보낸 편지'
-                                                    : '받은 편지'}
+                                                {renderCategory(
+                                                    letter.boxType,
+                                                    letter.letterType
+                                                )}
                                             </div>
                                             <h3 className="text-sm font-bold">
                                                 {letter.title}
@@ -256,5 +221,10 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
         );
     };
 
-    return <div className="">{renderList()}</div>;
+    return (
+        <div className="">
+            {renderList()}
+            <div>{isFetchingNextPage ? <div></div> : <div ref={ref} />}</div>
+        </div>
+    );
 };
