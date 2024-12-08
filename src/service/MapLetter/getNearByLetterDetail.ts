@@ -19,6 +19,5 @@ export async function getNearByLetterDetail({
     const response = await api.get<NearbyLettersResponse>(`/map/${letterId}`, {
         params: { latitude, longitude }
     });
-    console.log(response.data);
     return response.data;
 }

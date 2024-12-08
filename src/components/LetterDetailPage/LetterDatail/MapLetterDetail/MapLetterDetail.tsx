@@ -1,8 +1,13 @@
 import { DayCounter } from '@/components/Common/DayCounter/DayCounter';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
+import { useToastStore } from '@/hooks';
+import { usePostNearByLetterStorage } from '@/hooks/usePostNearByLetterStorage';
 import { formatDate } from '@/util/formatDate';
+import { getLetter } from '@/service/storage/getLetter';
 import clsx from 'clsx';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -19,9 +24,70 @@ type MapLetterDetailProps = {
 };
 
 export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
-    console.log(letterData);
-    const { title, content, description, createdAt, profileImg, font } =
-        letterData;
+    const { letterId } = useParams<{ letterId: string }>();
+    const {
+        title,
+        content,
+        description,
+        createdAt,
+        profileImg,
+        font,
+        isOwner
+    } = letterData;
+
+    const [isStored, setIsStored] = useState(false);
+
+    useEffect(() => {
+        const checkStoredLetter = async () => {
+            const storedLetters = await getLetter({
+                apiEndpoint: '/map/archived',
+                page: 1,
+                size: 100
+            });
+
+            const letter = storedLetters.result.content.find(
+                (letter) => letter.letterId === Number(letterId)
+            );
+            if (letter) {
+                setIsStored(true);
+            }
+        };
+
+        checkStoredLetter();
+    }, [letterId]);
+
+    const postMutation = usePostNearByLetterStorage(Number(letterId) || 0);
+
+    const { addToast } = useToastStore();
+
+    const onStorageClick = () => {
+        if (!isStored) {
+            postMutation.mutate(undefined, {
+                onSuccess: (response) => {
+                    if (response.isSuccess) {
+                        if (response.code === 'COMMON201') {
+                            addToast('편지 저장에 성공했습니다', 'success');
+                            setIsStored(true);
+                            localStorage.setItem(
+                                `storedLetter-${letterId}`,
+                                'true'
+                            );
+                        } else if (response.code === 'MAP4009') {
+                            addToast('편지가 이미 저장되어 있습니다.', 'error');
+                            setIsStored(true);
+                            localStorage.setItem(
+                                `storedLetter-${letterId}`,
+                                'true'
+                            );
+                        }
+                    } else {
+                        addToast('편지 저장에 실패했습니다.', 'error');
+                    }
+                }
+            });
+        }
+    };
+
     return (
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
@@ -52,6 +118,21 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
                 </div>
                 <Margin bottom={30} />
             </div>
+            {!isOwner && (
+                <>
+                    <div className="flex">
+                        <button
+                            className="btn-base flex-center rounded-3xl h-[40px]"
+                            onClick={onStorageClick}
+                        >
+                            {isStored ? '보관됨' : '보관하기'}
+                        </button>
+                        <button className="btn-base flex-center rounded-3xl h-[40px]">
+                            편지에 답장하기
+                        </button>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
