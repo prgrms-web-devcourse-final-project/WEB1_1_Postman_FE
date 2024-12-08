@@ -2,6 +2,7 @@ import { Margin } from '@/components/Common/Margin/Margin';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useDeleteKeywordLetter } from '@/hooks/useDeleteKeywordLetter';
 import { useDeleteMapSentLetter } from '@/hooks/useDeleteMapSentLetter';
+import { useDeleteKeywordReplyLetter } from '@/hooks/useDeleteKeywordReplyLetter';
 import { useToastStore } from '@/hooks';
 
 type DeleteModalProps = {
@@ -26,7 +27,19 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
     const mapMutation = useDeleteMapSentLetter({
         letterIds: [Number(letterId)]
     });
-    const mutation = letterType === 'keyword' ? keywordMutation : mapMutation;
+
+    const keywordReplyMutation = useDeleteKeywordReplyLetter({
+        letterId: Number(letterId),
+        boxType: transformedLetterType
+    });
+
+    const mutation =
+        letterType === 'keyword'
+            ? dataType === 'received'
+                ? keywordReplyMutation
+                : keywordMutation
+            : mapMutation;
+
     const { addToast } = useToastStore();
 
     const handleDelete = () => {
@@ -45,6 +58,7 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
             }
         });
     };
+
     return (
         <div className="flex flex-col bg-white rounded-2xl items-center justify-center w-full h-full p-4">
             <Margin top={10} />
