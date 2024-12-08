@@ -3,7 +3,6 @@ import { ApiResponseType } from '@/types/apiResponse';
 
 type deleteKeywordLettersRequestProps = {
     letterId: number;
-    letterType: string;
     boxType: string;
 };
 
@@ -11,7 +10,6 @@ type deleteKeywordLettersResponse = ApiResponseType<string>;
 
 export async function deleteKeywordLetterReplyKeywordLetter({
     letterId,
-    letterType,
     boxType
 }: deleteKeywordLettersRequestProps): Promise<deleteKeywordLettersResponse> {
     const api = defaultApi();
@@ -21,7 +19,6 @@ export async function deleteKeywordLetterReplyKeywordLetter({
         {
             data: {
                 letterId,
-                letterType,
                 boxType
             }
         }
