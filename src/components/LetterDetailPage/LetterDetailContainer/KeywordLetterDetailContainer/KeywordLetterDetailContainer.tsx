@@ -67,7 +67,6 @@ export const KeywordLetterDetailContainer = () => {
 };
 
 /*
-
    <div className="relative mx-auto mt-4 max-w">
                     {letterId && (
                         <div className="absolute top-0 flex mt-10 right-8">

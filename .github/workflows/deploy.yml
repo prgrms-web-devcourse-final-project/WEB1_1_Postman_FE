@@ -3,7 +3,7 @@ name: postamn
 on:
     push:
         branches:
-            - chore-build-오류-해결
+            - chore-build-오류-해결-
 
 jobs:
     deploy:
