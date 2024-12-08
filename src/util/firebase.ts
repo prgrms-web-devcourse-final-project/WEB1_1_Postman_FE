@@ -8,13 +8,13 @@ import {
 
 // Firebase config 타입 정의
 const firebaseConfig = {
-    apiKey: 'AIzaSyBodJm9QErZvWuaOdM6Af1H82LA-8ZcmhE',
-    authDomain: 'fcm-test-51b74.firebaseapp.com',
-    projectId: 'fcm-test-51b74',
-    storageBucket: 'fcm-test-51b74.firebasestorage.app',
-    messagingSenderId: '10805910843',
-    appId: '1:10805910843:web:e88131c7c1ef503822eb1e',
-    measurementId: 'G-FXC5BWDC6G'
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Firebase 앱 초기화
