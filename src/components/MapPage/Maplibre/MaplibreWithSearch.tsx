@@ -110,7 +110,7 @@ export const MaplibreWithSearch = ({
                                         Letter={{ label: letter.label }}
                                     />
                                 </div>
-                                <div className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-white"></div>
+                                <div className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-white"></div>
                             </div>
                         </Marker>
                     )
