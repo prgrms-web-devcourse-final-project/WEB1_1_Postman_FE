@@ -75,7 +75,7 @@ export const ReplyLetterDetailPage = () => {
                 {replyLetterId && (
                     <div className="absolute top-0 flex mt-10 right-8">
                         <DeleteButton />
-                        <ReportButton id={replyLetterId} />
+                        <ReportButton />
                     </div>
                 )}
                 <div className="relative mt-16 flex-center">

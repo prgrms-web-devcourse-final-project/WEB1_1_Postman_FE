@@ -1,14 +1,52 @@
 import { Margin } from '@/components/Common/Margin/Margin';
+import { useMutation } from '@tanstack/react-query';
+import { ApiResponseType } from '@/types/apiResponse';
+import { PostReportKeywordLetterResponseType } from '@/types/report';
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useToastStore } from '@/hooks';
+import { postReportKeywordLetter } from '@/service/Report/postReportKeywordLetter';
 
 type ReportModalProps = {
-    id: string;
     closeModal: () => void;
 };
 
-export const ReportModal = ({ id, closeModal }: ReportModalProps) => {
+export const ReportModal = ({ closeModal }: ReportModalProps) => {
     const [selectedReason, setSelectedReason] = useState<string>('');
     const [customReason, setCustomReason] = useState<string>('');
+    // const { pathname } = useLocation();
+    // const letterType = pathname.split('/')[3];
+    const { letterId } = useParams<{ letterId: string }>();
+    const navigate = useNavigate();
+    const { addToast } = useToastStore();
+
+    const mutation = useMutation<
+        ApiResponseType<PostReportKeywordLetterResponseType>,
+        Error,
+        void
+    >({
+        mutationFn: async () => {
+            const description =
+                selectedReason === '기타' ? customReason : selectedReason;
+            return await postReportKeywordLetter({
+                letterId: Number(letterId),
+                description
+            });
+        }
+    });
+
+    const onReport = () => {
+        mutation.mutate(undefined, {
+            onSuccess: () => {
+                closeModal();
+                addToast('신고가 성공적으로 접수되었습니다.', 'success');
+                navigate('/storage/keyword');
+            },
+            onError: () => {
+                addToast('이미 신고가 접수되었습니다.', 'error');
+            }
+        });
+    };
 
     const reportReasons = [
         '유해한 편지 내용',
@@ -37,9 +75,7 @@ export const ReportModal = ({ id, closeModal }: ReportModalProps) => {
         <div>
             <div className="flex flex-col bg-white rounded-2xl items-center justify-center w-full h-full p-4">
                 <Margin top={10} />
-                <span className="font-bold mb-4 text-2xl">
-                    편지 신고하기{id}
-                </span>
+                <span className="font-bold mb-4 text-2xl">편지 신고하기</span>
                 <span className="text-sm text-gray-700 mb-4">
                     신고 이유 및 설명
                 </span>
@@ -79,6 +115,7 @@ export const ReportModal = ({ id, closeModal }: ReportModalProps) => {
                         닫기
                     </button>
                     <button
+                        onClick={onReport}
                         className="mt-6 bg-red-500 w-24 text-white px-4 py-2 rounded-lg"
                         disabled={
                             !selectedReason ||

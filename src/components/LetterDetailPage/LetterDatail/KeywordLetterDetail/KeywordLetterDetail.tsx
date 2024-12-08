@@ -6,6 +6,8 @@ import { DeleteButton } from '../../Delete/DeleteButton';
 import clsx from 'clsx';
 import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
 import { ReplyList } from '../../ReplyList/ReplyList';
+import { ReportButton } from '../../Report/ReportButton';
+import { useParams } from 'react-router-dom';
 
 type KeywordLetterDetailProps = {
     letterData: {
@@ -21,6 +23,10 @@ type KeywordLetterDetailProps = {
 export const KeywordLetterDetail = ({
     letterData
 }: KeywordLetterDetailProps) => {
+    const { dataType } = useParams<{
+        dataType: string;
+    }>();
+
     const { letterId, title, content, keywords, createdAt, font } = letterData;
 
     const {
@@ -46,8 +52,9 @@ export const KeywordLetterDetail = ({
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
             <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
-                <div className="absolute top-0 right-0">
+                <div className="absolute top-0 right-0 flex">
                     <DeleteButton />
+                    {dataType === 'received' && <ReportButton />}
                 </div>
                 <h1>{title}</h1>
                 <img src={'/to_line.f4c129e6.svg'} className="w-full" />
