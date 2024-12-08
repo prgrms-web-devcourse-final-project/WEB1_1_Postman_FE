@@ -3,13 +3,16 @@ import { ThemeWrapper } from '@/components/CreatLetterPage/ThemeWrapper/ThemeWra
 import { useToastStore } from '@/hooks';
 import { useEffect } from 'react';
 import { useKeywordLetterDetail } from '@/hooks/useGetKeywordLetterDetail';
+import { useGetKeywordReplyLetterDetail } from '@/hooks/useGetKeywordReplyLetterDetail';
 import { KeywordLetterDetail } from '../../LetterDatail/KeywordLetterDetail/KeywordLetterDetail';
 
 export const KeywordLetterDetailContainer = () => {
-    const { letterId } = useParams<{ letterId: string }>();
+    const { letterId, letterType } = useParams<{
+        letterId: string;
+        letterType: string;
+    }>();
 
     const { addToast } = useToastStore();
-
     const navigate = useNavigate();
 
     const {
@@ -17,31 +20,48 @@ export const KeywordLetterDetailContainer = () => {
         isLoading: isKeywordLoading,
         error: keywordError
     } = useKeywordLetterDetail({
-        letterId: letterId || ''
+        letterId: (letterType === 'LETTER' && letterId) || ''
+    });
+
+    const {
+        data: replyData,
+        isLoading: isReplyLoading,
+        error: replyError
+    } = useGetKeywordReplyLetterDetail({
+        replyLetterId: letterType === 'REPLY_LETTER' ? Number(letterId) : 0
     });
 
     useEffect(() => {
-        if (keywordError) {
-            addToast(keywordError.message, 'error');
+        const error = keywordError || replyError;
+        if (error) {
+            addToast(error.message, 'error');
             navigate('/');
         }
-    }, [keywordError, addToast]);
+    }, [keywordError, replyError, addToast, navigate]);
 
-    if (isKeywordLoading) {
+    if (isKeywordLoading || isReplyLoading) {
         return <div>로딩 중...</div>;
     }
 
-    if (!keywordData) {
+    if (!keywordData && !replyData) {
         return (
             <ThemeWrapper themeId={1}>
-                <div>키워드 편지가 존재하지 않습니다.</div>
+                <div>편지가 존재하지 않습니다.</div>
             </ThemeWrapper>
         );
     }
 
     return (
-        <ThemeWrapper themeId={Number(keywordData.paper)}>
-            <KeywordLetterDetail letterData={keywordData} />
+        <ThemeWrapper
+            themeId={Number(keywordData?.paper || replyData?.paper || 1)}
+        >
+            {letterType === 'LETTER' && keywordData ? (
+                <KeywordLetterDetail letterData={keywordData} />
+            ) : letterType === 'REPLY_LETTER' && replyData ? (
+                <KeywordLetterDetail letterData={replyData} />
+            ) : (
+                <div>잘못된 접근입니다.</div>
+            )}
         </ThemeWrapper>
     );
 };
