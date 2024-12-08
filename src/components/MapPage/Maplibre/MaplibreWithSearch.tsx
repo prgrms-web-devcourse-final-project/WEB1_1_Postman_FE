@@ -13,6 +13,7 @@ import { useCurrentLocation } from '@/hooks/useCurrentLocation';
 import { useNearbyLetters } from '@/hooks/useNearbyLetters';
 import { NearbyLettersResponseType } from '@/types/letter';
 import { useLocationState } from '@/hooks/useLocationState';
+import { BottleLetter } from '@/components/Common/BottleLetter/BottleLetter';
 
 type MaplibreWithSearchProps = {
     onFocus: () => void;
@@ -92,16 +93,18 @@ export const MaplibreWithSearch = ({
                             latitude={letter.latitude}
                         >
                             <div
-                                className="bg-gray-100 p-1 rounded-sm"
+                                className="relative flex items-center justify-center w-8 h-8 bg-white rounded-full cursor-pointer transform"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     toggleSelectedLetter(letter);
                                 }}
                             >
-                                <img
-                                    src="/bottle.png"
-                                    className="w-full h-5 rounded-lg"
-                                />
+                                <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2">
+                                    <BottleLetter
+                                        Letter={{ label: letter.label }}
+                                    />
+                                </div>
+                                <div className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-white"></div>
                             </div>
                         </Marker>
                     )
