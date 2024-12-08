@@ -11,8 +11,18 @@ export function useModal() {
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
-    const ModalComponent = ({ children }: { children: React.ReactNode }) =>
-        isOpen ? <Modal clickEvent={closeModal}>{children}</Modal> : null;
+    const ModalComponent = ({
+        children,
+        height
+    }: {
+        children: React.ReactNode;
+        height: string;
+    }) =>
+        isOpen ? (
+            <Modal clickEvent={closeModal} height={height}>
+                {children}
+            </Modal>
+        ) : null;
 
     return {
         openModal,
