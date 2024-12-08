@@ -27,6 +27,14 @@ export default defineConfig({
                         type: 'image/svg+xml'
                     }
                 ]
+            },
+            workbox: {
+                runtimeCaching: [
+                    {
+                        urlPattern: /^https:\/\/fcm\.googleapis\.com/,
+                        handler: 'NetworkOnly'
+                    }
+                ]
             }
         })
     ],

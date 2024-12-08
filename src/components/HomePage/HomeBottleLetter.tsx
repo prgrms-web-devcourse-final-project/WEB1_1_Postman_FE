@@ -23,7 +23,7 @@ export const HomeBottleLetter = ({
 
     return (
         <div className="relative w-full h-full">
-            <div className="flex-center w-full h-full">
+            <div className="w-full h-full flex-center">
                 <div className="h-full w-fit" onClick={handleClickBottle}>
                     <Bottle />
                 </div>
