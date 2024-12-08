@@ -24,6 +24,7 @@
         "classnames": "^2.5.1",
         "clsx": "^2.1.1",
         "file-saver": "^2.0.5",
+        "firebase": "^11.0.2",
         "html2canvas": "^1.4.1",
         "maplibre-gl": "^4.7.1",
         "postcss-custom-properties-fallback": "^1.0.2",
