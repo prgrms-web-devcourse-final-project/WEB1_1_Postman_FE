@@ -1,4 +1,3 @@
-import { DayCounter } from '@/components/Common/DayCounter/DayCounter';
 import { NavLink } from 'react-router-dom';
 
 type LetterInfoContainerProps = {
@@ -31,7 +30,11 @@ export const LetterInfoContainer = ({
                 <div className="flex flex-col h-20">
                     <div className="flex-center gap-2">
                         <p className="text-sm text-gray-600">작성일: {date}</p>
-                        <DayCounter width="40px" daysLeft={daysLeft} />
+                        <div className="p-1 bg-gray-100 flex-center rounded-xl">
+                            <p className="text-sm  font-bold text-gray-500 text-nowrap">
+                                D-{daysLeft}
+                            </p>
+                        </div>
                     </div>
 
                     <h3 className="text-lg font-semibold">{title}</h3>

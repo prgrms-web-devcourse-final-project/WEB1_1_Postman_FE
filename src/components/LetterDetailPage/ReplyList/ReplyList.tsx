@@ -3,7 +3,7 @@ import { formatDate } from '@/util/formatDate';
 import { NavLink, useLocation } from 'react-router-dom';
 
 type ReplyListProps = {
-    title: string;
+    title?: string;
     keywordReplyListData: ReplyListResponseType['content'];
 };
 
