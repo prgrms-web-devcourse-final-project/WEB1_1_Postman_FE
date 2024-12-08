@@ -1,4 +1,4 @@
-export function registerServiceWorker(): void {
+export function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
             navigator.serviceWorker
