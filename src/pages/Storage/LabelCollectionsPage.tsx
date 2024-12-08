@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { LabelType } from '@/types/label';
 import { Itembox } from './../../components/Common/Itembox/Itembox';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
+import { Link } from 'react-router-dom';
 
 const testLable: LabelType[] = [
     { labelId: 1, imageUrl: '/라벨_샘플_01.png' },
@@ -40,7 +41,11 @@ export const LabelCollectionsPage = () => {
             <div className="grid grid-cols-4 gap-4 w-full">
                 {testLable.map((item, index) => {
                     return (
-                        <Itembox key={item.labelId + index}>
+                        <Itembox
+                            key={item.labelId + index}
+                            width="auto"
+                            height="auto"
+                        >
                             <Label imgSrc={item.imageUrl} />
                         </Itembox>
                     );
@@ -55,9 +60,11 @@ export const LabelCollectionsPage = () => {
                 <h3 className="text-lg font-bold">라벨 모음</h3>
                 {renderList()}
             </div>
-            <button className="btn-base bg-sample-blue text-white h-[50px] flex items-center justify-center">
-                라벨 더 뽑으러 가기
-            </button>
+            <Link to="/lottery">
+                <button className="btn-base bg-sample-blue text-white h-[50px] flex items-center justify-center">
+                    라벨 더 뽑으러 가기
+                </button>
+            </Link>
         </div>
     );
 };
