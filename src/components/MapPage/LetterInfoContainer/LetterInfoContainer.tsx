@@ -1,3 +1,4 @@
+import { BottleLetter } from '@/components/Common/BottleLetter/BottleLetter';
 import { NavLink } from 'react-router-dom';
 
 type LetterInfoContainerProps = {
@@ -8,6 +9,7 @@ type LetterInfoContainerProps = {
     daysLeft: number;
     lat: number;
     lot: number;
+    label: string;
 };
 
 export const LetterInfoContainer = ({
@@ -17,15 +19,17 @@ export const LetterInfoContainer = ({
     date,
     daysLeft,
     lat,
-    lot
+    lot,
+    label
 }: LetterInfoContainerProps) => {
     const limitDistance = parseFloat(distance) <= 15;
+    const Letter = { label };
 
     return (
         <div className="flex flex-col w-[330px] bg-gray-200 rounded-lg p-4 shadow-md">
             <div className="flex gap-4 mb-4">
-                <div className="p-2 bg-gray-300 rounded-md">
-                    <img src="/bottle.png" alt="Bottle" className="w-20 h-20" />
+                <div className="p-2 bg-gray-300 rounded-md w-20 h-20">
+                    <BottleLetter Letter={Letter} />
                 </div>
                 <div className="flex flex-col h-20">
                     <div className="gap-2 flex-center">
