@@ -105,7 +105,7 @@ export type GetArchivedMapLetterResponseType = {
 
 export type ReplyList = {
     replyLetterId: number;
-    title: string;
+    title?: string;
     label: string;
     createdAt: string;
 };
