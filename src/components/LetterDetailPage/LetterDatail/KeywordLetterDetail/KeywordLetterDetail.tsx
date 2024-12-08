@@ -9,10 +9,10 @@ import { ReplyList } from '../../ReplyList/ReplyList';
 
 type KeywordLetterDetailProps = {
     letterData: {
-        letterId: number;
-        title: string;
+        letterId?: number | string;
+        title?: string;
         content: string;
-        keywords: string[];
+        keywords?: string[];
         createdAt: string;
         font: string;
     };
@@ -28,7 +28,7 @@ export const KeywordLetterDetail = ({
         isLoading: isKeywordReplyListDataLoading,
         error: keywordReplyListDataError
     } = useGetKeywordReplyList({
-        letterId: letterId || 0,
+        letterId: Number(letterId) || 0,
         page: 1,
         size: 1,
         sort: 'createdAt'
@@ -61,7 +61,7 @@ export const KeywordLetterDetail = ({
                     <p className="font-bold ">편지의 키워드</p>
                     <p className="">{formatDate(createdAt)}</p>
                 </div>
-                <KeywordList keywords={keywords} />
+                {keywords && <KeywordList keywords={keywords} />}
                 <Margin bottom={30} />
             </div>
 
