@@ -17,6 +17,5 @@ export async function getKeywordLetterDetail({
     const response = await api.get<KeywordLetterDetailResponse>(
         `/letters/detail/${letterId}`
     );
-
     return response.data;
 }

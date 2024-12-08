@@ -1,12 +1,13 @@
-import { KeywordReplyListResponseType } from '@/types/letter';
+import { ReplyListResponseType } from '@/types/letter';
 import { formatDate } from '@/util/formatDate';
 import { NavLink, useLocation } from 'react-router-dom';
 
 type ReplyListProps = {
-    keywordReplyListData: KeywordReplyListResponseType['content'];
+    title?: string;
+    keywordReplyListData: ReplyListResponseType['content'];
 };
 
-export const ReplyList = ({ keywordReplyListData }: ReplyListProps) => {
+export const ReplyList = ({ title, keywordReplyListData }: ReplyListProps) => {
     const location = useLocation();
     const basePath = location.pathname.split('/')[2];
 
@@ -24,7 +25,7 @@ export const ReplyList = ({ keywordReplyListData }: ReplyListProps) => {
                 >
                     <div className="flex items-center justify-between w-full hover:opacity-70">
                         <span className="font-bold w-44 truncate mr-4">
-                            {reply.title}
+                            RE: {title}
                         </span>
                         <span className="text-sm truncate flex-1 text-gray-600">
                             {formatDate(reply.createdAt)}

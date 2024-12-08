@@ -4,6 +4,8 @@ import { formatDate } from '@/util/formatDate';
 import clsx from 'clsx';
 import { DeleteButton } from '../../Delete/DeleteButton';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
+import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
+import { ReplyList } from '../../ReplyList/ReplyList';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -21,10 +23,31 @@ type MapLetterDetailProps = {
 };
 
 export const MapLetterArchieveDetail = ({
-    letterData
+    letterData,
+    letterId
 }: MapLetterDetailProps) => {
     const { title, content, createdAt, font, description, profileImg } =
         letterData;
+
+    const {
+        data: mapReplyListData,
+        isLoading: isMapReplyListDataLoading,
+        error: mapReplyListDataError
+    } = useGetMapReplyList({
+        letterId: Number(letterId) || 0,
+        page: 1,
+        size: 9
+    });
+
+    console.log(mapReplyListData);
+    if (isMapReplyListDataLoading) {
+        return <div>로딩 중...</div>;
+    }
+
+    if (mapReplyListDataError instanceof Error) {
+        return <div>오류...: {mapReplyListDataError.message}</div>;
+    }
+
     return (
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
@@ -58,6 +81,15 @@ export const MapLetterArchieveDetail = ({
                 </div>
                 <Margin bottom={30} />
             </div>
+
+            {mapReplyListData?.content ? (
+                <div className="mt-16 mx-auto">
+                    <ReplyList
+                        title={title}
+                        keywordReplyListData={mapReplyListData.content}
+                    />
+                </div>
+            ) : null}
         </div>
     );
 };
