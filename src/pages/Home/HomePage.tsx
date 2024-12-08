@@ -27,6 +27,8 @@ export type RecommendLetter = {
 export const HomePage = () => {
     const { user } = useUserStore();
 
+    usePushNotification();
+
     const [open, setOpen] = useState(false);
     const [toggle, setToggle] = useState(true);
     const [letters, setLetters] = useState<ReplyLetter[] | RecommendLetter[]>(
@@ -36,8 +38,6 @@ export const HomePage = () => {
     function onDismiss() {
         setOpen(false);
     }
-
-    usePushNotification();
 
     const {
         // data: recommendedLetterData,

@@ -11,19 +11,4 @@ firebase.initializeApp({
     measurementId: 'G-FXC5BWDC6G'
 });
 
-// Firebase 앱 초기화
-const app = initializeApp(firebaseConfig);
-const messaging = getMessaging(app);
-
-// 백그라운드에서 푸시 메시지 수신
-onBackgroundMessage(messaging, (payload) => {
-    console.log('백그라운드 푸시 메시지 받음: ', payload);
-    // 알림을 트리거하는 코드
-    const notificationTitle = payload.notification.title;
-    const notificationOptions = {
-        body: payload.notification.body,
-        icon: payload.notification.icon
-    };
-
-    self.registration.showNotification(notificationTitle, notificationOptions);
-});
+const messaging = firebase.messaging();
