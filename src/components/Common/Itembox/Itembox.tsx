@@ -5,7 +5,7 @@ interface ItemboxProps {
     height?: string;
     padding?: string;
     children: React.ReactNode;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 // 커스텀 스타일 값은 px로 받아옵니다
