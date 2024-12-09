@@ -101,6 +101,7 @@ export type GetKeywordReplyLetterDetailResponseType = {
     font: string;
     paper: string;
     label: string;
+    isReplied: boolean;
     createdAt: string;
 };
 
