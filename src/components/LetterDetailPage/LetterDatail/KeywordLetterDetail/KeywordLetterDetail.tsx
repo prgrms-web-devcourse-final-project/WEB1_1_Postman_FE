@@ -99,7 +99,7 @@ export const KeywordLetterDetail = ({
                     letterType === 'LETTER' &&
                     !isReplied && (
                         <button
-                            className="btn-base flex-center rounded-3xl h-[40px]"
+                            className="btn-base z-[10000] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
                             onClick={() =>
                                 navigate(
                                     `/letter/keyword/reply/create/${letterId}`

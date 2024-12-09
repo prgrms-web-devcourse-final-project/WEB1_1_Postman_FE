@@ -94,7 +94,7 @@ export const MapExplorerPage = () => {
                                 ) : (
                                     <NavLink
                                         to={'/letter/create'}
-                                        className={`mb-36 ${CreateBtnStyle}`}
+                                        className={`cursor-not-allowed mb-36 ${CreateBtnStyle}`}
                                         onClick={(e) => e.preventDefault()}
                                     >
                                         <HiOutlinePencilAlt />
@@ -125,7 +125,7 @@ export const MapExplorerPage = () => {
                                 ) : (
                                     <NavLink
                                         to={'/letter/create'}
-                                        className={CreateBtnStyle}
+                                        className={`cursor-not-allowed ${CreateBtnStyle}`}
                                         onClick={(e) => e.preventDefault()}
                                     >
                                         <HiOutlinePencilAlt />
