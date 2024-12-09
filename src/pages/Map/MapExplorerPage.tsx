@@ -51,7 +51,7 @@ export const MapExplorerPage = () => {
         setQuery(event.target.value);
     };
 
-    const CreateBtnStyle = `text-sample-blue absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-[5rem] translate-y-7 left-[46%] bg-white border border-sample-blue w-52 rounded-2xl`;
+    const CreateBtnStyle = `text-sample-blue absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-[5rem] translate-y-7 left-[46%] bg-white  w-52 rounded-2xl`;
 
     return (
         <div>
@@ -94,7 +94,7 @@ export const MapExplorerPage = () => {
                                 ) : (
                                     <NavLink
                                         to={'/letter/create'}
-                                        className={CreateBtnStyle}
+                                        className={`mb-36 ${CreateBtnStyle}`}
                                         onClick={(e) => e.preventDefault()}
                                     >
                                         <HiOutlinePencilAlt />

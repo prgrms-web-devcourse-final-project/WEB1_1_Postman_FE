@@ -163,19 +163,13 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
 
     return (
         <div>
-            <div className="flex flex-col bg-white rounded-2xl items-center justify-center w-full h-full p-4">
+            <div className="flex flex-col bg-white rounded-2xl items-center justify-center w-52 h-full p-4">
                 <Margin top={10} />
-                <span className="font-bold mb-4 text-2xl">편지 신고하기</span>
-                <span className="text-sm text-gray-700 mb-4">
-                    신고 이유 및 설명
-                </span>
+                <span className="font-bold mb-4 text-xl">편지 신고하기</span>
 
                 <form className="flex flex-col items-start gap-4">
                     {reportReasons.map((reason, index) => (
-                        <label
-                            key={index}
-                            className="flex items-center text-lg"
-                        >
+                        <label key={index} className="flex items-center text-m">
                             <input
                                 type="radio"
                                 name="reportReason"
@@ -206,7 +200,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
                     </button>
                     <button
                         onClick={onReport}
-                        className="mt-6 bg-red-500 w-24 text-white px-4 py-2 rounded-lg"
+                        className="mt-6 bg-theme-skyblue w-24 text-white px-4 py-2 rounded-lg"
                         disabled={
                             !selectedReason ||
                             (selectedReason === '기타' &&
