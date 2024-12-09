@@ -50,7 +50,9 @@ export const MaplibreWithSearch = ({
                 <IoIosSearch className="w-6 h-8 cursor-pointer" />
             </div>
             {searchedLocation?.name && (
-                <div className="absolute top-[5rem] w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-sample-gray text-sample-black text-bold rounded-md p-2 flex items-center justify-between">
+
+                <div className="absolute top-[5rem] w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-sample-gray shadow-md text-sample-black text-bold rounded-md p-2 flex items-center justify-between">
+
                     <LuMapPin className="ml-2" />
                     <span className="flex-1 ml-4">{searchedLocation.name}</span>
                     <LiaTimesSolid
