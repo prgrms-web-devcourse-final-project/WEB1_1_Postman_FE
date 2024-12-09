@@ -208,6 +208,7 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                                 navigate(
                                                     `/letter/${type}${letterTypePath}/${dataType}/${letter.letterId}`
                                                 );
+                                                return;
                                             }
                                             const dataType =
                                                 selectedFilter === 'SEND'
