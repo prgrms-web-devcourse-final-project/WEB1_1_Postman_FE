@@ -7,6 +7,22 @@ export type LetterType = {
     label: string;
 };
 
+export type MapReplyType = {
+    sourceLetter: number;
+    content: string;
+    font: string;
+    paper: string;
+    label: string;
+};
+
+export type KeywordType = {
+    letterId : number;
+    content: string;
+    font: string;
+    paper: string;
+    label: string;
+};
+
 export type CreateLetterResponseType = {
     isSuccess: boolean;
     code: string;
@@ -19,6 +35,20 @@ export type CreateLetterResponseType = {
         font: string;
         paper: string;
         profile: string;
+        label: string;
+        createdAt: string;
+    };
+};
+
+export type CreateKeywordReplyLetterResponseType = {
+    isSuccess: boolean;
+    code: string;
+    message: string;
+    result: {
+        replyLetterId: number;
+        content: string;
+        font: string;
+        paper: string;
         label: string;
         createdAt: string;
     };
