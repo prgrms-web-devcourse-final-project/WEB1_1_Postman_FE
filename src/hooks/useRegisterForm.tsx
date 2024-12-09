@@ -22,6 +22,7 @@ interface RegisterFormState {
 interface ValidationState {
     isEmailSend: boolean;
     isEmailVerified: boolean;
+    isVerifyLoading: boolean;
     isNicknameChecked: boolean;
     isNicknameValid: boolean;
 }
@@ -42,6 +43,7 @@ export const useRegisterForm = () => {
     // 회원가입 폼 유효성 검사 상태
     const [validationState, setValidationState] = useState<ValidationState>({
         isEmailSend: false,
+        isVerifyLoading: false,
         isEmailVerified: false,
         isNicknameChecked: false,
         isNicknameValid: false
@@ -58,7 +60,8 @@ export const useRegisterForm = () => {
                     setValidationState((prev) => ({
                         ...prev,
                         isEmailSend: false,
-                        isEmailVerified: false
+                        isEmailVerified: false,
+                        isVerifyLoading: false
                     }));
                 }
                 break;
@@ -81,12 +84,17 @@ export const useRegisterForm = () => {
             addToast('이메일을 입력해주세요.', 'warning');
             return;
         }
+        setValidationState((prev) => ({ ...prev, isVerifyLoading: true }));
         const response = await sendEmail({ email: formState.email });
         console.log(response);
         switch (response.code) {
             case 'COMMON200':
                 addToast('인증번호가 전송되었습니다.', 'success');
-                setValidationState((prev) => ({ ...prev, isEmailSend: true }));
+                setValidationState((prev) => ({
+                    ...prev,
+                    isEmailSend: true,
+                    isVerifyLoading: false
+                }));
                 return true;
             case 'USER4000':
                 addToast('유효한 이메일 형식이 아닙니다.', 'warning');
