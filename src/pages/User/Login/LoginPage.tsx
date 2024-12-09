@@ -11,7 +11,7 @@ export const LoginPage = () => {
     const { mutate } = useLogin();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-\        e.preventDefault();
+        e.preventDefault();
         const $loginForm = e.target as HTMLFormElement;
         const loginFormData = new FormData($loginForm);
         const [email, password] = [
