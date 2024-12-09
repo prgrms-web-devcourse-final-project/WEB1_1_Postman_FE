@@ -65,7 +65,7 @@ export const MyPage = () => {
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-4 justify-end">
                     <ProfileSection user={user!} />
-                    <div className="" onClick={handleLogout}>
+                    <div className="cursor-pointer" onClick={handleLogout}>
                         로그아웃
                     </div>
                 </div>

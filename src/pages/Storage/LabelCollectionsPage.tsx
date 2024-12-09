@@ -99,7 +99,9 @@ export const LabelCollectionsPage = () => {
                             <Label imgSrc={selectedLabel.imageUrl} />
                         </div>
                     )}
-                    <div onClick={closeModal}>닫기</div>
+                    <div onClick={closeModal} className="cursor-pointer">
+                        닫기
+                    </div>
                 </div>
             </ModalComponent>
             <div className="flex flex-col gap-5">{renderList()}</div>
