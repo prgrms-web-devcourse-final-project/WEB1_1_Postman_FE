@@ -110,7 +110,7 @@ export const TextArea = ({
                     lineHeight: lineHeight
                 }}
                 ref={textAreaRef}
-                placeholder="편지를 작성하세요..."
+                placeholder="편지를 작성하세요."
                 value={value}
                 onChange={handleInputChange}
                 readOnly={isReadonly}
