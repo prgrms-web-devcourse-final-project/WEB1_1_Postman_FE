@@ -36,12 +36,11 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
         font,
         isOwner
     } = letterData;
-
     const navigate = useNavigate();
     const [isStored, setIsStored] = useState(false);
 
     const { data: isReplied } = useGetCheckMapReplyLetter({
-        letterId: Number(letterId) || 0
+        letterId: Number(letterId)
     });
 
     useEffect(() => {
