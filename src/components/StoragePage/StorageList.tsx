@@ -22,7 +22,7 @@ type DeleteLetterType = {
     boxType: string;
 };
 
-const ROWS_PER_PAGE = 5;
+const ROWS_PER_PAGE = 10;
 
 export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
     const navigate = useNavigate();
