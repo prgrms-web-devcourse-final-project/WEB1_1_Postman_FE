@@ -4,6 +4,7 @@ import { useToastStore } from '@/hooks';
 import { useEffect } from 'react';
 import { useNearbyLettersDetail } from '@/hooks/useGetNearbyLettersDetail';
 import { MapLetterDetail } from '../../LetterDatail/MapLetterDetail/MapLetterDetail';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 export const MapLetterDetailContainer = () => {
     const { letterId, lat, lot } = useParams<{
@@ -34,7 +35,11 @@ export const MapLetterDetailContainer = () => {
     }, [mapError, addToast]);
 
     if (isMapLoading) {
-        return <div>로딩 중...</div>;
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     }
 
     if (!mapData) {

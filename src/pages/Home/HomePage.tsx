@@ -12,6 +12,7 @@ import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/Top
 import { getToken, firebaseMessaging, onMessage } from '@/util/firebase';
 import { postToken } from '@/service/nofication/postToken';
 import { useToastStore } from '@/hooks';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 export type ReplyLetter = {
     type: 'MAP' | 'KEYWORD';
@@ -112,7 +113,11 @@ export const HomePage = () => {
     }, [toggle, refetchRecommendedLetters, refetchRecentRelyLetters]);
 
     if (isRecommendedLetterLoading || isRecentRelyLetterLoading) {
-        return <p>로딩 중...</p>;
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     }
 
     if (isRecommendedLetterError || isRecentRelyLetterError) {

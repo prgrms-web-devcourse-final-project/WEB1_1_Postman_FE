@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useKeywordLetterDetail } from '@/hooks/useGetKeywordLetterDetail';
 import { useGetKeywordReplyLetterDetail } from '@/hooks/useGetKeywordReplyLetterDetail';
 import { KeywordLetterDetail } from '../../LetterDatail/KeywordLetterDetail/KeywordLetterDetail';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 export const KeywordLetterDetailContainer = () => {
     const { letterId, replyLetterId, letterType } = useParams<{
@@ -44,7 +45,11 @@ export const KeywordLetterDetailContainer = () => {
     }, [keywordError, replyError, addToast, navigate]);
 
     if (isKeywordLoading || isReplyLoading) {
-        return <div>로딩 중...</div>;
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     }
 
     if (!keywordData && !replyData) {

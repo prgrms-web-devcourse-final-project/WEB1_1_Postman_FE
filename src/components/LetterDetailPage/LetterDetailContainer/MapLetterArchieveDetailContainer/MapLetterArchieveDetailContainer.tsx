@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useGetArchivedLetter } from '@/hooks';
 import { MapLetterArchieveDetail } from '../../LetterDatail/MapLetterArchieveDetail/MapLetterArchieveDetail';
 import { useGetMapReplyLetterDetail } from '@/hooks/useGetMapReplyLetterDetail';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 export const MapLetterArchieveDetailContainer = () => {
     const { letterId, replyLetterId, dataType } = useParams<{
@@ -43,7 +44,11 @@ export const MapLetterArchieveDetailContainer = () => {
     }, [mapError, replyError, addToast, navigate]);
 
     if (isMapLoading || isReplyLoading) {
-        return <div>로딩 중...</div>;
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     }
 
     if (!mapData && !replyData) {
