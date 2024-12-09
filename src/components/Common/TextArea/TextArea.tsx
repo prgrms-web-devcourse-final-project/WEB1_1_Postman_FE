@@ -71,7 +71,7 @@ export const TextArea = ({
             <React.Fragment key={index}>
                 <img
                     src={'/to_line.f4c129e6.svg'}
-                    className="w-full"
+                    className="z-30 w-full"
                     style={{
                         objectFit: 'contain'
                     }}
