@@ -153,82 +153,29 @@ export const StorageList = ({ type }: StorageListProps) => {
         );
     }
 
-    if (groupedLetters.length === 0) {
-        return <Empty />;
-    }
-
     const renderList = () => {
         return (
-            <div className="flex flex-col gap-2">
-                <ModalComponent height="h-[100px]">
-                    <div className="flex flex-col gqp-3">
-                        <div className="text-lg text-bold">
-                            정말 삭제하시겠습니까?
-                        </div>
-                        <div className="flex flex-row gap-1">
+            <div className="">
+                <ModalComponent height="h-[200px] w-[250px]">
+                    <div className="flex flex-col gap-3 justify-center items-center w-full h-full">
+                        <div className="text-bold">정말 삭제하시겠습니까?</div>
+                        <div className="flex flex-row gap-1 w-full justify-center items-center">
                             <button
                                 onClick={handleDelete}
-                                className="bg-sample-blue text-white"
+                                className="bg-sample-blue text-white px-3 py-1 rounded-sm"
                             >
                                 예
                             </button>
                             <button
                                 onClick={closeModal}
-                                className="bg-white boder border-sample-blue"
+                                className="bg-white border border-sample-blue text-sample-blue px-3 py-1 rounded-sm"
                             >
                                 아니오
                             </button>
                         </div>
                     </div>
                 </ModalComponent>
-                <div className="flex flex-row gap-2">
-                    <button
-                        className={`border border-sample-blue rounded-xl text-sm px-2 py-1
-                                ${
-                                    selectedFilter === 'SEND'
-                                        ? 'bg-sample-blue text-white'
-                                        : 'bg-white text-sample-blue'
-                                }`}
-                        onClick={() => setSelectedFilter('SEND')}
-                    >
-                        보낸 편지
-                    </button>
-                    <button
-                        className={`border border-sample-blue rounded-xl text-sm px-2 py-1
-                                ${
-                                    selectedFilter === 'RECEIVE'
-                                        ? 'bg-sample-blue text-white'
-                                        : 'bg-white text-sample-blue'
-                                }`}
-                        onClick={() => setSelectedFilter('RECEIVE')}
-                    >
-                        받은 편지
-                    </button>
-                </div>
-                {/* 삭제 섹션 */}
-                <div className="flex flex-row justify-between w-full gap-3 text-sm">
-                    <div className="flex flex-row items-center gap-1">
-                        <input
-                            type="checkbox"
-                            name="select-all"
-                            onChange={(e) => handleAllCheck(e.target.checked)}
-                            checked={
-                                checkedItems.length ===
-                                groupedLetters.reduce(
-                                    (acc, day) => acc + day.letters.length,
-                                    0
-                                )
-                            }
-                        />
-                        <label>전체</label>
-                    </div>
-                    <button
-                        className="px-2 py-1 bg-sample-gray"
-                        onClick={openModal}
-                    >
-                        삭제
-                    </button>
-                </div>
+
                 {groupedLetters.map((dayGroup) => (
                     <div key={dayGroup.date} className="flex flex-col gap-3">
                         {/* 날짜 섹션 */}
@@ -308,8 +255,65 @@ export const StorageList = ({ type }: StorageListProps) => {
     };
 
     return (
-        <div className="">
-            {renderList()}
+        <div className="flex flex-col gap-2">
+            <div className="flex flex-row gap-2">
+                <button
+                    className={`border border-sample-blue rounded-xl text-sm px-2 py-1
+                                ${
+                                    selectedFilter === 'SEND'
+                                        ? 'bg-sample-blue text-white'
+                                        : 'bg-white text-sample-blue'
+                                }`}
+                    onClick={() => setSelectedFilter('SEND')}
+                >
+                    보낸 편지
+                </button>
+                <button
+                    className={`border border-sample-blue rounded-xl text-sm px-2 py-1
+                                ${
+                                    selectedFilter === 'RECEIVE'
+                                        ? 'bg-sample-blue text-white'
+                                        : 'bg-white text-sample-blue'
+                                }`}
+                    onClick={() => setSelectedFilter('RECEIVE')}
+                >
+                    받은 편지
+                </button>
+            </div>
+            {/* 삭제 섹션 */}
+            {groupedLetters.length === 0 ? null : (
+                <div className="flex flex-row justify-between w-full gap-3 text-sm">
+                    <div className="flex flex-row items-center gap-1">
+                        <input
+                            type="checkbox"
+                            name="select-all"
+                            onChange={(e) => handleAllCheck(e.target.checked)}
+                            checked={
+                                checkedItems.length ===
+                                groupedLetters.reduce(
+                                    (acc, day) => acc + day.letters.length,
+                                    0
+                                )
+                            }
+                        />
+                        <label>전체</label>
+                    </div>
+                    <button
+                        className="px-2 py-1 bg-sample-gray"
+                        onClick={() => {
+                            if (checkedItems.length === 0) {
+                                addToast('삭제할 편지가 없어요.', 'warning');
+                                return;
+                            }
+                            openModal();
+                        }}
+                    >
+                        삭제
+                    </button>
+                </div>
+            )}
+
+            {groupedLetters.length === 0 ? <Empty /> : renderList()}
             <div>{isFetchingNextPage ? <div></div> : <div ref={ref} />}</div>
         </div>
     );

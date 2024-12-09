@@ -29,17 +29,17 @@ export const MyPage = () => {
     const menuItems = [
         {
             content: '키워드 편지함',
-            url: '/storage',
+            url: '/storage?type=keyword',
             state: { initialType: 'keyword' }
         },
         {
             content: '지도 편지함',
-            url: '/storage',
+            url: '/storage?type=map',
             state: { initialType: 'map' }
         },
         {
             content: '보관함',
-            url: '/storage',
+            url: '/storage?type=bookmark',
             state: { initialType: 'bookmark' }
         }
     ];
