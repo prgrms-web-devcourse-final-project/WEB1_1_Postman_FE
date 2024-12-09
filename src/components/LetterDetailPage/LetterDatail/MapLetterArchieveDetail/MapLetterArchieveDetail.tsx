@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { DeleteButton } from '../../Delete/DeleteButton';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
-import { ReplyList } from '../../ReplyList/ReplyList';
+// import { ReplyList } from '../../ReplyList/ReplyList';
 import { ReportButton } from '../../Report/ReportButton';
 import { useLocation } from 'react-router-dom';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
@@ -90,14 +90,14 @@ export const MapLetterArchieveDetail = ({
                     </span>
                     <span>{DayCounter({ createdAt })}</span>
                 </div>
-                {mapReplyListData?.content ? (
+                {/* {mapReplyListData?.content ? (
                     <div className="mt-16 mx-auto">
                         <ReplyList
                             title={title}
                             keywordReplyListData={mapReplyListData.content}
                         />
                     </div>
-                ) : null}
+                ) : null} */}
             </div>
         </div>
     );
