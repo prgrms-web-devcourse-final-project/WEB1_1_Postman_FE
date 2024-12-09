@@ -71,7 +71,7 @@ export const LoginPage = () => {
                     </div>
                 </div>
             </form>
-            <div className="flex gap-3 flex-"></div>
+
         </div>
     );
 };
