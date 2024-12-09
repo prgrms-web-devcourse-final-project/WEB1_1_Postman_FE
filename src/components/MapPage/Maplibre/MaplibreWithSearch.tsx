@@ -50,7 +50,7 @@ export const MaplibreWithSearch = ({
                 <IoIosSearch className="w-6 h-8 cursor-pointer" />
             </div>
             {searchedLocation?.name && (
-                <div className="absolute top-28 w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-slate-200 rounded-2xl p-2 flex items-center justify-between">
+                <div className="absolute top-[5rem] w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-sample-gray text-sample-black text-bold rounded-md p-2 flex items-center justify-between">
                     <LuMapPin className="ml-2" />
                     <span className="flex-1 ml-4">{searchedLocation.name}</span>
                     <LiaTimesSolid
@@ -77,11 +77,12 @@ export const MaplibreWithSearch = ({
                         anchor="bottom"
                         rotation={direction || 0}
                     >
-                        <img
-                            src="https://www.svgrepo.com/show/372536/map-marker.svg"
-                            alt="marker"
-                            className="w-[30px] h-[30px] transform -translate-x-1/2 -translate-y-full"
-                        />
+                        <span className="relative flex h-5 w-5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sample-marker opacity-75"></span>
+                            <span className="relative inline-flex justify-center items-center rounded-full h-5 w-5 bg-white">
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-sample-marker" />
+                            </span>
+                        </span>
                     </Marker>
                 )}
                 {nearbyLetters.map(
@@ -115,11 +116,21 @@ export const MaplibreWithSearch = ({
                         anchor="bottom"
                         rotation={direction || 0}
                     >
-                        <img
-                            src="https://www.svgrepo.com/show/372536/map-marker.svg"
-                            alt="marker"
-                            className="w-[30px] h-[30px] transform -translate-x-1/2 -translate-y-full"
-                        />
+                        <div className="flex justify-center">
+                            <div className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center">
+                                <svg
+                                    className="w-6 h-6 text-sample-place"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </div>
+                        </div>
                     </Marker>
                 )}
             </Map>
