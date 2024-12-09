@@ -37,7 +37,7 @@ export const WelcomeMessageContainer = ({
         <div className="z-[3]">
             {message}
             <p className="font-medium text-title1">{messageBody}</p>
-            <p className="font-medium text-sample-textgray">{subMessage}</p>
+            <p className="font-medium text-sample text-white">{subMessage}</p>
         </div>
     );
 };
