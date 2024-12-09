@@ -7,7 +7,8 @@ import clsx from 'clsx';
 import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
 import { ReplyList } from '../../ReplyList/ReplyList';
 import { ReportButton } from '../../Report/ReportButton';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Label } from '@/components/Common/BottleLetter/Label/Label';
 
 type KeywordLetterDetailProps = {
     letterData: {
@@ -17,6 +18,7 @@ type KeywordLetterDetailProps = {
         keywords?: string[];
         createdAt: string;
         font: string;
+        label: string;
     };
 };
 
@@ -26,8 +28,9 @@ export const KeywordLetterDetail = ({
     const { dataType } = useParams<{
         dataType: string;
     }>();
-
-    const { letterId, title, content, keywords, createdAt, font } = letterData;
+    const navigate = useNavigate();
+    const { letterId, title, content, keywords, createdAt, font, label } =
+        letterData;
 
     const {
         data: keywordReplyListData,
@@ -51,8 +54,12 @@ export const KeywordLetterDetail = ({
     return (
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
+
             <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
                 <div className="absolute top-0 right-0 flex">
+                    <div className="w-8 -rotate-12">
+                        <Label imgSrc={label} />
+                    </div>
                     <DeleteButton />
                     {dataType === 'received' && <ReportButton />}
                 </div>
@@ -69,16 +76,28 @@ export const KeywordLetterDetail = ({
                     <p className="">{formatDate(createdAt)}</p>
                 </div>
                 {keywords && <KeywordList keywords={keywords} />}
-                <Margin bottom={30} />
-            </div>
+                <Margin bottom={5} />
+                {dataType === 'sent' && keywordReplyListData?.content ? (
+                    <div className="mx-auto mt-16">
+                        <ReplyList
+                            keywordReplyListData={keywordReplyListData.content}
+                        />
+                    </div>
+                ) : null}
 
-            {keywordReplyListData?.content ? (
-                <div className="mx-auto mt-16">
-                    <ReplyList
-                        keywordReplyListData={keywordReplyListData.content}
-                    />
-                </div>
-            ) : null}
+                {dataType === 'received' && (
+                    <button
+                        className="btn-base flex-center rounded-3xl h-[40px]"
+                        onClick={() =>
+                            navigate(
+                                `/letter/keyword/reply/create/:${letterId}`
+                            )
+                        }
+                    >
+                        편지에 답장하기
+                    </button>
+                )}
+            </div>
         </div>
     );
 };

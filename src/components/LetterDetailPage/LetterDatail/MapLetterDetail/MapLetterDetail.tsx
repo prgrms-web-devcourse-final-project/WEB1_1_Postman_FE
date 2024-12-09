@@ -10,6 +10,7 @@ import clsx from 'clsx';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ReportButton } from '../../Report/ReportButton';
+import { Label } from '@/components/Common/BottleLetter/Label/Label';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -34,7 +35,8 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
         createdAt,
         profileImg,
         font,
-        isOwner
+        isOwner,
+        label
     } = letterData;
     const navigate = useNavigate();
     const [isStored, setIsStored] = useState(false);
@@ -95,13 +97,18 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
     };
 
     const onReplyClick = () => {
-        navigate('/letter/create');
+        navigate(`/letter/map/reply/create/${letterId}`);
     };
 
     return (
         <>
             <div className="absolute top-8 right-16 cursor-pointer">
-                <ReportButton />
+                <div className="flex">
+                    <div className="w-8 -rotate-12">
+                        <Label imgSrc={label} />
+                    </div>
+                    <ReportButton />
+                </div>
             </div>
             <div className={clsx(font ? font : 'font-sans')}>
                 <Margin top={20} />
@@ -134,7 +141,7 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
                         </span>
                         <span>{DayCounter({ createdAt })}</span>
                     </div>
-                    <Margin bottom={30} />
+                    <Margin bottom={2} />
                 </div>
                 {!isOwner && (
                     <>

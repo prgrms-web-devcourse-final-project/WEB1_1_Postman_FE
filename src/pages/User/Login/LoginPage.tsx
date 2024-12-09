@@ -42,11 +42,11 @@ export const LoginPage = () => {
     return (
         <div className="flex flex-col gap-3 h-full my-[50px]">
             <form
-                className=" flex flex-col gap-5"
+                className="flex flex-col gap-5 "
                 onSubmit={handleSubmit}
                 noValidate
             >
-                <h2 className="font-bold text-2xl ">로그인</h2>
+                <h2 className="text-2xl font-bold ">로그인</h2>
                 <div className="flex flex-col gap-5">
                     <div className="flex flex-col gap-2">
                         <EmailInput></EmailInput>
@@ -74,7 +74,7 @@ export const LoginPage = () => {
                     </div>
                 </div>
             </form>
-            <div className="flex flex- gap-3">
+            <div className="flex gap-3 flex-">
                 <div className="text-caption">회원 정보 찾기</div>
             </div>
         </div>

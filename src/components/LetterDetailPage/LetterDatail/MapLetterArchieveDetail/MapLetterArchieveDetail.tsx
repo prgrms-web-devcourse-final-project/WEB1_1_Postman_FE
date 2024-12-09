@@ -8,6 +8,7 @@ import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
 import { ReplyList } from '../../ReplyList/ReplyList';
 import { ReportButton } from '../../Report/ReportButton';
 import { useLocation } from 'react-router-dom';
+import { Label } from '@/components/Common/BottleLetter/Label/Label';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -28,7 +29,7 @@ export const MapLetterArchieveDetail = ({
     letterData,
     letterId
 }: MapLetterDetailProps) => {
-    const { title, content, createdAt, font, description, profileImg } =
+    const { title, content, createdAt, font, description, profileImg, label } =
         letterData;
     const { pathname } = useLocation();
     const letterType = pathname.split('/')[2];
@@ -57,6 +58,9 @@ export const MapLetterArchieveDetail = ({
             <Margin top={20} />
             <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
                 <div className="absolute top-0 right-0 flex">
+                    <div className="w-8 -rotate-12">
+                        <Label imgSrc={label} />
+                    </div>
                     <DeleteButton />
                     {letterType === 'map' && receivedType == 'received' && (
                         <ReportButton />

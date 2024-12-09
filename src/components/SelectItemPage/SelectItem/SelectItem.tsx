@@ -5,9 +5,12 @@ import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/Sli
 import { CreateButton } from '../CreateButton/CreateButton';
 import { LabelProps } from '@/types/label';
 import { ItemGroup } from '../ItemGroup/ItemGroup';
-import { useCreateLetter } from '@/hooks/useCreateLetter';
 import { useLocalStorage, useToastStore } from '@/hooks';
 import { useGetAllKeywords } from '@/hooks/useGetAllKeywords';
+import { useParams, useLocation } from 'react-router-dom';
+import { useCreateLetter } from '@/hooks/useCreateLetter';
+import { usePostKeywordReplyLettter } from '@/hooks/usePostKeywordReplyLettter';
+import { usePostMapReplyLetter } from '@/hooks/usePostMapReplyLetter';
 
 type SelectItemProps = {
     isActive: boolean;
@@ -27,8 +30,15 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
     const [selectedLabel, setSelectedLabel] = useState<number | null>(null);
     const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
+    const { letterId } = useParams<{
+        letterId: string;
+    }>();
+    const { pathname } = useLocation();
+    const letterType = pathname.split('/')[2];
 
-    const { mutate } = useCreateLetter();
+    const { mutate: mutateCreate } = useCreateLetter();
+    const { mutate: mutateKeyword } = usePostKeywordReplyLettter();
+    const { mutate: mutateMap } = usePostMapReplyLetter();
 
     const { data: keyweordData } = useGetAllKeywords();
 
@@ -43,12 +53,12 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const { addToast } = useToastStore();
 
     useEffect(() => {
-        if (selectedLabel !== null && selectedKeywords.length > 0) {
+        if (selectedLabel !== null) {
             setIsActive(true);
         } else {
             setIsActive(false);
         }
-    }, [selectedLabel, selectedKeywords]);
+    }, [selectedLabel]);
 
     const handleLabelSelection = (label: number) => {
         setSelectedLabel(label);
@@ -66,20 +76,43 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
         );
     };
 
-    const handdleClick = () => {
-        if (selectedLabel === null || selectedKeywords.length === 0) {
-            addToast('라벨과 키워드를 선택해주세요.', 'error');
+    const handleClick = () => {
+        if (selectedLabel === null) {
+            addToast('라벨을 선택해주세요.', 'error');
             return;
         }
 
-        mutate({
+        const letterData = {
             title: title,
             content: letterContent,
             font: font,
             paper: letter,
             keywords: selectedKeywords,
             label: testLable[selectedLabel].imgSrc
-        });
+        };
+
+        const letterMapReplyData = {
+            sourceLetter: Number(letterId) || 0,
+            content: letterContent,
+            font: font,
+            paper: letter,
+            label: testLable[selectedLabel].imgSrc
+        };
+        const letterKeywordReplyData = {
+            letterId: Number(letterId) || 0,
+            content: letterContent,
+            font: font,
+            paper: letter,
+            label: testLable[selectedLabel].imgSrc
+        };
+
+        if (letterType === 'keyword') {
+            mutateKeyword(letterKeywordReplyData);
+        } else if (letterType === 'map') {
+            mutateMap(letterMapReplyData);
+        } else {
+            mutateCreate(letterData);
+        }
     };
 
     return (
@@ -91,7 +124,7 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
                         isActive={isActive}
                         handleClickHandler={() => {
                             if (isActive) {
-                                handdleClick();
+                                handleClick();
                             }
                         }}
                     >
