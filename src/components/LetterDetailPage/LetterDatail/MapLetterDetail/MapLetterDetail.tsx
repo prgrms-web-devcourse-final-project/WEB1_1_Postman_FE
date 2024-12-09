@@ -5,8 +5,9 @@ import { useToastStore } from '@/hooks';
 import { usePostNearByLetterStorage } from '@/hooks/usePostNearByLetterStorage';
 import { formatDate } from '@/util/formatDate';
 import { getLetter } from '@/service/storage/getLetter';
+import { useGetCheckMapReplyLetter } from '@/hooks/useGetCheckMapReplyLetter';
 import clsx from 'clsx';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ReportButton } from '../../Report/ReportButton';
 
@@ -36,7 +37,12 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
         isOwner
     } = letterData;
 
+    const navigate = useNavigate();
     const [isStored, setIsStored] = useState(false);
+
+    const { data: isReplied } = useGetCheckMapReplyLetter({
+        letterId: Number(letterId) || 0
+    });
 
     useEffect(() => {
         const checkStoredLetter = async () => {
@@ -89,6 +95,10 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
         }
     };
 
+    const onReplyClick = () => {
+        navigate('/letter/create');
+    };
+
     return (
         <>
             <div className="absolute top-8 right-16 cursor-pointer">
@@ -136,9 +146,14 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
                             >
                                 {isStored ? '보관됨' : '보관하기'}
                             </button>
-                            <button className="btn-base flex-center rounded-3xl h-[40px]">
-                                편지에 답장하기
-                            </button>
+                            {!isReplied && (
+                                <button
+                                    className="btn-base flex-center rounded-3xl h-[40px]"
+                                    onClick={onReplyClick}
+                                >
+                                    편지에 답장하기
+                                </button>
+                            )}
                         </div>
                     </>
                 )}
