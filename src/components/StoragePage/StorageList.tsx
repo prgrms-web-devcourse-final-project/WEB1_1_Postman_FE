@@ -62,7 +62,6 @@ export const StorageList = ({ type }: StorageListProps) => {
         isLoading,
         isError,
         fetchNextPage,
-        // isFetching,
         isFetchingNextPage
     } = useInfiniteStorageFetch(getApiEndpoint(), ROWS_PER_PAGE);
 
@@ -101,7 +100,7 @@ export const StorageList = ({ type }: StorageListProps) => {
     }
 
     if (isError) {
-        return <></>;
+        return <>에러!</>;
     }
 
     const renderList = () => {

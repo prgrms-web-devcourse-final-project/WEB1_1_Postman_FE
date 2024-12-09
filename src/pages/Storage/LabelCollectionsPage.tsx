@@ -93,7 +93,6 @@ export const LabelCollectionsPage = () => {
                 <BackButtonCotainer width="30px" />
                 <h3 className="text-lg font-bold">라벨 모음</h3>
             </div>
-
             <ModalComponent height="h-[400px]">
                 {selectedLabel && (
                     <div className="h-full">
