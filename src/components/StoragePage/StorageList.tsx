@@ -14,7 +14,7 @@ type StorageListProps = {
 
 const ROWS_PER_PAGE = 5;
 
-export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
+export const StorageList = ({ type }: StorageListProps) => {
     const navigate = useNavigate();
 
     const [selectedFilter, setSelectedFilter] = useState<FilterType>('SEND');
