@@ -146,7 +146,11 @@ export const StorageList = ({ type }: StorageListProps) => {
     }, [inView]);
 
     if (isLoading) {
-        return <Loading />;
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     }
 
     if (groupedLetters.length === 0) {

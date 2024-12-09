@@ -1,6 +1,6 @@
 export const Loading = () => {
     return (
-        <div className="text-sample-blue">
+        <div className="text-sample-blue mt-[75%] w-full flex flex-row justify-center">
             <svg
                 className="animate-spin h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"

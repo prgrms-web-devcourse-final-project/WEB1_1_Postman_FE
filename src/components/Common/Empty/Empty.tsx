@@ -4,8 +4,7 @@ import { Margin } from '../Margin/Margin';
 export const Empty = () => {
     const navigate = useNavigate();
     return (
-        <div className=" flex flex-col items-center justify-center">
-            <Margin top={250} />
+        <div className=" flex flex-col items-center justify-center mt-[35%]">
             <h1 className="text-5xl font-bold mb-4 text-sample-blue">텅</h1>
             <div className="text-xl font-semibold text-gray-700 text-center">
                 아직 편지가 발견되지 않았어요.
