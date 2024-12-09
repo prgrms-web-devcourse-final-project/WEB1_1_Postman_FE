@@ -38,8 +38,7 @@ export const defaultApi = (option?: AxiosRequestConfig): AxiosInstance => {
             return response;
         },
         async function (error) {
-            console.log('액세스 토큰 만료');
-            console.error('왜지??:', error);
+            console.error('에러:', error);
 
             const originalRequest = error.config;
 

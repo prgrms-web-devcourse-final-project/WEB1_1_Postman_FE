@@ -5,19 +5,18 @@ import { KeywordListSection } from '@/components/MyPage/KeywordListSection';
 import { logout } from '@/service/auth/logout';
 import { useToastStore } from '@/hooks';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getUserFrequentKeyword } from '@/service/user/getUserFrequentKeyword';
 
 export const MyPage = () => {
     const { user } = useUserStore();
     const { addToast } = useToastStore();
     const navigate = useNavigate();
 
-    const sampleKeywords = [
-        '키워드',
-        '베리 롱 롱 키워드',
-        '베리 롱 키워드',
-        '키워드',
-        '키워드'
-    ];
+    const { data } = useQuery({
+        queryKey: ['userFrequentKeyword'],
+        queryFn: getUserFrequentKeyword
+    });
 
     const menuItems = [
         { content: '키워드 편지함', url: '/storage/keyword' },
@@ -47,7 +46,7 @@ export const MyPage = () => {
                 </div>
                 <MenuListSection menuItems={menuItems} />
                 <MenuListSection menuItems={labelMenuItems} />
-                <KeywordListSection keywords={sampleKeywords} />
+                <KeywordListSection keywords={data?.result.keywords || []} />
             </div>
         </div>
     );
