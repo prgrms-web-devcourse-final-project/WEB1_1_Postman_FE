@@ -81,7 +81,7 @@ export const MapExplorerPage = () => {
                             <>
                                 {searchedLocation ? (
                                     <NavLink
-                                        to={'/letter/create'}
+                                        to={`/letter/map/:${searchedLocation.lat}/:${searchedLocation.lon}/create`}
                                         className="absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-60 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
                                     >
                                         <HiOutlinePencilAlt />
@@ -112,7 +112,7 @@ export const MapExplorerPage = () => {
                             <>
                                 {searchedLocation ? (
                                     <NavLink
-                                        to={'/letter/create'}
+                                        to={`/letter/map/:${searchedLocation.lat}/:${searchedLocation.lon}/create`}
                                         className="absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-24 translate-y-7 left-1/2 btn-base w-52 rounded-2xl"
                                     >
                                         <HiOutlinePencilAlt />
