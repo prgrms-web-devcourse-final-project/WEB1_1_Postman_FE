@@ -7,6 +7,8 @@ import { useInView } from 'react-intersection-observer';
 import { deleteLetters } from '@/service/letter/delete/deleteLetters';
 import { useModal, useToastStore } from '@/hooks';
 import { useQueryClient } from '@tanstack/react-query';
+import { Empty } from '../Common/Empty/Empty';
+import { Loading } from '../Common/Loading/Loading';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
 type FilterType = 'SEND' | 'RECEIVE';
@@ -78,6 +80,10 @@ export const StorageList = ({ type }: StorageListProps) => {
         isFetchingNextPage
     } = useInfiniteStorageFetch(getApiEndpoint(), ROWS_PER_PAGE);
 
+    useEffect(() => {
+        console.log(groupedLetters, isLoading, isError);
+    }, [groupedLetters, isLoading, isError]);
+
     // 체크박스 단일 클릭
     const handleSingleCheck = (
         checked: boolean,
@@ -140,11 +146,11 @@ export const StorageList = ({ type }: StorageListProps) => {
     }, [inView]);
 
     if (isLoading) {
-        return <div>로딩중</div>;
+        return <Loading />;
     }
 
-    if (isError) {
-        return <>에러!</>;
+    if (groupedLetters.length === 0) {
+        return <Empty />;
     }
 
     const renderList = () => {

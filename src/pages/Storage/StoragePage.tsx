@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { StorageList } from '@/components/StoragePage/StorageList';
-import { useNavigate } from 'react-router-dom';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
 
 interface StoragePageProps {
-    initialType: storageType;
+    initialType?: storageType;
 }
 
 const getTranslateX = (path: storageType) => {
@@ -19,9 +18,8 @@ const getTranslateX = (path: storageType) => {
     return `${pathIndex * 100}%`;
 };
 
-export const StoragePage = ({ initialType }: StoragePageProps) => {
+export const StoragePage = ({ initialType = 'keyword' }: StoragePageProps) => {
     const [storageType, setStorageType] = useState<storageType>(initialType);
-    const navigate = useNavigate();
 
     return (
         <div className="flex flex-col h-full">
@@ -37,7 +35,6 @@ export const StoragePage = ({ initialType }: StoragePageProps) => {
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
                         onClick={() => {
                             setStorageType('keyword');
-                            navigate('/storage/keyword');
                         }}
                     >
                         <span>키워드 편지</span>
@@ -46,7 +43,6 @@ export const StoragePage = ({ initialType }: StoragePageProps) => {
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
                         onClick={() => {
                             setStorageType('map');
-                            navigate('/storage/map');
                         }}
                     >
                         <span>내 지도 편지</span>
@@ -55,7 +51,6 @@ export const StoragePage = ({ initialType }: StoragePageProps) => {
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
                         onClick={() => {
                             setStorageType('bookmark');
-                            navigate('/storage/bookmark');
                         }}
                     >
                         <span>보관한 지도 편지</span>

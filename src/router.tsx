@@ -101,20 +101,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'storage',
-                children: [
-                    {
-                        path: 'keyword',
-                        element: <StoragePage initialType={'keyword'} />
-                    },
-                    {
-                        path: 'map',
-                        element: <StoragePage initialType={'map'} />
-                    },
-                    {
-                        path: 'bookmark',
-                        element: <StoragePage initialType={'bookmark'} />
-                    }
-                ]
+                element: <StoragePage />
             },
             {
                 path: 'labels',

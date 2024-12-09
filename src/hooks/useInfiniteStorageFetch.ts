@@ -30,7 +30,14 @@ export const useInfiniteStorageFetch = (apiEndpoint: string, size: number) => {
         queryFn: getLetterList,
         initialPageParam: 1,
         getNextPageParam: (lastPage) => {
-            if (!lastPage || lastPage.content.length < size) {
+            if (
+                !lastPage ||
+                !lastPage.content ||
+                lastPage.content.length === 0
+            ) {
+                return undefined;
+            }
+            if (lastPage.content.length < size) {
                 return undefined;
             }
             return lastPage.page + 1;
@@ -41,9 +48,13 @@ export const useInfiniteStorageFetch = (apiEndpoint: string, size: number) => {
     });
 
     const groupedLetters = useMemo(() => {
-        if (!data?.pages) return [];
+        if (!data?.pages) {
+            console.log('데이터없음');
+            return [];
+        }
 
         const allLetters = data.pages.flatMap((page) => page.content);
+        console.log(allLetters);
 
         const grouped = allLetters.reduce(
             (acc: { [key: string]: Letter[] }, letter) => {
