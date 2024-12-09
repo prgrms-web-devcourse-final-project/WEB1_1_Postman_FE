@@ -12,7 +12,8 @@ export default {
                     hoverblue: '#1882A8',
                     textgray: '#C3C3C3',
                     select: '#22ABEF',
-                    marker: '#0168df'
+                    marker: '#0168df',
+                    place: '#fe896b'
                 },
                 theme: {
                     skyblue: '#98c7fd',
