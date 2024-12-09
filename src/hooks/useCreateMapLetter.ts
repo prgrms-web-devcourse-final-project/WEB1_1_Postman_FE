@@ -19,7 +19,7 @@ export const useCreateMapLetter = () => {
             localStorage.removeItem('maplat');
             localStorage.removeItem('maplot');
         },
-        onError: (error) => {
+        onError: () => {
             addToast('지도 편지를 실패했습니다.', 'error');
         }
     });
