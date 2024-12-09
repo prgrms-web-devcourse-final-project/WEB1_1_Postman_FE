@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
 import { ReplyList } from '../../ReplyList/ReplyList';
 import { ReportButton } from '../../Report/ReportButton';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 type KeywordLetterDetailProps = {
     letterData: {
@@ -26,7 +26,7 @@ export const KeywordLetterDetail = ({
     const { dataType } = useParams<{
         dataType: string;
     }>();
-
+    const navigate = useNavigate();
     const { letterId, title, content, keywords, createdAt, font } = letterData;
 
     const {
@@ -69,16 +69,28 @@ export const KeywordLetterDetail = ({
                     <p className="">{formatDate(createdAt)}</p>
                 </div>
                 {keywords && <KeywordList keywords={keywords} />}
-                <Margin bottom={30} />
-            </div>
+                <Margin bottom={5} />
+                {dataType === 'sent' && keywordReplyListData?.content ? (
+                    <div className="mx-auto mt-16">
+                        <ReplyList
+                            keywordReplyListData={keywordReplyListData.content}
+                        />
+                    </div>
+                ) : null}
 
-            {keywordReplyListData?.content ? (
-                <div className="mx-auto mt-16">
-                    <ReplyList
-                        keywordReplyListData={keywordReplyListData.content}
-                    />
-                </div>
-            ) : null}
+                {dataType === 'received' && (
+                    <button
+                        className="btn-base flex-center rounded-3xl h-[40px]"
+                        onClick={() =>
+                            navigate(
+                                `/letter/keyword/reply/create/:${letterId}`
+                            )
+                        }
+                    >
+                        편지에 답장하기
+                    </button>
+                )}
+            </div>
         </div>
     );
 };

@@ -95,7 +95,7 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
     };
 
     const onReplyClick = () => {
-        navigate('/letter/create');
+        navigate(`/letter/map/reply/create/${letterId}`);
     };
 
     return (
@@ -134,7 +134,7 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
                         </span>
                         <span>{DayCounter({ createdAt })}</span>
                     </div>
-                    <Margin bottom={30} />
+                    <Margin bottom={2} />
                 </div>
                 {!isOwner && (
                     <>
