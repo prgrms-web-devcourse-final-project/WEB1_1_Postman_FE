@@ -5,7 +5,6 @@ import { PasswordSection } from '@/components/RegisterPage/PasswordSection';
 import { NicknameSection } from '@/components/RegisterPage/NicknameSection';
 import { Link } from 'react-router-dom';
 
-
 export const RegisterPage = () => {
     const {
         formState,
@@ -16,8 +15,6 @@ export const RegisterPage = () => {
         handleCheckNickname,
         handleSubmit
     } = useRegisterForm();
-
-    const navigate = useNavigate();
 
     const handleFormKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
