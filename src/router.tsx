@@ -28,6 +28,8 @@ import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
 import { Margin } from './components/Common/Margin/Margin';
+import { CreateMapLetterPage } from './pages/Map/Create/CreateMapLetterPage';
+import { MapSelectItemPage } from './pages/Map/Select/MapSelectItemPage';
 
 type RouteProps = {
     children: ReactNode;
@@ -152,7 +154,7 @@ export const router = createBrowserRouter([
             </ProtectedRoute>
         ),
         children: [
-            { path: 'map/:lat/:lot/create', element: <CreateLetterPage /> },
+            { path: 'map/:lat/:lot/create', element: <CreateMapLetterPage /> },
             {
                 path: 'keyword/reply/create/:letterId',
                 element: <CreateLetterPage />
@@ -175,6 +177,10 @@ export const router = createBrowserRouter([
             {
                 path: '/letter/keyword/:letterType/:dataType/:letterId',
                 element: <KeywordLetterDetailPage />
+            },
+            {
+                path: '/letter/map/select',
+                element: <MapSelectItemPage />
             }
         ]
     },

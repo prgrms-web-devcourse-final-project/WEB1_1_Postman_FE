@@ -1,20 +1,41 @@
-import { LetterType, CreateLetterResponseType } from '@/types/letter';
 import { defaultApi } from '@/service/api';
 
-export const createLetter = async ({
+type RequestBody = {
+    title: string;
+    content: string;
+    description: string;
+    latitude: number;
+    longitude: number;
+    font: string;
+    paper: string;
+    label: string;
+};
+
+type ResponseBody = {
+    isSuccess: boolean;
+    code: string;
+    message: string;
+    result: string;
+};
+
+export const createMapLetter = async ({
     title,
     content,
-    keywords,
+    description,
+    latitude,
+    longitude,
     font,
     paper,
     label
-}: LetterType): Promise<CreateLetterResponseType> => {
+}: RequestBody): Promise<ResponseBody> => {
     const api = defaultApi();
 
-    const response = await api.post('/letters', {
+    const response = await api.post('/map/public', {
         title,
         content,
-        keywords,
+        description,
+        latitude,
+        longitude,
         font,
         paper,
         label

@@ -55,7 +55,7 @@ export const PostLetterCotainer = () => {
                     navigate(-1);
                 }}
                 handleSuccesClick={() => {
-                    if (!title.trim() && !letterContent.trim()) {
+                    if (!title.trim() || !letterContent.trim()) {
                         addToast(
                             '공백을 제외한 제목과 내용을 입력해주세요',
                             'warning'
