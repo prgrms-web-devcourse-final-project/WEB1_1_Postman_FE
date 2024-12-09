@@ -37,7 +37,6 @@ export const MaplibreWithSearch = ({
 
     return (
         <div className="relative h-screen">
-            {/* <TopBar handleBackClick={onBackClick} /> */}
             <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-[1rem] left-1/2">
                 <input
                     type="text"
@@ -49,6 +48,7 @@ export const MaplibreWithSearch = ({
                 />
                 <IoIosSearch className="w-6 h-8 cursor-pointer" />
             </div>
+
             {searchedLocation?.name && (
                 <div className="absolute top-28 w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-slate-200 rounded-2xl p-2 flex items-center justify-between">
                     <LuMapPin className="ml-2" />

@@ -16,7 +16,7 @@ export type MapReplyType = {
 };
 
 export type KeywordType = {
-    letterId : number;
+    letterId: number;
     content: string;
     font: string;
     paper: string;

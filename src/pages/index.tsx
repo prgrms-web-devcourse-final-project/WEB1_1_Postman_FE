@@ -8,7 +8,6 @@ import { ArchivedPage } from '@/pages/ArchivedPage';
 import { LabelCollectionsPage } from '@/pages/Storage/LabelCollectionsPage';
 import { KeywordLetterDetailPage } from '@/pages/Letter/Detail/KeywordLetterDetailPage/KeywordLetterDetailPage';
 import { NotificationPage } from '@/pages/Notification/NotificationPage';
-import { ReplyLetterDetailPage } from '@/pages/Letter/Detail/ReplyLetterDetailPage';
 import { SentPage } from '@/pages/SentPage';
 import { ProfileSharePage } from '@/pages/User/Profile/ProfileSharePage';
 import { LabelLotteryPage } from './Label/Lottery/LabelLotteryPage';
@@ -33,7 +32,6 @@ export {
     LabelCollectionsPage,
     KeywordLetterDetailPage,
     MapLetterDetailPage,
-    ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
     ProfileSharePage,
