@@ -6,7 +6,7 @@ interface OverlayProps {
 
 export const Overlay = ({ children }: OverlayProps) => {
     return (
-        <div className="fixed inset-0 flex items-center justify-center w-full h-full bg-black/10">
+        <div className="fixed inset-0 flex items-center justify-center w-full h-full bg-black/10 z-[50]">
             {children}
         </div>
     );

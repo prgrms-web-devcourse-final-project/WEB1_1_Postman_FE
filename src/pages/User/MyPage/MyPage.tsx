@@ -8,6 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getUserFrequentKeyword } from '@/service/user/getUserFrequentKeyword';
 
+type MenuListItemType = {
+    content: string;
+    url: string;
+    state?: {
+        initialType: string;
+    };
+};
+
 export const MyPage = () => {
     const { user } = useUserStore();
     const { addToast } = useToastStore();
@@ -19,12 +27,29 @@ export const MyPage = () => {
     });
 
     const menuItems = [
-        { content: '키워드 편지함', url: '/storage/keyword' },
-        { content: '지도 편지함', url: '/storage/map' },
-        { content: '보관함', url: '/storage/bookmark' }
+        {
+            content: '키워드 편지함',
+            url: '/storage?type=keyword',
+            state: { initialType: 'keyword' }
+        },
+        {
+            content: '지도 편지함',
+            url: '/storage?type=map',
+            state: { initialType: 'map' }
+        },
+        {
+            content: '보관함',
+            url: '/storage?type=bookmark',
+            state: { initialType: 'bookmark' }
+        }
     ];
 
-    const labelMenuItems = [{ content: '라벨첩', url: '/labels' }];
+    const labelMenuItems: MenuListItemType[] = [
+        {
+            content: '라벨첩',
+            url: '/labels'
+        }
+    ];
 
     const handleLogout = () => {
         addToast('로그아웃 되었습니다.', 'success');
@@ -44,8 +69,8 @@ export const MyPage = () => {
                         로그아웃
                     </div>
                 </div>
-                <MenuListSection menuItems={menuItems} />
-                <MenuListSection menuItems={labelMenuItems} />
+                <MenuListSection menuItems={menuItems} title="내 편지함" />
+                <MenuListSection menuItems={labelMenuItems} title="콜렉션" />
                 <KeywordListSection keywords={data?.result.keywords || []} />
             </div>
         </div>

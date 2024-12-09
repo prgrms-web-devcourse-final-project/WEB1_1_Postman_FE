@@ -1,4 +1,3 @@
-import { LetterType, CreateLetterResponseType } from '@/types/letter';
 import { defaultApi } from '@/service/api';
 import { ApiResponseType } from '@/types/apiResponse';
 
