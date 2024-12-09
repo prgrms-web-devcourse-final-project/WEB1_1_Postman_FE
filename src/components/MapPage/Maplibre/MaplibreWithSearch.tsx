@@ -77,11 +77,12 @@ export const MaplibreWithSearch = ({
                         anchor="bottom"
                         rotation={direction || 0}
                     >
-                        <img
-                            src="https://www.svgrepo.com/show/372536/map-marker.svg"
-                            alt="marker"
-                            className="w-[30px] h-[30px] transform -translate-x-1/2 -translate-y-full"
-                        />
+                        <span className="relative flex h-5 w-5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                            <span className="relative inline-flex justify-center items-center rounded-full h-5 w-5 bg-white">
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-sample-blue" />
+                            </span>
+                        </span>
                     </Marker>
                 )}
                 {nearbyLetters.map(
