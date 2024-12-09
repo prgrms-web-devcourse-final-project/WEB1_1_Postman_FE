@@ -5,22 +5,48 @@ import { useDownloadCanvas } from '@/hooks';
 import { getUserFrequentKeyword } from '@/service/user/getUserFrequentKeyword';
 import { useUserStore } from '@/stores';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 
 export const ProfileSharePage = () => {
     const { user } = useUserStore();
     const { captureRef, downloadCanvasAsImage } = useDownloadCanvas();
-
-    const showModal = () => {};
-
-    const handleShare = async () => {
-        await downloadCanvasAsImage();
-        showModal();
-    };
+    const [convertedImgUrl, setConvertedImgUrl] = useState<string>();
 
     const { data } = useQuery({
         queryKey: ['userFrequentKeyword'],
         queryFn: getUserFrequentKeyword
     });
+
+    const handleShare = async () => {
+        await downloadCanvasAsImage();
+    };
+
+    const convertImageToBase64 = async (imageUrl: string): Promise<string> => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx?.drawImage(img, 0, 0);
+                resolve(canvas.toDataURL('image/png'));
+            };
+            img.onerror = reject;
+            img.src = imageUrl;
+        });
+    };
+
+    useEffect(() => {
+        if (user?.profileImageUrl) {
+            convertImageToBase64(user.profileImageUrl)
+                .then((base64) => {
+                    setConvertedImgUrl(base64);
+                })
+                .catch(console.error);
+        }
+    }, [user?.profileImageUrl]);
 
     return (
         <div className="flex flex-col gap-5 items-center">
@@ -32,7 +58,7 @@ export const ProfileSharePage = () => {
             >
                 <div className="bg-white w-[full] rounded-md">
                     <img
-                        src={user?.profileImageUrl}
+                        src={convertedImgUrl}
                         className="object-contain p-5"
                         crossOrigin="anonymous"
                     />
