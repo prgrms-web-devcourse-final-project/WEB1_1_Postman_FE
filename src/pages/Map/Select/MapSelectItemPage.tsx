@@ -44,7 +44,6 @@ export const MapSelectItemPage = () => {
     const nickname = localStorage.getItem('mapnickname');
 
     const handleClick = () => {
-        console.log('보내기 버튼 클릭됨!');
         if (selectedLabel === null) {
             return;
         }
