@@ -9,7 +9,7 @@ export const BackButtonCotainer = () => {
     };
 
     return (
-        <div className="w-full flex flex-row justify-start">
+        <div className="w-full flex flex-row justify-start sticky top-0 z-10 pb-[15px]">
             <BackButton onClick={handleBackClick} />
         </div>
     );

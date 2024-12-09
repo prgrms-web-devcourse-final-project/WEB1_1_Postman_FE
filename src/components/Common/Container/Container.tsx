@@ -9,7 +9,7 @@ interface ContainerProps {
 export const Container: React.FC<ContainerProps> = ({ px = 0, children }) => {
     return (
         <div
-            className={`px-${px} py-6 w-full h-full overflow-auto scrollbar-hide`}
+            className={`relative flex flex-col px-${px} pt-3 py-6 w-full h-full`}
         >
             {children}
         </div>

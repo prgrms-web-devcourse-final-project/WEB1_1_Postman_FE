@@ -71,6 +71,13 @@ const AuthLayout = () => (
     </div>
 );
 
+const MapLayout = () => (
+    <div>
+        <Outlet />
+        <NavigationBar />
+    </div>
+);
+
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -138,21 +145,6 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: '/',
-        element: (
-            <ProtectedRoute>
-                <SimpleLayout />
-            </ProtectedRoute>
-        ),
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                path: '/mapexplorer',
-                element: <MapExplorerPage />
-            }
-        ]
-    },
-    {
         path: '/letter',
         element: (
             <ProtectedRoute>
@@ -183,6 +175,21 @@ export const router = createBrowserRouter([
             {
                 path: '/letter/keyword/:letterType/:dataType/:letterId',
                 element: <KeywordLetterDetailPage />
+            }
+        ]
+    },
+    {
+        path: '/',
+        element: (
+            <PublicRoute>
+                <MapLayout />
+            </PublicRoute>
+        ),
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/mapexplorer',
+                element: <MapExplorerPage />
             }
         ]
     },
