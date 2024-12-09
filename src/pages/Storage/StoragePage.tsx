@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Container } from '@/components/Common/Container/Container';
 import { StorageList } from '@/components/StoragePage/StorageList';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
+
+interface StoragePageProps {
+    initialType: storageType;
+}
 
 const getTranslateX = (path: storageType) => {
     const pathIndex =
@@ -15,8 +18,8 @@ const getTranslateX = (path: storageType) => {
     return `${pathIndex * 100}%`;
 };
 
-export const StoragePage = () => {
-    const [storageType, setStorageType] = useState<storageType>('keyword');
+export const StoragePage = ({ initialType }: StoragePageProps) => {
+    const [storageType, setStorageType] = useState<storageType>(initialType);
 
     return (
         <div className="">
@@ -47,7 +50,7 @@ export const StoragePage = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-2 mt-[15px]">
-                <StorageList type={storageType} />
+                <StorageList type={initialType} />
             </div>
         </div>
     );
