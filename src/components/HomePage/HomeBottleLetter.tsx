@@ -1,7 +1,7 @@
 import React from 'react';
-import { Bottle } from '../Common/BottleLetter/Bottle/Bottle';
 import { Label } from '../Common/BottleLetter/Label/Label';
 import { useNavigate } from 'react-router-dom';
+import { HomeBottle } from './HomeBottle';
 
 interface HomeBottleLetterProps {
     letterType: 'LETTER' | 'REPLY_LETTER';
@@ -32,9 +32,12 @@ export const HomeBottleLetter = ({
         <div className="relative w-full h-full">
             <div className="flex-center w-full h-full">
                 <div className="h-full w-fit" onClick={handleClickBottle}>
-                    <Bottle />
+                    <HomeBottle />
                 </div>
-                <div className="w-[60%] h-[60%] absolute top-[15%] left-[55%] rotate-[-20deg] ">
+                <div
+                    className="h-[40%] absolute top-[15%] left-[55%] rotate-[-20deg]"
+                    onClick={handleClickBottle}
+                >
                     <Label imgSrc={labelUrl} />
                 </div>
             </div>
