@@ -25,12 +25,10 @@ export const PostLetterCotainer = () => {
 
     const { addToast } = useToastStore();
 
-    const [title, setTitle] = useState<string>(
-        storedTitle || '제목을 입력해주세요'
-    );
+    const [title, setTitle] = useState<string>(storedTitle || '');
     const [letter, setLetter] = useState<string>(storedLetter || '1');
     const [letterContent, setLetterContent] = useState<string>(
-        storedContent || '내용을 입력해주세요'
+        storedContent || ''
     );
     const [font, setFont] = useState<string>(storedFont || 'initial');
 
