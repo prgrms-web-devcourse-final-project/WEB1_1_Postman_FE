@@ -12,7 +12,7 @@
 @layer base {
     #root {
         @apply min-w-[375px] 
-          max-w-[477px]          
+          max-w-[475px]          
           w-full             
           bg-white               
           border                
@@ -21,6 +21,7 @@
           flex                  
           flex-col;
         margin: auto;
+        box-sizing: border-box;
     }
 }
 
