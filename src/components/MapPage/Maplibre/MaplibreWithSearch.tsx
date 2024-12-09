@@ -45,7 +45,7 @@ export const MaplibreWithSearch = ({
     return (
         <div className="relative h-screen">
             {/* <TopBar handleBackClick={onBackClick} /> */}
-            <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-10 left-1/2">
+            <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-[1rem] left-1/2">
                 <input
                     type="text"
                     value={searchText}
