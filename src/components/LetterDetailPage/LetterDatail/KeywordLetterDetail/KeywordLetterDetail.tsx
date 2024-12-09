@@ -19,6 +19,7 @@ type KeywordLetterDetailProps = {
         createdAt: string;
         font: string;
         label: string;
+        isReplied?: boolean;
     };
 };
 
@@ -30,8 +31,16 @@ export const KeywordLetterDetail = ({
         letterType: string;
     }>();
     const navigate = useNavigate();
-    const { letterId, title, content, keywords, createdAt, font, label } =
-        letterData;
+    const {
+        letterId,
+        title,
+        content,
+        keywords,
+        createdAt,
+        font,
+        label,
+        isReplied
+    } = letterData;
 
     const {
         data: keywordReplyListData,
@@ -86,20 +95,21 @@ export const KeywordLetterDetail = ({
                     </div>
                 ) : null}
 
-                {dataType === 'received' && letterType === 'LETTER' && (
-                    <button
-                        className="btn-base flex-center rounded-3xl h-[40px]"
-                        onClick={() =>
-                            navigate(
-                                `/letter/keyword/reply/create/:${letterId}`
-                            )
-                        }
-                    >
-                        편지에 답장하기
-                    </button>
-                )}
+                {dataType === 'received' &&
+                    letterType === 'LETTER' &&
+                    !isReplied && (
+                        <button
+                            className="btn-base flex-center rounded-3xl h-[40px]"
+                            onClick={() =>
+                                navigate(
+                                    `/letter/keyword/reply/create/${letterId}`
+                                )
+                            }
+                        >
+                            편지에 답장하기
+                        </button>
+                    )}
             </div>
         </div>
     );
 };
-
