@@ -44,7 +44,7 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
 
                         // 추천편지의 경우 keyword, 답장편지의 경우 reply
                         const LetterType =
-                            'labelUrl' in letter ? 'reply' : 'keyword';
+                            'labelUrl' in letter ? 'REPLY_LETTER' : 'LETTER';
 
                         return (
                             <SwiperSlide key={i}>
