@@ -21,7 +21,7 @@
         {
             "id": "background",
             "type": "background",
-            "paint": { "background-color": "#B5DCE2" }
+            "paint": { "background-color": "#ceeefc" }
         },
         {
             "id": "natural_earth",
@@ -88,7 +88,7 @@
             "filter": ["==", ["get", "class"], "wood"],
             "paint": {
                 "fill-antialias": false,
-                "fill-color": "hsl(190, 50%, 60%)",
+                "fill-color": "#22B8EF",
                 "fill-opacity": 0.4
             }
         },
@@ -100,7 +100,7 @@
             "filter": ["==", ["get", "class"], "grass"],
             "paint": {
                 "fill-antialias": false,
-                "fill-color": "rgba(176, 213, 154, 1)",
+                "fill-color": "#1882A8",
                 "fill-opacity": 0.3
             }
         },
@@ -136,7 +136,7 @@
             "source": "openmaptiles",
             "source-layer": "landuse",
             "filter": ["==", ["get", "class"], "pitch"],
-            "paint": { "fill-color": "#DEE3CD" }
+            "paint": { "fill-color": "#F5F3F1" }
         },
         {
             "id": "landuse_track",
@@ -144,7 +144,7 @@
             "source": "openmaptiles",
             "source-layer": "landuse",
             "filter": ["==", ["get", "class"], "track"],
-            "paint": { "fill-color": "#DEE3CD" }
+            "paint": { "fill-color": "#F5F3F1" }
         },
         {
             "id": "landuse_cemetery",
@@ -152,7 +152,7 @@
             "source": "openmaptiles",
             "source-layer": "landuse",
             "filter": ["==", ["get", "class"], "cemetery"],
-            "paint": { "fill-color": "hsl(75,37%,81%)" }
+            "paint": { "fill-color": "#F5F3F1" }
         },
         {
             "id": "landuse_hospital",
@@ -168,7 +168,7 @@
             "source": "openmaptiles",
             "source-layer": "landuse",
             "filter": ["==", ["get", "class"], "school"],
-            "paint": { "fill-color": "rgb(236,238,204)" }
+            "paint": { "fill-color": "#F5F3F1" }
         },
         {
             "id": "waterway_tunnel",
@@ -393,7 +393,7 @@
             ],
             "layout": { "line-join": "round" },
             "paint": {
-                "line-color": "#e9ac77",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.2],
@@ -889,7 +889,7 @@
             ],
             "layout": { "line-cap": "round", "line-join": "round" },
             "paint": {
-                "line-color": "#e9ac77",
+                "line-color": "#1882A8",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.2],
@@ -923,7 +923,7 @@
             ],
             "layout": { "line-cap": "round", "line-join": "round" },
             "paint": {
-                "line-color": "#cfcdca",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.2],
@@ -1293,7 +1293,7 @@
             ],
             "layout": { "line-cap": "round", "line-join": "round" },
             "paint": {
-                "line-color": "#88b3ba",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.2],
@@ -1331,7 +1331,7 @@
             ],
             "layout": { "line-cap": "round", "line-join": "round" },
             "paint": {
-                "line-color": "#a2cfe0",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.2],
@@ -1363,7 +1363,7 @@
             ],
             "layout": { "line-join": "round" },
             "paint": {
-                "line-color": "#729dc2",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.2],
@@ -1436,7 +1436,7 @@
                 ["==", ["get", "class"], "rail"]
             ],
             "paint": {
-                "line-color": "#bbb",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.4],
@@ -1467,7 +1467,7 @@
                 ["==", ["get", "class"], "rail"]
             ],
             "paint": {
-                "line-color": "#bbb",
+                "line-color": "#F5F3F1",
                 "line-dasharray": [0.2, 8],
                 "line-width": [
                     "interpolate",
@@ -1499,7 +1499,7 @@
                 ["==", ["get", "class"], "transit"]
             ],
             "paint": {
-                "line-color": "#bbb",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.4],
@@ -1530,7 +1530,7 @@
                 ["==", ["get", "class"], "transit"]
             ],
             "paint": {
-                "line-color": "#bbb",
+                "line-color": "#F5F3F1",
                 "line-dasharray": [0.2, 8],
                 "line-width": [
                     "interpolate",
@@ -1608,7 +1608,7 @@
             ],
             "layout": { "line-join": "round" },
             "paint": {
-                "line-color": "#cfcdca",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.2],
@@ -1668,7 +1668,7 @@
             ],
             "layout": { "line-join": "round" },
             "paint": {
-                "line-color": "hsl(36,6%,74%)",
+                "line-color": "#F5F3F1",
                 "line-opacity": [
                     "interpolate",
                     ["linear"],
@@ -2035,7 +2035,7 @@
                 ["==", ["get", "brunnel"], "bridge"]
             ],
             "paint": {
-                "line-color": "#bbb",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.4],
@@ -2060,7 +2060,7 @@
                 ["==", ["get", "brunnel"], "bridge"]
             ],
             "paint": {
-                "line-color": "#bbb",
+                "line-color": "#F5F3F1",
                 "line-dasharray": [0.2, 8],
                 "line-width": [
                     "interpolate",
@@ -2086,7 +2086,7 @@
                 ["==", ["get", "brunnel"], "bridge"]
             ],
             "paint": {
-                "line-color": "#bbb",
+                "line-color": "#F5F3F1",
                 "line-width": [
                     "interpolate",
                     ["exponential", 1.4],
@@ -2111,7 +2111,7 @@
                 ["==", ["get", "brunnel"], "bridge"]
             ],
             "paint": {
-                "line-color": "#bbb",
+                "line-color": "#F5F3F1",
                 "line-dasharray": [0.2, 8],
                 "line-width": [
                     "interpolate",
@@ -2277,7 +2277,7 @@
                 "text-size": 14
             },
             "paint": {
-                "text-color": "#74aee9",
+                "text-color": "#1882A8",
                 "text-halo-color": "rgba(255,255,255,0.7)",
                 "text-halo-width": 1.5
             }
