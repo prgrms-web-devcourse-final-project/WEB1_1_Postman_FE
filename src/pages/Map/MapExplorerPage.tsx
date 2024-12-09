@@ -69,7 +69,9 @@ export const MapExplorerPage = () => {
                         />
                         {error && <p>검색 오류: {error.message}</p>}
                         {!isLoading && !error && data?.length === 0 && (
-                            <p>검색 결과가 없습니다.</p>
+                            <p className="flex-center mt-40">
+                                검색 결과가 없습니다.
+                            </p>
                         )}
                     </div>
                 )}
