@@ -50,9 +50,7 @@ export const MaplibreWithSearch = ({
             </div>
 
             {searchedLocation?.name && (
-
                 <div className="absolute top-[5rem] w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-sample-gray shadow-md text-sample-black text-bold rounded-md p-2 flex items-center justify-between">
-
                     <LuMapPin className="ml-2" />
                     <span className="flex-1 ml-4">{searchedLocation.name}</span>
                     <LiaTimesSolid
@@ -68,7 +66,7 @@ export const MaplibreWithSearch = ({
                 style={{ width: '100%', height: '100%' }}
                 mapStyle={mapStyle as StyleSpecification}
                 mapLib={maplibregl}
-                minZoom={6}
+                minZoom={14}
                 maxZoom={18}
                 onClick={() => clearSelectedLetter()}
             >
