@@ -5,6 +5,10 @@ import { PasswordInput } from '@/components/Common/Input/PasswordInput';
 import { useToastStore } from '@/hooks/useToastStore';
 import { useLogin } from './../../../hooks/useLogin';
 
+const KAKAO_CLIENT_ID = import.meta.env.VITE_JAVASCRIPT_KEY as string;
+const REDIRECT_URI = 'http://localhost:5173/login/kakao';
+const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
 export const LoginPage = () => {
     const navigate = useNavigate();
     const { addToast } = useToastStore();
@@ -27,6 +31,10 @@ export const LoginPage = () => {
         mutate({ email, password });
     };
 
+    const handleKakaoLogin = () => {
+        window.location.href = kakaoURL;
+    };
+
     const handleNavigateRegister = () => {
         navigate('/register');
     };
@@ -44,16 +52,24 @@ export const LoginPage = () => {
                         <EmailInput></EmailInput>
                         <PasswordInput></PasswordInput>
                     </div>
-                    <div className="flex flex-row gap-1 w-full">
-                        <button className="btn-primary-filled" type="submit">
-                            로그인
-                        </button>
-                        <button
-                            className="btn-primary"
-                            type="button"
-                            onClick={handleNavigateRegister}
-                        >
-                            회원가입
+                    <div className="flex flex-col gap-1 w-full">
+                        <div className="flex flex-row gap-1 w-full">
+                            <button
+                                className="btn-primary-filled"
+                                type="submit"
+                            >
+                                로그인
+                            </button>
+                            <button
+                                className="btn-primary"
+                                type="button"
+                                onClick={handleNavigateRegister}
+                            >
+                                회원가입
+                            </button>
+                        </div>
+                        <button onClick={handleKakaoLogin}>
+                            카카오 로그인
                         </button>
                     </div>
                 </div>

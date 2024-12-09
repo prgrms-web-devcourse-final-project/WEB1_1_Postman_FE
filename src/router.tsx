@@ -21,7 +21,8 @@ import {
     StoragePage,
     KeywordLetterDetailPage,
     MapLetterDetailPage,
-    MapLetterArchieveDetailContainerPage
+    MapLetterArchieveDetailContainerPage,
+    KakaoRedirectPage
 } from './pages';
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
@@ -188,6 +189,10 @@ export const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <LoginPage />
+            },
+            {
+                path: '/login/kakao',
+                element: <KakaoRedirectPage />
             },
             {
                 path: '/register',
