@@ -4,6 +4,7 @@ import { AccountInfoSection } from '@/components/Profile/AccountInfoSection';
 import { NicknameSection } from '@/components/Profile/NicknameSection';
 import { ProfileImageSection } from '@/components/Profile/ProfileImageSection';
 import { useState } from 'react';
+import { BackButtonCotainer } from '@/components/Common/BackButtonContainer/BackButtonCotainer';
 
 export const ProfilePage = () => {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ export const ProfilePage = () => {
 
     return (
         <div className="flex flex-col gap-10">
+            <BackButtonCotainer />
             <div className="flex flex-col items-center justify-center gap-5 ">
                 <ProfileImageSection
                     isEditing={isProfileImageEditing}

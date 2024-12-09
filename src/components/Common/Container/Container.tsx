@@ -8,7 +8,9 @@ interface ContainerProps {
 
 export const Container: React.FC<ContainerProps> = ({ px = 0, children }) => {
     return (
-        <div className={`relative flex flex-col px-${px} pt-3 w-full h-full`}>
+        <div
+            className={`relative flex flex-col px-${px} pt-3 py-6 w-full h-full`}
+        >
             {children}
         </div>
     );

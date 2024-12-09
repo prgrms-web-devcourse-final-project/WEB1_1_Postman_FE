@@ -11,6 +11,7 @@ import { useSearchStore } from '@/stores/useSearchStore';
 import { formatDate } from '@/util/formatDate';
 import { calculateDaysLeft } from '@/util/calculateDaysLeft';
 import { formatDistance } from '@/util/formatDistance';
+import { BackButtonCotainer } from '@/components/Common/BackButtonContainer/BackButtonCotainer';
 
 export const MapExplorerPage = () => {
     const { searchedLocation } = useSearchStore();
@@ -74,7 +75,7 @@ export const MapExplorerPage = () => {
                     </div>
                 )}
             </div>
-            <div className="absolute transform -translate-x-1/2 bottom-20 left-1/2">
+            <div className="absolute transform -translate-x-1/2 bottom-[6rem] left-1/2">
                 {!isSearchFocused && (
                     <>
                         {selectedLetter ? (
