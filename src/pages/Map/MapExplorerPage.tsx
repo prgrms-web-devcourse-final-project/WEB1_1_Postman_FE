@@ -85,7 +85,7 @@ export const MapExplorerPage = () => {
                             <>
                                 {searchedLocation ? (
                                     <NavLink
-                                        to={'/letter/create'}
+                                        to={`/letter/map/:${searchedLocation.lat}/:${searchedLocation.lon}/create`}
                                         className={CreateBtnStyle}
                                     >
                                         <HiOutlinePencilAlt />
@@ -116,7 +116,7 @@ export const MapExplorerPage = () => {
                             <>
                                 {searchedLocation ? (
                                     <NavLink
-                                        to={'/letter/create'}
+                                        to={`/letter/map/:${searchedLocation.lat}/:${searchedLocation.lon}/create`}
                                         className={CreateBtnStyle}
                                     >
                                         <HiOutlinePencilAlt />
