@@ -3,6 +3,7 @@ import { useRegisterForm } from '@/hooks/useRegisterForm';
 import { EmailSection } from '@/components/RegisterPage/EmailSection';
 import { PasswordSection } from '@/components/RegisterPage/PasswordSection';
 import { NicknameSection } from '@/components/RegisterPage/NicknameSection';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterPage = () => {
     const {
@@ -15,10 +16,16 @@ export const RegisterPage = () => {
         handleSubmit
     } = useRegisterForm();
 
+    const navigate = useNavigate();
+
     const handleFormKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             e.preventDefault();
         }
+    };
+
+    const handleNavigateLogin = () => {
+        navigate('/login');
     };
 
     return (
@@ -62,6 +69,12 @@ export const RegisterPage = () => {
                     <button type="submit" className="btn-primary-filled">
                         가입하기
                     </button>
+                    <div
+                        onClick={handleNavigateLogin}
+                        className="cursor-pointer"
+                    >
+                        이미 계정을 가지고 있으신가요?
+                    </div>
                 </form>
             </div>
         </div>
