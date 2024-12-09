@@ -13,7 +13,7 @@ export default {
                     textgray: '#C3C3C3',
                     select: '#22ABEF',
                     marker: '#0168df',
-                    place: '#fe896b'
+                    place: '#fe6039'
                 },
                 theme: {
                     skyblue: '#98c7fd',
