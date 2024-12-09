@@ -9,6 +9,7 @@ import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
 import { ReportButton } from '../../Report/ReportButton';
 import { useLocation } from 'react-router-dom';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -46,7 +47,11 @@ export const MapLetterArchieveDetail = ({
 
     console.log(mapReplyListData);
     if (isMapReplyListDataLoading) {
-        return <div>로딩 중...</div>;
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     }
 
     if (mapReplyListDataError instanceof Error) {

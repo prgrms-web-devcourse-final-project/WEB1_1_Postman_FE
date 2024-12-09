@@ -4,6 +4,7 @@ import { KeywordContainer } from './KeywordContainer';
 import { useGetAllKeywords } from '@/hooks/useGetAllKeywords';
 import { useGetUserKeywords } from '@/hooks/useGetUserKeywords';
 import { useEffect } from 'react';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 type BottomSheetContentProps = {
     nickname: string | undefined;
@@ -38,7 +39,11 @@ export const BottomSheetContent = ({
     }, [userKeywordsData, setSelectedKeywords]);
 
     if (isAllKeywordsLoading || isUserKeywordsLoading) {
-        return <p>로딩 중...</p>;
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     }
 
     if (isAllKeywordsError || isUserKeywordsError) {

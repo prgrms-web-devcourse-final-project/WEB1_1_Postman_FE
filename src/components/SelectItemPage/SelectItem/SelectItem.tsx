@@ -11,6 +11,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useCreateLetter } from '@/hooks/useCreateLetter';
 import { usePostKeywordReplyLettter } from '@/hooks/usePostKeywordReplyLettter';
 import { usePostMapReplyLetter } from '@/hooks/usePostMapReplyLetter';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 type SelectItemProps = {
     isActive: boolean;
@@ -65,7 +66,11 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     };
 
     if (!keyweordData) {
-        return <div>로딩 중 입니다.</div>;
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     }
 
     const handleKeywordSelection = (content: string) => {

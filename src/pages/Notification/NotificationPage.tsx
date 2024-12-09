@@ -1,3 +1,4 @@
+import { Loading } from '@/components/Common/Loading/Loading';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { TitleClosedTopBar } from '@/components/Common/TitleClosedTopBar/TitleClosedTopBar';
 import { NotificationContainer } from '@/components/NotificationPage/NotificationContainer';
@@ -12,7 +13,12 @@ export const NotificationPage = () => {
     // 상태 업데이트
     useUpdateNotificationStatus();
 
-    if (isLoading) return <p>알림 로딩 중...</p>;
+    if (isLoading)
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
     if (isError) return <p>알림 로딩 실패!</p>;
 
     const dummy = data?.result || [];

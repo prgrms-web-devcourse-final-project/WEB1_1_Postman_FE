@@ -69,9 +69,9 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
     };
 
     return (
-        <div className="flex flex-col bg-white rounded-2xl items-center justify-center w-full h-full p-4">
+        <div className="flex flex-col  font-sans bg-white rounded-2xl items-center justify-center w-60 h-28 p-4">
             <Margin top={10} />
-            <span className="font-bold mb-4 text-2xl">
+            <span className="font-bold mb-4 text-xl">
                 편지를 삭제하시겠습니까?
             </span>
 
@@ -84,7 +84,7 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
                 </button>
                 <button
                     onClick={handleDelete}
-                    className="mt-6 bg-slate-500 w-24 text-white px-4 py-2 rounded-lg"
+                    className="mt-6 bg-theme-skyblue w-24 text-white px-4 py-2 rounded-lg"
                 >
                     삭제하기
                 </button>
