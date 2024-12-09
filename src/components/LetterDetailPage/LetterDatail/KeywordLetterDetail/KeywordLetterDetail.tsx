@@ -8,6 +8,7 @@ import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
 import { ReplyList } from '../../ReplyList/ReplyList';
 import { ReportButton } from '../../Report/ReportButton';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Label } from '@/components/Common/BottleLetter/Label/Label';
 
 type KeywordLetterDetailProps = {
     letterData: {
@@ -17,6 +18,7 @@ type KeywordLetterDetailProps = {
         keywords?: string[];
         createdAt: string;
         font: string;
+        label: string;
     };
 };
 
@@ -27,7 +29,8 @@ export const KeywordLetterDetail = ({
         dataType: string;
     }>();
     const navigate = useNavigate();
-    const { letterId, title, content, keywords, createdAt, font } = letterData;
+    const { letterId, title, content, keywords, createdAt, font, label } =
+        letterData;
 
     const {
         data: keywordReplyListData,
@@ -51,8 +54,12 @@ export const KeywordLetterDetail = ({
     return (
         <div className={clsx(font ? font : 'font-sans')}>
             <Margin top={20} />
+
             <div className="relative z-20 flex flex-col justify-center w-9/12 m-auto py-9">
                 <div className="absolute top-0 right-0 flex">
+                    <div className="w-8 -rotate-12">
+                        <Label imgSrc={label} />
+                    </div>
                     <DeleteButton />
                     {dataType === 'received' && <ReportButton />}
                 </div>
