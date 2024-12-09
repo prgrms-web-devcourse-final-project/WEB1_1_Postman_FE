@@ -12,6 +12,8 @@ type LettetProps = {
     letter: string;
     setFont: React.Dispatch<React.SetStateAction<string>>;
     setLetter: React.Dispatch<React.SetStateAction<string>>;
+    description?: string;
+    setDescription?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const LetterInputForm = ({
@@ -22,7 +24,9 @@ export const LetterInputForm = ({
     font,
     letter,
     setFont,
-    setLetter
+    setLetter,
+    description,
+    setDescription
 }: LettetProps) => {
     return (
         <>
@@ -45,6 +49,15 @@ export const LetterInputForm = ({
                         font={font}
                     />
                 </div>
+
+                {description && setDescription && (
+                    <input
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="힌트를 입력해주세요"
+                        className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
+                    />
+                )}
             </div>
             <SelectSlider
                 font={font}
