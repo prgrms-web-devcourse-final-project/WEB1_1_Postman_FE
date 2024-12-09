@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { getUserLabel } from './../../service/label/get/getUserLabel';
-import { useQuery } from '@tanstack/react-query';
+// import { getUserLabel } from './../../service/label/get/getUserLabel';
+// import { useQuery } from '@tanstack/react-query';
 import { LabelType } from '@/types/label';
 import { Itembox } from '@/components/Common/Itembox/Itembox';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
 import { Link } from 'react-router-dom';
 import { useModal } from '@/hooks/useModal';
-import { Modal } from '@/components/Common/Modal/Modal';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { BackButtonCotainer } from '@/components/Common/BackButtonContainer/BackButtonCotainer';
 

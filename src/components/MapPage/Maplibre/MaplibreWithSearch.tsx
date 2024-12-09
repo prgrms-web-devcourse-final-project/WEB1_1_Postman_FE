@@ -14,8 +14,6 @@ import { useNearbyLetters } from '@/hooks/useNearbyLetters';
 import { NearbyLettersResponseType } from '@/types/letter';
 import { useLocationState } from '@/hooks/useLocationState';
 import { BottleLetter } from '@/components/Common/BottleLetter/BottleLetter';
-import { useNavigate } from 'react-router-dom';
-import { TopBar } from '@/components/Common/TopBar/TopBar';
 
 type MaplibreWithSearchProps = {
     onFocus: () => void;
@@ -36,11 +34,6 @@ export const MaplibreWithSearch = ({
         setNearbyLettersLength
     );
     const { nearbyLetters } = useNearbyLetters(currentLocation);
-    const navigate = useNavigate();
-
-    const onBackClick = () => {
-        navigate(-1);
-    };
 
     return (
         <div className="relative h-screen">
