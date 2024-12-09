@@ -1,6 +1,7 @@
 import { Margin } from '@/components/Common/Margin/Margin';
 import { TitleClosedTopBar } from '@/components/Common/TitleClosedTopBar/TitleClosedTopBar';
 import { NotificationContainer } from '@/components/NotificationPage/NotificationContainer';
+import { ZeroNotification } from '@/components/NotificationPage/ZeroNotification';
 import { useGetNotifications } from '@/hooks/useGetNotifications';
 import { useUpdateNotificationStatus } from '@/hooks/useUpdateNotifications';
 import { NotificationType } from '@/types/notification';
@@ -46,13 +47,23 @@ export const NotificationPage = () => {
             <div>
                 <h3 className="text-[14px] text-[#22B8EF]">새로운 소식</h3>
                 <Margin top={8} />
-                <NotificationContainer notifications={unReadNotifications} />
+                {unReadNotifications.length > 0 ? (
+                    <NotificationContainer
+                        notifications={unReadNotifications}
+                    />
+                ) : (
+                    <ZeroNotification />
+                )}
             </div>
             <Margin top={20} />
             <div>
                 <h3 className="text-[14px] text-[#22B8EF]">이전 알림</h3>
                 <Margin top={8} />
-                <NotificationContainer notifications={readNotifications} />
+                {unReadNotifications.length > 0 ? (
+                    <NotificationContainer notifications={readNotifications} />
+                ) : (
+                    <ZeroNotification />
+                )}
             </div>
         </>
     );

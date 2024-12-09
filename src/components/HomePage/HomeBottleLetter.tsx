@@ -14,15 +14,11 @@ export const HomeBottleLetter = ({
     labelUrl,
     letterId
 }: HomeBottleLetterProps) => {
-    console.log(letterId);
     const navigate = useNavigate();
 
     const handleClickBottle = () => {
         navigate(`letter/keyword/${letterType}/received/${letterId}`);
     };
-
-    console.log('letterId - ', letterType);
-    console.log('letterId - ', letterId);
 
     // 키워드 편지 경로
     // /letter/keyword/LETTER/received/49
