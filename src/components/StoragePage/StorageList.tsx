@@ -209,6 +209,13 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                                     `/letter/${type}${letterTypePath}/${dataType}/${letter.letterId}`
                                                 );
                                             }
+                                            const dataType =
+                                                selectedFilter === 'SEND'
+                                                    ? 'sent'
+                                                    : 'received';
+                                            navigate(
+                                                `/letter/map/${dataType}/${letter.letterId}`
+                                            );
                                         }}
                                     >
                                         <Itembox>
