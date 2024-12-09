@@ -70,7 +70,7 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
         <div className="relative -m-6 pb-10">
             {/* <img src="/편지없음.svg" alt="" /> */}
             <img src="/무인도.svg" className="absolute -top-10 right-20" />
-            <div className="bg-[url('/물결.svg')] absolute h-full w-full bg-cover bg-center bg-repeat custom-mask animate-shake animate-infinite animate-duration-[3000ms] animate-ease-linear"></div>
+            <div className="bg-[url('/물결.svg')] absolute h-full w-full bg-cover bg-center bg-repeat custom-mask"></div>
             <div className="h-[350px] mt-[50px]"></div>
         </div>
     );
