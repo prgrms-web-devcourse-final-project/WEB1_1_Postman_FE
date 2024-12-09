@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { StorageList } from '@/components/StoragePage/StorageList';
+import { useSearchParams } from 'react-router-dom';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
 
 interface StoragePageProps {
-    initialType: storageType;
+    initialType?: storageType;
 }
 
 const getTranslateX = (path: storageType) => {
@@ -19,7 +20,15 @@ const getTranslateX = (path: storageType) => {
 };
 
 export const StoragePage = ({ initialType }: StoragePageProps) => {
-    const [storageType, setStorageType] = useState<storageType>(initialType);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [storageType, setStorageType] = useState<storageType>(
+        (searchParams.get('type') as storageType) || initialType || 'keyword'
+    );
+
+    const handleTypeChange = (type: storageType) => {
+        setStorageType(type);
+        setSearchParams({ type });
+    };
 
     return (
         <div className="flex flex-col h-full">
@@ -33,19 +42,19 @@ export const StoragePage = ({ initialType }: StoragePageProps) => {
                     ></div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => setStorageType('keyword')}
+                        onClick={() => handleTypeChange('keyword')}
                     >
                         <span>키워드 편지</span>
                     </div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => setStorageType('map')}
+                        onClick={() => handleTypeChange('map')}
                     >
                         <span>내 지도 편지</span>
                     </div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => setStorageType('bookmark')}
+                        onClick={() => handleTypeChange('bookmark')}
                     >
                         <span>보관한 지도 편지</span>
                     </div>

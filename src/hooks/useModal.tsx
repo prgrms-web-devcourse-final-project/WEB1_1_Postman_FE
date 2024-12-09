@@ -26,6 +26,7 @@ export function useModal() {
 
     return {
         openModal,
+        closeModal,
         ModalComponent
     };
 }

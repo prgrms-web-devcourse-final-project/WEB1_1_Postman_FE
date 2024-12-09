@@ -25,8 +25,9 @@ type KeywordLetterDetailProps = {
 export const KeywordLetterDetail = ({
     letterData
 }: KeywordLetterDetailProps) => {
-    const { dataType } = useParams<{
+    const { dataType, letterType } = useParams<{
         dataType: string;
+        letterType: string;
     }>();
     const navigate = useNavigate();
     const { letterId, title, content, keywords, createdAt, font, label } =
@@ -50,6 +51,7 @@ export const KeywordLetterDetail = ({
     if (keywordReplyListDataError instanceof Error) {
         return <div>오류...: {keywordReplyListDataError.message}</div>;
     }
+    console.log(keywordReplyListData);
 
     return (
         <div className={clsx(font ? font : 'font-sans')}>
@@ -85,7 +87,7 @@ export const KeywordLetterDetail = ({
                     </div>
                 ) : null}
 
-                {dataType === 'received' && (
+                {dataType === 'received' && letterType === 'LETTER' && (
                     <button
                         className="btn-base flex-center rounded-3xl h-[40px]"
                         onClick={() =>

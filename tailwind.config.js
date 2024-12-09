@@ -27,6 +27,16 @@ export default {
                     '0%': { opacity: '0', transform: 'translateY(-20px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' }
                 },
+                fadeUp: {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translateY(10px)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)'
+                    }
+                },
                 'toast-slide-in': {
                     '0%': { opacity: '0', transform: 'translateY(-20px)' },
                     '10%': { opacity: '1', transform: 'translateY(0)' },
@@ -36,6 +46,7 @@ export default {
             },
             animation: {
                 fadeIn: 'fadeIn 2s ease forwards',
+                'fade-up': 'fadeUp 0.4s ease-out',
                 'toast-slide-in': 'toast-slide-in 2s ease forwards'
             },
             fontFamily: {

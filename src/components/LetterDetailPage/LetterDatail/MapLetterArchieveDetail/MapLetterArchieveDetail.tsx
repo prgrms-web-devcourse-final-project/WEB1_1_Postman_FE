@@ -90,17 +90,15 @@ export const MapLetterArchieveDetail = ({
                     </span>
                     <span>{DayCounter({ createdAt })}</span>
                 </div>
-                <Margin bottom={30} />
+                {mapReplyListData?.content ? (
+                    <div className="mt-16 mx-auto">
+                        <ReplyList
+                            title={title}
+                            keywordReplyListData={mapReplyListData.content}
+                        />
+                    </div>
+                ) : null}
             </div>
-
-            {mapReplyListData?.content ? (
-                <div className="mt-16 mx-auto">
-                    <ReplyList
-                        title={title}
-                        keywordReplyListData={mapReplyListData.content}
-                    />
-                </div>
-            ) : null}
         </div>
     );
 };

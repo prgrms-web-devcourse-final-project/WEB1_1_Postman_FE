@@ -3,6 +3,7 @@ import { useRegisterForm } from '@/hooks/useRegisterForm';
 import { EmailSection } from '@/components/RegisterPage/EmailSection';
 import { PasswordSection } from '@/components/RegisterPage/PasswordSection';
 import { NicknameSection } from '@/components/RegisterPage/NicknameSection';
+import { Link } from 'react-router-dom';
 
 export const RegisterPage = () => {
     const {
@@ -39,6 +40,7 @@ export const RegisterPage = () => {
                         }
                         onRequestVerify={handleRequestEmailVerifyCode}
                         onRequestAuthNumVerify={handleVerifyEmail}
+                        isVerifyLoading={validationState.isVerifyLoading}
                         isEmailSend={validationState.isEmailSend}
                         isEmailVerified={validationState.isEmailVerified}
                     ></EmailSection>
@@ -62,6 +64,9 @@ export const RegisterPage = () => {
                     <button type="submit" className="btn-primary-filled">
                         가입하기
                     </button>
+                    <Link to="/login">
+                        <div className="cursor-pointer">이미 회원이신가요?</div>
+                    </Link>
                 </form>
             </div>
         </div>

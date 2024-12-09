@@ -5,9 +5,9 @@ import { PasswordInput } from '@/components/Common/Input/PasswordInput';
 import { useToastStore } from '@/hooks/useToastStore';
 import { useLogin } from './../../../hooks/useLogin';
 
-const KAKAO_CLIENT_ID = import.meta.env.VITE_JAVASCRIPT_KEY as string;
-const REDIRECT_URI = 'http://localhost:5173/login/kakao';
-const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+// const KAKAO_CLIENT_ID = import.meta.env.VITE_JAVASCRIPT_KEY as string;
+// const REDIRECT_URI = 'http://localhost:5173/login/kakao';
+// const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
 export const LoginPage = () => {
     const navigate = useNavigate();
@@ -29,10 +29,6 @@ export const LoginPage = () => {
         }
 
         mutate({ email, password });
-    };
-
-    const handleKakaoLogin = () => {
-        window.location.href = kakaoURL;
     };
 
     const handleNavigateRegister = () => {
@@ -68,15 +64,9 @@ export const LoginPage = () => {
                                 회원가입
                             </button>
                         </div>
-                        <button onClick={handleKakaoLogin}>
-                            카카오 로그인
-                        </button>
                     </div>
                 </div>
             </form>
-            <div className="flex gap-3 flex-">
-                <div className="text-caption">회원 정보 찾기</div>
-            </div>
         </div>
     );
 };
