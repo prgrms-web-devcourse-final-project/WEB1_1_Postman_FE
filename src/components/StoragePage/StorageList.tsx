@@ -8,7 +8,6 @@ import { deleteLetters } from '@/service/letter/delete/deleteLetters';
 import { useModal, useToastStore } from '@/hooks';
 import { useQueryClient } from '@tanstack/react-query';
 import { Empty } from '../Common/Empty/Empty';
-import { Loading } from '../Common/Loading/Loading';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
 type FilterType = 'SEND' | 'RECEIVE';
@@ -25,7 +24,7 @@ type DeleteLetterType = {
 
 const ROWS_PER_PAGE = 5;
 
-export const StorageList = ({ type }: StorageListProps) => {
+export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
 
@@ -46,12 +45,11 @@ export const StorageList = ({ type }: StorageListProps) => {
             map: {
                 SEND: '/map/sent',
                 RECEIVE: '/map/received'
-            },
-            bookmark: '/map/archived'
+            }
         };
 
         if (type === 'bookmark') {
-            return endpoints[type];
+            return '/map/archived';
         }
 
         return endpoints[type]?.[selectedFilter];
@@ -72,17 +70,8 @@ export const StorageList = ({ type }: StorageListProps) => {
         }
     };
 
-    const {
-        groupedLetters,
-        isLoading,
-        isError,
-        fetchNextPage,
-        isFetchingNextPage
-    } = useInfiniteStorageFetch(getApiEndpoint(), ROWS_PER_PAGE);
-
-    useEffect(() => {
-        console.log(groupedLetters, isLoading, isError);
-    }, [groupedLetters, isLoading, isError]);
+    const { groupedLetters, fetchNextPage, isFetchingNextPage } =
+        useInfiniteStorageFetch(getApiEndpoint(), ROWS_PER_PAGE);
 
     // 체크박스 단일 클릭
     const handleSingleCheck = (
@@ -144,14 +133,6 @@ export const StorageList = ({ type }: StorageListProps) => {
             fetchNextPage();
         }
     }, [inView]);
-
-    if (isLoading) {
-        return (
-            <div className="flex flex-1 w-full h-full">
-                <Loading />
-            </div>
-        );
-    }
 
     const renderList = () => {
         return (

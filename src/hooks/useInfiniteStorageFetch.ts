@@ -13,8 +13,10 @@ interface Letter {
 
 export const useInfiniteStorageFetch = (apiEndpoint: string, size: number) => {
     const getLetterList = async ({ pageParam }: { pageParam: number }) => {
+        console.log(`API 호출: page ${pageParam}, size ${size}`);
         const page = pageParam;
         const response = await getLetter({ apiEndpoint, page, size });
+
         return response.result;
     };
 
@@ -42,7 +44,10 @@ export const useInfiniteStorageFetch = (apiEndpoint: string, size: number) => {
             }
             return lastPage.page + 1;
         },
+        enabled: apiEndpoint !== undefined,
         refetchOnMount: false,
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
         gcTime: 1000 * 60 * 5,
         staleTime: 1000 * 30
     });
@@ -52,6 +57,9 @@ export const useInfiniteStorageFetch = (apiEndpoint: string, size: number) => {
             console.log('데이터없음');
             return [];
         }
+        console.log('isLoading:', isLoading);
+        console.log('isFetching:', isFetching);
+        console.log('error:', isError);
 
         const allLetters = data.pages.flatMap((page) => page.content);
         console.log(allLetters);
