@@ -100,8 +100,7 @@ export default {
         ({ addComponents }) => {
             addComponents({
                 '.btn-base': {
-                    '@apply bg-primary w-full rounded p-6 text-black hover:opacity-80':
-                        ''
+                    '@apply bg-primary w-full rounded p-6 text-black': ''
                 },
                 '.text-btn': {
                     '@apply text-black hover:underline': ''
