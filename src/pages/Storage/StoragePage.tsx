@@ -50,7 +50,7 @@ export const StoragePage = ({ initialType }: StoragePageProps) => {
                 </div>
             </div>
             <div className="flex flex-col gap-2 mt-[15px]">
-                <StorageList type={initialType} />
+                <StorageList type={storageType} />
             </div>
         </div>
     );

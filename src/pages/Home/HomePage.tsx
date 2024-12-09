@@ -94,7 +94,7 @@ export const HomePage = () => {
                         onClick={() => {
                             setOpen(true);
                         }}
-                        className="w-full h-[49px] text-sample-blue flex-center rounded-full border border-sample-blue"
+                        className="w-full h-[49px] text-sample-blue flex-center rounded-full border"
                     >
                         키워드 설정
                     </button>

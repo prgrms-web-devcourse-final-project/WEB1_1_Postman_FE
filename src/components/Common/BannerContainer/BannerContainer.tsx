@@ -24,7 +24,7 @@ export const BannerContainer = () => {
             <Swiper
                 pagination={true}
                 modules={[Pagination, Autoplay]}
-                className="w-full px-4 py-12  mx-auto max-w-default"
+                className="w-full px-4 py-12 mx-auto max-w-default"
                 spaceBetween={40}
                 slidesPerView={1}
                 autoplay={{
@@ -40,7 +40,7 @@ export const BannerContainer = () => {
                 {banners.map(({ banner, color }, i) => (
                     <SwiperSlide
                         key={i}
-                        className="transition-transform md:hover:scale-105 px-[20px]"
+                        className="transition-transform md:hover:scale-105 px-[20px] "
                     >
                         <Banner color={color}>
                             {React.createElement(banner)}

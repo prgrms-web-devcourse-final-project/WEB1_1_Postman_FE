@@ -19,6 +19,7 @@ import { ProfilePage } from '@/pages/User/Profile/ProfilePage';
 import { StoragePage } from '@/pages/Storage/StoragePage';
 import { MapLetterDetailPage } from './Letter/Detail/MapLetterDetailPage/MapLetterDetailPage';
 import { MapLetterArchieveDetailContainerPage } from './Letter/Detail/MapLetterArchieveDetailContainerPage/MapLetterArchieveDetailContainerPage';
+import { KakaoRedirectPage } from '@/pages/User/Login/KakaoRedirectPage';
 
 export {
     ErrorPage,
@@ -41,5 +42,6 @@ export {
     SuccessLetterPage,
     ProfilePage,
     StoragePage,
-    MapLetterArchieveDetailContainerPage
+    MapLetterArchieveDetailContainerPage,
+    KakaoRedirectPage
 };
