@@ -68,15 +68,10 @@ export const LoginPage = () => {
                                 회원가입
                             </button>
                         </div>
-                        {/* <button onClick={handleKakaoLogin}>
-                            카카오 로그인
-                        </button> */}
                     </div>
                 </div>
             </form>
-            {/* <div className="flex gap-3 flex-">
-                <div className="text-caption">회원 정보 찾기</div>
-            </div> */}
+
         </div>
     );
 };

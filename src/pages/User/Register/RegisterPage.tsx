@@ -3,7 +3,8 @@ import { useRegisterForm } from '@/hooks/useRegisterForm';
 import { EmailSection } from '@/components/RegisterPage/EmailSection';
 import { PasswordSection } from '@/components/RegisterPage/PasswordSection';
 import { NicknameSection } from '@/components/RegisterPage/NicknameSection';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 export const RegisterPage = () => {
     const {
@@ -24,10 +25,6 @@ export const RegisterPage = () => {
         }
     };
 
-    const handleNavigateLogin = () => {
-        navigate('/login');
-    };
-
     return (
         <div className="flex flex-col gap-3 h-full my-[50px]">
             <h2 className="font-bold text-2xl ">회원가입</h2>
@@ -46,6 +43,7 @@ export const RegisterPage = () => {
                         }
                         onRequestVerify={handleRequestEmailVerifyCode}
                         onRequestAuthNumVerify={handleVerifyEmail}
+                        isVerifyLoading={validationState.isVerifyLoading}
                         isEmailSend={validationState.isEmailSend}
                         isEmailVerified={validationState.isEmailVerified}
                     ></EmailSection>
@@ -69,12 +67,9 @@ export const RegisterPage = () => {
                     <button type="submit" className="btn-primary-filled">
                         가입하기
                     </button>
-                    <div
-                        onClick={handleNavigateLogin}
-                        className="cursor-pointer"
-                    >
-                        이미 계정을 가지고 있으신가요?
-                    </div>
+                    <Link to="/login">
+                        <div className="cursor-pointer">이미 회원이신가요?</div>
+                    </Link>
                 </form>
             </div>
         </div>
