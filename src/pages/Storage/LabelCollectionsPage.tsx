@@ -37,7 +37,7 @@ const testLable: LabelType[] = [
 ];
 
 export const LabelCollectionsPage = () => {
-    const { openModal, ModalComponent } = useModal();
+    const { openModal, closeModal, ModalComponent } = useModal();
     const [selectedLabel, setSelectedLabel] = useState<LabelType | null>(null);
 
     const handleItemClick = (item: LabelType) => {
@@ -92,12 +92,15 @@ export const LabelCollectionsPage = () => {
                 <BackButtonCotainer width="30px" />
                 <h3 className="text-lg font-bold">라벨 모음</h3>
             </div>
-            <ModalComponent height="h-[400px]">
-                {selectedLabel && (
-                    <div className="h-full">
-                        <Label imgSrc={selectedLabel.imageUrl} />
-                    </div>
-                )}
+            <ModalComponent height="w-[250px]">
+                <div className="flex flex-col justify-center items-center">
+                    {selectedLabel && (
+                        <div className="h-full">
+                            <Label imgSrc={selectedLabel.imageUrl} />
+                        </div>
+                    )}
+                    <div onClick={closeModal}>닫기</div>
+                </div>
             </ModalComponent>
             <div className="flex flex-col gap-5">{renderList()}</div>
             <Link to="/lottery">

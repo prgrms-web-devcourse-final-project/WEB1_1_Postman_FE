@@ -14,7 +14,7 @@ export const Modal = ({ height, children, clickEvent }: ModalProps) => {
     return (
         <Overlay>
             <div
-                className={`bg-white w-[370px] ${heightValue} rounded-2xl p-2 relative shadow-lg animate-fade-up z-9999`}
+                className={`bg-white w-[370px] ${heightValue} rounded-2xl p-2 relative shadow-lg animate-fade-up`}
                 onClick={clickEvent}
             >
                 <div className="relative h-full">{children}</div>
