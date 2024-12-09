@@ -11,7 +11,6 @@ export const useCreateMapLetter = () => {
         onSuccess: () => {
             addToast('지도 편지를 전송했습니다.', 'success');
             navigate('/letter/success');
-
             localStorage.removeItem('maptitle');
             localStorage.removeItem('mapcontent');
             localStorage.removeItem('mapdescription');
