@@ -59,7 +59,7 @@ export const NotificationPage = () => {
             <div>
                 <h3 className="text-[14px] text-[#22B8EF]">이전 알림</h3>
                 <Margin top={8} />
-                {unReadNotifications.length > 0 ? (
+                {readNotifications.length > 0 ? (
                     <NotificationContainer notifications={readNotifications} />
                 ) : (
                     <ZeroNotification />

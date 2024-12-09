@@ -152,6 +152,7 @@ export const router = createBrowserRouter([
             </ProtectedRoute>
         ),
         children: [
+            { path: 'map/:lat/:lot/create', element: <CreateLetterPage /> },
             {
                 path: 'keyword/reply/create/:letterId',
                 element: <CreateLetterPage />
