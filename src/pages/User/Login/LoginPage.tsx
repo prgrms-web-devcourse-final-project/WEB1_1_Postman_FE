@@ -68,9 +68,9 @@ export const LoginPage = () => {
                                 회원가입
                             </button>
                         </div>
-                        <button onClick={handleKakaoLogin}>
+                        {/* <button onClick={handleKakaoLogin}>
                             카카오 로그인
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </form>
