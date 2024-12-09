@@ -12,11 +12,11 @@ import { Label } from '@/components/Common/BottleLetter/Label/Label';
 
 type MapLetterDetailProps = {
     letterData: {
-        title: string;
+        title?: string;
         content: string;
-        description: string;
+        description?: string;
         createdAt: string;
-        profileImg: string;
+        profileImg?: string;
         font: string;
         paper: string;
         label: string;

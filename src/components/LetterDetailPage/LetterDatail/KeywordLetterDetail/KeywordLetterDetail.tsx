@@ -51,7 +51,6 @@ export const KeywordLetterDetail = ({
     if (keywordReplyListDataError instanceof Error) {
         return <div>오류...: {keywordReplyListDataError.message}</div>;
     }
-    console.log(keywordReplyListData);
 
     return (
         <div className={clsx(font ? font : 'font-sans')}>
@@ -63,7 +62,7 @@ export const KeywordLetterDetail = ({
                         <Label imgSrc={label} />
                     </div>
                     <DeleteButton />
-                    {dataType === 'received' && <ReportButton />}
+                    {letterType === 'REPLY_LETTER' && <ReportButton />}
                 </div>
                 <h1>{title}</h1>
                 <img src={'/to_line.f4c129e6.svg'} className="w-full" />
@@ -74,7 +73,7 @@ export const KeywordLetterDetail = ({
 
                 <Margin top={30} />
                 <div className="flex justify-between w-full ">
-                    <p className="font-bold ">편지의 키워드</p>
+                    {keywords && <p className="font-bold ">편지의 키워드</p>}
                     <p className="">{formatDate(createdAt)}</p>
                 </div>
                 {keywords && <KeywordList keywords={keywords} />}
@@ -104,60 +103,3 @@ export const KeywordLetterDetail = ({
     );
 };
 
-/*
-   <div className="relative mx-auto mt-4 max-w">
-                    {letterId && (
-                        <div className="absolute top-0 flex mt-10 right-8">
-                            <DeleteButton id={letterId} />
-                            {!data?.isOwner && <ReportButton id={letterId} />}
-                        </div>
-                    )}
-                    <div className="relative mt-16 flex-center">
-                        <img
-                            src={labelItem.src}
-                            alt={labelItem.name}
-                            className="absolute top-4 translate-x-40 w-[125.32px] h-[201.1px]"
-                        />
-                        {type === 'map' ? (
-                            <MapLetterDetail
-                                title="편지제목"
-                                content="편지내용"
-                                date="24.11.18"
-                                place="서울시 종로구 평창동"
-                                hint="서대문역 앞 붕어빵 가게에서"
-                            />
-                        ) : (
-                            data && <KeywordLetterDetail letterData={data} />
-                        )}
-                    </div>
-                </div>
-
-                {data?.isOwner ? (
-                    hasReplies ? (
-                        <div className="mt-16 w-[710px]  mx-auto">
-                            <ReplyList replies={sampleReplies} />
-                        </div>
-                    ) : null
-                ) : type === 'map' ? (
-                    <div className="gap-4 mx-auto mt-4 flex-center max-w">
-                        {!data?.isOwner && (
-                            <>
-                                <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
-                                    보관하기
-                                </button>
-                                <button className="btn-base rounded-3xl w-[339.82px] h-[80px]">
-                                    편지에 답장하기
-                                </button>
-                            </>
-                        )}
-                    </div>
-                ) : (
-                    <div className="gap-4 mx-auto mt-4 flex-center max-w">
-                        {!data?.isOwner && (
-                            <button className="btn-base rounded-3xl w-[700px] h-[80px]">
-                                편지에 답장하기
-                            </button>
-                        )}
-                    </div>
-                )}
-*/
