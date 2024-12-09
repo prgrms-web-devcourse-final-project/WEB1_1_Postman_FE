@@ -15,6 +15,7 @@ export default defineConfig({
                 short_name: 'PWA App',
                 description: 'This is my Progressive Web App!',
                 theme_color: '#ffffff',
+                start_url: '/login', // start_url을 /login으로 변경
                 icons: [
                     {
                         src: 'icon-192x192.svg',
