@@ -33,7 +33,7 @@ const CreateMapLetterCotainer = () => {
 
     // 위도와 경도를 로컬 스토리지에 저장
     localStorage.setItem('maplat', lat?.slice(1) || '');
-    localStorage.setItem('maplot', lat?.slice(1) || '');
+    localStorage.setItem('maplot', lot?.slice(1) || '');
 
     // 상태 관리
     const [title, setTitle] = useState<string>(storedTitle || '');
