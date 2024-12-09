@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export const App = () => {
     const queryClient = new QueryClient();
+
     return (
         <QueryClientProvider client={queryClient}>
             <ToastContainer />
