@@ -1,7 +1,10 @@
+import { BackButtonCotainer } from '@/components/Common/BackButtonContainer/BackButtonCotainer';
 import { IconMenuButton } from '@/components/MyPage/IconMenuButton';
 import { KeywordListSection } from '@/components/MyPage/KeywordListSection';
 import { useDownloadCanvas } from '@/hooks';
+import { getUserFrequentKeyword } from '@/service/user/getUserFrequentKeyword';
 import { useUserStore } from '@/stores';
+import { useQuery } from '@tanstack/react-query';
 
 export const ProfileSharePage = () => {
     const { user } = useUserStore();
@@ -14,16 +17,14 @@ export const ProfileSharePage = () => {
         showModal();
     };
 
-    const sampleKeywords = [
-        '키워드',
-        '베리 롱 롱 키워드',
-        '베리 롱 키워드',
-        '키워드',
-        '키워드'
-    ];
+    const { data } = useQuery({
+        queryKey: ['userFrequentKeyword'],
+        queryFn: getUserFrequentKeyword
+    });
 
     return (
         <div className="flex flex-col gap-5 items-center">
+            <BackButtonCotainer />
             <h2 className="text-bold text-lg">{user?.nickname}</h2>
             <div
                 className="flex flex-col bg-sample-blue rounded-md p-4 gap-3 w-[290px] items-center"
@@ -37,7 +38,7 @@ export const ProfileSharePage = () => {
                     />
                 </div>
                 <KeywordListSection
-                    keywords={sampleKeywords}
+                    keywords={data?.result.keywords || []}
                     showTitle={false}
                 />
             </div>
