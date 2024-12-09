@@ -9,6 +9,7 @@ import { LabelProps } from '@/types/label';
 import { LabelList } from '@/components/SelectItemPage/LabelList/LabelList';
 import { useCreateMapLetter } from '@/hooks/useCreateMapLetter';
 import { useLocalStorage } from '@/hooks';
+import { useCreateTargetMapLetter } from '@/hooks/useCreateTargetMapLetter';
 
 const testLable: LabelProps[] = [
     {
@@ -38,23 +39,39 @@ export const MapSelectItemPage = () => {
     const [selectedLabel, setSelectedLabel] = useState<number | null>(null);
     const [isActive, setIsActive] = useState(false);
 
-    const { mutate } = useCreateMapLetter();
+    const { mutate: createPulicLetter } = useCreateMapLetter();
+    const { mutate: createTargeLetter } = useCreateTargetMapLetter();
+    const nickname = localStorage.getItem('mapnickname');
 
     const handleClick = () => {
-        console.log('보내기 버튼 클릭됨!');
         if (selectedLabel === null) {
             return;
         }
-        mutate({
-            title,
-            content,
-            description,
-            latitude: latitudeValue,
-            longitude: longitudeValue,
-            font,
-            paper: letter,
-            label: testLable[selectedLabel].imgSrc
-        });
+
+        if (nickname) {
+            createTargeLetter({
+                title,
+                content,
+                description,
+                latitude: latitudeValue,
+                longitude: longitudeValue,
+                font,
+                paper: letter,
+                label: testLable[selectedLabel].imgSrc,
+                target: nickname
+            });
+        } else {
+            createPulicLetter({
+                title,
+                content,
+                description,
+                latitude: latitudeValue,
+                longitude: longitudeValue,
+                font,
+                paper: letter,
+                label: testLable[selectedLabel].imgSrc
+            });
+        }
     };
 
     useEffect(() => {
