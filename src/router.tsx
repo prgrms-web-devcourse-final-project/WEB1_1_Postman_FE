@@ -160,8 +160,15 @@ export const router = createBrowserRouter([
             </ProtectedRoute>
         ),
         children: [
-            { path: 'keyword/reply/create/:letterId', element: <CreateLetterPage /> },  // 키워드 답장 편지
-            { path: 'map/reply/create/:letterId', element: <CreateLetterPage /> }, // 지도 답장 편지
+            { path: 'map/:lat/:lot/create', element: <CreateLetterPage /> },
+            {
+                path: 'keyword/reply/create/:letterId',
+                element: <CreateLetterPage />
+            }, // 키워드 답장 편지
+            {
+                path: 'map/reply/create/:letterId',
+                element: <CreateLetterPage />
+            }, // 지도 답장 편지
             { path: 'create', element: <CreateLetterPage /> },
             { path: 'select', element: <SelectItemPage /> },
             { path: 'success', element: <SuccessLetterPage /> },
