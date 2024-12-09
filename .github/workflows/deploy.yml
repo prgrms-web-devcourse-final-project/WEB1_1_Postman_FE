@@ -3,7 +3,7 @@ name: postamn
 on:
     push:
         branches:
-            - develope
+            - fix-api-호출이-안-가는-에러-
 
 jobs:
     deploy:
