@@ -74,9 +74,9 @@ export const LoginPage = () => {
                     </div>
                 </div>
             </form>
-            <div className="flex gap-3 flex-">
+            {/* <div className="flex gap-3 flex-">
                 <div className="text-caption">회원 정보 찾기</div>
-            </div>
+            </div> */}
         </div>
     );
 };
