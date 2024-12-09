@@ -4,6 +4,9 @@ import { Itembox } from '../Common/Itembox/Itembox';
 import { useNavigate } from 'react-router-dom';
 import { useInfiniteStorageFetch } from '@/hooks/useInfiniteStorageFetch';
 import { useInView } from 'react-intersection-observer';
+import { deleteLetters } from '@/service/letter/delete/deleteLetters';
+import { useModal, useToastStore } from '@/hooks';
+import { useQueryClient } from '@tanstack/react-query';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
 type FilterType = 'SEND' | 'RECEIVE';
@@ -12,13 +15,23 @@ type StorageListProps = {
     type: storageType;
 };
 
+type DeleteLetterType = {
+    letterId: number;
+    letterType: string;
+    boxType: string;
+};
+
 const ROWS_PER_PAGE = 5;
 
 export const StorageList = ({ type }: StorageListProps) => {
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
+
+    const { openModal, closeModal, ModalComponent } = useModal();
+    const { addToast } = useToastStore();
 
     const [selectedFilter, setSelectedFilter] = useState<FilterType>('SEND');
-    const [checkedItems, setCheckedItems] = useState<number[]>([]);
+    const [checkedItems, setCheckedItems] = useState<DeleteLetterType[]>([]);
 
     const { ref, inView } = useInView();
 
@@ -62,32 +75,62 @@ export const StorageList = ({ type }: StorageListProps) => {
         isLoading,
         isError,
         fetchNextPage,
-        // isFetching,
         isFetchingNextPage
     } = useInfiniteStorageFetch(getApiEndpoint(), ROWS_PER_PAGE);
 
     // 체크박스 단일 클릭
-    const handleSingleCheck = (checked: boolean, id: number) => {
+    const handleSingleCheck = (
+        checked: boolean,
+        { letterId, letterType, boxType }: DeleteLetterType
+    ) => {
         if (checked) {
-            setCheckedItems((prev) => [...prev, id]);
+            setCheckedItems((prev) => [
+                ...prev,
+                { letterId, letterType, boxType }
+            ]);
         } else {
-            setCheckedItems(checkedItems.filter((el) => el !== id));
+            setCheckedItems(
+                checkedItems.filter((item) => item.letterId !== letterId)
+            );
         }
+        console.log(checkedItems);
     };
 
     // 체크박스 전체 클릭
     const handleAllCheck = (checked: boolean) => {
         if (checked) {
-            const idArray: number[] = [];
+            const itemArray: {
+                letterId: number;
+                letterType: string;
+                boxType: string;
+            }[] = [];
             groupedLetters.forEach((item) => {
                 item.letters.forEach((letter) => {
-                    idArray.push(letter.letterId);
+                    itemArray.push({
+                        letterId: letter.letterId,
+                        letterType: letter.letterType,
+                        boxType: letter.boxType
+                    });
                 });
             });
-            setCheckedItems(idArray);
+            setCheckedItems(itemArray);
         } else {
             setCheckedItems([]);
         }
+    };
+
+    const handleDelete = async () => {
+        const response = await deleteLetters(checkedItems);
+        if (response.isSuccess) {
+            addToast('삭제가 완료되었습니다.', 'success');
+            setCheckedItems([]);
+            queryClient.invalidateQueries({
+                queryKey: ['storageLetters', getApiEndpoint()]
+            });
+            return;
+        }
+        addToast('삭제에 실패했습니다.', 'warning');
+        return;
     };
 
     useEffect(() => {
@@ -101,12 +144,33 @@ export const StorageList = ({ type }: StorageListProps) => {
     }
 
     if (isError) {
-        return <></>;
+        return <>에러!</>;
     }
 
     const renderList = () => {
         return (
             <div className="flex flex-col gap-2">
+                <ModalComponent height="h-[100px]">
+                    <div className="flex flex-col gqp-3">
+                        <div className="text-lg text-bold">
+                            정말 삭제하시겠습니까?
+                        </div>
+                        <div className="flex flex-row gap-1">
+                            <button
+                                onClick={handleDelete}
+                                className="bg-sample-blue text-white"
+                            >
+                                예
+                            </button>
+                            <button
+                                onClick={closeModal}
+                                className="bg-white boder border-sample-blue"
+                            >
+                                아니오
+                            </button>
+                        </div>
+                    </div>
+                </ModalComponent>
                 <div className="flex flex-row gap-2">
                     <button
                         className={`border border-sample-blue rounded-xl text-sm px-2 py-1
@@ -148,7 +212,12 @@ export const StorageList = ({ type }: StorageListProps) => {
                         />
                         <label>전체</label>
                     </div>
-                    <button className="px-2 py-1 bg-sample-gray">삭제</button>
+                    <button
+                        className="px-2 py-1 bg-sample-gray"
+                        onClick={openModal}
+                    >
+                        삭제
+                    </button>
                 </div>
                 {groupedLetters.map((dayGroup) => (
                     <div key={dayGroup.date} className="flex flex-col gap-3">
@@ -169,16 +238,19 @@ export const StorageList = ({ type }: StorageListProps) => {
                                         onChange={(e) =>
                                             handleSingleCheck(
                                                 e.target.checked,
-                                                letter.letterId
+                                                {
+                                                    letterId: letter.letterId,
+                                                    letterType:
+                                                        letter.letterType,
+                                                    boxType: letter.boxType
+                                                }
                                             )
                                         }
-                                        checked={
-                                            checkedItems.includes(
+                                        checked={checkedItems.some(
+                                            (item) =>
+                                                item.letterId ===
                                                 letter.letterId
-                                            )
-                                                ? true
-                                                : false
-                                        }
+                                        )}
                                     />
                                     <div
                                         className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray cursor-pointer"

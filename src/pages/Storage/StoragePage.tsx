@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StorageList } from '@/components/StoragePage/StorageList';
+import { useNavigate } from 'react-router-dom';
 
 type storageType = 'keyword' | 'map' | 'bookmark';
 
@@ -20,6 +21,7 @@ const getTranslateX = (path: storageType) => {
 
 export const StoragePage = ({ initialType }: StoragePageProps) => {
     const [storageType, setStorageType] = useState<storageType>(initialType);
+    const navigate = useNavigate();
 
     return (
         <div className="flex flex-col h-full">
@@ -33,19 +35,28 @@ export const StoragePage = ({ initialType }: StoragePageProps) => {
                     ></div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => setStorageType('keyword')}
+                        onClick={() => {
+                            setStorageType('keyword');
+                            navigate('/storage/keyword');
+                        }}
                     >
                         <span>키워드 편지</span>
                     </div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => setStorageType('map')}
+                        onClick={() => {
+                            setStorageType('map');
+                            navigate('/storage/map');
+                        }}
                     >
                         <span>내 지도 편지</span>
                     </div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => setStorageType('bookmark')}
+                        onClick={() => {
+                            setStorageType('bookmark');
+                            navigate('/storage/bookmark');
+                        }}
                     >
                         <span>보관한 지도 편지</span>
                     </div>
