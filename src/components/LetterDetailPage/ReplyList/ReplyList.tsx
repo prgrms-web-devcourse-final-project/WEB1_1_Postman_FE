@@ -16,7 +16,7 @@ export const ReplyList = ({ title, keywordReplyListData }: ReplyListProps) => {
             {keywordReplyListData.map((reply, index) => (
                 <NavLink
                     key={reply.replyLetterId}
-                    to={`/letter/${basePath}/reply/${reply.replyLetterId}`}
+                    to={`/letter/${basePath}/REPLY_LETTER/${reply.replyLetterId}`}
                     className={`flex items-center cursor-pointer h-1 p-6 ${
                         index < keywordReplyListData.length - 1
                             ? 'border-b border-l-neutral-300'
@@ -25,7 +25,7 @@ export const ReplyList = ({ title, keywordReplyListData }: ReplyListProps) => {
                 >
                     <div className="flex items-center justify-between w-full hover:opacity-70">
                         <span className="font-bold w-44 truncate mr-4">
-                            RE: {title}
+                            {title ? `RE: ${title}` : reply.title}
                         </span>
                         <span className="text-sm truncate flex-1 text-gray-600">
                             {formatDate(reply.createdAt)}
