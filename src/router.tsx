@@ -10,7 +10,6 @@ import {
     LoginPage,
     RegisterPage,
     LabelCollectionsPage,
-    ReplyLetterDetailPage,
     NotificationPage,
     SentPage,
     ProfileSharePage,
@@ -120,10 +119,6 @@ export const router = createBrowserRouter([
                 element: <ProfileSharePage />
             },
             {
-                path: '/letter/:type/reply/:replyLetterId',
-                element: <ReplyLetterDetailPage />
-            },
-            {
                 path: '/lottery',
                 element: <LabelLotteryPage />
             },
@@ -183,6 +178,14 @@ export const router = createBrowserRouter([
             {
                 path: '/mapexplorer',
                 element: <MapExplorerPage />
+            },
+            {
+                path: '/letter/keyword/:letterType/:replyLetterId',
+                element: <KeywordLetterDetailPage />
+            },
+            {
+                path: '/letter/map/:letterType/:replyLetterId',
+                element: <MapLetterArchieveDetailContainerPage />
             }
         ]
     },

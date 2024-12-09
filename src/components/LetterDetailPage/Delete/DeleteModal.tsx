@@ -15,28 +15,29 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const letterType = pathname.split('/')[2];
-    const { dataType, letterId } = useParams<{
+    const { dataType, letterId, replyLetterId } = useParams<{
         dataType: string;
         letterId: string;
+        replyLetterId: string;
     }>();
     const transformedLetterType = dataType === 'sent' ? 'SEND' : 'RECEIVE';
 
     const keywordMutation = useDeleteKeywordLetter({
-        letterId: Number(letterId),
+        letterId: Number(letterId) || Number(replyLetterId),
         boxType: transformedLetterType
     });
 
     const mapMutation = useDeleteMapSentLetter({
-        letterIds: [Number(letterId)]
+        letterIds: [Number(letterId) || Number(replyLetterId)]
     });
 
     const keywordReplyMutation = useDeleteKeywordReplyLetter({
-        letterId: Number(letterId),
+        letterId: Number(letterId) || Number(replyLetterId),
         boxType: transformedLetterType
     });
 
     const mapReceivedMutation = useDeleteMapReceivedLetter({
-        letterIds: [Number(letterId)]
+        letterIds: [Number(letterId) || Number(replyLetterId)]
     });
 
     const mutation =

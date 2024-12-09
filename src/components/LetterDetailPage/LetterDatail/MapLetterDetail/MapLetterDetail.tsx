@@ -146,13 +146,15 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
                 {!isOwner && (
                     <>
                         <div className="flex">
-                            <button
-                                className="btn-base flex-center rounded-3xl h-[40px]"
-                                onClick={onStorageClick}
-                            >
-                                {isStored ? '보관됨' : '보관하기'}
-                            </button>
-                            {!isReplied && (
+                            {!isStored && (
+                                <button
+                                    className="btn-base flex-center rounded-3xl h-[40px]"
+                                    onClick={onStorageClick}
+                                >
+                                    보관하기
+                                </button>
+                            )}
+                            {isReplied !== undefined && !isReplied && (
                                 <button
                                     className="btn-base flex-center rounded-3xl h-[40px]"
                                     onClick={onReplyClick}

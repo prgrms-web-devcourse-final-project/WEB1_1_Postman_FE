@@ -4,47 +4,71 @@ import { useToastStore } from '@/hooks';
 import { useEffect } from 'react';
 import { useGetArchivedLetter } from '@/hooks';
 import { MapLetterArchieveDetail } from '../../LetterDatail/MapLetterArchieveDetail/MapLetterArchieveDetail';
+import { useGetMapReplyLetterDetail } from '@/hooks/useGetMapReplyLetterDetail';
 
 export const MapLetterArchieveDetailContainer = () => {
-    const { letterId } = useParams<{
+    const { letterId, replyLetterId, dataType } = useParams<{
         letterId: string;
+        letterType: string;
+        dataType: string;
+        replyLetterId: string;
     }>();
-
     const { addToast } = useToastStore();
-
     const navigate = useNavigate();
 
     const {
         data: mapData,
         isLoading: isMapLoading,
         error: mapError
-    } = useGetArchivedLetter(letterId || '');
+    } = useGetArchivedLetter({
+        letterId: (dataType !== 'REPLY_LETTER' && Number(letterId)) || 0
+    });
+
+    const {
+        data: replyData,
+        isLoading: isReplyLoading,
+        error: replyError
+    } = useGetMapReplyLetterDetail({
+        letterId:
+            dataType === 'REPLY_LETTER' ? Number(replyLetterId || letterId) : 0
+    });
+    console.log(replyLetterId);
 
     useEffect(() => {
-        if (mapError) {
-            addToast(mapError.message, 'error');
+        const error = mapError || replyError;
+        if (error) {
+            addToast(error.message, 'error');
             navigate('/');
         }
-    }, [mapError, addToast]);
+    }, [mapError, replyError, addToast, navigate]);
 
-    if (isMapLoading) {
+    if (isMapLoading || isReplyLoading) {
         return <div>로딩 중...</div>;
     }
 
-    if (!mapData || !letterId) {
+    if (!mapData && !replyData) {
         return (
             <ThemeWrapper themeId={1}>
-                <div>지도 편지를 가져오는 중 문제가 발생했습니다.</div>
+                <div>지도 편지가 존재하지 않습니다.</div>
             </ThemeWrapper>
         );
     }
 
     return (
-        <ThemeWrapper themeId={Number(mapData.result.paper)}>
-            <MapLetterArchieveDetail
-                letterData={mapData.result}
-                letterId={letterId}
-            />
+        <ThemeWrapper themeId={Number(mapData?.paper || replyData?.paper || 1)}>
+            {dataType !== 'REPLY_LETTER' && mapData ? (
+                <MapLetterArchieveDetail
+                    letterData={mapData}
+                    letterId={letterId || ''}
+                />
+            ) : dataType === 'REPLY_LETTER' && replyData ? (
+                <MapLetterArchieveDetail
+                    letterData={replyData}
+                    letterId={replyLetterId || ''}
+                />
+            ) : (
+                <div>잘못된 접근입니다.</div>
+            )}
         </ThemeWrapper>
     );
 };

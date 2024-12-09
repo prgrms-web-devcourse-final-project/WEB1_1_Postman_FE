@@ -1,12 +1,18 @@
-import { getArchivedMapLetter } from '@/service/MapLetter/getArchivedLetter';
-import { GetArchivedMapLetterResponseType } from '@/types/letter';
 import { useQuery } from '@tanstack/react-query';
+import { getArchivedMapLetter } from '@/service/MapLetter/getArchivedLetter';
+import { getArchivedMapLetterResultType } from '@/types/letter';
 
-export const useGetArchivedLetter = (letterId: string) => {
-    return useQuery<GetArchivedMapLetterResponseType, Error>({
+type UseArchivedLetterProps = {
+    letterId: number;
+};
+
+export const useGetArchivedLetter = ({ letterId }: UseArchivedLetterProps) => {
+    return useQuery<getArchivedMapLetterResultType, Error>({
         queryKey: ['archivedMapLetter', letterId],
         queryFn: async () => {
-            return await getArchivedMapLetter(letterId);
-        }
+            const response = await getArchivedMapLetter({ letterId });
+            return response;
+        },
+        enabled: !!letterId
     });
 };

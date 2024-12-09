@@ -20,7 +20,11 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
     const { pathname } = useLocation();
     const mapType = pathname.split('/')[2];
     const letterType = pathname.split('/')[3];
-    const { letterId, lat } = useParams<{ letterId: string; lat: string }>();
+    const { letterId, lat, replyLetterId } = useParams<{
+        letterId: string;
+        lat: string;
+        replyLetterId: string;
+    }>();
     const navigate = useNavigate();
     const { addToast } = useToastStore();
 
@@ -33,7 +37,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
             const description =
                 selectedReason === '기타' ? customReason : selectedReason;
             return await postReportKeywordLetter({
-                letterId: Number(letterId),
+                letterId: Number(letterId || replyLetterId),
                 description
             });
         }
@@ -48,7 +52,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
             const description =
                 selectedReason === '기타' ? customReason : selectedReason;
             return await postReportKeywordReplyLetter({
-                replyLetterId: Number(letterId),
+                replyLetterId: Number(letterId || replyLetterId),
                 description
             });
         }
@@ -63,14 +67,14 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
             const description =
                 selectedReason === '기타' ? customReason : selectedReason;
             return await postReportMapLetter({
-                letterId: Number(letterId),
+                letterId: Number(letterId || replyLetterId),
                 description
             });
         }
     });
 
     const reportMapReplyLetterMutation = usePostReportMapReplyLetter(
-        Number(letterId),
+        Number(letterId || replyLetterId),
         selectedReason === '기타' ? customReason : selectedReason
     );
 
