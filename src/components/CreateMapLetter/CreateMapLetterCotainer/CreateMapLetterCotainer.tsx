@@ -7,6 +7,7 @@ import { useAutoSave, useToastStore } from '@/hooks';
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage'; // 로컬 스토리지 훅 가져오기
+import { getIsuserExist } from '@/service/user/getIsuserExist';
 
 const CreateMapLetterCotainer = () => {
     const { addToast } = useToastStore();
@@ -45,6 +46,7 @@ const CreateMapLetterCotainer = () => {
     const [description, setDescription] = useState<string>(
         storedDescription || ''
     );
+    const [nickname, setNickname] = useState<string>('');
 
     const navigate = useNavigate();
 
@@ -63,13 +65,23 @@ const CreateMapLetterCotainer = () => {
 
     useAutoSave(saveLetterData, 50000);
 
+    const checkUserExist = async (nickname: string) => {
+        if (nickname.trim() === '') return true;
+
+        const response = await getIsuserExist(nickname);
+        if (!response.isSuccess || !response.result.isExists) {
+            return false;
+        }
+        return true;
+    };
+
     return (
         <>
             <TopBar
                 handleBackClick={() => {
                     navigate(-1);
                 }}
-                handleSuccesClick={() => {
+                handleSuccesClick={async () => {
                     if (
                         !title.trim() ||
                         !letterContent.trim() ||
@@ -81,6 +93,16 @@ const CreateMapLetterCotainer = () => {
                         );
                         return;
                     }
+
+                    if (nickname.trim() !== '') {
+                        const isUserExist = await checkUserExist(nickname);
+                        if (!isUserExist) {
+                            addToast('사용자를 찾을 수 없습니다.', 'warning');
+                            return;
+                        }
+                        localStorage.setItem('mapnickname', nickname);
+                    }
+
                     saveLetterData();
                     navigate('/letter/map/select');
                 }}
@@ -90,6 +112,17 @@ const CreateMapLetterCotainer = () => {
                 <>
                     <Margin top={20} />
                     <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
+                        <input
+                            value={nickname}
+                            onChange={(e) => setNickname(e.target.value)}
+                            placeholder="보낼 유저의 닉네임을 입력하세요"
+                            className={`z-30 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
+                        />
+                        <img
+                            src={'/to_line.f4c129e6.svg'}
+                            className="z-30 h-[7px] w-[200px] object-cover"
+                        />
+                        <Margin bottom={30} />
                         <input
                             onChange={handleChange}
                             value={title}
@@ -112,9 +145,9 @@ const CreateMapLetterCotainer = () => {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder="힌트를 입력해주세요"
-                            className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
+                            className={`z-30 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
                         />
-                        <img src={'/to_line.f4c129e6.svg'} />
+                        <img src={'/to_line.f4c129e6.svg'} className="z-30" />
                     </div>
 
                     <SelectSlider
