@@ -87,7 +87,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
                         '지도 답장이 성공적으로 신고되었습니다.',
                         'success'
                     );
-                    navigate('/storage/map');
+                    navigate('/storage?type=map');
                 },
                 onError: () => {
                     addToast('이미 신고가 접수되었습니다.', 'error');
@@ -115,7 +115,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
                         '키워드 편지가 성공적으로 신고되었습니다.',
                         'success'
                     );
-                    navigate('/storage/keyword');
+                    navigate('/storage?type=keyword');
                 },
                 onError: () => {
                     addToast('이미 신고가 접수되었습니다.', 'error');
@@ -129,7 +129,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
                         '키워드 답장이 성공적으로 신고되었습니다.',
                         'success'
                     );
-                    navigate('/storage/keyword');
+                    navigate('storage?type=keyword');
                 },
                 onError: () => {
                     addToast('이미 신고가 접수되었습니다.', 'error');
