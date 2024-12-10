@@ -58,8 +58,8 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
                 addToast('편지 삭제에 성공했습니다.', 'success');
                 navigate(
                     letterType === 'keyword'
-                        ? '/storage/keyword'
-                        : '/storage/map'
+                        ? '/storage?type=keyword'
+                        : 'storage?type=map'
                 );
             },
             onError: () => {
