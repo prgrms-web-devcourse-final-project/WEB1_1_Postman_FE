@@ -215,7 +215,7 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                                                     ? 'sent'
                                                     : 'received';
                                             navigate(
-                                                `/letter/map/${dataType}/${letter.letterId}`
+                                                `/letter/map/${dataType}/bookmark/${letter.letterId}`
                                             );
                                         }}
                                     >
