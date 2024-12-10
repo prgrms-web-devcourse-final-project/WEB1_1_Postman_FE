@@ -163,6 +163,10 @@ export const router = createBrowserRouter([
             {
                 path: '/letter/map/select',
                 element: <MapSelectItemPage />
+            },
+            {
+                path: '/letter/map/:dataType/bookmark/:letterId',
+                element: <MapLetterArchieveDetailContainerPage />
             }
         ]
     },
