@@ -2,10 +2,10 @@ name: Run lighthouse
 
 on:
     pull_request:
-        branches: develope
+        branches: env-light-house-cicd-수정
 
     push:
-        branches: develope
+        branches: env-light-house-cicd-수정
 
 jobs:
     lhci:
