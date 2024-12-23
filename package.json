@@ -13,7 +13,8 @@
         "chromatic": "npx chromatic --project-token=chpt_5b428790f7d5b5a",
         "prepare": "husky",
         "format": "prettier --cache --write .",
-        "gen-pwa": "vite build && vite preview"
+        "gen-pwa": "vite build && vite preview",
+        "lighthouse": "lhci autorun"
     },
     "dependencies": {
         "@tanstack/react-query": "^5.62.2",
