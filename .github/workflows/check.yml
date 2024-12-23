@@ -27,4 +27,4 @@ jobs:
               with:
                   message: '**✅ Build 성공!**'
                   comment_tag: build
-                  mode: replace
+                  mode: upsert
