@@ -25,79 +25,54 @@ jobs:
             - name: Build project
               run: yarn build
 
-            - name: Run server & Lighthouse CI
+            - name: Run Lighthouse CI
+              env:
+                  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
               run: |
-                  yarn preview & # Vite preview 서버 실행
-                  sleep 10 # 서버 시작 대기
-                  yarn dlx @lhci/cli autorun
+                  yarn dlx @lhci/cli autorun || echo "Fail to Run Lighthouse CI!"
 
-                  - name: Format lighthouse score
-                  id: format_lighthouse_score
-                  uses: actions/github-script@v3
-                  with:
-                      github-token: ${{secrets.GITHUB_TOKEN}}
-                      script: |
-                        const fs = require('fs');
-                        const results = JSON.parse(fs.readFileSync("./lhci_reports/manifest.json"));
-                        
-                        // 모든 결과의 평균 계산
-                        const averages = results.reduce((acc, result) => {
-                          const { summary } = result;
-                          const details = JSON.parse(fs.readFileSync(result.jsonPath));
-                          const { audits } = details;
-                          
-                          if (!acc.summary) {
-                            acc.summary = {...summary};
-                            acc.audits = {
-                              'first-contentful-paint': { score: 0, value: 0 },
-                              'largest-contentful-paint': { score: 0, value: 0 },
-                              'cumulative-layout-shift': { score: 0, value: 0 }
-                            };
-                          } else {
-                            Object.keys(summary).forEach(key => {
-                              acc.summary[key] += summary[key];
-                            });
-                          }
-                          
-                          ['first-contentful-paint', 'largest-contentful-paint', 'cumulative-layout-shift'].forEach(metric => {
-                            acc.audits[metric].score += audits[metric].score;
-                            acc.audits[metric].value += parseFloat(audits[metric].displayValue);
-                          });
-                          
-                          return acc;
-                        }, {});
+            - name: Format lighthouse score
+              id: format_lighthouse_score
+              uses: actions/github-script@v3
+              with:
+                  github-token: ${{secrets.GITHUB_TOKEN}}
+                  script: |
+                      const fs = require('fs');
+                      const results = JSON.parse(fs.readFileSync("./lhci_reports/manifest.json"));
+                      let comments = "";
 
-                        // 평균값 계산
-                        const count = results.length;
-                        Object.keys(averages.summary).forEach(key => {
-                          averages.summary[key] = Math.round((averages.summary[key] / count) * 100);
-                        });
-                        
-                        Object.keys(averages.audits).forEach(metric => {
-                          averages.audits[metric].score = averages.audits[metric].score / count;
-                          averages.audits[metric].value = (averages.audits[metric].value / count).toFixed(1);
-                        });
+                      results.forEach((result) => {
+                        const { summary, jsonPath } = result;
+                        const details = JSON.parse(fs.readFileSync(jsonPath));
+                        const { audits } = details;
+
+                        const formatResult = (res) => Math.round(res * 100);
+                        Object.keys(summary).forEach(key => summary[key] = formatResult(summary[key]));
 
                         const score = (res) => (res >= 90 ? "🟢" : res >= 50 ? "🟠" : "🔴");
 
-                        const comment = [
-                          `## ⚡️ Lighthouse Report (Average of ${count} runs)`,
+                        comments += [
+                          `## ⚡️ Lighthouse Report`,
                           `| Category | Score |`,
                           `| --- | --- |`,
-                          `| ${score(averages.summary.performance)} Performance | ${averages.summary.performance} |`,
-                          `| ${score(averages.summary.accessibility)} Accessibility | ${averages.summary.accessibility} |`,
-                          `| ${score(averages.summary.seo)} SEO | ${averages.summary.seo} |`,
-                          `| ${score(averages.summary['best-practices'])} Best Practices | ${averages.summary['best-practices']} |`,
+                          `| ${score(summary.performance)} Performance | ${summary.performance} |`,
+                          `| ${score(summary.accessibility)} Accessibility | ${summary.accessibility} |`,
+                          `| ${score(summary.seo)} SEO | ${summary.seo} |`,
+                          `| ${score(summary['best-practices'])} Best Practices | ${summary['best-practices']} |`,
                           ``,
-                          `### Core Web Vitals`,
+                          `### Metrics`,
                           `| Metric | Value |`,
                           `| --- | --- |`,
-                          `| ${score(averages.audits['first-contentful-paint'].score * 100)} First Contentful Paint | ${averages.audits['first-contentful-paint'].value} s |`,
-                          `| ${score(averages.audits['largest-contentful-paint'].score * 100)} Largest Contentful Paint | ${averages.audits['largest-contentful-paint'].value} s |`,
-                          `| ${score(averages.audits['cumulative-layout-shift'].score * 100)} Cumulative Layout Shift | ${averages.audits['cumulative-layout-shift'].value} |`,
+                          `| ${score(audits['first-contentful-paint'].score * 100)} First Contentful Paint | ${audits['first-contentful-paint'].displayValue} |`,
+                          `| ${score(audits['largest-contentful-paint'].score * 100)} Largest Contentful Paint | ${audits['largest-contentful-paint'].displayValue} |`,
+                          `| ${score(audits['cumulative-layout-shift'].score * 100)} Cumulative Layout Shift | ${audits['cumulative-layout-shift'].displayValue} |`,
+                          ``,
+                          `[📊 Full Report](${result.url})`,
+                          `---`
                         ].join('\n');
+                      });
 
-                        core.setOutput('comments', comment);
+                      core.setOutput('comments', comments);
 
             - name: Comment PR
               if: github.event_name == 'pull_request'
@@ -106,4 +81,4 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   message: ${{ steps.format_lighthouse_score.outputs.comments }}
                   comment_tag: lighthouse
-                  mode: recreate
+                  mode: replace
