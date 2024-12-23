@@ -21,7 +21,7 @@ export const useGetMapReplyList = ({
                 page,
                 size
             });
-            return response.result || { content: [] };
+            return response.result;
         },
         enabled: !!letterId
     });

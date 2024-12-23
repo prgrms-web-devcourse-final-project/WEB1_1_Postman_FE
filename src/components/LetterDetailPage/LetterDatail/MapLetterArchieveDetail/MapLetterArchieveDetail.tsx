@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { DeleteButton } from '../../Delete/DeleteButton';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
-// import { ReplyList } from '../../ReplyList/ReplyList';
+import { ReplyList } from '../../ReplyList/ReplyList';
 import { ReportButton } from '../../Report/ReportButton';
 import { useLocation } from 'react-router-dom';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
@@ -35,28 +35,14 @@ export const MapLetterArchieveDetail = ({
     const { pathname } = useLocation();
     const letterType = pathname.split('/')[2];
     const receivedType = pathname.split('/')[3];
-    const {
-        data: mapReplyListData,
-        isLoading: isMapReplyListDataLoading,
-        error: mapReplyListDataError
-    } = useGetMapReplyList({
-        letterId: Number(letterId) || 0,
-        page: 1,
-        size: 9
-    });
+    const { data: mapReplyListData, isLoading: isMapReplyListDataLoading } =
+        useGetMapReplyList({
+            letterId: Number(letterId) || 0,
+            page: 1,
+            size: 9
+        });
 
-    console.log(mapReplyListData);
-    if (isMapReplyListDataLoading) {
-        return (
-            <div className="flex flex-1 w-full h-full">
-                <Loading />
-            </div>
-        );
-    }
-
-    if (mapReplyListDataError instanceof Error) {
-        return <div>오류...: {mapReplyListDataError.message}</div>;
-    }
+    const replyList = mapReplyListData?.content || [];
 
     return (
         <div className={clsx(font ? font : 'font-sans')}>
@@ -95,14 +81,12 @@ export const MapLetterArchieveDetail = ({
                     </span>
                     <span>{DayCounter({ createdAt })}</span>
                 </div>
-                {/* {mapReplyListData?.content ? (
-                    <div className="mt-16 mx-auto">
-                        <ReplyList
-                            title={title}
-                            keywordReplyListData={mapReplyListData.content}
-                        />
-                    </div>
-                ) : null} */}
+
+                {isMapReplyListDataLoading ? (
+                    <Loading />
+                ) : (
+                    <ReplyList title={title} keywordReplyListData={replyList} />
+                )}
             </div>
         </div>
     );
