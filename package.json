@@ -14,7 +14,7 @@
         "prepare": "husky",
         "format": "prettier --cache --write .",
         "gen-pwa": "vite build && vite preview",
-        "lighthouse": "lhci autorun"
+        "lighthouse": "yarn build && yarn dlx @lhci/cli autorun"
     },
     "dependencies": {
         "@tanstack/react-query": "^5.62.2",

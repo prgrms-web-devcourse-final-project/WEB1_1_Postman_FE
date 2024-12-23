@@ -18,10 +18,7 @@ module.exports = {
             }
         },
         upload: {
-            target: 'filesystem',
-            outputDir: './lhci_reports',
-            reportFilenamePattern:
-                '%%PATHNAME%%-%%DATETIME%%-report.%%EXTENSION%%'
+            target: 'temporary-public-storage'
         },
         server: {
             port: 9000
