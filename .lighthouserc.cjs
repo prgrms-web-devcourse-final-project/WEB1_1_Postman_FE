@@ -2,6 +2,8 @@
 module.exports = {
     ci: {
         collect: {
+            startServerCommand: 'yarn preview',
+            startServerReadyPattern: 'ready in',
             staticDistDir: './dist',
             url: ['http://localhost:3000'],
             numberOfRuns: 5
