@@ -1,0 +1,35 @@
+name: Run lighthouse
+
+on:
+    pull_request:
+        branches: develope
+
+    push:
+        branches: develope
+
+jobs:
+    lhci:
+        name: Lighthouse CI
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '20.18.0'
+
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Comment PR
+              uses: thollander/actions-comment-pull-request@v1
+              if: github.event_name == 'pull_request'
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  message: |
+                      **🔍 Lighthouse 검사 결과**
+                      자세한 결과는 Lighthouse CI 대시보드에서 확인할 수 있습니다.
+                      ${{ steps.lhci.outputs.links }}
