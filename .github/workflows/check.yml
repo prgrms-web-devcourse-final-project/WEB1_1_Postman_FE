@@ -26,3 +26,5 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   message: '**✅ Build 성공!**'
+                  comment_tag: build
+                  mode: recreate
