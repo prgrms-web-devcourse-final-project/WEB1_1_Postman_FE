@@ -45,3 +45,4 @@ vite_cache
 
 ### Lighthouse 
 .lighthouseci
+lhci_reports
