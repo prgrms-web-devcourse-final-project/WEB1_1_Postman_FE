@@ -2,8 +2,6 @@
 module.exports = {
     ci: {
         collect: {
-            startServerCommand: 'yarn preview',
-            startServerReadyPattern: 'ready in',
             staticDistDir: './dist',
             url: ['http://localhost:3000'],
             numberOfRuns: 5
@@ -20,7 +18,10 @@ module.exports = {
             }
         },
         upload: {
-            target: 'temporary-public-storage'
+            target: 'filesystem',
+            outputDir: './lhci_reports',
+            reportFilenamePattern:
+                '%%PATHNAME%%-%%DATETIME%%-report.%%EXTENSION%%'
         },
         server: {
             port: 9000
