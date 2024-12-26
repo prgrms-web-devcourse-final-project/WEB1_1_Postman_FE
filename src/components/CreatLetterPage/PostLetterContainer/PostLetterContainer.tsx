@@ -6,7 +6,7 @@ import { ThemeWrapper } from '../ThemeWrapper/ThemeWrapper';
 import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
 import { useAutoSave, useLetterDB, useToastStore } from '@/hooks';
 
-export const PostLetterCotainer = () => {
+export const PostLetterContainer = () => {
     const [title, setTitle] = useState<string>('');
     const [letter, setLetter] = useState<string>('1');
     const [letterContent, setLetterContent] = useState<string>('');

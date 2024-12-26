@@ -1,10 +1,10 @@
-import { PostLetterCotainer } from '@/components/CreatLetterPage/PostLetterCotainer/PostLetterCotainer';
+import { PostLetterContainer } from '@/components/CreatLetterPage/PostLetterContainer/PostLetterContainer';
 import React from 'react';
 
 export const CreateLetterPage = () => {
     return (
         <div className="w-full h-full">
-            <PostLetterCotainer />
+            <PostLetterContainer />
         </div>
     );
 };
