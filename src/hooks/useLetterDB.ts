@@ -10,7 +10,7 @@ type Letter = {
     lastModified: Date;
 };
 
-export const useIndexedDB = () => {
+export const useLetterDB = () => {
     const { addToast } = useToastStore();
 
     const initDB = async () => {

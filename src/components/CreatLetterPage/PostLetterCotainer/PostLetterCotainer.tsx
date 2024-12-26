@@ -4,7 +4,7 @@ import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { useNavigate } from 'react-router-dom';
 import { ThemeWrapper } from '../ThemeWrapper/ThemeWrapper';
 import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
-import { useAutoSave, useIndexedDB, useToastStore } from '@/hooks';
+import { useAutoSave, useLetterDB, useToastStore } from '@/hooks';
 
 export const PostLetterCotainer = () => {
     const [title, setTitle] = useState<string>('');
@@ -14,7 +14,7 @@ export const PostLetterCotainer = () => {
 
     const { addToast } = useToastStore();
     const navigate = useNavigate();
-    const { saveLetter, getLetter } = useIndexedDB();
+    const { saveLetter, getLetter } = useLetterDB();
 
     // 초기 데이터 로드
     useEffect(() => {
