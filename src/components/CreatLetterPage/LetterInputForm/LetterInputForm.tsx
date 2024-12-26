@@ -21,7 +21,6 @@ export const LetterInputForm = ({
     letterContent,
     setLetterContent,
     font,
-
     description,
     setDescription
 }: LettetProps) => {
