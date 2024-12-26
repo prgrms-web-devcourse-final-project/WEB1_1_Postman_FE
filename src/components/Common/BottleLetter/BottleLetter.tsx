@@ -23,7 +23,7 @@ export const BottleLetter = ({ Letter }: BottleLetterProps) => {
         <div className="relative w-full h-full">
             <div className="absolute top-0 left-0 w-full h-full">
                 <Bottle />
-                <div className="w-[50%] h-[50%] absolute top-[25%] left-[30%] rotate-[-30deg] ">
+                <div className="w-[50%] h-[50%] absolute top-[15%] left-[59%] rotate-[-30deg] ">
                     <Label imgSrc={Letter.label} />
                 </div>
             </div>
