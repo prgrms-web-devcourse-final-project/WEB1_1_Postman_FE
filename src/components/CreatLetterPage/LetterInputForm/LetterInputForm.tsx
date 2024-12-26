@@ -1,6 +1,5 @@
 import { Margin } from '@/components/Common/Margin/Margin';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
-import { SelectSlider } from '@/components/SelectItemPage/SelectSlider/SelectSlider';
 import React from 'react';
 
 type LettetProps = {
@@ -22,49 +21,36 @@ export const LetterInputForm = ({
     letterContent,
     setLetterContent,
     font,
-    letter,
-    setFont,
-    setLetter,
+
     description,
     setDescription
 }: LettetProps) => {
     return (
-        <>
-            <Margin top={20} />
-            <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
-                <input
-                    onChange={handleChange}
-                    value={title}
-                    type="text"
-                    placeholder="제목을 입력해주세요"
-                    className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
-                    maxLength={20}
-                />
-                <img src={'/to_line.f4c129e6.svg'} />
-
-                <div className="relative z-10">
-                    <TextArea
-                        value={letterContent}
-                        setValue={setLetterContent}
-                        font={font}
-                    />
-                </div>
-
-                {description && setDescription && (
-                    <input
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="힌트를 입력해주세요"
-                        className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
-                    />
-                )}
-            </div>
-            <SelectSlider
-                font={font}
-                letter={letter}
-                setFont={setFont}
-                setLetter={setLetter}
+        <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
+            <input
+                onChange={handleChange}
+                value={title}
+                type="text"
+                placeholder="제목을 입력해주세요"
+                className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'} mt-5-`}
+                maxLength={20}
             />
-        </>
+            <img src={'/to_line.f4c129e6.svg'} />
+
+            <TextArea
+                value={letterContent}
+                setValue={setLetterContent}
+                font={font}
+            />
+
+            {description && setDescription && (
+                <input
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="힌트를 입력해주세요"
+                    className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
+                />
+            )}
+        </div>
     );
 };

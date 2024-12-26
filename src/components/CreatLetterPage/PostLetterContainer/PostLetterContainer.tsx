@@ -3,6 +3,7 @@ import React from 'react';
 import { ThemeWrapper } from '../ThemeWrapper/ThemeWrapper';
 import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
 import { useAutoSave, useDraftLetter } from '@/hooks';
+import { SelectSlider } from '@/components/SelectItemPage/SelectSlider/SelectSlider';
 
 interface PostLetterContainerProps {
     title: string;
@@ -49,6 +50,12 @@ export const PostLetterContainer = ({
                 handleChange={handleChange}
                 letterContent={letterContent}
                 setLetterContent={setLetterContent}
+                font={font}
+                letter={letter}
+                setFont={setFont}
+                setLetter={setLetter}
+            />
+            <SelectSlider
                 font={font}
                 letter={letter}
                 setFont={setFont}
