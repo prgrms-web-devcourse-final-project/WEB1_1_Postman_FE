@@ -4,11 +4,12 @@ import { Margin } from '@/components/Common/Margin/Margin';
 import { KeywordList } from '../../Keyword/KeywordList';
 import { DeleteButton } from '../../Delete/DeleteButton';
 import clsx from 'clsx';
-// import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
-// import { ReplyList } from '../../ReplyList/ReplyList';
+import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
+import { ReplyList } from '../../ReplyList/ReplyList';
 import { ReportButton } from '../../Report/ReportButton';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 type KeywordLetterDetailProps = {
     letterData: {
@@ -42,24 +43,16 @@ export const KeywordLetterDetail = ({
         isReplied
     } = letterData;
 
-    // const {
-    //     data: keywordReplyListData,
-    //     isLoading: isKeywordReplyListDataLoading,
-    //     error: keywordReplyListDataError
-    // } = useGetKeywordReplyList({
-    //     letterId: Number(letterId) || 0,
-    //     page: 1,
-    //     size: 1,
-    //     sort: 'createdAt'
-    // });
-
-    // if (isKeywordReplyListDataLoading) {
-    //     return <div>로딩 중...</div>;
-    // }
-
-    // if (keywordReplyListDataError instanceof Error) {
-    //     return <div>오류...: {keywordReplyListDataError.message}</div>;
-    // }
+    const {
+        data: keywordReplyListData,
+        isLoading: isKeywordReplyListDataLoading
+    } = useGetKeywordReplyList({
+        letterId: Number(letterId) || 0,
+        page: 1,
+        size: 1,
+        sort: 'createdAt'
+    });
+    const replyList = keywordReplyListData?.content || [];
 
     return (
         <div className={clsx(font ? font : 'font-sans')}>
@@ -87,13 +80,11 @@ export const KeywordLetterDetail = ({
                 </div>
                 {keywords && <KeywordList keywords={keywords} />}
                 <Margin bottom={5} />
-                {/* {dataType === 'sent' && keywordReplyListData?.content ? (
-                    <div className="mx-auto mt-16">
-                        <ReplyList
-                            keywordReplyListData={keywordReplyListData.content}
-                        />
-                    </div>
-                ) : null} */}
+                {dataType === 'sent' && isKeywordReplyListDataLoading ? (
+                    <Loading />
+                ) : (
+                    <ReplyList title={title} keywordReplyListData={replyList} />
+                )}
 
                 {dataType === 'received' &&
                     letterType === 'LETTER' &&
