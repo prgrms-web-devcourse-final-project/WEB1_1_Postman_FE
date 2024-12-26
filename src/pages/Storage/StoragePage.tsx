@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { StorageList } from '@/components/StoragePage/StorageList';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
-type storageType = 'keyword' | 'map' | 'bookmark';
+type LetterType = 'keyword' | 'map' | 'bookmark';
 
-interface StoragePageProps {
-    initialType?: storageType;
-}
-
-const getTranslateX = (path: storageType) => {
+const getTranslateX = (path: LetterType) => {
     const pathIndex =
         {
             keyword: 0,
@@ -19,16 +15,24 @@ const getTranslateX = (path: storageType) => {
     return `${pathIndex * 100}%`;
 };
 
-export const StoragePage = ({ initialType }: StoragePageProps) => {
+export const StoragePage = () => {
+    const navigate = useNavigate();
+    const { letterType } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
-    const [storageType, setStorageType] = useState<storageType>(
-        (searchParams.get('type') as storageType) || initialType || 'keyword'
-    );
 
-    const handleTypeChange = (type: storageType) => {
-        setStorageType(type);
-        setSearchParams({ type });
+    const handleNavigate = (type: LetterType) => {
+        if (type === 'bookmark') return navigate(`/storage/${type}`);
+        navigate(`/storage/${type}?filtertype=sent`);
     };
+
+    // 마운트 될 때 초기 필터타입을 지정합니다
+    useEffect(() => {
+        if (letterType === 'bookmark') return;
+        const currentFilter = searchParams.get('filtertype');
+        if (!currentFilter) {
+            setSearchParams({ filtertype: 'sent' });
+        }
+    }, []);
 
     return (
         <div className="flex flex-col h-full">
@@ -37,24 +41,24 @@ export const StoragePage = ({ initialType }: StoragePageProps) => {
                     <div
                         className="absolute bottom-0 w-1/3 h-[2px] transition-transform duration-500 ease-in-out bg-sample-blue"
                         style={{
-                            transform: `translateX(${getTranslateX(storageType)})`
+                            transform: `translateX(${getTranslateX(letterType as LetterType)})`
                         }}
                     ></div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => handleTypeChange('keyword')}
+                        onClick={() => handleNavigate('keyword')}
                     >
                         <span>키워드 편지</span>
                     </div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => handleTypeChange('map')}
+                        onClick={() => handleNavigate('map')}
                     >
                         <span>내 지도 편지</span>
                     </div>
                     <div
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
-                        onClick={() => handleTypeChange('bookmark')}
+                        onClick={() => handleNavigate('bookmark')}
                     >
                         <span>보관한 지도 편지</span>
                     </div>
@@ -62,7 +66,7 @@ export const StoragePage = ({ initialType }: StoragePageProps) => {
             </div>
 
             <div className="flex flex-col gap-2 mt-[15px]">
-                <StorageList type={storageType} />
+                <StorageList />
             </div>
         </div>
     );

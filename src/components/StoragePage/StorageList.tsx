@@ -1,79 +1,47 @@
 import React, { useEffect, useState } from 'react';
-import { BottleLetter } from '../Common/BottleLetter/BottleLetter';
-import { Itembox } from '../Common/Itembox/Itembox';
-import { useNavigate } from 'react-router-dom';
-import { useInfiniteStorageFetch } from '@/hooks/useInfiniteStorageFetch';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
+import { useInfiniteStorageFetch } from '@/hooks/useInfiniteStorageFetch';
+import { useQueryClient } from '@tanstack/react-query';
+import { match } from 'ts-pattern';
 import { deleteLetters } from '@/service/letter/delete/deleteLetters';
 import { useModal, useToastStore } from '@/hooks';
-import { useQueryClient } from '@tanstack/react-query';
-import { Empty } from '../Common/Empty/Empty';
-
-type storageType = 'keyword' | 'map' | 'bookmark';
-type FilterType = 'SEND' | 'RECEIVE';
-
-type StorageListProps = {
-    type: storageType;
-};
-
-type DeleteLetterType = {
-    letterId: number;
-    letterType: string;
-    boxType: string;
-};
+import { DeleteLetterType, storageLetterType } from '@/types/letter';
+import { Empty } from '@/components/Common/Empty/Empty';
+import { Loading } from '@/components/Common/Loading/Loading';
+import { LetterDateGroup } from './LetterDateGroup';
 
 const ROWS_PER_PAGE = 10;
 
-export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
-    const navigate = useNavigate();
+export const StorageList = () => {
     const queryClient = useQueryClient();
-
-    const { openModal, closeModal, ModalComponent } = useModal();
+    const { letterType } = useParams();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const filterType = searchParams.get('filtertype');
+    const { ref, inView } = useInView();
     const { addToast } = useToastStore();
-
-    const [selectedFilter, setSelectedFilter] = useState<FilterType>('SEND');
+    const { openModal, closeModal, ModalComponent } = useModal();
     const [checkedItems, setCheckedItems] = useState<DeleteLetterType[]>([]);
 
-    const { ref, inView } = useInView();
-
     const getApiEndpoint = () => {
-        const endpoints = {
-            keyword: {
-                SEND: '/letters/saved/sent',
-                RECEIVE: '/letters/saved/received'
-            },
-            map: {
-                SEND: '/map/sent',
-                RECEIVE: '/map/received'
-            }
-        };
-
-        if (type === 'bookmark') {
-            return '/map/archived';
-        }
-
-        return endpoints[type]?.[selectedFilter];
+        return match<storageLetterType>(letterType as storageLetterType)
+            .with('keyword', () => `/letters/saved/${filterType}`)
+            .with('map', () => `/map/${filterType}`)
+            .with('bookmark', () => '/map/archived')
+            .exhaustive();
     };
 
-    const renderCategory = (boxType: string, letterType: string) => {
-        const condition = `${boxType}-${letterType}`;
-        switch (condition) {
-            case 'SEND-LETTER':
-                return '보낸 편지';
-            case 'SEND-REPLY_LETTER':
-                return '보낸 답장';
-            case 'RECEIVE-LETTER':
-                return '받은 편지';
-            case 'RECEIVE-REPLY_LETTER':
-                return '받은 답장';
-            default:
-        }
-    };
+    const {
+        groupedLetters,
+        status,
+        fetchNextPage,
+        isFetchingNextPage,
+        hasNextPage
+    } = useInfiniteStorageFetch({
+        apiEndpoint: getApiEndpoint(),
+        size: ROWS_PER_PAGE
+    });
 
-    const { groupedLetters, fetchNextPage, isFetchingNextPage } =
-        useInfiniteStorageFetch(getApiEndpoint(), ROWS_PER_PAGE);
-
-    // 체크박스 단일 클릭
     const handleSingleCheck = (
         checked: boolean,
         { letterId, letterType, boxType }: DeleteLetterType
@@ -91,7 +59,6 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
         console.log(checkedItems);
     };
 
-    // 체크박스 전체 클릭
     const handleAllCheck = (checked: boolean) => {
         if (checked) {
             const itemArray: {
@@ -135,6 +102,14 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
     }, [inView]);
 
     const renderList = () => {
+        if (status === 'pending') {
+            return <Loading />;
+        }
+
+        if (status === 'success' && groupedLetters.length === 0) {
+            return <Empty />;
+        }
+
         return (
             <div className="">
                 <ModalComponent height="h-[200px] w-[250px]">
@@ -156,88 +131,14 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                         </div>
                     </div>
                 </ModalComponent>
-
                 {groupedLetters.map((dayGroup) => (
-                    <div key={dayGroup.date} className="flex flex-col gap-3">
-                        {/* 날짜 섹션 */}
-                        <div className="font-medium text-md">
-                            {dayGroup.date}
-                        </div>
-                        {/* 해당 날짜의 편지들 */}
-                        <div className="flex flex-col gap-2">
-                            {dayGroup.letters.map((letter) => (
-                                <div
-                                    key={letter.letterId}
-                                    className="flex flex-row gap-2"
-                                >
-                                    <input
-                                        type="checkbox"
-                                        name={`select-${letter.letterId}`}
-                                        onChange={(e) =>
-                                            handleSingleCheck(
-                                                e.target.checked,
-                                                {
-                                                    letterId: letter.letterId,
-                                                    letterType:
-                                                        letter.letterType,
-                                                    boxType: letter.boxType
-                                                }
-                                            )
-                                        }
-                                        checked={checkedItems.some(
-                                            (item) =>
-                                                item.letterId ===
-                                                letter.letterId
-                                        )}
-                                    />
-                                    <div
-                                        className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray cursor-pointer"
-                                        onClick={() => {
-                                            if (
-                                                type === 'keyword' ||
-                                                type === 'map'
-                                            ) {
-                                                const dataType =
-                                                    selectedFilter === 'SEND'
-                                                        ? 'sent'
-                                                        : 'received';
-                                                const letterTypePath =
-                                                    type === 'keyword'
-                                                        ? `/${letter.letterType}`
-                                                        : '';
-                                                navigate(
-                                                    `/letter/${type}${letterTypePath}/${dataType}/${letter.letterId}`
-                                                );
-                                                return;
-                                            }
-                                            const dataType =
-                                                selectedFilter === 'SEND'
-                                                    ? 'sent'
-                                                    : 'received';
-                                            navigate(
-                                                `/letter/map/${dataType}/bookmark/${letter.letterId}`
-                                            );
-                                        }}
-                                    >
-                                        <Itembox>
-                                            <BottleLetter Letter={letter} />
-                                        </Itembox>
-                                        <div className="flex flex-col h-full">
-                                            <div className="text-[12px] text-gray-500 mt-2">
-                                                {renderCategory(
-                                                    letter.boxType,
-                                                    letter.letterType
-                                                )}
-                                            </div>
-                                            <h3 className="text-sm font-bold">
-                                                {letter.title}
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <LetterDateGroup
+                        key={dayGroup.date}
+                        date={dayGroup.date}
+                        letters={dayGroup.letters}
+                        checkedItems={checkedItems}
+                        handleSingleCheck={handleSingleCheck}
+                    />
                 ))}
             </div>
         );
@@ -249,27 +150,26 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                 <button
                     className={`border border-sample-blue rounded-xl text-sm px-2 py-1
                                 ${
-                                    selectedFilter === 'SEND'
+                                    filterType === 'sent'
                                         ? 'bg-sample-blue text-white'
                                         : 'bg-white text-sample-blue'
                                 }`}
-                    onClick={() => setSelectedFilter('SEND')}
+                    onClick={() => setSearchParams({ filtertype: 'sent' })}
                 >
                     보낸 편지
                 </button>
                 <button
                     className={`border border-sample-blue rounded-xl text-sm px-2 py-1
                                 ${
-                                    selectedFilter === 'RECEIVE'
+                                    filterType === 'received'
                                         ? 'bg-sample-blue text-white'
                                         : 'bg-white text-sample-blue'
                                 }`}
-                    onClick={() => setSelectedFilter('RECEIVE')}
+                    onClick={() => setSearchParams({ filtertype: 'received' })}
                 >
                     받은 편지
                 </button>
             </div>
-            {/* 삭제 섹션 */}
             {groupedLetters.length === 0 ? null : (
                 <div className="flex flex-row justify-between w-full gap-3 text-sm">
                     <div className="flex flex-row items-center gap-1">
@@ -301,9 +201,16 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                     </button>
                 </div>
             )}
-
-            {groupedLetters.length === 0 ? <Empty /> : renderList()}
-            <div>{isFetchingNextPage ? <div></div> : <div ref={ref} />}</div>
+            <div>
+                {renderList()}
+                {isFetchingNextPage ? (
+                    <div>패치중</div>
+                ) : hasNextPage ? (
+                    <div ref={ref} />
+                ) : (
+                    <div></div>
+                )}
+            </div>
         </div>
     );
 };
