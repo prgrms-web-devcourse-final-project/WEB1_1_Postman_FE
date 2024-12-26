@@ -61,9 +61,6 @@ export const PostLetterCotainer = () => {
     return (
         <>
             <TopBar
-                handleBackClick={() => {
-                    navigate(-1);
-                }}
                 handleSuccesClick={async () => {
                     if (!title.trim() || !letterContent.trim()) {
                         addToast(
