@@ -90,7 +90,6 @@ export const TextArea = ({
                     2.2 + (textAreaRef.current.offsetWidth - 281) * 0.0018
                 );
                 setTextAreaHeight(textAreaRef.current.scrollHeight);
-                console.log(textAreaRef.current.scrollHeight);
             }
         };
 

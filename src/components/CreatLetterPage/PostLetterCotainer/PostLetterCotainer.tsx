@@ -1,49 +1,59 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { useNavigate } from 'react-router-dom';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { ThemeWrapper } from '../ThemeWrapper/ThemeWrapper';
 import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
-import { useAutoSave, useToastStore } from '@/hooks';
+import { useAutoSave, useIndexedDB, useToastStore } from '@/hooks';
 
 export const PostLetterCotainer = () => {
-    const { setValue: saveTitle, storedValue: storedTitle } = useLocalStorage(
-        'title',
-        ''
-    );
-    const { setValue: saveLetterContent, storedValue: storedContent } =
-        useLocalStorage('letterContent', '');
-    const { setValue: saveFont, storedValue: storedFont } = useLocalStorage(
-        'font',
-        ''
-    );
-    const { setValue: saveLetter, storedValue: storedLetter } = useLocalStorage(
-        'letter',
-        ''
-    );
+    const [title, setTitle] = useState<string>('');
+    const [letter, setLetter] = useState<string>('1');
+    const [letterContent, setLetterContent] = useState<string>('');
+    const [font, setFont] = useState<string>('initial');
 
     const { addToast } = useToastStore();
-
-    const [title, setTitle] = useState<string>(storedTitle || '');
-    const [letter, setLetter] = useState<string>(storedLetter || '1');
-    const [letterContent, setLetterContent] = useState<string>(
-        storedContent || ''
-    );
-    const [font, setFont] = useState<string>(storedFont || 'initial');
-
     const navigate = useNavigate();
+    const { saveLetter, getLetter } = useIndexedDB();
+
+    // 초기 데이터 로드
+    useEffect(() => {
+        const loadDraft = async () => {
+            try {
+                const draft = await getLetter('draft');
+                if (draft) {
+                    setTitle(draft.title);
+                    setLetter(String(draft.theme));
+                    setLetterContent(draft.content);
+                    setFont(draft.font);
+                }
+            } catch (error) {
+                console.error('드래프트 불러오기 실패:', error);
+                addToast('임시저장 불러오기 실패', 'error');
+            }
+        };
+
+        loadDraft();
+    }, [getLetter, addToast]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        setTitle(inputValue);
+        setTitle(e.target.value);
     };
 
-    const saveLetterData = () => {
-        saveTitle(title);
-        saveLetterContent(letterContent);
-        saveFont(font);
-        saveLetter(letter);
+    const saveLetterData = async () => {
+        try {
+            await saveLetter({
+                id: 'draft',
+                title,
+                content: letterContent,
+                font,
+                theme: Number(letter),
+                lastModified: new Date()
+            });
+        } catch (error) {
+            console.error('저장 실패:', error);
+            addToast('임시저장 실패', 'error');
+        }
     };
 
     useAutoSave(saveLetterData, 10000);
@@ -54,7 +64,7 @@ export const PostLetterCotainer = () => {
                 handleBackClick={() => {
                     navigate(-1);
                 }}
-                handleSuccesClick={() => {
+                handleSuccesClick={async () => {
                     if (!title.trim() || !letterContent.trim()) {
                         addToast(
                             '공백을 제외한 제목과 내용을 입력해주세요',
@@ -62,7 +72,7 @@ export const PostLetterCotainer = () => {
                         );
                         return;
                     }
-                    saveLetterData();
+                    await saveLetterData();
                     navigate('/letter/select');
                 }}
             />

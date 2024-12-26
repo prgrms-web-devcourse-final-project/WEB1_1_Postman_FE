@@ -7,6 +7,7 @@ import { useRegisterForm } from './useRegisterForm';
 import { useToastStore } from './useToastStore';
 import { useDownloadCanvas } from './useDownloadCanvas';
 import { useGetArchivedLetter } from './useGetArchivedLetter';
+import { useIndexedDB } from './useIndexedDB';
 
 export {
     useAutoSave,
@@ -17,5 +18,6 @@ export {
     useRegisterForm,
     useToastStore,
     useDownloadCanvas,
-    useGetArchivedLetter
+    useGetArchivedLetter,
+    useIndexedDB
 };
