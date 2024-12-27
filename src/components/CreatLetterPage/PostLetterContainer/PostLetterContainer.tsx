@@ -1,7 +1,7 @@
 // PostLetterContainer.tsx
 import React from 'react';
 import { ThemeWrapper } from '../ThemeWrapper/ThemeWrapper';
-import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
+import { LetterForm } from '../LetterForm/LetterForm';
 import { SelectSlider } from '@/components/SelectItemPage/SelectSlider/SelectSlider';
 
 interface PostLetterContainerProps {
@@ -25,15 +25,11 @@ export const PostLetterContainer = ({
     setLetterContent,
     setFont
 }: PostLetterContainerProps) => {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value);
-    };
-
     return (
         <ThemeWrapper themeId={Number(letter)}>
-            <LetterInputForm
+            <LetterForm
                 title={title}
-                handleChange={handleChange}
+                setTitle={setTitle}
                 letterContent={letterContent}
                 setLetterContent={setLetterContent}
                 font={font}

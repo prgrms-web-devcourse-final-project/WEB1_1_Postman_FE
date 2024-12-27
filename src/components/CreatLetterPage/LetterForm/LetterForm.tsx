@@ -1,10 +1,9 @@
-import { Margin } from '@/components/Common/Margin/Margin';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import React from 'react';
 
 type LettetProps = {
     title: string;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    setTitle: React.Dispatch<React.SetStateAction<string>>;
     letterContent: string;
     setLetterContent: React.Dispatch<React.SetStateAction<string>>;
     font: string;
@@ -15,9 +14,9 @@ type LettetProps = {
     setDescription?: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const LetterInputForm = ({
+export const LetterForm = ({
     title,
-    handleChange,
+    setTitle,
     letterContent,
     setLetterContent,
     font,
@@ -27,7 +26,7 @@ export const LetterInputForm = ({
     return (
         <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
             <input
-                onChange={handleChange}
+                onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 type="text"
                 placeholder="제목을 입력해주세요"
