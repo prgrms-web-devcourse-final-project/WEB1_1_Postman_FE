@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 interface ContainerProps {
     px?: number;
+    pt?: number;
     pb?: number;
     children?: React.ReactNode;
 }
@@ -12,13 +13,18 @@ const gradientStyle = {
         'linear-gradient(to top, rgb(102, 177, 255), rgba(122, 208, 252, 0.3))'
 };
 
-export const Container: React.FC<ContainerProps> = ({ px = 0, children }) => {
+export const Container: React.FC<ContainerProps> = ({
+    px = 0,
+    pt = 0,
+    pb = 0,
+    children
+}) => {
     const location = useLocation();
     const isHomePage = location.pathname === '/';
 
     return (
         <div
-            className={`px-${px} py-6 w-full h-[100vh] overflow-auto scrollbar-hide`}
+            className={`flex-1 px-${px} pt-${pt} pb-${pb} w-full h-full overflow-auto scrollbar-hide`}
             style={isHomePage ? gradientStyle : {}}
         >
             {children}
