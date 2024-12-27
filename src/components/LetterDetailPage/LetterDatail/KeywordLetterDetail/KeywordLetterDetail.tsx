@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
 import { ReplyList } from '../../ReplyList/ReplyList';
 import { ReportButton } from '../../Report/ReportButton';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
 import { Loading } from '@/components/Common/Loading/Loading';
 
@@ -27,6 +27,8 @@ type KeywordLetterDetailProps = {
 export const KeywordLetterDetail = ({
     letterData
 }: KeywordLetterDetailProps) => {
+    const { pathname } = useLocation();
+    const reportBtn = pathname.split('/')[4];
     const { dataType, letterType } = useParams<{
         dataType: string;
         letterType: string;
@@ -64,7 +66,7 @@ export const KeywordLetterDetail = ({
                         <Label imgSrc={label} />
                     </div>
                     <DeleteButton />
-                    {letterType === 'REPLY_LETTER' && <ReportButton />}
+                    {reportBtn === 'received' && <ReportButton />}
                 </div>
                 <h1>{title}</h1>
                 <img src={'/to_line.f4c129e6.svg'} className="w-full" />
