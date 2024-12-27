@@ -14,14 +14,20 @@
         @apply min-w-[375px] 
           max-w-[475px]          
           w-full             
-          bg-white               
-          border                
+          bg-white                           
+          h-screen  
           min-h-screen            
           text-sample-black
           flex                  
           flex-col;
         margin: auto;
         box-sizing: border-box;
+    }
+
+    @media (min-width: 475px) {
+        #root {
+            @apply border-x;
+        }
     }
 }
 

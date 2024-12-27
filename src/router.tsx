@@ -50,10 +50,11 @@ export const PublicRoute = ({ children }: RouteProps) => {
 
 const CommonLayout = () => (
     <div className="flex flex-col h-full">
-        <Container px={6} pb={6}>
-            <Outlet />
+        <Container px={5}>
+            <div className="pb-4">
+                <Outlet />
+            </div>
         </Container>
-        <Margin bottom={78} />
         <NavigationBar />
     </div>
 );
@@ -73,8 +74,10 @@ const AuthLayout = () => (
 );
 
 const MapLayout = () => (
-    <div>
-        <Outlet />
+    <div className="flex flex-col h-full">
+        <Container>
+            <Outlet />
+        </Container>
         <NavigationBar />
     </div>
 );
