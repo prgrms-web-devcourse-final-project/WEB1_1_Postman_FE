@@ -35,14 +35,14 @@ class ErrorBoundaryClass extends Component<
     }
 
     componentDidCatch(error: Error) {
-        this.props.addToast(error.message, 'error');
+        this.props.addToast(error.message, 'warning');
+        console.error(error);
     }
 
     render() {
         if (this.state.hasError) {
             return null;
         }
-
         return this.props.children;
     }
 }
