@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 
 type LetterInputProps = {
@@ -21,7 +22,10 @@ export const LetterInput = ({
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 placeholder={placeholder}
-                className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
+                className={clsx(
+                    `z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap`,
+                    font ? font : 'font-sans'
+                )}
                 maxLength={maxLength || undefined}
             />
         </>
