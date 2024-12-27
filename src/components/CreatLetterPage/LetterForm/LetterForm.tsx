@@ -1,5 +1,6 @@
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import React from 'react';
+import { LetterInput } from '../LetterInput/LetterInput';
 
 type LettetProps = {
     title: string;
@@ -25,13 +26,12 @@ export const LetterForm = ({
 }: LettetProps) => {
     return (
         <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
-            <input
-                onChange={(e) => setTitle(e.target.value)}
+            <LetterInput
                 value={title}
-                type="text"
-                placeholder="제목을 입력해주세요"
-                className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'} mt-5-`}
+                setValue={setTitle}
+                placeholder={'제목을 입력해주세요'}
                 maxLength={20}
+                font={font}
             />
             <img src={'/to_line.f4c129e6.svg'} />
 
@@ -42,11 +42,11 @@ export const LetterForm = ({
             />
 
             {description && setDescription && (
-                <input
+                <LetterInput
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder="힌트를 입력해주세요"
-                    className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
+                    setValue={setDescription}
+                    placeholder={'힌트를 입력해주세요'}
+                    font={font}
                 />
             )}
         </div>
