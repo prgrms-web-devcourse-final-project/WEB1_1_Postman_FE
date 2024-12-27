@@ -70,8 +70,8 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
                 );
                 navigate(
                     letterType === 'keyword'
-                        ? '/storage?type=keyword'
-                        : '/storage?type=map'
+                        ? '/storage/keyword?filtertype=sent'
+                        : '/storage/map?filtertype=sent'
                 );
             },
             onError: () => {
