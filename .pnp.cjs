@@ -100,6 +100,7 @@ const RAW_RUNTIME_STATE =
           ["typescript-eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.15.0"],\
           ["vite", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.4.11"],\
           ["vite-plugin-pwa", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:0.21.0"],\
+          ["vite-plugin-remove-console", "npm:2.2.0"],\
           ["vite-plugin-svgr", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:4.3.0"],\
           ["zustand", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.0.1"]\
         ],\
@@ -17860,6 +17861,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["vite-plugin-remove-console", [\
+      ["npm:2.2.0", {\
+        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/vite-plugin-remove-console-npm-2.2.0-28ddb95349-10c0.zip/node_modules/vite-plugin-remove-console/",\
+        "packageDependencies": [\
+          ["vite-plugin-remove-console", "npm:2.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["vite-plugin-svgr", [\
       ["npm:4.3.0", {\
         "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/vite-plugin-svgr-npm-4.3.0-ded8bb690b-10c0.zip/node_modules/vite-plugin-svgr/",\
@@ -17985,6 +17995,7 @@ const RAW_RUNTIME_STATE =
           ["typescript-eslint", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.15.0"],\
           ["vite", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.4.11"],\
           ["vite-plugin-pwa", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:0.21.0"],\
+          ["vite-plugin-remove-console", "npm:2.2.0"],\
           ["vite-plugin-svgr", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:4.3.0"],\
           ["zustand", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.0.1"]\
         ],\
