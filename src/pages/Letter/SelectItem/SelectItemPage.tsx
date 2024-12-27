@@ -13,7 +13,7 @@ export const SelectItemPage = () => {
     }, []);
 
     return (
-        <div className="">
+        <>
             <TopBar
                 handleBackClick={() => {
                     navigate(-1);
@@ -32,6 +32,6 @@ export const SelectItemPage = () => {
             <AnimationBottle />
 
             <SelectItem isActive={isActive} setIsActive={handleIsActive} />
-        </div>
+        </>
     );
 };
