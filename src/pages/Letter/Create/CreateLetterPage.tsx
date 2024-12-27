@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { PostLetterContainer } from '@/components/CreatLetterPage/PostLetterContainer/PostLetterContainer';
-import { useToastStore, useDraftLetter } from '@/hooks';
+import { useToastStore, useDraftLetter, useAutoSave } from '@/hooks';
 import { useNavigate } from 'react-router-dom';
 
 export const CreateLetterPage = () => {
@@ -27,6 +27,8 @@ export const CreateLetterPage = () => {
     useEffect(() => {
         loadDraft();
     }, []);
+
+    useAutoSave(saveDraft, 10000);
 
     return (
         <div className="w-full h-full">

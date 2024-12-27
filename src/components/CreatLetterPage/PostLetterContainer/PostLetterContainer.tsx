@@ -2,7 +2,6 @@
 import React from 'react';
 import { ThemeWrapper } from '../ThemeWrapper/ThemeWrapper';
 import { LetterInputForm } from '../LetterInputForm/LetterInputForm';
-import { useAutoSave, useDraftLetter } from '@/hooks';
 import { SelectSlider } from '@/components/SelectItemPage/SelectSlider/SelectSlider';
 
 interface PostLetterContainerProps {
@@ -26,22 +25,9 @@ export const PostLetterContainer = ({
     setLetterContent,
     setFont
 }: PostLetterContainerProps) => {
-    const { saveDraft } = useDraftLetter(
-        title,
-        letter,
-        letterContent,
-        font,
-        setTitle,
-        setLetter,
-        setLetterContent,
-        setFont
-    );
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(e.target.value);
     };
-
-    useAutoSave(saveDraft, 10000);
 
     return (
         <ThemeWrapper themeId={Number(letter)}>
