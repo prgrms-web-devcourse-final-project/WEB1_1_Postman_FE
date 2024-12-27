@@ -5,7 +5,7 @@ export const FlowerLetter = ({ children }: ThemeProps) => {
     return (
         <div className="min-h-screen pt-[50px] rounded-t-3xl bg-theme-flower relative">
             {children}
-            <div className="flex justify-between overflow-hidden pointer-events-none ">
+            <div className="absolute flex overflow-hidden pointer-events-none bg-theme-flower bottom-[1px] justify-between w-full">
                 <img
                     src={'/letter3/bg1_mobile.99e45830.svg'}
                     alt="flowr"
