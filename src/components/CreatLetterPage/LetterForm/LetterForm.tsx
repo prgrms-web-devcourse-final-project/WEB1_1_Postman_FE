@@ -2,7 +2,7 @@ import { TextArea } from '@/components/Common/TextArea/TextArea';
 import React from 'react';
 import { LetterInput } from '../LetterInput/LetterInput';
 
-type LettetProps = {
+type LetterProps = {
     title: string;
     setTitle: React.Dispatch<React.SetStateAction<string>>;
     letterContent: string;
@@ -23,7 +23,7 @@ export const LetterForm = ({
     font,
     description,
     setDescription
-}: LettetProps) => {
+}: LetterProps) => {
     return (
         <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
             <LetterInput
