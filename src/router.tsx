@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import { lazy, ReactNode } from 'react';
 import { createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
 import { NavigationBar } from '@/components/Common/NavigationBar/NavigationBar';
 import {
     ErrorPage,
     HomePage,
     CreateLetterPage,
-    MapExplorerPage,
     MyPage,
     LoginPage,
     RegisterPage,
@@ -23,6 +22,7 @@ import {
     MapLetterArchieveDetailContainerPage,
     KakaoRedirectPage
 } from './pages';
+const MapExplorerPage = lazy(() => import('@/pages/Map/MapExplorerPage'));
 
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';

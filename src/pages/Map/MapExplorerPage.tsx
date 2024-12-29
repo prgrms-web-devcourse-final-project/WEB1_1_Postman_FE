@@ -12,7 +12,7 @@ import { formatDate } from '@/util/formatDate';
 import { calculateDaysLeft } from '@/util/calculateDaysLeft';
 import { formatDistance } from '@/util/formatDistance';
 
-export const MapExplorerPage = () => {
+const MapExplorerPage = () => {
     const { searchedLocation } = useSearchStore();
     const selectedLetter = useSelectedLetterStore(
         (state) => state.selectedLetter
@@ -143,3 +143,5 @@ export const MapExplorerPage = () => {
         </div>
     );
 };
+
+export default MapExplorerPage;

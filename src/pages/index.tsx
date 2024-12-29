@@ -1,7 +1,6 @@
 import { ErrorPage } from '@/pages/ErrorPage';
 import { HomePage } from '@/pages/Home/HomePage';
 import { CreateLetterPage } from '@/pages/Letter/Create/CreateLetterPage';
-import { MapExplorerPage } from '@/pages/Map/MapExplorerPage';
 import { LoginPage } from '@/pages/User/Login/LoginPage';
 import { RegisterPage } from '@/pages/User/Register/RegisterPage';
 import { ArchivedPage } from '@/pages/ArchivedPage';
@@ -24,7 +23,6 @@ export {
     ErrorPage,
     HomePage,
     CreateLetterPage,
-    MapExplorerPage,
     MyPage,
     LoginPage,
     RegisterPage,
