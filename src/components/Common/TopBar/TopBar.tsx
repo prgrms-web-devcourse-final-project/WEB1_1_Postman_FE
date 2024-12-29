@@ -21,6 +21,7 @@ export const TopBar = ({ handleSuccesClick }: TopBaerProps) => {
                 <button
                     onClick={handleSuccesClick}
                     className="w-12 px-2 py-2 text-sm text-white rounded-lg bg-sample-blue"
+                    aria-label="완료"
                 >
                     완료
                 </button>
