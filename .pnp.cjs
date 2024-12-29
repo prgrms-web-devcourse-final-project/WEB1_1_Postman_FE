@@ -1,5 +1,5 @@
 #!/usr/bin/env node
- 
+/* eslint-disable */
 // @ts-nocheck
 "use strict";
 
@@ -11139,13 +11139,6 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["npm:4.4.0", {\
-        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/debug-npm-4.4.0-f6efe76023-10c0.zip/node_modules/debug/",\
-        "packageDependencies": [\
-          ["debug", "npm:4.4.0"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
       ["virtual:2a426afc4b2eef43db12a540d29c2b5476640459bfcd5c24f86bb401cf8cce97e63bd81794d206a5643057e7f662643afd5ce3dfc4d4bfd8e706006c6309c5fa#npm:3.2.7", {\
         "packageLocation": "./.yarn/__virtual__/debug-virtual-d2345003b7/5/AppData/Local/Yarn/Berry/cache/debug-npm-3.2.7-754e818c7a-10c0.zip/node_modules/debug/",\
         "packageDependencies": [\
@@ -11160,22 +11153,8 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:c151ed7eacf339f278793286b8a02a2930164e152cd5311a918fa508b8d5ab8b6844b618e667dde83318cdbef2d167aa6df81103b08e6fe1ef6fc720c591a0d3#npm:4.4.0", {\
-        "packageLocation": "./.yarn/__virtual__/debug-virtual-8105cee6cb/5/AppData/Local/Yarn/Berry/cache/debug-npm-4.4.0-f6efe76023-10c0.zip/node_modules/debug/",\
-        "packageDependencies": [\
-          ["debug", "virtual:c151ed7eacf339f278793286b8a02a2930164e152cd5311a918fa508b8d5ab8b6844b618e667dde83318cdbef2d167aa6df81103b08e6fe1ef6fc720c591a0d3#npm:4.4.0"],\
-          ["@types/supports-color", null],\
-          ["ms", "npm:2.1.3"],\
-          ["supports-color", null]\
-        ],\
-        "packagePeers": [\
-          "@types/supports-color",\
-          "supports-color"\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["virtual:c9e1a4b59e37cb479517edede3bf2093b28c0ca1a9d0e517f3c345075bd1e468980b94b4957e389116607ee7155441dfd7d09e19a4229d5d09bcf06244401590#npm:4.3.7", {\
-        "packageLocation": "./.yarn/__virtual__/debug-virtual-cab48c25f8/5/AppData/Local/Yarn/Berry/cache/debug-npm-4.3.7-385645adf9-10c0.zip/node_modules/debug/",\
+      ["virtual:428f325a939c2653ad822eb3d75efb02ac311523dd0d4f9645afc39ea00bd86eceac35a9d59c9b6977d76b670a4ef0ae057ea572338a44729aa592711a8c05a3#npm:4.3.7", {\
+        "packageLocation": "./.yarn/__virtual__/debug-virtual-fecb6275a4/5/AppData/Local/Yarn/Berry/cache/debug-npm-4.3.7-385645adf9-10c0.zip/node_modules/debug/",\
         "packageDependencies": [\
           ["debug", "virtual:428f325a939c2653ad822eb3d75efb02ac311523dd0d4f9645afc39ea00bd86eceac35a9d59c9b6977d76b670a4ef0ae057ea572338a44729aa592711a8c05a3#npm:4.3.7"],\
           ["@types/supports-color", null],\
@@ -19717,7 +19696,7 @@ const RAW_RUNTIME_STATE =
           ["vite-plugin-compression", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:0.5.1"],\
           ["@types/vite", null],\
           ["chalk", "npm:4.1.2"],\
-          ["debug", "virtual:c151ed7eacf339f278793286b8a02a2930164e152cd5311a918fa508b8d5ab8b6844b618e667dde83318cdbef2d167aa6df81103b08e6fe1ef6fc720c591a0d3#npm:4.4.0"],\
+          ["debug", "virtual:d092b60205caf0f6392f0b4f3ccd81623b9d903ab6852f108c2f274b98c1ea87372da007986bb4909cc35443b8712f17776164383b55ac6bed036a079b7f3d1c#npm:4.4.0"],\
           ["fs-extra", "npm:10.1.0"],\
           ["vite", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.4.11"]\
         ],\
@@ -26927,7 +26906,7 @@ function arg(
 		}
 
 		if (wholeArg.length > 1 && wholeArg[0] === '-') {
-			 
+			/* eslint-disable operator-linebreak */
 			const separatedArguments =
 				wholeArg[1] === '-' || wholeArg.length === 2
 					? [wholeArg]
@@ -26935,7 +26914,7 @@ function arg(
 							.slice(1)
 							.split('')
 							.map((a) => `-${a}`);
-			 
+			/* eslint-enable operator-linebreak */
 
 			for (let j = 0; j < separatedArguments.length; j++) {
 				const arg = separatedArguments[j];
@@ -26978,7 +26957,7 @@ function arg(
 							!(
 								argv[i + 1].match(/^-?\d*(\.(?=\d))?\d*$/) &&
 								(type === Number ||
-									 
+									// eslint-disable-next-line no-undef
 									(typeof BigInt !== 'undefined' && type === BigInt))
 							))
 					) {
