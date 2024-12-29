@@ -1,0 +1,110 @@
+name: Run lighthouse
+
+on:
+    pull_request:
+        branches: develope
+    push:
+        branches: develope
+
+jobs:
+    lighthouse:
+        name: Lighthouse CI
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '20.18.0'
+
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Build project
+              run: yarn build
+
+            - name: Run Lighthouse CI
+              env:
+                  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+              run: |
+                  yarn dlx @lhci/cli autorun
+
+            - name: Format lighthouse score
+              id: format_lighthouse_score
+              uses: actions/github-script@v3
+              with:
+                  github-token: ${{secrets.GITHUB_TOKEN}}
+                  script: |
+                      const fs = require('fs');
+                      const results = JSON.parse(fs.readFileSync("./lhci_reports/manifest.json"));
+
+                      const totals = {
+                        summary: {
+                          performance: 0,
+                          accessibility: 0,
+                          seo: 0,
+                          'best-practices': 0
+                        },
+                        audits: {
+                          'first-contentful-paint': { score: 0, value: 0 },
+                          'largest-contentful-paint': { score: 0, value: 0 },
+                          'cumulative-layout-shift': { score: 0, value: 0 }
+                        }
+                      };
+
+                      results.forEach(result => {
+                        const { summary } = result;
+                        const details = JSON.parse(fs.readFileSync(result.jsonPath));
+                        const { audits } = details;
+
+                        Object.keys(totals.summary).forEach(key => {
+                          totals.summary[key] += summary[key];
+                        });
+
+                        Object.keys(totals.audits).forEach(key => {
+                          totals.audits[key].score += audits[key].score;
+                          totals.audits[key].value += parseFloat(audits[key].displayValue);
+                        });
+                      });
+
+                      const count = results.length;
+                      Object.keys(totals.summary).forEach(key => {
+                        totals.summary[key] = Math.round((totals.summary[key] / count) * 100);
+                      });
+
+                      Object.keys(totals.audits).forEach(key => {
+                        totals.audits[key].score = totals.audits[key].score / count;
+                        totals.audits[key].value = (totals.audits[key].value / count).toFixed(1);
+                      });
+
+                      const score = (res) => (res >= 90 ? "🟢" : res >= 50 ? "🟠" : "🔴");
+
+                      const comment = [
+                        `## ⚡️ Lighthouse Report (Average of ${count} runs)`,
+                        `| Category | Score |`,
+                        `| --- | --- |`,
+                        `| ${score(totals.summary.performance)} Performance | ${totals.summary.performance} |`,
+                        `| ${score(totals.summary.accessibility)} Accessibility | ${totals.summary.accessibility} |`,
+                        `| ${score(totals.summary.seo)} SEO | ${totals.summary.seo} |`,
+                        `| ${score(totals.summary['best-practices'])} Best Practices | ${totals.summary['best-practices']} |`,
+                        ``,
+                        `### Core Web Vitals (Average)`,
+                        `| Metric | Value |`,
+                        `| --- | --- |`,
+                        `| ${score(totals.audits['first-contentful-paint'].score * 100)} First Contentful Paint | ${totals.audits['first-contentful-paint'].value} s |`,
+                        `| ${score(totals.audits['largest-contentful-paint'].score * 100)} Largest Contentful Paint | ${totals.audits['largest-contentful-paint'].value} s |`,
+                        `| ${score(totals.audits['cumulative-layout-shift'].score * 100)} Cumulative Layout Shift | ${totals.audits['cumulative-layout-shift'].value} |`
+                      ].join('\n');
+
+                      core.setOutput('comments', comment);
+
+            - name: Comment PR
+              if: github.event_name == 'pull_request'
+              uses: thollander/actions-comment-pull-request@v2
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  message: ${{ steps.format_lighthouse_score.outputs.comments }}
+                  comment_tag: lighthouse
+                  mode: upsert

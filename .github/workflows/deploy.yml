@@ -1,4 +1,4 @@
-name: postamn
+name: deploy aws
 
 on:
     push:

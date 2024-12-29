@@ -105,7 +105,7 @@ export const router = createBrowserRouter([
                 element: <MyPage />
             },
             {
-                path: 'storage',
+                path: 'storage/:letterType',
                 element: <StoragePage />
             },
             {

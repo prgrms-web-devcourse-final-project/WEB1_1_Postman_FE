@@ -11,22 +11,30 @@ interface Letter {
     createdAt: string;
 }
 
-export const useInfiniteStorageFetch = (apiEndpoint: string, size: number) => {
+type useInfiniteStorageFetchParams = {
+    apiEndpoint: string;
+    size: number;
+};
+
+export const useInfiniteStorageFetch = ({
+    apiEndpoint,
+    size
+}: useInfiniteStorageFetchParams) => {
     const getLetterList = async ({ pageParam }: { pageParam: number }) => {
         console.log(`API 호출: page ${pageParam}, size ${size}`);
         const page = pageParam;
         const response = await getLetter({ apiEndpoint, page, size });
-
+        console.log('데이터:', response.result);
         return response.result;
     };
 
     const {
         data,
-        isLoading,
         isError,
+        status,
         fetchNextPage,
-        isFetching,
-        isFetchingNextPage
+        isFetchingNextPage,
+        hasNextPage
     } = useInfiniteQuery({
         queryKey: ['storageLetters', apiEndpoint],
         queryFn: getLetterList,
@@ -55,13 +63,7 @@ export const useInfiniteStorageFetch = (apiEndpoint: string, size: number) => {
             console.log('데이터없음');
             return [];
         }
-        console.log('isLoading:', isLoading);
-        console.log('isFetching:', isFetching);
-        console.log('error:', isError);
-
         const allLetters = data.pages.flatMap((page) => page.content);
-        console.log(allLetters);
-
         const grouped = allLetters.reduce(
             (acc: { [key: string]: Letter[] }, letter) => {
                 const date = new Date(letter.createdAt)
@@ -94,10 +96,10 @@ export const useInfiniteStorageFetch = (apiEndpoint: string, size: number) => {
 
     return {
         groupedLetters,
-        isLoading,
+        status,
         isError,
         fetchNextPage,
-        isFetching,
-        isFetchingNextPage
+        isFetchingNextPage,
+        hasNextPage
     };
 };

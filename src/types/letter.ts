@@ -7,6 +7,42 @@ export type LetterType = {
     label: string;
 };
 
+export type storageLetterType = 'keyword' | 'map' | 'bookmark';
+
+export type DeleteLetterType = {
+    letterId: number;
+    letterType: string;
+    boxType: string;
+};
+
+export type StorageKeywordLetterType = {
+    letterId: number;
+    title: string;
+    description: string;
+    latitude: number;
+    longitude: number;
+    label: string;
+    createdAt: string;
+    type: string;
+    sourceLetterId: number;
+    senderNickname: string;
+    senderProfileImg: string;
+};
+
+export type StorageMapLetterType = {
+    letterId: number;
+    title: string;
+    description: string;
+    latitude: number;
+    longitude: number;
+    label: string;
+    createdAt: string;
+    type: string;
+    sourceLetterId: number;
+    senderNickname: string;
+    senderProfileImg: string;
+};
+
 export type MapReplyType = {
     sourceLetter: number;
     content: string;
