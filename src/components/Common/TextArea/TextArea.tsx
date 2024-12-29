@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Margin } from '../Margin/Margin';
 import { useToastStore } from '@/hooks/useToastStore';
 import { clsx } from 'clsx';
+import { LetterLine } from '@/components/CreatLetterPage/LetterLine/LetterLine';
 
 type TextAreaProps = {
     value: string;
@@ -69,10 +70,7 @@ export const TextArea = ({
     const renderLineImages = () => {
         const lineImages = Array.from({ length: lineCount }).map((_, index) => (
             <React.Fragment key={index}>
-                <img
-                    src={'/to_line.f4c129e6.svg'}
-                    className="z-30 object-contain w-full"
-                />
+                <LetterLine />
                 <Margin top={28} />
             </React.Fragment>
         ));

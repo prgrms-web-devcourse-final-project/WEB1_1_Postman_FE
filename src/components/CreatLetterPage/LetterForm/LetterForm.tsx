@@ -1,6 +1,7 @@
-import { TextArea } from '@/components/Common/TextArea/TextArea';
 import React from 'react';
+import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { LetterInput } from '../LetterInput/LetterInput';
+import { LetterLine } from '../LetterLine/LetterLine';
 
 type LetterProps = {
     title: string;
@@ -33,7 +34,7 @@ export const LetterForm = ({
                 maxLength={20}
                 font={font}
             />
-            <img src={'/to_line.f4c129e6.svg'} />
+            <LetterLine />
 
             <TextArea
                 value={letterContent}
