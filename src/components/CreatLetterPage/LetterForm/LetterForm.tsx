@@ -26,7 +26,7 @@ export const LetterForm = ({
     setDescription
 }: LetterProps) => {
     return (
-        <div className="relative flex flex-col justify-center w-9/12 m-auto py-9">
+        <div className="relative z-30 flex flex-col justify-center w-9/12 m-auto py-9">
             <LetterInput
                 value={title}
                 setValue={setTitle}

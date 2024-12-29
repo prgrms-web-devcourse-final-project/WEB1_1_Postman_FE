@@ -1,6 +1,6 @@
 import React from 'react';
-import lineImg from '@/asset/line.svg';
+import LineImg from '@/asset/line.svg?react'; // 컴포넌트 이름은 대문자로 시작
 
 export const LetterLine = () => {
-    return <img src={lineImg} alt="편지 줄" className="w-full" />;
+    return <LineImg className="w-full h-full" />;
 };
