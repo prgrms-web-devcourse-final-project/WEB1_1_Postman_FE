@@ -1,5 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -71,6 +69,13 @@
     font-display: swap;
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 400;
+    font-display: swap;
+    src: url('Pretendard-Regular.woff2') format('woff2');
 }
 
 @font-face {
