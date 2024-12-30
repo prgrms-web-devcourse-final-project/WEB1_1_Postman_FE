@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { TopBar } from './TopBar';
+import { MemoryRouter } from 'react-router-dom';
 
 const meta: Meta<typeof TopBar> = {
     component: TopBar,
@@ -10,7 +10,9 @@ const meta: Meta<typeof TopBar> = {
     decorators: [
         (Story) => (
             <div style={{ width: '351px', border: '1px solid #ccc' }}>
-                <Story />
+                <MemoryRouter>
+                    <Story />
+                </MemoryRouter>
             </div>
         )
     ]
