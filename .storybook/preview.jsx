@@ -24,7 +24,9 @@ const preview = {
         (Story) => (
             // @ts-ignore - 스토리북 타입 무시
             <QueryClientProvider client={queryClient}>
-                <Story />
+                <MemoryRouter>
+                    <Story />
+                </MemoryRouter>
             </QueryClientProvider>
         )
     ]
