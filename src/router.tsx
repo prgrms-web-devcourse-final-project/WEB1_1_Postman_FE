@@ -27,7 +27,6 @@ const MapExplorerPage = lazy(() => import('@/pages/Map/MapExplorerPage'));
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
-import { Margin } from './components/Common/Margin/Margin';
 import { CreateMapLetterPage } from './pages/Map/Create/CreateMapLetterPage';
 import { MapSelectItemPage } from './pages/Map/Select/MapSelectItemPage';
 import { ErrorBoundary } from './ErrorBoundary';
