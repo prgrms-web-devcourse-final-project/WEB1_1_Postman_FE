@@ -36,7 +36,7 @@ export const MaplibreWithSearch = ({
     const { nearbyLetters } = useNearbyLetters(currentLocation);
 
     return (
-        <div className="relative h-screen">
+        <div className="relative h-full">
             <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-[1rem] left-1/2">
                 <input
                     type="text"

@@ -36,8 +36,8 @@ export const StoragePage = () => {
 
     return (
         <div className="flex flex-col h-full">
-            <div className="sticky top-0 bg-white z-10">
-                <div className="relative flex w-full overflow-hidden text-md align-middle h-[50px] text-sample-black ">
+            <div className="max-w-[473px] fixed min-w-[375px] w-full top-0 z-[9999] bg-white -ml-5">
+                <div className="relative flex w-full overflow-hidden text-md align-middle h-[50px] text-sample-black">
                     <div
                         className="absolute bottom-0 w-1/3 h-[2px] transition-transform duration-500 ease-in-out bg-sample-blue"
                         style={{
@@ -60,12 +60,12 @@ export const StoragePage = () => {
                         className="flex items-center justify-center flex-1 h-full cursor-pointer"
                         onClick={() => handleNavigate('bookmark')}
                     >
-                        <span>보관한 지도 편지</span>
+                        <span>보관함</span>
                     </div>
                 </div>
             </div>
 
-            <div className="flex flex-col gap-2 mt-[15px]">
+            <div className="flex flex-col gap-2 mt-[60px]">
                 <StorageList />
             </div>
         </div>
