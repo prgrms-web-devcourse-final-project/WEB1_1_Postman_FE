@@ -5,7 +5,7 @@ import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/Sli
 import { CreateButton } from '../CreateButton/CreateButton';
 import { LabelProps } from '@/types/label';
 import { ItemGroup } from '../ItemGroup/ItemGroup';
-import { useLocalStorage, useToastStore } from '@/hooks';
+import { useDraftLetter, useLocalStorage, useToastStore } from '@/hooks';
 import { useGetAllKeywords } from '@/hooks/useGetAllKeywords';
 import { useParams, useLocation } from 'react-router-dom';
 import { useCreateLetter } from '@/hooks/useCreateLetter';
@@ -30,6 +30,12 @@ const testLable: LabelProps[] = [
 export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
     const [isLabel, setIsLabel] = useState(true);
     const [selectedLabel, setSelectedLabel] = useState<number | null>(null);
+
+    const [title, setTitle] = useState<string>('');
+    const [letter, setLetter] = useState<string>('1');
+    const [letterContent, setLetterContent] = useState<string>('');
+    const [font, setFont] = useState<string>('initial');
+
     const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
     const { letterId } = useParams<{
         letterId: string;
@@ -43,15 +49,22 @@ export const SelectItem = ({ isActive, setIsActive }: SelectItemProps) => {
 
     const { data: keyweordData } = useGetAllKeywords();
 
-    const { storedValue: title } = useLocalStorage<string>('title', '');
-    const { storedValue: letter } = useLocalStorage<string>('letter', '');
-    const { storedValue: letterContent } = useLocalStorage<string>(
-        'letterContent',
-        ''
-    );
-    const { storedValue: font } = useLocalStorage<string>('font', '');
-
     const { addToast } = useToastStore();
+
+    const { loadDraft } = useDraftLetter(
+        title,
+        letter,
+        letterContent,
+        font,
+        setTitle,
+        setLetter,
+        setLetterContent,
+        setFont
+    );
+
+    useEffect(() => {
+        loadDraft();
+    }, []);
 
     useEffect(() => {
         if (selectedLabel !== null) {

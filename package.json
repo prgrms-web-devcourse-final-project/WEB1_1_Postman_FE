@@ -43,6 +43,7 @@
         "swiper": "^11.1.15",
         "tailwindcss-animated": "^1.1.2",
         "ts-pattern": "^5.5.0",
+        "vite-plugin-compression": "^0.5.1",
         "zustand": "^5.0.1"
     },
     "devDependencies": {

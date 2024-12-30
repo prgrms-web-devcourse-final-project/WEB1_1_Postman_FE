@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import { lazy, ReactNode } from 'react';
 import { createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
 import { NavigationBar } from '@/components/Common/NavigationBar/NavigationBar';
 import {
     ErrorPage,
     HomePage,
     CreateLetterPage,
-    MapExplorerPage,
     MyPage,
     LoginPage,
     RegisterPage,
@@ -23,12 +22,14 @@ import {
     MapLetterArchieveDetailContainerPage,
     KakaoRedirectPage
 } from './pages';
+const MapExplorerPage = lazy(() => import('@/pages/Map/MapExplorerPage'));
+
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
-import { Margin } from './components/Common/Margin/Margin';
 import { CreateMapLetterPage } from './pages/Map/Create/CreateMapLetterPage';
 import { MapSelectItemPage } from './pages/Map/Select/MapSelectItemPage';
+import { ErrorBoundary } from './ErrorBoundary';
 
 type RouteProps = {
     children: ReactNode;
@@ -40,12 +41,16 @@ export const ProtectedRoute = ({ children }: RouteProps) => {
     if (Token === null) {
         return <Navigate to="/login" replace />;
     }
-    return <AuthProvider>{children}</AuthProvider>;
+    return (
+        <ErrorBoundary>
+            <AuthProvider>{children}</AuthProvider>
+        </ErrorBoundary>
+    );
 };
 
 // 비보호 라우트 (비로그인 접근 가능)
 export const PublicRoute = ({ children }: RouteProps) => {
-    return children;
+    return <ErrorBoundary>{children}</ErrorBoundary>;
 };
 
 const CommonLayout = () => (
@@ -60,9 +65,9 @@ const CommonLayout = () => (
 );
 
 const SimpleLayout = () => (
-    <div>
+    <>
         <Outlet />
-    </div>
+    </>
 );
 
 const AuthLayout = () => (
@@ -139,7 +144,10 @@ export const router = createBrowserRouter([
             </ProtectedRoute>
         ),
         children: [
-            { path: 'map/:lat/:lot/create', element: <CreateMapLetterPage /> },
+            {
+                path: 'map/:lat/:lot/create',
+                element: <CreateMapLetterPage />
+            },
             {
                 path: 'keyword/reply/create/:letterId',
                 element: <CreateLetterPage />
@@ -148,7 +156,10 @@ export const router = createBrowserRouter([
                 path: 'map/reply/create/:letterId',
                 element: <CreateLetterPage />
             }, // 지도 답장 편지
-            { path: 'create', element: <CreateLetterPage /> },
+            {
+                path: 'create',
+                element: <CreateLetterPage />
+            },
             { path: 'select', element: <SelectItemPage /> },
             { path: 'success', element: <SuccessLetterPage /> },
             {
