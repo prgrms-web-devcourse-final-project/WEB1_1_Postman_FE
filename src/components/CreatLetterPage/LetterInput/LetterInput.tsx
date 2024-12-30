@@ -14,7 +14,7 @@ export const LetterInput = ({
     setValue,
     font,
     placeholder,
-    maxLength
+    maxLength = undefined
 }: LetterInputProps) => {
     return (
         <>
@@ -26,7 +26,7 @@ export const LetterInput = ({
                     `z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap`,
                     font ? font : 'font-sans'
                 )}
-                maxLength={maxLength || undefined}
+                maxLength={maxLength}
             />
         </>
     );
