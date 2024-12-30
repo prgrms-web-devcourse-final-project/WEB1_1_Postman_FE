@@ -85,7 +85,7 @@ const MapLayout = () => (
             <Outlet />
         </Container>
         <NavigationBar />
-    </>
+    </div>
 );
 
 export const router = createBrowserRouter([
