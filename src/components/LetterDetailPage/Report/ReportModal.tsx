@@ -1,8 +1,6 @@
 import { Margin } from '@/components/Common/Margin/Margin';
 import { useMutation } from '@tanstack/react-query';
-import { ApiResponseType } from '@/types/apiResponse';
-import { PostReportKeywordLetterResponseType } from '@/types/report';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useToastStore } from '@/hooks';
 import { postReportKeywordLetter } from '@/service/Report/postReportKeywordLetter';
@@ -17,9 +15,8 @@ type ReportModalProps = {
 export const ReportModal = ({ closeModal }: ReportModalProps) => {
     const [selectedReason, setSelectedReason] = useState<string>('');
     const [customReason, setCustomReason] = useState<string>('');
+
     const { pathname } = useLocation();
-    const mapType = pathname.split('/')[2];
-    const letterType = pathname.split('/')[3];
     const { letterId, lat, replyLetterId } = useParams<{
         letterId: string;
         lat: string;
@@ -28,112 +25,98 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
     const navigate = useNavigate();
     const { addToast } = useToastStore();
 
-    const reportKeywordLetterMutation = useMutation<
-        ApiResponseType<PostReportKeywordLetterResponseType>,
-        Error,
-        void
-    >({
-        mutationFn: async () => {
-            const description =
-                selectedReason === '기타' ? customReason : selectedReason;
-            return await postReportKeywordLetter({
-                letterId: Number(letterId || replyLetterId),
-                description
-            });
+    const mapType = pathname.split('/')[2];
+    const letterType = pathname.split('/')[3];
+
+    const description =
+        selectedReason === '기타' ? customReason.trim() : selectedReason;
+
+    const onReasonChange = (reason: string) => {
+        setSelectedReason(reason);
+        if (reason !== '기타') {
+            setCustomReason('');
         }
-    });
+    };
 
-    const reportKeywordReplyLetterMutation = useMutation<
-        ApiResponseType<PostReportKeywordLetterResponseType>,
-        Error,
-        void
-    >({
-        mutationFn: async () => {
-            const description =
-                selectedReason === '기타' ? customReason : selectedReason;
-            return await postReportKeywordReplyLetter({
-                replyLetterId: Number(letterId || replyLetterId),
-                description
-            });
+    const onMutationResult = (
+        isSuccess: boolean,
+        message: string,
+        path: string
+    ) => {
+        if (isSuccess) {
+            closeModal();
+            addToast(message, 'success');
+            navigate(path);
+        } else {
+            addToast('이미 신고가 접수되었습니다.', 'error');
         }
-    });
+    };
 
-    const reportMapLetterMutation = useMutation<
-        ApiResponseType<PostReportKeywordLetterResponseType>,
-        Error,
-        void
-    >({
-        mutationFn: async () => {
-            const description =
-                selectedReason === '기타' ? customReason : selectedReason;
-            return await postReportMapLetter({
-                letterId: Number(letterId || replyLetterId),
-                description
-            });
-        }
-    });
+    const reportMutations = {
+        mapReply: usePostReportMapReplyLetter(
+            Number(letterId || replyLetterId),
+            description
+        ),
+        mapLetter: useMutation({
+            mutationFn: () =>
+                postReportMapLetter({ letterId: Number(letterId), description })
+        }),
+        keywordLetter: useMutation({
+            mutationFn: () =>
+                postReportKeywordLetter({
+                    letterId: Number(letterId),
+                    description
+                })
+        }),
+        keywordReply: useMutation({
+            mutationFn: () =>
+                postReportKeywordReplyLetter({
+                    replyLetterId: Number(replyLetterId),
+                    description
+                })
+        })
+    };
 
-    const reportMapReplyLetterMutation = usePostReportMapReplyLetter(
-        Number(letterId || replyLetterId),
-        selectedReason === '기타' ? customReason : selectedReason
-    );
-
-    const onReport = () => {
+    const submitReport = () => {
         if (mapType === 'map' && letterType === 'received') {
-            reportMapReplyLetterMutation.mutate(undefined, {
-                onSuccess: () => {
-                    closeModal();
-                    addToast(
-                        '지도 답장이 성공적으로 신고되었습니다.',
-                        'success'
-                    );
-                    navigate('/storage?type=map');
-                },
-                onError: () => {
-                    addToast('이미 신고가 접수되었습니다.', 'error');
-                }
+            reportMutations.mapReply.mutate(undefined, {
+                onSuccess: () =>
+                    onMutationResult(
+                        true,
+                        '성공적으로 신고되었습니다.',
+                        '/storage/map?filtertype=received'
+                    ),
+                onError: () => onMutationResult(false, '', '')
             });
         } else if (lat) {
-            reportMapLetterMutation.mutate(undefined, {
-                onSuccess: () => {
-                    closeModal();
-                    addToast(
-                        '지도 편지가 성공적으로 신고되었습니다.',
-                        'success'
-                    );
-                    navigate('/mapexplorer');
-                },
-                onError: () => {
-                    addToast('이미 신고가 접수되었습니다.', 'error');
-                }
+            reportMutations.mapLetter.mutate(undefined, {
+                onSuccess: () =>
+                    onMutationResult(
+                        true,
+                        '성공적으로 신고되었습니다.',
+                        '/mapexplorer'
+                    ),
+                onError: () => onMutationResult(false, '', '')
             });
         } else if (letterType === 'LETTER') {
-            reportKeywordLetterMutation.mutate(undefined, {
-                onSuccess: () => {
-                    closeModal();
-                    addToast(
-                        '키워드 편지가 성공적으로 신고되었습니다.',
-                        'success'
-                    );
-                    navigate('/storage?type=keyword');
-                },
-                onError: () => {
-                    addToast('이미 신고가 접수되었습니다.', 'error');
-                }
+            reportMutations.keywordLetter.mutate(undefined, {
+                onSuccess: () =>
+                    onMutationResult(
+                        true,
+                        '성공적으로 신고되었습니다.',
+                        '/storage/keyword?filtertype=received'
+                    ),
+                onError: () => onMutationResult(false, '', '')
             });
         } else if (letterType === 'REPLY_LETTER') {
-            reportKeywordReplyLetterMutation.mutate(undefined, {
-                onSuccess: () => {
-                    closeModal();
-                    addToast(
-                        '키워드 답장이 성공적으로 신고되었습니다.',
-                        'success'
-                    );
-                    navigate('storage?type=keyword');
-                },
-                onError: () => {
-                    addToast('이미 신고가 접수되었습니다.', 'error');
-                }
+            reportMutations.keywordReply.mutate(undefined, {
+                onSuccess: () =>
+                    onMutationResult(
+                        true,
+                        '성공적으로 신고되었습니다.',
+                        '/storage/keyword?filtertype=sent'
+                    ),
+                onError: () => onMutationResult(false, '', '')
             });
         }
     };
@@ -147,19 +130,6 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
         '의미없는 도배',
         '기타'
     ];
-
-    const onReasonChange = (reason: string) => {
-        setSelectedReason(reason);
-        if (reason !== '기타') {
-            setCustomReason('');
-        }
-    };
-
-    const onCustomReasonChange = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        setCustomReason(event.target.value);
-    };
 
     return (
         <div>
@@ -186,7 +156,7 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
                             type="text"
                             placeholder="신고 사유를 입력해주세요."
                             value={customReason}
-                            onChange={onCustomReasonChange}
+                            onChange={(e) => setCustomReason(e.target.value)}
                             className="border rounded-lg p-2 w-full mt-2"
                         />
                     )}
@@ -199,12 +169,11 @@ export const ReportModal = ({ closeModal }: ReportModalProps) => {
                         닫기
                     </button>
                     <button
-                        onClick={onReport}
+                        onClick={submitReport}
                         className="mt-6 bg-theme-skyblue w-24 text-white px-4 py-2 rounded-lg"
                         disabled={
                             !selectedReason ||
-                            (selectedReason === '기타' &&
-                                customReason.trim() === '')
+                            (selectedReason === '기타' && !description)
                         }
                     >
                         신고하기

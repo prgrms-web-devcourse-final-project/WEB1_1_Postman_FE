@@ -54,8 +54,8 @@ const MapExplorerPage = () => {
     const CreateBtnStyle = `text-sample-blue absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-[5rem] translate-y-7 left-[46%] bg-white  w-52 rounded-2xl`;
 
     return (
-        <div>
-            <div className="relative">
+        <div className="h-full">
+            <div className="relative h-full">
                 {!isSearchFocused && (
                     <MaplibreWithSearch
                         onFocus={onFocus}
