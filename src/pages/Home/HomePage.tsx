@@ -13,6 +13,7 @@ import { getToken, firebaseMessaging, onMessage } from '@/util/firebase';
 import { postToken } from '@/service/nofication/postToken';
 import { useToastStore } from '@/hooks';
 import { Loading } from '@/components/Common/Loading/Loading';
+import { ToggleVariant } from '@/components/Common/Toggle/constants';
 
 export type ReplyLetter = {
     type: 'MAP' | 'KEYWORD';
@@ -135,6 +136,7 @@ export const HomePage = () => {
                     }}
                     leftLabel="추천"
                     rightLabel="답장"
+                    variant={ToggleVariant.Main}
                 />
 
                 <div>
