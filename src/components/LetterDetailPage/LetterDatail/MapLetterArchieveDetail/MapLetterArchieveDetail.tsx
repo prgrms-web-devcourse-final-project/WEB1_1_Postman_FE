@@ -10,6 +10,7 @@ import { ReportButton } from '../../Report/ReportButton';
 import { useLocation } from 'react-router-dom';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
 import { Loading } from '@/components/Common/Loading/Loading';
+import { LetterLine } from '@/components/CreatLetterPage/LetterLine/LetterLine';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -62,7 +63,7 @@ export const MapLetterArchieveDetail = ({
                     className="w-[15%] h-[15%] absolute top-[-7%] "
                 />
                 <h1>{title}</h1>
-                <img src={'/to_line.f4c129e6.svg'} className="w-full" />
+                <LetterLine />
 
                 <div className="relative">
                     <TextArea value={content} font={font} isReadonly={true} />
