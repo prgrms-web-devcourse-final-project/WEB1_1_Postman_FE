@@ -26,7 +26,7 @@ export type RecommendLetter = {
     label: string;
 };
 
-export const HomePage = () => {
+const HomePage = () => {
     const { user } = useUserStore();
     const { addToast } = useToastStore();
 
@@ -175,3 +175,5 @@ export const HomePage = () => {
         </>
     );
 };
+
+export default HomePage;
