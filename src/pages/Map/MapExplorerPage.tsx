@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LetterInfoContainer } from '@/components/MapPage/LetterInfoContainer/LetterInfoContainer';
 import { NavigateContainer } from '@/components/MapPage/NavigateContainer/NavigateContainer';
 import { MaplibreWithSearch } from '@/components/MapPage/Maplibre/MaplibreWithSearch';
-import { HiOutlinePencilAlt } from 'react-icons/hi';
+import { PiPencilSimpleLine } from 'react-icons/pi';
 import { useSelectedLetterStore } from '@/stores/useSelectedLetterStore';
 import { NavLink } from 'react-router-dom';
 import { SearchFullScreen } from '@/components/MapPage/SearchFullScreen/SearchFullScreen';
@@ -51,7 +51,7 @@ const MapExplorerPage = () => {
         setQuery(event.target.value);
     };
 
-    const CreateBtnStyle = `text-sample-blue absolute gap-2 p-2 transform -translate-x-12 flex-center bottom-[5rem] translate-y-7 left-[46%] bg-white  w-52 rounded-2xl`;
+    const CreateBtnStyle = `text-sample-blue absolute p-2 transform translate-x-64 flex-center bottom-[5rem] translate-y-7 bg-white w-10 rounded-2xl`;
 
     return (
         <div className="h-full">
@@ -88,17 +88,15 @@ const MapExplorerPage = () => {
                                         to={`/letter/map/:${searchedLocation.lat}/:${searchedLocation.lon}/create`}
                                         className={CreateBtnStyle}
                                     >
-                                        <HiOutlinePencilAlt />
-                                        지도 편지 작성하기
+                                        <PiPencilSimpleLine />
                                     </NavLink>
                                 ) : (
                                     <NavLink
                                         to={'/letter/create'}
-                                        className={`cursor-not-allowed mb-36 ${CreateBtnStyle}`}
+                                        className={`cursor-not-allowed transform translate-x-72 mb-32 ${CreateBtnStyle}`}
                                         onClick={(e) => e.preventDefault()}
                                     >
-                                        <HiOutlinePencilAlt />
-                                        지도 편지 작성하기
+                                        <PiPencilSimpleLine />
                                     </NavLink>
                                 )}
                                 <LetterInfoContainer
@@ -119,8 +117,7 @@ const MapExplorerPage = () => {
                                         to={`/letter/map/:${searchedLocation.lat}/:${searchedLocation.lon}/create`}
                                         className={CreateBtnStyle}
                                     >
-                                        <HiOutlinePencilAlt />
-                                        지도 편지 작성하기
+                                        <PiPencilSimpleLine />
                                     </NavLink>
                                 ) : (
                                     <NavLink
@@ -128,8 +125,7 @@ const MapExplorerPage = () => {
                                         className={`cursor-not-allowed ${CreateBtnStyle}`}
                                         onClick={(e) => e.preventDefault()}
                                     >
-                                        <HiOutlinePencilAlt />
-                                        지도 편지 작성하기
+                                        <PiPencilSimpleLine />
                                     </NavLink>
                                 )}
                                 <NavigateContainer

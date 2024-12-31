@@ -28,7 +28,7 @@ export const LetterInfoContainer = ({
     return (
         <div className="flex flex-col w-[330px] bg-white border rounded-lg p-4 shadow-md">
             <div className="flex gap-4 mb-4">
-                <div className="p-2 bg-gray-100 rounded-md w-20 h-20">
+                <div className="p-2 bg-gray-100 rounded-full w-20 h-20">
                     <BottleLetter Letter={Letter} />
                 </div>
                 <div className="flex flex-col h-20">
