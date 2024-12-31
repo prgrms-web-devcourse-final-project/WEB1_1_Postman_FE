@@ -6,29 +6,16 @@ import { LetterContainer } from '@/components/HomePage/LetterContainer/LetterCon
 import { WelcomeMessageContainer } from '@/components/HomePage/WelcomeMessageContainer/WelcomeMessageContainer';
 import { useUserStore } from '@/stores/useUserStore';
 import { useEffect, useState } from 'react';
-import { useGetRecommendLetter } from '@/hooks/useGetRecommendLetter';
-import { useGetRecentRelyLetter } from '@/hooks/useGetRecentRelyLetter';
 import { TopButtonContainer } from '@/components/HomePage/TopButtonContainer/TopButtonContainer';
 import { getToken, firebaseMessaging, onMessage } from '@/util/firebase';
 import { postToken } from '@/service/nofication/postToken';
 import { useToastStore } from '@/hooks';
 import { Loading } from '@/components/Common/Loading/Loading';
 import { ToggleVariant } from '@/constants/toggleVariant';
-
-export type ReplyLetter = {
-    type: 'MAP' | 'KEYWORD';
-    labelUrl: string;
-    letterId: number;
-};
-
-export type RecommendLetter = {
-    letterId: number;
-    title: string;
-    label: string;
-};
+import { useGetThreeLetterData } from '@/hooks/useGetThreeLetterData';
+import { ErrorPage } from '../ErrorPage';
 
 export const HomePage = () => {
-    const { user } = useUserStore();
     const { addToast } = useToastStore();
 
     const isToken = localStorage.getItem('isToken');
@@ -77,52 +64,22 @@ export const HomePage = () => {
         };
     }, []); // 빈 배열을 의존성으로 사용해 처음 마운트될 때만 실행되게 함
 
+    const { user } = useUserStore();
     const [open, setOpen] = useState(false);
     const [toggle, setToggle] = useState(true);
-    const [letters, setLetters] = useState<ReplyLetter[] | RecommendLetter[]>(
-        []
-    );
+
+    const { letters, isLoading, isError } = useGetThreeLetterData(toggle);
 
     function onDismiss() {
         setOpen(false);
     }
 
-    const {
-        // data: recommendedLetterData,
-        refetch: refetchRecommendedLetters,
-        isLoading: isRecommendedLetterLoading,
-        isError: isRecommendedLetterError
-    } = useGetRecommendLetter();
-
-    const {
-        // data: recentRelyLetterData,
-        refetch: refetchRecentRelyLetters,
-        isLoading: isRecentRelyLetterLoading,
-        isError: isRecentRelyLetterError
-    } = useGetRecentRelyLetter();
-
-    useEffect(() => {
-        if (toggle) {
-            refetchRecommendedLetters().then((response) => {
-                setLetters(response?.data?.result || []);
-            });
-        } else {
-            refetchRecentRelyLetters().then((response) => {
-                setLetters(response?.data?.result || []);
-            });
-        }
-    }, [toggle, refetchRecommendedLetters, refetchRecentRelyLetters]);
-
-    if (isRecommendedLetterLoading || isRecentRelyLetterLoading) {
-        return (
-            <div className="flex flex-1 w-full h-full">
-                <Loading />
-            </div>
-        );
+    if (isLoading) {
+        return <Loading />;
     }
 
-    if (isRecommendedLetterError || isRecentRelyLetterError) {
-        return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
+    if (isError) {
+        return <ErrorPage />;
     }
 
     return (
