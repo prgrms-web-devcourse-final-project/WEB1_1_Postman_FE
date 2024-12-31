@@ -13,7 +13,7 @@ import { getToken, firebaseMessaging, onMessage } from '@/util/firebase';
 import { postToken } from '@/service/nofication/postToken';
 import { useToastStore } from '@/hooks';
 import { Loading } from '@/components/Common/Loading/Loading';
-import { ToggleVariant } from '@/components/Common/Toggle/constants';
+import { ToggleVariant } from '@/constants/toggleVariant';
 
 export type ReplyLetter = {
     type: 'MAP' | 'KEYWORD';

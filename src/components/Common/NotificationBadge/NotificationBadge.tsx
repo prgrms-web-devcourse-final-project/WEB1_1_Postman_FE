@@ -1,61 +1,19 @@
+import { MAX_NOTIFICATION_COUNT } from '@/constants/maxNotificationCount';
 import React from 'react';
 
-interface NotificationBadgeProps {
-    badgeType: 'basic' | 'dday';
+type NotificationBadgeProps = {
     count: number;
-}
+};
 
-export const NotificationBadge = ({
-    badgeType,
-    count
-}: NotificationBadgeProps) => {
-    const MAX_COUNT = 99;
-    const BaseStyle =
-        'inline-flex items-center justify-center text-center align-text-middle';
-    const styleMap = {
-        basic: 'bg-red-600 px-2 py-1 rounded-full text-white font-semibold',
-        dday: 'bg-yellow-400 px-2 py-1 rounded-sm text-white font-semibold'
-    };
+export const NotificationBadge = ({ count }: NotificationBadgeProps) => {
+    if (count <= 0) return null; // count가 0개 이하일 경우 렌더링하지 않습니다.
 
-    const renderContent = (badgeType: 'basic' | 'dday', count: number) => {
-        switch (badgeType) {
-            case 'basic':
-                if (count > MAX_COUNT) {
-                    return (
-                        <>
-                            <span style={{ position: 'relative', top: '-1px' }}>
-                                +
-                            </span>
-                            99
-                        </>
-                    );
-                }
-                return (
-                    <>
-                        {count}
-                        <span style={{ position: 'relative', top: '-1px' }}>
-                            +
-                        </span>
-                    </>
-                );
-            case 'dday':
-                return (
-                    <>
-                        D
-                        <span style={{ position: 'relative', top: '-1px' }}>
-                            -
-                        </span>
-                        {count}
-                    </>
-                );
-            default:
-                return null;
-        }
-    };
+    const renderCount =
+        count > MAX_NOTIFICATION_COUNT ? `${MAX_NOTIFICATION_COUNT}+` : count;
 
     return (
-        <div className={`${BaseStyle} ${styleMap[badgeType]}`}>
-            {renderContent(badgeType, count)}
+        <div className="absolute bg-[#FF6868] rounded-full text-white text-body1 flex-center h-6 px-3 leading-none">
+            {renderCount}
         </div>
     );
 };

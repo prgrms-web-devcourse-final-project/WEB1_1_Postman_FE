@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react';
 import SkyTheme from '@/asset/letter1/letter1.svg?react';
 import HaertTheme from '@/asset/letter2/letter2.svg?react';
 import FlowerTheme from '@/asset/letter3/letter3.svg?react';
-import { ToggleVariant } from '@/components/Common/Toggle/constants';
+import { ToggleVariant } from '@/constants/toggleVariant';
 
 type SelectSliderProps = {
     font: string;

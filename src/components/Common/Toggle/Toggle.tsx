@@ -1,5 +1,5 @@
 import { match } from 'ts-pattern';
-import { ToggleVariant } from './constants';
+import { ToggleVariant } from '../../../constants/toggleVariant';
 
 export type ToggleProps = {
     /** 현재 토글의 상태 */
