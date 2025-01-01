@@ -70,7 +70,7 @@ const HomePageLayout = () => {
     };
 
     return (
-        <div className="flex flex-col" style={gradientStyle}>
+        <div className="flex flex-col h-full" style={gradientStyle}>
             <Outlet />
             <NavigationBar />
         </div>

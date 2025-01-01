@@ -31,7 +31,7 @@ export const HomePage = () => {
     }
 
     return (
-        <div className="relative min-h-full h-screen overflow-auto px-6 py-6 flex flex-col justify-between gap-5 pb-[100px] scrollbar-hide">
+        <div className="relative h-full overflow-auto px-6 py-6 flex flex-col justify-between gap-5 scrollbar-hide">
             <div>
                 <TopButtonContainer />
 
