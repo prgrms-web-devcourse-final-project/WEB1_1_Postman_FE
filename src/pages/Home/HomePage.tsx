@@ -12,6 +12,7 @@ import { ToggleVariant } from '@/constants/toggleVariant';
 import { useGetThreeLetterData } from '@/hooks/useGetThreeLetterData';
 import { ErrorPage } from '../ErrorPage';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
+import { Margin } from '@/components/Common/Margin/Margin';
 
 export const HomePage = () => {
     usePushNotifications(); // 푸시 알림 훅
@@ -31,8 +32,8 @@ export const HomePage = () => {
     }
 
     return (
-        <div className="relative h-full overflow-auto px-6 py-6 flex flex-col justify-between gap-5 scrollbar-hide">
-            <div>
+        <div className="relative h-full w-full flex flex-col justify-between gap-5 ">
+            <div className="z-0">
                 <TopButtonContainer />
 
                 <Toggle
@@ -64,8 +65,9 @@ export const HomePage = () => {
                 </div>
             </div>
 
-            <div className="relative -mx-6">
+            <div className="relative -mx-5">
                 <BannerContainer />
+                <Margin bottom={20} />
             </div>
 
             <SliderMenuContainer

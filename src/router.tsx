@@ -30,6 +30,7 @@ import { Container } from '@/components/Common/Container/Container';
 import { CreateMapLetterPage } from './pages/Map/Create/CreateMapLetterPage';
 import { MapSelectItemPage } from './pages/Map/Select/MapSelectItemPage';
 import { ErrorBoundary } from './ErrorBoundary';
+import { GradientContainer } from './components/Common/GradientContainer/GradientContainer';
 
 type RouteProps = {
     children: ReactNode;
@@ -64,18 +65,15 @@ const CommonLayout = () => (
     </div>
 );
 
-const HomePageLayout = () => {
-    const gradientStyle = {
-        background: 'linear-gradient(to top, #58A1EB, #C2E8FF)'
-    };
-
-    return (
-        <div className="flex flex-col h-full" style={gradientStyle}>
+const HomePageLayout = () => (
+    <div className="flex flex-col h-full">
+        <GradientContainer />
+        <Container pt={5} px={5}>
             <Outlet />
-            <NavigationBar />
-        </div>
-    );
-};
+        </Container>
+        <NavigationBar />
+    </div>
+);
 
 const SimpleLayout = () => (
     <>
