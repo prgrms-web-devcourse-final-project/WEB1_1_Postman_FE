@@ -31,9 +31,10 @@ export const HomePage = () => {
     }
 
     return (
-        <>
-            <TopButtonContainer />
-            <div className="flex flex-col gap-5">
+        <div className="relative min-h-full h-screen overflow-auto px-6 py-6 flex flex-col justify-between gap-5 pb-[100px] scrollbar-hide">
+            <div>
+                <TopButtonContainer />
+
                 <Toggle
                     isChecked={!toggle}
                     onToggle={() => {
@@ -44,13 +45,13 @@ export const HomePage = () => {
                     variant={ToggleVariant.Main}
                 />
 
-                <div>
-                    <WelcomeMessageContainer
-                        nickname={user?.nickname}
-                        newLetter={letters.length > 0}
-                    />
-                    <LetterContainer letters={letters} />
-                </div>
+                <WelcomeMessageContainer
+                    nickname={user?.nickname}
+                    newLetter={letters.length > 0}
+                />
+
+                <LetterContainer letters={letters} />
+
                 <div className="flex justify-center px-20">
                     <button
                         onClick={() => {
@@ -61,24 +62,24 @@ export const HomePage = () => {
                         키워드 설정
                     </button>
                 </div>
-
-                <div className="mx-[-20px]">
-                    <BannerContainer />
-                </div>
-
-                <SliderMenuContainer
-                    open={open}
-                    onDismiss={() => setOpen(false)}
-                    snapPoints={() => [window.innerHeight * 0.95]}
-                >
-                    <BottomSheetContent
-                        onClick={() => {
-                            setOpen(false);
-                        }}
-                        nickname={user?.nickname}
-                    />
-                </SliderMenuContainer>
             </div>
-        </>
+
+            <div className="relative -mx-6">
+                <BannerContainer />
+            </div>
+
+            <SliderMenuContainer
+                open={open}
+                onDismiss={() => setOpen(false)}
+                snapPoints={() => [window.innerHeight * 0.95]}
+            >
+                <BottomSheetContent
+                    onClick={() => {
+                        setOpen(false);
+                    }}
+                    nickname={user?.nickname}
+                />
+            </SliderMenuContainer>
+        </div>
     );
 };

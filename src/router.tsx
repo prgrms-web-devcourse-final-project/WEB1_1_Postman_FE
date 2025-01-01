@@ -64,6 +64,19 @@ const CommonLayout = () => (
     </div>
 );
 
+const HomePageLayout = () => {
+    const gradientStyle = {
+        background: 'linear-gradient(to top, #58A1EB, #C2E8FF)'
+    };
+
+    return (
+        <div className="flex flex-col" style={gradientStyle}>
+            <Outlet />
+            <NavigationBar />
+        </div>
+    );
+};
+
 const SimpleLayout = () => (
     <>
         <Outlet />
@@ -92,7 +105,7 @@ export const router = createBrowserRouter([
         path: '/',
         element: (
             <ProtectedRoute>
-                <CommonLayout />
+                <HomePageLayout />
             </ProtectedRoute>
         ),
         errorElement: <ErrorPage />,
@@ -100,8 +113,18 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomePage />
-            },
-
+            }
+        ]
+    },
+    {
+        path: '/',
+        element: (
+            <ProtectedRoute>
+                <CommonLayout />
+            </ProtectedRoute>
+        ),
+        errorElement: <ErrorPage />,
+        children: [
             {
                 path: '/mypage',
                 element: <MyPage />
