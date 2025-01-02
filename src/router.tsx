@@ -10,7 +10,6 @@ import {
     LabelCollectionsPage,
     NotificationPage,
     SentPage,
-    ProfileSharePage,
     LabelLotteryPage,
     SuccessLetterPage,
     ProfilePage,
@@ -25,6 +24,9 @@ const MapExplorerPage = lazy(() => import('@/pages/Map/MapExplorerPage'));
 const HomePage = lazy(() => import('@/pages/Home/HomePage'));
 const SelectItemPage = lazy(
     () => import('@/pages/Letter/SelectItem/SelectItemPage')
+);
+const ProfileSharePage = lazy(
+    () => import('@/pages/User/Profile/ProfileSharePage')
 );
 
 import { tokenStorage } from './service/auth/tokenStorage';

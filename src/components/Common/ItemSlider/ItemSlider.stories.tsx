@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ItemSlider } from './ItemSlider';
+import ItemSlider from './ItemSlider';
 import SkyTheme from '@/asset/letter1/letter1.svg?react';
 import HaertTheme from '@/asset/letter2/letter2.svg?react';
 import FlowerTheme from '@/asset/letter3/letter3.svg?react';

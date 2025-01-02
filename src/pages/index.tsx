@@ -8,7 +8,7 @@ import { LabelCollectionsPage } from '@/pages/Storage/LabelCollectionsPage';
 import { KeywordLetterDetailPage } from '@/pages/Letter/Detail/KeywordLetterDetailPage/KeywordLetterDetailPage';
 import { NotificationPage } from '@/pages/Notification/NotificationPage';
 import { SentPage } from '@/pages/SentPage';
-import { ProfileSharePage } from '@/pages/User/Profile/ProfileSharePage';
+import ProfileSharePage from '@/pages/User/Profile/ProfileSharePage';
 import { LabelLotteryPage } from './Label/Lottery/LabelLotteryPage';
 import SelectItemPage from './Letter/SelectItem/SelectItemPage';
 import { MyPage } from '@/pages/User/MyPage/MyPage';
