@@ -1,18 +1,9 @@
 import { LetterListItem } from './LetterListItem';
-import { DeleteLetterType } from '@/types/letter';
-
-interface Letter {
-    letterId: number;
-    title: string;
-    label: string;
-    letterType: string;
-    boxType: string;
-    createdAt: string;
-}
+import { DeleteLetterType, StorageLetterDataType } from '@/types/letter';
 
 type LetterDateGroupProps = {
     date: string;
-    letters: Letter[];
+    letters: StorageLetterDataType[];
     checkedItems: DeleteLetterType[];
     handleSingleCheck: (
         checked: boolean,
