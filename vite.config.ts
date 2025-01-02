@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import svgr from 'vite-plugin-svgr';
 import viteCompression from 'vite-plugin-compression';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
     build: {
@@ -22,6 +23,11 @@ export default defineConfig({
         viteCompression({
             algorithm: 'gzip',
             ext: '.gz'
+        }),
+        visualizer({
+            filename: 'stats.html',
+            open: true,
+            gzipSize: true
         })
     ]
 });
