@@ -3,7 +3,7 @@ name: PR Build Check
 on:
     pull_request:
         branches:
-            - develope
+            - main
 
 jobs:
     build:
