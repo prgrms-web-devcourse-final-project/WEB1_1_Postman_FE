@@ -30,8 +30,7 @@ type ItemSliderProps = {
     value: string;
     setValue: (value: string) => void;
 };
-
-export const ItemSlider = ({
+const ItemSlider = ({
     itemIDList,
 
     spaceBetween = 10,
@@ -95,3 +94,5 @@ export const ItemSlider = ({
         </Swiper>
     );
 };
+
+export default ItemSlider;

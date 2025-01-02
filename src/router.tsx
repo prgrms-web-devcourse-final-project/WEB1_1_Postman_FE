@@ -3,7 +3,6 @@ import { createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
 import { NavigationBar } from '@/components/Common/NavigationBar/NavigationBar';
 import {
     ErrorPage,
-    HomePage,
     CreateLetterPage,
     MyPage,
     LoginPage,
@@ -11,9 +10,7 @@ import {
     LabelCollectionsPage,
     NotificationPage,
     SentPage,
-    ProfileSharePage,
     LabelLotteryPage,
-    SelectItemPage,
     SuccessLetterPage,
     ProfilePage,
     StoragePage,
@@ -22,11 +19,20 @@ import {
     MapLetterArchieveDetailContainerPage,
     KakaoRedirectPage
 } from './pages';
+
 const MapExplorerPage = lazy(() => import('@/pages/Map/MapExplorerPage'));
+const HomePage = lazy(() => import('@/pages/Home/HomePage'));
+const SelectItemPage = lazy(
+    () => import('@/pages/Letter/SelectItem/SelectItemPage')
+);
+const ProfileSharePage = lazy(
+    () => import('@/pages/User/Profile/ProfileSharePage')
+);
 
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
+
 import { CreateMapLetterPage } from './pages/Map/Create/CreateMapLetterPage';
 import { MapSelectItemPage } from './pages/Map/Select/MapSelectItemPage';
 import { ErrorBoundary } from './ErrorBoundary';

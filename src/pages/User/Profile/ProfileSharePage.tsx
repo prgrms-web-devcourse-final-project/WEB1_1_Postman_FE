@@ -7,7 +7,7 @@ import { useUserStore } from '@/stores';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
-export const ProfileSharePage = () => {
+const ProfileSharePage = () => {
     const { user } = useUserStore();
     const { captureRef, downloadCanvasAsImage } = useDownloadCanvas();
     const [convertedImgUrl, setConvertedImgUrl] = useState<string>();
@@ -49,9 +49,9 @@ export const ProfileSharePage = () => {
     }, [user?.profileImageUrl]);
 
     return (
-        <div className="flex flex-col gap-5 items-center">
+        <div className="flex flex-col items-center gap-5">
             <BackButtonCotainer />
-            <h2 className="text-bold text-lg">{user?.nickname}</h2>
+            <h2 className="text-lg text-bold">{user?.nickname}</h2>
             <div
                 className="flex flex-col bg-sample-blue rounded-md p-4 gap-3 w-[290px] items-center"
                 ref={captureRef}
@@ -76,3 +76,5 @@ export const ProfileSharePage = () => {
         </div>
     );
 };
+
+export default ProfileSharePage;
