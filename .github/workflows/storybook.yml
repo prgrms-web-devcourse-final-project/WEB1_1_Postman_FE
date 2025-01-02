@@ -3,7 +3,7 @@ name: 'Chromatic Deployment'
 
 on:
     pull_request:
-        branches: develope
+        branches: main
         paths:
             - '**.stories.tsx'
     push:
