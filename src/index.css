@@ -74,13 +74,13 @@
 @font-face {
     font-family: 'Pretendard';
     font-weight: 400;
-    font-display: swap;
-    src: url('Pretendard-Regular.woff2') format('woff2');
+    font-display: optional;
+    src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'CookieRunRegular';
-    src: url('/fonts/CookieRun Regular.woff') format('truetype');
+    src: url('/fonts/CookieRun Regular.woff') format('woff');
     font-display: swap;
     font-weight: normal;
     font-style: normal;
@@ -88,7 +88,7 @@
 
 @font-face {
     font-family: 'InterVariableFont';
-    src: url('/fonts/Inter-VariableFont_opsz,wght.woff') format('truetype');
+    src: url('/fonts/Inter-VariableFont_opsz,wght.woff') format('woff');
     font-display: swap;
     font-weight: normal;
     font-style: normal;
@@ -96,7 +96,7 @@
 
 @font-face {
     font-family: 'PyeongChangPeaceLight';
-    src: url('/fonts/PyeongChangPeace-Light.woff') format('truetype');
+    src: url('/fonts/PyeongChangPeace-Light.woff') format('woff');
     font-display: swap;
     font-weight: normal;
     font-style: normal;
@@ -104,7 +104,7 @@
 
 @font-face {
     font-family: 'Sagak-sagak';
-    src: url('/fonts/Sagak-sagak.woff');
+    src: url('/fonts/Sagak-sagak.woff') format('woff');
     font-display: swap;
     font-weight: normal;
     font-style: normal;
