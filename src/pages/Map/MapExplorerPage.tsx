@@ -86,7 +86,7 @@ const MapExplorerPage = () => {
                                 {searchedLocation ? (
                                     <NavLink
                                         to={`/letter/map/:${searchedLocation.lat}/:${searchedLocation.lon}/create`}
-                                        className={CreateBtnStyle}
+                                        className={`mb-32 ml-8 ${CreateBtnStyle}`}
                                     >
                                         <PiPencilSimpleLine />
                                     </NavLink>
