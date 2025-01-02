@@ -26,7 +26,6 @@ import {
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
-import { Margin } from './components/Common/Margin/Margin';
 import { CreateMapLetterPage } from './pages/Map/Create/CreateMapLetterPage';
 import { MapSelectItemPage } from './pages/Map/Select/MapSelectItemPage';
 
@@ -102,7 +101,7 @@ export const router = createBrowserRouter([
                 element: <MyPage />
             },
             {
-                path: 'storage/:letterType',
+                path: 'storage/:selectedLetterType',
                 element: <StoragePage />
             },
             {
