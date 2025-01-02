@@ -4,7 +4,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 export const StoragePage = () => {
     const navigate = useNavigate();
-    const { letterType } = useParams();
+    const { selectedLetterType } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
 
     const storageMenuList = [
@@ -39,7 +39,7 @@ export const StoragePage = () => {
     };
 
     useEffect(() => {
-        if (letterType === 'bookmark') return;
+        if (selectedLetterType === 'bookmark') return;
         const currentFilter = searchParams.get('filtertype');
         if (!currentFilter) {
             setSearchParams({ filtertype: 'sent' });
@@ -53,7 +53,7 @@ export const StoragePage = () => {
                     <div
                         className="absolute bottom-0 w-1/3 h-[2px] transition-transform duration-500 ease-in-out bg-sample-blue"
                         style={{
-                            transform: `translateX(${getTranslateX(letterType as string)})`
+                            transform: `translateX(${getTranslateX(selectedLetterType as string)})`
                         }}
                     ></div>
                     {storageMenuList.map((category) => {
