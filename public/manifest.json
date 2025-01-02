@@ -1,9 +1,9 @@
 {
-    "name": "My PWA App",
-    "short_name": "PWA App",
-    "description": "This is my Progressive Web App!",
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "name": "Bottler",
+    "short_name": "Bottler",
+    "description": "편지로 서로의 마음을 나눠요",
+    "theme_color": "#50bcdf",
+    "background_color": "#50bcdf",
     "start_url": "/",
     "display": "standalone",
     "icons": [
