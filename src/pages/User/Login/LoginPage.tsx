@@ -4,6 +4,7 @@ import { EmailInput } from '@/components/Common/Input/EmailInput';
 import { PasswordInput } from '@/components/Common/Input/PasswordInput';
 import { useToastStore } from '@/hooks/useToastStore';
 import { useLogin } from './../../../hooks/useLogin';
+import { Link } from 'react-router-dom';
 
 // const KAKAO_CLIENT_ID = import.meta.env.VITE_JAVASCRIPT_KEY as string;
 // const REDIRECT_URI = 'http://localhost:5173/login/kakao';
@@ -31,10 +32,6 @@ export const LoginPage = () => {
         mutate({ email, password });
     };
 
-    const handleNavigateRegister = () => {
-        navigate('/register');
-    };
-
     return (
         <div className="flex flex-col items-center gap-3 w-full h-full my-[50px]">
             <h2 className="text-2xl text-center text-sample-blue font-bold py-3">
@@ -60,12 +57,12 @@ export const LoginPage = () => {
                             </button>
                             <div>
                                 계정이 없으신가요?
-                                <a
+                                <Link
+                                    to="/register"
                                     className="text-bold text-sample-blue"
-                                    onClick={handleNavigateRegister}
                                 >
                                     {'  '}회원가입
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
