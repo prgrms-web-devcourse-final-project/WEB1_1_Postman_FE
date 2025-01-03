@@ -1,0 +1,1 @@
+export const MAX_NOTIFICATION_COUNT = 99;

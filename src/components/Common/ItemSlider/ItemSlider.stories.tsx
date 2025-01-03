@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { ItemSlider } from './ItemSlider';
+import ItemSlider from './ItemSlider';
+import SkyTheme from '@/asset/letter1/letter1.svg?react';
+import HaertTheme from '@/asset/letter2/letter2.svg?react';
+import FlowerTheme from '@/asset/letter3/letter3.svg?react';
 
 const meta: Meta<typeof ItemSlider> = {
     component: ItemSlider,
@@ -13,28 +15,18 @@ export default meta;
 type Story = StoryObj<typeof ItemSlider>;
 
 const textItems = [
-    { name: '테스트 글꼴', id: '1' },
-    { name: '테스트 글꼴', id: '2' },
-    { name: '테스트 글꼴', id: '3' },
-    { name: '테스트 글꼴', id: '4' },
-    { name: '테스트 글꼴', id: '5' },
-    { name: '테스트 글꼴', id: '6' },
-    { name: '테스트 글꼴', id: '7' },
-    { name: '테스트 글꼴', id: '9' },
-    { name: '테스트 글꼴', id: '10' },
-    { name: '테스트 글꼴', id: '11' },
-    { name: '테스트 글꼴', id: '12' },
-    { name: '테스트 글꼴', id: '13' },
-    { name: '테스트 글꼴', id: '14' },
-    { name: '테스트 글꼴', id: '15' }
+    { name: 'font-sans', id: '1', fontName: '기본 폰트' },
+    { name: 'font-bagelfatone', id: '2', fontName: '베이글 폰트' },
+    { name: 'font-cookierun', id: '3', fontName: '쿠키런 폰트' },
+    { name: 'font-pyeongchangpeace', id: '4', fontName: '평창 폰트' },
+    { name: 'font-sagak', id: '5', fontName: '필기체 폰트' },
+    { name: 'font-serif', id: '6', fontName: '세리프 폰트' }
 ];
 
 const imageItems = [
-    { id: '편지지_샘플_1', name: '이미지' },
-    { id: '편지지_샘플_2', name: '이미지' },
-    { id: '편지지_샘플_3', name: '이미지' },
-    { id: '편지지_샘플_4', name: '이미지' },
-    { id: '편지지_샘플_5', name: '이미지' }
+    { id: '1', src: SkyTheme, name: '이미지' },
+    { id: '2', src: HaertTheme, name: '이미지' },
+    { id: '3', src: FlowerTheme, name: '이미지' }
 ];
 
 export const TextSlider: Story = {
@@ -49,7 +41,6 @@ export const ImageSlider: Story = {
     args: {
         itemType: 'image',
         itemIDList: imageItems,
-
         spaceBetween: 20
     }
 };

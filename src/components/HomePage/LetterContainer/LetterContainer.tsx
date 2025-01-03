@@ -29,7 +29,7 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
             <div className="bg-[url('/물결.svg')] absolute h-full w-full overflow-auto bg-cover bg-center custom-mask"></div>
 
             <div className="absolute right-[80px] z-[2]">
-                <NotificationBadge badgeType="basic" count={letters.length} />
+                <NotificationBadge count={letters.length} />
             </div>
             <div className="overflow-hidden mx-[-20px] mt-[50px]">
                 <Swiper

@@ -10,6 +10,7 @@ import { ReportButton } from '../../Report/ReportButton';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
 import { Loading } from '@/components/Common/Loading/Loading';
+import { LetterLine } from '@/components/CreatLetterPage/LetterLine/LetterLine';
 
 type KeywordLetterDetailProps = {
     letterData: {
@@ -69,7 +70,7 @@ export const KeywordLetterDetail = ({
                     {reportBtn === 'received' && <ReportButton />}
                 </div>
                 <h1>{title}</h1>
-                <img src={'/to_line.f4c129e6.svg'} className="w-full" />
+                <LetterLine />
 
                 <div className="relative">
                     <TextArea value={content} font={font} isReadonly={true} />

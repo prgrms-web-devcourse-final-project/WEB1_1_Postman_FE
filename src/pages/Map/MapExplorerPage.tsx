@@ -12,7 +12,7 @@ import { formatDate } from '@/util/formatDate';
 import { calculateDaysLeft } from '@/util/calculateDaysLeft';
 import { formatDistance } from '@/util/formatDistance';
 
-export const MapExplorerPage = () => {
+const MapExplorerPage = () => {
     const { searchedLocation } = useSearchStore();
     const selectedLetter = useSelectedLetterStore(
         (state) => state.selectedLetter
@@ -71,7 +71,7 @@ export const MapExplorerPage = () => {
                         />
                         {error && <p>검색 오류: {error.message}</p>}
                         {!isLoading && !error && data?.length === 0 && (
-                            <p className="flex-center mt-40">
+                            <p className="mt-40 flex-center">
                                 검색 결과가 없습니다.
                             </p>
                         )}
@@ -143,3 +143,5 @@ export const MapExplorerPage = () => {
         </div>
     );
 };
+
+export default MapExplorerPage;

@@ -1,6 +1,5 @@
 import React from 'react';
 import '../src/index.css';
-import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient({

@@ -11,6 +11,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ReportButton } from '../../Report/ReportButton';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
+import { LetterLine } from '@/components/CreatLetterPage/LetterLine/LetterLine';
 
 type MapLetterDetailProps = {
     letterData: {
@@ -102,7 +103,7 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
 
     return (
         <>
-            <div className="absolute top-8 right-16 cursor-pointer">
+            <div className="absolute cursor-pointer top-8 right-16">
                 <div className="flex">
                     <div className="w-8 -rotate-12">
                         <Label imgSrc={label} />
@@ -118,7 +119,7 @@ export const MapLetterDetail = ({ letterData }: MapLetterDetailProps) => {
                         className="w-[15%] h-[15%] absolute top-[-7%] "
                     />
                     <h1>{title}</h1>
-                    <img src={'/to_line.f4c129e6.svg'} className="w-full" />
+                    <LetterLine />
 
                     <div className="relative">
                         <TextArea

@@ -4,7 +4,7 @@ import { SelectItem } from '@/components/SelectItemPage/SelectItem/SelectItem';
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const SelectItemPage = () => {
+const SelectItemPage = () => {
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState(false);
 
@@ -13,7 +13,7 @@ export const SelectItemPage = () => {
     }, []);
 
     return (
-        <div className="">
+        <>
             <TopBar
                 handleBackClick={() => {
                     navigate(-1);
@@ -32,6 +32,8 @@ export const SelectItemPage = () => {
             <AnimationBottle />
 
             <SelectItem isActive={isActive} setIsActive={handleIsActive} />
-        </div>
+        </>
     );
 };
+
+export default SelectItemPage;

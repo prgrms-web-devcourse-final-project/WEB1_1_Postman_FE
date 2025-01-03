@@ -14,7 +14,7 @@ const ThemeWrapperComponent = ({ children, themeId }: ThemeWrapperProps) => {
         .with(3, () => <FlowerLetter>{children}</FlowerLetter>)
         .otherwise(() => <SkyLetter>{children}</SkyLetter>);
 
-    return <>{themeComponent}</>;
+    return <div>{themeComponent}</div>;
 };
 
 const ThemeWrapper = React.memo(ThemeWrapperComponent);
