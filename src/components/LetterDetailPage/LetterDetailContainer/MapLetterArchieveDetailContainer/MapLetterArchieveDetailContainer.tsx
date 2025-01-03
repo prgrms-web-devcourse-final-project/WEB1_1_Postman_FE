@@ -33,7 +33,6 @@ export const MapLetterArchieveDetailContainer = () => {
         letterId:
             dataType === 'REPLY_LETTER' ? Number(replyLetterId || letterId) : 0
     });
-    console.log(replyLetterId);
 
     useEffect(() => {
         const error = mapError || replyError;
