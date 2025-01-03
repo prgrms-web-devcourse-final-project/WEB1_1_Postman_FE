@@ -36,33 +36,37 @@ export const LoginPage = () => {
     };
 
     return (
-        <div className="flex flex-col gap-3 h-full my-[50px]">
+        <div className="flex flex-col items-center gap-3 w-full h-full my-[50px]">
+            <h2 className="text-2xl text-center text-sample-blue font-bold py-3">
+                Bottler
+            </h2>
             <form
-                className="flex flex-col gap-5 "
+                className="flex flex-col gap-5 w-full p-5"
                 onSubmit={handleSubmit}
                 noValidate
             >
-                <h2 className="text-2xl font-bold ">로그인</h2>
                 <div className="flex flex-col gap-5">
                     <div className="flex flex-col gap-2">
                         <EmailInput></EmailInput>
                         <PasswordInput></PasswordInput>
                     </div>
                     <div className="flex flex-col gap-1 w-full">
-                        <div className="flex flex-row gap-1 w-full">
+                        <div className="flex flex-col gap-3 w-full">
                             <button
                                 className="btn-primary-filled"
                                 type="submit"
                             >
                                 로그인
                             </button>
-                            <button
-                                className="btn-primary"
-                                type="button"
-                                onClick={handleNavigateRegister}
-                            >
-                                회원가입
-                            </button>
+                            <div>
+                                계정이 없으신가요?
+                                <a
+                                    className="text-bold text-sample-blue"
+                                    onClick={handleNavigateRegister}
+                                >
+                                    {'  '}회원가입
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
