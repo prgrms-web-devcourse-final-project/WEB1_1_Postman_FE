@@ -2,7 +2,13 @@ const cacheName = '::myServiceWorker';
 const version = 'v0.0.1';
 const cacheList = [];
 
+const isDev =
+    self.location.hostname === 'localhost' ||
+    self.location.hostname === '127.0.0.1';
+
 self.addEventListener('fetch', (e) => {
+    if (isDev) return e.respondWith(fetch(e.request));
+
     e.respondWith(
         caches.match(e.request).then((r) => {
             if (r) {
