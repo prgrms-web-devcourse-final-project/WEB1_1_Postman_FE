@@ -1,64 +1,57 @@
-import { useHomeSheetStore, useSelectedKeywordStore } from '@/stores/index';
+import { useSelectedKeywordStore } from '@/stores/index';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { KeywordContainer } from './KeywordContainer';
+import { useGetAllKeywords } from '@/hooks/useGetAllKeywords';
+import { useGetUserKeywords } from '@/hooks/useGetUserKeywords';
+import { useEffect } from 'react';
+import { Loading } from '@/components/Common/Loading/Loading';
 
 type BottomSheetContentProps = {
-    nickname: string;
+    nickname: string | undefined;
+    onClick: () => void;
 };
 
-export const BottomSheetContent = ({ nickname }: BottomSheetContentProps) => {
-    const { setOpen } = useHomeSheetStore();
-    const { selectedKeywords } = useSelectedKeywordStore();
+export const BottomSheetContent = ({
+    nickname,
+    onClick
+}: BottomSheetContentProps) => {
+    const { selectedKeywords, setSelectedKeywords } = useSelectedKeywordStore();
 
-    const categories = [
-        {
-            category: '나를 나타내는',
-            keywords: [
-                '일에 치인',
-                '쉬고싶은',
-                '배고픈',
-                '꿈꾸는',
-                '행복한',
-                '그리워하는',
-                '수다스러운',
-                '현실적인',
-                '행운의',
-                '반짝반짝한',
-                '술을 좋아하는',
-                '음악 없이 못사는',
-                '위로받고 싶은'
-            ]
-        },
-        {
-            category: '시간과 공간',
-            keywords: [
-                '입김이 나오는 날',
-                '파란 하늘을 보며',
-                '벚꽃 흩날림',
-                '크리스마스',
-                '첫눈',
-                '별빛 아래',
-                '비 오는 날',
-                '밤 산책 하며',
-                '도로 위 막히는 차 안에서'
-            ]
-        },
-        {
-            category: '일상',
-            keywords: ['추억', '여행', '이별', '운동', '꿈']
-        },
-        {
-            category: '누구에게',
-            keywords: [
-                '친구에게',
-                '연인에게',
-                '나에게',
-                '소중한 사람에게',
-                '가족에게',
-                '최애에게'
-            ]
+    if (nickname === undefined) nickname = '';
+
+    const {
+        data: allKeywordsData,
+        isLoading: isAllKeywordsLoading,
+        isError: isAllKeywordsError
+    } = useGetAllKeywords();
+
+    const {
+        data: userKeywordsData,
+        isLoading: isUserKeywordsLoading,
+        isError: isUserKeywordsError
+    } = useGetUserKeywords();
+
+    // 사용자 키워드 데이터를 스토어에 초기화
+    useEffect(() => {
+        if (userKeywordsData?.result.keywords) {
+            setSelectedKeywords(userKeywordsData.result.keywords);
         }
-    ];
+    }, [userKeywordsData, setSelectedKeywords]);
+
+    if (isAllKeywordsLoading || isUserKeywordsLoading) {
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
+    }
+
+    if (isAllKeywordsError || isUserKeywordsError) {
+        return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
+    }
+
+    // 모든 키워드
+    const categories = allKeywordsData?.result.categories || [];
 
     return (
         <div className="flex flex-col gap-5 p-5">
@@ -102,9 +95,7 @@ export const BottomSheetContent = ({ nickname }: BottomSheetContentProps) => {
             </div>
 
             <button
-                onClick={() => {
-                    setOpen(false);
-                }}
+                onClick={onClick}
                 className="fixed left-[20px] right-[20px] bottom-[90px] h-[49px] text-white flex-center rounded-full bg-sample-blue"
             >
                 완료

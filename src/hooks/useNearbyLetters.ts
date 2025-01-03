@@ -1,40 +1,64 @@
-import { useEffect, useState } from 'react';
-import * as turf from '@turf/turf';
-
-type Letter = {
-    id: number;
-    longitude: number;
-    latitude: number;
-    title: string;
-    keyword: string;
-    date: string;
-};
+import { useQuery } from '@tanstack/react-query';
+import { getNearbyLetters } from '@/service/MapLetter/getNearbyLetters';
+import { NearbyLettersResponseType } from '@/types/letter';
 
 export const useNearbyLetters = (
-    currentLocation: { longitude: number; latitude: number } | null,
-    letters: Letter[],
-    distanceThreshold: number = 500
+    currentLocation: { longitude: number; latitude: number } | null
 ) => {
-    const [nearbyLetters, setNearbyLetters] = useState<Letter[]>([]);
+    const query = useQuery({
+        queryKey: [
+            'nearbyLetters',
+            currentLocation?.latitude,
+            currentLocation?.longitude
+        ],
+        queryFn: async (): Promise<NearbyLettersResponseType['result']> => {
+            if (!currentLocation) {
+                return [];
+            }
 
-    useEffect(() => {
-        if (currentLocation) {
-            const filteredLetters = letters.filter((letter) => {
-                const from = turf.point([
-                    currentLocation.longitude,
-                    currentLocation.latitude
-                ]);
-                const to = turf.point([letter.longitude, letter.latitude]);
-                const distance = turf.distance(from, to, { units: 'meters' });
-
-                console.log(`편지: ${letter.title}, 거리: ${distance}m`);
-                return distance <= distanceThreshold;
+            const response = await getNearbyLetters({
+                latitude: currentLocation.latitude.toString(),
+                longitude: currentLocation.longitude.toString()
             });
-            setNearbyLetters(filteredLetters);
-        } else {
-            setNearbyLetters([]);
-        }
-    }, [currentLocation, letters, distanceThreshold]);
 
-    return nearbyLetters;
+            if (!response.isSuccess || !Array.isArray(response.result)) {
+                return [];
+            }
+
+            return response.result.map(
+                ({
+                    letterId,
+                    latitude,
+                    longitude,
+                    title,
+                    createdAt,
+                    distance,
+                    target,
+                    createUserNickname,
+                    label,
+                    description
+                }) => ({
+                    letterId,
+                    latitude,
+                    longitude,
+                    title,
+                    createdAt,
+                    distance,
+                    target,
+                    createUserNickname,
+                    label,
+                    description
+                })
+            );
+        },
+        enabled: !!currentLocation,
+        select: (data: NearbyLettersResponseType['result']) => data,
+        refetchInterval: 45000
+    });
+
+    return {
+        nearbyLetters: query.data || [],
+        isLoading: query.isLoading,
+        error: query.error
+    };
 };

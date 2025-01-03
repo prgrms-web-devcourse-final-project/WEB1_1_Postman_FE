@@ -1,4 +1,4 @@
-name: postamn
+name: deploy aws
 
 on:
     push:
@@ -31,6 +31,7 @@ jobs:
 
             - name: Build project
               run: |
+                  VITE_API_URL=${{ secrets.VITE_API_URL }} \
                   yarn build
 
             - name: Deploy to S3

@@ -1,41 +1,43 @@
 import { ErrorPage } from '@/pages/ErrorPage';
-import { HomePage } from '@/pages/Home/HomePage';
+import HomePage from '@/pages/Home/HomePage';
 import { CreateLetterPage } from '@/pages/Letter/Create/CreateLetterPage';
-import { MapExplorerPage } from '@/pages/Map/MapExplorerPage';
 import { LoginPage } from '@/pages/User/Login/LoginPage';
 import { RegisterPage } from '@/pages/User/Register/RegisterPage';
 import { ArchivedPage } from '@/pages/ArchivedPage';
-import { LabelCollectionsPage } from '@/pages/LabelCollectionsPage';
-import { LetterDetailPage } from '@/pages/Letter/Detail/LetterDetailPage';
+import { LabelCollectionsPage } from '@/pages/Storage/LabelCollectionsPage';
+import { KeywordLetterDetailPage } from '@/pages/Letter/Detail/KeywordLetterDetailPage/KeywordLetterDetailPage';
 import { NotificationPage } from '@/pages/Notification/NotificationPage';
-import { ReplyLetterDetailPage } from '@/pages/Letter/Detail/ReplyLetterDetailPage';
 import { SentPage } from '@/pages/SentPage';
-import { SharePage } from '@/pages/SharePage';
+import ProfileSharePage from '@/pages/User/Profile/ProfileSharePage';
 import { LabelLotteryPage } from './Label/Lottery/LabelLotteryPage';
-import { SelectItemPage } from './Letter/SelectItem/SelectItemPage';
+import SelectItemPage from './Letter/SelectItem/SelectItemPage';
 import { MyPage } from '@/pages/User/MyPage/MyPage';
 import { SuccessLetterPage } from './Letter/Success/SuccessLetterPage';
 import { ProfilePage } from '@/pages/User/Profile/ProfilePage';
 import { StoragePage } from '@/pages/Storage/StoragePage';
+import { MapLetterDetailPage } from './Letter/Detail/MapLetterDetailPage/MapLetterDetailPage';
+import { MapLetterArchieveDetailContainerPage } from './Letter/Detail/MapLetterArchieveDetailContainerPage/MapLetterArchieveDetailContainerPage';
+import { KakaoRedirectPage } from '@/pages/User/Login/KakaoRedirectPage';
 
 export {
     ErrorPage,
     HomePage,
     CreateLetterPage,
-    MapExplorerPage,
     MyPage,
     LoginPage,
     RegisterPage,
     ArchivedPage,
     LabelCollectionsPage,
-    LetterDetailPage,
-    ReplyLetterDetailPage,
+    KeywordLetterDetailPage,
+    MapLetterDetailPage,
     NotificationPage,
     SentPage,
-    SharePage,
+    ProfileSharePage,
     LabelLotteryPage,
     SelectItemPage,
     SuccessLetterPage,
     ProfilePage,
-    StoragePage
+    StoragePage,
+    MapLetterArchieveDetailContainerPage,
+    KakaoRedirectPage
 };

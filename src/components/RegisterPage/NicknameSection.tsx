@@ -50,7 +50,7 @@ export const NicknameSection = ({
                 </div>
                 <button
                     type="button"
-                    className="border border-blue-500 h-8 px-3 rounded text-blue-500 hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap"
+                    className="border border-sample-blue h-8 px-3 rounded text-sample-blue hover:bg-sample-blue hover:text-white transition-colors whitespace-nowrap"
                     onClick={onRequestNicknameVerify}
                 >
                     중복 확인

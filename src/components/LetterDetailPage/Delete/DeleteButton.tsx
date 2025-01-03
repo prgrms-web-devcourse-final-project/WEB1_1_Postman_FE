@@ -1,11 +1,8 @@
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { useState } from 'react';
 import { DeleteModal } from './DeleteModal';
-type DeleteButtonProps = {
-    id: string;
-};
 
-export const DeleteButton = ({ id }: DeleteButtonProps) => {
+export const DeleteButton = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -31,7 +28,7 @@ export const DeleteButton = ({ id }: DeleteButtonProps) => {
                         onClick={(e) => e.stopPropagation()}
                         className="bg-white rounded-lg p-6"
                     >
-                        <DeleteModal id={id} closeModal={closeModal} />
+                        <DeleteModal closeModal={closeModal} />
                     </div>
                 </div>
             )}

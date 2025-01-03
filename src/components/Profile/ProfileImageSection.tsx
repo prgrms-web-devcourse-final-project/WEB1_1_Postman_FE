@@ -5,39 +5,32 @@ import { useToastStore } from '@/hooks/useToastStore';
 import { changeProfileImage } from '@/service/user';
 import { ProfileImageItemType } from '@/types/profileImage';
 import { SliderMenuContainer } from '../Common/SliderMenuContainer/SliderMenuContainer';
+import { useUserInfo } from './../../hooks/useUserInfo';
+import { logout } from '@/service/auth/logout';
 
 // 샘플 데이터
-const list = [
+export const PROFILE_IMAGES = [
     {
-        id: '프로필_샘플1',
-        name: '이미지',
-        src: '/testimg.jpg'
+        id: 1,
+        url: 'https://img.bottler.store/profile1.svg',
+        alt: 'Profile 1'
     },
     {
-        id: '프로필_샘플2',
-        name: '이미지',
-        src: '/프로필_샘플.png'
+        id: 2,
+        url: 'https://img.bottler.store/profile2.svg',
+        alt: 'Profile 2'
     },
     {
-        id: '프로필_샘플3',
-        name: '이미지',
-        src: '/프로필_샘플.png'
+        id: 3,
+        url: 'https://img.bottler.store/profile3.svg',
+        alt: 'Profile 3'
     },
     {
-        id: '프로필_샘플4',
-        name: '이미지',
-        src: '/프로필_샘플.png'
-    },
-    {
-        id: '프로필_샘플5',
-        name: '이미지',
-        src: '/프로필_샘플.png'
-    },
-    {
-        id: '프로필_샘플6',
-        name: '이미지',
-        src: '/프로필_샘플.png'
+        id: 4,
+        url: 'https://img.bottler.store/profile4.svg',
+        alt: 'Profile 4'
     }
+    // ...
 ];
 
 type ProfileImageSectionProps = {
@@ -51,6 +44,9 @@ export const ProfileImageSection = ({
 }: ProfileImageSectionProps) => {
     const { user } = useUserStore();
     const { addToast } = useToastStore();
+    const { handleGetUserInfo } = useUserInfo();
+
+    if (user === null) logout();
 
     const handleDismiss = () => {
         onEditingChange(false);
@@ -61,10 +57,12 @@ export const ProfileImageSection = ({
     ) => {
         try {
             const response = await changeProfileImage({
-                changeImg: imageItem.id
+                imageUrl: imageItem.url
             });
             if (response) {
                 addToast('프로필 이미지가 변경되었습니다.', 'success');
+                console.log('이미지:', user?.profileImageUrl);
+                handleGetUserInfo();
                 handleDismiss();
             }
         } catch (error) {
@@ -86,14 +84,16 @@ export const ProfileImageSection = ({
                     <div className="p-4">
                         <h2 className="text-xl font-bold mb-4">아바타 변경</h2>
                         <div className="flex flex-row flex-wrap justify-start items-center gap-4 w-full">
-                            {list.map((item) => {
+                            {PROFILE_IMAGES.map((item) => {
                                 return (
                                     <ProfileImage
                                         key={item.id}
                                         width="70px"
                                         height="70px"
                                         imageItem={item}
-                                        onClick={handleChangeProfileImage}
+                                        onClick={() =>
+                                            handleChangeProfileImage(item)
+                                        }
                                     />
                                 );
                             })}
@@ -111,9 +111,7 @@ export const ProfileImageSection = ({
                 width="100px"
                 height="100px"
                 imageItem={{
-                    id: '프로필_샘플1',
-                    name: '이미지',
-                    src: '/testimg.jpg'
+                    url: user?.profileImageUrl || '/sample.jpg'
                 }}
             />
             {renderSliderMenuContainer()}

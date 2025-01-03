@@ -1,7 +1,7 @@
 // import { UserType } from '@/types/user';
 
 type WelcomeMessageContainerProps = {
-    nickname: string;
+    nickname: string | undefined;
     newLetter: boolean;
 };
 
@@ -9,6 +9,8 @@ export const WelcomeMessageContainer = ({
     nickname,
     newLetter
 }: WelcomeMessageContainerProps) => {
+    if (nickname === undefined) nickname = '';
+
     const userMessage = (
         <span className="text-sample-blue">{`${nickname}님`}</span>
     );
@@ -32,10 +34,10 @@ export const WelcomeMessageContainer = ({
         : '떠다니는 편지를 열심히 찾는 중 이에요.';
 
     return (
-        <div className="absolute z-[3]">
+        <div className="z-[3]">
             {message}
             <p className="font-medium text-title1">{messageBody}</p>
-            <p className="font-medium text-sample-textgray">{subMessage}</p>
+            <p className="font-medium text-sample text-white">{subMessage}</p>
         </div>
     );
 };

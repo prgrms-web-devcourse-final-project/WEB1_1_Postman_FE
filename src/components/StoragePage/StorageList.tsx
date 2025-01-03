@@ -1,171 +1,177 @@
 import React, { useEffect, useState } from 'react';
-import { BottleLetter } from '../Common/BottleLetter/BottleLetter';
-import { Itembox } from '../Common/Itembox/Itembox';
-import { getLetter } from '@/service/storage/getLetter';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
+import { useInfiniteStorageFetch } from '@/hooks/useInfiniteStorageFetch';
+import { useQueryClient } from '@tanstack/react-query';
+import { match } from 'ts-pattern';
+import { deleteLetters } from '@/service/letter/delete/deleteLetters';
+import { useModal, useToastStore } from '@/hooks';
+import { DeleteLetterType, storageLetterType } from '@/types/letter';
+import { Empty } from '@/components/Common/Empty/Empty';
+import { Loading } from '@/components/Common/Loading/Loading';
+import { LetterDateGroup } from './LetterDateGroup';
 
-interface Letter {
-    letterId: number;
-    title: string;
-    label: string;
-    letterType: string;
-    boxType: string;
-    createdAt: string;
-}
+const ROWS_PER_PAGE = 10;
 
-interface DayGroup {
-    date: string;
-    letters: Letter[];
-}
+export const StorageList = () => {
+    const queryClient = useQueryClient();
+    const { selectedLetterType } = useParams();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const filterType = searchParams.get('filtertype');
+    const { ref, inView } = useInView();
+    const { addToast } = useToastStore();
+    const { openModal, closeModal, ModalComponent } = useModal();
+    const [checkedItems, setCheckedItems] = useState<DeleteLetterType[]>([]);
 
-type storageType = 'keyword' | 'map' | 'bookmark';
-type FilterType = 'LETTER' | 'REPLY_LETTER';
-
-type StorageListProps = {
-    type: storageType;
-};
-
-export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
-    // const queryClient = useQueryClient();
-    // const { data, error, fetchNextPage, hasNextPage, isFetchNextPage } =
-    //     useInfiniteFetch();
-    const page = 1;
-    const size = 10;
-    const [selectedFilter, setSelectedFilter] = useState<FilterType>('LETTER');
-    const [checkedItems, setCheckedItems] = useState<number[]>([]);
-    const [groupedLetters, setGroupedLetters] = useState<DayGroup[]>([]);
-
-    // 리스트 타입 - 필터별 엔드포인트 추출
-    const getApiEndpoint = (type: storageType, filter: FilterType) => {
-        const endpoints = {
-            keyword: {
-                LETTER: '/letters/saved/sent',
-                REPLY_LETTER: '/letters/saved/received'
-            },
-            map: {
-                LETTER: '/map/sent',
-                REPLY_LETTER: '/map/received'
-            },
-            bookmark: '/map/archived'
-        };
-
-        if (type === 'bookmark') {
-            return endpoints[type];
-        }
-
-        return endpoints[type]?.[filter];
+    const getApiEndpoint = () => {
+        return match<storageLetterType>(selectedLetterType as storageLetterType)
+            .with('keyword', () => `/letters/saved/${filterType}`)
+            .with('map', () => `/map/${filterType}`)
+            .with('bookmark', () => '/map/archived')
+            .exhaustive();
     };
 
-    // 데이터 패치
-    // 따로 필터링 해줄 필요 없이 엔드포인트가 다르게 들어감
-    const getLetterList = async () => {
-        const apiEndpoint = getApiEndpoint(type, selectedFilter);
-        const response = await getLetter({ apiEndpoint, page, size });
-        console.log('응답:', response);
-        if (response.isSuccess) {
-            return response.result.content;
-        }
-        return [];
-    };
+    const {
+        groupedLetters,
+        status,
+        fetchNextPage,
+        isFetchingNextPage,
+        hasNextPage
+    } = useInfiniteStorageFetch({
+        apiEndpoint: getApiEndpoint(),
+        size: ROWS_PER_PAGE
+    });
 
-    // 편지 리스트를 날짜별로 그룹화, 날짜순으로 정렬
-    const groupLettersByDate = (letters: Letter[]): DayGroup[] => {
-        const grouped = letters.reduce(
-            (acc: { [key: string]: Letter[] }, letter) => {
-                const date = new Date(letter.createdAt)
-                    .toISOString()
-                    .split('T')[0];
-
-                if (!acc[date]) {
-                    acc[date] = [];
-                }
-                acc[date].push(letter);
-                return acc;
-            },
-            {}
-        );
-        return Object.entries(grouped)
-            .map(([date, letters]) => ({
-                date,
-                letters: letters.sort(
-                    (a, b) =>
-                        new Date(b.createdAt).getTime() -
-                        new Date(a.createdAt).getTime()
-                )
-            }))
-            .sort(
-                (a, b) =>
-                    new Date(b.date).getTime() - new Date(a.date).getTime()
-            );
-    };
-
-    const setData = async () => {
-        const letters = await getLetterList();
-        setGroupedLetters(groupLettersByDate(letters));
-    };
-
-    // 체크박스 단일 클릭
-    const handleSingleCheck = (checked: boolean, id: number) => {
+    const handleSingleCheck = (
+        checked: boolean,
+        { letterId, letterType, boxType }: DeleteLetterType
+    ) => {
         if (checked) {
-            setCheckedItems((prev) => [...prev, id]);
+            setCheckedItems((prev) => [
+                ...prev,
+                { letterId, letterType, boxType }
+            ]);
         } else {
-            setCheckedItems(checkedItems.filter((el) => el !== id));
+            setCheckedItems(
+                checkedItems.filter((item) => item.letterId !== letterId)
+            );
         }
+        console.log(checkedItems);
     };
 
-    // 체크박스 전체 클릭
     const handleAllCheck = (checked: boolean) => {
         if (checked) {
-            const idArray: number[] = [];
+            const itemArray: {
+                letterId: number;
+                letterType: string;
+                boxType: string;
+            }[] = [];
             groupedLetters.forEach((item) => {
                 item.letters.forEach((letter) => {
-                    idArray.push(letter.letterId);
+                    itemArray.push({
+                        letterId: letter.letterId,
+                        letterType: letter.letterType,
+                        boxType: letter.boxType
+                    });
                 });
             });
-            setCheckedItems(idArray);
+            setCheckedItems(itemArray);
         } else {
             setCheckedItems([]);
         }
     };
 
-    // 테스트 출력
-    useEffect(() => {
-        console.log(checkedItems);
-    }, [checkedItems]);
+    const handleDelete = async () => {
+        const response = await deleteLetters(checkedItems);
+        if (response.isSuccess) {
+            addToast('삭제가 완료되었습니다.', 'success');
+            setCheckedItems([]);
+            queryClient.invalidateQueries({
+                queryKey: ['storageLetters', getApiEndpoint()]
+            });
+            return;
+        }
+        addToast('삭제에 실패했습니다.', 'warning');
+        return;
+    };
 
-    // 테스트 데이터 세팅?
     useEffect(() => {
-        setData();
-    }, [type, selectedFilter]);
+        if (inView) {
+            fetchNextPage();
+        }
+    }, [inView]);
 
     const renderList = () => {
+        if (status === 'pending') {
+            return <Loading />;
+        }
+
+        if (status === 'success' && groupedLetters.length === 0) {
+            return <Empty />;
+        }
+
         return (
-            <div className="flex flex-col gap-2 mt-2">
-                <div className="flex flex-row gap-2">
-                    <button
-                        className={`border border-sample-blue rounded-xl text-sm px-2 py-1
+            <div className="">
+                <ModalComponent height="h-[200px] w-[250px]">
+                    <div className="flex flex-col gap-3 justify-center items-center w-full h-full">
+                        <div className="text-bold">정말 삭제하시겠습니까?</div>
+                        <div className="flex flex-row gap-1 w-full justify-center items-center">
+                            <button
+                                onClick={handleDelete}
+                                className="bg-sample-blue text-white px-3 py-1 rounded-sm"
+                            >
+                                예
+                            </button>
+                            <button
+                                onClick={closeModal}
+                                className="bg-white border border-sample-blue text-sample-blue px-3 py-1 rounded-sm"
+                            >
+                                아니오
+                            </button>
+                        </div>
+                    </div>
+                </ModalComponent>
+                {groupedLetters.map((dayGroup) => (
+                    <LetterDateGroup
+                        key={dayGroup.date}
+                        date={dayGroup.date}
+                        letters={dayGroup.letters}
+                        checkedItems={checkedItems}
+                        handleSingleCheck={handleSingleCheck}
+                    />
+                ))}
+            </div>
+        );
+    };
+
+    return (
+        <div className="flex flex-col gap-2">
+            <div className="flex flex-row gap-2">
+                <button
+                    className={`border border-sample-blue rounded-xl text-sm px-2 py-1
                                 ${
-                                    selectedFilter === 'LETTER'
+                                    filterType === 'sent'
                                         ? 'bg-sample-blue text-white'
                                         : 'bg-white text-sample-blue'
                                 }`}
-                        onClick={() => setSelectedFilter('LETTER')}
-                    >
-                        보낸 편지
-                    </button>
-                    <button
-                        className={`border border-sample-blue rounded-xl text-sm px-2 py-1
+                    onClick={() => setSearchParams({ filtertype: 'sent' })}
+                >
+                    보낸 편지
+                </button>
+                <button
+                    className={`border border-sample-blue rounded-xl text-sm px-2 py-1
                                 ${
-                                    selectedFilter === 'REPLY_LETTER'
+                                    filterType === 'received'
                                         ? 'bg-sample-blue text-white'
                                         : 'bg-white text-sample-blue'
                                 }`}
-                        onClick={() => setSelectedFilter('REPLY_LETTER')}
-                    >
-                        받은 편지
-                    </button>
-                </div>
-                {/* 삭제 섹션 */}
-                <div className="flex flex-row gap-3 justify-between text-sm w-full">
+                    onClick={() => setSearchParams({ filtertype: 'received' })}
+                >
+                    받은 편지
+                </button>
+            </div>
+            {groupedLetters.length === 0 ? null : (
+                <div className="flex flex-row justify-between w-full gap-3 text-sm">
                     <div className="flex flex-row items-center gap-1">
                         <input
                             type="checkbox"
@@ -181,61 +187,30 @@ export const StorageList = ({ type = 'keyword' }: StorageListProps) => {
                         />
                         <label>전체</label>
                     </div>
-                    <button className="bg-sample-gray px-2 py-1">삭제</button>
+                    <button
+                        className="px-2 py-1 bg-sample-gray"
+                        onClick={() => {
+                            if (checkedItems.length === 0) {
+                                addToast('삭제할 편지가 없어요.', 'warning');
+                                return;
+                            }
+                            openModal();
+                        }}
+                    >
+                        삭제
+                    </button>
                 </div>
-                {groupedLetters.map((dayGroup) => (
-                    <div key={dayGroup.date} className="flex flex-col gap-3">
-                        {/* 날짜 섹션 */}
-                        <div className="text-md font-medium">
-                            {dayGroup.date}
-                        </div>
-                        {/* 해당 날짜의 편지들 */}
-                        <div className="flex flex-col gap-2">
-                            {dayGroup.letters.map((letter) => (
-                                <div
-                                    key={letter.letterId}
-                                    className="flex flex-row gap-2"
-                                >
-                                    <input
-                                        type="checkbox"
-                                        name={`select-${letter.letterId}`}
-                                        onChange={(e) =>
-                                            handleSingleCheck(
-                                                e.target.checked,
-                                                letter.letterId
-                                            )
-                                        }
-                                        checked={
-                                            checkedItems.includes(
-                                                letter.letterId
-                                            )
-                                                ? true
-                                                : false
-                                        }
-                                    />
-                                    <div className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray">
-                                        <Itembox>
-                                            <BottleLetter Letter={letter} />
-                                        </Itembox>
-                                        <div className="flex flex-col h-full">
-                                            <div className="text-[12px] text-gray-500 mt-2">
-                                                {letter.letterType === 'LETTER'
-                                                    ? '보낸 편지'
-                                                    : '받은 편지'}
-                                            </div>
-                                            <h3 className="font-bold text-sm">
-                                                {letter.title}
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
+            )}
+            <div>
+                {renderList()}
+                {isFetchingNextPage ? (
+                    <div>패치중</div>
+                ) : hasNextPage ? (
+                    <div ref={ref} />
+                ) : (
+                    <div></div>
+                )}
             </div>
-        );
-    };
-
-    return <div className="">{renderList()}</div>;
+        </div>
+    );
 };

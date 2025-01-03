@@ -5,6 +5,7 @@ import { Input } from './Input';
 type NicknameInputProps = {
     defaultValue?: string;
     disabled?: boolean;
+    showText?: boolean;
     onValueChange?: (value: string) => void;
     onKeyDown?: (e: React.KeyboardEvent) => void;
 };
@@ -12,6 +13,7 @@ type NicknameInputProps = {
 export const NicknameInput = ({
     defaultValue,
     disabled,
+    showText = true,
     onValueChange,
     onKeyDown
 }: NicknameInputProps) => {
@@ -20,7 +22,7 @@ export const NicknameInput = ({
             type="text"
             autoComplete="nickname"
             name="nickname"
-            text="닉네임"
+            text={showText ? '닉네임' : ''}
             errorMessage={AUTH_INPUT_VALIDATION.nickname.errorMessage}
             pattern={AUTH_INPUT_VALIDATION.nickname.regexp}
             maxLength={15}

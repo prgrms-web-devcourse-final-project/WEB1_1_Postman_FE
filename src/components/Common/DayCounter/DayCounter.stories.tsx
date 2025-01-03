@@ -14,6 +14,6 @@ type Story = StoryObj<typeof DayCounter>;
 
 export const Default: Story = {
     args: {
-        daysLeft: 21
+        createdAt: '2020-11-21'
     }
 };

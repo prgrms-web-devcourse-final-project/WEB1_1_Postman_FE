@@ -41,3 +41,8 @@ vite_cache
 .env.local
 .env.development
 .env.production
+
+
+### Lighthouse 
+.lighthouseci
+lhci_reports

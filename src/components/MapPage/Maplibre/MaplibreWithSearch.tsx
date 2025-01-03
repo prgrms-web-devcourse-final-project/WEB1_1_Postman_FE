@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Map, { Marker } from 'react-map-gl/maplibre';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -11,97 +11,48 @@ import { LuMapPin } from 'react-icons/lu';
 import { useSearchStore } from '@/stores/useSearchStore';
 import { useCurrentLocation } from '@/hooks/useCurrentLocation';
 import { useNearbyLetters } from '@/hooks/useNearbyLetters';
+import { NearbyLettersResponseType } from '@/types/letter';
+import { useLocationState } from '@/hooks/useLocationState';
+import { BottleLetter } from '@/components/Common/BottleLetter/BottleLetter';
 
-type Letter = {
-    id: number;
-    longitude: number;
-    latitude: number;
-    title: string;
-    keyword: string;
-    date: string;
-};
 type MaplibreWithSearchProps = {
     onFocus: () => void;
+    setNearbyLettersLength: (length: number) => void;
 };
-const sampleLetters: Letter[] = [
-    {
-        id: 1,
-        longitude: 127.01,
-        latitude: 37.51,
-        title: '첫 번째 편지',
-        keyword: '가을 바람',
-        date: '21.11.15'
-    },
-    {
-        id: 2,
-        longitude: 127.02,
-        latitude: 37.52,
-        title: '두 번째 편지',
-        keyword: '단풍',
-        date: '21.11.20'
-    },
-    {
-        id: 3,
-        longitude: 126.99,
-        latitude: 37.49,
-        title: '세 번째 편지',
-        keyword: '바람',
-        date: '21.11.25'
-    }
-];
 
-export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
+export const MaplibreWithSearch = ({
+    onFocus,
+    setNearbyLettersLength
+}: MaplibreWithSearchProps) => {
     const { toggleSelectedLetter, clearSelectedLetter } =
         useSelectedLetterStore();
     const { searchedLocation, clearSearchedLocation } = useSearchStore();
     const { currentLocation, direction } = useCurrentLocation();
     const [searchText, setSearchText] = useState('');
 
-    const [viewState, setViewState] = useState({
-        longitude: 127.0,
-        latitude: 37.5,
-        zoom: 11
-    });
-
-    const nearbyLetters = useNearbyLetters(currentLocation, sampleLetters);
-    useEffect(() => {
-        if (searchedLocation) {
-            setViewState({
-                longitude: parseFloat(searchedLocation.lon),
-                latitude: parseFloat(searchedLocation.lat),
-                zoom: 16
-            });
-        } else {
-            if (currentLocation) {
-                setViewState((prev) => ({
-                    ...prev,
-                    longitude: currentLocation.longitude,
-                    latitude: currentLocation.latitude,
-                    zoom: 15
-                }));
-            }
-        }
-    }, [searchedLocation, currentLocation]);
+    const { viewState, setViewState } = useLocationState(
+        setNearbyLettersLength
+    );
+    const { nearbyLetters } = useNearbyLetters(currentLocation);
 
     return (
-        <div className="relative h-[812px] w-full">
-            <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-2 left-1/2">
+        <div className="relative h-full">
+            <div className="absolute z-10 flex items-center p-2 space-x-2 transform -translate-x-1/2 bg-white rounded-lg shadow-md top-[1rem] left-1/2">
                 <input
                     type="text"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
-                    placeholder={'숨길 장소를 검색해보세요!'}
+                    placeholder={'원하는 위치를 검색해보세요!'}
                     className="rounded-md outline-none w-72"
                     onFocus={onFocus}
                 />
-                <button className="px-4 py-2">
-                    <IoIosSearch />
-                </button>
+                <IoIosSearch className="w-6 h-8 cursor-pointer" />
             </div>
+
             {searchedLocation?.name && (
-                <div className="absolute top-20 w-[360px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-slate-200 rounded-2xl p-2 flex items-center justify-between">
-                    <LuMapPin />
-                    <span className="flex-1 ml-2">{searchedLocation.name}</span>
+                <div className="absolute top-[5rem] w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-sample-gray shadow-md text-sample-black text-bold rounded-md p-2 flex items-center justify-between">
+                    <LuMapPin className="ml-2" />
+                    <span className="flex-1 ml-4">{searchedLocation.name}</span>
                     <LiaTimesSolid
                         className="cursor-pointer"
                         onClick={clearSearchedLocation}
@@ -115,7 +66,7 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
                 style={{ width: '100%', height: '100%' }}
                 mapStyle={mapStyle as StyleSpecification}
                 mapLib={maplibregl}
-                minZoom={6}
+                minZoom={14}
                 maxZoom={18}
                 onClick={() => clearSelectedLetter()}
             >
@@ -126,33 +77,38 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
                         anchor="bottom"
                         rotation={direction || 0}
                     >
-                        <img
-                            src="https://www.svgrepo.com/show/372536/map-marker.svg"
-                            alt="marker"
-                            className="w-[30px] h-[30px] transform -translate-x-1/2 -translate-y-full"
-                        />
+                        <span className="relative flex h-5 w-5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sample-marker opacity-75"></span>
+                            <span className="relative inline-flex justify-center items-center rounded-full h-5 w-5 bg-white">
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-sample-marker" />
+                            </span>
+                        </span>
                     </Marker>
                 )}
-                {nearbyLetters.map((letter) => (
-                    <Marker
-                        key={letter.id}
-                        longitude={letter.longitude}
-                        latitude={letter.latitude}
-                    >
-                        <div
-                            className="p-1 bg-gray-100 rounded-sm"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                toggleSelectedLetter(letter);
-                            }}
+                {nearbyLetters.map(
+                    (letter: NearbyLettersResponseType['result'][0]) => (
+                        <Marker
+                            key={letter.letterId}
+                            longitude={letter.longitude}
+                            latitude={letter.latitude}
                         >
-                            <img
-                                src="/bottle.png"
-                                className="w-full h-5 rounded-lg"
-                            />
-                        </div>
-                    </Marker>
-                ))}
+                            <div
+                                className="relative flex items-center justify-center w-8 h-8 bg-white rounded-full cursor-pointer transform"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleSelectedLetter(letter);
+                                }}
+                            >
+                                <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2">
+                                    <BottleLetter
+                                        Letter={{ label: letter.label }}
+                                    />
+                                </div>
+                                <div className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-white"></div>
+                            </div>
+                        </Marker>
+                    )
+                )}
                 {searchedLocation && (
                     <Marker
                         longitude={parseFloat(searchedLocation.lon)}
@@ -160,11 +116,21 @@ export const MaplibreWithSearch = ({ onFocus }: MaplibreWithSearchProps) => {
                         anchor="bottom"
                         rotation={direction || 0}
                     >
-                        <img
-                            src="https://www.svgrepo.com/show/372536/map-marker.svg"
-                            alt="marker"
-                            className="w-[30px] h-[30px] transform -translate-x-1/2 -translate-y-full"
-                        />
+                        <div className="flex justify-center">
+                            <div className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center">
+                                <svg
+                                    className="w-6 h-6 text-sample-place"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </div>
+                        </div>
                     </Marker>
                 )}
             </Map>

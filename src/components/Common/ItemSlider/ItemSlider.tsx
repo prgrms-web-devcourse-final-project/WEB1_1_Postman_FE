@@ -1,3 +1,4 @@
+// ItemSlider.tsx
 import React from 'react';
 import type { CSSProperties } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,30 +7,32 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
-// 테스트용 타입입니다.
-type ItemType = 'text' | 'image';
-
-// 테스트용 타입입니다.
-type Item = {
+type TextItem = {
     name: string;
     id: string;
+    fontName: string;
 };
 
+type ImageItem = {
+    id: string;
+    src: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+    name: string;
+};
+
+type Item = TextItem | ImageItem;
+
 type ItemSliderProps = {
-    itemType: ItemType;
+    itemType: 'text' | 'image';
     itemIDList: Item[];
     width?: string;
     height?: string;
     spaceBetween?: number;
     value: string;
-    setValue: (value: string) => void; // value를 변경할 수 있는 setValue 함수
+    setValue: (value: string) => void;
 };
-
-export const ItemSlider = ({
-    itemType,
+const ItemSlider = ({
     itemIDList,
-    width,
-    height,
+
     spaceBetween = 10,
     value,
     setValue
@@ -39,42 +42,30 @@ export const ItemSlider = ({
         height: 'auto'
     };
 
-    const getImagePath = (id: string) => {
-        // 테스트 이미지 경로입니다.
-        return `/${id}.png`;
-    };
-
     const getSliderContent = (item: Item) => {
-        switch (itemType) {
-            case 'text':
-                return (
-                    <div
-                        className="flex items-center justify-center h-full p-2 cursor-pointer "
-                        onClick={() => {
-                            setValue(item.name);
-                        }} // 아이템 클릭 시 setValue 호출
-                    >
-                        {item.name}
-                    </div>
-                );
-            case 'image':
-                return (
-                    <div
-                        className="flex items-center justify-center h-full cursor-pointer"
-                        onClick={() => {
-                            setValue(item.id);
-                        }} // 아이템 클릭 시 setValue 호출
-                    >
-                        <img
-                            className="object-cover rounded"
-                            src={getImagePath(item.id)}
-                            alt={item.name}
-                            style={{ width: width, height: height }}
-                        />
-                    </div>
-                );
-            default:
-                return null;
+        if ('fontName' in item) {
+            return (
+                <div
+                    className={`flex items-center justify-center h-full p-2 cursor-pointer ${item.name} bg-white rounded-lg`}
+                    onClick={() => setValue(item.name)}
+                >
+                    {item.fontName}
+                </div>
+            );
+        } else {
+            const SvgComponent = item.src;
+            return (
+                <div
+                    className="w-[90px] h-[130px] flex items-center justify-center cursor-pointer"
+                    onClick={() => setValue(item.id)}
+                >
+                    <SvgComponent
+                        preserveAspectRatio="xMidYMid slice"
+                        className="w-full h-full"
+                        viewBox="0 0 500 1080"
+                    />
+                </div>
+            );
         }
     };
 
@@ -86,19 +77,22 @@ export const ItemSlider = ({
             modules={[FreeMode, Pagination]}
             className="mySwiper"
         >
-            {itemIDList.map((item) => {
-                return (
-                    <SwiperSlide
-                        style={slideStyle}
-                        key={item.id}
-                        className={`flex justify-center align-middle rounded-md bg-slate-200 ${
-                            item.id === value ? 'bg-blue-200' : '' // 선택된 아이템 배경 색 변경
-                        }`}
-                    >
-                        {getSliderContent(item)}
-                    </SwiperSlide>
-                );
-            })}
+            {itemIDList.map((item) => (
+                <SwiperSlide
+                    style={slideStyle}
+                    key={item.id}
+                    className={`flex justify-center items-center rounded-md bg-slate-200 border-2 ${
+                        item.id === value ||
+                        ('fontName' in item && item.name === value)
+                            ? 'border-[rgb(34,184,239)]'
+                            : 'border-transparent'
+                    }`}
+                >
+                    {getSliderContent(item)}
+                </SwiperSlide>
+            ))}
         </Swiper>
     );
 };
+
+export default ItemSlider;

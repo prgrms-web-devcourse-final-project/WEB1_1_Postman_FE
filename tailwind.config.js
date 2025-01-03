@@ -11,7 +11,14 @@ export default {
                     black: '#5C5C5C',
                     hoverblue: '#1882A8',
                     textgray: '#C3C3C3',
-                    select: '#22ABEF'
+                    select: '#22ABEF',
+                    marker: '#0168df',
+                    place: '#fe6039'
+                },
+                theme: {
+                    skyblue: '#98c7fd',
+                    heart: '#fef0ed',
+                    flower: '#f6f4e2'
                 }
             },
             maxWidth: {
@@ -22,6 +29,16 @@ export default {
                     '0%': { opacity: '0', transform: 'translateY(-20px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' }
                 },
+                fadeUp: {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translateY(10px)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)'
+                    }
+                },
                 'toast-slide-in': {
                     '0%': { opacity: '0', transform: 'translateY(-20px)' },
                     '10%': { opacity: '1', transform: 'translateY(0)' },
@@ -31,6 +48,7 @@ export default {
             },
             animation: {
                 fadeIn: 'fadeIn 2s ease forwards',
+                'fade-up': 'fadeUp 0.4s ease-out',
                 'toast-slide-in': 'toast-slide-in 2s ease forwards'
             },
             fontFamily: {
@@ -41,7 +59,12 @@ export default {
                     'system-ui',
                     'Roboto',
                     'sans-serif'
-                ]
+                ],
+                bagelfatone: ['BagelFatOne', 'sans-serif'],
+                cookierun: ['CookieRunRegular', 'sans-serif'],
+                inter: ['InterVariableFont', 'sans-serif'],
+                pyeongchangpeace: ['PyeongChangPeaceLight', 'sans-serif'],
+                sagak: ['Sagak-sagak', 'sans-serif']
             },
             fontSize: {
                 display: ['28px', { lineHeight: '1.3' }], // 큰 제목용
@@ -77,14 +100,13 @@ export default {
         ({ addComponents }) => {
             addComponents({
                 '.btn-base': {
-                    '@apply bg-primary w-full rounded p-6 text-black hover:opacity-80':
-                        ''
+                    '@apply bg-primary w-full rounded p-6 text-black': ''
                 },
                 '.text-btn': {
                     '@apply text-black hover:underline': ''
                 },
                 '.keyword-tag': {
-                    '@apply bg-primary rounded-2xl p-2': ''
+                    '@apply bg-white rounded-lg rounded-2xl p-2': ''
                 }
             });
         }

@@ -11,7 +11,7 @@ const meta: Meta<typeof TitleClosedTopBar> = {
         docs: {
             description: {
                 component:
-                    '이전 페이지로 이동하는 x버튼과 타이틀이 있는 앱 바 입니다.'
+                    '이전 페이지로 이동하는 x버튼과 타이틀이 있는 앱바 입니다.'
             }
         }
     },

@@ -7,7 +7,9 @@ type BannerProps = {
 
 export const Banner = ({ color, children }: BannerProps) => {
     return (
-        <div className={`flex h-20 rounded-lg shadow transition-all ${color}`}>
+        <div
+            className={`flex overflow-hidden rounded-lg shadow transition-all ${color}`}
+        >
             {children}
         </div>
     );

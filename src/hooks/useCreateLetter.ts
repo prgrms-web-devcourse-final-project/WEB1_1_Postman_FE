@@ -15,6 +15,10 @@ export const useCreateLetter = () => {
 
         onSuccess: () => {
             navigate('/letter/success');
+            localStorage.removeItem('title');
+            localStorage.removeItem('letterContent');
+            localStorage.removeItem('letter');
+            localStorage.removeItem('font');
         },
         onError: (error: ApiErrorType) => {
             addToast(`${error.message}`, 'warning');

@@ -15,9 +15,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const sampleProfileImage = {
-    id: 'sample-1',
-    name: '샘플 이미지',
-    src: '/testimg.jpg'
+    id: 1,
+    alt: '샘플 이미지',
+    url: '/testimg.jpg'
 };
 
 export const Default: Story = {
