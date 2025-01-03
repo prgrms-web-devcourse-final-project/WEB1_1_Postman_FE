@@ -32,7 +32,6 @@ const ProfileSharePage = lazy(
 import { tokenStorage } from './service/auth/tokenStorage';
 import { AuthProvider } from './AuthProvider';
 import { Container } from '@/components/Common/Container/Container';
-
 import { CreateMapLetterPage } from './pages/Map/Create/CreateMapLetterPage';
 import { MapSelectItemPage } from './pages/Map/Select/MapSelectItemPage';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -113,7 +112,7 @@ export const router = createBrowserRouter([
                 element: <MyPage />
             },
             {
-                path: 'storage/:letterType',
+                path: 'storage/:selectedLetterType',
                 element: <StoragePage />
             },
             {
