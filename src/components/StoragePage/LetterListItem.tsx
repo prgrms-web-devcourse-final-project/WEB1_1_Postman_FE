@@ -59,7 +59,7 @@ export const LetterListItem = ({
                             boxType={keywordLetter.boxType}
                             letterType={keywordLetter.letterType}
                         />
-                        <h3 className="text-md font-bold">
+                        <h3 className="font-bold text-md">
                             {keywordLetter.title}
                         </h3>
                     </>
@@ -89,8 +89,8 @@ export const LetterListItem = ({
                         <div className="text-sm">
                             {getUserNicknameLabel(mapLetter)}
                         </div>
-                        <div className="flex flex-row gap-1 items-center">
-                            <h3 className="text-md font-bold">
+                        <div className="flex flex-row items-center gap-1">
+                            <h3 className="font-bold text-md">
                                 {letter.title}
                             </h3>
                         </div>
@@ -107,7 +107,7 @@ export const LetterListItem = ({
                 const bookmarkLetter = letter as StorageMapArchivedLetter;
                 return (
                     <>
-                        <h3 className="text-md font-bold">
+                        <h3 className="font-bold text-md">
                             {bookmarkLetter.title}
                         </h3>
                         <div>샘플 위치가 들어갑니다.</div>
@@ -135,7 +135,7 @@ export const LetterListItem = ({
                 className="flex flex-row gap-4 w-full h-[90px] items-center p-4 rounded-lg bg-sample-gray cursor-pointer"
                 onClick={() => navigate(getNavigatePath(letter))}
             >
-                <div className="flex flex-row gap-4 w-full items-center">
+                <div className="flex flex-row items-center w-full gap-4">
                     <div className="w-[67px] h-[67px] p-2 bg-white rounded-full">
                         <BottleLetter Letter={letter} />
                     </div>

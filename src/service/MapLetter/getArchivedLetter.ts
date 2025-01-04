@@ -3,7 +3,7 @@ import { ApiResponseType } from '@/types/apiResponse';
 import { getArchivedMapLetterResultType } from '@/types/letter';
 
 type ArchivedMapLetterRequestProps = {
-    letterId: number;
+    letterId: string;
 };
 
 type ArchivedMapLetterResponse =
