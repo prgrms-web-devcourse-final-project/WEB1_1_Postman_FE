@@ -3,7 +3,6 @@ import { BackButton } from '../BackButton/BackButton';
 import { useNavigate } from 'react-router-dom';
 
 type TopBaerProps = {
-    handleBackClick?: () => void;
     handleSuccesClick?: () => void;
 };
 

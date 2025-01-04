@@ -97,8 +97,7 @@ export const TextArea = ({
         <div className="relative">
             <textarea
                 className={clsx(
-                    `w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px] focus:outline-none`,
-                    font ? font : 'font-sans'
+                    `w-full  m-auto overflow-hidden bg-transparent border-none resize-none min-h-[413px] min-w-[281px] focus:outline-none`
                 )}
                 style={{
                     lineHeight: lineHeight
