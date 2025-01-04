@@ -4,21 +4,19 @@ import { useToastStore } from '@/hooks/useToastStore';
 import { LetterType } from '@/types/letter';
 import { ApiErrorType } from './../types/apiError';
 import { useNavigate } from 'react-router-dom';
+import { useLetterDB } from './useLetterDB';
 
 export const useCreateLetter = () => {
     const { addToast } = useToastStore();
     const navigate = useNavigate();
-
+    const { clearAllLetters } = useLetterDB();
     return useMutation({
         mutationKey: ['createLetter'],
         mutationFn: (letterData: LetterType) => createLetter(letterData),
 
         onSuccess: () => {
             navigate('/letter/success');
-            localStorage.removeItem('title');
-            localStorage.removeItem('letterContent');
-            localStorage.removeItem('letter');
-            localStorage.removeItem('font');
+            clearAllLetters();
         },
         onError: (error: ApiErrorType) => {
             addToast(`${error.message}`, 'warning');

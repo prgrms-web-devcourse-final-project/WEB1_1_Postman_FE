@@ -12,7 +12,7 @@ export const KeywordLetterDetailContainer = () => {
     }>();
 
     if (letterType === 'LETTER' && letterId) {
-        return <OriginalDetailLetter letterId={letterId} />;
+        return <SentDetailLetter letterId={letterId} />;
     }
 
     if (letterType === 'REPLY_LETTER' && replyLetterId) {
@@ -26,11 +26,11 @@ export const KeywordLetterDetailContainer = () => {
     );
 };
 
-type OriginalDetailLetterProps = {
+type SentDetailLetterProps = {
     letterId: string;
 };
 
-const OriginalDetailLetter = ({ letterId }: OriginalDetailLetterProps) => {
+const SentDetailLetter = ({ letterId }: SentDetailLetterProps) => {
     const { data } = useKeywordLetterDetail({
         letterId
     });

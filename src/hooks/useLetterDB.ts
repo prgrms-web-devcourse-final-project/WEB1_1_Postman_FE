@@ -85,7 +85,6 @@ export const useLetterDB = () => {
                 const request = store.clear();
 
                 request.onsuccess = () => {
-                    addToast('모든 데이터가 삭제되었습니다', 'success');
                     resolve();
                 };
 
