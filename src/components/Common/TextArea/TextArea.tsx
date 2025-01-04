@@ -7,14 +7,14 @@ import { LetterLine } from '@/components/CreatLetterPage/LetterLine/LetterLine';
 type TextAreaProps = {
     value: string;
     setValue?: (value: string) => void;
-    font?: string;
+
     isReadonly?: boolean;
 };
 
 export const TextArea = ({
     value,
     setValue,
-    font,
+
     isReadonly
 }: TextAreaProps) => {
     const [lineHeight, setLineHeight] = useState<number>(2.2);

@@ -2,6 +2,7 @@ import React from 'react';
 import { TextArea } from '@/components/Common/TextArea/TextArea';
 import { LetterInput } from '../LetterInput/LetterInput';
 import { LetterLine } from '../LetterLine/LetterLine';
+import clsx from 'clsx';
 
 type LetterProps = {
     title: string;
@@ -26,28 +27,27 @@ export const LetterForm = ({
     setDescription
 }: LetterProps) => {
     return (
-        <div className="relative z-30 flex flex-col justify-center w-9/12 m-auto py-9">
+        <div
+            className={clsx(
+                `z-30 flex flex-col justify-center w-9/12 m-auto py-9`,
+                font || 'font-sans'
+            )}
+        >
             <LetterInput
                 value={title}
                 setValue={setTitle}
                 placeholder={'제목을 입력해주세요'}
                 maxLength={20}
-                font={font}
             />
             <LetterLine />
 
-            <TextArea
-                value={letterContent}
-                setValue={setLetterContent}
-                font={font}
-            />
+            <TextArea value={letterContent} setValue={setLetterContent} />
 
             {description && setDescription && (
                 <LetterInput
                     value={description}
                     setValue={setDescription}
                     placeholder={'힌트를 입력해주세요'}
-                    font={font}
                 />
             )}
         </div>
