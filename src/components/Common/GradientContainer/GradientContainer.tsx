@@ -7,7 +7,7 @@ export const GradientContainer = () => {
 
     return (
         <div
-            className="h-full max-w-[473px] min-w-[375px] w-full absolute"
+            className="h-full max-w-[475px] min-w-[375px] w-full absolute"
             style={gradientStyle}
         ></div>
     );

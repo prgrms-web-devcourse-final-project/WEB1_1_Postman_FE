@@ -66,7 +66,7 @@ const CommonLayout = () => (
 );
 
 const HomePageLayout = () => (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full relative">
         <GradientContainer />
         <Container pt={5} px={5}>
             <Outlet />
