@@ -75,5 +75,30 @@ export const useLetterDB = () => {
         }
     }, []);
 
-    return { saveLetter, getLetter };
+    const clearAllLetters = useCallback(async () => {
+        try {
+            const db = await initDB();
+            const tx = db.transaction('letters', 'readwrite');
+            const store = tx.objectStore('letters');
+
+            await new Promise<void>((resolve, reject) => {
+                const request = store.clear();
+
+                request.onsuccess = () => {
+                    addToast('모든 데이터가 삭제되었습니다', 'success');
+                    resolve();
+                };
+
+                request.onerror = () => {
+                    reject(new Error('데이터 삭제에 실패했습니다'));
+                };
+            });
+        } catch (error) {
+            addToast('데이터 삭제에 실패했습니다', 'error');
+            console.error(error);
+            throw error;
+        }
+    }, [addToast]);
+
+    return { saveLetter, getLetter, clearAllLetters };
 };
