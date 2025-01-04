@@ -3,7 +3,7 @@ import { getKeywordReplyLetterDetail } from '@/service/detail/getKeywordReplyLet
 import { GetKeywordReplyLetterDetailResponseType } from '@/types/letter';
 
 type UseKeywordLetterDetailProps = {
-    replyLetterId: number;
+    replyLetterId: string;
 };
 
 export const useGetKeywordReplyLetterDetail = ({

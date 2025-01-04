@@ -3,7 +3,7 @@ import { ApiResponseType } from '@/types/apiResponse';
 import { GetKeywordReplyLetterDetailResponseType } from '@/types/letter';
 
 type KeywordReplyLetterDetailRequestProps = {
-    replyLetterId: number;
+    replyLetterId: string;
 };
 
 type KeywordReplyLetterDetailResponse =

@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { getKeywordLetterDetail } from '@/service/detail/getKeywordLetterDetail';
 import { GetKeywordLetterDetailResponseType } from '@/types/letter';
 
@@ -9,12 +9,11 @@ type UseKeywordLetterDetailProps = {
 export const useKeywordLetterDetail = ({
     letterId
 }: UseKeywordLetterDetailProps) => {
-    return useQuery<GetKeywordLetterDetailResponseType, Error>({
+    return useSuspenseQuery<GetKeywordLetterDetailResponseType, Error>({
         queryKey: ['keywordLetterDetail', letterId],
         queryFn: async () => {
             const response = await getKeywordLetterDetail({ letterId });
             return response.result;
-        },
-        enabled: !!letterId
+        }
     });
 };
