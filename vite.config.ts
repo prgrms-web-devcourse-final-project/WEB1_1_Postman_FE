@@ -4,7 +4,7 @@ import svgr from 'vite-plugin-svgr';
 import viteCompression from 'vite-plugin-compression';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
     build: {
         rollupOptions: {
             external: [/\.stories\.(t|j)sx?$/, /\.story\.(t|j)sx?$/]
@@ -16,7 +16,7 @@ export default defineConfig({
         }
     },
     esbuild: {
-        drop: ['console', 'debugger']
+        drop: command === 'build' ? ['console', 'debugger'] : []
     },
     plugins: [
         svgr(),
@@ -30,4 +30,4 @@ export default defineConfig({
             gzipSize: true
         })
     ]
-});
+}));
