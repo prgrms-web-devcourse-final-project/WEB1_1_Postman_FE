@@ -2,10 +2,8 @@ import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { AnimationBottle } from '@/components/SelectItemPage/AnimationBottle/AnimationBottle';
 import { SelectItem } from '@/components/SelectItemPage/SelectItem/SelectItem';
 import React, { useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const SelectItemPage = () => {
-    const navigate = useNavigate();
     const [isActive, setIsActive] = useState(false);
 
     const handleIsActive = useCallback((value: boolean) => {
@@ -14,11 +12,7 @@ const SelectItemPage = () => {
 
     return (
         <>
-            <TopBar
-                handleBackClick={() => {
-                    navigate(-1);
-                }}
-            />
+            <TopBar />
 
             <h2
                 className={`text-2xl text-center mt-[25%] transition-opacity duration-1000 ${

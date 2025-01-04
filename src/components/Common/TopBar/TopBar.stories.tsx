@@ -23,9 +23,6 @@ type Story = StoryObj<typeof TopBar>;
 
 export const Default: Story = {
     args: {
-        handleBackClick: () => {
-            alert('back');
-        },
         handleSuccesClick: () => {
             alert('go');
         }

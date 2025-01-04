@@ -1,10 +1,8 @@
 import { Margin } from '@/components/Common/Margin/Margin';
 import { SliderMenuContainer } from '@/components/Common/SliderMenuContainer/SliderMenuContainer';
-import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { AnimationBottle } from '@/components/SelectItemPage/AnimationBottle/AnimationBottle';
 import { CreateButton } from '@/components/SelectItemPage/CreateButton/CreateButton';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { LabelProps } from '@/types/label';
 import { LabelList } from '@/components/SelectItemPage/LabelList/LabelList';
 import { useCreateMapLetter } from '@/hooks/useCreateMapLetter';
@@ -21,8 +19,6 @@ const testLable: LabelProps[] = [
 ];
 
 export const MapSelectItemPage = () => {
-    const navigate = useNavigate();
-
     // 로컬스토리지에서 데이터 가져오기
     const { storedValue: title } = useLocalStorage('maptitle', '');
     const { storedValue: content } = useLocalStorage('mapcontent', '');
@@ -88,12 +84,6 @@ export const MapSelectItemPage = () => {
 
     return (
         <div className="">
-            <TopBar
-                handleBackClick={() => {
-                    navigate(-1);
-                }}
-            />
-
             <h2
                 className={`text-2xl text-center mt-[25%] transition-opacity duration-1000 ${
                     isActive === true ? 'opacity-100' : 'opacity-0'
