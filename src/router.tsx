@@ -14,10 +14,8 @@ import {
     SuccessLetterPage,
     ProfilePage,
     StoragePage,
-    KeywordLetterDetailPage,
-    MapLetterDetailPage,
-    MapLetterArchieveDetailContainerPage,
-    KakaoRedirectPage
+    KakaoRedirectPage,
+    LetterDetailPage
 } from './pages';
 
 const MapExplorerPage = lazy(() => import('@/pages/Map/MapExplorerPage'));
@@ -169,24 +167,25 @@ export const router = createBrowserRouter([
             { path: 'success', element: <SuccessLetterPage /> },
             {
                 path: '/letter/map/:lat/:lot/:letterId',
-                element: <MapLetterDetailPage />
+                element: <LetterDetailPage />
             },
             {
                 path: '/letter/map/:dataType/:letterId',
-                element: <MapLetterArchieveDetailContainerPage />
+                element: <LetterDetailPage />
             },
             {
                 path: '/letter/keyword/:letterType/:dataType/:letterId',
-                element: <KeywordLetterDetailPage />
+                element: <LetterDetailPage />
             },
             {
                 path: '/letter/map/select',
                 element: <MapSelectItemPage />
-            },
+            }
+            /*
             {
                 path: '/letter/map/:dataType/bookmark/:letterId',
                 element: <MapLetterArchieveDetailContainerPage />
-            }
+            }*/
         ]
     },
     {
@@ -204,11 +203,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/letter/keyword/:letterType/:replyLetterId',
-                element: <KeywordLetterDetailPage />
+                element: <LetterDetailPage />
             },
             {
                 path: '/letter/map/:letterType/:replyLetterId',
-                element: <MapLetterArchieveDetailContainerPage />
+                element: <LetterDetailPage />
             }
         ]
     },

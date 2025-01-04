@@ -113,18 +113,18 @@ export const StorageList = () => {
         return (
             <div className="">
                 <ModalComponent height="h-[200px] w-[250px]">
-                    <div className="flex flex-col gap-3 justify-center items-center w-full h-full">
+                    <div className="flex flex-col items-center justify-center w-full h-full gap-3">
                         <div className="text-bold">정말 삭제하시겠습니까?</div>
-                        <div className="flex flex-row gap-1 w-full justify-center items-center">
+                        <div className="flex flex-row items-center justify-center w-full gap-1">
                             <button
                                 onClick={handleDelete}
-                                className="bg-sample-blue text-white px-3 py-1 rounded-sm"
+                                className="px-3 py-1 text-white rounded-sm bg-sample-blue"
                             >
                                 예
                             </button>
                             <button
                                 onClick={closeModal}
-                                className="bg-white border border-sample-blue text-sample-blue px-3 py-1 rounded-sm"
+                                className="px-3 py-1 bg-white border rounded-sm border-sample-blue text-sample-blue"
                             >
                                 아니오
                             </button>

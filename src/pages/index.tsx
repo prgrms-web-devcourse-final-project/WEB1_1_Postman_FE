@@ -5,7 +5,6 @@ import { LoginPage } from '@/pages/User/Login/LoginPage';
 import { RegisterPage } from '@/pages/User/Register/RegisterPage';
 import { ArchivedPage } from '@/pages/ArchivedPage';
 import { LabelCollectionsPage } from '@/pages/Storage/LabelCollectionsPage';
-import { KeywordLetterDetailPage } from '@/pages/Letter/Detail/KeywordLetterDetailPage/KeywordLetterDetailPage';
 import { NotificationPage } from '@/pages/Notification/NotificationPage';
 import { SentPage } from '@/pages/SentPage';
 import ProfileSharePage from '@/pages/User/Profile/ProfileSharePage';
@@ -15,9 +14,8 @@ import { MyPage } from '@/pages/User/MyPage/MyPage';
 import { SuccessLetterPage } from './Letter/Success/SuccessLetterPage';
 import { ProfilePage } from '@/pages/User/Profile/ProfilePage';
 import { StoragePage } from '@/pages/Storage/StoragePage';
-import { MapLetterDetailPage } from './Letter/Detail/MapLetterDetailPage/MapLetterDetailPage';
-import { MapLetterArchieveDetailContainerPage } from './Letter/Detail/MapLetterArchieveDetailContainerPage/MapLetterArchieveDetailContainerPage';
 import { KakaoRedirectPage } from '@/pages/User/Login/KakaoRedirectPage';
+import LetterDetailPage from './Letter/Detail/LetterDetailPage';
 
 export {
     ErrorPage,
@@ -28,8 +26,6 @@ export {
     RegisterPage,
     ArchivedPage,
     LabelCollectionsPage,
-    KeywordLetterDetailPage,
-    MapLetterDetailPage,
     NotificationPage,
     SentPage,
     ProfileSharePage,
@@ -38,6 +34,6 @@ export {
     SuccessLetterPage,
     ProfilePage,
     StoragePage,
-    MapLetterArchieveDetailContainerPage,
-    KakaoRedirectPage
+    KakaoRedirectPage,
+    LetterDetailPage
 };

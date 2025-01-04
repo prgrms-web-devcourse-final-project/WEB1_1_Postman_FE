@@ -3,7 +3,7 @@ import { getMapReplyLetterDetail } from '@/service/MapLetter/getMapReplyLetterDe
 import { GetMapReplyLetterDetailResponseType } from '@/types/letter';
 
 type UseMapLetterDetailProps = {
-    letterId: number;
+    letterId: string;
 };
 
 export const useGetMapReplyLetterDetail = ({
@@ -16,7 +16,6 @@ export const useGetMapReplyLetterDetail = ({
                 letterId
             });
             return response.result;
-        },
-        enabled: !!letterId
+        }
     });
 };

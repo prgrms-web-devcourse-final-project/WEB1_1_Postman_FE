@@ -7,10 +7,11 @@ import { useGetKeywordReplyList } from '@/hooks/useGetKeywordReplyList';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
 import { LetterLine } from '@/components/CreatLetterPage/LetterLine/LetterLine';
-import { KeywordList } from '../../Keyword/KeywordList';
-import { DeleteButton } from '../../Delete/DeleteButton';
-import { ReplyList } from '../../ReplyList/ReplyList';
-import { ReportButton } from '../../Report/ReportButton';
+import { DayCounter } from '@/components/Common/DayCounter/DayCounter';
+import { KeywordList } from '@/components/LetterDetailPage/Keyword/KeywordList';
+import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
+import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
+import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
 
 type LetterData = {
     letterId?: number | string;
@@ -21,6 +22,7 @@ type LetterData = {
     font: string;
     label: string;
     isReplied?: boolean;
+    description?: string;
 };
 
 type LetterContextType = {
@@ -38,7 +40,7 @@ const useLetterContext = () => {
 };
 
 // Root 컴포넌트
-const Letter = ({
+const LetterLayout = ({
     letterData,
     children
 }: {
@@ -147,10 +149,33 @@ const ReplyButton = () => {
     );
 };
 
-Letter.Header = Header;
-Letter.Title = Title;
-Letter.Content = Content;
-Letter.Keyword = Keyword;
-Letter.ReplyButton = ReplyButton;
+// Hint 컴포넌트
+const LetterHint = () => {
+    const { letterData } = useLetterContext();
+    const { createdAt, description } = letterData;
 
-export default Letter;
+    return (
+        <>
+            <div className="flex justify-between w-full mt-6">
+                <p className="font-bold ">장소 힌트</p>
+                <div>
+                    <p className="">{formatDate(createdAt)}</p>
+                </div>
+            </div>
+            <div className="flex justify-between">
+                <span className="block w-9/12 break-words whitespace-normal">
+                    {description}
+                </span>
+                <span>{DayCounter({ createdAt })}</span>
+            </div>
+        </>
+    );
+};
+
+LetterLayout.Header = Header;
+LetterLayout.Title = Title;
+LetterLayout.Content = Content;
+LetterLayout.Keyword = Keyword;
+LetterLayout.ReplyButton = ReplyButton;
+LetterLayout.LetterHint = LetterHint;
+export default LetterLayout;

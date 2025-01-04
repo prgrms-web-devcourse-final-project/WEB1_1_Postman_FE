@@ -3,7 +3,7 @@ import { ApiResponseType } from '@/types/apiResponse';
 import { GetMapReplyLetterDetailResponseType } from '@/types/letter';
 
 type MapReplyLetterDetailRequestProps = {
-    letterId: number;
+    letterId: string;
 };
 
 type MapReplyLetterDetailResponse =
