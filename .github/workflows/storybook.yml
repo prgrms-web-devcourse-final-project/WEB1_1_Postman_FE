@@ -3,7 +3,7 @@ name: 'Chromatic Deployment'
 
 on:
     pull_request:
-        branches: develope
+        branches: main
         paths:
             - '**.stories.tsx'
     push:
@@ -39,3 +39,5 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   message: '🚀 **storybook**: ${{ steps.publish_chromatic.outputs.storybookUrl }}'
+                  comment_tag: storybook
+                  mode: upsert

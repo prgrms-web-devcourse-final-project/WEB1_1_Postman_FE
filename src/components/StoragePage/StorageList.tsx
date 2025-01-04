@@ -15,7 +15,7 @@ const ROWS_PER_PAGE = 10;
 
 export const StorageList = () => {
     const queryClient = useQueryClient();
-    const { letterType } = useParams();
+    const { selectedLetterType } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
     const filterType = searchParams.get('filtertype');
     const { ref, inView } = useInView();
@@ -24,7 +24,7 @@ export const StorageList = () => {
     const [checkedItems, setCheckedItems] = useState<DeleteLetterType[]>([]);
 
     const getApiEndpoint = () => {
-        return match<storageLetterType>(letterType as storageLetterType)
+        return match<storageLetterType>(selectedLetterType as storageLetterType)
             .with('keyword', () => `/letters/saved/${filterType}`)
             .with('map', () => `/map/${filterType}`)
             .with('bookmark', () => '/map/archived')

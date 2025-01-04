@@ -14,7 +14,7 @@ import { ErrorPage } from '../ErrorPage';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
 import { Margin } from '@/components/Common/Margin/Margin';
 
-export const HomePage = () => {
+const HomePage = () => {
     usePushNotifications(); // 푸시 알림 훅
 
     const { user } = useUserStore();
@@ -85,3 +85,5 @@ export const HomePage = () => {
         </div>
     );
 };
+
+export default HomePage;

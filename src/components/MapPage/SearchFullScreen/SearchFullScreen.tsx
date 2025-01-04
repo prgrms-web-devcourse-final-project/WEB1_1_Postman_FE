@@ -32,10 +32,12 @@ export const SearchFullScreen = ({
         loadRecentSearches();
     }, [loadRecentSearches]);
 
-    const onBackClick = () => {
-        clearSearchedLocation();
-        onClose();
-    };
+    useEffect(() => {
+        if (isOpen && inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [isOpen]);
+
     const onSearchClick = () => {
         const searchTerm = inputRef.current?.value.trim();
         if (searchTerm) {
@@ -45,14 +47,12 @@ export const SearchFullScreen = ({
     };
 
     const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        const searchTerm = inputRef.current?.value?.trim() || '';
-        if (e.key === 'Enter' && searchTerm !== '') {
-            saveSearchTerm(searchTerm);
-            onClose();
+        if (e.key === 'Enter') {
+            onSearchClick();
         }
     };
 
-    const onTermsClick = (searchTerm: string) => {
+    const onTermClick = (searchTerm: string) => {
         if (inputRef.current) {
             inputRef.current.value = searchTerm;
             saveSearchTerm(searchTerm);
@@ -63,22 +63,19 @@ export const SearchFullScreen = ({
         }
     };
 
-    useEffect(() => {
-        if (inputRef.current) {
-            inputRef.current.focus();
-        }
-    }, [isOpen]);
-
-    if (!isOpen) {
-        return null;
-    }
-
     const isInputNotEmpty = inputRef.current?.value.trim() !== '';
+
+    if (!isOpen) return null;
 
     return (
         <div className="mx-auto min-w-[375px] max-w-[475px]">
             <div className="flex items-center justify-between w-full h-12 pl-3 pr-4 border-b">
-                <BackButton onClick={onBackClick} />
+                <BackButton
+                    onClick={() => {
+                        clearSearchedLocation();
+                        onClose();
+                    }}
+                />
                 <input
                     ref={inputRef}
                     type="text"
@@ -113,28 +110,24 @@ export const SearchFullScreen = ({
                         <RelatedSearchTermsList
                             key={index}
                             place={related}
-                            onClick={() => onTermsClick(related)}
+                            onClick={() => onTermClick(related)}
+                        />
+                    ))
+                ) : recentSearches.length > 0 ? (
+                    recentSearches.map((history, index) => (
+                        <SearchHistoryList
+                            key={index}
+                            place={history.place}
+                            date={history.date}
+                            index={index}
+                            onDelete={deleteSearchTerm}
+                            onClick={() => onTermClick(history.place)}
                         />
                     ))
                 ) : (
-                    <>
-                        {recentSearches.length > 0 ? (
-                            recentSearches.map((history, index) => (
-                                <SearchHistoryList
-                                    key={index}
-                                    place={history.place}
-                                    date={history.date}
-                                    index={index}
-                                    onDelete={deleteSearchTerm}
-                                    onClick={() => onTermsClick(history.place)}
-                                />
-                            ))
-                        ) : (
-                            <p className="mt-16 text-sm text-gray-500 flex-center">
-                                최근 검색어 내역이 없습니다.
-                            </p>
-                        )}
-                    </>
+                    <p className="mt-16 text-sm text-gray-500 flex-center">
+                        최근 검색어 내역이 없습니다.
+                    </p>
                 )}
             </div>
         </div>

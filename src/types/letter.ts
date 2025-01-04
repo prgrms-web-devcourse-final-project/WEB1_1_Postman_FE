@@ -8,6 +8,8 @@ export type LetterType = {
 };
 
 export type storageLetterType = 'keyword' | 'map' | 'bookmark';
+export type ApiBoxType = 'SEND' | 'RECEIVE';
+export type ApiLetterType = 'LETTER' | 'REPLY_LETTER';
 
 export type DeleteLetterType = {
     letterId: number;
@@ -15,33 +17,49 @@ export type DeleteLetterType = {
     boxType: string;
 };
 
-export type StorageKeywordLetterType = {
+export interface BaseLetter {
     letterId: number;
     title: string;
-    description: string;
-    latitude: number;
-    longitude: number;
     label: string;
+    letterType: ApiLetterType;
+    boxType: ApiBoxType;
     createdAt: string;
-    type: string;
-    sourceLetterId: number;
-    senderNickname: string;
-    senderProfileImg: string;
-};
+}
 
-export type StorageMapLetterType = {
-    letterId: number;
-    title: string;
+export interface StorageKeywordLetter extends BaseLetter {
+    keywords?: string[]; // TODO : 키워드 관련 특수 필드 요청
+}
+
+export interface StorageMapSentLetter extends BaseLetter {
+    description: string;
+    targetUserNickname: string;
+    type: string;
+    sourceLetterId: number;
+}
+
+export interface StorageMapReceivedLetter extends BaseLetter {
     description: string;
     latitude: number;
     longitude: number;
-    label: string;
-    createdAt: string;
     type: string;
     sourceLetterId: number;
     senderNickname: string;
     senderProfileImg: string;
-};
+}
+
+export interface StorageMapArchivedLetter extends BaseLetter {
+    archiveId: number;
+    description: string;
+    latitude: number;
+    longitude: number;
+    letterCreatedAt: string;
+}
+
+export type StorageLetterDataType =
+    | StorageKeywordLetter
+    | StorageMapSentLetter
+    | StorageMapReceivedLetter
+    | StorageMapArchivedLetter;
 
 export type MapReplyType = {
     sourceLetter: number;

@@ -1,15 +1,7 @@
 import { useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getLetter } from '@/service/storage/getLetter';
-
-interface Letter {
-    letterId: number;
-    title: string;
-    label: string;
-    letterType: string;
-    boxType: string;
-    createdAt: string;
-}
+import { StorageLetterDataType } from '@/types/letter';
 
 type useInfiniteStorageFetchParams = {
     apiEndpoint: string;
@@ -65,7 +57,7 @@ export const useInfiniteStorageFetch = ({
         }
         const allLetters = data.pages.flatMap((page) => page.content);
         const grouped = allLetters.reduce(
-            (acc: { [key: string]: Letter[] }, letter) => {
+            (acc: { [key: string]: StorageLetterDataType[] }, letter) => {
                 const date = new Date(letter.createdAt)
                     .toISOString()
                     .split('T')[0];

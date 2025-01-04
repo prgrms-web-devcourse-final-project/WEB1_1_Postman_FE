@@ -1,4 +1,4 @@
-import { ItemSlider } from '@/components/Common/ItemSlider/ItemSlider';
+import ItemSlider from '@/components/Common/ItemSlider/ItemSlider';
 import { Toggle } from '@/components/Common/Toggle/Toggle';
 import React, { useMemo, useState } from 'react';
 import SkyTheme from '@/asset/letter1/letter1.svg?react';

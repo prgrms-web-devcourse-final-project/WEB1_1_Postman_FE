@@ -2,9 +2,9 @@ name: Run lighthouse
 
 on:
     pull_request:
-        branches: develope
+        branches: main
     push:
-        branches: develope
+        branches: main
 
 jobs:
     lighthouse:

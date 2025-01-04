@@ -3,3 +3,4 @@
 .pnp.loader.mjs linguist-vendored
 vite_cache/* linguist-vendored
 .yarn/* linguist-vendored
+stats.html linguist-vendored
