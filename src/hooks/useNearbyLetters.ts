@@ -3,7 +3,7 @@ import { getNearbyLetters } from '@/service/MapLetter/getNearbyLetters';
 import { NearbyLettersResponseType } from '@/types/letter';
 
 export const useNearbyLetters = (
-    currentLocation: { longitude: string; latitude: string } | null
+    currentLocation: { longitude: number; latitude: number } | null
 ) => {
     const query = useQuery({
         queryKey: [

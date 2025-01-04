@@ -78,9 +78,6 @@ const CreateMapLetterCotainer = () => {
     return (
         <>
             <TopBar
-                handleBackClick={() => {
-                    navigate(-1);
-                }}
                 handleSuccesClick={async () => {
                     if (
                         !title.trim() ||
@@ -137,7 +134,6 @@ const CreateMapLetterCotainer = () => {
                             <TextArea
                                 value={letterContent}
                                 setValue={setLetterContent}
-                                font={font}
                             />
                         </div>
 
