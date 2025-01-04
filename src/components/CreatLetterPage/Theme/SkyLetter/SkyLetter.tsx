@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProps } from '@/types/theme';
-import TopCloud from '@/asset/letter1/top_cloud.svg?react';
-import BottomCloud from '@/asset/letter1/bottom_cloud.svg?react';
+import TopCloud from '@/assets/letter1/top_cloud.svg?react';
+import BottomCloud from '@/assets/letter1/bottom_cloud.svg?react';
 
 export const SkyLetter = ({ children }: ThemeProps) => {
     return (

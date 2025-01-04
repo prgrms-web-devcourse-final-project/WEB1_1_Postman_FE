@@ -1,8 +1,8 @@
 export const Loading = () => {
     return (
-        <div className="text-sample-blue mt-[75%] w-full flex flex-row justify-center">
+        <div className="fixed inset-0 flex items-center justify-center">
             <svg
-                className="animate-spin h-5 w-5"
+                className="w-5 h-5 animate-spin text-sample-blue"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
