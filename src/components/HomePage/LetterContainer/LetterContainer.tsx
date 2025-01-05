@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import { NotificationBadge } from '../../Common/NotificationBadge/NotificationBadge';
 import { HomeBottleLetter } from '../HomeBottleLetter';
 import { WaveContainer } from '@/components/Common/WaveContainer/WaveContainer';
 
@@ -28,9 +27,6 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
         <div className="relative -m-6 pb-10">
             <WaveContainer />
 
-            <div className="absolute right-[80px] z-[2]">
-                <NotificationBadge count={letters.length} />
-            </div>
             <div className="overflow-hidden mx-[-20px] mt-[50px]">
                 <Swiper
                     effect={'cards'}
@@ -68,7 +64,6 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
 
     const noLetters = (
         <div className="relative -m-6 pb-10">
-            {/* <img src="/편지없음.svg" alt="" /> */}
             <img src="/무인도.svg" className="absolute -top-10 right-20" />
             <div className="bg-[url('/물결.svg')] absolute h-full w-full bg-cover bg-center bg-repeat custom-mask"></div>
             <div className="h-[350px] mt-[50px]"></div>
