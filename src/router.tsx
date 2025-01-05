@@ -33,6 +33,7 @@ import { Container } from '@/components/Common/Container/Container';
 import { CreateMapLetterPage } from './pages/Map/Create/CreateMapLetterPage';
 import { MapSelectItemPage } from './pages/Map/Select/MapSelectItemPage';
 import { ErrorBoundary } from './ErrorBoundary';
+import { GradientContainer } from './components/Common/GradientContainer/GradientContainer';
 
 type RouteProps = {
     children: ReactNode;
@@ -67,6 +68,16 @@ const CommonLayout = () => (
     </div>
 );
 
+const HomePageLayout = () => (
+    <div className="flex flex-col h-full relative">
+        <GradientContainer />
+        <Container pt={5} px={5}>
+            <Outlet />
+        </Container>
+        <NavigationBar />
+    </div>
+);
+
 const SimpleLayout = () => (
     <>
         <Outlet />
@@ -95,7 +106,7 @@ export const router = createBrowserRouter([
         path: '/',
         element: (
             <ProtectedRoute>
-                <CommonLayout />
+                <HomePageLayout />
             </ProtectedRoute>
         ),
         errorElement: <ErrorPage />,
@@ -103,8 +114,18 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomePage />
-            },
-
+            }
+        ]
+    },
+    {
+        path: '/',
+        element: (
+            <ProtectedRoute>
+                <CommonLayout />
+            </ProtectedRoute>
+        ),
+        errorElement: <ErrorPage />,
+        children: [
             {
                 path: '/mypage',
                 element: <MyPage />

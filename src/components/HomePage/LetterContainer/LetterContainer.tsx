@@ -3,6 +3,7 @@ import { EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import { NotificationBadge } from '../../Common/NotificationBadge/NotificationBadge';
 import { HomeBottleLetter } from '../HomeBottleLetter';
+import { WaveContainer } from '@/components/Common/WaveContainer/WaveContainer';
 
 type RecommendLetter = {
     letterId: number;
@@ -25,8 +26,7 @@ type LetterContainerProps = {
 export const LetterContainer = ({ letters }: LetterContainerProps) => {
     const hasLetters = (
         <div className="relative -m-6 pb-10">
-            <img src="/무인도.svg" className="absolute -top-10 right-20" />
-            <div className="bg-[url('/물결.svg')] absolute h-full w-full overflow-auto bg-cover bg-center custom-mask"></div>
+            <WaveContainer />
 
             <div className="absolute right-[80px] z-[2]">
                 <NotificationBadge count={letters.length} />
