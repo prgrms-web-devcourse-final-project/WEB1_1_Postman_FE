@@ -1,8 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCards } from 'swiper/modules';
+// import { EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import { HomeBottleLetter } from '../HomeBottleLetter';
 import { WaveContainer } from '@/components/Common/WaveContainer/WaveContainer';
+import { HomeBottle } from '../HomeBottle';
 
 type RecommendLetter = {
     letterId: number;
@@ -25,15 +25,12 @@ type LetterContainerProps = {
 export const LetterContainer = ({ letters }: LetterContainerProps) => {
     const hasLetters = (
         <div className="relative -m-6 pb-10">
-            <WaveContainer />
+            <div className="">
+                <WaveContainer />
+            </div>
 
             <div className="overflow-hidden mx-[-20px] mt-[50px]">
-                <Swiper
-                    effect={'cards'}
-                    grabCursor={true}
-                    modules={[EffectCards]}
-                    className="object-cover mySwiper"
-                >
+                <Swiper effect={'cards'} grabCursor={true} className="mySwiper">
                     {letters.map((letter, i) => {
                         // 추천편지의 경우 label, 답장편지의 경우 labelUrl
                         const labelUrl =
@@ -47,8 +44,8 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
 
                         return (
                             <SwiperSlide key={i}>
-                                <div className="h-[350px] ">
-                                    <HomeBottleLetter
+                                <div className="h-[350px]">
+                                    <HomeBottle
                                         letterType={LetterType}
                                         letterId={letter.letterId}
                                         labelUrl={labelUrl}
