@@ -57,6 +57,7 @@ const HomePage = () => {
                 <WelcomeMessageContainer
                     nickname={user?.nickname}
                     newLetter={letters.length > 0}
+                    toggleType={toggle ? '추천' : '답장'}
                 />
 
                 {/* bottle letter section */}
