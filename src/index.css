@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 /* 홈페이지 병편지 스와이퍼 그림자 스타일 커스텀 */
-.swiper-slide-shadow {
+/* .swiper-slide-shadow {
     @apply opacity-0 !important;
-}
+} */
 
 @layer base {
     #root {

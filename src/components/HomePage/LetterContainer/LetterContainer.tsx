@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCards } from 'swiper/modules';
+// import { EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import { NotificationBadge } from '../../Common/NotificationBadge/NotificationBadge';
-import { HomeBottleLetter } from '../HomeBottleLetter';
 import { WaveContainer } from '@/components/Common/WaveContainer/WaveContainer';
+import { HomeBottle } from '../HomeBottle';
 
 type RecommendLetter = {
     letterId: number;
@@ -26,18 +25,12 @@ type LetterContainerProps = {
 export const LetterContainer = ({ letters }: LetterContainerProps) => {
     const hasLetters = (
         <div className="relative -m-6 pb-10">
-            <WaveContainer />
-
-            <div className="absolute right-[80px] z-[2]">
-                <NotificationBadge count={letters.length} />
+            <div className="">
+                <WaveContainer />
             </div>
+
             <div className="overflow-hidden mx-[-20px] mt-[50px]">
-                <Swiper
-                    effect={'cards'}
-                    grabCursor={true}
-                    modules={[EffectCards]}
-                    className="object-cover mySwiper"
-                >
+                <Swiper effect={'cards'} grabCursor={true} className="mySwiper">
                     {letters.map((letter, i) => {
                         // 추천편지의 경우 label, 답장편지의 경우 labelUrl
                         const labelUrl =
@@ -51,8 +44,8 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
 
                         return (
                             <SwiperSlide key={i}>
-                                <div className="h-[350px] ">
-                                    <HomeBottleLetter
+                                <div className="h-[350px]">
+                                    <HomeBottle
                                         letterType={LetterType}
                                         letterId={letter.letterId}
                                         labelUrl={labelUrl}
@@ -68,7 +61,6 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
 
     const noLetters = (
         <div className="relative -m-6 pb-10">
-            {/* <img src="/편지없음.svg" alt="" /> */}
             <img src="/무인도.svg" className="absolute -top-10 right-20" />
             <div className="bg-[url('/물결.svg')] absolute h-full w-full bg-cover bg-center bg-repeat custom-mask"></div>
             <div className="h-[350px] mt-[50px]"></div>

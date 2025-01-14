@@ -12,7 +12,7 @@ import { ToggleVariant } from '@/constants/toggleVariant';
 import { useGetThreeLetterData } from '@/hooks/useGetThreeLetterData';
 import { ErrorPage } from '../ErrorPage';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
-import { Margin } from '@/components/Common/Margin/Margin';
+import { NotificationBadge } from '@/components/Common/NotificationBadge/NotificationBadge';
 
 const HomePage = () => {
     usePushNotifications(); // 푸시 알림 훅
@@ -32,27 +32,37 @@ const HomePage = () => {
     }
 
     return (
-        <div className="relative h-full w-full flex flex-col justify-between gap-5 ">
+        <div className="relative h-full w-full flex flex-col justify-between gap-5 mt-5">
             <div className="z-0">
                 <TopButtonContainer />
 
-                <Toggle
-                    isChecked={!toggle}
-                    onToggle={() => {
-                        setToggle(!toggle);
-                    }}
-                    leftLabel="추천"
-                    rightLabel="답장"
-                    variant={ToggleVariant.Main}
-                />
+                {/* toggle button section */}
+                <div className="relative">
+                    <Toggle
+                        isChecked={!toggle}
+                        onToggle={() => {
+                            setToggle(!toggle);
+                        }}
+                        leftLabel="추천"
+                        rightLabel="답장"
+                        variant={ToggleVariant.Main}
+                    />
 
+                    <div className="absolute -top-2 left-32">
+                        <NotificationBadge count={letters.length} />
+                    </div>
+                </div>
+
+                {/* welcomeMessage section */}
                 <WelcomeMessageContainer
                     nickname={user?.nickname}
                     newLetter={letters.length > 0}
                 />
 
+                {/* bottle letter section */}
                 <LetterContainer letters={letters} />
 
+                {/* keyword button section */}
                 <div className="flex justify-center px-20">
                     <button
                         onClick={() => {
@@ -65,9 +75,8 @@ const HomePage = () => {
                 </div>
             </div>
 
-            <div className="relative -mx-5">
+            <div className="relative -mx-5 pb-5">
                 <BannerContainer />
-                <Margin bottom={20} />
             </div>
 
             <SliderMenuContainer
