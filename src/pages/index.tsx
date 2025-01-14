@@ -15,7 +15,7 @@ import { SuccessLetterPage } from './Letter/Success/SuccessLetterPage';
 import { ProfilePage } from '@/pages/User/Profile/ProfilePage';
 import { StoragePage } from '@/pages/Storage/StoragePage';
 import { KakaoRedirectPage } from '@/pages/User/Login/KakaoRedirectPage';
-import LetterDetailPage from './Letter/Detail/LetterDetailPage';
+import { LetterDetailPage } from './Letter/Detail/LetterDetailPage';
 
 export {
     ErrorPage,
