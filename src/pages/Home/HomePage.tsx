@@ -32,7 +32,7 @@ const HomePage = () => {
     }
 
     return (
-        <div className="relative h-full w-full flex flex-col justify-between gap-5 mt-5">
+        <div className="relative h-full w-full flex flex-col justify-between gap-5 mt-5 mb-5">
             <div className="z-0">
                 <TopButtonContainer />
 
@@ -76,7 +76,7 @@ const HomePage = () => {
                 </div>
             </div>
 
-            <div className="relative -mx-5 pb-5">
+            <div className="relative -mx-5">
                 <BannerContainer />
             </div>
 
