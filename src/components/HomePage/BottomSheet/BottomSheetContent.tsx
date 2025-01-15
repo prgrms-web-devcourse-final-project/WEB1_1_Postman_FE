@@ -96,7 +96,7 @@ export const BottomSheetContent = ({
 
             <button
                 onClick={onClick}
-                className="fixed left-[20px] right-[20px] bottom-[90px] h-[49px] text-white flex-center rounded-full bg-sample-blue"
+                className="fixed left-[20px] right-[20px] bottom-[90px] h-[49px] text-white flex-center rounded-[1rem] bg-sample-blue"
             >
                 완료
             </button>

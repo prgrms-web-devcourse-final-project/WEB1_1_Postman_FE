@@ -37,7 +37,7 @@ const HomePage = () => {
                 <TopButtonContainer />
 
                 {/* toggle button section */}
-                <div className="relative">
+                <div className="relative mb-2">
                     <Toggle
                         isChecked={!toggle}
                         onToggle={() => {
@@ -69,7 +69,7 @@ const HomePage = () => {
                         onClick={() => {
                             setOpen(true);
                         }}
-                        className="w-full h-[49px] text-white flex-center rounded-full bg-sample-blue"
+                        className="w-full h-[49px] text-white flex-center rounded-[1rem] bg-sample-blue z-[1]"
                     >
                         키워드 설정
                     </button>
