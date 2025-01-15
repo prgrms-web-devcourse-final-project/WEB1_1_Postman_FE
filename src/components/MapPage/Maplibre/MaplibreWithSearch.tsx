@@ -20,6 +20,18 @@ type MaplibreWithSearchProps = {
     setNearbyLettersLength: (length: number) => void;
 };
 
+const ZOOM_THRESHOLD = 16;
+const OFFSET = 0.00002;
+
+const getOffsetPosition = (index: number, total: number) => {
+    const angle = (index / total) * 2 * Math.PI;
+    const distance = OFFSET * total;
+    return {
+        x: distance * Math.cos(angle),
+        y: distance * Math.sin(angle)
+    };
+};
+
 export const MaplibreWithSearch = ({
     onFocus,
     setNearbyLettersLength
@@ -34,6 +46,75 @@ export const MaplibreWithSearch = ({
         setNearbyLettersLength
     );
     const { nearbyLetters } = useNearbyLetters(currentLocation);
+
+    const isValidLngLat = (longitude: number, latitude: number) => {
+        return (
+            typeof longitude === 'number' &&
+            typeof latitude === 'number' &&
+            !isNaN(longitude) &&
+            !isNaN(latitude)
+        );
+    };
+
+    const renderMarkers = () => {
+        return nearbyLetters.map(
+            (letter: NearbyLettersResponseType['result'][0], index: number) => {
+                if (!isValidLngLat(letter.longitude, letter.latitude)) {
+                    return null;
+                }
+
+                const { x, y } = getOffsetPosition(index, nearbyLetters.length);
+                const adjustedLongitude = letter.longitude + x;
+                const adjustedLatitude = letter.latitude + y;
+
+                return (
+                    <Marker
+                        key={letter.letterId}
+                        longitude={adjustedLongitude}
+                        latitude={adjustedLatitude}
+                    >
+                        <div
+                            className="relative flex items-center justify-center w-8 h-8 bg-white rounded-full cursor-pointer transform"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                toggleSelectedLetter(letter);
+                            }}
+                        >
+                            <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2">
+                                <BottleLetter
+                                    Letter={{ label: letter.label }}
+                                />
+                            </div>
+                            <div className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-white"></div>
+                        </div>
+                    </Marker>
+                );
+            }
+        );
+    };
+
+    const renderCluster = () => {
+        const validLetters = nearbyLetters.filter((letter) =>
+            isValidLngLat(letter.longitude, letter.latitude)
+        );
+        const markerCount = validLetters.length;
+        if (markerCount === 0) return null;
+
+        const averageLongitude =
+            validLetters.reduce((acc, curr) => acc + curr.longitude, 0) /
+            markerCount;
+        const averageLatitude =
+            validLetters.reduce((acc, curr) => acc + curr.latitude, 0) /
+            markerCount;
+
+        return (
+            <Marker longitude={averageLongitude} latitude={averageLatitude}>
+                <div className="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full">
+                    {markerCount}
+                </div>
+            </Marker>
+        );
+    };
 
     return (
         <div className="relative h-full">
@@ -50,7 +131,7 @@ export const MaplibreWithSearch = ({
             </div>
 
             {searchedLocation?.name && (
-                <div className="absolute top-[5rem] w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-sample-gray shadow-md text-sample-black text-bold rounded-md p-2 flex items-center justify-between">
+                <div className="absolute top-[5rem] w-[340px] h-[48px] left-1/2 transform -translate-x-1/2 z-10 bg-sample-gray shadow-md text-sample-black text-bold rounded-md p-2 flex items=center justify-between">
                     <LuMapPin className="ml-2" />
                     <span className="flex-1 ml-4">{searchedLocation.name}</span>
                     <LiaTimesSolid
@@ -85,30 +166,9 @@ export const MaplibreWithSearch = ({
                         </span>
                     </Marker>
                 )}
-                {nearbyLetters.map(
-                    (letter: NearbyLettersResponseType['result'][0]) => (
-                        <Marker
-                            key={letter.letterId}
-                            longitude={letter.longitude}
-                            latitude={letter.latitude}
-                        >
-                            <div
-                                className="relative flex items-center justify-center w-8 h-8 bg-white rounded-full cursor-pointer transform"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    toggleSelectedLetter(letter);
-                                }}
-                            >
-                                <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2">
-                                    <BottleLetter
-                                        Letter={{ label: letter.label }}
-                                    />
-                                </div>
-                                <div className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-white"></div>
-                            </div>
-                        </Marker>
-                    )
-                )}
+                {viewState.zoom >= ZOOM_THRESHOLD
+                    ? renderMarkers()
+                    : renderCluster()}
                 {searchedLocation && (
                     <Marker
                         longitude={parseFloat(searchedLocation.lon)}
