@@ -7,6 +7,12 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig(({ command }) => ({
     build: {
         rollupOptions: {
+            // 브라우저 캐시떄문에 해시값 적용
+            output: {
+                entryFileNames: '[name].[hash].js',
+                chunkFileNames: '[name].[hash].js',
+                assetFileNames: '[name].[hash].[ext]'
+            },
             external: [/\.stories\.(t|j)sx?$/, /\.story\.(t|j)sx?$/]
         }
     },
