@@ -3,7 +3,7 @@ name: deploy aws
 on:
     push:
         branches:
-            - main
+            - fix-서비스-워커-에러-수정-
 
 jobs:
     deploy:
@@ -53,4 +53,4 @@ jobs:
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                  AWS_REGION: ap-northeast-2
+                  AWS_REGION: us-east-1
