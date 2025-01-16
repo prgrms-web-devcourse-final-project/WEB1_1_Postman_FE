@@ -3,20 +3,22 @@
 type WelcomeMessageContainerProps = {
     nickname: string | undefined;
     newLetter: boolean;
+    toggleType: '추천' | '답장';
 };
 
 export const WelcomeMessageContainer = ({
     nickname,
-    newLetter
+    newLetter,
+    toggleType
 }: WelcomeMessageContainerProps) => {
     if (nickname === undefined) nickname = '';
 
     const userMessage = (
-        <span className="text-sample-blue">{`${nickname}님`}</span>
+        <span className="font-semibold">{`${nickname}님`}</span>
     );
 
     const message = (
-        <p className="font-medium text-title1">
+        <p className="text-white font-medium text-display">
             {newLetter ? (
                 <>{userMessage}에게</>
             ) : (
@@ -26,18 +28,20 @@ export const WelcomeMessageContainer = ({
     );
 
     const messageBody = newLetter
-        ? '편지가 도착했어요!'
-        : '아직 도착한 편지가 없어요.';
+        ? `${toggleType === '추천' ? '편지가' : '답장이'} 도착했어요`
+        : '아직 도착한 편지가 없어요';
 
     const subMessage = newLetter
-        ? '답장을 기다리고 있어요.'
-        : '떠다니는 편지를 열심히 찾는 중 이에요.';
+        ? '읽지 않은 편지들이 기다리고 있어요!'
+        : '떠다니는 편지를 열심히 찾는 중 이에요';
 
     return (
-        <div className="z-[3]">
+        <>
             {message}
-            <p className="font-medium text-title1">{messageBody}</p>
-            <p className="font-medium text-sample text-white">{subMessage}</p>
-        </div>
+            <p className="font-medium text-white text-display">{messageBody}</p>
+            <p className="font-light text-sample text-[rgba(255,255,255,0.7)]">
+                {subMessage}
+            </p>
+        </>
     );
 };

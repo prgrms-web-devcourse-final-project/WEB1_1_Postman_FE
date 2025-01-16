@@ -32,12 +32,12 @@ const HomePage = () => {
     }
 
     return (
-        <div className="relative h-full w-full flex flex-col justify-between gap-5 mt-5">
+        <div className="relative h-full w-full flex flex-col justify-between gap-5 mt-5 mb-5">
             <div className="z-0">
                 <TopButtonContainer />
 
                 {/* toggle button section */}
-                <div className="relative">
+                <div className="relative mb-2">
                     <Toggle
                         isChecked={!toggle}
                         onToggle={() => {
@@ -57,6 +57,7 @@ const HomePage = () => {
                 <WelcomeMessageContainer
                     nickname={user?.nickname}
                     newLetter={letters.length > 0}
+                    toggleType={toggle ? '추천' : '답장'}
                 />
 
                 {/* bottle letter section */}
@@ -68,14 +69,14 @@ const HomePage = () => {
                         onClick={() => {
                             setOpen(true);
                         }}
-                        className="w-full h-[49px] text-white flex-center rounded-full bg-sample-blue"
+                        className="w-full h-[49px] text-white flex-center rounded-[1rem] bg-sample-blue z-[1]"
                     >
                         키워드 설정
                     </button>
                 </div>
             </div>
 
-            <div className="relative -mx-5 pb-5">
+            <div className="relative -mx-5">
                 <BannerContainer />
             </div>
 

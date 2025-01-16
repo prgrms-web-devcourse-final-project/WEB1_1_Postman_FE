@@ -3,7 +3,12 @@ type LogoProps = {
 };
 
 export const Logo = ({ h = 24 }: LogoProps) => {
-    const height = `h-[${h}px]`;
-
-    return <img className={`${height}`} src="/logo.svg" alt="" />;
+    return (
+        <img
+            className="object-contain"
+            style={{ height: `${h}px` }}
+            src="/logo.svg"
+            alt="logo"
+        />
+    );
 };

@@ -5,12 +5,12 @@ import { IoIosNotifications } from 'react-icons/io';
 export const TopButtonContainer = () => {
     return (
         <div className="flex justify-between pb-8">
-            <NavLink to={'/'}>
-                <Logo h={34} />
+            <NavLink to={'/'} className="flex-center">
+                <Logo h={24} />
             </NavLink>
 
             <NavLink to={'/notification'} className="size-[34px] relative">
-                <IoIosNotifications className="size-[34px] text-[#22B8EF]" />
+                <IoIosNotifications className="size-[34px] text-sample-blue" />
             </NavLink>
         </div>
     );
