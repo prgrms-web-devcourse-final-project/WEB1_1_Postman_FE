@@ -3,7 +3,7 @@ name: deploy aws
 on:
     push:
         branches:
-            - fix-서비스-워커-에러-수정-
+            - main
 
 jobs:
     deploy:
