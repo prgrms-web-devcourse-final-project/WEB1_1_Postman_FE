@@ -101,5 +101,5 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
         </div>
     );
 
-    return letters.length > 1 ? hasLetters : noLetters;
+    return letters.length > 0 ? hasLetters : noLetters;
 };

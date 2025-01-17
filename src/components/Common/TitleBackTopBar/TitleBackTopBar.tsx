@@ -1,16 +1,16 @@
-import { IoCloseOutline } from 'react-icons/io5';
+import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
-type TitleClosedTopBarProps = {
+type TitleBackTopBarProps = {
     title?: string;
     clickEvent?: () => void;
 };
 
-/** 제목과 닫기 버튼이 있는 TopBar */
-export const TitleClosedTopBar = ({
+/** 제목과 뒤로가기 버튼이 있는 TopBar */
+export const TitleBackTopBar = ({
     title = '',
     clickEvent
-}: TitleClosedTopBarProps) => {
+}: TitleBackTopBarProps) => {
     const navicate = useNavigate();
 
     const handleClick = () => {
@@ -22,14 +22,14 @@ export const TitleClosedTopBar = ({
     };
 
     return (
-        <div className="w-full flex items-center justify-between">
-            <h1 className="text-[20px] font-semibold text-[#5C5C5C]">
+        <div className="w-full flex">
+            <button onClick={handleClick}>
+                <IoIosArrowBack className="size-[34px] text-sample-black" />
+            </button>
+
+            <h1 className="absolute left-[50%] translate-x-[-50%] text-title1 text-sample-black">
                 {title}
             </h1>
-
-            <button onClick={handleClick}>
-                <IoCloseOutline className="size-[34px] text-[#5C5C5C]" />
-            </button>
         </div>
     );
 };

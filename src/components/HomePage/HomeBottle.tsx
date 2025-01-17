@@ -23,7 +23,8 @@ export const HomeBottle = ({
 
     /** 디테일 키워드 편지로 이동 */
     const handleClickBottle = () => {
-        navigate(`letter/keyword/${letterType}/received/${letterId}`);
+        if (letterType === 'LETTER')
+            navigate(`letter/keyword/${letterType}/received/${letterId}`);
     };
 
     /** 현재 시간 */
