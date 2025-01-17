@@ -45,7 +45,7 @@ const LetterSlide = ({ letter }: LetterSlideProps) => {
 
     return (
         <>
-            <div className="flex flex-wrap gap-2 absolute w-[50%] pl-11 mt-3">
+            <div className="flex flex-wrap gap-2 absolute w-[50%] pl-6">
                 {letterKeywords.map((keyword, i) => {
                     return (
                         <div
@@ -61,7 +61,7 @@ const LetterSlide = ({ letter }: LetterSlideProps) => {
                 })}
             </div>
 
-            <div className="h-[350px]">
+            <div className="h-[380px] overflow-visible">
                 <HomeBottle
                     letterType={LetterType}
                     letterId={letter.letterId}
@@ -74,12 +74,10 @@ const LetterSlide = ({ letter }: LetterSlideProps) => {
 
 export const LetterContainer = ({ letters }: LetterContainerProps) => {
     const hasLetters = (
-        <div className="relative -m-6 pb-10">
-            <div className="">
-                <WaveContainer />
-            </div>
+        <div className="relative pb-10 mx-[-20px] overflow-hidden">
+            <WaveContainer />
 
-            <div className="overflow-hidden mx-[-20px] mt-[50px]">
+            <div className="mt-[50px]">
                 <Swiper
                     pagination={true}
                     modules={[Pagination]}
@@ -97,12 +95,11 @@ export const LetterContainer = ({ letters }: LetterContainerProps) => {
     );
 
     const noLetters = (
-        <div className="relative -m-6 pb-10">
-            <img src="/무인도.svg" className="absolute -top-10 right-20" />
-            <div className="bg-[url('/물결.svg')] absolute h-full w-full bg-cover bg-center bg-repeat custom-mask"></div>
-            <div className="h-[350px] mt-[50px]"></div>
+        <div className="relative pb-10 mx-[-20px] overflow-hidden">
+            <WaveContainer />
+            <div className="h-[380px] mt-[50px]"></div>
         </div>
     );
 
-    return letters.length > 0 ? hasLetters : noLetters;
+    return letters.length > 1 ? hasLetters : noLetters;
 };

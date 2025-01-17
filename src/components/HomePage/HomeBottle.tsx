@@ -36,7 +36,7 @@ export const HomeBottle = ({
     };
 
     return (
-        <div className="absolute top-[115px] left-[90px] -rotate-[45deg]">
+        <div className="absolute top-[120px] left-[60px] -rotate-[45deg]">
             {/* 믈결 애니메이션 */}
             <div className="absolute h-[300px] w-[300px] rounded-[135px] animate-spin animate-duration-[14000ms] bg-transparent overflow-hidden" />
             <div className="absolute h-[300px] w-[300px] rounded-[135px] animate-spin animate-duration-[12000ms] bg-transparent overflow-hidden" />
