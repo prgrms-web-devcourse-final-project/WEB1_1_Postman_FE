@@ -30,13 +30,15 @@ export const WaveContainer = () => {
         <div className="z-0">
             <img
                 src={islandImg[nowTime]}
-                className="absolute bottom-[350px] right-20"
+                className="absolute bottom-[400px] right-20"
             />
 
-            <div
-                className="`animate-shake animate-infinite animate-duration-[5000ms] animate-ease-linear absolute h-full w-full overflow-auto bg-cover bg-center custom-mask"
-                style={{ backgroundImage: `url(${waveImg[nowTime]})` }}
-            />
+            <div className="absolute h-full w-full animate-shake animate-infinite animate-duration-[5000ms] animate-ease-linear">
+                <div
+                    className="absolute h-full w-[120%] bg-cover bg-center custom-mask left-[50%] translate-x-[-50%]"
+                    style={{ backgroundImage: `url(${waveImg[nowTime]})` }}
+                />
+            </div>
         </div>
     );
 };
