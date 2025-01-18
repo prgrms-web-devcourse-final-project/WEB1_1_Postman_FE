@@ -2,16 +2,14 @@ import React from 'react';
 
 type LetterInputProps = {
     value: string;
-    setValue: React.Dispatch<React.SetStateAction<string>>;
-
-    placeholder: string;
+    handleChangeTitle?: (title: string) => void;
+    placeholder?: string;
     maxLength?: number;
 };
 
 export const LetterInput = ({
     value,
-    setValue,
-
+    handleChangeTitle,
     placeholder,
     maxLength = undefined
 }: LetterInputProps) => {
@@ -19,7 +17,7 @@ export const LetterInput = ({
         <>
             <input
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => handleChangeTitle?.(e.target.value)}
                 placeholder={placeholder}
                 className={
                     'z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap'

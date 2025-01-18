@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
-import { PostLetterContainer } from '@/components/CreatLetterPage/PostLetterContainer/PostLetterContainer';
 import { useToastStore, useDraftLetter, useAutoSave } from '@/hooks';
 import { useNavigate } from 'react-router-dom';
+import { ThemeWrapper } from '@/components/CreatLetterPage/ThemeWrapper/ThemeWrapper';
+import { SelectSlider } from '@/components/SelectItemPage/SelectSlider/SelectSlider';
+import LetterLayout from '@/components/Common/LetterLayout/LetterLayout';
 
 export const CreateLetterPage = () => {
     const [title, setTitle] = useState<string>('');
@@ -30,6 +32,14 @@ export const CreateLetterPage = () => {
 
     useAutoSave(saveDraft, 10000);
 
+    const handleChangeTitle = useCallback((title: string) => {
+        setTitle(title);
+    }, []);
+
+    const handleChangeContent = useCallback((content: string) => {
+        setLetterContent(content);
+    }, []);
+
     return (
         <div className="w-full h-full">
             <TopBar
@@ -45,16 +55,32 @@ export const CreateLetterPage = () => {
                     navigate('/letter/select');
                 }}
             />
-            <PostLetterContainer
-                title={title}
-                letter={letter}
-                letterContent={letterContent}
-                font={font}
-                setTitle={setTitle}
-                setLetter={setLetter}
-                setLetterContent={setLetterContent}
-                setFont={setFont}
-            />
+            <ThemeWrapper themeId={Number(letter)}>
+                <LetterLayout
+                    letterData={{
+                        letterId: letter,
+                        title: title,
+                        font: font,
+                        content: letterContent
+                    }}
+                >
+                    <LetterLayout.Title
+                        handleChangeTitle={handleChangeTitle}
+                        placeholder={'제목을 입력해주세요'}
+                        maxLength={20}
+                    />
+                    <LetterLayout.Content
+                        isReadonly={false}
+                        handleChangeContent={handleChangeContent}
+                    />
+                </LetterLayout>
+                <SelectSlider
+                    font={font}
+                    letter={letter}
+                    setFont={setFont}
+                    setLetter={setLetter}
+                />
+            </ThemeWrapper>
         </div>
     );
 };

@@ -10,7 +10,7 @@ export const Label = ({ imgSrc, isActive }: LabelProps) => {
         >
             <img
                 src={`${imgSrc}`}
-                className="object-contain max-h-full max-w-full p-1"
+                className="object-contain max-w-full max-h-full p-1"
             />
         </div>
     );

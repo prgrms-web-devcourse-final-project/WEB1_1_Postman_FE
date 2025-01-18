@@ -12,15 +12,16 @@ import { KeywordList } from '@/components/LetterDetailPage/Keyword/KeywordList';
 import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
 import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
+import { LetterInput } from '@/components/CreatLetterPage/LetterInput/LetterInput';
 
 type LetterData = {
-    letterId?: number | string;
-    title?: string;
+    letterId: number | string;
+    title: string;
     content: string;
     keywords?: string[];
-    createdAt: string;
+    createdAt?: string;
     font: string;
-    label: string;
+    label?: string;
     isReplied?: boolean;
     description?: string;
 };
@@ -64,6 +65,10 @@ const Header = () => {
     const { pathname } = useLocation();
     const reportBtn = pathname.split('/')[4];
 
+    if (!letterData.label) {
+        return null;
+    }
+
     return (
         <div className="absolute top-0 right-0 flex">
             <div className="w-8 -rotate-12">
@@ -75,25 +80,45 @@ const Header = () => {
     );
 };
 
+type TitleProps = {
+    handleChangeTitle?: (title: string) => void;
+    placeholder?: string;
+    maxLength?: number;
+};
 // Title 컴포넌트
-const Title = () => {
+const Title = ({ handleChangeTitle, placeholder, maxLength }: TitleProps) => {
     const { letterData } = useLetterContext();
 
     return (
         <>
-            <h1>{letterData.title}</h1>
+            <LetterInput
+                value={letterData.title}
+                handleChangeTitle={handleChangeTitle}
+                placeholder={placeholder}
+                maxLength={maxLength}
+            />
+
             <LetterLine />
         </>
     );
 };
 
+// Content 컴포넌트 수정
+interface ContentProps {
+    isReadonly?: boolean;
+    handleChangeContent?: (Content: string) => void;
+}
+
 // Content 컴포넌트
-const Content = () => {
+const Content = ({ handleChangeContent }: ContentProps) => {
     const { letterData } = useLetterContext();
 
     return (
         <div className="relative">
-            <TextArea value={letterData.content} isReadonly={true} />
+            <TextArea
+                value={letterData.content}
+                setValue={handleChangeContent}
+            />
         </div>
     );
 };
@@ -115,7 +140,7 @@ const Keyword = () => {
         <>
             <div className="flex justify-between w-full mt-6 mb-1">
                 {keywords && <p className="font-bold">편지의 키워드</p>}
-                <p>{formatDate(createdAt)}</p>
+                <p>{createdAt && formatDate(createdAt)}</p>
             </div>
             {keywords && <KeywordList keywords={keywords} />}
             {dataType === 'sent' && (
@@ -159,14 +184,14 @@ const LetterHint = () => {
             <div className="flex justify-between w-full mt-6">
                 <p className="font-bold ">장소 힌트</p>
                 <div>
-                    <p className="">{formatDate(createdAt)}</p>
+                    <p className="">{createdAt && formatDate(createdAt)}</p>
                 </div>
             </div>
             <div className="flex justify-between">
                 <span className="block w-9/12 break-words whitespace-normal">
                     {description}
                 </span>
-                <span>{DayCounter({ createdAt })}</span>
+                <span>{createdAt && DayCounter({ createdAt })}</span>
             </div>
         </>
     );

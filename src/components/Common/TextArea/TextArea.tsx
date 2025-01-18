@@ -7,16 +7,9 @@ import { LetterLine } from '@/components/CreatLetterPage/LetterLine/LetterLine';
 type TextAreaProps = {
     value: string;
     setValue?: (value: string) => void;
-
-    isReadonly?: boolean;
 };
 
-export const TextArea = ({
-    value,
-    setValue,
-
-    isReadonly
-}: TextAreaProps) => {
+export const TextArea = ({ value, setValue }: TextAreaProps) => {
     const [lineHeight, setLineHeight] = useState<number>(2.2);
     const [lineCount, setLineCount] = useState<number>(8);
     const [textAreaHeight, setTextAreaHeight] = useState<number>(0);
@@ -106,7 +99,7 @@ export const TextArea = ({
                 placeholder="편지를 작성하세요."
                 value={value}
                 onChange={handleInputChange}
-                readOnly={isReadonly}
+                readOnly={setValue && false}
             />
 
             <div

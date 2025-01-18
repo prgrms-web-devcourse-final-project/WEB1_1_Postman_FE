@@ -53,7 +53,7 @@ export const SelectSlider = ({
                     spaceBetween={isFont ? 10 : 20}
                 />
             </div>
-            <div className="flex flex-col items-center justify-center w-full mb-[8] ">
+            <div className="flex flex-col items-center justify-center w-full ">
                 <Toggle
                     isChecked={isFont}
                     onToggle={() => setIsFont(!isFont)}
