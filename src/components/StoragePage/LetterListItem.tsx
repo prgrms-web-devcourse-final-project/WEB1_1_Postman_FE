@@ -41,7 +41,7 @@ export const LetterListItem = ({
             case 'map':
                 return `/letter/map/${filterType}/${letter.letterId}`;
             case 'bookmark':
-                return `/letter/map/${filterType}/bookmark/${letter.letterId}`;
+                return `/letter/map/bookmark/${letter.letterId}`;
             default:
                 throw new Error(
                     `Unsupported letter type: ${selectedLetterType}`
