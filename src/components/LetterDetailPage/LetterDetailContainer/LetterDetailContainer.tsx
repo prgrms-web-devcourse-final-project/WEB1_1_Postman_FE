@@ -36,6 +36,10 @@ export const LetterDetailContainer = () => {
             return <MapArchivedSentDetailLetter letterId={letterId} />;
         }
 
+        if (letterId) {
+            return <MapBookmarkDetailLetter letterId={letterId} />;
+        }
+
         if (replyLetterId) {
             return (
                 <MapArchivedSentReplyDetailLetter
@@ -191,6 +195,36 @@ const MapDetailLetter = ({ letterId, lat, lot }: MapDetailLetterProps) => {
         letterId: letterId,
         latitude: lat,
         longitude: lot
+    });
+
+    if (!data) {
+        return (
+            <ThemeWrapper themeId={1}>
+                <div>데이터가 존재하지 않습니다.</div>
+            </ThemeWrapper>
+        );
+    }
+
+    return (
+        <ThemeWrapper themeId={Number(data.paper)}>
+            <LetterLayout letterData={data}>
+                <LetterLayout.Header />
+                <LetterLayout.Title />
+                <LetterLayout.Content />
+                <LetterLayout.LetterHint />
+            </LetterLayout>
+        </ThemeWrapper>
+    );
+};
+
+type MapBookmarkDetailLetterProps = {
+    letterId: string;
+};
+const MapBookmarkDetailLetter = ({
+    letterId
+}: MapBookmarkDetailLetterProps) => {
+    const { data } = useGetArchivedLetter({
+        letterId: letterId
     });
 
     if (!data) {
