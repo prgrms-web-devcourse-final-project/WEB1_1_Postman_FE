@@ -9,7 +9,7 @@ export const FlowerLetter = ({ children }: ThemeProps) => {
             <div className="absolute flex overflow-hidden pointer-events-none bg-theme-flower bottom-[1px] justify-between w-full">
                 <img
                     src={LeftFlower}
-                    alt="flowr"
+                    alt="flower"
                     className="pointer-events-none"
                 />
                 <img

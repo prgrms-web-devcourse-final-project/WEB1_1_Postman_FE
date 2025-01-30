@@ -1,4 +1,4 @@
-import { AiOutlineAlert } from 'react-icons/ai';
+import { AiOutlineAlert } from '@react-icons/all-files/ai/AiOutlineAlert';
 import { useState } from 'react';
 import { ReportModal } from './ReportModal';
 
@@ -15,7 +15,7 @@ export const ReportButton = () => {
 
     return (
         <>
-            <button className="flex-center gap-1 p-2" onClick={openModal}>
+            <button className="gap-1 p-2 flex-center" onClick={openModal}>
                 <AiOutlineAlert />
             </button>
 
@@ -26,7 +26,7 @@ export const ReportButton = () => {
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className="bg-white rounded-lg p-6"
+                        className="p-6 bg-white rounded-lg"
                     >
                         <ReportModal closeModal={closeModal} />
                     </div>

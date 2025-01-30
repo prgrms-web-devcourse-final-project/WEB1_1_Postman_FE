@@ -1,5 +1,5 @@
-import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import { IoIosArrowBack } from '@react-icons/all-files/io/IoIosArrowBack';
 
 type TitleBackTopBarProps = {
     title?: string;
@@ -22,7 +22,7 @@ export const TitleBackTopBar = ({
     };
 
     return (
-        <div className="w-full flex">
+        <div className="flex w-full">
             <button onClick={handleClick}>
                 <IoIosArrowBack className="size-[34px] text-sample-black" />
             </button>

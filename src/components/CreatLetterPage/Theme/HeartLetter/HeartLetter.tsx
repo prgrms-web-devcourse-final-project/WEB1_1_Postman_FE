@@ -6,7 +6,7 @@ export const HeartLetter = ({ children }: ThemeProps) => {
     return (
         <div className="min-h-screen pt-[50px] rounded-t-3xl bg-theme-heart relative">
             {children}
-            <div className="absolute flex overflow-hidden pointer-events-none bg-theme-heart bottom-[1px]">
+            <div className="absolute flex overflow-hidden pointer-events-none bg-theme-heart bottom-[1px] ">
                 <img src={LeftHeart} alt="heart" />
                 <img src={RigthHeart} alt="heart" />
             </div>

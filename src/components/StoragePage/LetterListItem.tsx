@@ -9,10 +9,12 @@ import {
     StorageMapSentLetter
 } from '@/types/letter';
 import { Category } from '../Common/LetterListItem/Category';
+import LocationIcon from '@/assets/Location.svg?url';
+import RightArrowIcon from '@/assets/rightArrow.svg?url';
 
 export const ASSETS = {
-    LOCATION: '/src/assets/Location.svg',
-    RIGHT_ARROW: '/src/assets/rightArrow.svg'
+    LOCATION: LocationIcon,
+    RIGHT_ARROW: RightArrowIcon
 } as const;
 
 type LetterListItemProps = {
@@ -95,7 +97,7 @@ export const LetterListItem = ({
                             </h3>
                         </div>
                         <div className="flex flex-row gap-1">
-                            <img src="/src/assets/Location.svg"></img>
+                            <img src={ASSETS.LOCATION}></img>
                             <div className="text-sm">
                                 서울특별시 동대문구 어디어디
                             </div>

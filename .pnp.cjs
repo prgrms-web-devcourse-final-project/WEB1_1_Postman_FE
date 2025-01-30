@@ -30,6 +30,7 @@ const RAW_RUNTIME_STATE =
           ["@chromatic-com/storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:3.2.2"],\
           ["@eslint/js", "npm:9.15.0"],\
           ["@lhci/cli", "npm:0.14.0"],\
+          ["@react-icons/all-files", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:4.1.0"],\
           ["@storybook/addon-essentials", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
           ["@storybook/addon-interactions", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
           ["@storybook/addon-onboarding", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
@@ -83,7 +84,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:18.3.1"],\
-          ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.3.0"],\
+          ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.4.0"],\
           ["react-intersection-observer", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:9.13.1"],\
           ["react-map-gl", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:7.1.7"],\
           ["react-query", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:3.39.3"],\
@@ -4593,6 +4594,28 @@ const RAW_RUNTIME_STATE =
           "@types/react-dom",\
           "@types/react",\
           "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@react-icons/all-files", [\
+      ["npm:4.1.0", {\
+        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/@react-icons-all-files-npm-4.1.0-0c7fb4e7cd-10c0.zip/node_modules/@react-icons/all-files/",\
+        "packageDependencies": [\
+          ["@react-icons/all-files", "npm:4.1.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:4.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/@react-icons-all-files-virtual-43d82e969f/5/AppData/Local/Yarn/Berry/cache/@react-icons-all-files-npm-4.1.0-0c7fb4e7cd-10c0.zip/node_modules/@react-icons/all-files/",\
+        "packageDependencies": [\
+          ["@react-icons/all-files", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:4.1.0"],\
+          ["@types/react", "npm:18.3.12"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
           "react"\
         ],\
         "linkType": "HARD"\
@@ -16824,17 +16847,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["react-icons", [\
-      ["npm:5.3.0", {\
-        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/react-icons-npm-5.3.0-3814684035-10c0.zip/node_modules/react-icons/",\
+      ["npm:5.4.0", {\
+        "packageLocation": "../../../../AppData/Local/Yarn/Berry/cache/react-icons-npm-5.4.0-9588c76e84-10c0.zip/node_modules/react-icons/",\
         "packageDependencies": [\
-          ["react-icons", "npm:5.3.0"]\
+          ["react-icons", "npm:5.4.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.3.0", {\
-        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-e9cd50b133/5/AppData/Local/Yarn/Berry/cache/react-icons-npm-5.3.0-3814684035-10c0.zip/node_modules/react-icons/",\
+      ["virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.4.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-75c9d7591a/5/AppData/Local/Yarn/Berry/cache/react-icons-npm-5.4.0-9588c76e84-10c0.zip/node_modules/react-icons/",\
         "packageDependencies": [\
-          ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.3.0"],\
+          ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.4.0"],\
           ["@types/react", "npm:18.3.12"],\
           ["react", "npm:18.3.1"]\
         ],\
@@ -19835,6 +19858,7 @@ const RAW_RUNTIME_STATE =
           ["@chromatic-com/storybook", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:3.2.2"],\
           ["@eslint/js", "npm:9.15.0"],\
           ["@lhci/cli", "npm:0.14.0"],\
+          ["@react-icons/all-files", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:4.1.0"],\
           ["@storybook/addon-essentials", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
           ["@storybook/addon-interactions", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
           ["@storybook/addon-onboarding", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:8.4.4"],\
@@ -19888,7 +19912,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:18.3.1"],\
-          ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.3.0"],\
+          ["react-icons", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:5.4.0"],\
           ["react-intersection-observer", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:9.13.1"],\
           ["react-map-gl", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:7.1.7"],\
           ["react-query", "virtual:36c06c4e37fdf793891feac58570500604df33eee2d8c2eaa4782293cabbc727cc7bc1fdcc74ec32f218adfc0c394cc8a6d0f0708e0e7af7878a387954da3af7#npm:3.39.3"],\

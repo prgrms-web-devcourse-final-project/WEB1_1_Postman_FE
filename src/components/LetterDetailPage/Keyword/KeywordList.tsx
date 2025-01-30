@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
+import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
 type KeywordListProps = {
     keywords: string[];
 };
