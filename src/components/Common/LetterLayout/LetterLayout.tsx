@@ -92,7 +92,7 @@ const Content = () => {
     const { letterData } = useLetterContext();
 
     return (
-        <div className="relative">
+        <div className="relative ">
             <TextArea value={letterData.content} isReadonly={true} />
         </div>
     );
