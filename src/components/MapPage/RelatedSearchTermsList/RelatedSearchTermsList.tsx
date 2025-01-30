@@ -9,7 +9,7 @@ export const RelatedSearchTermsList = ({
 }: RelatedSearchTermsListProps) => {
     return (
         <div
-            className="flex items-center py-2 px-4 h-12 justify-between w-full cursor-pointer text-gray-400 hover:bg-slate-200 "
+            className="flex items-center justify-between w-full h-12 px-4 py-2 text-gray-400 cursor-pointer hover:bg-slate-200 "
             onClick={() => {
                 onClick(place);
             }}

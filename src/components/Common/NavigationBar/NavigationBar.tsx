@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavigationItem } from './NavigationItem';
-import { IoMdHome, IoIosSend } from 'react-icons/io';
-import { IoMap } from 'react-icons/io5';
-import { FaUserCircle } from 'react-icons/fa';
+import { IoIosSend } from '@react-icons/all-files/io/IoIosSend';
+import { IoMap } from '@react-icons/all-files/io5/IoMap';
+import { FaUserCircle } from '@react-icons/all-files/fa/FaUserCircle';
+import { IoMdHome } from '@react-icons/all-files/io/IoMdHome';
 
 export const NavigationBar = () => {
     const navItems = [

@@ -1,6 +1,6 @@
 import React, { KeyboardEvent, useEffect, useRef } from 'react';
 import { BackButton } from '@/components/Common/BackButton/BackButton';
-import { IoIosSearch } from 'react-icons/io';
+import { IoIosSearch } from '@react-icons/all-files/io/IoIosSearch';
 import { SearchHistoryList } from '../SearchHistoryList/SearchHistoryList';
 import { useSearchStore } from '@/stores/useSearchStore';
 import { RelatedSearchTermsList } from '../RelatedSearchTermsList/RelatedSearchTermsList';

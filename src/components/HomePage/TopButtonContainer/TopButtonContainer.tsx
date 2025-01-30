@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Logo } from '../../Common/LogoContainer/Logo';
-import { IoIosNotifications } from 'react-icons/io';
+import { IoIosNotifications } from '@react-icons/all-files/io/IoIosNotifications';
 
 export const TopButtonContainer = () => {
     return (

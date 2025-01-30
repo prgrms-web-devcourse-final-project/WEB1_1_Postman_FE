@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEyeSlash } from '@react-icons/all-files/fa/FaEyeSlash';
+import { FaEye } from '@react-icons/all-files/fa/FaEye';
 
 type InputProps = {
     name: string;
@@ -65,7 +66,7 @@ export const Input = ({
             </div>
             <div>
                 <input
-                    className="w-full h-8 px-3 bg-white border border-gray-200 rounded focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    className="w-full h-8 px-3 transition-colors bg-white border border-gray-200 rounded focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     autoComplete="off"
                     name={name}
                     value={value}
@@ -82,7 +83,7 @@ export const Input = ({
                 {togglePassword && (
                     <button
                         type="button"
-                        className="absolute right-3 bottom-0 -translate-y-1/2 text-gray-400"
+                        className="absolute bottom-0 text-gray-400 -translate-y-1/2 right-3"
                         onClick={() => setShowPassword(!showPassword)}
                     >
                         {showPassword ? (

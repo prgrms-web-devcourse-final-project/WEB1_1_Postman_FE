@@ -4,7 +4,7 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import mapStyle from './map_style.json';
 import { StyleSpecification } from 'maplibre-gl';
-import { IoIosSearch } from 'react-icons/io';
+import { IoIosSearch } from '@react-icons/all-files/io/IoIosSearch';
 import { useSelectedLetterStore } from '@/stores/useSelectedLetterStore';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { LuMapPin } from 'react-icons/lu';
@@ -74,13 +74,13 @@ export const MaplibreWithSearch = ({
                         latitude={adjustedLatitude}
                     >
                         <div
-                            className="relative flex items-center justify-center w-8 h-8 bg-white rounded-full cursor-pointer transform"
+                            className="relative flex items-center justify-center w-8 h-8 transform bg-white rounded-full cursor-pointer"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 toggleSelectedLetter(letter);
                             }}
                         >
-                            <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2">
+                            <div className="absolute w-10 h-10 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full top-1/2 left-1/2">
                                 <BottleLetter
                                     Letter={{ label: letter.label }}
                                 />
@@ -109,7 +109,7 @@ export const MaplibreWithSearch = ({
 
         return (
             <Marker longitude={averageLongitude} latitude={averageLatitude}>
-                <div className="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full">
+                <div className="flex items-center justify-center w-12 h-12 text-white bg-blue-500 rounded-full">
                     {markerCount}
                 </div>
             </Marker>
@@ -158,10 +158,10 @@ export const MaplibreWithSearch = ({
                         anchor="bottom"
                         rotation={direction || 0}
                     >
-                        <span className="relative flex h-5 w-5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sample-marker opacity-75"></span>
-                            <span className="relative inline-flex justify-center items-center rounded-full h-5 w-5 bg-white">
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-sample-marker" />
+                        <span className="relative flex w-5 h-5">
+                            <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sample-marker"></span>
+                            <span className="relative inline-flex items-center justify-center w-5 h-5 bg-white rounded-full">
+                                <span className="relative inline-flex w-3 h-3 rounded-full bg-sample-marker" />
                             </span>
                         </span>
                     </Marker>
@@ -177,7 +177,7 @@ export const MaplibreWithSearch = ({
                         rotation={direction || 0}
                     >
                         <div className="flex justify-center">
-                            <div className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center">
+                            <div className="flex items-center justify-center w-10 h-10 p-2 bg-white rounded-full shadow-lg animate-bounce dark:bg-slate-800 ring-1 ring-slate-900/5 dark:ring-slate-200/20">
                                 <svg
                                     className="w-6 h-6 text-sample-place"
                                     fill="none"
