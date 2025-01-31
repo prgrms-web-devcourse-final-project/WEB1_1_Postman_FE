@@ -48,7 +48,7 @@ export const StoragePage = () => {
 
     return (
         <div className="flex flex-col h-full">
-            <div className="max-w-[473px] fixed min-w-[375px] w-full top-0 z-[9999] bg-white -ml-5">
+            <div className="max-w-[473px] fixed min-w-[375px] w-full top-0 z-[40] bg-white -ml-5">
                 <div className="relative flex w-full overflow-hidden text-md align-middle h-[50px] text-sample-black">
                     <div
                         className="absolute bottom-0 w-1/3 h-[2px] transition-transform duration-500 ease-in-out bg-sample-blue"
