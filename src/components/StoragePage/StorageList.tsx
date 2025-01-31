@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { useInfiniteStorageFetch } from '@/hooks/useInfiniteStorageFetch';
-import { useQueryClient } from '@tanstack/react-query';
 import { match } from 'ts-pattern';
-import { deleteLetters } from '@/service/letter/delete/deleteLetters';
 import { useModal, useToastStore } from '@/hooks';
 import { DeleteLetterType, storageLetterType } from '@/types/letter';
 import { Empty } from '@/components/Common/Empty/Empty';
 import { Loading } from '@/components/Common/Loading/Loading';
 import { LetterDateGroup } from './LetterDateGroup';
+import { DeleteModal } from './DeleteModal';
+import { useQueryClient } from '@tanstack/react-query';
 
 const ROWS_PER_PAGE = 10;
 
@@ -20,13 +20,17 @@ export const StorageList = () => {
     const filterType = searchParams.get('filtertype');
     const { ref, inView } = useInView();
     const { addToast } = useToastStore();
-    const { openModal, closeModal, ModalComponent } = useModal();
+    const { openModal, ModalComponent } = useModal();
     const [checkedItems, setCheckedItems] = useState<DeleteLetterType[]>([]);
 
     const getApiEndpoint = () => {
         return match<storageLetterType>(selectedLetterType as storageLetterType)
             .with('keyword', () => `/letters/saved/${filterType}`)
-            .with('map', () => `/map/${filterType}`)
+            .with('map', () => {
+                const mapType =
+                    filterType === 'received' ? 'received-target' : 'sent-map';
+                return `/map/saved?type=${mapType}`;
+            })
             .with('bookmark', () => '/map/archived')
             .exhaustive();
     };
@@ -81,18 +85,18 @@ export const StorageList = () => {
         }
     };
 
-    const handleDelete = async () => {
-        const response = await deleteLetters(checkedItems);
-        if (response.isSuccess) {
-            addToast('삭제가 완료되었습니다.', 'success');
-            setCheckedItems([]);
-            queryClient.invalidateQueries({
-                queryKey: ['storageLetters', getApiEndpoint()]
-            });
-            return;
-        }
-        addToast('삭제에 실패했습니다.', 'warning');
-        return;
+    const handleRefresh = () => {
+        console.log('리프레시');
+        setCheckedItems([]);
+        queryClient.invalidateQueries({
+            queryKey: ['storageLetters', getApiEndpoint()]
+        });
+        queryClient.invalidateQueries({
+            queryKey: ['recommendedLetter']
+        });
+        queryClient.invalidateQueries({
+            queryKey: ['keywordLetterDetail']
+        });
     };
 
     useEffect(() => {
@@ -113,23 +117,11 @@ export const StorageList = () => {
         return (
             <div className="">
                 <ModalComponent height="h-[200px] w-[250px]">
-                    <div className="flex flex-col items-center justify-center w-full h-full gap-3">
-                        <div className="text-bold">정말 삭제하시겠습니까?</div>
-                        <div className="flex flex-row items-center justify-center w-full gap-1">
-                            <button
-                                onClick={handleDelete}
-                                className="px-3 py-1 text-white rounded-sm bg-sample-blue"
-                            >
-                                예
-                            </button>
-                            <button
-                                onClick={closeModal}
-                                className="px-3 py-1 bg-white border rounded-sm border-sample-blue text-sample-blue"
-                            >
-                                아니오
-                            </button>
-                        </div>
-                    </div>
+                    <DeleteModal
+                        checkedItems={checkedItems}
+                        handleRefresh={handleRefresh}
+                        apiEndPoint={getApiEndpoint()}
+                    />
                 </ModalComponent>
                 {groupedLetters.map((dayGroup) => (
                     <LetterDateGroup
