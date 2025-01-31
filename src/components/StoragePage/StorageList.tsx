@@ -120,7 +120,6 @@ export const StorageList = () => {
                     <DeleteModal
                         checkedItems={checkedItems}
                         handleRefresh={handleRefresh}
-                        apiEndPoint={getApiEndpoint()}
                     />
                 </ModalComponent>
                 {groupedLetters.map((dayGroup) => (
@@ -138,30 +137,34 @@ export const StorageList = () => {
 
     return (
         <div className="flex flex-col gap-2">
-            <div className="flex flex-row gap-2">
-                <button
-                    className={`border border-sample-blue rounded-xl text-sm px-2 py-1
-                                ${
-                                    filterType === 'sent'
-                                        ? 'bg-sample-blue text-white'
-                                        : 'bg-white text-sample-blue'
-                                }`}
-                    onClick={() => setSearchParams({ filtertype: 'sent' })}
-                >
-                    보낸 편지
-                </button>
-                <button
-                    className={`border border-sample-blue rounded-xl text-sm px-2 py-1
-                                ${
-                                    filterType === 'received'
-                                        ? 'bg-sample-blue text-white'
-                                        : 'bg-white text-sample-blue'
-                                }`}
-                    onClick={() => setSearchParams({ filtertype: 'received' })}
-                >
-                    받은 편지
-                </button>
-            </div>
+            {selectedLetterType !== 'bookmark' && (
+                <div className="flex flex-row gap-2">
+                    <button
+                        className={`border border-sample-blue rounded-xl text-sm px-2 py-1
+                        ${
+                            filterType === 'sent'
+                                ? 'bg-sample-blue text-white'
+                                : 'bg-white text-sample-blue'
+                        }`}
+                        onClick={() => setSearchParams({ filtertype: 'sent' })}
+                    >
+                        보낸 편지
+                    </button>
+                    <button
+                        className={`border border-sample-blue rounded-xl text-sm px-2 py-1
+                        ${
+                            filterType === 'received'
+                                ? 'bg-sample-blue text-white'
+                                : 'bg-white text-sample-blue'
+                        }`}
+                        onClick={() =>
+                            setSearchParams({ filtertype: 'received' })
+                        }
+                    >
+                        받은 편지
+                    </button>
+                </div>
+            )}
             {groupedLetters.length === 0 ? null : (
                 <div className="flex flex-row justify-between w-full gap-3 text-sm">
                     <div className="flex flex-row items-center gap-1">
