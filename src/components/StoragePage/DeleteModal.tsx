@@ -1,38 +1,12 @@
 import React from 'react';
-import { useModal, useToastStore } from '@/hooks';
-import { deleteKeywordLetters } from '@/service/letter/delete/deleteKeywordLetters';
-import { useQueryClient } from '@tanstack/react-query';
-import { DeleteLetterType } from '@/types/letter';
+import { useModal } from '@/hooks';
 
 type DeleteModalProps = {
-    checkedItems: DeleteLetterType[];
-    handleRefresh: () => void;
-    apiEndPoint: string;
+    handleDelete: () => void;
 };
 
-export const DeleteModal = ({
-    checkedItems,
-    handleRefresh,
-    apiEndPoint
-}: DeleteModalProps) => {
-    const queryClient = useQueryClient();
-    const { closeModal, ModalComponent } = useModal();
-    const { addToast } = useToastStore();
-
-    const handleDelete = async () => {
-        const response = await deleteKeywordLetters(checkedItems);
-        if (response.isSuccess) {
-            addToast('삭제가 완료되었습니다.', 'success');
-            handleRefresh();
-            queryClient.invalidateQueries({
-                queryKey: ['storageLetters', apiEndPoint]
-            });
-            closeModal();
-            return;
-        }
-        addToast('삭제에 실패했습니다.', 'warning');
-        return;
-    };
+export const DeleteModal = ({ handleDelete }: DeleteModalProps) => {
+    const { closeModal } = useModal();
 
     return (
         <div className="flex flex-col items-center justify-center w-full h-full gap-3">
