@@ -4,12 +4,20 @@ import { useInView } from 'react-intersection-observer';
 import { useInfiniteStorageFetch } from '@/hooks/useInfiniteStorageFetch';
 import { match } from 'ts-pattern';
 import { useModal, useToastStore } from '@/hooks';
-import { DeleteLetterType, storageLetterType } from '@/types/letter';
+import {
+    DeleteKeywordLetterType,
+    StorageLetterDataType,
+    storageLetterType,
+    StorageMapArchivedLetter
+} from '@/types/letter';
 import { Empty } from '@/components/Common/Empty/Empty';
 import { Loading } from '@/components/Common/Loading/Loading';
 import { LetterDateGroup } from './LetterDateGroup';
 import { DeleteModal } from './DeleteModal';
 import { useQueryClient } from '@tanstack/react-query';
+import { deleteKeywordLetters } from '@/service/letter/delete/deleteKeywordLetters';
+import { deleteMapLetters } from '@/service/letter/delete/deleteMapLetters';
+import { deleteBookmarkLetters } from '@/service/letter/delete/deleteBookmarkLetters';
 
 const ROWS_PER_PAGE = 10;
 
@@ -20,8 +28,10 @@ export const StorageList = () => {
     const filterType = searchParams.get('filtertype');
     const { ref, inView } = useInView();
     const { addToast } = useToastStore();
-    const { openModal, ModalComponent } = useModal();
-    const [checkedItems, setCheckedItems] = useState<DeleteLetterType[]>([]);
+    const { openModal, ModalComponent, closeModal } = useModal();
+    const [checkedItems, setCheckedItems] = useState<StorageLetterDataType[]>(
+        []
+    );
 
     const getApiEndpoint = () => {
         return match<storageLetterType>(selectedLetterType as storageLetterType)
@@ -48,16 +58,13 @@ export const StorageList = () => {
 
     const handleSingleCheck = (
         checked: boolean,
-        { letterId, letterType, boxType }: DeleteLetterType
+        letter: StorageLetterDataType
     ) => {
         if (checked) {
-            setCheckedItems((prev) => [
-                ...prev,
-                { letterId, letterType, boxType }
-            ]);
+            setCheckedItems((prev) => [...prev, letter]);
         } else {
             setCheckedItems(
-                checkedItems.filter((item) => item.letterId !== letterId)
+                checkedItems.filter((item) => item.letterId !== letter.letterId)
             );
         }
         console.log(checkedItems);
@@ -65,24 +72,55 @@ export const StorageList = () => {
 
     const handleAllCheck = (checked: boolean) => {
         if (checked) {
-            const itemArray: {
-                letterId: number;
-                letterType: string;
-                boxType: string;
-            }[] = [];
-            groupedLetters.forEach((item) => {
-                item.letters.forEach((letter) => {
-                    itemArray.push({
-                        letterId: letter.letterId,
-                        letterType: letter.letterType,
-                        boxType: letter.boxType
-                    });
-                });
-            });
+            const itemArray = groupedLetters.flatMap((group) => group.letters);
             setCheckedItems(itemArray);
         } else {
             setCheckedItems([]);
         }
+    };
+
+    const handleDelete = async () => {
+        let response;
+        switch (selectedLetterType) {
+            case 'keyword': {
+                const keywordPayload = checkedItems.map((item) => ({
+                    letterId: item.letterId,
+                    letterType: item.letterType,
+                    boxType: item.boxType
+                })) as DeleteKeywordLetterType[];
+                response = await deleteKeywordLetters(keywordPayload);
+                break;
+            }
+            case 'map': {
+                const mapPayload = {
+                    letterIds: checkedItems.map((item) => item.letterId)
+                };
+                response = await deleteMapLetters(mapPayload);
+                break;
+            }
+            case 'bookmark': {
+                // 타입 가드...
+                const bookmarkLetters = checkedItems.filter(
+                    (item): item is StorageMapArchivedLetter =>
+                        'archiveIds' in item
+                );
+                const bookmarkPayload = bookmarkLetters.map((item) => ({
+                    archiveIds: item.archiveId
+                }));
+                response = await deleteBookmarkLetters(bookmarkPayload);
+                break;
+            }
+        }
+
+        if (response?.isSuccess) {
+            addToast('삭제가 완료되었습니다.', 'success');
+            handleRefresh();
+            closeModal();
+            return;
+        }
+
+        addToast('삭제에 실패했습니다.', 'warning');
+        return;
     };
 
     const handleRefresh = () => {
@@ -117,10 +155,7 @@ export const StorageList = () => {
         return (
             <div className="">
                 <ModalComponent height="h-[200px] w-[250px]">
-                    <DeleteModal
-                        checkedItems={checkedItems}
-                        handleRefresh={handleRefresh}
-                    />
+                    <DeleteModal handleDelete={handleDelete} />
                 </ModalComponent>
                 {groupedLetters.map((dayGroup) => (
                     <LetterDateGroup

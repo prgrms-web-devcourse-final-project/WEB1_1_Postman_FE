@@ -1,13 +1,13 @@
 import { LetterListItem } from './LetterListItem';
-import { DeleteLetterType, StorageLetterDataType } from '@/types/letter';
+import { StorageLetterDataType } from '@/types/letter';
 
 type LetterDateGroupProps = {
     date: string;
     letters: StorageLetterDataType[];
-    checkedItems: DeleteLetterType[];
+    checkedItems: StorageLetterDataType[];
     handleSingleCheck: (
         checked: boolean,
-        { letterId, letterType, boxType }: DeleteLetterType
+        letter: StorageLetterDataType
     ) => void;
 };
 
