@@ -26,8 +26,8 @@ export const LetterDetailContainer = () => {
             return <KeywordSentDetailLetter letterId={letterId} />;
         }
 
-        if (letterType === 'REPLY_LETTER' && replyLetterId) {
-            return <KeywordReplyDetailLetter replyLetterId={replyLetterId} />;
+        if (letterType === 'REPLY_LETTER' && letterId) {
+            return <KeywordReplyDetailLetter replyLetterId={letterId} />;
         }
     }
 

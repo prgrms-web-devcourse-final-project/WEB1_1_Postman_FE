@@ -14,9 +14,10 @@ type DeleteModalProps = {
 export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
-    const letterType = pathname.split('/')[2];
+    const keywordMapType = pathname.split('/')[2];
     const bookmarkType = pathname.split('/')[4];
-    const { dataType, letterId, replyLetterId } = useParams<{
+    const { letterType, dataType, letterId, replyLetterId } = useParams<{
+        letterType: string;
         dataType: string;
         letterId: string;
         replyLetterId: string;
@@ -48,13 +49,13 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
     const mutation =
         bookmarkType === 'bookmark'
             ? mapArchivedMutation
-            : letterType === 'keyword'
-              ? dataType === 'received'
-                  ? keywordReplyMutation
-                  : keywordMutation
-              : letterType === 'map' && dataType === 'received'
-                ? mapReceivedMutation
-                : mapMutation;
+            : keywordMapType === 'keyword' && letterType === 'LETTER'
+              ? keywordMutation
+              : letterType === 'REPLY_LETTER'
+                ? keywordReplyMutation
+                : keywordMapType === 'map' && dataType === 'received'
+                  ? mapReceivedMutation
+                  : mapMutation;
 
     const { addToast } = useToastStore();
 
@@ -69,7 +70,7 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
                     'success'
                 );
                 navigate(
-                    letterType === 'keyword'
+                    keywordMapType === 'keyword'
                         ? '/storage/keyword?filtertype=sent'
                         : '/storage/map?filtertype=sent'
                 );
