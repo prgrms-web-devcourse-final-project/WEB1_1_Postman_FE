@@ -14,6 +14,7 @@ export const useKeywordLetterDetail = ({
         queryFn: async () => {
             const response = await getKeywordLetterDetail({ letterId });
             return response.result;
-        }
+        },
+        retry: false
     });
 };
