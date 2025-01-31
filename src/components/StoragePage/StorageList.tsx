@@ -99,14 +99,13 @@ export const StorageList = () => {
                 break;
             }
             case 'bookmark': {
-                // 타입 가드...
-                const bookmarkLetters = checkedItems.filter(
+                const archivedLetters = checkedItems.filter(
                     (item): item is StorageMapArchivedLetter =>
                         'archiveIds' in item
                 );
-                const bookmarkPayload = bookmarkLetters.map((item) => ({
-                    archiveIds: item.archiveId
-                }));
+                const bookmarkPayload = {
+                    archiveIds: archivedLetters.map((item) => item.archiveId)
+                };
                 response = await deleteBookmarkLetters(bookmarkPayload);
                 break;
             }
