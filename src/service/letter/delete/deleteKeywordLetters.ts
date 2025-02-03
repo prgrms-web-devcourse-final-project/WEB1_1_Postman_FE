@@ -7,11 +7,11 @@ type DeleteLetterType = {
     boxType: string;
 };
 
-type deleteLettersResponse = ApiResponseType<string>;
+type deleteKeywordLettersResponse = ApiResponseType<string>;
 
-export const deleteLetters = async (
+export const deleteKeywordLetters = async (
     selectedList: DeleteLetterType[]
-): Promise<deleteLettersResponse> => {
+): Promise<deleteKeywordLettersResponse> => {
     const api = defaultApi();
     const response = await api.delete('/letters/saved', {
         data: selectedList

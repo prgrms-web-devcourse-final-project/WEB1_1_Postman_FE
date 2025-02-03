@@ -1,7 +1,6 @@
 import { BottleLetter } from '@/components/Common/BottleLetter/BottleLetter';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import {
-    DeleteLetterType,
     StorageKeywordLetter,
     StorageLetterDataType,
     StorageMapArchivedLetter,
@@ -22,7 +21,7 @@ type LetterListItemProps = {
     checked: boolean;
     handleSingleCheck: (
         checked: boolean,
-        { letterId, letterType, boxType }: DeleteLetterType
+        letter: StorageLetterDataType
     ) => void;
 };
 
@@ -124,13 +123,7 @@ export const LetterListItem = ({
             <input
                 type="checkbox"
                 name={`select-${letter.letterId}`}
-                onChange={(e) =>
-                    handleSingleCheck(e.target.checked, {
-                        letterId: letter.letterId,
-                        letterType: letter.letterType,
-                        boxType: letter.boxType
-                    })
-                }
+                onChange={(e) => handleSingleCheck(e.target.checked, letter)}
                 checked={checked}
             />
             <div

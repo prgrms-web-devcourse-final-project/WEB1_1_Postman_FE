@@ -56,18 +56,16 @@ export const RegisterPage = () => {
                     isNicknameChecked={validationState.isNicknameChecked}
                     isNicknameValid={validationState.isNicknameValid}
                 ></NicknameSection>
-            </form>
-            <div className="flex flex-col w-full gap-2">
                 <button type="submit" className="btn-primary-filled">
                     가입하기
                 </button>
-                <div>
-                    이미 회원이신가요?
-                    <Link to="/login" className="text-bold text-sample-blue">
-                        {' '}
-                        로그인
-                    </Link>
-                </div>
+            </form>
+            <div>
+                이미 회원이신가요?
+                <Link to="/login" className="text-bold text-sample-blue">
+                    {' '}
+                    로그인
+                </Link>
             </div>
         </div>
     );

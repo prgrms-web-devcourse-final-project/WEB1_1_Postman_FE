@@ -11,11 +11,25 @@ export type storageLetterType = 'keyword' | 'map' | 'bookmark';
 export type ApiBoxType = 'SEND' | 'RECEIVE';
 export type ApiLetterType = 'LETTER' | 'REPLY_LETTER';
 
-export type DeleteLetterType = {
+export type DeleteKeywordLetterType = {
     letterId: number;
     letterType: string;
     boxType: string;
 };
+
+export type DeleteMapLetterType = {
+    letterId: number;
+    letterType: string;
+};
+
+export type DeleteBookmarkLetterType = {
+    archiveIds: number;
+};
+
+export type DeleteLetterType =
+    | DeleteKeywordLetterType
+    | DeleteMapLetterType
+    | DeleteBookmarkLetterType;
 
 export interface BaseLetter {
     letterId: number;
