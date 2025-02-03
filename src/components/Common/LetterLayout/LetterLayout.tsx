@@ -12,6 +12,8 @@ import { KeywordList } from '@/components/LetterDetailPage/Keyword/KeywordList';
 import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
 import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
+import { usePostNearByLetterStorage } from '@/hooks/usePostNearByLetterStorage';
+import { useToastStore } from '@/hooks';
 
 type LetterData = {
     letterId?: number | string;
@@ -22,6 +24,8 @@ type LetterData = {
     font: string;
     label: string;
     isReplied?: boolean;
+    isArchived?: boolean;
+    isTarget?: boolean;
     description?: string;
 };
 
@@ -172,10 +176,76 @@ const LetterHint = () => {
     );
 };
 
+// MapBookmarkReplyButton 컴포넌트
+
+const MapBookmarkReplyButton = () => {
+    const { letterData } = useLetterContext();
+    const { isReplied, isArchived, isTarget } = letterData;
+    const { pathname } = useLocation();
+    const letterId = pathname.split('/')[5];
+
+    const navigate = useNavigate();
+    const postMutation = usePostNearByLetterStorage(Number(letterId));
+    const { addToast } = useToastStore();
+
+    const handleStorageAction = () => {
+        postMutation.mutate(undefined, {
+            onSuccess: (response) => {
+                if (response?.isSuccess) {
+                    if (response.code === 'COMMON201') {
+                        addToast('편지 저장에 성공했습니다.', 'success');
+                        localStorage.setItem(
+                            `storedLetter-${letterId}`,
+                            'true'
+                        );
+                    } else if (response.code === 'MAP4009') {
+                        addToast('편지가 이미 저장되어 있습니다.', 'error');
+                        localStorage.setItem(
+                            `storedLetter-${letterId}`,
+                            'true'
+                        );
+                    }
+                } else {
+                    addToast('편지 저장에 실패했습니다.', 'error');
+                }
+            },
+            onError: (error) => {
+                console.error('보관 중 오류:', error);
+                addToast('편지 저장 중 오류가 발생했습니다.', 'error');
+            }
+        });
+    };
+
+    return (
+        <div className="flex-center gap-2 mt-4">
+            {!isReplied && (
+                <button
+                    className="btn-base z-[10000] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
+                    onClick={() =>
+                        navigate(`/letter/keyword/reply/create/${letterId}`)
+                    }
+                >
+                    편지에 답장하기
+                </button>
+            )}
+
+            {!isTarget && !isArchived && (
+                <button
+                    className="btn-base z-[10000] bg-white flex-center rounded-xl h-[40px]"
+                    onClick={handleStorageAction}
+                >
+                    보관하기
+                </button>
+            )}
+        </div>
+    );
+};
+
 LetterLayout.Header = Header;
 LetterLayout.Title = Title;
 LetterLayout.Content = Content;
 LetterLayout.Keyword = Keyword;
 LetterLayout.ReplyButton = ReplyButton;
 LetterLayout.LetterHint = LetterHint;
+LetterLayout.MapBookmarkReplyButton = MapBookmarkReplyButton;
 export default LetterLayout;
