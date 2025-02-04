@@ -12,7 +12,6 @@ import { ToggleVariant } from '@/constants/toggleVariant';
 import { useGetThreeLetterData } from '@/hooks/useGetThreeLetterData';
 import { ErrorPage } from '../ErrorPage';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
-import { NotificationBadge } from '@/components/Common/NotificationBadge/NotificationBadge';
 
 const HomePage = () => {
     usePushNotifications(); // 푸시 알림 훅
@@ -47,10 +46,6 @@ const HomePage = () => {
                         rightLabel="답장"
                         variant={ToggleVariant.Main}
                     />
-
-                    <div className="absolute -top-2 left-32">
-                        <NotificationBadge count={letters.length} />
-                    </div>
                 </div>
 
                 {/* welcomeMessage section */}

@@ -12,8 +12,11 @@ export const NotificationBadge = ({ count }: NotificationBadgeProps) => {
         count > MAX_NOTIFICATION_COUNT ? `${MAX_NOTIFICATION_COUNT}+` : count;
 
     return (
-        <div className="absolute bg-[#FF6868] rounded-full text-white text-body1 flex-center h-6 px-3 leading-none">
-            {renderCount}
-        </div>
+        <span className="relative flex size-4">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FF6868] opacity-75"></span>
+            <span className="relative inline-flex size-4 rounded-full bg-[#FF6868] text-white text-[10px] flex-center leading-none">
+                {renderCount}
+            </span>
+        </span>
     );
 };
