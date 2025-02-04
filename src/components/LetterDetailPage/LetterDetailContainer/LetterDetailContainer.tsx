@@ -212,6 +212,7 @@ const MapDetailLetter = ({ letterId, lat, lot }: MapDetailLetterProps) => {
                 <LetterLayout.Title />
                 <LetterLayout.Content />
                 <LetterLayout.LetterHint />
+                <LetterLayout.MapBookmarkReplyButton />
             </LetterLayout>
         </ThemeWrapper>
     );
@@ -242,6 +243,7 @@ const MapBookmarkDetailLetter = ({
                 <LetterLayout.Title />
                 <LetterLayout.Content />
                 <LetterLayout.LetterHint />
+                <LetterLayout.MapBookmarkReplyButton />
             </LetterLayout>
         </ThemeWrapper>
     );
