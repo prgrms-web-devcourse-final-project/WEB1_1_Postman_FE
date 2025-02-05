@@ -12,8 +12,10 @@ import { KeywordList } from '@/components/LetterDetailPage/Keyword/KeywordList';
 import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
 import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
+import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
 import { usePostNearByLetterStorage } from '@/hooks/usePostNearByLetterStorage';
 import { useToastStore } from '@/hooks';
+import { Loading } from '../Loading/Loading';
 
 type LetterData = {
     letterId?: number | string;
@@ -145,12 +147,85 @@ const ReplyButton = () => {
 
     return (
         <button
-            className="btn-base z-[10000] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
+            className="btn-base z-[10000] bg-sample-blue text-white mt-2 flex-center rounded-xl h-[40px]"
             onClick={() => navigate(`/letter/keyword/reply/create/${letterId}`)}
         >
             편지에 답장하기
         </button>
     );
+};
+
+// ReplyLetterList 컴포넌트
+const ReplyLetterList = () => {
+    const { letterData } = useLetterContext();
+    const { letterId, isReplied } = letterData;
+    const { dataType, letterType } = useParams();
+    const { pathname } = useLocation();
+    const mapKeywordType = pathname.split('/')[2];
+
+    const {
+        data: keywordReplyListData,
+        isLoading: isKeywordReplyListDataLoading,
+        error: keywordReplyListDataError
+    } = useGetKeywordReplyList({
+        letterId: Number(letterId) || 0,
+        page: 1,
+        size: 1,
+        sort: 'createdAt'
+    });
+
+    const {
+        data: mapReplyListData,
+        isLoading: isMapReplyListDataLoading,
+        error: mapReplyListDataError
+    } = useGetMapReplyList({
+        letterId: Number(letterId) || 0,
+        page: 1,
+        size: 9
+    });
+
+    if (isKeywordReplyListDataLoading || isMapReplyListDataLoading) {
+        return (
+            <div className="flex flex-1 w-full h-full">
+                <Loading />
+            </div>
+        );
+    }
+
+    if (keywordReplyListDataError instanceof Error) {
+        return <div>오류...: {keywordReplyListDataError.message}</div>;
+    }
+
+    if (mapReplyListDataError instanceof Error) {
+        return <div>오류...: {mapReplyListDataError.message}</div>;
+    }
+
+    if (!(dataType === 'received' && letterType === 'LETTER' && isReplied)) {
+        return null;
+    }
+
+    if (mapKeywordType === 'Keyword' && keywordReplyListData?.content) {
+        return (
+            <div className="mx-auto">
+                <ReplyList
+                    keywordReplyListData={keywordReplyListData.content}
+                />
+            </div>
+        );
+    }
+
+    if (mapKeywordType === 'map' && mapReplyListData?.content) {
+        return (
+            <div className="mt-16 mx-auto">
+                <ReplyList
+                    title="Map Replies"
+                    keywordReplyListData={mapReplyListData.content}
+                />
+            </div>
+        );
+    }
+
+    return null;
 };
 
 // Hint 컴포넌트
@@ -248,4 +323,6 @@ LetterLayout.Keyword = Keyword;
 LetterLayout.ReplyButton = ReplyButton;
 LetterLayout.LetterHint = LetterHint;
 LetterLayout.MapBookmarkReplyButton = MapBookmarkReplyButton;
+LetterLayout.ReplyLetterList = ReplyLetterList;
+
 export default LetterLayout;
