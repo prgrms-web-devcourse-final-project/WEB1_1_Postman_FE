@@ -85,6 +85,7 @@ const KeywordSentDetailLetter = ({ letterId }: SentDetailLetterProps) => {
                 <LetterLayout.Content />
                 <LetterLayout.Keyword />
                 <LetterLayout.ReplyButton />
+                <LetterLayout.ReplyLetterList />
             </LetterLayout>
         </ThemeWrapper>
     );
@@ -148,6 +149,7 @@ const MapArchivedSentDetailLetter = ({
                 <LetterLayout.Title />
                 <LetterLayout.Content />
                 <LetterLayout.LetterHint />
+                <LetterLayout.ReplyLetterList />
             </LetterLayout>
         </ThemeWrapper>
     );

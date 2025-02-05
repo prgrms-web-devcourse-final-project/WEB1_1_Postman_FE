@@ -12,7 +12,7 @@ export const ReplyList = ({ title, keywordReplyListData }: ReplyListProps) => {
     const basePath = location.pathname.split('/')[2];
 
     return (
-        <div className="bg-gray-300 rounded-2xl w-auto">
+        <div className="bg-gray-300 rounded-2xl mt-2 w-auto">
             {keywordReplyListData.map((reply, index) => (
                 <NavLink
                     key={reply.replyLetterId}
