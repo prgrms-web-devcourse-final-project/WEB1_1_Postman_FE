@@ -150,6 +150,7 @@ const MapArchivedSentDetailLetter = ({
                 <LetterLayout.Content />
                 <LetterLayout.LetterHint />
                 <LetterLayout.ReplyLetterList />
+                <LetterLayout.MapBookmarkReplyButton />
             </LetterLayout>
         </ThemeWrapper>
     );

@@ -53,9 +53,10 @@ export const DeleteModal = ({ closeModal }: DeleteModalProps) => {
               ? keywordMutation
               : letterType === 'REPLY_LETTER'
                 ? keywordReplyMutation
-                : keywordMapType === 'map' && dataType === 'received'
-                  ? mapReceivedMutation
-                  : mapMutation;
+                : keywordMapType === 'map' &&
+                    (dataType === 'received' || dataType === 'sent')
+                  ? mapMutation
+                  : mapReceivedMutation;
 
     const { addToast } = useToastStore();
 

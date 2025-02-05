@@ -28,6 +28,7 @@ type LetterData = {
     isReplied?: boolean;
     isArchived?: boolean;
     isTarget?: boolean;
+    isOwner?: boolean;
     description?: string;
 };
 
@@ -69,6 +70,7 @@ const Header = () => {
     const { letterData } = useLetterContext();
     const { pathname } = useLocation();
     const reportBtn = pathname.split('/')[4];
+    const letterType = pathname.split('/')[3];
 
     return (
         <div className="absolute top-0 right-0 flex">
@@ -76,7 +78,9 @@ const Header = () => {
                 <Label imgSrc={letterData.label} />
             </div>
             <DeleteButton />
-            {reportBtn === 'received' && <ReportButton />}
+            {(reportBtn === 'received' ||
+                letterType === 'REPLY_LETTER' ||
+                letterType === 'received') && <ReportButton />}
         </div>
     );
 };
@@ -147,7 +151,7 @@ const ReplyButton = () => {
 
     return (
         <button
-            className="btn-base z-[10000] bg-sample-blue text-white mt-2 flex-center rounded-xl h-[40px]"
+            className="btn-base z-[49] bg-sample-blue text-white mt-2 flex-center rounded-xl h-[40px]"
             onClick={() => navigate(`/letter/keyword/reply/create/${letterId}`)}
         >
             편지에 답장하기
@@ -173,18 +177,30 @@ const ReplyLetterList = () => {
         size: 1,
         sort: 'createdAt'
     });
+    const isMapPage = mapKeywordType === 'map';
 
     const {
         data: mapReplyListData,
         isLoading: isMapReplyListDataLoading,
         error: mapReplyListDataError
-    } = useGetMapReplyList({
-        letterId: Number(letterId) || 0,
-        page: 1,
-        size: 9
-    });
+    } = useGetMapReplyList(
+        isMapPage
+            ? {
+                  letterId: Number(letterId) || 0,
+                  page: 1,
+                  size: 9
+              }
+            : {
+                  letterId: 0,
+                  page: 1,
+                  size: 9
+              }
+    );
 
-    if (isKeywordReplyListDataLoading || isMapReplyListDataLoading) {
+    if (
+        isKeywordReplyListDataLoading ||
+        (mapKeywordType === 'map' && isMapReplyListDataLoading)
+    ) {
         return (
             <div className="flex flex-1 w-full h-full">
                 <Loading />
@@ -196,7 +212,7 @@ const ReplyLetterList = () => {
         return <div>오류...: {keywordReplyListDataError.message}</div>;
     }
 
-    if (mapReplyListDataError instanceof Error) {
+    if (mapKeywordType === 'map' && mapReplyListDataError instanceof Error) {
         return <div>오류...: {mapReplyListDataError.message}</div>;
     }
 
@@ -255,7 +271,7 @@ const LetterHint = () => {
 
 const MapBookmarkReplyButton = () => {
     const { letterData } = useLetterContext();
-    const { isReplied, isArchived, isTarget } = letterData;
+    const { isReplied, isArchived, isTarget, isOwner } = letterData;
     const { pathname } = useLocation();
     const letterId = pathname.split('/')[5];
 
@@ -293,9 +309,9 @@ const MapBookmarkReplyButton = () => {
 
     return (
         <div className="flex-center gap-2 mt-4">
-            {!isReplied && (
+            {!isOwner && !isReplied && (
                 <button
-                    className="btn-base z-[10000] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
+                    className="btn-base z-[49] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
                     onClick={() =>
                         navigate(`/letter/keyword/reply/create/${letterId}`)
                     }
@@ -304,9 +320,9 @@ const MapBookmarkReplyButton = () => {
                 </button>
             )}
 
-            {!isTarget && !isArchived && (
+            {!isOwner && !isTarget && !isArchived && (
                 <button
-                    className="btn-base z-[10000] bg-white flex-center rounded-xl h-[40px]"
+                    className="btn-base z-[49] bg-white flex-center rounded-xl h-[40px]"
                     onClick={handleStorageAction}
                 >
                     보관하기
