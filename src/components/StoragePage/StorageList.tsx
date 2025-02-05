@@ -8,7 +8,8 @@ import {
     DeleteKeywordLetterType,
     StorageLetterDataType,
     storageLetterType,
-    StorageMapArchivedLetter
+    StorageMapReceivedLetter,
+    StorageMapSentLetter
 } from '@/types/letter';
 import { Empty } from '@/components/Common/Empty/Empty';
 import { Loading } from '@/components/Common/Loading/Loading';
@@ -21,6 +22,9 @@ import { deleteBookmarkLetters } from '@/service/letter/delete/deleteBookmarkLet
 
 const ROWS_PER_PAGE = 10;
 
+// 1. 필터 관련 로직 분리
+// 2. 삭제 관련 로직 분리
+// 3. 무한 스크롤 관련 로직 분리
 export const StorageList = () => {
     const queryClient = useQueryClient();
     const { selectedLetterType } = useParams();
@@ -44,6 +48,15 @@ export const StorageList = () => {
             .with('bookmark', () => '/map/archived')
             .exhaustive();
     };
+
+    // api - 버전 2
+    // const getApiEndpoint = () => {
+    //     return match<storageLetterType>(selectedLetterType as storageLetterType)
+    //         .with('keyword', () => `/letters/saved/${filterType}`)
+    //         .with('map', () => `/map/saved?type=${filterType}-map`)
+    //         .with('bookmark', () => '/map/archived')
+    //         .exhaustive();
+    // };
 
     const {
         groupedLetters,
@@ -79,6 +92,7 @@ export const StorageList = () => {
         }
     };
 
+    // 필터 타입마다 api가 달라서 삭제 데이터 타입만 추출합니다.
     const handleDelete = async () => {
         let response;
         switch (selectedLetterType) {
@@ -92,19 +106,23 @@ export const StorageList = () => {
                 break;
             }
             case 'map': {
-                const mapPayload = {
-                    letterIds: checkedItems.map((item) => item.letterId)
-                };
+                // {
+                //     "letterType": 기존 편지의 deleteType
+                //     "letterId": 0
+                //   }
+                const mapPayload = checkedItems.map((item) => ({
+                    letterId: item.letterId,
+                    letterType: (
+                        item as StorageMapSentLetter | StorageMapReceivedLetter
+                    ).deleteType
+                }));
                 response = await deleteMapLetters(mapPayload);
                 break;
             }
             case 'bookmark': {
-                const archivedLetters = checkedItems.filter(
-                    (item): item is StorageMapArchivedLetter =>
-                        'archiveIds' in item
-                );
+                // letterId 배열 [1,2,3,4...]
                 const bookmarkPayload = {
-                    archiveIds: archivedLetters.map((item) => item.archiveId)
+                    letterIds: checkedItems.map((item) => item.letterId)
                 };
                 response = await deleteBookmarkLetters(bookmarkPayload);
                 break;
@@ -123,7 +141,6 @@ export const StorageList = () => {
     };
 
     const handleRefresh = () => {
-        console.log('리프레시');
         setCheckedItems([]);
         queryClient.invalidateQueries({
             queryKey: ['storageLetters', getApiEndpoint()]
