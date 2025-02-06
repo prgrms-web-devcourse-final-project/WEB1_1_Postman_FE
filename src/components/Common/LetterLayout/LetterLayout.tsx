@@ -15,7 +15,6 @@ import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
 import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
 import { usePostNearByLetterStorage } from '@/hooks/usePostNearByLetterStorage';
 import { useToastStore } from '@/hooks';
-import { Loading } from '../Loading/Loading';
 
 type LetterData = {
     letterId?: number | string;
@@ -131,7 +130,32 @@ const Keyword = () => {
             {dataType === 'sent' && (
                 <ReplyList
                     title={title}
-                    keywordReplyListData={keywordReplyListData?.content || []}
+                    ReplyListData={keywordReplyListData?.content || []}
+                />
+            )}
+        </>
+    );
+};
+
+// Map 컴포넌트
+const Map = () => {
+    const { dataType } = useParams();
+    const { pathname } = useLocation();
+    const { letterData } = useLetterContext();
+    const { title } = letterData;
+    const replyLetterId = pathname.split('/')[4];
+
+    const { data: mapReplyListData } = useGetMapReplyList({
+        letterId: Number(replyLetterId) || 0,
+        page: 1,
+        size: 9
+    });
+    return (
+        <>
+            {dataType === 'sent' && (
+                <ReplyList
+                    title={title}
+                    ReplyListData={mapReplyListData?.content || []}
                 />
             )}
         </>
@@ -157,91 +181,6 @@ const ReplyButton = () => {
             편지에 답장하기
         </button>
     );
-};
-
-// ReplyLetterList 컴포넌트
-const ReplyLetterList = () => {
-    const { letterData } = useLetterContext();
-    const { letterId, isReplied } = letterData;
-    const { dataType, letterType } = useParams();
-    const { pathname } = useLocation();
-    const mapKeywordType = pathname.split('/')[2];
-
-    const {
-        data: keywordReplyListData,
-        isLoading: isKeywordReplyListDataLoading,
-        error: keywordReplyListDataError
-    } = useGetKeywordReplyList({
-        letterId: Number(letterId) || 0,
-        page: 1,
-        size: 1,
-        sort: 'createdAt'
-    });
-    const isMapPage = mapKeywordType === 'map';
-
-    const {
-        data: mapReplyListData,
-        isLoading: isMapReplyListDataLoading,
-        error: mapReplyListDataError
-    } = useGetMapReplyList(
-        isMapPage
-            ? {
-                  letterId: Number(letterId) || 0,
-                  page: 1,
-                  size: 9
-              }
-            : {
-                  letterId: 0,
-                  page: 1,
-                  size: 9
-              }
-    );
-
-    if (
-        isKeywordReplyListDataLoading ||
-        (mapKeywordType === 'map' && isMapReplyListDataLoading)
-    ) {
-        return (
-            <div className="flex flex-1 w-full h-full">
-                <Loading />
-            </div>
-        );
-    }
-
-    if (keywordReplyListDataError instanceof Error) {
-        return <div>오류...: {keywordReplyListDataError.message}</div>;
-    }
-
-    if (mapKeywordType === 'map' && mapReplyListDataError instanceof Error) {
-        return <div>오류...: {mapReplyListDataError.message}</div>;
-    }
-
-    if (!(dataType === 'received' && letterType === 'LETTER' && isReplied)) {
-        return null;
-    }
-
-    if (mapKeywordType === 'Keyword' && keywordReplyListData?.content) {
-        return (
-            <div className="mx-auto">
-                <ReplyList
-                    keywordReplyListData={keywordReplyListData.content}
-                />
-            </div>
-        );
-    }
-
-    if (mapKeywordType === 'map' && mapReplyListData?.content) {
-        return (
-            <div className="mt-16 mx-auto">
-                <ReplyList
-                    title="Map Replies"
-                    keywordReplyListData={mapReplyListData.content}
-                />
-            </div>
-        );
-    }
-
-    return null;
 };
 
 // Hint 컴포넌트
@@ -336,9 +275,9 @@ LetterLayout.Header = Header;
 LetterLayout.Title = Title;
 LetterLayout.Content = Content;
 LetterLayout.Keyword = Keyword;
+LetterLayout.Map = Map;
 LetterLayout.ReplyButton = ReplyButton;
 LetterLayout.LetterHint = LetterHint;
 LetterLayout.MapBookmarkReplyButton = MapBookmarkReplyButton;
-LetterLayout.ReplyLetterList = ReplyLetterList;
 
 export default LetterLayout;

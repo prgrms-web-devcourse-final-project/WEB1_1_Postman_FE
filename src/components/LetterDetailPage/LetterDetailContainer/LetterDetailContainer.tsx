@@ -36,15 +36,13 @@ export const LetterDetailContainer = () => {
             return <MapArchivedSentDetailLetter letterId={letterId} />;
         }
 
-        if (letterId) {
+        if (letterType === 'LETTER' && letterId) {
             return <MapBookmarkDetailLetter letterId={letterId} />;
         }
 
-        if (replyLetterId) {
+        if (letterId) {
             return (
-                <MapArchivedSentReplyDetailLetter
-                    replyLetterId={replyLetterId}
-                />
+                <MapArchivedSentReplyDetailLetter replyLetterId={letterId} />
             );
         }
 
@@ -85,7 +83,6 @@ const KeywordSentDetailLetter = ({ letterId }: SentDetailLetterProps) => {
                 <LetterLayout.Content />
                 <LetterLayout.Keyword />
                 <LetterLayout.ReplyButton />
-                <LetterLayout.ReplyLetterList />
             </LetterLayout>
         </ThemeWrapper>
     );
@@ -149,7 +146,7 @@ const MapArchivedSentDetailLetter = ({
                 <LetterLayout.Title />
                 <LetterLayout.Content />
                 <LetterLayout.LetterHint />
-                <LetterLayout.ReplyLetterList />
+                <LetterLayout.Map />
                 <LetterLayout.MapBookmarkReplyButton />
             </LetterLayout>
         </ThemeWrapper>

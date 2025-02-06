@@ -216,6 +216,6 @@ export type ReplyListResponseType = {
     totalElements: number;
     totalPages: number;
 };
-export type KeywordReplyListProps = {
-    keywordReplyListData: ReplyListResponseType[];
+export type ReplyListProps = {
+    ReplyListData: ReplyListResponseType[];
 };
