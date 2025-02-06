@@ -106,6 +106,7 @@ export const StorageList = () => {
                 break;
             }
             case 'map': {
+                // api - 버전 2
                 // {
                 //     "letterType": 기존 편지의 deleteType
                 //     "letterId": 0
@@ -120,6 +121,7 @@ export const StorageList = () => {
                 break;
             }
             case 'bookmark': {
+                // api - 버전 2
                 // letterId 배열 [1,2,3,4...]
                 const bookmarkPayload = {
                     letterIds: checkedItems.map((item) => item.letterId)
