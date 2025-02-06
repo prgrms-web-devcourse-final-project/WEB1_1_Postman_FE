@@ -4,21 +4,21 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 type ReplyListProps = {
     title?: string;
-    keywordReplyListData: ReplyListResponseType['content'];
+    ReplyListData: ReplyListResponseType['content'];
 };
 
-export const ReplyList = ({ title, keywordReplyListData }: ReplyListProps) => {
+export const ReplyList = ({ title, ReplyListData }: ReplyListProps) => {
     const location = useLocation();
     const basePath = location.pathname.split('/')[2];
 
     return (
-        <div className="bg-gray-300 rounded-2xl w-auto">
-            {keywordReplyListData.map((reply, index) => (
+        <div className="bg-gray-300 rounded-2xl mt-2 w-auto">
+            {ReplyListData.map((reply, index) => (
                 <NavLink
                     key={reply.replyLetterId}
                     to={`/letter/${basePath}/REPLY_LETTER/${reply.replyLetterId}`}
                     className={`flex items-center cursor-pointer h-1 p-6 ${
-                        index < keywordReplyListData.length - 1
+                        index < ReplyListData.length - 1
                             ? 'border-b border-l-neutral-300'
                             : ''
                     }`}

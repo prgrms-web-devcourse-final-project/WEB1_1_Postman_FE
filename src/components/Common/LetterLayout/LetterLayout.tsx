@@ -12,6 +12,7 @@ import { KeywordList } from '@/components/LetterDetailPage/Keyword/KeywordList';
 import { DeleteButton } from '@/components/LetterDetailPage/Delete/DeleteButton';
 import { ReportButton } from '@/components/LetterDetailPage/Report/ReportButton';
 import { ReplyList } from '@/components/LetterDetailPage/ReplyList/ReplyList';
+import { useGetMapReplyList } from '@/hooks/useGetMapReplyList';
 import { usePostNearByLetterStorage } from '@/hooks/usePostNearByLetterStorage';
 import { useToastStore } from '@/hooks';
 
@@ -26,6 +27,7 @@ type LetterData = {
     isReplied?: boolean;
     isArchived?: boolean;
     isTarget?: boolean;
+    isOwner?: boolean;
     description?: string;
 };
 
@@ -67,6 +69,7 @@ const Header = () => {
     const { letterData } = useLetterContext();
     const { pathname } = useLocation();
     const reportBtn = pathname.split('/')[4];
+    const letterType = pathname.split('/')[3];
 
     return (
         <div className="absolute top-0 right-0 flex">
@@ -74,7 +77,9 @@ const Header = () => {
                 <Label imgSrc={letterData.label} />
             </div>
             <DeleteButton />
-            {reportBtn === 'received' && <ReportButton />}
+            {(reportBtn === 'received' ||
+                letterType === 'REPLY_LETTER' ||
+                letterType === 'received') && <ReportButton />}
         </div>
     );
 };
@@ -125,7 +130,32 @@ const Keyword = () => {
             {dataType === 'sent' && (
                 <ReplyList
                     title={title}
-                    keywordReplyListData={keywordReplyListData?.content || []}
+                    ReplyListData={keywordReplyListData?.content || []}
+                />
+            )}
+        </>
+    );
+};
+
+// Map 컴포넌트
+const Map = () => {
+    const { dataType } = useParams();
+    const { pathname } = useLocation();
+    const { letterData } = useLetterContext();
+    const { title } = letterData;
+    const replyLetterId = pathname.split('/')[4];
+
+    const { data: mapReplyListData } = useGetMapReplyList({
+        letterId: Number(replyLetterId) || 0,
+        page: 1,
+        size: 9
+    });
+    return (
+        <>
+            {dataType === 'sent' && (
+                <ReplyList
+                    title={title}
+                    ReplyListData={mapReplyListData?.content || []}
                 />
             )}
         </>
@@ -145,7 +175,7 @@ const ReplyButton = () => {
 
     return (
         <button
-            className="btn-base z-[10000] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
+            className="btn-base z-[49] bg-sample-blue text-white mt-2 flex-center rounded-xl h-[40px]"
             onClick={() => navigate(`/letter/keyword/reply/create/${letterId}`)}
         >
             편지에 답장하기
@@ -180,7 +210,7 @@ const LetterHint = () => {
 
 const MapBookmarkReplyButton = () => {
     const { letterData } = useLetterContext();
-    const { isReplied, isArchived, isTarget } = letterData;
+    const { isReplied, isArchived, isTarget, isOwner } = letterData;
     const { pathname } = useLocation();
     const letterId = pathname.split('/')[5];
 
@@ -218,9 +248,9 @@ const MapBookmarkReplyButton = () => {
 
     return (
         <div className="flex-center gap-2 mt-4">
-            {!isReplied && (
+            {!isOwner && !isReplied && (
                 <button
-                    className="btn-base z-[10000] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
+                    className="btn-base z-[49] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
                     onClick={() =>
                         navigate(`/letter/keyword/reply/create/${letterId}`)
                     }
@@ -229,9 +259,9 @@ const MapBookmarkReplyButton = () => {
                 </button>
             )}
 
-            {!isTarget && !isArchived && (
+            {!isOwner && !isTarget && !isArchived && (
                 <button
-                    className="btn-base z-[10000] bg-white flex-center rounded-xl h-[40px]"
+                    className="btn-base z-[49] bg-white flex-center rounded-xl h-[40px]"
                     onClick={handleStorageAction}
                 >
                     보관하기
@@ -245,7 +275,9 @@ LetterLayout.Header = Header;
 LetterLayout.Title = Title;
 LetterLayout.Content = Content;
 LetterLayout.Keyword = Keyword;
+LetterLayout.Map = Map;
 LetterLayout.ReplyButton = ReplyButton;
 LetterLayout.LetterHint = LetterHint;
 LetterLayout.MapBookmarkReplyButton = MapBookmarkReplyButton;
+
 export default LetterLayout;
