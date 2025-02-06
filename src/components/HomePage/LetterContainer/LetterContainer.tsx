@@ -36,29 +36,40 @@ const LetterSlide = ({ letter }: LetterSlideProps) => {
     const LetterType = 'labelUrl' in letter ? 'REPLY_LETTER' : 'LETTER';
 
     // 편지 아이디로 편지 키워드 가져오기
-    const { data } = useKeywordLetterDetail({
+    const { data, isError, error } = useKeywordLetterDetail({
         letterId: String(letter.letterId)
     });
 
+    if (isError) {
+        // 임시 ui
+        return <div>삭제된 편지</div>;
+    }
+
+    // 에러거나 data가 undefined일때 빈 배열
     const letterKeywords =
-        data.keywords.length > 9 ? data.keywords.slice(0, 9) : data.keywords;
+        isError || !data
+            ? []
+            : data.keywords.length > 9
+              ? data.keywords.slice(0, 9)
+              : data.keywords;
 
     return (
         <>
             <div className="flex flex-wrap gap-2 absolute w-[50%] pl-6">
-                {letterKeywords.map((keyword, i) => {
-                    return (
-                        <div
-                            key={i}
-                            className="bg-white border-solid rounded-full px-3 py-1 text-sample-black font-light z-[1]"
-                        >
-                            #
-                            {keyword.length > 12
-                                ? keyword.slice(0, 12) + '...'
-                                : keyword}
-                        </div>
-                    );
-                })}
+                {letterKeywords.length > 0 &&
+                    letterKeywords.map((keyword, i) => {
+                        return (
+                            <div
+                                key={i}
+                                className="bg-white border-solid rounded-full px-3 py-1 text-sample-black font-light z-[1]"
+                            >
+                                #
+                                {keyword.length > 12
+                                    ? keyword.slice(0, 12) + '...'
+                                    : keyword}
+                            </div>
+                        );
+                    })}
             </div>
 
             <div className="h-[380px] overflow-visible">
