@@ -175,10 +175,27 @@ export const router = createBrowserRouter([
             {
                 path: 'keyword/reply/create/:letterId',
                 element: <CreateLetterPage />
-            }, // 키워드 답장 편지
+            },
+            {
+                path: 'keyword/reply/select/:letterId',
+                element: <SelectItemPage />
+            },
+            {
+                path: 'keyword/:replyType/success/:letterId',
+                element: <SuccessLetterPage />
+            },
+            // 키워드 답장 편지
             {
                 path: 'map/reply/create/:letterId',
                 element: <CreateLetterPage />
+            },
+            {
+                path: 'map/reply/select/:letterId',
+                element: <SelectItemPage />
+            },
+            {
+                path: 'map/reply/success/:letterId',
+                element: <SuccessLetterPage />
             }, // 지도 답장 편지
             {
                 path: 'create',

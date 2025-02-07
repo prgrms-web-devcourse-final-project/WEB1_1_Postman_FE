@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { TopBar } from '@/components/Common/TopBar/TopBar';
 import { PostLetterContainer } from '@/components/CreatLetterPage/PostLetterContainer/PostLetterContainer';
 import { useToastStore, useDraftLetter, useAutoSave } from '@/hooks';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export const CreateLetterPage = () => {
     const [title, setTitle] = useState<string>('');
@@ -12,6 +12,14 @@ export const CreateLetterPage = () => {
 
     const { addToast } = useToastStore();
     const navigate = useNavigate();
+
+    const location = useLocation();
+    const letterType = location.pathname.split('/')[2];
+    const replyType = location.pathname.split('/')[3];
+
+    const { letterId } = useParams<{
+        letterId: string;
+    }>();
 
     const { loadDraft, saveDraft } = useDraftLetter(
         title,
@@ -42,7 +50,16 @@ export const CreateLetterPage = () => {
                         return;
                     }
                     await saveDraft();
-                    navigate('/letter/select');
+                    if (letterType === 'map' && replyType === 'reply') {
+                        navigate(`/letter/map/reply/select/${letterId}`);
+                    } else if (
+                        letterType === 'keyword' &&
+                        replyType === 'reply'
+                    ) {
+                        navigate(`/letter/keyword/reply/select/${letterId}`);
+                    } else {
+                        navigate('/letter/select');
+                    }
                 }}
             />
             <PostLetterContainer
