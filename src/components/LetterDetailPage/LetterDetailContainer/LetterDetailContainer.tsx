@@ -8,25 +8,29 @@ import { useNearbyLettersDetail } from '@/hooks/useGetNearbyLettersDetail';
 import LetterLayout from '@/components/Common/LetterLayout/LetterLayout';
 
 export const LetterDetailContainer = () => {
-    const { letterId, replyLetterId, letterType, dataType, lat, lot } =
-        useParams<{
-            letterId: string;
-            letterType: string;
-            replyLetterId: string;
-            dataType: string;
-            lat: string;
-            lot: string;
-        }>();
+    const { letterId, replyLetterId, dataType, lat, lot } = useParams<{
+        letterId: string;
+        letterType: string;
+        replyLetterId: string;
+        dataType: string;
+        lat: string;
+        lot: string;
+    }>();
 
     const { pathname } = useLocation();
     const letterPathType = pathname.split('/')[2];
+    const keywordLetterPathType = pathname.split('/')[3];
 
     if (letterPathType === 'keyword') {
-        if (letterType === 'LETTER' && letterId) {
+        if (keywordLetterPathType === 'LETTER' && letterId) {
             return <KeywordSentDetailLetter letterId={letterId} />;
         }
 
-        if (letterType === 'REPLY_LETTER' && replyLetterId) {
+        if (keywordLetterPathType === 'REPLY_LETTER' && letterId) {
+            return <KeywordReplyDetailLetter replyLetterId={letterId} />;
+        }
+
+        if (keywordLetterPathType === 'REPLY_LETTER' && replyLetterId) {
             return <KeywordReplyDetailLetter replyLetterId={replyLetterId} />;
         }
     }
@@ -36,7 +40,7 @@ export const LetterDetailContainer = () => {
             return <MapArchivedSentDetailLetter letterId={letterId} />;
         }
 
-        if (letterType === 'LETTER' && letterId) {
+        if (keywordLetterPathType === 'bookmark' && letterId) {
             return <MapBookmarkDetailLetter letterId={letterId} />;
         }
 
@@ -113,8 +117,6 @@ const KeywordReplyDetailLetter = ({
                 <LetterLayout.Header />
                 <LetterLayout.Title />
                 <LetterLayout.Content />
-                <LetterLayout.Keyword />
-                <LetterLayout.ReplyButton />
             </LetterLayout>
         </ThemeWrapper>
     );

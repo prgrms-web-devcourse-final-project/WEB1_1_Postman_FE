@@ -212,7 +212,7 @@ const MapBookmarkReplyButton = () => {
     const { letterData } = useLetterContext();
     const { isReplied, isArchived, isTarget, isOwner } = letterData;
     const { pathname } = useLocation();
-    const letterId = pathname.split('/')[5];
+    const letterId = pathname.split('/')[4];
 
     const navigate = useNavigate();
     const postMutation = usePostNearByLetterStorage(Number(letterId));
@@ -252,7 +252,7 @@ const MapBookmarkReplyButton = () => {
                 <button
                     className="btn-base z-[49] bg-sample-blue text-white flex-center rounded-xl h-[40px]"
                     onClick={() =>
-                        navigate(`/letter/keyword/reply/create/${letterId}`)
+                        navigate(`/letter/map/reply/create/${letterId}`)
                     }
                 >
                     편지에 답장하기
