@@ -8,7 +8,7 @@ import { useNearbyLettersDetail } from '@/hooks/useGetNearbyLettersDetail';
 import LetterLayout from '@/components/Common/LetterLayout/LetterLayout';
 
 export const LetterDetailContainer = () => {
-    const { letterId, letterType, dataType, lat, lot } = useParams<{
+    const { letterId, replyLetterId, dataType, lat, lot } = useParams<{
         letterId: string;
         letterType: string;
         replyLetterId: string;
@@ -29,6 +29,10 @@ export const LetterDetailContainer = () => {
         if (keywordLetterPathType === 'REPLY_LETTER' && letterId) {
             return <KeywordReplyDetailLetter replyLetterId={letterId} />;
         }
+
+        if (keywordLetterPathType === 'REPLY_LETTER' && replyLetterId) {
+            return <KeywordReplyDetailLetter replyLetterId={replyLetterId} />;
+        }
     }
 
     if (letterPathType === 'map') {
@@ -36,7 +40,7 @@ export const LetterDetailContainer = () => {
             return <MapArchivedSentDetailLetter letterId={letterId} />;
         }
 
-        if (letterType === 'LETTER' && letterId) {
+        if (keywordLetterPathType === 'bookmark' && letterId) {
             return <MapBookmarkDetailLetter letterId={letterId} />;
         }
 
