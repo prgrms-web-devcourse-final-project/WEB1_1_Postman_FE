@@ -2,7 +2,7 @@ import { defaultApi } from '@/service/api';
 import { ApiResponseType } from '@/types/apiResponse';
 
 type DeleteLetterType = {
-    archiveIds: number[];
+    letterIds: number[];
 };
 
 type deleteBookmarkLettersResponse = ApiResponseType<string>;

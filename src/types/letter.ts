@@ -49,6 +49,7 @@ export interface StorageMapSentLetter extends BaseLetter {
     targetUserNickname: string;
     type: string;
     sourceLetterId: number;
+    deleteType: string;
 }
 
 export interface StorageMapReceivedLetter extends BaseLetter {
@@ -59,6 +60,7 @@ export interface StorageMapReceivedLetter extends BaseLetter {
     sourceLetterId: number;
     senderNickname: string;
     senderProfileImg: string;
+    deleteType: string;
 }
 
 export interface StorageMapArchivedLetter extends BaseLetter {
