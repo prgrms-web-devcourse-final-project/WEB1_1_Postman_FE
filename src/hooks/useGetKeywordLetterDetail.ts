@@ -15,6 +15,9 @@ export const useKeywordLetterDetail = ({
             const response = await getKeywordLetterDetail({ letterId });
             return response.result;
         },
-        retry: false
+        retry: false,
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
+        staleTime: Infinity
     });
 };
