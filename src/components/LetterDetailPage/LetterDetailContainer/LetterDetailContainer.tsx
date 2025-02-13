@@ -44,7 +44,7 @@ export const LetterDetailContainer = () => {
             return <MapBookmarkDetailLetter letterId={letterId} />;
         }
 
-        if (letterId) {
+        if (!lat && !lot && letterId) {
             return (
                 <MapArchivedSentReplyDetailLetter replyLetterId={letterId} />
             );
