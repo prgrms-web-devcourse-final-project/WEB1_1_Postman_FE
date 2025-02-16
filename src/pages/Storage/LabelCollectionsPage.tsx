@@ -4,40 +4,26 @@ import React, { useState } from 'react';
 import { LabelType } from '@/types/label';
 import { Itembox } from '@/components/Common/Itembox/Itembox';
 import { Label } from '@/components/Common/BottleLetter/Label/Label';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useModal } from '@/hooks/useModal';
 import { Margin } from '@/components/Common/Margin/Margin';
 import { BackButtonCotainer } from '@/components/Common/BackButtonContainer/BackButtonCotainer';
-
-const testLable: LabelType[] = [
-    { labelId: 1, imageUrl: '/라벨_샘플_1.png' },
-    { labelId: 2, imageUrl: '/라벨_샘플_2.png' },
-    { labelId: 3, imageUrl: '/라벨_샘플_3.png' },
-    { labelId: 4, imageUrl: '/라벨_샘플_4.png' },
-    { labelId: 5, imageUrl: '/라벨_샘플_5.png' },
-    { labelId: 6, imageUrl: '/라벨_샘플_6.png' },
-    { labelId: 7, imageUrl: '/라벨_샘플_1.png' },
-    { labelId: 8, imageUrl: '/라벨_샘플_2.png' },
-    { labelId: 9, imageUrl: '/라벨_샘플_3.png' },
-    { labelId: 10, imageUrl: '/라벨_샘플_4.png' },
-    { labelId: 11, imageUrl: '/라벨_샘플_5.png' },
-    { labelId: 12, imageUrl: '/라벨_샘플_6.png' },
-    { labelId: 13, imageUrl: '/라벨_샘플_1.png' },
-    { labelId: 14, imageUrl: '/라벨_샘플_2.png' },
-    { labelId: 15, imageUrl: '/라벨_샘플_3.png' },
-    { labelId: 16, imageUrl: '/라벨_샘플_4.png' },
-    { labelId: 17, imageUrl: '/라벨_샘플_5.png' },
-    { labelId: 18, imageUrl: '/라벨_샘플_6.png' },
-    { labelId: 19, imageUrl: '/라벨_샘플_1.png' },
-    { labelId: 20, imageUrl: '/라벨_샘플_2.png' },
-    { labelId: 21, imageUrl: '/라벨_샘플_3.png' },
-    { labelId: 22, imageUrl: '/라벨_샘플_4.png' },
-    { labelId: 23, imageUrl: '/라벨_샘플_5.png' },
-    { labelId: 24, imageUrl: '/라벨_샘플_6.png' }
-];
+import { getUserLabel } from '@/service/label/get/getUserLabel';
+import { useQuery } from '@tanstack/react-query';
 
 export const LabelCollectionsPage = () => {
     const { openModal, closeModal, ModalComponent } = useModal();
+    const navigate = useNavigate();
+    const {
+        data: userLabelList,
+        isLoading,
+        error
+    } = useQuery({
+        queryKey: ['userLabels'],
+        queryFn: getUserLabel,
+        retry: false,
+        select: (data) => data.result
+    });
     const [selectedLabel, setSelectedLabel] = useState<LabelType | null>(null);
 
     const handleItemClick = (item: LabelType) => {
@@ -45,32 +31,33 @@ export const LabelCollectionsPage = () => {
         openModal();
     };
 
-    // const { data, isLoading, isError } = useQuery({
-    //     queryKey: ['userLabel'],
-    //     queryFn: getUserLabel,
-    //     retry: 1
-    // });
-
     const renderList = () => {
-        // if (isLoading) return <div>로딩중...</div>;
-        // if (isError) return <div>에러</div>;
-        // if (data.isSuccess) {
-        //     return (
-        //         <div className="">
-        //             {testLable.result.map((item, index) => {
-        //                 return (
-        //                     <div key={item.labelId + { index }}>
-        //                         {item.imageUrl}
-        //                     </div>
-        //                 );
-        //             })}
-        //         </div>
-        //     );
-        // }
-        // 테스트 라벨 데이터 바인딩
+        if (isLoading) return <div>로딩중...</div>;
+        if (
+            !userLabelList ||
+            (error && 'code' in error && error.code === 'LABEL4002')
+        ) {
+            console.log(error);
+            return (
+                <div className=" flex flex-col items-center justify-center mt-[35%] gap-2">
+                    <h1 className="text-5xl font-bold mb-4 text-sample-blue">
+                        텅
+                    </h1>
+                    <div className="text-xl font-semibold text-gray-700 text-center">
+                        아직 보유한 라벨이 없어요.
+                    </div>
+                    <button
+                        className="mt-2 px-4 py-2 bg-sample-blue text-white rounded-md"
+                        onClick={() => navigate('/lottery')}
+                    >
+                        라벨 뽑으러 가기
+                    </button>
+                </div>
+            );
+        }
         return (
             <div className="grid grid-cols-4 gap-4 w-full">
-                {testLable.map((item, index) => {
+                {userLabelList.map((item, index) => {
                     return (
                         <Itembox
                             key={item.labelId + index}
