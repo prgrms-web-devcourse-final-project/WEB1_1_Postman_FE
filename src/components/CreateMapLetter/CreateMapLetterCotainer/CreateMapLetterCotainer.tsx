@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage'; // 로컬 스토리지 훅 가져오기
 import { getIsuserExist } from '@/service/user/getIsuserExist';
+import { LetterLine } from '@/components/CreatLetterPage/LetterLine/LetterLine';
 
 const CreateMapLetterCotainer = () => {
     const { addToast } = useToastStore();
@@ -115,10 +116,7 @@ const CreateMapLetterCotainer = () => {
                             placeholder="보낼 유저의 닉네임을 입력하세요"
                             className={`z-30 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
                         />
-                        <img
-                            src={'/to_line.f4c129e6.svg'}
-                            className="z-30 h-[7px] w-[200px] object-cover"
-                        />
+                        <LetterLine />
                         <Margin bottom={30} />
                         <input
                             onChange={handleChange}
@@ -128,7 +126,7 @@ const CreateMapLetterCotainer = () => {
                             className={`z-10 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
                             maxLength={20}
                         />
-                        <img src={'/to_line.f4c129e6.svg'} />
+                        <LetterLine />
 
                         <div className="relative z-10">
                             <TextArea
@@ -143,7 +141,7 @@ const CreateMapLetterCotainer = () => {
                             placeholder="힌트를 입력해주세요"
                             className={`z-30 w-full bg-transparent border-none focus:border-none focus:outline-none text-wrap ${font ? font : 'font-sans'}`}
                         />
-                        <img src={'/to_line.f4c129e6.svg'} className="z-30" />
+                        <LetterLine />
                     </div>
 
                     <SelectSlider
